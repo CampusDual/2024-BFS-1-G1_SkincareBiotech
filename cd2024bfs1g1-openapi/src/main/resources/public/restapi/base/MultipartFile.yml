@@ -1,0 +1,13 @@
+components:
+  schemas:
+    MultipartFile:
+      type: string
+      format: binary
+
+  requestBodies:
+    MultipartFile:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/MultipartFile'

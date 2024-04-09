@@ -1,0 +1,42 @@
+components:
+  responses:
+    None:
+      description: OK
+    EntityResult:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: 'EntityResult.yml#/components/schemas/EntityResult'
+    AdvancedEntityResult:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: 'AdvancedEntityResult.yml#/components/schemas/AdvancedEntityResult'
+    Void:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: 'Void.yml#/components/schemas/Void'
+    Object:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: 'Object.yml#/components/schemas/Object'
+    String:
+      description: OK
+      content:
+        application/text:
+          schema:
+            $ref: 'String.yml#/components/schemas/String'
+    BadRequest:
+      description: Bad request
+    NotFound:
+      description: Not found
+    Unauthorized:
+      description: Unauthorized
+    Unexpected:
+      description: Unexpected error

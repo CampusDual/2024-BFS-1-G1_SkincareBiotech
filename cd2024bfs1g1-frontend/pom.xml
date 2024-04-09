@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.campusdual.cd2024bfs1g1</groupId>
+		<artifactId>cd2024bfs1g1</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>cd2024bfs1g1-frontend</artifactId>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<packaging>jar</packaging>
+
+	<properties>
+		<frontend-maven-plugin.nodeVersion>v18.10.0</frontend-maven-plugin.nodeVersion>
+	</properties>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/ngx/dist</directory>
+				<targetPath>${basedir}/target/classes/ngx/dist/app</targetPath>
+			</resource>
+		</resources>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>compose</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
+						<configuration>
+							<nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
+							<workingDirectory>src/main/ngx</workingDirectory>
+						</configuration>
+						<executions>
+							<execution>
+								<id>install node and npm</id>
+								<goals>
+									<goal>install-node-and-npm</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>npm install</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>install</arguments>
+								</configuration>
+							</execution>
+							<execution>
+								<id>run-compose</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>run compose</arguments>
+								</configuration>
+								<phase>generate-resources</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>local</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
+						<configuration>
+							<nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
+							<workingDirectory>src/main/ngx</workingDirectory>
+						</configuration>
+						<executions>
+							<execution>
+								<id>install node and npm</id>
+								<goals>
+									<goal>install-node-and-npm</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>npm install</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>run-local</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>run local</arguments>
+								</configuration>
+								<phase>generate-resources</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
+						<configuration>
+							<nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
+							<workingDirectory>src/main/ngx</workingDirectory>
+						</configuration>
+						<executions>
+							<execution>
+								<id>install node and npm</id>
+								<goals>
+									<goal>install-node-and-npm</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>npm install</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>install</arguments>
+								</configuration>
+							</execution>
+							<execution>
+								<id>run-production</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>run production</arguments>
+								</configuration>
+								<phase>generate-resources</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>staging</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
+						<configuration>
+							<nodeVersion>${frontend-maven-plugin.nodeVersion}</nodeVersion>
+							<workingDirectory>src/main/ngx</workingDirectory>
+						</configuration>
+						<executions>
+							<execution>
+								<id>install node and npm</id>
+								<goals>
+									<goal>install-node-and-npm</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>npm install</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>install</arguments>
+								</configuration>
+							</execution>
+							<execution>
+								<id>run-staging</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>run staging</arguments>
+								</configuration>
+								<phase>generate-resources</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/cd2024bfs1g1
+    username: testuser
+    password: testuser
+environment:
+  profile: local

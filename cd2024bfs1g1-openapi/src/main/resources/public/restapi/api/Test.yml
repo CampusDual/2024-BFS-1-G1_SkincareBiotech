@@ -1,0 +1,19 @@
+test:
+  get:
+    operationId: testRest
+    tags:
+      - Test
+    summary: Test
+    description: >
+      Develop purposes only.
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/String'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'

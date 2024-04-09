@@ -1,0 +1,94 @@
+endpoints:
+  api:
+    enabled: true
+logging:
+  level:
+    root: info
+ontimize:
+  corsfilter:
+    enabled: true
+  globalcors:
+    cors-configurations:
+      '[/**]':
+        allowed-origins: '*'
+        allowed-headers: '*'
+        exposed-headers: ['X-Auth-Token','Content-disposition','X-Requested-With']
+        allowed-methods:
+          - GET
+          - POST
+          - PUT
+          - OPTIONS
+          - DELETE
+  export:
+    enable: true
+    url: /export
+  jdbc:
+    name-convention: lower
+    sqlhandler: postgres
+    sql-condition-processor:
+      upper-string: true
+      upper-like: true
+  security:
+    mode: default
+    ignore-paths: '/index.html,/app/**,/error,/test,/ontimize/health,/restapi/**,/swagger-ui/**'
+    role-information-service:
+      role-repository: RoleDao
+      role-name-column: rol_name
+      server-permission-query-id: serverPermissions
+      server-permission-name-column: srp_name
+      client-permission-query-id: clientPermissions
+      client-permission-column: rol_xml_client_permission
+    user-information-service:
+      user-repository: UserDao
+      user-login-column: usr_login
+      user-password-column: usr_password
+      query-id: login
+      other-data:
+        - usr_id
+        - usr_login
+        - usr_name
+        - usr_surname
+        - usr_email
+        - usr_notes
+        - usr_phone
+        - usr_creation_date
+        - usr_down_date
+        - usr_photo
+    user-role-information-service:
+      user-role-repository: UserRoleDao
+      query-id: userRole
+      role-login-column: usr_login
+      role-name-column: rol_name
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+  compression:
+    enabled: true
+    mime-types: application/json, application/xml
+spring:
+  application:
+    name: cd2024bfs1g1
+  flyway:
+    enabled: true
+    locations: classpath:/db/migration/
+  liquibase:
+    enabled: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    jdbc-url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    initial-size: 2
+    test-on-borrow: true
+  main:
+    banner-mode: 'off'
+  session:
+    store-type: none
+  resources:
+    static-locations: classpath:/ngx/dist/, classpath:/public/
+  autoconfigure:
+    exclude: |
+      org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration, org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.FallbackWebSecurityAutoConfiguration
+environment:
+  profile: ${ENVIRONMENT_PROFILE:#{'production'}}

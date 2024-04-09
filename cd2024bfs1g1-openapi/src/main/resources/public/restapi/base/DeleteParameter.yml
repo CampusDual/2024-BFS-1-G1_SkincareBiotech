@@ -1,0 +1,23 @@
+components:
+  schemas:
+    DeleteParameter:
+      type: object
+      properties:
+        filter:
+          description: Filter
+          type: object
+          additionalProperties:
+            type: string
+        sqltypes:
+          description: SQL types
+          type: object
+          additionalProperties:
+            type: string
+
+  requestBodies:
+    DeleteParameter:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeleteParameter'

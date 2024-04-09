@@ -1,0 +1,33 @@
+version: '3.4'
+x-var:
+  - &DATABASE_USERNAME testuser
+  - &DATABASE_PASSWORD testuser
+volumes:
+  cd2024bfs1g1-db-vol:
+services:
+  database:
+    extends:
+      file: docker-compose-services.yaml
+      service: database
+  app:
+    image: maven:3-jdk-11
+    environment:
+      DATABASE_URL: jdbc:postgresql://db.cd2024bfs1g1:5432/cd2024bfs1g1
+      DATABASE_USER: *DATABASE_USERNAME
+      DATABASE_PASSWORD: *DATABASE_PASSWORD
+    hostname: cd2024bfs1g1
+    container_name: cd2024bfs1g1
+    working_dir: /app
+    command: >
+      sh -c "echo 'Building the application...'
+      && mvn -U clean install -P compose 
+      && echo 'Restoring the files and folders ownership...'
+      && find \\( -name 'target' -o -name 'dist' -o -name 'node' -o -name 'node_modules' -o -name 'package-lock.json' \\) -exec chown -R \$( stat . -c %u:%g ) {} + 
+      && echo 'Launching the application...'
+      && java -jar cd2024bfs1g1-boot/target/cd2024bfs1g1-boot.jar --spring.profiles.active=compose"
+    volumes:
+      - ./:/app/
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"

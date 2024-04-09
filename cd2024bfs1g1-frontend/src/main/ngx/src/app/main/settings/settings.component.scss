@@ -1,0 +1,17 @@
+.user-info-settings-container {
+  margin: 0 20px;
+
+  .o-form form .o-form-content-wrapper {
+    padding: 0;
+  }
+
+}
+
+.setting-navigation.mat-mdc-list-base {
+  padding-top: 0;
+  height: fit-content;
+
+  .mat-mdc-list-item {
+    width: auto;
+  }
+}

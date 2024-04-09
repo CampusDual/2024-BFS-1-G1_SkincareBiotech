@@ -1,0 +1,163 @@
+default:
+  get:
+    tags:
+      - Server role
+    summary: Returns a list of server permissions for a role.
+    description: >
+      This resource represents a list of server permissions for a role in the system.
+    x-restcontroller: orestcontroller
+    parameters:
+      - in: query
+        name: filter
+        description: Filter
+        schema:
+          type: string
+        required: false
+        examples:
+          Name:
+            value: 'rol_name=sales'
+      - in: query
+        name: columns
+        description: Columns
+        required: false
+        schema:
+          type: string
+          example: rol_id,rol_name,srp_id,srp_name,actived
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+  put:
+    tags:
+      - Server role
+    summary: Enables or disables a server permission for a role.
+    description: >
+      This resource represents a server permissions for a role in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../base/UpdateParameter.yml#/components/schemas/UpdateParameter'
+          examples:
+            Enable sales:
+              value:
+                data:
+                  actived: 'S'
+                filter:
+                  rol_id: 3
+                  srp_id: 1
+                sqltypes:
+                  rol_id: 4
+                  srp_id: 4
+                  actived: 12
+            Disable sales:
+              value:
+                data:
+                  actived: 'N'
+                filter:
+                  rsp_id: 17
+                sqltypes:
+                  rsp_id: 4
+                  actived: 12
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+search:
+  post:
+    tags:
+      - Server role
+    summary: Searches and returns a list of server permissions for a role.
+    description: >
+      This resource represents a list of server permissions for a role in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../base/QueryParameter.yml#/components/schemas/QueryParameter'
+          examples:
+            Role name:
+              value:
+                filter:
+                  rol_name: 'sales'
+                columns:
+                  - rol_id
+                  - rol_name
+                  - srp_id
+                  - srp_name
+                  - actived
+                sqltypes:
+                  rol_name: 12
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+advancedsearch:
+  post:
+    tags:
+      - Server role
+    summary: Performs an advanced search and returns a list of server permissions for a role.
+    description: >
+      This resource represents a list of server permissions for a role in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../base/AdvancedQueryParameter.yml#/components/schemas/AdvancedQueryParameter'
+          examples:
+            Role name:
+              value:
+                filter:
+                  rol_name: 'sales'
+                columns:
+                  - rol_id
+                  - rol_name
+                  - srp_id
+                  - srp_name
+                  - actived
+                sqltypes:
+                  rol_name: 12
+                pageSize: 20
+                offset: 0
+                orderBy:
+                  - columnName: srp_name
+                    ascendent: true
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/AdvancedEntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'

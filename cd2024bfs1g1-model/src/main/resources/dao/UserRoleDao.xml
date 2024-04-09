@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+	xmlns="http://www.ontimize.com/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+	catalog="" schema="${mainschema}" table="usr_user_role"
+	datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+	<DeleteKeys>
+		<Column>uro_id</Column>
+	</DeleteKeys>
+	<UpdateKeys>
+		<Column>uro_id</Column>
+	</UpdateKeys>
+	<GeneratedKey>uro_id</GeneratedKey>
+	<Queries>
+		<Query id="default">
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.usr_user_role
+                    #WHERE#
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+		<Query id="userRole">
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM ${mainschema}.usr_user u
+                        INNER JOIN ${mainschema}.usr_user_role ur ON (u.usr_id = ur.usr_id)
+                        INNER JOIN ${mainschema}.usr_role r ON ur.rol_id = r.rol_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+		<Query id="fullRolesWithUser">
+			<AmbiguousColumns>
+				<AmbiguousColumn name="usr_id" prefix="fulljoin" />
+				<AmbiguousColumn name="rol_id" prefix="fulljoin" />
+			</AmbiguousColumns>
+			<FunctionColumns>
+				<FunctionColumn name="actived"
+					value="(CASE WHEN tur.rol_id IS NOT NULL THEN 'S' ELSE 'N' END)" />
+			</FunctionColumns>
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        (
+                            SELECT
+                                tu.*,
+                                tr.*
+                            FROM
+                                ${mainschema}.usr_user tu,
+                                ${mainschema}.usr_role tr
+                        ) fulljoin
+                        LEFT JOIN ${mainschema}.usr_user_role tur ON fulljoin.rol_id = tur.rol_id AND fulljoin.usr_id = tur.usr_id
+                    #WHERE#
+                    #ORDER#
+                    ]]>
+			</Sentence>
+		</Query>
+	</Queries>
+</JdbcEntitySetup>

@@ -1,0 +1,15 @@
+components:
+  schemas:
+    FileListParameter:
+      type: object
+      properties:
+        fileList:
+          $ref: 'OFiles.yml#/components/schemas/OFiles'
+
+  requestBodies:
+    FileListParameter:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FileListParameter'

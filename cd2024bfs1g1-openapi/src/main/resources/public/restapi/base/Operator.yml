@@ -1,0 +1,11 @@
+components:
+  schemas:
+    Operator:
+      type: object
+      properties:
+        lop:
+          type: object
+        op:
+          type: string
+        rop:
+          type: object

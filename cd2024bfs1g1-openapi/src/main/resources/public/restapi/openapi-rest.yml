@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: cd2024bfs1g1 API
+  version: '1.0'
+  description: The cd2024bfs1g1 API
+servers:
+  - url: '/'
+    description: Localhost
+
+paths:
+  /users/role:
+    $ref: 'api/Role.yml#/default'
+  /users/role/search:
+    $ref: 'api/Role.yml#/search'
+  /users/role/advancedsearch:
+    $ref: 'api/Role.yml#/advancedsearch'
+
+  /users/serverRole:
+    $ref: 'api/ServerRole.yml#/default'
+  /users/serverRole/search:
+    $ref: 'api/ServerRole.yml#/search'
+  /users/serverRole/advancedsearch:
+    $ref: 'api/ServerRole.yml#/advancedsearch'
+
+  /users/user:
+    $ref: 'api/User.yml#/default'
+  /users/user/search:
+    $ref: 'api/User.yml#/search'
+  /users/user/advancedsearch:
+    $ref: 'api/User.yml#/advancedsearch'
+
+  /users/profile:
+    $ref: 'api/UserProfile.yml#/default'
+
+  /users/password:
+    $ref: 'api/UserPassword.yml#/default'
+
+  /users/rolesForUser:
+    $ref: 'api/UserRole.yml#/default'
+  /users/rolesForUser/search:
+    $ref: 'api/UserRole.yml#/search'
+  /users/rolesForUser/advancedsearch:
+    $ref: 'api/UserRole.yml#/advancedsearch'
+
+  /users/login:
+    $ref: 'api/User.yml#/login'
+
+  /users/encryptPassword:
+    $ref: 'api/User.yml#/encryptPassword'
+
+  /permissions:
+    $ref: 'api/Permission.yml#/permissions'
+
+  /test:
+    $ref: 'api/Test.yml#/test'
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+
+security:
+  - BasicAuth: []

@@ -1,0 +1,29 @@
+<o-form-layout-manager mode="tab" store-state="no" title="USERS" label-columns="usr_name" attr="o-form-layout-users-home"
+  title-data-origin="users_form_edit">
+  <o-form show-header="no" query-on-init="no" fxFill>
+
+    <filter title="FILTER_USERS">
+      <div fxLayout="row" fxLayoutGap="15px">
+        <o-text-input attr="name" label="usr_name"></o-text-input>
+        <o-text-input attr="login" label="usr_login"></o-text-input>
+        <o-text-input attr="surname" label="usr_surname" min-length="1"></o-text-input>
+
+        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="FLAT" color="primary" label="BUTTON.FILTER">
+        </o-button>
+        <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="BASIC" label="BUTTON.CLEARFILTERS" icon="clear"></o-button>
+      </div>
+      <o-filter-builder #filterBuilder attr="thefilter" filters="name;surname;login" [target]="usersTable" query-on-change="no"
+        query-on-change-delay="500" [expression-builder]="createFilter">
+      </o-filter-builder>
+    </filter>
+
+    <o-table #usersTable attr="users" service="users" entity="user" keys="usr_id"
+      columns="usr_id;usr_name;usr_surname;usr_email;usr_login" visible-columns="usr_name;usr_surname;usr_email;usr_login"
+      sort-columns="usr_name" query-rows="25" quick-filter="yes" row-height="medium" pageable="no" query-on-init="yes" query-on-bind="false"
+      select-all-checkbox-visible="yes" insert-button="yes" delete-button="yes" refresh-button="no" fixed-header="yes"
+      class="home-table" fxFlex export-mode="local">
+      <o-table-columns-filter columns="usr_name;usr_surname;usr_email;usr_login"></o-table-columns-filter>
+    </o-table>
+
+  </o-form>
+</o-form-layout-manager>

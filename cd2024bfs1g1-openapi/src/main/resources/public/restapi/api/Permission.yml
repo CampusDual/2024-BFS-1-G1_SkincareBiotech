@@ -1,0 +1,19 @@
+permissions:
+  get:
+    operationId: getClientPermissions
+    tags:
+      - Permissions
+    summary: Returns the client permissions for the current user.
+    description: >
+      This resource represents a client permissions in the system.
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'

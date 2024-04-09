@@ -1,0 +1,32 @@
+components:
+  schemas:
+    ExportParameter:
+      type: object
+      properties:
+        data:
+          description: Data
+          type: object
+          additionalProperties:
+            type: object
+        filter:
+          description: Filter
+          type: object
+          additionalProperties:
+            type: object
+        columnnames:
+          description: Column names
+          type: object
+          additionalProperties:
+            type: string
+        sqltypes:
+          description: SQL types
+          type: object
+          additionalProperties:
+            type: integer
+
+  requestBodies:
+    ExportParameter:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExportParameter'

@@ -1,0 +1,15 @@
+.home-toolbar .home-toolbar-container {
+  height: 36px;
+
+  .mat-toolbar {
+    min-height: 36px;
+    max-height: 36px;
+    padding: 0 4px;
+    box-shadow: none;
+    font-size: 16px;
+
+    .o-button {
+      margin-left: 8px;
+    }
+  }
+}

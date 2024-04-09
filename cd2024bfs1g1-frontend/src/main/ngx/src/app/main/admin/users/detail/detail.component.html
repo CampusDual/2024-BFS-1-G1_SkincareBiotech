@@ -1,0 +1,60 @@
+<o-form #form attr="users_form_edit" service="users" entity="user" header-actions="R;U" keys="usr_id" keys-sql-types="integer"
+  columns="usr_id;usr_name" header-position="bottom" layout-direction="row" detect-changes-on-blur="no" fxFill undo-button="no"
+  stay-in-record-after-insert="true">
+
+  <div fxLayout="row" fxLayoutGap="30px" fxFill>
+
+    <div fxLayout="column" fxFlex="calc(50% - 15px)">
+      <div fxLayout="row" fxLayoutGap="15px">
+        <div fxLayout="column" fxFlex>
+          <o-column title="user-login-section" appearance="no" layout-gap="15px" fxFlex="1 1 100%" layout-align="start stretch">
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="15px">
+              <o-text-input attr="usr_login" required="yes"></o-text-input>
+              <o-password-input attr="usr_password" required="yes" fxFlex></o-password-input>
+            </div>
+          </o-column>
+          <o-column title="user-data-section" appearance="no" layout-gap="15px" fxFlex="1 1 100%" layout-align="start stretch">
+            <div fxLayout="row">
+              <o-text-input attr="usr_name" required="yes" fxFlex></o-text-input>
+            </div>
+            <div fxLayout="row">
+              <o-text-input attr="usr_surname" fxFlex></o-text-input>
+            </div>
+          </o-column>
+        </div>
+        <o-image attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER" class="avatar" label="PROFILE.EDIT_PHOTO"></o-image>
+      </div>
+      <div fxLayout="row" fxLayoutGap="15px">
+        <div fxLayout="column"></div>
+        <div fxLayout="column" fxLayoutGap="15px" fxFlex>
+          <div fxLayout="row" fxLayoutGap="22px">
+            <o-text-input attr="usr_phone" fxFlex></o-text-input>
+            <o-date-input #creationDate attr="usr_creation_date" enabled="no" touch-ui="yes"></o-date-input>
+          </div>
+          <div fxLayout="row">
+            <o-email-input attr="usr_email" fxFlex></o-email-input>
+          </div>
+          <div fxLayout="row">
+            <o-textarea-input attr="usr_notes" label="usr_notes" rows="15" fxFlex class="o-textarea-fill-height"></o-textarea-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <o-column title="user-assigned-roles" appearance="no" fxLayout="column" fxFlex="calc(50% - 15px)">
+      <o-table attr="userRoles" service="users" entity="rolesForUser" keys="usr_id;rol_id;uro_id" parent-keys="usr_id"
+        columns="usr_id;rol_id;uro_id;rol_name;rol_notes;actived" visible-columns="rol_name;rol_notes;actived" sort-columns="rol_name" query-rows="25"
+        select-all-checkbox="no" export-button="no" insert-button="no" delete-button="no" refresh-button="no" fixed-header="yes" detail-mode="none"
+        edition-mode="click" [enabled]="!form.isInInsertMode()" selection-mode="none"  export-mode="local">
+        <o-table-columns-filter columns="rol_name;rol_notes"></o-table-columns-filter>
+        <o-table-column attr="actived" title="active">
+          <o-table-cell-renderer-boolean boolean-type="string" true-value="S" false-value="N" true-value-type="icon" render-type="icon"
+            render-true-value="check_box" render-false-value="check_box_outline_blank">
+          </o-table-cell-renderer-boolean>
+          <o-table-cell-editor-boolean true-value="S" false-value="N" boolean-type="string">
+          </o-table-cell-editor-boolean>
+        </o-table-column>
+      </o-table>
+    </o-column>
+  </div>
+</o-form>

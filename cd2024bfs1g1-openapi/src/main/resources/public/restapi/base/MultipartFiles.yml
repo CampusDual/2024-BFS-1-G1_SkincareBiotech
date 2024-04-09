@@ -1,0 +1,14 @@
+components:
+  schemas:
+    MultipartFiles:
+      type: array
+      items:
+        $ref: 'MultipartFile.yml#/components/schemas/MultipartFile'
+
+  requestBodies:
+    MultipartFiles:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/MultipartFiles'

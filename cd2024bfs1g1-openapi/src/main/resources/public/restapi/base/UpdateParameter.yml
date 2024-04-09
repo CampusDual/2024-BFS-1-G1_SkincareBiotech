@@ -1,0 +1,28 @@
+components:
+  schemas:
+    UpdateParameter:
+      type: object
+      properties:
+        data:
+          description: Data
+          type: object
+          additionalProperties:
+            type: string
+        filter:
+          description: Filter
+          type: object
+          additionalProperties:
+            type: string
+        sqltypes:
+          description: SQL types
+          type: object
+          additionalProperties:
+            type: string
+
+  requestBodies:
+    UpdateParameter:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateParameter'

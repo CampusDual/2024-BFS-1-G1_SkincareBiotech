@@ -1,0 +1,14 @@
+components:
+  schemas:
+    OFiles:
+      type: array
+      items:
+        $ref: 'OFile.yml#/components/schemas/OFile'
+
+  requestBodies:
+    OFiles:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OFiles'

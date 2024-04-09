@@ -1,0 +1,63 @@
+default:
+  get:
+    tags:
+      - User profile
+    summary: Returns the current user.
+    description: >
+      This resource represents a user in the system.
+    x-restcontroller: orestcontroller
+    parameters:
+      - in: query
+        name: filter
+        description: Filter
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: columns
+        description: Columns
+        required: false
+        schema:
+          type: string
+          example: usr_id,usr_login,usr_name,usr_surname,usr_email,usr_notes,usr_phone,usr_creation_date
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+  put:
+    tags:
+      - User profile
+    summary: Updates the current user.
+    description: >
+      This resource represents a user in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../base/UpdateParameter.yml#/components/schemas/UpdateParameter'
+          examples:
+            Notes:
+              value:
+                data:
+                  usr_notes: 'Welcome pack not sended'
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'

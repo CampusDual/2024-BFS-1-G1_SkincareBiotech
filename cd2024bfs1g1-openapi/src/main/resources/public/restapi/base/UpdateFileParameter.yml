@@ -1,0 +1,20 @@
+components:
+  schemas:
+    UpdateFileParameter:
+      type: object
+      properties:
+        file:
+          $ref: '../base/OFile.yml#/components/schemas/OFile'
+        params:
+          description: Params
+          type: object
+          additionalProperties:
+            type: object
+
+  requestBodies:
+    UpdateFileParameter:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateFileParameter'

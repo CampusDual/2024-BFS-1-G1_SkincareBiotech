@@ -1,0 +1,25 @@
+components:
+  schemas:
+    OFile:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        size:
+          type: integer
+        creationDate:
+          type: integer
+          format: int64
+        directory:
+          type: boolean
+        parent:
+          type: integer
+      discriminator:
+        propertyName: type
+      required:
+      - name
+      - type

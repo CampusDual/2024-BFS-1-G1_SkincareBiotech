@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+	catalog="" schema="${mainschema}" table="usr_role" datasource="mainDataSource"
+	sqlhandler="dbSQLStatementHandler">
+	<DeleteKeys>
+		<Column>rol_id</Column>
+	</DeleteKeys>
+	<UpdateKeys>
+		<Column>rol_id</Column>
+	</UpdateKeys>
+	<GeneratedKey>rol_id</GeneratedKey>
+	<Queries>
+		<Query id="default">
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.usr_role
+                    #WHERE#
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+		<Query id="clientPermissions">
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.usr_role
+                    #WHERE#
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+		<Query id="serverPermissions">
+			<AmbiguousColumns>
+				<AmbiguousColumn name="rol_id" prefix="rol" />
+				<AmbiguousColumn name="srp_id" prefix="srp" />
+			</AmbiguousColumns>
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.usr_role rol
+                        LEFT JOIN ${mainschema}.usr_role_server_permission rsp ON rsp.rol_id = rol.rol_id
+                        LEFT JOIN ${mainschema}.usr_server_permission srp ON srp.srp_id = rsp.srp_id
+                    #WHERE#
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+	</Queries>
+</JdbcEntitySetup>

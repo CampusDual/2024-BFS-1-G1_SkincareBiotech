@@ -1,0 +1,9 @@
+<div *ngIf="table" class="o-form-toolbar home-toolbar-container">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="end center" class="o-form-toolbar-header">
+    <ng-content></ng-content>
+    <o-button type="STROKED" [enabled]="table.selection.selected.length>0" (click)="table.remove()"
+      class="o-form-toolbar-button o-form-toolbar-button-delete o-button-danger" label="delete"></o-button>
+    <o-button type="STROKED" (click)="table.add()" class="o-form-toolbar-button o-form-toolbar-button-new o-button-primary" label="new">
+    </o-button>
+  </mat-toolbar>
+</div>

@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@mixin settings-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .setting-navigation {
+    border: 1px 1px 1px 0 solid mat.get-color-from-palette($foreground, divider);
+    background: mat.get-color-from-palette($background,background);
+
+    .mat-mdc-list-item:not(:last-child) {
+      border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
+
+    }
+
+    .active.mat-mdc-list-item {
+      border-left: 3px solid mat.get-color-from-palette($accent);
+
+    }
+  }
+
+  .theme-option-background {
+    .mat-icon.mat-accent {
+      color: mat.get-color-from-palette($accent, 900);
+    }
+  }
+}

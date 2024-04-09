@@ -1,0 +1,11 @@
+components:
+  schemas:
+    SQLOrder:
+      type: object
+      properties:
+        columnName:
+          description: Column name
+          type: string
+        ascendent:
+          description: Ascendent
+          type: boolean

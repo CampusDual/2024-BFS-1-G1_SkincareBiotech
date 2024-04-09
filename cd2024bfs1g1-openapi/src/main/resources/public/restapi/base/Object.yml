@@ -1,0 +1,12 @@
+components:
+  schemas:
+    Object:
+      type: object
+
+  requestBodies:
+    Object:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'

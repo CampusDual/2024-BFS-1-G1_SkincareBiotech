@@ -1,0 +1,10 @@
+{{- if .Values.configmap.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configmap.name | default (printf "%s-config" (include "fullname" .)) }}
+data:
+{{- if .Values.configmap.data }}
+{{ toYaml .Values.configmap.data | indent 2 }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,20 @@
+<h2>{{'ACCOUNT' | oTranslate}}</h2>
+<o-form #form show-header="no" service="users" entity="password" matchPassword header-actions="U" keys="usr_id">
+  <o-column layout-gap="20px" title="CHANGE_PASSWORD" fxFlex="60%">
+    <o-password-input #oldpassword attr="old_password" required="yes"> </o-password-input>
+    <o-password-input #newpassword attr="new_password" required="yes" min-length="8" [validators]="validatorsNewPasswordArray">
+      <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
+      <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
+      <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
+      <o-validator error-name="hasSpecialCharacters" error-text="VALIDATOR.HASSPECIALCHARACTERS"></o-validator>
+    </o-password-input>
+    <o-password-input #confirmnewpassword attr="confirm_new_password" required="yes" min-lenght="8">
+      <o-validator error-name="matchNewPassword" error-text="VALIDATION_MATCHPASSWORD" [validator-function]="newPasswordMatchValidator"></o-validator>
+    </o-password-input>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <o-button type="FLAT" [enabled]="!isChangePasswordButtonDisabled()" (click)="changePassword()" label="UPDATE_PASSWORD" color="primary">
+      </o-button>
+    </div>
+  </o-column>
+</o-form>

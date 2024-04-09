@@ -1,0 +1,31 @@
+<o-form #form attr="profiles_form_edit" service="users" entity="role" keys="rol_id" keys-sql-types="integer" header-position="bottom"
+  detect-changes-on-blur="no" fxFill undo-button="no" stay-in-record-after-insert="true">
+
+  <div fxLayout="row" fxLayoutGap="30px" class="pd-permissions-container" fxFlex="1 1 auto">
+    <div fxLayout="column" fxFlex="50" fxFlex.md="100" fxLayoutGap="30px">
+      <o-column title="rol-data-section" appearance="no" layout-gap="15px">
+        <o-text-input attr="rol_name" label="rol_name" required="yes"></o-text-input>
+        <o-textarea-input attr="rol_notes" label="rol_notes"></o-textarea-input>
+      </o-column>
+      <o-row title="client_permission" appearance="no" fxFlex>
+        <o-textarea-input attr="rol_json_client_permission" label="client_permission" class="o-textarea-fill-height" fxFlex>
+        </o-textarea-input>
+      </o-row>
+    </div>
+    <o-column title="server_permission" appearance="no" fxFlex fxFlex="50" fxFlex.md="100">
+      <o-table attr="profileServerPermissions" service="users" entity="serverRole" keys="srp_id;rol_id;rsp_id" parent-keys="rol_id"
+        columns="srp_id;rsp_id;srp_name;actived" visible-columns="srp_name;actived" sort-columns="srp_name" insert-button="no" delete-button="no"
+        refresh-button="no" select-all-checkbox="no" export-button="no" fixed-header="yes" query-rows="25" detail-mode="none" selection-mode="none"
+        edition-mode="click" [enabled]="!form.isInInsertMode()" export-mode="local">
+        <o-table-columns-filter columns="srp_name"></o-table-columns-filter>
+        <o-table-column attr="actived" title="srp_active" width="120px">
+          <o-table-cell-renderer-boolean boolean-type="string" true-value="S" false-value="N" true-value-type="icon" render-type="icon"
+            render-true-value="check_box" render-false-value="check_box_outline_blank">
+          </o-table-cell-renderer-boolean>
+          <o-table-cell-editor-boolean true-value="S" false-value="N" boolean-type="string">
+          </o-table-cell-editor-boolean>
+        </o-table-column>
+      </o-table>
+    </o-column>
+  </div>
+</o-form>

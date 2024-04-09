@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+.o-form-layout-manager {
+  .o-form {
+    form {
+      height: 100%;
+    }
+  }
+}
+
+/* Form toolbar background color */
+.o-form-toolbar .o-form-toolbar-header.mat-toolbar {
+  background-color: transparent;
+}
+
+
+.o-column > div.o-container .o-container-scroll.o-container-gap,
+.o-row > div.o-container .o-container-scroll.o-container-gap {
+  padding: 15px;
+}
+
+.avatar.o-image {
+  width: 200px;
+  height: 200px;
+
+  .o-image-content.o-image-auto-fit {
+    .o-image-display-container {
+      img {
+        border-radius: 50%;
+        aspect-ratio: auto 200/200;
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    .o-image-form-field {
+      position: absolute;
+      bottom: -42px;
+    }
+  }
+}

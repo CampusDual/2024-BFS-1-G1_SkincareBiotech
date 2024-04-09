@@ -1,0 +1,24 @@
+<o-form-layout-manager mode="tab" store-state="no" title="Roles" label-columns="rol_name" attr="o-form-layout-profiles-home"
+  title-data-origin="profiles_form_edit" fxFill>
+  <o-form show-header="no" query-on-init="no" fxFill>
+
+    <filter title="FILTER_PROFILES">
+      <div fxLayout="row" fxLayoutGap="15px">
+        <o-text-input attr="rol_name" label="rol_name"></o-text-input>
+
+        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="FLAT"  color="primary" label="BUTTON.FILTER">
+        </o-button>
+        <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="BASIC" label="BUTTON.CLEARFILTERS" icon="clear" class="o-button-default"></o-button>
+      </div>
+      <o-filter-builder #filterBuilder attr="profilesFB" filters="rol_name" [target]="profilesTable">
+      </o-filter-builder>
+    </filter>
+
+    <o-table #profilesTable attr="profiles" service="users" entity="role" keys="rol_id" columns="rol_id;rol_name;rol_notes"
+      visible-columns="rol_name;rol_notes" sort-columns="rol_name" query-on-init="yes" insert-button="yes" delete-button="yes" refresh-button="no"
+      select-all-checkbox-visible="yes" fixed-header="yes" query-rows="25" class="home-table" fxFlex export-mode="local">
+      <o-table-columns-filter columns="rol_name"></o-table-columns-filter>
+    </o-table>
+
+  </o-form>
+</o-form-layout-manager>

@@ -1,0 +1,169 @@
+# This is a YAML-formatted file.
+
+# Deployment configuration
+replicaCount: 1
+image:
+  pullPolicy: IfNotPresent
+  ## provided as basic setup. replace as needed
+  repository: ghcr.io/campusdual/cd2024bfs1g1
+  version: 0.0.0
+imagePullSecrets: 
+  - name: "github-ecr-cred" 
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations:
+  prometheus.io/path: "/ontimize/prometheus"
+  prometheus.io/port: "8081"
+  prometheus.io/scrape: "true"
+# Add labels to the pods
+podsLabels: {}
+# Add labels to the deployment
+deploymentLabels: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+## liveness/readiness probes. standard ontimize endpoints
+probePath: /ontimize/health
+probePort: 8081
+livenessProbe:
+  initialDelaySeconds: 30
+  failureThreshold: 5
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  ### Optional distinct liveness probe path, if empty the probePath is used
+  probePath: /ontimize/health/liveness
+readinessProbe:
+  initialDelaySeconds: 30
+  failureThreshold: 5
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  ### Optional distinct readiness probe path, if empty the probePath is used
+  probePath: /ontimize/health/readiness
+## Adapt resources if needed
+resources:
+  limits:
+    cpu: 800m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+database:
+## Provided as basic setup. Configure as needed. Provided instance is dev environment instance
+  url: jdbc:postgresql://cd2024bfs1g1-postgresql/cd2024bfs1g1 ## injected as DATABASE_URL environment variable
+ 
+
+jwt:
+  enabled: false
+  #secret:
+
+## Observability
+micrometer:
+  metrics:
+    tags:
+      application: cd2024bfs1g1
+## Be sure to set API key in secret *******-grafana-api-key, key apiKey if grafana api is used
+grafana:
+  enabled: false
+  server: http://grafana.grafana:80
+  datasourceName: Prometheus
+  secret: cd2024bfs1g1-grafana-api-key
+
+# Optional configmap. Will be injected as environment variables.
+configmap:
+  enabled: false
+  ## defaults to chart name + -config
+  #name:
+  #data:
+  #  key: "value"
+  #  key2: "value2"
+  #  S3_ENDPOINT: "xxxxxx"
+  #  S3_BUCKET: "xxxxxx"
+  #  S3_REGION: "xxxxxx"
+  #  ENVIRONMENT_PROFILE: "staging/production/..."
+  #  KEYCLOAK_SERVICE
+  #  KEYCLOAK_AUTH_CLIENT: cd2024bfs1g1-backend
+  #  KEYCLOAK_AUTH_FRONT_CLIENT: cd2024bfs1g1-frontend
+  #  KEYCLOAK_USERNAME
+  #  KEYCLOAK_THEME: implatform
+  #  APP_URL # This is the URL where business application is hosted
+  #  APP_MIGRATION_PATH # This is the URL where the database scripts are hosted
+  #  NOTIFICATIONS_EMAIL_HOST
+
+
+
+
+# Service configuration. Annotations are used by cert-manager to generate certificates using cluster-issuer
+service:
+  #name: cd2024bfs1g1 # a default service name is generated automatically based con install name and app. Customize if needed.
+  type: ClusterIP
+  externalPort: 80
+  internalPort: 8080 # must match your application port
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik   ## comment to deploy when not in aws clusters
+    #kubernetes.io/tls-acme: "true" ## comment to deploy when not in aws clusters
+    cert-manager.io/cluster-issuer: cert-manager-letsencrypt-production-route53 # use cert-manager-letsencrypt-staging-route53 for testing environments
+  host: cd2024bfs1g1.dev.campusdual.com # restricted to *dev.imatia.com by default in development clusters
+  #host: cd2024bfs1g1.cloud.imatia.com # uncomment this when not in AWS clusters
+  tls:
+    #secretName: cd2024bfs1g1-tls # only customize if needed to avoid name conflicts
+    enabled: true
+
+# tenant management. The application is a tenant manager.  see deployment.yaml
+tenantManagement:
+  enabled: false
+  # advanced mode. Enables the configuration for organization management
+  advanced: false
+  #uncomment to give a specific name to the tenant manager secret (if exists won't be created)
+  #secret:
+  #migration:
+    #secret:
+  #notifications:
+    #secret:
+
+# tenant manager. Location of the Ontimize Tenant Manager if used.  see deployment.yaml
+tenantManager:
+  enabled: false
+  #url: "https://cd2024bfs1g1tm.dev.campusdual.com"
+  #uncomment to give a specific name to the tenant manager secret (if exists won't be created)
+  #secret:
+
+# Kafka. If used. Will be provided as environment variables to the pods. see deployment.yaml
+kafka:
+  enabled: false
+  server: "schema-registry-kafka:9092"
+  schemaRegistryUrl: "http://kafka"
+
+# If enabled, data (S3_ACCESS_KEY,S3_SECRET_KEY environment variables) will be provided as environment variables to the pods. see deployment.yaml.
+## if enabled, please specify S3_ENDPOINT, S3_BUCKET, S3_REGION in configmap section (as needed)
+## (secret must exist.)
+s3:
+  enabled: false
+  #secret: s3-secret # defaults to name+"-s3-secret"
+
+keycloak:
+  enabled: false ## if enabled, define KEYCLOAK_*** variables in configmap section.
+  admin: ## if credentials are needed to interact with keycloak admin api. KEYCLOAK_USERNAME is required in configmap.
+    # secret: # defaults to keycloak (usually exists as is created when deploying keycloak). Password will be injected in KEYCLOAK_PASSWORD env. variable.
+
+storage:
+  enabled: false  # enable to create PVC. Customize pvc if required in templates folder
+  capacity: 5G
+  mountPath: "/opt/cd2024bfs1g1/"
+
+jvmOptions: "-Xmx300m -Xms100m"  ## adjust according to pod requests
+
+postgresql:
+  enabled: true
+  # PostgreSQL Database to create
+  postgresqlDatabase: cd2024bfs1g1
+  existingSecret: cd2024bfs1g1-db-secret     
+  persistence:
+    size: 1.5Gi  

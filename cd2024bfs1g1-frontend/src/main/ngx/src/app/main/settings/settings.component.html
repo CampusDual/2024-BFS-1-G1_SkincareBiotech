@@ -1,0 +1,11 @@
+<div fxlayout="row" fxFlexFill>
+  <mat-nav-list fxFlex="200px" class="setting-navigation">
+    <a mat-list-item routerLink="./profile" routerLinkActive="active"> {{ 'PROFILE' | oTranslate }} </a>
+    <a mat-list-item routerLink="./account" routerLinkActive="active"> {{ 'ACCOUNT' | oTranslate }} </a>
+    <a mat-list-item routerLink="./appearance" routerLinkActive="active"> {{ 'APPEARANCE' | oTranslate }} </a>
+  </mat-nav-list>
+  <div fxFlex class="user-info-settings-container">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

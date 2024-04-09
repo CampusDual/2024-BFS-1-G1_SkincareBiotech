@@ -1,0 +1,28 @@
+components:
+  schemas:
+    QueryParameter:
+      type: object
+      properties:
+        filter:
+          description: Filter
+          type: object
+          additionalProperties:
+            type: string
+        columns:
+          description: Columns
+          type: array
+          items:
+            type: string
+        sqltypes:
+          description: SQL types
+          type: object
+          additionalProperties:
+            type: string
+
+  requestBodies:
+    QueryParameter:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QueryParameter'

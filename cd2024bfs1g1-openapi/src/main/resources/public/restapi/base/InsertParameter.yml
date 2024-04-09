@@ -1,0 +1,23 @@
+components:
+  schemas:
+    InsertParameter:
+      type: object
+      properties:
+        data:
+          description: Data
+          type: object
+          additionalProperties:
+            type: string
+        sqltypes:
+          description: SQL types
+          type: object
+          additionalProperties:
+            type: string
+
+  requestBodies:
+    InsertParameter:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InsertParameter'

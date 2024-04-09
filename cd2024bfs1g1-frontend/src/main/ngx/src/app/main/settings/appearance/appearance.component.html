@@ -1,0 +1,13 @@
+<div fxLayout="column" fxFlex="60%">
+  <h2>{{'APPEARANCE' | oTranslate}}</h2>
+
+  <o-row title="LANGUAGE" class="setting-column">
+    <mat-radio-group [value]="currentLang" (change)="changeLang($event)">
+      <mat-radio-button *ngFor="let lang of availableLangs" [value]="lang">{{ 'LANG_' + lang | oTranslate }}</mat-radio-button>
+    </mat-radio-group>
+  </o-row>
+
+  <o-row title="DARK_MODE" class="setting-column">
+    <mat-slide-toggle #toggleDark [(ngModel)]="darkDefaultMode" (change)="changeDarkMode($event)"></mat-slide-toggle>
+  </o-row>
+</div>

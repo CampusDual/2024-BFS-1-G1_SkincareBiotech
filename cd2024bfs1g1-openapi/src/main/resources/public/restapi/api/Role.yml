@@ -1,0 +1,242 @@
+default:
+  post:
+    tags:
+      - Role
+    summary: Inserts a role.
+    description: >
+      This resource represents a role in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../base/InsertParameter.yml#/components/schemas/InsertParameter'
+          examples:
+            Sales:
+              value:
+                data:
+                  rol_name: 'sales'
+                  rol_notes: 'Sales department'
+                  rol_xml_client_permission: '<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Visible restricted="yes"/><Enabled restricted="yes"/></ELEMENT></MENU></security>'
+                  rol_json_client_permission: '{ "menu": [{ "attr": "admin", "enabled": false }] }'
+                sqltypes:
+                  rol_name: 12
+                  rol_notes: 12
+                  rol_xml_client_permission: 12
+                  rol_json_client_permission: 12
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+  get:
+    tags:
+      - Role
+    summary: Returns a list of roles.
+    description: >
+      This resource represents a list of roles in the system.
+    x-restcontroller: orestcontroller
+    parameters:
+      - in: query
+        name: filter
+        description: Filter
+        schema:
+          type: string
+        required: false
+        examples:
+          Name:
+            value: 'rol_name=sales'
+          Notes:
+            value: 'rol_notes=This is the role for the sales department'
+      - in: query
+        name: columns
+        description: Columns
+        required: false
+        schema:
+          type: string
+          example: rol_id,rol_name,rol_xml_client_permission,rol_json_client_permission,rol_notes
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+  put:
+    tags:
+      - Role
+    summary: Updates a role.
+    description: >
+      This resource represents a role in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../base/UpdateParameter.yml#/components/schemas/UpdateParameter'
+          examples:
+            Sales notes:
+              value:
+                data:
+                  rol_notes: 'This is the role for the sales department'
+                filter:
+                  rol_id: 3
+                sqltypes:
+                  rol_id: 4
+                  rol_notes: 12
+            Sales client Permissions (XML):
+              value:
+                data:
+                  rol_xml_client_permission: '<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Visible restricted="no"/><Enabled restricted="yes"/></ELEMENT></MENU></security>'
+                filter:
+                  rol_id: 3
+                sqltypes:
+                  rol_id: 4
+                  rol_xml_client_permission: 12
+            Sales client Permissions (JSON):
+              value:
+                data:
+                  rol_json_client_permission: '{ "menu": [{ "attr": "admin", "visible": true, "enabled": false }] }'
+                filter:
+                  rol_id: 3
+                sqltypes:
+                  rol_id: 4
+                  rol_json_client_permission: 12
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+  delete:
+    tags:
+      - Role
+    summary: Deletes a role.
+    description: >
+      This resource represents a role in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../base/DeleteParameter.yml#/components/schemas/DeleteParameter'
+          examples:
+            Sales:
+              value:
+                filter:
+                  rol_id: 3
+                sqltypes:
+                  rol_id: 4
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+search:
+  post:
+    tags:
+      - Role
+    summary: Searches and returns a list of roles.
+    description: >
+      This resource represents a list of roles in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../base/QueryParameter.yml#/components/schemas/QueryParameter'
+          examples:
+            Name:
+              value:
+                filter:
+                  rol_name: 'sales'
+                columns:
+                  - rol_id
+                  - rol_name
+                  - rol_xml_client_permission
+                  - rol_json_client_permission
+                  - rol_notes
+                sqltypes:
+                  rol_name: 12
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+advancedsearch:
+  post:
+    tags:
+      - Role
+    summary: Performs an advanced search and returns a list of roles.
+    description: >
+      This resource represents a list of roles in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../base/AdvancedQueryParameter.yml#/components/schemas/AdvancedQueryParameter'
+          examples:
+            Name:
+              value:
+                filter:
+                  rol_name: 'sales'
+                columns:
+                  - rol_id
+                  - rol_name
+                  - rol_xml_client_permission
+                  - rol_json_client_permission
+                  - rol_notes
+                sqltypes:
+                  rol_name: 12
+                pageSize: 20
+                offset: 0
+                orderBy:
+                  - columnName: rol_name
+                    ascendent: true
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/AdvancedEntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'

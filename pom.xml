@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.ontimize.boot</groupId>
+		<artifactId>ontimize-boot-parent</artifactId>
+		<version>3.13.0</version>
+	</parent>
+
+	<groupId>com.campusdual.cd2024bfs1g1</groupId>
+	<artifactId>cd2024bfs1g1</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>${project.groupId}:${project.artifactId}</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>11</java.version>
+		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+		<frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>cd2024bfs1g1-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>cd2024bfs1g1-boot</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>cd2024bfs1g1-frontend</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>cd2024bfs1g1-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>cd2024bfs1g1-openapi</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>cd2024bfs1g1-ws</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-core</artifactId>
+				<version>4.4.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.github.eirslett</groupId>
+					<artifactId>frontend-maven-plugin</artifactId>
+					<version>${frontend-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>compose</id>
+			<repositories>
+				<repository>
+					<id>sonatype-snapshot</id>
+					<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
+		<profile>
+			<id>local</id>
+			<repositories>
+				<repository>
+					<id>imatia-artifactory</id>
+					<url>https://artifactory.imatia.com/public-artifactory/libs-release</url>
+					<releases>
+					</releases>
+					<snapshots>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>sonatype-snapshot</id>
+					<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>staging</id>
+		</profile>
+	</profiles>
+	<modules>
+		<module>cd2024bfs1g1-api</module>
+		<module>cd2024bfs1g1-openapi</module>
+		<module>cd2024bfs1g1-model</module>
+		<module>cd2024bfs1g1-ws</module>
+		<module>cd2024bfs1g1-boot</module>
+		<module>cd2024bfs1g1-frontend</module>
+	</modules>
+</project>

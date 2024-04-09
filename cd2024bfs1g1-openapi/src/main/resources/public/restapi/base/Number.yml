@@ -1,0 +1,25 @@
+components:
+  schemas:
+    Number:
+      type: object
+      properties:
+        intValue:
+          type: integer
+          format: int32
+        longValue:
+          type: integer
+          format: int64
+        floatValue:
+          type: number
+          format: float
+        doubleValue:
+          type: number
+          format: double
+
+  requestBodies:
+    Number:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Number'

@@ -1,0 +1,11 @@
+components:
+  schemas:
+    DocumentIdentifier:
+      type: object
+      properties:
+        documentId:
+          type: object
+        fileId:
+          type: object
+        versionId:
+          type: object

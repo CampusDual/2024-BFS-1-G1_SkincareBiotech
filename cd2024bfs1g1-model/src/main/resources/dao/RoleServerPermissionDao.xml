@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+	catalog="" schema="${mainschema}" table="usr_role_server_permission" datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+	<DeleteKeys>
+		<Column>rsp_id</Column>
+	</DeleteKeys>
+	<UpdateKeys>
+		<Column>rsp_id</Column>
+	</UpdateKeys>
+	<GeneratedKey>rsp_id</GeneratedKey>
+	<Queries>
+		<Query id="default">
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.usr_role_server_permission
+                    #WHERE#
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+		<Query id="fullRolesWithServerPermissions">
+			<AmbiguousColumns>
+				<AmbiguousColumn name="rol_id" prefix="a" />
+				<AmbiguousColumn name="srp_id" prefix="a" />
+			</AmbiguousColumns>
+			<FunctionColumns>
+				<FunctionColumn name="actived" value="(CASE WHEN rsp_id IS NOT NULL THEN 'S' ELSE 'N' END)" />
+			</FunctionColumns>
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        (SELECT
+                            tr.rol_id,
+                            tr.rol_name,
+                            ts.srp_id,
+                            ts.srp_name
+                        FROM
+                            ${mainschema}.usr_role tr,
+                            ${mainschema}.usr_server_permission ts
+                        WHERE
+                            tr.rol_id IS NOT NULL
+                        ) a
+                        LEFT JOIN ${mainschema}.usr_role_server_permission rsp ON a.rol_id = rsp.rol_id AND a.srp_id = rsp.srp_id
+                     #WHERE#
+                     #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+	</Queries>
+</JdbcEntitySetup>

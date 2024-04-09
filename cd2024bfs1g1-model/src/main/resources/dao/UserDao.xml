@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+	catalog="" schema="${mainschema}" table="usr_user" datasource="mainDataSource"
+	sqlhandler="dbSQLStatementHandler">
+	<DeleteKeys>
+		<Column>usr_id</Column>
+	</DeleteKeys>
+	<UpdateKeys>
+		<Column>usr_id</Column>
+	</UpdateKeys>
+	<GeneratedKey>usr_id</GeneratedKey>
+	<Queries>
+		<Query id="default">
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.usr_user
+                    #WHERE#
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+		<Query id="login">
+			<Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#, usr_down_date
+                    FROM
+                        ${mainschema}.usr_user
+                    #WHERE#
+                    #ORDER#
+                ]]>
+			</Sentence>
+		</Query>
+	</Queries>
+</JdbcEntitySetup>

@@ -1,0 +1,167 @@
+default:
+  get:
+    tags:
+      - User role
+    summary: Returns a list of roles for a user.
+    description: >
+      This resource represents a list of roles for a user in the system.
+    x-restcontroller: orestcontroller
+    parameters:
+      - in: query
+        name: filter
+        description: Filter
+        schema:
+          type: string
+        required: false
+        examples:
+          Username:
+            value: 'usr_login=laura'
+      - in: query
+        name: columns
+        description: Columns
+        required: false
+        schema:
+          type: string
+          example: usr_id,usr_name,usr_surname,rol_id,rol_name,actived
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+  put:
+    tags:
+      - User role
+    summary: Enables or disables a role for a user.
+    description: >
+      This resource represents a role for a user in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../base/UpdateParameter.yml#/components/schemas/UpdateParameter'
+          examples:
+            Enable Laura Bugle's sales role:
+              value:
+                data:
+                  actived: 'S'
+                filter:
+                  usr_id: 3
+                  rol_id: 3
+                sqltypes:
+                  usr_id: 4
+                  rol_id: 4
+                  actived: 12
+            Disable Laura Bugle's sales role:
+              value:
+                data:
+                  actived: 'N'
+                filter:
+                  usr_id: 3
+                  rol_id: 3
+                sqltypes:
+                  usr_id: 4
+                  rol_id: 4
+                  actived: 12
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+search:
+  post:
+    tags:
+      - User role
+    summary: Searches and returns a list of roles for a user.
+    description: >
+      This resource represents a list of roles for a user in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../base/QueryParameter.yml#/components/schemas/QueryParameter'
+          examples:
+            Username:
+              value:
+                filter:
+                  usr_login: 'laura'
+                columns:
+                  - usr_id
+                  - usr_name
+                  - usr_surname
+                  - rol_id
+                  - rol_name
+                  - actived
+                sqltypes:
+                  usr_login: 12
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/EntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'
+
+advancedsearch:
+  post:
+    tags:
+      - User role
+    summary: Performs an advanced search and returns a list of roles for a user.
+    description: >
+      This resource represents a list of roles for a user in the system.
+    x-restcontroller: orestcontroller
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../base/AdvancedQueryParameter.yml#/components/schemas/AdvancedQueryParameter'
+          examples:
+            Username:
+              value:
+                filter:
+                  usr_login: 'laura'
+                columns:
+                  - usr_id
+                  - usr_name
+                  - usr_surname
+                  - rol_id
+                  - rol_name
+                  - actived
+                sqltypes:
+                  usr_login: 12
+                pageSize: 20
+                offset: 0
+                orderBy:
+                  - columnName: rol_name
+                    ascendent: true
+    responses:
+      '200':
+        $ref: '../base/Responses.yml#/components/responses/AdvancedEntityResult'
+      '400':
+        $ref: '../base/Responses.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../base/Responses.yml#/components/responses/Unauthorized'
+      '404':
+        $ref: '../base/Responses.yml#/components/responses/NotFound'
+      default:
+        $ref: '../base/Responses.yml#/components/responses/Unexpected'

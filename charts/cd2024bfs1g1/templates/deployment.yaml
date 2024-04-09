@@ -1,0 +1,229 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fullname" . }}
+  labels:
+    {{- include "labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "selectorLabels" . | nindent 8 }}
+{{- if .Values.podsLabels }}
+{{ toYaml .Values.podsLabels | indent 6 }}
+{{- end }}
+{{- if .Values.podAnnotations }}
+      annotations:
+{{ toYaml .Values.podAnnotations | indent 8 }}
+{{- end }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+    {{- if .Values.storage.enabled }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "fullname" . }}-pvc
+    {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        {{- if .Values.storage.enabled }}
+          volumeMounts:
+            - name: data
+              mountPath: {{ .Values.storage.mountPath }}
+        {{- end }}
+        {{- if .Values.configmap.enabled }}
+          envFrom:
+          - configMapRef:
+              name: {{ .Values.configmap.name | default (printf "%s-config" (include "fullname" .)) }}
+        {{- end }}
+          env:
+        {{- if .Values.jvmOptions }}
+          - name: JVM_OPTIONS
+            value: {{ .Values.jvmOptions }}
+        {{- end }}
+          - name: VERSION
+            value: {{ .Chart.Version }}
+{{- range $pkey, $pval := .Values.env }}
+          - name: {{ $pkey }}
+            value: {{ quote $pval }}
+{{- end }}
+          - name: NAME
+            value: {{ (printf "%s" (include "fullname" .)) }}
+          - name: HOST
+            value: {{ .Values.ingress.host }}
+        {{- if not .Values.tenantManager.enabled }}
+        {{- if .Values.database.service }}
+          - name: DATABASE_SERVICE
+            value: {{ .Values.database.service }}
+        {{- end }}
+          - name: DATABASE_URL
+            value: {{ .Values.database.url }}
+          - name: DATABASE_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.database.secret | default (printf "%s-db-secret" (include "fullname" .)) }}
+                key: user
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.database.secret | default (printf "%s-db-secret" (include "fullname" .)) }}
+                key: password
+        {{- end }}
+        {{- if .Values.tenantManagement.enabled }}
+          - name: APP_DATABASE_SERVICE
+            value: {{ .Values.database.service }}
+          - name: APP_DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.database.secret | default (printf "%s-db-secret" (include "fullname" .)) }}
+                key: adminuser
+          - name: APP_DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.database.secret | default (printf "%s-db-secret" (include "fullname" .)) }}
+                key: adminpassword
+        {{- if .Values.tenantManagement.migration }}
+          - name: APP_MIGRATION_AUTH
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.tenantManagement.migration.secret | default (printf "%s-migration-secret" (include "fullname" .))  }}
+                key: app-migration-auth
+        {{- end }}
+        {{- end }}
+        {{- if .Values.jwt.enabled }}
+          - name: JWT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.jwt.secret | default (printf "%s-jwt-secret" (include "fullname" .)) }}
+                key: password
+        {{- end }}
+        {{- if .Values.micrometer.metrics.tags.application }}
+          - name: METRIC_TAG_APPLICATION
+            value: {{ .Values.micrometer.metrics.tags.application }}
+        {{- end }}
+        {{- if .Values.grafana.enabled }}
+          - name: GRAFANA_SERVER
+            value: {{ .Values.grafana.server }}
+          - name: GRAFANA_ADMIN_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.grafana.secret | default (printf "%s-tm" (include "fullname" .))  }}
+                key: apiKey
+          - name: GRAFANA_DATASOURCE_NAME
+            value: {{ .Values.grafana.datasourceName }}
+        {{- end }}
+        {{- if .Values.kafka.enabled }}
+          - name: KAFKA_SERVER
+            value: {{ .Values.kafka.server }}
+          - name: KAKFA_SERVER
+            value: {{ .Values.kafka.server }}
+          - name: SCHEMA_REGISTRY_URL
+            value: {{ .Values.kafka.schemaRegistryUrl }}
+        {{- end }}
+        {{- if .Values.tenantManager.enabled }}
+          - name: TENANT_MANAGER
+            value: {{ .Values.tenantManager.url }}
+          - name: TENANT_MANAGER_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.tenantManager.secret | default (printf "%stm-secret" (include "fullname" .))  }}
+                key: user
+          - name: TENANT_MANAGER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.tenantManager.secret | default  (printf "%stm-secret" (include "fullname" .))  }}
+                key: password
+        {{- end }}
+        {{- if .Values.tenantManagement.enabled }}
+          - name: TENANT_MANAGER_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.tenantManagement.secret | default (printf "%s-secret" (include "fullname" .))  }}
+                key: user
+          - name: TENANT_MANAGER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.tenantManagement.secret | default  (printf "%s-secret" (include "fullname" .))  }}
+                key: password
+        {{- if .Values.tenantManagement.advanced }}
+          - name: NOTIFICATIONS_EMAIL_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.tenantManagement.notifications.secret | default (printf "%s-notifications-secret" (include "fullname" .))  }}
+                key: user
+          - name: NOTIFICATIONS_EMAIL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.tenantManagement.notifications.secret | default (printf "%s-notifications-secret" (include "fullname" .))  }}
+                key: password
+        {{- end }}
+        {{- end }}
+        {{- if .Values.s3.enabled }}
+          - name: S3_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.s3.secret | default (printf "%s-s3-secret" (include "fullname" .))  }}
+                key: access-key
+          - name: S3_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.s3.secret | default  (printf "%s-s3-secret" (include "fullname" .))  }}
+                key: secret-key
+        {{- end }}
+        {{- if .Values.ingress.tls.enabled }}
+          - name: TLS
+            value: enabled
+        {{- end }}
+        {{- if .Values.keycloak.admin }}
+          - name: KEYCLOAK_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name:  {{ .Values.keycloak.admin.secret | default "keycloak" }}
+                key: admin-password
+        {{- end }}
+          ports:
+          - name: http
+            containerPort: {{ .Values.service.internalPort }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.livenessProbe.probePath | default .Values.probePath }}
+              port: {{ .Values.probePort | default .Values.service.internalPort }}
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+            successThreshold: {{ .Values.livenessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.readinessProbe.probePath | default .Values.probePath }}
+              port: {{ .Values.probePort | default .Values.service.internalPort }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+            successThreshold: {{ .Values.readinessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

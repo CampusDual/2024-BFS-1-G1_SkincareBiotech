@@ -1,0 +1,70 @@
+name: Maven Build, Generate Docker Image and Publish to AWS ECR
+on:
+  push:
+    paths-ignore:
+      - 'charts/**'
+    branches: [ "develop" ]
+env:
+  REPO_NAME: ${{ github.event.repository.name }}  
+  TAG_PREFIX: "dev"
+  TAG_SUFFIX: ${{github.run_id}}.${{github.run_attempt}}
+  VALUES_FILE: "values.yaml"
+  REGISTRY: "ghcr.io"  
+  CHARTS_FOLDER: "cd2024bfs1g1"  
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: write  # This is required for actions/checkout and committing infra updated version
+  packages: write  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Log in to the Container registry
+      uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v3
+    - name: Extract Maven project version
+      run: echo "version=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
+      id: version
+    - name: Show extracted Maven project version
+      run: echo ${{ steps.version.outputs.version }}
+    - name: Maven Build
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+    - name: Run the Maven verify phase
+      run: mvn --batch-mode --update-snapshots verify
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+      with:
+        images: |
+          ${{ env.REGISTRY }}/${{ github.repository }}
+        tags: |
+          type=sha,prefix=${{env.TAG_PREFIX}}
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}          
+    - name: Update Repository and Version
+      env:
+        REGISTRY: ${{ env.REGISTRY }}/${{ github.repository }}
+        TAG: ${{ steps.meta.outputs.version }}       
+      run: |
+          echo "replacing with "${REGISTRY,,}:$TAG
+          repo=$(cat ./charts/$CHARTS_FOLDER/$VALUES_FILE | grep repository: | awk '{print $2}')
+          sed -i "s#$repo#${REGISTRY,,}#" ./charts/$CHARTS_FOLDER/$VALUES_FILE
+          version=$(cat ./charts/$CHARTS_FOLDER/$VALUES_FILE | grep version: | awk '{print $2}')
+          sed -i "s#$version#$TAG#" ./charts/$CHARTS_FOLDER/$VALUES_FILE
+    - name: Commit and push changes
+      uses: devops-infra/action-commit-push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: "Version updated"

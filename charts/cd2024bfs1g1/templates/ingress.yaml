@@ -1,0 +1,31 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+{{- if .Values.ingress.tls }}
+  tls:
+    - hosts:
+      - {{ .Values.ingress.host }}
+      secretName: {{ .Values.ingress.tls.secretName | default (printf "%s-tls-secret" (include "fullname" .)) }}
+{{- end }}
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+        - pathType: "ImplementationSpecific"
+          backend:
+            service:
+              name: {{ .Values.service.name | default (printf "%s-svc" (include "fullname" .)) }}
+              port:
+                number: {{ .Values.service.externalPort }}
+{{- end }}

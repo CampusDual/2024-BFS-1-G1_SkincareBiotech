@@ -1,0 +1,42 @@
+components:
+  schemas:
+    AdvancedEntityResult:
+      type: object
+      properties:
+        type:
+          description: Type
+          type: integer
+        code:
+          description: Code
+          type: integer
+        message:
+          description: Message
+          type: string
+        details:
+          description: Details
+          type: string
+        messageParameter:
+          description: Message parameter
+          type: array
+          items:
+            type: object
+        compressionLevel:
+          description: Compression level
+          type: integer
+        compressionThreshold:
+          description: Compression threshold
+          type: integer
+        columnsSQLTypes:
+          description: Columns SQL types
+          type: object
+          additionalProperties:
+            type: integer
+        operationId:
+          description: Operation id
+          type: string
+        startRecordIndex:
+          description: Start record index
+          type: integer
+        totalRecordCount:
+          description: Total record count
+          type: integer
