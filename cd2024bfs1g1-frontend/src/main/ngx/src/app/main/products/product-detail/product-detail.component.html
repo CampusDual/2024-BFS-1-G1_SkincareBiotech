@@ -1,0 +1,15 @@
+<o-form attr="productDetail" service="products" entity="product" keys="PRO_ID">
+    <o-text-input attr="PRO_ID" sql-type="INTEGER" enabled="no"></o-text-input>
+    <div fxLayout="row">
+        <o-column fxFlex title="CUSTOMER_PERSONAL_INFORMATION">
+            <div fxLayout="row" fxLayoutGap="8px">
+                <o-text-input fxFlex="40" attr="PRO_NAME" required="yes"></o-text-input>
+                <o-text-input fxFlex="40" attr="PRO_DESCRIPTION" required="yes"></o-text-input>
+                <o-text-input fxFlex="20" attr="PRO_PRICE"></o-text-input>
+            </div>
+        </o-column>
+    </div>
+</o-form>
+<div>
+    {{product.PRO_NAME}}
+</div>
