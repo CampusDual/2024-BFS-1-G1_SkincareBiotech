@@ -1,1 +1,29 @@
-<p>products-home works!</p>
+<o-grid #productsGrid attr="productsGrid" title="products" service="products" entity="product" keys="pro_id"
+    columns="pro_id;pro_name;pro_description;pro_price;pro_image"
+    query-rows="5" page-size-options="8;10;12" orderable="true"
+    sortable-columns="pro_name;pro_description;pro_price" insert-button="false"
+    pagination-controls="true" gutter-size="8px" fixed-header="yes" grid-item-height="300px" detail-mode="none">
+    <o-grid-item *ngFor="let data of productsGrid.dataArray">
+        <div class="productCard">
+            <span><strong>{{ data.pro_name }}</strong></span>
+            <span><em>{{ data.pro_description }}</em></span>
+            <span >{{ data.pro_price }}</span>
+        </div>
+        <!-- <div (click)="openDetail(data)" fxLayout="column" fxLayoutAlign="space-evenly center"
+            class="mat-elevation-z1 productsCard">
+             <img [src]="getImageSrc(data.productsPHOTO)" width="144px" height="200px"> 
+            <span><strong>{{ data.productsNAME }} {{data.productsSURNAME}}</strong></span>
+            <span><em>{{ data.productsTYPENAME }}</em></span>
+            <span class="office">{{ data.NAME }}</span>
+        </div> -->
+    </o-grid-item>
+</o-grid>
+
+<!-- 
+  <o-table attr="productsTable" service="products" entity="product" keys="pro_id"
+    columns="pro_id;pro_name;pro_description;pro_price;pro_image" 
+    visible-columns="pro_name;pro_description;pro_price" query-rows="5">
+    <o-table-column attr="pro_name" title="name"></o-table-column>
+    <o-table-column attr="pro_description" title="descripcion"></o-table-column>
+    <o-table-column attr="pro_price" title="precio"></o-table-column>
+</o-table> -->
