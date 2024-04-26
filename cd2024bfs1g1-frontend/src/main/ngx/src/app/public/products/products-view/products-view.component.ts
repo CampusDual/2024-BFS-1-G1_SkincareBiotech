@@ -15,6 +15,7 @@ export class ProductsViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   public getImageSrc(base64: string): any {

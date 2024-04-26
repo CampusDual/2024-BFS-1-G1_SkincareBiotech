@@ -1,0 +1,15 @@
+<o-grid #productsGrid attr="productsGrid" title="products" service="products" entity="product" keys="PRO_ID"
+    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE" query-rows="8" page-size-options="8;10;12"
+    orderable="true" sortable-columns="PRO_ID" insert-button="false" pagination-controls="true" gutter-size="8px"
+    fixed-header="yes" grid-item-height="300px" detail-mode="none">
+    <o-grid-item *ngFor="let data of productsGrid.dataArray">
+        <div class="productCard">
+            <img alt="Imagen_producto" [src]="getImageSrc(data.PRO_IMAGE)" width="144px" height="200px">
+            <span><strong>{{ data.PRO_NAME }}</strong></span>
+            <span><em>{{ data.PRO_DESCRIPTION }}</em></span>
+            <span>{{ data.PRO_PRICE }}</span>
+        </div>
+    </o-grid-item>
+</o-grid>
+
+<p>Hola</p>
