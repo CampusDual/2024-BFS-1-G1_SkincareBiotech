@@ -75,5 +75,13 @@
   "VALIDATOR.HASSMALLCASE": "Debe tener al menos 1 minúscula",
   "VALIDATOR.HASSPECIALCHARACTERS": "Debe tener al menos un caracter especial",
   "VERSION": "Versión",
-  "VIEW": "Vistas"
+  "VIEW": "Vistas",
+  "ORDERS": "Pedidos",
+  "ORD_ID": "Id del Pedido",
+  "ORD_NAME": "Nombre de Contacto",
+  "ORD_PHONE": "Teléfono del Contacto",
+  "ORD_ZIPCODE": "Código Postal",
+  "ORD_ADDRESS": "Dirección",
+  "ORD_SENT": "Enviado"
+
 }

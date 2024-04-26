@@ -75,5 +75,12 @@
   "VALIDATOR.HASSMALLCASE": "Must contain at least 1 Letter in Small Case",
   "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
-  "VIEW": "Views"
+  "VIEW": "Views",
+  "ORDERS": "Orders",
+  "ORD_ID": "Order id",
+  "ORD_NAME": "Contact name",
+  "ORD_PHONE": "Contact phone",
+  "ORD_ZIPCODE": "zipcode",
+  "ORD_ADDRESS": "address",
+  "ORD_SENT": "sent"
 }
