@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NewOrderRoutingModule } from './new-order-routing.module';
+import { OrdersRoutingModule } from './orders-routing.module';
+import { NewOrderComponent } from './new-order/new-order.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
-import { NewOrderComponent } from './new-order.component';
 
 
 @NgModule({
@@ -12,8 +12,8 @@ import { NewOrderComponent } from './new-order.component';
   ],
   imports: [
     CommonModule,
-    OntimizeWebModule,
-    NewOrderRoutingModule
+    OrdersRoutingModule,
+    OntimizeWebModule
   ]
 })
-export class NewOrderModule { }
+export class OrdersModule { }
