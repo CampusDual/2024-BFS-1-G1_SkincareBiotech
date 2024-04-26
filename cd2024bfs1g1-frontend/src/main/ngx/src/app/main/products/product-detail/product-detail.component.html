@@ -1,14 +1,12 @@
-<o-row attr="container" layout-align="space-between" elevation="1" appearance="none">
-    <div layout-padding id="imagen"><img [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen"></div>
-    <o-column layout-padding class="right">
-        <o-row attr="container" layout-align="start">
-            <div><strong>{{product.PRO_NAME}}</strong></div>
-        </o-row>
-        <o-row>
-            <div>{{product.PRO_DESCRIPTION}}</div>
-        </o-row>
-        <o-row>
-            <div>{{product.PRO_PRICE}}€</div>
-        </o-row>
-    </o-column>
-</o-row>
+<div class="container">
+    <div class="img-container">
+        <img [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
+    </div>
+    <div class="prod-container">
+        <h1 class="title">{{product.PRO_NAME}}</h1>
+
+        <div class="description">{{product.PRO_DESCRIPTION}}</div>
+
+        <div class="price">{{product.PRO_PRICE}}€</div>
+    </div>
+</div>

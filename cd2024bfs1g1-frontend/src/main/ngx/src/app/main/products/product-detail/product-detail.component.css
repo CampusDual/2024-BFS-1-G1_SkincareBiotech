@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+}
+
+h1 {
+    margin-top: 0px;
+}
+
+.title::first-letter {
+    text-transform: capitalize;
+}
+
+.prod-container {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.description::first-letter {
+    text-transform: capitalize;
+}
+
+.price {
+    font-weight: bold;
+    font-size: larger;
+}
