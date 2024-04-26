@@ -75,5 +75,11 @@
   "VALIDATOR.HASSMALLCASE": "Must contain at least 1 Letter in Small Case",
   "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
-  "VIEW": "Views"
+  "VIEW": "Views",
+  "PRO_NAME": "Name",
+  "PRO_DESCRIPTION": "Description",
+  "PRO_PRICE":"Price",
+  "IMAGE":"Image",
+  "PRO_IMAGE":"Image",
+  "ADD_PRODUCT" : "ADD PRODUCT"
 }
