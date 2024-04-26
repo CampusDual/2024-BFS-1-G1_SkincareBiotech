@@ -23,7 +23,7 @@ ontimize:
     enable: true
     url: /export
   jdbc:
-    name-convention: lower
+    name-convention: upper
     sqlhandler: postgres
     sql-condition-processor:
       upper-string: true
