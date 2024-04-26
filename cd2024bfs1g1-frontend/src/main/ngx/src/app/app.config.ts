@@ -6,7 +6,8 @@ import { SERVICE_CONFIG } from './shared/app.services.config';
 
 export const CONFIG: Config = {
   // The base path of the URL used by app services.
-  apiEndpoint:  (window['__env'] !== undefined) ? window['__env']['apiUrl'] : environment.apiEndpoint,
+  apiEndpoint:  (window['__env'] !== undefined) ? window['__env']['apiUrl'] : environment.apiEndpoint ,              
+  //(window['__env'] !== undefined) ? window['__env']['apiUrl'] : environment.apiEndpoint,
   // --GRUPO 5 : Para probar usar localhost (8080, con http, sin la s)
 
   // Application identifier. Is the unique package identifier of the app.

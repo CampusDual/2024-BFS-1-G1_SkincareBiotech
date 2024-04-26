@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface IProductService {
 
-    public EntityResult productsQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+    public EntityResult productQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
     public EntityResult productInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
 
 }
