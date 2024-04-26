@@ -3,6 +3,7 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from 'ontimize-web-ngx';
 
 export const routes: Routes = [
+  { path: 'public/order', loadChildren: () => import('./public/products/details/new-order/new-order.module').then(m => m.NewOrderModule) },
   { path: 'main', canActivate: [AuthGuardService], loadChildren: () => import('./main/main.module').then(m => m.MainModule) },
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: '**', redirectTo: 'main', pathMatch: 'full' },
