@@ -26,13 +26,16 @@ export class ProductDetailComponent implements OnInit {
     this.service.configureService(conf);
     this.service.query({ "PRO_ID": id }, ["PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE"], "product")
       .subscribe((data) => {
-        console.log(data);
         this.product = data.data[0];
       })
   }
 
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
+  }
+
+  get price() {
+    return this.product.PRO_PRICE?.toFixed(2);
   }
 
 }
