@@ -18,7 +18,8 @@ import { ProductsViewComponent } from '../main/products/products-view/products-v
   exports: [
     CommonModule,
     FilterComponent,
-    HomeToolbarComponent
+    HomeToolbarComponent,
+    ProductsViewComponent
   ]
 })
 export class SharedModule { }

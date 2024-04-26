@@ -6,6 +6,8 @@ import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
+
+  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
   {
     path: '',
     component: MainComponent,
@@ -16,7 +18,7 @@ export const routes: Routes = [
       { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'profile', component: ProfileComponent },
-      {path:'products',loadChildren:()=>import('./products/products.module').then(m=>m.ProductsModule)}
+
     ]
   }
 ];
