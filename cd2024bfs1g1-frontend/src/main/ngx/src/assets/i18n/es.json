@@ -79,5 +79,7 @@
   "PRO_NAME": "Nombre",
   "PRO_DESCRIPTION": "Descripción",
   "PRO_PRICE":"Precio",
-  "IMAGE":"Imagen"
+  "IMAGE":"Imagen",
+  "PRO_IMAGE":"Imagen",
+  "ADD_PRODUCT" : "AÑADIR PRODUCTO"
 }
