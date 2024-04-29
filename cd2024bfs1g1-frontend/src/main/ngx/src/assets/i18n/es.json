@@ -76,5 +76,11 @@
   "VALIDATOR.HASSPECIALCHARACTERS": "Debe tener al menos un caracter especial",
   "VERSION": "Versión",
   "VIEW": "Vistas",
-  "BUY_BUTTON":"Comprar"
+  "BUY_BUTTON":"Comprar",
+  "PRO_NAME": "Nombre",
+  "PRO_DESCRIPTION": "Descripción",
+  "PRO_PRICE":"Precio",
+  "IMAGE":"Imagen",
+  "PRO_IMAGE":"Imagen",
+  "ADD_PRODUCT" : "AÑADIR PRODUCTO"
 }
