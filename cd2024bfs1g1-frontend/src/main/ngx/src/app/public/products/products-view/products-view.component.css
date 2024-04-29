@@ -58,3 +58,6 @@
     color: #777;
     font-style: normal;
 }
+a {
+    text-decoration: none;
+}
