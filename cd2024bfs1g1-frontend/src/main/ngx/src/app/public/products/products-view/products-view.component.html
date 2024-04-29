@@ -1,15 +1,17 @@
-<o-grid #productsGrid attr="productsGrid" title="products" service="products" entity="product" keys="PRO_ID"
-    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE" query-rows="8" page-size-options="8;10;12"
-    orderable="true" sortable-columns="PRO_ID" insert-button="false" pagination-controls="true" gutter-size="8px"
-    fixed-header="yes" grid-item-height="300px" detail-mode="none">
-    <o-grid-item *ngFor="let data of productsGrid.dataArray">
-        <div class="productCard">
-            <img alt="Imagen_producto" [src]="getImageSrc(data.PRO_IMAGE)" width="144px" height="200px">
-            <span><strong>{{ data.PRO_NAME }}</strong></span>
-            <span><em>{{ data.PRO_DESCRIPTION }}</em></span>
-            <span>{{ data.PRO_PRICE }}</span>
-        </div>
-    </o-grid-item>
-</o-grid>
-
-<p>Hola</p>
+<o-app-layout show-language-selector="no">
+    <o-user-info-configuration show-profile="yes"> </o-user-info-configuration>
+    <o-grid #productsGrid attr="productsGrid" service="products" entity="product" keys="PRO_ID"
+        columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE" cols="5" query-rows="10" page-size-options="4;8;12"
+        orderable="true" sortable-columns="PRO_PRICE" insert-button="false" pagination-controls="true" gutter-size="3%"
+        fixed-header="yes" grid-item-height="45%" detail-mode="none">
+        <o-grid-item *ngFor="let data of productsGrid.dataArray">
+            <div class="productCard">
+                <img alt="Imagen_producto" [src]="getImageSrc(data.PRO_IMAGE)" class="img_produc">
+                <div class="despre">
+                    <span class="titulo">{{ data.PRO_NAME }}</span>
+                    <span class="precio">{{ data.PRO_PRICE | number: '1.2-2' }} €</span>
+                </div>
+            </div>
+        </o-grid-item>
+    </o-grid>
+</o-app-layout>

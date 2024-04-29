@@ -22,5 +22,10 @@ export class ProductsViewComponent implements OnInit {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image-transparent.png';
   }
 
+  redondear(): void{
+
+    
+
+  }
 
 }
