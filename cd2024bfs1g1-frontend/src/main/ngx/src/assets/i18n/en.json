@@ -82,5 +82,11 @@
   "ORD_PHONE": "Contact phone",
   "ORD_ZIPCODE": "zipcode",
   "ORD_ADDRESS": "address",
-  "ORD_SENT": "sent"
+  "ORD_SENT": "sent",
+  "PRO_NAME": "Name",
+  "PRO_DESCRIPTION": "Description",
+  "PRO_PRICE":"Price",
+  "IMAGE":"Image",
+  "PRO_IMAGE":"Image",
+  "ADD_PRODUCT" : "ADD PRODUCT"
 }

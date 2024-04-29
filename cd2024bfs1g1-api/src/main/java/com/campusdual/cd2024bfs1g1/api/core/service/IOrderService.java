@@ -15,4 +15,5 @@ public interface IOrderService {
     EntityResult orderUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     EntityResult orderDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+
 }
