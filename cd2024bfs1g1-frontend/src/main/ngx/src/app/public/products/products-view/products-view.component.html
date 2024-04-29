@@ -1,9 +1,9 @@
-<o-app-layout show-language-selector="no">
-    <o-user-info-configuration show-profile="yes"> </o-user-info-configuration>
+
     <o-grid #productsGrid attr="productsGrid" service="products" entity="product" keys="PRO_ID"
-        columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE" cols="5" query-rows="10" page-size-options="4;8;12"
-        orderable="true" sortable-columns="PRO_PRICE" insert-button="false" pagination-controls="true" gutter-size="3%"
-        fixed-header="yes" grid-item-height="45%" detail-mode="none">
+        columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE" cols="5" query-rows="10"
+        page-size-options="4;8;12" orderable="true" sortable-columns="PRO_PRICE:desc;PRO_PRICE:asc"
+        insert-button="false" pagination-controls="true" gutter-size="3%" fixed-header="yes" grid-item-height="45%"
+        detail-mode="none">
         <o-grid-item *ngFor="let data of productsGrid.dataArray">
             <div class="productCard">
                 <img alt="Imagen_producto" [src]="getImageSrc(data.PRO_IMAGE)" class="img_produc">
@@ -14,4 +14,3 @@
             </div>
         </o-grid-item>
     </o-grid>
-</o-app-layout>

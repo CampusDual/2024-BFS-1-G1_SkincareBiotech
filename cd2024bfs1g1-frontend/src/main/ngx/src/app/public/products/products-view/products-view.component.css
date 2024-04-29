@@ -15,13 +15,14 @@
 .titulo{
     font-size: 1.35em;
     text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
 }
 .precio{
     font-size: 1.5em;
-    font-weight: 700;
-    font-family: Rubik;
+    font-weight: 900;
     text-align: left;
     margin-top: 15%;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
 }
 .despre {
     display: flex;
