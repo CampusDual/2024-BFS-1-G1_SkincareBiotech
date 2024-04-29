@@ -1,0 +1,23 @@
+<o-form attr="orderDetail" service="orders" entity="order" keys="ORD_ID" header-actions="R;U"
+    show-header-navigation="no">
+    <o-text-input attr="ORD_ID" sql-type="INTEGER" enabled="no"></o-text-input>
+    <div fxLayout="row">
+        <o-column fxFlex title="ORDER_INFORMATION">
+            <div fxLayout="row" fxLayoutGap="10px">
+                <o-combo attr="ORD_SENT" value-column="valueSent" [static-data]="optionSent" columns="textSent" required="yes" 
+                sql-type="boolean" null-selection="no" translate="yes"></o-combo>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <o-text-input fxFlex="100" attr="PRO_NAME" label="PRO_NAME_COMPLETE" read-only="yes"></o-text-input>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <o-text-input fxFlex="85" attr="ORD_NAME" read-only="yes"></o-text-input>
+                <o-text-input fxFlex="15" attr="ORD_PHONE" read-only="yes"></o-text-input>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <o-text-input fxFlex="10" attr="ORD_ZIPCODE" read-only="yes"></o-text-input>
+                <o-text-input fxFlex="90" attr="ORD_ADDRESS" read-only="yes"></o-text-input>
+            </div>
+        </o-column>
+    </div>
+</o-form>

@@ -80,13 +80,17 @@
   "ORD_ID": "Order id",
   "ORD_NAME": "Contact name",
   "ORD_PHONE": "Contact phone",
-  "ORD_ZIPCODE": "zipcode",
-  "ORD_ADDRESS": "address",
-  "ORD_SENT": "sent",
+  "ORD_ZIPCODE": "Zipcode",
+  "ORD_ADDRESS": "Address",
+  "ORD_SENT": "Sent",
   "PRO_NAME": "Name",
+  "PRO_NAME_COMPLETE": "Product name",
   "PRO_DESCRIPTION": "Description",
   "PRO_PRICE":"Price",
   "IMAGE":"Image",
   "PRO_IMAGE":"Image",
-  "ADD_PRODUCT" : "ADD PRODUCT"
+  "ADD_PRODUCT" : "ADD PRODUCT",
+  "ORDER_INFORMATION": "Order Information",
+  "SENT": "Sent",
+  "UNSENT": "Unsent"
 }
