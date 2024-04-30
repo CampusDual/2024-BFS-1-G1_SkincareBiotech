@@ -1,17 +1,29 @@
-<div *ngIf="order" class="container">
-    <div>
-      <h2>Detalles del producto</h2>
-      <p>Nombre del producto: {{ order.PRO_NAME }}</p>
-      <p>Precio del producto: {{ price }}</p>
-      <p>Descripción del producto: {{ order.PRO_DESCRIPTION }}</p>
-        <img class="img-product" [src]="getImageSrc(order.PRO_IMAGE)">
-    </div>
-    <div>
-      <h2>Detalles del pedido</h2>
-      <p>ID del pedido: {{ order.ORD_ID }}</p>
-      <p>Nombre del cliente: {{ order.ORD_NAME }}</p>
-      <p>Dirección de entrega: {{ order.ORD_ADDRESS }}</p>
-      <p>Código postal: {{ order.ORD_ZIPCODE }}</p>
+<div class="center-container">
+  <div *ngIf="order" class="container">
+    <div class="details-container">
+      <h2>ID del pedido: {{ order.ORD_ID }}</h2>
+      <div class="product-details">
+        <h3>Detalles del producto</h3>
+        <div class="product-info">
+          <div class="image-container">
+            <img class="img-product" [src]="getImageSrc(order.PRO_IMAGE)">
+          </div>
+          <div class="text-info">
+            <p>Nombre del producto: {{ order.PRO_NAME }}</p>
+            <p>Precio del producto: {{ price }}</p>
+            <p>Descripción del producto: {{ order.PRO_DESCRIPTION }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="order-details">
+        <h3>Detalles del pedido</h3>
+        <div class="order-info">
+          <p>Nombre del cliente: {{ order.ORD_NAME }}</p>
+          <p>Dirección de entrega: {{ order.ORD_ADDRESS }}</p>
+          <p>Código postal: {{ order.ORD_ZIPCODE }}</p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
  
