@@ -17,7 +17,9 @@ export const routes: Routes = [
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'profile', component: ProfileComponent },
       { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
-      { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)}
+      { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)},
+      { path: 'categories', loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)}
+    
     ]
   }
 ];

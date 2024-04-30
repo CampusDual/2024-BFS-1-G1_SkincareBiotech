@@ -93,5 +93,9 @@
   "ADD_PRODUCT" : "ADD PRODUCT",
   "ORDER_INFORMATION": "Order Information",
   "SENT": "Sent",
-  "UNSENT": "Unsent"
+  "UNSENT": "Unsent",
+  "CAT_ID": "ID",
+  "CAT_NAME": "Name",
+  "ADD_CATEGORY": "ADD CATEGORY",
+  "CATEGORY": "Category"
 }

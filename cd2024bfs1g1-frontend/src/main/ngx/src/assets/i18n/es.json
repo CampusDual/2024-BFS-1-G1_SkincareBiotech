@@ -93,5 +93,11 @@
   "ADD_PRODUCT" : "AÑADIR PRODUCTO",
   "ORDER_INFORMATION": "Información del pedido",
   "SENT": "Enviado",
-  "UNSENT": "No enviado"
+  "UNSENT": "No enviado",
+  "CAT_ID": "ID",
+  "CAT_NAME": "Nombre",
+  "ADD_CATEGORY": "AÑADIR CATEGORÍA",
+  "CATEGORY": "Categoría"
+
+
 }
