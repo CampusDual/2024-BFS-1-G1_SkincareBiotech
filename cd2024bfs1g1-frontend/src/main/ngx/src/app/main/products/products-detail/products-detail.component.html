@@ -1,23 +1,21 @@
-<o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U;D"
-    show-header-navigation="yes">
+<o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U;D" show-header-navigation="yes">
     <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no"></o-integer-input>
     <div fxLayout="row">
         <div>
-            <o-image attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER" ></o-image>
+            <o-image class="imagen" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
         </div>
         <o-column fxFlex title="PRODUCTS_DETAIL">
-            <div fxLayout="row" fxLayoutGap="8px">
-                <o-text-input fxFlex="40" attr="PRO_ID" required="yes"></o-text-input>
+            <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
+                <o-text-input fxFlex="40" attr="PRO_NAME" label="Nombre" required="yes"></o-text-input>
+                <o-currency-input fxFlex="20" attr="PRO_PRICE" label="Precio" required="yes"></o-currency-input>
+                <!-- <o-checkbox fxFlex="20" attr="PRO_ENABLED" label="Mostrar Producto" read-only="no"></o-checkbox> -->
+                <o-slide-toggle attr="PRO_ENABLED" label="Slide toggle" read-only="no"></o-slide-toggle>
             </div>
-            <div fxLayout="row" fxLayoutGap="50px">
-                <o-text-input fxFlex="40" attr="PRO_NAME" required="yes"></o-text-input>
-                <o-currency-input fxFlex="20" attr="PRO_PRICE" required="yes"></o-currency-input>
+            <div>
+                <o-textarea-input attr="PRO_DESCRIPTION" label="Long text" required="yes" rows="8" ></o-textarea-input>
             </div>
         </o-column>
-        <o-checkbox attr="PRO_ENABLED" label="Mostrar Producto"  read-only="no"></o-checkbox>
-    </div>
-    <!-- min-length="500" o max-length para longitud de caracteres-->
-    <div fxLayout="row">
-        <o-text-input fxFlex="40" attr="PRO_DESCRIPTION"></o-text-input>
     </div>
 </o-form>
+
+

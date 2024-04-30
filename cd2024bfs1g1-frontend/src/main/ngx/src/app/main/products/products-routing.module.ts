@@ -9,13 +9,14 @@ const routes: Routes = [{
   component: ProductsHomeComponent
 },
 {
-  path: ':PRO_ID',
-  component: ProductsDetailComponent
-},
-{
   path: "new",
   component: ProductsNewComponent
-}];
+},
+{
+  path: ':PRO_ID',
+  component: ProductsDetailComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
