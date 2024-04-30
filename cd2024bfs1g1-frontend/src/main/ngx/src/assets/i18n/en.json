@@ -76,6 +76,7 @@
   "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
   "VIEW": "Views",
+  "BUY_BUTTON":"Buy",
   "PRO_NAME": "Name",
   "PRO_DESCRIPTION": "Description",
   "PRO_PRICE":"Price",

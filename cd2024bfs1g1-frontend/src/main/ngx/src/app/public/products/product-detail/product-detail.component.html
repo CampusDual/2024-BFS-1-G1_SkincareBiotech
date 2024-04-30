@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="img-container">
+        <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
+    </div>
+    <div class="prod-container">
+        <h1 class="title">{{product.PRO_NAME}}</h1>
+
+        <div class="description">{{product.PRO_DESCRIPTION}}</div>
+        <div class="buy-container">
+            <div class="price">{{price}}€</div>
+            <button class="buy-button" attr="BUY_BUTTON" routerLink="#">{{'BUY_BUTTON' | oTranslate}}</button>
+        </div>
+    </div>
+</div>

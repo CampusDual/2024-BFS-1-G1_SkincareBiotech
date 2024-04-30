@@ -11,6 +11,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 .titulo{
     font-size: 1.35em;
@@ -57,4 +58,7 @@
     font-size: 0.9em;
     color: #777;
     font-style: normal;
+}
+a {
+    text-decoration: none;
 }

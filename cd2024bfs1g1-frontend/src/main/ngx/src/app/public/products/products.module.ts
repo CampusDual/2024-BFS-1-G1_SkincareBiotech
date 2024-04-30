@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsRoutingModule } from './products-routing.module';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
+import { ProductsRoutingModule } from './products-routing.module';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsViewComponent } from './products-view/products-view.component';
 
 
 @NgModule({
   declarations: [
-    ProductsViewComponent
+    ProductDetailComponent,
+    ProductsViewComponent,
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    OntimizeWebModule
+    OntimizeWebModule,
   ]
 })
 export class ProductsModule { }
