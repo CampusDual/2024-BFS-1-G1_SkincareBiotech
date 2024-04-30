@@ -7,15 +7,16 @@ import { HomeToolbarComponent } from './components/home-toolbar/home-toolbar.com
 @NgModule({
   imports: [
     OntimizeWebModule
+
   ],
   declarations: [
     FilterComponent,
-    HomeToolbarComponent
+    HomeToolbarComponent,
   ],
   exports: [
     CommonModule,
     FilterComponent,
-    HomeToolbarComponent
+    HomeToolbarComponent,
   ]
 })
 export class SharedModule { }
