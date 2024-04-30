@@ -1,3 +1,17 @@
 <div *ngIf="order" class="container">
-    <div class="description">{{order.PRO_DESCRIPTION}}</div>
-</div>
+    <div>
+      <h2>Detalles del producto</h2>
+      <p>Nombre del producto: {{ order.PRO_NAME }}</p>
+      <p>Precio del producto: {{ price }}</p>
+      <p>Descripción del producto: {{ order.PRO_DESCRIPTION }}</p>
+        <img class="img-product" [src]="getImageSrc(order.PRO_IMAGE)">
+    </div>
+    <div>
+      <h2>Detalles del pedido</h2>
+      <p>ID del pedido: {{ order.ORD_ID }}</p>
+      <p>Nombre del cliente: {{ order.ORD_NAME }}</p>
+      <p>Dirección de entrega: {{ order.ORD_ADDRESS }}</p>
+      <p>Código postal: {{ order.ORD_ZIPCODE }}</p>
+    </div>
+  </div>
+ 

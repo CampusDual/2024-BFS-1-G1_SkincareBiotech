@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { OFormComponent, OIntegerInputComponent, OntimizeService } from 'ontimize-web-ngx';
 
@@ -18,6 +19,7 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private service: OntimizeService,
+    protected sanitizer: DomSanitizer,
   ) {
 
   }
@@ -51,5 +53,13 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
         console.log(this.order);
       });
 
+  }
+
+  public getImageSrc(base64: any): any {
+    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
+  }
+ 
+  get price() {
+    return this.order.PRO_PRICE?.toFixed(2);
   }
 }
