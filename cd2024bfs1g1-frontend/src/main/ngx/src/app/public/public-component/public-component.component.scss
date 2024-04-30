@@ -1,0 +1,36 @@
+.mat-toolbar {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links{
+    display: flex;
+    gap: 20px;
+    margin-right: 50%;
+}
+
+.settings{
+    margin-right: 0px;
+    display: flex;
+    gap: 5px;
+}
+
+.settings a {
+    text-decoration: none;
+    color: black;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+    font-size: 13px;
+}
+
+img{
+    height: 20px;
+    width: 200px;
+}
+
+.login {
+    border-right: 1px solid black;
+    padding-right: 7px;
+}
+
