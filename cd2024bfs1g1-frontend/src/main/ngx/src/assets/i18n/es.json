@@ -77,13 +77,23 @@
   "VERSION": "Versión",
   "VIEW": "Vistas",
   "BUY_BUTTON":"Comprar",
+  "ORDERS": "Pedidos",
+  "ORD_ID": "Id del pedido",
+  "ORD_NAME": "Nombre de contacto",
+  "ORD_PHONE": "Teléfono del contacto",
+  "ORD_ZIPCODE": "Código Postal",
+  "ORD_ADDRESS": "Dirección",
+  "ORD_SENT": "Enviado",
   "PRO_NAME": "Nombre",
+  "PRO_NAME_COMPLETE": "Nombre del producto",
   "PRO_DESCRIPTION": "Descripción",
   "PRO_PRICE":"Precio",
   "IMAGE":"Imagen",
   "PRO_IMAGE":"Imagen",
   "ADD_PRODUCT" : "AÑADIR PRODUCTO",
   "PRODUCTS_LINK" : "Productos",
-  "FEATURED_LINK" : "Destacados"
-
+  "FEATURED_LINK" : "Destacados",
+  "ORDER_INFORMATION": "Información del pedido",
+  "SENT": "Enviado",
+  "UNSENT": "No enviado"
 }

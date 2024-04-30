@@ -1,7 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,11 +11,12 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailComponent implements OnInit {
 
   service: OntimizeService;
-  product: any = {};
+  product: any = null;
   constructor(
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.service = this.injector.get(OntimizeService)
   }
@@ -26,7 +27,11 @@ export class ProductDetailComponent implements OnInit {
     this.service.configureService(conf);
     this.service.query({ "PRO_ID": id }, ["PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE"], "product")
       .subscribe((data) => {
-        this.product = data.data[0];
+        if (data.data.length > 0) {
+          this.product = data.data[0];
+        } else {
+          this.router.navigate(['']);
+        }
       })
   }
 
