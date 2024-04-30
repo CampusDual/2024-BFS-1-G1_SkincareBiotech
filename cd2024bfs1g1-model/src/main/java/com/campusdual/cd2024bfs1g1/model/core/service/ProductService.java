@@ -31,4 +31,8 @@ public class ProductService implements IProductService {
     public EntityResult productInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.productDao,attributes);
     }
+    @Override
+    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.productDao,attrMap,keyMap);
+    }
 }
