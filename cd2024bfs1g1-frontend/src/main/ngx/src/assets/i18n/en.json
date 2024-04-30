@@ -82,5 +82,7 @@
   "PRO_PRICE":"Price",
   "IMAGE":"Image",
   "PRO_IMAGE":"Image",
-  "ADD_PRODUCT" : "ADD PRODUCT"
+  "ADD_PRODUCT" : "ADD PRODUCT",
+  "PRODUCTS_LINK" : "Products",
+  "FEATURED_LINK" : "Featured"
 }
