@@ -10,6 +10,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
     ]
   },
   { id: 'products', name: 'PRODUCTS', route: 'main/products', icon: 'inventory_2'},
+  { id: 'orders', name: 'ORDERS', icon: 'people', route: '/main/orders' },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];
 
