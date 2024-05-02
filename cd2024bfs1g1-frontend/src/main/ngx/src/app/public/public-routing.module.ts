@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PublicComponentComponent } from './public-component/public-component.component';
 
 const routes: Routes = [
   { path: 'order', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
