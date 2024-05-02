@@ -97,7 +97,9 @@
   "CAT_ID": "ID",
   "CAT_NAME": "Nombre",
   "ADD_CATEGORY": "AÑADIR CATEGORÍA",
-  "CATEGORY": "Categoría"
+  "CATEGORY": "Categoría",
+  "PRODUCTS": "Productos",
+  "CATEGORIES": "Categorías"
 
 
 }

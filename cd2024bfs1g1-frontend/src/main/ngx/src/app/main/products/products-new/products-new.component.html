@@ -1,19 +1,24 @@
-<o-form attr="productsForm" service="products" entity="product" keys="PRO_ID">
+<o-form attr="productsForm" service="products, categories" entity="product" keys="PRO_ID">
     <o-column title="ADD_PRODUCT">
-    <div fxLayout="row" fxLayoutGap="8px">
-        <o-image id="image" fxFlex="30" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
-        <div fxFlex="70">
-                
-                    <div>
-                        <o-text-input fxFlex="30" attr="PRO_NAME" class="input-padding" step="0" grouping="no" required="yes"></o-text-input> 
-                        <o-real-input fxFlex="10" attr="PRO_PRICE" required="yes" max-decimal-digits="2" min-decimal-digits="2" decimal-separator = ","></o-real-input>
-                    </div>
-                    <br>
-                    <div>
-                        <o-textarea-input fxFlex="40.5" attr="PRO_DESCRIPTION" class="input-padding" required="yes"></o-textarea-input>
-                    </div>
-                
+        <div fxLayout="row" fxLayoutGap="8px">
+            <o-image id="image" fxFlex="30" attr="PRO_IMAGE" empty-image="assets/images/no-image.png"
+                sql-type="OTHER"></o-image>
+            <div fxFlex="70">
+                <div>
+                    <o-text-input fxFlex="30" attr="PRO_NAME" class="input-padding" step="0" grouping="no"
+                        required="yes"></o-text-input>
+                    <o-real-input fxFlex="10" attr="PRO_PRICE" required="yes" max-decimal-digits="2"
+                        min-decimal-digits="2" decimal-separator=","></o-real-input>
+                </div>
+                <br>
+                <div>
+                    <o-combo attr="CATEGORY" searchable="yes" service="categories" entity="category" keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
+                </div>
+                <div>
+                    <o-textarea-input fxFlex="40.5" attr="PRO_DESCRIPTION" class="input-padding"
+                        required="yes"></o-textarea-input>
+                </div>
+            </div>
         </div>
-    </div>
     </o-column>
 </o-form>
