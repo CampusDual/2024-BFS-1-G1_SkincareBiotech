@@ -1,4 +1,4 @@
-<o-form attr="productsForm" service="products, categories" entity="product" keys="PRO_ID">
+<o-form attr="productsForm" service="products" entity="product" keys="PRO_ID">
     <o-column title="ADD_PRODUCT">
         <div fxLayout="row" fxLayoutGap="8px">
             <o-image id="image" fxFlex="30" attr="PRO_IMAGE" empty-image="assets/images/no-image.png"
@@ -11,7 +11,7 @@
                         min-decimal-digits="2" decimal-separator=","></o-real-input>
                 </div>
                 <div>
-                    <o-combo fxFlex="51" attr="CATEGORY" searchable="yes" service="categories" entity="category"
+                    <o-combo fxFlex="51" attr="CAT_ID" searchable="yes" service="categories" entity="category"
                         keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
                 </div>
                 <div>
