@@ -50,7 +50,6 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
     this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "ORD_NAME", "ORD_PHONE", "ORD_ZIPCODE", "ORD_ADDRESS", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE"], "order")
       .subscribe((orderData) => {
         this.order = orderData.data[0];
-        console.log(this.order);
       });
 
   }
