@@ -7,7 +7,14 @@
 
         <div class="description">{{product.PRO_DESCRIPTION}}</div>
         <div class="buy-container">
-            <div class="price">{{price}}€</div>
+            <div class="price" *ngIf="(sale != null); else priceBlock">
+                <div class="priceSale">
+                    <p><span>SALE:</span>{{ sale }} €</p>
+                    <p class="originalPrice">ORIGINAL: {{ price }} €</p>
+                </div>
+            </div>
+            <ng-template #priceBlock><p class="regularPrice">{{price}}€</p></ng-template>
+            
             <button class="buy-button" attr="BUY_BUTTON" routerLink="#">{{'BUY_BUTTON' | oTranslate}}</button>
         </div>
     </div>

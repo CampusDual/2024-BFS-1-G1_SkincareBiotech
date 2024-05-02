@@ -17,7 +17,6 @@
     max-height: 400px;
 }
 
-
 .prod-container {
     margin-left: 50px;
     display: flex;
@@ -27,6 +26,26 @@
     padding-left: 5%;
 }
 
+.priceSale p {
+    margin: 0px;
+}
+
+.priceSale p span {
+    margin-right: 3%;
+}
+
+.originalPrice {
+    font-weight: lighter;
+    font-size: 0.7em;
+    text-decoration: line-through;
+}
+
+.regularPrice {
+    font-size: 1.5em;
+    font-weight: 900;
+    text-align: left;
+    margin-top: 10%;
+}
 
 h1 {
     margin-top: 0px;
@@ -48,17 +67,9 @@ h1 {
     margin-right: 3%;
 }
 
-
-.buy-container {
-    display: flex;
-    gap: 5%;
-    align-items: baseline;
-}
-
-
 .price {
     font-weight: bold;
-    font-size: xx-large;
+    font-size: x-large;
     margin-top: 5%;
 }
 
