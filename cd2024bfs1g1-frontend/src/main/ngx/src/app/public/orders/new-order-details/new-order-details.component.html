@@ -1,0 +1,29 @@
+<div class="center-container">
+  <div *ngIf="order" class="container">
+    <div class="details-container">
+      <h2>{{'ORD_ID' | oTranslate}}: {{ order.ORD_ID }}</h2>
+      <div class="product-details">
+        <h3>{{'PRO_DETAILS' | oTranslate}}</h3>
+        <div class="product-info">
+          <div class="image-container">
+            <img class="img-product" [src]="getImageSrc(order.PRO_IMAGE)">
+          </div>
+          <div class="text-info">
+            <p>{{'PRO_NAME' | oTranslate}}: {{ order.PRO_NAME }}</p>
+            <p>{{'PRO_PRICE' | oTranslate}}: {{ price }}</p>
+            <p>{{'PRO_DESCRIPTION' | oTranslate}}: {{ order.PRO_DESCRIPTION }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="order-details">
+        <h3>{{'ORD_DETAILS' | oTranslate}}</h3>
+        <div class="order-info">
+          <p>{{'ORD_NAME' | oTranslate}}: {{ order.ORD_NAME }}</p>
+          <p>{{'ORD_ADDRESS' | oTranslate}}: {{ order.ORD_ADDRESS }}</p>
+          <p>{{'ORD_ZIPCODE' | oTranslate}}: {{ order.ORD_ZIPCODE }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 

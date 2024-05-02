@@ -97,5 +97,6 @@
   "ORDER_INFORMATION": "Order Information",
   "SENT": "Sent",
   "UNSENT": "Unsent",
-  "PRODUCTS_DETAIL": "Product Detail"
+  "PRO_DETAILS": "Product details",
+  "ORD_DETAILS": "Order details"
 }
