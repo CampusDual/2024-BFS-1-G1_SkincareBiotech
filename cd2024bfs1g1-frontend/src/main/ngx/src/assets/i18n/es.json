@@ -91,6 +91,8 @@
   "IMAGE":"Imagen",
   "PRO_IMAGE":"Imagen",
   "ADD_PRODUCT" : "AÑADIR PRODUCTO",
+  "PRODUCTS_LINK" : "Productos",
+  "FEATURED_LINK" : "Destacados",
   "ORDER_INFORMATION": "Información del pedido",
   "SENT": "Enviado",
   "UNSENT": "No enviado"
