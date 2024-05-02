@@ -88,10 +88,12 @@
   "PRO_NAME_COMPLETE": "Nombre del producto",
   "PRO_DESCRIPTION": "Descripción",
   "PRO_PRICE":"Precio",
+  "PRO_ENABLED":"Visible",
   "IMAGE":"Imagen",
   "PRO_IMAGE":"Imagen",
   "ADD_PRODUCT" : "AÑADIR PRODUCTO",
   "ORDER_INFORMATION": "Información del pedido",
   "SENT": "Enviado",
-  "UNSENT": "No enviado"
+  "UNSENT": "No enviado",
+  "PRODUCTS_DETAIL": "Detalles del producto"
 }
