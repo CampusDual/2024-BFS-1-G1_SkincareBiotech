@@ -93,5 +93,7 @@
   "ADD_PRODUCT" : "AÑADIR PRODUCTO",
   "ORDER_INFORMATION": "Información del pedido",
   "SENT": "Enviado",
-  "UNSENT": "No enviado"
+  "UNSENT": "No enviado",
+  "PRO_DETAILS": "Detalles del producto",
+  "ORD_DETAILS": "Detalles del pedido"
 }

@@ -93,5 +93,7 @@
   "ADD_PRODUCT" : "ADD PRODUCT",
   "ORDER_INFORMATION": "Order Information",
   "SENT": "Sent",
-  "UNSENT": "Unsent"
+  "UNSENT": "Unsent",
+  "PRO_DETAILS": "Product details",
+  "ORD_DETAILS": "Order details"
 }

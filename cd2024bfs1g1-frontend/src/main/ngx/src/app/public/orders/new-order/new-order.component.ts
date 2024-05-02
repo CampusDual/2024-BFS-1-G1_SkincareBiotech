@@ -33,7 +33,7 @@ export class NewOrderComponent implements AfterViewInit {
     this.formOrder.onInsert.subscribe(
       (data) => {
 
-        this.router.navigate(['/public/order/details', data['ORD_ID']]);
+        this.router.navigate(['/order/details', data['ORD_ID']]);
 
       },
       (error) => {
