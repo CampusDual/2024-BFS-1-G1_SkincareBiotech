@@ -91,6 +91,8 @@
   "IMAGE":"Image",
   "PRO_IMAGE":"Image",
   "ADD_PRODUCT" : "ADD PRODUCT",
+  "PRODUCTS_LINK" : "Products",
+  "FEATURED_LINK" : "Featured",
   "ORDER_INFORMATION": "Order Information",
   "SENT": "Sent",
   "UNSENT": "Unsent",
@@ -99,5 +101,7 @@
   "ADD_CATEGORY": "ADD CATEGORY",
   "CATEGORY": "Category",
   "PRODUCTS": "Products",
-  "CATEGORIES": "Categories"
+  "CATEGORIES": "Categories",
+  "PRO_DETAILS": "Product details",
+  "ORD_DETAILS": "Order details"
 }

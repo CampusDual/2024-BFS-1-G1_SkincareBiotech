@@ -21,4 +21,4 @@ const opt: ExtraOptions = {
   exports: [RouterModule],
   providers: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {  }

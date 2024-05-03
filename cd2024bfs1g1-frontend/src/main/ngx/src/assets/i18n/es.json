@@ -91,6 +91,8 @@
   "IMAGE":"Imagen",
   "PRO_IMAGE":"Imagen",
   "ADD_PRODUCT" : "AÑADIR PRODUCTO",
+  "PRODUCTS_LINK" : "Productos",
+  "FEATURED_LINK" : "Destacados",
   "ORDER_INFORMATION": "Información del pedido",
   "SENT": "Enviado",
   "UNSENT": "No enviado",
@@ -99,7 +101,7 @@
   "ADD_CATEGORY": "AÑADIR CATEGORÍA",
   "CATEGORY": "Categoría",
   "PRODUCTS": "Productos",
-  "CATEGORIES": "Categorías"
-
-
+  "CATEGORIES": "Categorías",
+  "PRO_DETAILS": "Detalles del producto",
+  "ORD_DETAILS": "Detalles del pedido"
 }

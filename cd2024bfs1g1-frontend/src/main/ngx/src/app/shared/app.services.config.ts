@@ -6,7 +6,7 @@ export const SERVICE_CONFIG: Object = {
     'path': '/products',
   },
   'orders': {
-    'path': '/orders'
+    'path': '/orders',
   },
   'categories': {
     'path': '/categories'

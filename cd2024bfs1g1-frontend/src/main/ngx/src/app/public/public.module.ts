@@ -5,14 +5,26 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { PublicRoutingModule } from './public-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
+import { PublicComponentComponent } from './public-component/public-component.component';
+
+
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PublicComponentComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,
     PublicRoutingModule,
-    OntimizeWebModule
+    OntimizeWebModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
   ]
 })
 export class PublicModule { }

@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PublicComponentComponent } from './public-component/public-component.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    children: [
-      { path: '', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) }
-    ]
-  }
+  { path: 'order', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
+  { path: '', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
 ];
 
 @NgModule({
