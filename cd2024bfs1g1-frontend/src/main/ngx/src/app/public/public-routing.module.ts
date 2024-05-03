@@ -7,9 +7,11 @@ const routes: Routes = [
     component: PublicComponentComponent,
     path: '',
     children: [
-      { path: '', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) }
+      { path: '', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
+      { path: 'order', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) }
     ]
-  }
+  },
+
 ];
 
 @NgModule({

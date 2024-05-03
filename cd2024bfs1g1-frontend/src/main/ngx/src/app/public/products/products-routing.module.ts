@@ -6,7 +6,7 @@ import { ProductsViewComponent } from './products-view/products-view.component';
 const routes: Routes = [
   { path: '', component: ProductsViewComponent },
   { path: ':prod_id', component: ProductDetailComponent },
- //{ path: 'order', component:  }
+ // { path: 'order', component:  }
 
 ];
 

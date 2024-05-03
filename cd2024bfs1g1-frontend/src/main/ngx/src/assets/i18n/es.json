@@ -88,6 +88,7 @@
   "PRO_NAME_COMPLETE": "Nombre del producto",
   "PRO_DESCRIPTION": "Descripción",
   "PRO_PRICE":"Precio",
+  "PRO_ENABLED":"Visible",
   "IMAGE":"Imagen",
   "PRO_IMAGE":"Imagen",
   "ADD_PRODUCT" : "AÑADIR PRODUCTO",
@@ -98,5 +99,8 @@
   "UNSENT": "No enviado",
   "ORD_PRICE": "Precio",
   "SALE": "Oferta",
-  "ORIGINAL": "Original"
+  "ORIGINAL": "Original",
+  "PRO_DETAILS": "Detalles del producto",
+  "ORD_DETAILS": "Detalles del pedido",
+  "PRODUCTS": "Productos"
 }

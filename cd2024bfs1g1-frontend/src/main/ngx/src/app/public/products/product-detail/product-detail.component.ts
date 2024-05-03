@@ -27,10 +27,10 @@ export class ProductDetailComponent implements OnInit {
     let id = parseInt(this.route.snapshot.paramMap.get('prod_id'))
     const conf = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf);
-    this.service.query({ "PRO_ID": id }, ["PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "product")
+    this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
       .subscribe((data) => {
         if (data.data.length > 0) {
-          this.product = data.data[0];
+          this.product = data.data[0];          
         } else {
           this.router.navigate(['']);
         }
@@ -46,6 +46,12 @@ export class ProductDetailComponent implements OnInit {
   }
   get sale() {
     return this.product.PRO_SALE?.toFixed(2);
+  }
+
+  createOrder(): void {
+
+    this.router.navigate(["/order", this.product.PRO_ID]);
+
   }
 
 }
