@@ -7,7 +7,7 @@ import { ProductsFeaturedComponent } from './products-featured/products-featured
 const routes: Routes = [
   { path: '', component: ProductsViewComponent },
   { path: 'featured', component: ProductsFeaturedComponent},
-  { path: ':prod_id', component: ProductDetailComponent },
+  { path: ':prod_id', component: ProductDetailComponent }
  // { path: 'order', component:  }
 
 ];
