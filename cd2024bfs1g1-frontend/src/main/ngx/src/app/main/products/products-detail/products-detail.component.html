@@ -1,5 +1,5 @@
 <o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U;D"
-    show-header-navigation="yes">
+    show-header-navigation="yes" (onUpdate)="onUpdate($event)">
     <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
     <div fxLayout="row">
         <o-column fxFlex fxFlex="auto" style="height: 75vh;">
@@ -8,7 +8,7 @@
                     sql-type="OTHER"></o-image>
             </div>
         </o-column>
-        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" style="height: 75vh;" title="PRODUCTS_DETAIL">
+        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" style="height: 75vh;" title="PRO_DETAILS">
             <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
                 <o-text-input fxFlex="40" attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
                 <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
