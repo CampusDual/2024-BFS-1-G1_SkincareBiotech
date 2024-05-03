@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: ProductsViewComponent },
   { path: 'featured', component: ProductsFeaturedComponent},
   { path: ':prod_id', component: ProductDetailComponent },
- //{ path: 'order', component:  }
+ // { path: 'order', component:  }
 
 ];
 

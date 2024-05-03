@@ -4,12 +4,14 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { ProductsHomeComponent } from './products-home/products-home.component';
 import { ProductsNewComponent } from './products-new/products-new.component';
+import { ProductsDetailComponent } from './products-detail/products-detail.component';
 
 
 @NgModule({
   declarations: [
     ProductsHomeComponent,
-    ProductsNewComponent
+    ProductsNewComponent,
+    ProductsDetailComponent
   ],
   imports: [
     CommonModule,

@@ -2,20 +2,20 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-products-new',
-  templateUrl: './products-new.component.html',
-  styleUrls: ['./products-new.component.css']
+  selector: 'app-products-detail',
+  templateUrl: './products-detail.component.html',
+  styleUrls: ['./products-detail.component.css']
 })
-export class ProductsNewComponent {
+export class ProductsDetailComponent {
 
   constructor(
     private router: Router
   ) { }
 
-  onInsert(success: boolean) {
+  onUpdate(success: boolean) {
     if (success) {
       this.router.navigate(['/main/products']);
-    }
+    } 
   }
 
 }

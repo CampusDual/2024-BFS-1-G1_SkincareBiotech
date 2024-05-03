@@ -1,5 +1,5 @@
 <h2>{{'ACCOUNT' | oTranslate}}</h2>
-<o-form #form show-header="no" service="users" entity="password" matchPassword header-actions="U" keys="usr_id">
+<o-form #form show-header="no" service="users" entity="password" matchPassword header-actions="U" PRO_ID="usr_id">
   <o-column layout-gap="20px" title="CHANGE_PASSWORD" fxFlex="60%">
     <o-password-input #oldpassword attr="old_password" required="yes"> </o-password-input>
     <o-password-input #newpassword attr="new_password" required="yes" min-length="8" [validators]="validatorsNewPasswordArray">
