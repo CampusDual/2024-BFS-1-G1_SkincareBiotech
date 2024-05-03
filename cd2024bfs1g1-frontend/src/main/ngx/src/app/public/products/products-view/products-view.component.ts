@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -9,7 +9,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class ProductsViewComponent implements OnInit {
   constructor(
-    protected sanitizer: DomSanitizer
+    protected sanitizer: DomSanitizer,
+    @Inject ('tSale') public tSale: string,
+    @Inject ('tOriginal') public tOriginal: string
   ) { }
   ngOnInit(): void {
 

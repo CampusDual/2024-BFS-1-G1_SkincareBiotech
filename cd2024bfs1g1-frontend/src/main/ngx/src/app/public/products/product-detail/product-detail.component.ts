@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,9 @@ export class ProductDetailComponent implements OnInit {
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    @Inject ('tSale') public tSale: string,
+    @Inject ('tOriginal') public tOriginal: string
   ) {
     this.service = this.injector.get(OntimizeService)
   }

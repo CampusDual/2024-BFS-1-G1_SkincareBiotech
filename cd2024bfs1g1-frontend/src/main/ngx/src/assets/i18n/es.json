@@ -94,5 +94,7 @@
   "ORDER_INFORMATION": "Información del pedido",
   "SENT": "Enviado",
   "UNSENT": "No enviado",
-  "ORD_PRICE": "Precio"
+  "ORD_PRICE": "Precio",
+  "SALE": "Oferta",
+  "ORIGINAL": "Original"
 }

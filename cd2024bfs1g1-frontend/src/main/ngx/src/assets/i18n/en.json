@@ -94,5 +94,7 @@
   "ORDER_INFORMATION": "Order Information",
   "SENT": "Sent",
   "UNSENT": "Unsent",
-  "ORD_PRICE": "Price"
+  "ORD_PRICE": "Price",
+  "SALE": "Sale",
+  "ORIGINAL": "Original"
 }
