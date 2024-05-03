@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class ProductDao extends OntimizeJdbcDaoSupport {
 
-    public static final String PRO_ID = "pro_id";
-    public static final String PRO_NAME = "pro_name";
-    public static final String PRO_DESCRIPTION = "pro_description";
-    public static final String PRO_PRICE = "pro_price";
-    public static final String PRO_IMAGE = "pro_image";
-    public static final String PRO_ENABLED = "pro_enabled";
+    public static final String PRO_ID = "PRO_ID";
+    public static final String PRO_NAME = "PRO_NAME";
+    public static final String PRO_DESCRIPTION = "PRO_DESCRIPTION";
+    public static final String PRO_PRICE = "PRO_PRICE";
+    public static final String PRO_IMAGE = "PRO_IMAGE";
+    public static final String PRO_ENABLED = "PRO_ENABLED";
 
 }
