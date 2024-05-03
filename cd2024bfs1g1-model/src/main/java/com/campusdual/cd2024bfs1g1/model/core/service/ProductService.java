@@ -23,12 +23,25 @@ public class ProductService implements IProductService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
-    public EntityResult productQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+    public EntityResult productQuery(Map<String, Object> keysValues, List<String> attributes)
+            throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.productDao, keysValues, attributes);
     }
 
     @Override
     public EntityResult productInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.productDao,attributes);
+        return this.daoHelper.insert(this.productDao, attributes);
+    }
+
+    @Override
+    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.productDao, attrMap, keyMap);
+    }
+
+    @Override
+    public EntityResult productEnabledQuery(Map<String, Object> keysValues, List<String> attributes)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.productDao, keysValues, attributes, ProductDao.PRO_ENABLED);
     }
 }

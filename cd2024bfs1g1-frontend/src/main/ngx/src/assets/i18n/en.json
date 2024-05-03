@@ -88,6 +88,7 @@
   "PRO_NAME_COMPLETE": "Product name",
   "PRO_DESCRIPTION": "Description",
   "PRO_PRICE":"Price",
+  "PRO_ENABLED": "Visible",
   "IMAGE":"Image",
   "PRO_IMAGE":"Image",
   "ADD_PRODUCT" : "ADD PRODUCT",
@@ -97,5 +98,6 @@
   "SENT": "Sent",
   "UNSENT": "Unsent",
   "PRO_DETAILS": "Product details",
-  "ORD_DETAILS": "Order details"
+  "ORD_DETAILS": "Order details",
+  "PRODUCTS": "Products"
 }

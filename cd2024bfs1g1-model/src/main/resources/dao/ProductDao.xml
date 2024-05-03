@@ -3,7 +3,7 @@
         xmlns="http://www.ontimize.com/schema/jdbc"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-        catalog="" schema="${mainschema}" table="products"
+        catalog="" schema="${mainschema}" table="PRODUCTS"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
         <Column>PRO_ID</Column>
@@ -12,4 +12,24 @@
         <Column>PRO_ID</Column>
     </UpdateKeys>
     <GeneratedKey>pro_id</GeneratedKey>
+    <Queries>
+        <Query id="pro_enabled">
+            <Sentence>
+                <![CDATA[
+                WITH ENABLED_CHECKER AS (
+                SELECT *
+                FROM
+                ${mainschema}.PRODUCTS
+                WHERE
+                PRO_ENABLED = TRUE
+                )
+                SELECT
+                #COLUMNS#
+                FROM
+                ENABLED_CHECKER
+                #WHERE#
+            ]]>
+        </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
