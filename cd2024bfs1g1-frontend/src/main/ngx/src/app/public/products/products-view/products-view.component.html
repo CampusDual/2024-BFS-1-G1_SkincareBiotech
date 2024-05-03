@@ -10,20 +10,18 @@
 
     <o-filter-builder #filterBuilder attr="thefilter" filters="CAT_ID:CAT_ID" [target]="productsGrid"
         query-on-change="yes" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
-
-    <o-grid #productsGrid attr="productsGrid" service="products" entity="product" keys="PRO_ID"
-        columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID" cols="5" query-rows="10"
-        page-size-options="4;8;12" orderable="true" sortable-columns="PRO_PRICE:desc;PRO_PRICE:asc"
-        insert-button="false" pagination-controls="true" gutter-size="3%" fixed-header="yes" grid-item-height="45%"
-        detail-mode="none">
-        <o-grid-item *ngFor="let data of productsGrid.dataArray">
-            <div class="productCard" routerLink="{{data.PRO_ID}}">
-                <img alt="Imagen_producto" [src]="getImageSrc(data.PRO_IMAGE)" class="img_produc">
-                <div class="despre">
-                    <span class="titulo">{{ data.PRO_NAME }}</span>
-                    <span class="precio">{{ data.PRO_PRICE | number: '1.2-2' }} €</span>
-                </div>
-            </div>
-        </o-grid-item>
-    </o-grid>
 </o-form>
+<o-grid #productsGrid attr="productsGrid" service="products" entity="product" keys="PRO_ID"
+    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID" cols="5" query-rows="10"
+    page-size-options="4;8;12" orderable="true" sortable-columns="PRO_PRICE:desc;PRO_PRICE:asc" insert-button="false"
+    pagination-controls="true" gutter-size="3%" fixed-header="yes" grid-item-height="45%" detail-mode="none">
+    <o-grid-item *ngFor="let data of productsGrid.dataArray">
+        <div class="productCard" routerLink="{{data.PRO_ID}}">
+            <img alt="Imagen_producto" [src]="getImageSrc(data.PRO_IMAGE)" class="img_produc">
+            <div class="despre">
+                <span class="titulo">{{ data.PRO_NAME }}</span>
+                <span class="precio">{{ data.PRO_PRICE | number: '1.2-2' }} €</span>
+            </div>
+        </div>
+    </o-grid-item>
+</o-grid>
