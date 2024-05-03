@@ -98,5 +98,6 @@
   "SENT": "Enviado",
   "UNSENT": "No enviado",
   "PRO_DETAILS": "Detalles del producto",
-  "ORD_DETAILS": "Detalles del pedido"
+  "ORD_DETAILS": "Detalles del pedido",
+  "PRODUCTS": "Productos"
 }
