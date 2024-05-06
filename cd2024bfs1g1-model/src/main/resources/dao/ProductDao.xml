@@ -13,7 +13,7 @@
     </UpdateKeys>
     <GeneratedKey>pro_id</GeneratedKey>
     <Queries>
-        <Query id="pro_enabled">
+        <Query id="PRO_ENABLED">
             <Sentence>
                 <![CDATA[
                 WITH ENABLED_CHECKER AS (
