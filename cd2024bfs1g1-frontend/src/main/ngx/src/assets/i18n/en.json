@@ -102,5 +102,7 @@
   "ORIGINAL": "Original",
   "PRO_DETAILS": "Product details",
   "ORD_DETAILS": "Order details",
-  "PRODUCTS": "Products"
+  "PRODUCTS": "Products",
+  "PRO_SALE": "Sale",
+  "PRO_SALE_ACTIVATE": "Activate sale"
 }

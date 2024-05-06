@@ -47,7 +47,7 @@ public class ProductService implements IProductService {
             values.replace(this.productDao.PRO_SALE, null);
         }
         values.remove("PRO_SALE_ACTIVATE");
-        return this.daoHelper.update(this.productDao, attrMap, keyMap);
+        return this.daoHelper.update(this.productDao, values, keyMap);
     }
 
     @Override
