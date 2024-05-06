@@ -107,5 +107,8 @@
   "ORIGINAL": "Original",
   "PRO_DETAILS": "Detalles del producto",
   "ORD_DETAILS": "Detalles del pedido",
-  "PRODUCTS": "Productos"
+  "PRODUCTS": "Productos",
+  "PRO_SALE": "Oferta",
+  "PRO_SALE_ACTIVATE": "Activar oferta"
+
 }
