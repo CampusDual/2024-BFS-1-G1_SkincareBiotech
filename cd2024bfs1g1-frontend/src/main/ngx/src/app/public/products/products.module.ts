@@ -15,10 +15,6 @@ import { ProductsViewComponent } from './products-view/products-view.component';
     CommonModule,
     ProductsRoutingModule,
     OntimizeWebModule,
-  ],
-  providers: [
-    {provide: 'tSale', useValue: "SALE"},
-    {provide: 'tOriginal', useValue: "ORIGINAL"}
   ]
 })
 export class ProductsModule { }

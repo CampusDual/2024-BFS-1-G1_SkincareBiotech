@@ -9,9 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class ProductsViewComponent implements OnInit {
   constructor(
-    protected sanitizer: DomSanitizer,
-    @Inject ('tSale') public tSale: string,
-    @Inject ('tOriginal') public tOriginal: string
+    protected sanitizer: DomSanitizer
   ) { }
   ngOnInit(): void {
 

@@ -12,13 +12,12 @@ export class ProductDetailComponent implements OnInit {
 
   service: OntimizeService;
   product: any = null;
+
   constructor(
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private router: Router,
-    @Inject ('tSale') public tSale: string,
-    @Inject ('tOriginal') public tOriginal: string
+    private router: Router
   ) {
     this.service = this.injector.get(OntimizeService)
   }
@@ -30,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
     this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
       .subscribe((data) => {
         if (data.data.length > 0) {
-          this.product = data.data[0];          
+          this.product = data.data[0];
         } else {
           this.router.navigate(['']);
         }
