@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ export class ProductDetailComponent implements OnInit {
 
   service: OntimizeService;
   product: any = null;
+
   constructor(
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
@@ -25,10 +26,10 @@ export class ProductDetailComponent implements OnInit {
     let id = parseInt(this.route.snapshot.paramMap.get('prod_id'))
     const conf = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf);
-    this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE"], "productEnabled")
+    this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
       .subscribe((data) => {
         if (data.data.length > 0) {
-          this.product = data.data[0];          
+          this.product = data.data[0];
         } else {
           this.router.navigate(['']);
         }
@@ -41,6 +42,9 @@ export class ProductDetailComponent implements OnInit {
 
   get price() {
     return this.product.PRO_PRICE?.toFixed(2);
+  }
+  get sale() {
+    return this.product.PRO_SALE?.toFixed(2);
   }
 
   createOrder(): void {

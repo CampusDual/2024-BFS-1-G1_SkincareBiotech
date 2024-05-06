@@ -102,8 +102,13 @@
   "ADD_CATEGORY": "AÑADIR CATEGORÍA",
   "CATEGORY": "Categoría",
   "CATEGORIES": "Categorías",
+  "ORD_PRICE": "Precio",
+  "SALE": "Oferta",
+  "ORIGINAL": "Original",
   "PRO_DETAILS": "Detalles del producto",
   "ORD_DETAILS": "Detalles del pedido",
   "PRODUCTS": "Productos",
+  "PRO_SALE": "Oferta",
+  "PRO_SALE_ACTIVATE": "Activar oferta",
   "ADDED_RECENTLY": "Añadido Recientemente"
 }
