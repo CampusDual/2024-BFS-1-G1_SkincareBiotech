@@ -97,6 +97,11 @@
   "ORDER_INFORMATION": "Información del pedido",
   "SENT": "Enviado",
   "UNSENT": "No enviado",
+  "CAT_ID": "Categorías",
+  "CAT_NAME": "Nombre",
+  "ADD_CATEGORY": "AÑADIR CATEGORÍA",
+  "CATEGORY": "Categoría",
+  "CATEGORIES": "Categorías",
   "PRO_DETAILS": "Detalles del producto",
   "ORD_DETAILS": "Detalles del pedido",
   "PRODUCTS": "Productos"

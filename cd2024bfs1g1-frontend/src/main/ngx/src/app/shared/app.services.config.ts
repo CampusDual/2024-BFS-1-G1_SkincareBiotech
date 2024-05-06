@@ -8,6 +8,9 @@ export const SERVICE_CONFIG: Object = {
   'orders': {
     'path': '/orders',
   },
+  'categories': {
+    'path': '/categories'
+  },
   permissions: {
     'path': '/permissions'
   },
