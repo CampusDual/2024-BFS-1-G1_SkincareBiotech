@@ -97,12 +97,15 @@
   "ORDER_INFORMATION": "Order Information",
   "SENT": "Sent",
   "UNSENT": "Unsent",
+  "CAT_ID": "Categories",
+  "CAT_NAME": "Name",
+  "ADD_CATEGORY": "ADD CATEGORY",
+  "CATEGORY": "Category",
+  "CATEGORIES": "Categories",
   "ORD_PRICE": "Price",
   "SALE": "Sale",
   "ORIGINAL": "Original",
   "PRO_DETAILS": "Product details",
   "ORD_DETAILS": "Order details",
-  "PRODUCTS": "Products",
-  "PRO_SALE": "Sale",
-  "PRO_SALE_ACTIVATE": "Activate sale"
+  "PRODUCTS": "Products"
 }
