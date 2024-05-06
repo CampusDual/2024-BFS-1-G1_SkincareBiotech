@@ -12,22 +12,37 @@
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-}
-.titulo{
-    font-size: 1.35em;
-    text-align: left;
     font-family: Poppins, "Helvetica Neue", sans-serif;
 }
-.precio{
+.tittle{
+    font-size: 1.35em;
+    text-align: left;
+}
+.price{
     font-size: 1.5em;
     font-weight: 900;
     text-align: left;
-    margin-top: 15%;
-    font-family: Poppins, "Helvetica Neue", sans-serif;
+    margin-top: 10%;
 }
-.despre {
-    display: flex;
-    flex-direction: column;
+.priceSale{
+    font-size: 1.5em;
+    font-weight: 900;
+    text-align: left;
+    margin-top: 10%;
+}
+.priceSale p {
+    margin: 0px;
+}
+.priceSale p span {
+    margin-right: 3%;
+}
+.originalPrice{
+    font-weight: lighter;
+    font-size: 0.7em;
+    text-decoration: line-through;
+}
+.productInfo {
+    height: 200px;
     width: 90%;
     margin-bottom: 5%;
 }
@@ -44,11 +59,6 @@
 }
 .productCard img {
     border-radius: 15px;
-}
-.productCard span {
-    display: block;
-    width: 100%;
-    margin-bottom: 4px;
 }
 .productCard strong {
     font-size: 1.1em;
