@@ -28,8 +28,9 @@ export class ProductsRecentComponent implements OnInit {
       "PRO_PRICE",
       "PRO_IMAGE"
     ];
+    const filter = { "PRO_ENABLED": true };
     const order = [{ "columnName": "PRO_ID", "ascendent": false }]
-    this.service.advancedQuery(null, columns, "product", null, 0, 5, order)
+    this.service.advancedQuery(filter, columns, "product", null, 0, 5, order)
       .subscribe((data) => {
         if (data.data.length > 0) {
           this.prodList = data.data;
