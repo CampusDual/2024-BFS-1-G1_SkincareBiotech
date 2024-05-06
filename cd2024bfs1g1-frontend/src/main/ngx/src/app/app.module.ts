@@ -10,8 +10,6 @@ import { CONFIG } from './app.config';
 import { MainService } from './shared/services/main.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewOrderDetailsComponent } from './new-order-details/new-order-details.component';
-
 // Standard providers...
 // Defining custom providers (if needed)...
 export const customProviders: any = [
@@ -31,7 +29,6 @@ export const customProviders: any = [
   ],
   declarations: [
     AppComponent,
-    NewOrderDetailsComponent
   ],
   bootstrap: [
     AppComponent
