@@ -20,5 +20,6 @@ public class ProductDao extends OntimizeJdbcDaoSupport {
     public static final String PRO_PRICE = "PRO_PRICE";
     public static final String PRO_IMAGE = "PRO_IMAGE";
     public static final String PRO_ENABLED = "PRO_ENABLED";
+    public static final String PRO_SALE = "PRO_SALE";
 
 }

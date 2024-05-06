@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.parser.Entity;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +29,10 @@ public class ProductService implements IProductService {
     @Override
     public EntityResult productQuery(Map<String, Object> keysValues, List<String> attributes)
             throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.productDao, keysValues, attributes);
+        List<String> columns = new ArrayList<>(attributes);
+        columns.remove("PRO_SALE_ACTIVATE");
+        EntityResult er = this.daoHelper.query(this.productDao, keysValues, columns);
+        return er;
     }
 
     @Override
@@ -38,7 +43,12 @@ public class ProductService implements IProductService {
     @Override
     public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
-        return this.daoHelper.update(this.productDao, attrMap, keyMap);
+        Map<String, Object> values = new HashMap<>(attrMap);
+        if(!((boolean) values.get("PRO_SALE_ACTIVATE"))){
+            values.replace(this.productDao.PRO_SALE, null);
+        }
+        values.remove("PRO_SALE_ACTIVATE");
+        return this.daoHelper.update(this.productDao, values, keyMap);
     }
 
     @Override
