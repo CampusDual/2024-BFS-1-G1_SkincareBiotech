@@ -55,7 +55,8 @@ resources:
 
 database:
 ## Provided as basic setup. Configure as needed. Provided instance is dev environment instance
-  url: jdbc:postgresql://cd2024bfs1g1-postgresql/cd2024bfs1g1-dev ## injected as DATABASE_URL environment variable
+  url: jdbc:postgresql://45.84.210.174:65432/cd2024bfs1g1 ## injected as DATABASE_URL environment variable
+  secret: cd2024bfs1g1-dev-db-secret
 
 jwt:
   enabled: false
