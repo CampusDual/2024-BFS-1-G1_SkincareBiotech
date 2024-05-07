@@ -4,6 +4,10 @@ on:
     paths-ignore:
       - 'charts/**'
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Run workflow'
 env:
   REPO_NAME: ${{ github.event.repository.name }}  
   TAG_PREFIX: "pro"
