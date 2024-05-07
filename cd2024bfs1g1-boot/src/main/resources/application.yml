@@ -70,7 +70,7 @@ spring:
   application:
     name: cd2024bfs1g1
   flyway:
-    enabled: true
+    enabled: ${FLYWAY_ENABLED:true}
     locations: classpath:/db/migration/
   liquibase:
     enabled: false
