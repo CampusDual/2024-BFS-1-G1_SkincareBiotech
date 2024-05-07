@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
   ## provided as basic setup. replace as needed
   repository: ghcr.io/campusdual/cd2024bfs1g1
-  version: 0.0.0
+  version: dev82e0d10
 imagePullSecrets: 
   - name: "github-ecr-cred" 
 nameOverride: ""
@@ -106,7 +106,7 @@ service:
 ingress:
   enabled: true
   annotations:
-    kubernetes.io/ingress.class: nginx   ## comment to deploy when not in aws clusters
+    kubernetes.io/ingress.class: traefik   ## comment to deploy when not in aws clusters
     kubernetes.io/tls-acme: "true" ## comment to deploy when not in aws clusters
     cert-manager.io/cluster-issuer: cert-manager-letsencrypt-production-route53 # use cert-manager-letsencrypt-staging-route53 for testing environments
   host: cd2024bfs1g1-dev.dev.campusdual.com # restricted to *dev.imatia.com by default in development clusters
@@ -159,9 +159,11 @@ storage:
 
 jvmOptions: "-Xmx300m -Xms100m"  ## adjust according to pod requests
 
+flyway:
+  enabled: false
 
 postgresql:
-  enabled: true
+  enabled: false
   # PostgreSQL Database to create
   postgresqlDatabase: cd2024bfs1g1-dev
   existingSecret: cd2024bfs1g1-dev-db-secret   
