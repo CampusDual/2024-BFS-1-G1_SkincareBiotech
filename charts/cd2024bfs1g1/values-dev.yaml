@@ -76,16 +76,16 @@ grafana:
 
 # Optional configmap. Will be injected as environment variables.
 configmap:
-  enabled: false
+  enabled: true
   ## defaults to chart name + -config
   #name:
-  #data:
+  data:
   #  key: "value"
   #  key2: "value2"
   #  S3_ENDPOINT: "xxxxxx"
   #  S3_BUCKET: "xxxxxx"
   #  S3_REGION: "xxxxxx"
-  #  ENVIRONMENT_PROFILE: "staging/production/..."
+    ENVIRONMENT_PROFILE: "dev"
   #  KEYCLOAK_SERVICE
   #  KEYCLOAK_AUTH_CLIENT: cd2024bfs1g1-backend
   #  KEYCLOAK_AUTH_FRONT_CLIENT: cd2024bfs1g1-frontend
@@ -159,9 +159,6 @@ storage:
   mountPath: "/opt/cd2024bfs1g1/"
 
 jvmOptions: "-Xmx300m -Xms100m"  ## adjust according to pod requests
-
-flyway:
-  enabled: false
 
 postgresql:
   enabled: false

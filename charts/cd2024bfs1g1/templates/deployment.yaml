@@ -69,10 +69,6 @@ spec:
           - name: DATABASE_SERVICE
             value: {{ .Values.database.service }}
         {{- end }}
-        {{- if and .Values.flyway .Values.flyway.enabled }}
-          - name: FLYWAY_ENABLED
-            value: {{ .Values.flyway.enabled }}
-        {{- end }}
           - name: DATABASE_URL
             value: {{ .Values.database.url }}
           - name: DATABASE_USER
