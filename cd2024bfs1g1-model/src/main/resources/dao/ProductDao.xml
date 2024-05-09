@@ -31,5 +31,17 @@
             ]]>
         </Sentence>
         </Query>
+
+        <Query id="SELLER_ID">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                    ${mainschema}.PRODUCTS
+                ]]>
+
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
