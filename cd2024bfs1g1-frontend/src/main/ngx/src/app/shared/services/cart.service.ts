@@ -6,21 +6,22 @@ import { Injectable } from '@angular/core';
 export class CartService {
 
   cart: any[] = [];
-  
 
-  addProductToCart(product: any){
-    let p = {id:product.PRO_ID, price:product.PRO_PRICE, units: 0};
+
+  addProductToCart(product: any) {
+    let p = { id: product.PRO_ID, price: product.PRO_PRICE, units: 1 };
     this.loadLocalStorageCart();
-    if (p.id) {
-      p.units++;
-      // this.updateProduct(p.id, p.units);
-    }else{
+
+    let p_ls = this.cart.find(x => x.id == p.id);
+
+    if (p_ls) {
+      p_ls.units += 1;
+    } else {
       this.cart.push(p);
     }
-    
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    
   }
-  
   loadLocalStorageCart(): void {
     let localStorageCart = localStorage.getItem('cart');
     if (localStorageCart) {
@@ -30,10 +31,6 @@ export class CartService {
     }
   }
 
-  // updateProduct(p.id, p.units){
-  //   p.units++;
-  // }
-
-  constructor() { 
+  constructor() {
   }
 }
