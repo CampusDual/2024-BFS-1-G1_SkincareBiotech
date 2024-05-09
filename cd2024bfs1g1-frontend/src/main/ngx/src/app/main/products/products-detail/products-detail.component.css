@@ -1,8 +1,9 @@
-.image{
-    height: 70vh;
+.image {
+    max-width: 400px;
 }
-div{
-    margin-top: 2vh;
+
+div {
+    margin: 10px;
 }
 
 #proSaleActivate {
