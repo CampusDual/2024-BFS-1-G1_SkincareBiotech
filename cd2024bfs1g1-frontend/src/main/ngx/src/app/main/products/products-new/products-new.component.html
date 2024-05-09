@@ -8,7 +8,9 @@
                     <o-text-input fxFlex="25" attr="PRO_NAME" class="input-padding" step="0" grouping="no"
                         required="yes"></o-text-input>
                     <o-real-input fxFlex="25" attr="PRO_PRICE" required="yes" max-decimal-digits="2"
-                        min-decimal-digits="2" decimal-separator=","></o-real-input>
+                        min-decimal-digits="2" decimal-separator="," (onChange)="getPrice($event)"></o-real-input>
+                    <o-real-input fxFlex="25" attr="PRO_SALE" required="no" max-decimal-digits="2"
+                        min-decimal-digits="2" decimal-separator="," max="{{sale_max}}"></o-real-input>
                 </div>
                 <div>
                     <o-combo fxFlex="51" attr="CAT_ID" searchable="yes" service="categories" entity="category"
