@@ -28,22 +28,5 @@
             ]]>
             </Sentence>
         </Query>
-        <Query id="ORD_SELLER">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="PRO_ID" prefix="P"/>
-            </AmbiguousColumns>
-            <Sentence>
-                <![CDATA[
-               SELECT
-                  #COLUMNS#
-               FROM
-                  ${mainschema}.ORDERS AS O
-                  INNER JOIN ${mainschema}.PRODUCTS AS P ON O.PRO_ID = P.PRO_ID
-                  INNER JOIN ${mainschema}.USR_USER AS UWU on P.PRO_SELLER_ID  = UWU.USR_ID
-               #WHERE#
-               #ORDER#
-            ]]>
-            </Sentence>
-        </Query>
     </Queries>
 </JdbcEntitySetup>
