@@ -1,7 +1,7 @@
 <o-form-layout-manager attr="ordersHome" title="{{'ORDERS' | oTranslate}}" separator=" " mode="dialog">
     <o-table attr="ordersTable" service="orders" entity="order" keys="ORD_ID"
         columns="ORD_ID;PRO_NAME;ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_ADDRESS;ORD_SENT"
-        visible-columns="ORD_NAME;PRO_NAME;ORD_PHONE;ORD_SENT" query-rows="15">
+        visible-columns="ORD_NAME;PRO_NAME;ORD_PHONE;ORD_SENT" query-rows="15" delete-button='no'>
         <o-table-column attr="ORD_NAME" title="ORD_NAME" width="150px"></o-table-column>
         <o-table-column attr="PRO_NAME" title="PRO_NAME_COMPLETE" width="150px"></o-table-column>
         <o-table-column attr="ORD_PHONE" title="ORD_PHONE" width="150px"></o-table-column>

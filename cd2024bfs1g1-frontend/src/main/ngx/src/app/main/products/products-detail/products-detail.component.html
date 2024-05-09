@@ -1,4 +1,4 @@
-<o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U;D"
+<o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
     show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="onDataLoaded($event)">
     <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
     <div fxLayout="row">
@@ -11,6 +11,8 @@
         <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" style="height: 75vh;" title="PRO_DETAILS">
             <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
                 <o-text-input fxFlex="40" attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
+                <o-combo fxFlex="51" attr="CAT_ID" searchable="yes" service="categories" entity="category"
+                keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID" required="yes"></o-combo>
                 <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
             </div>
             <div>

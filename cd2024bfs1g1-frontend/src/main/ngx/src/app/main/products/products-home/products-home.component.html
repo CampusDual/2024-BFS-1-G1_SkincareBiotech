@@ -1,6 +1,6 @@
 <o-table attr="productsTable" service="products" entity="product" keys="PRO_ID"
     columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE"
-    visible-columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE" query-rows="20">
+    visible-columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE" query-rows="20" delete-button='no'>
     <o-table-column attr="PRO_PRICE" type="currency" currency-symbol="€" currency-symbol-position="right"
         thousand-separator="." decimal-separator="," content-align="center"></o-table-column>
     <o-table-column attr="PRO_IMAGE" title="IMAGE" orderable="no" searchable="no" type="image" avatar="yes"
