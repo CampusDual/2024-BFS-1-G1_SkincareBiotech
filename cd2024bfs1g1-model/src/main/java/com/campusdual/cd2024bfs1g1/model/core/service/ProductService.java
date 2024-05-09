@@ -2,15 +2,19 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IProductService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +33,7 @@ public class ProductService implements IProductService {
     @Override
     public EntityResult productQuery(Map<String, Object> keysValues, List<String> attributes)
             throws OntimizeJEERuntimeException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         List<String> columns = new ArrayList<>(attributes);
         columns.remove("PRO_SALE_ACTIVATE");
         EntityResult er = this.daoHelper.query(this.productDao, keysValues, columns);
@@ -58,7 +63,24 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public EntityResult productBySellerQuery(Map<String, Object> keysValues, List<String> attributes)
+            throws OntimizeJEERuntimeException, JsonProcessingException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(authentication.getPrincipal());
+        JsonNode rootNode = objectMapper.readTree(json);
+        JsonNode otherData = rootNode.path("otherData");
+        int userId = otherData.path("usr_id").asInt();
+
+        keysValues.put("pro_seller_id", userId);
+
+        EntityResult er = this.daoHelper.query(this.productDao, keysValues, attributes);
+        return er;
+    }
+
+    @Override
     public AdvancedEntityResult productPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy){
         return this.daoHelper.paginationQuery(this.productDao, keysValues, attributes, recordNumber, startIndex, orderBy);
     }
+
 }
