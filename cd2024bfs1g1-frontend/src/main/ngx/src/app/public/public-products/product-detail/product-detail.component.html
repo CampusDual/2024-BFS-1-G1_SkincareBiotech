@@ -9,7 +9,7 @@
             <div class="price" *ngIf="(sale != null); else priceBlock">
                 <div class="priceSale">
                     <p>
-                        <span>{{'SALE' | oTranslate}}:</span>{{ sale }} €
+                        <span>{{'SALE' | oTranslate}}: {{ sale }} €</span>
                     </p>
                     <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ price }} €</p>
                 </div>
@@ -18,7 +18,10 @@
                 <p class="regularPrice">{{price}}€</p>
             </ng-template>
 
-            <button class="buy-button" attr="BUY_BUTTON" (click)="createOrder()">{{'BUY_BUTTON' | oTranslate}}</button>
+            <div class="buttons">
+                <button class="buy-button" attr="BUY_BUTTON" (click)="createOrder()">{{'BUY_BUTTON' | oTranslate}}</button>
+                <button class="add-cart-button" attr="ADD_CART_BUTTON" (click)="addProductToCart(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
+            </div>
         </div>
     </div>
 </div>

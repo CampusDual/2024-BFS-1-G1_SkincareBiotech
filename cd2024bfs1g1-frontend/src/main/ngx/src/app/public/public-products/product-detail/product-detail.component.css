@@ -31,7 +31,8 @@
 }
 
 .priceSale p span {
-    margin-right: 3%;
+    margin-right: 3%;    
+    color:red;
 }
 
 .originalPrice {
@@ -44,7 +45,8 @@
     font-size: 1.5em;
     font-weight: 900;
     text-align: left;
-    margin-top: 10%;
+    margin-top: 10%; 
+    color: red;   
 }
 
 h1 {
@@ -82,4 +84,21 @@ h1 {
     font-size: large;
     text-transform: uppercase;
     font-weight: bolder;
+}
+
+.add-cart-button {
+    border-radius: 10px;
+    width: 150px;
+    height: 60px;
+    background-color: lightcyan;
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-left: 20px;
+
+}
+
+.buttons {
+    display: flex;
+    margin-top: 5%;
 }
