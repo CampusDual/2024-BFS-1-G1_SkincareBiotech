@@ -1,9 +1,16 @@
-.image {
-    max-width: 400px;
+.pro-details-title {
+    padding: 20px;
+}
+.div-container {
+    margin: 10px;
 }
 
-div {
-    margin: 10px;
+.pro-enabled-container {
+    padding-right: 30px;
+}
+
+.image-container {
+    max-width: 400px;
 }
 
 #proSaleActivate {
