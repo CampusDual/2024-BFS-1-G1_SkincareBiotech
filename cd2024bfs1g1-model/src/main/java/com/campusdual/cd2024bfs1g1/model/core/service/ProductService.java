@@ -31,9 +31,7 @@ public class ProductService implements IProductService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
-    public EntityResult productQuery(Map<String, Object> keysValues, List<String> attributes)
-            throws OntimizeJEERuntimeException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    public EntityResult productQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         List<String> columns = new ArrayList<>(attributes);
         columns.remove("PRO_SALE_ACTIVATE");
         EntityResult er = this.daoHelper.query(this.productDao, keysValues, columns);
@@ -41,15 +39,24 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public EntityResult productInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.productDao, attributes);
+    public EntityResult productInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(authentication.getPrincipal());
+        JsonNode rootNode = objectMapper.readTree(json);
+        JsonNode otherData = rootNode.path("otherData");
+        int userId = otherData.path("usr_id").asInt();
+        Map<String,Object> values = new HashMap<>(attributes);
+        values.put(ProductDao.PRO_SELLER_ID, userId);
+        EntityResult er = this.daoHelper.insert(this.productDao, values);
+        return er;
     }
 
     @Override
-    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
-            throws OntimizeJEERuntimeException {
+    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         Map<String, Object> values = new HashMap<>(attrMap);
-        if(!((boolean) values.get("PRO_SALE_ACTIVATE"))){
+        if (!((boolean) values.get("PRO_SALE_ACTIVATE"))) {
             values.replace(this.productDao.PRO_SALE, null);
         }
         values.remove("PRO_SALE_ACTIVATE");
@@ -71,15 +78,19 @@ public class ProductService implements IProductService {
         JsonNode rootNode = objectMapper.readTree(json);
         JsonNode otherData = rootNode.path("otherData");
         int userId = otherData.path("usr_id").asInt();
-
-        keysValues.put("pro_seller_id", userId);
-
-        EntityResult er = this.daoHelper.query(this.productDao, keysValues, attributes);
-        return er;
+        String userRol = authentication.getAuthorities().toString();
+        if(userRol.equals("[admin]")){
+            EntityResult er = this.daoHelper.query(this.productDao, keysValues, attributes);
+            return er;
+        }else{
+            keysValues.put(ProductDao.PRO_SELLER_ID, userId);
+            EntityResult er = this.daoHelper.query(this.productDao, keysValues, attributes);
+            return er;
+        }
     }
 
     @Override
-    public AdvancedEntityResult productPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy){
+    public AdvancedEntityResult productPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) {
         return this.daoHelper.paginationQuery(this.productDao, keysValues, attributes, recordNumber, startIndex, orderBy);
     }
 

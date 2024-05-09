@@ -12,7 +12,7 @@ public interface IProductService {
 
     public EntityResult productQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
-    public EntityResult productInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+    public EntityResult productInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
 
     public EntityResult productBySellerQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
 

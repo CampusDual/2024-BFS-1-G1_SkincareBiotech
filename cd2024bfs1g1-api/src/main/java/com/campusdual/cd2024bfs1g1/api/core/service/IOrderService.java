@@ -1,5 +1,6 @@
 package com.campusdual.cd2024bfs1g1.api.core.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 
@@ -16,4 +17,5 @@ public interface IOrderService {
 
     EntityResult orderDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
+    EntityResult ordertBySellerQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
 }
