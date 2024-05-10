@@ -112,6 +112,7 @@
   "PRO_SALE_ACTIVATE": "Activated sale",
   "ADDED_RECENTLY": "Added Recently",
   "BRA_NAME": "Name",
-  "BRANDS": "Brands"
+  "BRANDS": "Brands",
+  "BRA_ID":"Brands"
 
 }

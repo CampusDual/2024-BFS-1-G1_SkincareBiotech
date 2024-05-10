@@ -21,12 +21,15 @@ export class ProductsViewComponent implements OnInit {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
 
-  createFilter(values: Array<{ attr, value }>): Expression {
+  filter(values: Array<{ attr, value }>): Expression {
     // Prepare simple expressions from the filter components values
     let filters: Array<Expression> = [];
     values.forEach(fil => {
       if (fil.value) {
         if (fil.attr === 'CAT_ID') {
+          filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
+        }
+        if(fil.attr ==='BRA_ID'){
           filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
         }
       }

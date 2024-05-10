@@ -112,5 +112,6 @@
   "PRO_SALE_ACTIVATE": "Activar oferta",
   "ADDED_RECENTLY": "Añadido Recientemente",
   "BRA_NAME": "Nombre",
-  "BRANDS": "Marcas"
+  "BRANDS": "Marcas",
+  "BRA_ID":"Marcas"
 }
