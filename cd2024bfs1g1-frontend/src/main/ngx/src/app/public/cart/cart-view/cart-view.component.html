@@ -1,5 +1,3 @@
-<ul>
-    <li *ngFor="let item of cart">
-        {{item.id}} 
-    </li>
-</ul>
+<div *ngFor="let item of cart">
+  <app-cart-item [item]="item"></app-cart-item>
+</div>

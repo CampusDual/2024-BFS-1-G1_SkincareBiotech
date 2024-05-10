@@ -1,0 +1,10 @@
+.cart-item{
+    display: flex;
+    border: solid 1px black;
+    width: 80%;
+    margin: auto;
+}
+
+.item-details{
+    margin-left: 5%;
+}
