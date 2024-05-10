@@ -9,6 +9,8 @@ import java.util.Map;
 public interface IBrandService {
 
     public EntityResult brandQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
     public EntityResult brandInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
 
+    EntityResult brandUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }
