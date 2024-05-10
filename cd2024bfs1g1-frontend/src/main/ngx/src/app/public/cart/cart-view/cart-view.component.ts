@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { OntimizeService } from 'ontimize-web-ngx';
 import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
@@ -6,15 +7,21 @@ import { CartService } from 'src/app/shared/services/cart.service';
   templateUrl: './cart-view.component.html',
   styleUrls: ['./cart-view.component.css']
 })
-export class CartViewComponent {
+export class CartViewComponent implements OnInit{
 
-  @Input() item:any;
+  service : OntimizeService;
 
   cart : any[] = [];
 
   constructor(private cartService : CartService) {
     
     this.cart = this.cartService.getCart();
+    console.log(this.cart);
   } 
+
+  ngOnInit(): void {
+    this.cart = this.cartService.getCart();
+    console.log(this.cart);
+  }
 
 }
