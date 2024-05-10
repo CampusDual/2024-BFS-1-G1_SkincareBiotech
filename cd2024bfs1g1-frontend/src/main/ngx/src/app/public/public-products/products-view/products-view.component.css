@@ -14,10 +14,6 @@
     cursor: pointer;
     font-family: Poppins, "Helvetica Neue", sans-serif;
 }
-.filter-container{
-    display: flex;
-    align-items: left;
-}
 .tittle{
     font-size: 1.35em;
     text-align: left;

@@ -1,23 +1,15 @@
-<div class="filter-container">
-    <o-form class="filter"  editable-detail="no" show-header="no">
-        <o-row>
-            <o-combo  attr="CAT_ID" searchable="yes" read-only="no" service="categories" entity="category"
-                keys="CAT_ID" columns="CAT_ID;CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
-        </o-row>
-        <o-filter-builder #filterBuilder attr="categFilter" filters="CAT_ID:CAT_ID" [target]="productsGrid"
-            query-on-change="yes" query-on-change-delay="500" [expression-builder]="filter">
-        </o-filter-builder>
-    </o-form>
-    <o-form class="filter" editable-detail="no" show-header="no">
-        <o-row>
-            <o-combo  attr="BRA_ID" searchable="yes" read-only="no" service="brands" entity="brand"
-                keys="BRA_ID" columns="BRA_ID;BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID"></o-combo>
-        </o-row>
-        <o-filter-builder #filterBuilder attr="braFilter" filters="BRA_ID:BRA_ID" [target]="productsGrid"
-            query-on-change="yes" query-on-change-delay="500" [expression-builder]="filter">
-        </o-filter-builder>
-    </o-form>    
-</div>
+<o-form editable-detail="no" show-header="no">
+    <o-row>
+        <o-combo attr="CAT_ID" searchable="yes" read-only="no" service="categories" entity="category" keys="CAT_ID"
+            columns="CAT_ID;CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
+        <o-combo attr="BRA_ID" searchable="yes" read-only="no" service="brands" entity="brand" keys="BRA_ID"
+            columns="BRA_ID;BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID"></o-combo>
+    </o-row>
+
+    <o-filter-builder #filterBuilder attr="categFilter" filters="CAT_ID:CAT_ID;BRA_ID:BRA_ID" [target]="productsGrid"
+        query-on-change="yes" query-on-change-delay="500" [expression-builder]="filter">
+    </o-filter-builder>
+</o-form>
 <o-grid #productsGrid attr="productsGrid" service="products" entity="productEnabled" keys="PRO_ID"
     columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID;PRO_SALE" cols="5" query-rows="10"
     page-size-options="4;8;12" orderable="true" sortable-columns="PRO_PRICE:desc;PRO_PRICE:asc" insert-button="false"
