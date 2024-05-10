@@ -31,6 +31,14 @@ export class CartService {
     }
   }
 
+  getCart(): any[] {
+    this.loadLocalStorageCart();
+    return this.cart;
+
+  }
+
   constructor() {
   }
+
+
 }

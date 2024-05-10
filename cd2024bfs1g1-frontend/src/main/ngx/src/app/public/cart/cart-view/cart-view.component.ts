@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-cart-view',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart-view.component.css']
 })
 export class CartViewComponent {
+
+  @Input() item:any;
+
+  cart : any[] = [];
+
+  constructor(private cartService : CartService) {
+    
+    this.cart = this.cartService.getCart();
+  } 
 
 }
