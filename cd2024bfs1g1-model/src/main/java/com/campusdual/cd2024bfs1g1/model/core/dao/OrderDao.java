@@ -21,4 +21,5 @@ public class OrderDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ORD_ADDRESS = "ORD_ADDRESS";
     public static final String ATTR_ORD_SENT = "ORD_SENT";
     public static final String ATTR_ORD_PRICE = "ORD_PRICE";
+    public static final String ATTR_USR_ID = "USR_ID";
 }

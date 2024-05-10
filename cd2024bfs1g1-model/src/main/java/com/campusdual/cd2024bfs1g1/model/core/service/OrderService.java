@@ -3,6 +3,8 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 import com.campusdual.cd2024bfs1g1.api.core.service.IOrderService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.OrderDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
+import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -11,7 +13,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +34,9 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public EntityResult orderInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+    public EntityResult orderInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, JsonProcessingException {
 
+        int userId = Utils.getUserId();
         Map<String, Object> proIdMap = new HashMap<String, Object>();
         proIdMap.put(ProductDao.PRO_ID, attrMap.get(OrderDao.ATTR_PRO_ID));
         List<String> attrList = List.of(ProductDao.PRO_PRICE, ProductDao.PRO_SALE);
@@ -47,6 +49,7 @@ public class OrderService implements IOrderService {
         } else {
             attrMap.put(OrderDao.ATTR_ORD_PRICE, price);
         }
+        attrMap.put(OrderDao.ATTR_USR_ID, userId);
         return this.daoHelper.insert(this.orderDao, attrMap);
     }
 
