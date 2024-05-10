@@ -1,6 +1,15 @@
+.order-container{
+  display: flex;
+}
+
+.cart-container{
+  width: 50%;
+}
+
 .order-form {
     background-color: #f2f2f2;
     padding: 20px;
+    width: 50%;
 }
 
 .order-column {
