@@ -6,16 +6,16 @@ import { OrdersHistoryComponent } from './orders-history/orders-history.componen
 
 const routes: Routes = [
   {
+    path: 'history',
+    component: OrdersHistoryComponent
+  },
+  {
     path: 'details/:ORD_ID',
     component: NewOrderDetailsComponent
   },
   {
     path: ':PRO_ID',
     component: NewOrderComponent
-  },
-  {
-    path: 'history',
-    component: OrdersHistoryComponent
   },
 
 ];

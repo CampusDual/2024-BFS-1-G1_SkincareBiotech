@@ -11,7 +11,9 @@ public interface IOrderService {
 
     EntityResult orderQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
-    EntityResult orderInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, JsonProcessingException;
+    EntityResult orderByUserQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException, JsonProcessingException;
+
+    EntityResult orderInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, JsonProcessingException, JsonProcessingException;
 
     EntityResult orderUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 

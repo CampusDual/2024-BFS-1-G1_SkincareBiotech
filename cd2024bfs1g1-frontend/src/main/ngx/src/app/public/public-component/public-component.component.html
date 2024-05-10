@@ -1,16 +1,20 @@
-<o-bar-menu>
+<header class="cabecera">
+  <div>
     <a routerLink="">
-        <img src="./assets/images/skincare-biotech-high-resolution-logo-transparent.png" routerLink=""
-            alt="SkinCare BioTech">
-    </a>
+      <img src="./assets/images/skincare-biotech-high-resolution-logo-transparent.png" routerLink=""
+          alt="SkinCare BioTech">
+  </a>
+  </div>
+  <o-bar-menu>
     <o-bar-menu-group title="OPTIONS">
         <o-bar-menu-group title="LANGUAGE">
             <o-locale-bar-menu-item locale="en" title="English"></o-locale-bar-menu-item>
             <o-locale-bar-menu-item locale="es" title="Español"></o-locale-bar-menu-item>
         </o-bar-menu-group>
         <o-bar-menu-separator></o-bar-menu-separator>
-        <o-bar-menu-item title="ORDERS_HISTORY" icon="local_shipping" route="/orders-history"></o-bar-menu-item>
+        <o-bar-menu-item title="ORDERS_HISTORY" icon="local_shipping" route="/order/history"></o-bar-menu-item>
         <o-bar-menu-separator></o-bar-menu-separator>
     </o-bar-menu-group>
 </o-bar-menu>
-<router-outlet></router-outlet>
+</header>
+<router-outlet></router-outlet>  

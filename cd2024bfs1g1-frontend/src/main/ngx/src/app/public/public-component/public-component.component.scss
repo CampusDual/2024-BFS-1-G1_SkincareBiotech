@@ -1,7 +1,14 @@
 img{
-    display: inline;
+    display: block;
     height: 20px;
     width: 200px;
+    margin: auto;
+}
+.cabecera{
+    display: flex;
+}
+.cabecera o-bar-menu{
+    width: 90%;
 }
 
 .links{
