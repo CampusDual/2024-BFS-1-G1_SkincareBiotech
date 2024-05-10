@@ -1,9 +1,12 @@
 <o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
     show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="onDataLoaded($event)">
     <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
-    <o-column title="PRO_DETAILS" class="pro-details-title">
-        <div fxLayoutAlign="end center" class="pro-enabled-container">
-            <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no" layout-align="end center"></o-slide-toggle>
+    <o-column >
+        <div class="header-area">
+            <div class="pro-details-title">{{'PRO_DETAILS' | oTranslate}}</div>
+            <div fxLayoutAlign="end center" class="pro-enabled-container">
+                <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no" layout-align="end center"></o-slide-toggle>
+            </div>
         </div>
         <div fxLayout="row" class="div-container">
             <div class="div-container">
@@ -14,16 +17,15 @@
                 <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center" class="div-container">
                     <o-text-input fxFlex="49" attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
                     <o-combo fxFlex="49" attr="CAT_ID" searchable="yes" service="categories" entity="category"
-                    keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID" required="yes"></o-combo>
-                    
+                    keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID" required="yes" null-selection="no"></o-combo>
                 </div>
                 <div class="div-container">
-                    <o-currency-input fxFlex="20" attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
+                    <o-currency-input fxFlex="40" attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
                     <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE" label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
-                    <o-currency-input #proSaleCurrency fxFlex="20" attr="PRO_SALE" label="PRO_SALE" required="no"></o-currency-input>
+                    <o-currency-input #proSaleCurrency fxFlex="40" attr="PRO_SALE" label="PRO_SALE" required="no"></o-currency-input>
                 </div>
                 <div class="div-container">
-                    <o-textarea-input attr="PRO_DESCRIPTION" label="PRO_DESCRIPTION" required="yes" rows="8"></o-textarea-input>
+                    <o-textarea-input attr="PRO_DESCRIPTION" label="PRO_DESCRIPTION" required="yes" rows="20" fxFlex="60"></o-textarea-input>
                 </div>
             </o-column>
         </div>
