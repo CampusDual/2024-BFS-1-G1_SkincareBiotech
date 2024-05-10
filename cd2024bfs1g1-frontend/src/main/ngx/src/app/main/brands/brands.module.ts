@@ -5,11 +5,13 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 
 import { BrandsRoutingModule } from './brands-routing.module';
 import { BrandsHomeComponent } from './brands-home/brands-home.component';
+import { BrandNewComponent } from './brand-new/brand-new.component';
 
 
 @NgModule({
   declarations: [
-    BrandsHomeComponent
+    BrandsHomeComponent,
+    BrandNewComponent
   ],
   imports: [
     CommonModule,

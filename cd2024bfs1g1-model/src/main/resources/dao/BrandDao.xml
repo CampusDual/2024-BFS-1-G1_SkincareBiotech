@@ -11,5 +11,5 @@
     <UpdateKeys>
         <Column>BRA_ID</Column>
     </UpdateKeys>
-    <GeneratedKey>BRA_ID</GeneratedKey>
+    <GeneratedKey>bra_id</GeneratedKey>
 </JdbcEntitySetup>
