@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { NewOrderDetailsComponent } from './new-order-details/new-order-details.component';
+import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: ':PRO_ID',
     component: NewOrderComponent
+  },
+  {
+    path: 'history',
+    component: OrdersHistoryComponent
   },
 
 ];
