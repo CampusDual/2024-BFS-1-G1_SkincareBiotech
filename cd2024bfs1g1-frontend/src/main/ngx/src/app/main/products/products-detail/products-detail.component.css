@@ -1,7 +1,19 @@
 .pro-details-title {
-    padding: 20px;
+    font-weight: bold;
+    font-size: large;
+    padding: 20px;   
 }
+
+.header-area{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
 .div-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 10px;
 }
 
