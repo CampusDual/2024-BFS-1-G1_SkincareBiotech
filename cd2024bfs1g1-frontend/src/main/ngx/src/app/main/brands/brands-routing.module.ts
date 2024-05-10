@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrandsHomeComponent } from './brands-home/brands-home.component';
 import { BrandNewComponent } from './brand-new/brand-new.component';
+import { BrandsDetailComponent } from './brands-detail/brands-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -10,6 +11,10 @@ const routes: Routes = [{
 {
   path: 'new',
   component: BrandNewComponent
+},
+{
+  path: ':BRA_ID',
+  component: BrandsDetailComponent
 }
 ];
 
