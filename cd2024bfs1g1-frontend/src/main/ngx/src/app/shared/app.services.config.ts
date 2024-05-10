@@ -12,7 +12,7 @@ export const SERVICE_CONFIG: Object = {
     'path': '/categories'
   },
   'brands':{
-    'path:': '/brands'
+    'path': '/brands'
   },
   permissions: {
     'path': '/permissions'
