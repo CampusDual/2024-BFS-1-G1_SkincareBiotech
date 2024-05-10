@@ -11,7 +11,6 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
@@ -68,4 +67,17 @@ public class OrderService implements IOrderService {
     public EntityResult orderDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.orderDao, keyMap);
     }
+
+    @Override
+    public EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException {
+
+        int userId = Utils.getUserId();
+        Map<String, Object> filter = new HashMap<>(keysValues);
+        filter.put(ProductDao.PRO_SELLER_ID, userId);
+        EntityResult er = this.daoHelper.query(this.orderDao, filter, attributes);
+        return er;
+    }
+
+
+
 }
