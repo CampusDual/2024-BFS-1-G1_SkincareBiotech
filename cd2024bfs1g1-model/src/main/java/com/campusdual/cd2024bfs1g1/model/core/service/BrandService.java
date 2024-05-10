@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Service("BrandService")
 @Lazy
-public class BrandService implements IBrandService{
+public class BrandService implements IBrandService {
 
 
     @Autowired
@@ -31,5 +31,11 @@ public class BrandService implements IBrandService{
     @Override
     public EntityResult brandInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.brandDao, attributes);
+    }
+
+    @Override
+    public EntityResult brandUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.brandDao, attrMap, keyMap);
     }
 }
