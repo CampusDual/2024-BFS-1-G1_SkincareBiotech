@@ -9,10 +9,10 @@ export class CartService {
 
 
   addProductToCart(product: any) {
-    let p = { id: product.PRO_ID, price: product.PRO_PRICE, units: 1 };
+    let p = { id: product.PRO_ID, units: 1 };
     this.loadLocalStorageCart();
 
-    let p_ls = this.cart.find(x => x.id == p.id);
+    let p_ls = this.cart.find(x => x.id === p.id);
 
     if (p_ls) {
       p_ls.units += 1;
@@ -20,8 +20,26 @@ export class CartService {
       this.cart.push(p);
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    
+
   }
+
+  removeItem(productID: any) {
+    this.loadLocalStorageCart();
+
+    let p_ls = this.cart.find(x => x.id === productID);
+
+    if (p_ls === undefined) {
+      return;
+    }
+
+    p_ls.units -= 1;
+    if (p_ls.units === 0) {
+      this.cart = this.cart.filter(x => x.id !== productID)
+    }
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+
+  }
+
   loadLocalStorageCart(): void {
     let localStorageCart = localStorage.getItem('cart');
     if (localStorageCart) {

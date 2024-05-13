@@ -1,0 +1,13 @@
+<div class="cart-item">
+  <div>
+    <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
+  </div>
+  <div class="item-details">
+    <div>{{product.PRO_NAME}}</div>
+    <div>{{product.PRO_PRICE}}€</div>
+    <div>{{item.units}}</div>
+    <div>Total: {{itemAmount(product)}}€</div>
+    <div><button id="add_btn" (click)="addItem()">+</button></div>
+    <div><button id="rm_btn" (click)="removeItem()">-</button></div>
+  </div>
+</div>

@@ -10,18 +10,18 @@ import { CartService } from 'src/app/shared/services/cart.service';
 export class CartViewComponent implements OnInit{
 
   service : OntimizeService;
-
+  
   cart : any[] = [];
 
   constructor(private cartService : CartService) {
     
     this.cart = this.cartService.getCart();
-    console.log(this.cart);
   } 
 
   ngOnInit(): void {
-    this.cart = this.cartService.getCart();
-    console.log(this.cart);
   }
 
+  updateCart(): void {
+    this.cart = this.cartService.getCart();
+  }
 }
