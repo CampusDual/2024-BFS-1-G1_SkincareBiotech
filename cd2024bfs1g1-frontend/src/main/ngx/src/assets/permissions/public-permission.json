@@ -1,4 +1,6 @@
 {
+  "code": 0,
+  "data": {
     "menu": [
       {
         "attr": "home",
@@ -36,4 +38,5 @@
         "enabled": false
       }
     ]
+  }
 }

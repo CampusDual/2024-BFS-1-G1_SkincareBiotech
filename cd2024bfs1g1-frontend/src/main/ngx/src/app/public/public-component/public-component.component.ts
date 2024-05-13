@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomPermissionsService } from 'src/app/shared/services/custom-permissions.service';
 
 @Component({
   selector: 'app-public-component',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicComponentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private permissionService: CustomPermissionsService,
+  ) { }
 
   ngOnInit() {
+    this.permissionService.loadPermissions().subscribe();
   }
 
 }
