@@ -1,42 +1,38 @@
-<o-form attr="productsForm" service="products" entity="product" PRO_ID="PRO_ID">
-    <o-column class="pro-enabled-container">
-        <div class="header-area">
-            <div class="add-details-title">{{'ADD_PRODUCT' | oTranslate}}</div>
-            <div fxLayoutAlign="end center" class="pro-enabled-container">
-                <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no" layout-align="end center"></o-slide-toggle>
+<o-form attr="productsForm" service="products" entity="product" PRO_ID="PRO_ID" after-insert-mode="close" (afterInsert)="onInsert($event)">
+    <div class="add-container">
+        <o-column class="pro-enabled-container">
+            <div class="header-area">
+                <div class="add-details-title" fxLayoutAlign="start center">{{'ADD_PRODUCT' | oTranslate}}</div>
             </div>
-        </div>
-        <div fxLayout="row" fxLayoutGap="8px">
-            <o-image id="image" fxFlex="30" attr="PRO_IMAGE" empty-image="assets/images/no-image.png"
-                sql-type="OTHER"></o-image>
-            <div fxLayout="column" fxFlex="250" fxLayoutGap="10px">
-                <div fxLayout="row" fxLayoutGap="10px">
-                    <o-text-input fxFlex="110" attr="PRO_NAME" class="input-padding" step="0" grouping="no"
-                        required="yes"></o-text-input>
-                        <o-combo fxFlex="30" attr="CAT_ID" searchable="yes" service="categories" entity="category"
-                        keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID" required="yes" null-selection="no"></o-combo>
-                </div>
-                <div class="div-container">
-                    <o-real-input fxFlex="40" attr="PRO_PRICE" required="yes" max-decimal-digits="2"
-                        min-decimal-digits="2" decimal-separator=","></o-real-input>
-                        <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE" label="PRO_SALE_ACTIVATE" read-only="no"></o-slide-toggle>
-                    <o-real-input fxFlex="40" attr="PRO_SALE" required="no" max-decimal-digits="2"
-                        min-decimal-digits="2" decimal-separator=","></o-real-input>
-                </div>
-                <div>
-                    <o-combo fxFlex="51" attr="CAT_ID" searchable="yes" service="categories" entity="category"
-                        keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
-                </div>
-                <div>
-                    <o-combo fxFlex="51" attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
-                        columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
-                        null-selection="no"></o-combo>
-                </div>
-                <div>
-                    <o-textarea-input fxFlex="51" attr="PRO_DESCRIPTION" class="input-padding"
-                        required="yes"></o-textarea-input>
+            <div fxLayout="row" fxLayoutGap="8px">
+                <o-image id="image" fxFlex="30" attr="PRO_IMAGE" empty-image="assets/images/no-image.png"
+                    sql-type="OTHER"></o-image>
+                <div fxLayout="column" fxFlex="250" fxLayoutGap="10px">
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <o-text-input fxFlex="50" attr="PRO_NAME" step="0" grouping="no" required="yes"></o-text-input>
+                        <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+                    </div>
+                    <div class="div-container" fxLayoutGap="10px">
+                        <o-real-input fxFlex="25" attr="PRO_PRICE" required="yes" max-decimal-digits="2"
+                            min-decimal-digits="2" decimal-separator=","></o-real-input>
+                        <o-currency-input #proSaleCurrency fxFlex="24" attr="PRO_SALE" label="PRO_SALE"
+                            required="no"></o-currency-input>
+                        <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE"
+                            label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
+                    </div>
+                    <div fxLayoutGap="10px">
+                        <o-combo fxFlex="25" attr="CAT_ID" searchable="yes" service="categories" entity="category"
+                            keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"
+                            required="yes" null-selection="no"></o-combo>
+                        <o-combo fxFlex="24" attr="BRA_ID" searchable="yes" service="brands" entity="brand"
+                            keys="BRA_ID" columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID"
+                            required="yes" null-selection="no"></o-combo>
+                    </div>
+                    <div>
+                        <o-textarea-input fxFlex="35vw" attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
+                    </div>
                 </div>
             </div>
-        </div>
-    </o-column>
+        </o-column>
+    </div>
 </o-form>

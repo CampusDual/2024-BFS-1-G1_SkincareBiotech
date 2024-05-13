@@ -8,24 +8,24 @@
                     sql-type="OTHER"></o-image>
             </div>
         </o-column>
-        <o-column  title="PRO_DETAILS" class="descriptionContainer">
+        <o-column  title="PRO_DETAILS" class="descriptionContainer" >
             <div fxLayout="row" fxLayoutGap="4vh" fxLayoutAlign="start center">
                 <o-text-input fxFlex="40" attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
                 <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
             </div>
-            <div>
+            <div fxLayoutGap="2vh">
                 <o-currency-input fxFlex="20" attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
-                <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE" label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
                 <o-currency-input #proSaleCurrency fxFlex="20" attr="PRO_SALE" label="PRO_SALE" required="no"></o-currency-input>
+                <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE" label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
             </div>
-            <div fxLayoutGap="3vh">
+            <div fxLayoutGap="2vh">
                 <o-combo fxFlex="25" attr="CAT_ID" searchable="yes" service="categories" entity="category"
                         keys="CAT_ID" columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
                 <o-combo fxFlex="25" attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
                     columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
                     null-selection="no"></o-combo>
             </div>
-            <div  class="textDescriptionContainer">
+            <div class="textDescriptionContainer">
                 <o-textarea-input fxFlex="75" attr="PRO_DESCRIPTION" label="PRO_DESCRIPTION" required="yes"></o-textarea-input>
             </div>
         </o-column>

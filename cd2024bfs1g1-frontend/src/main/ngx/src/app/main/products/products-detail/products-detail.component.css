@@ -1,5 +1,3 @@
-
-
 .gridContainer{
     display: grid;
     margin-top: 2vh;
@@ -9,14 +7,16 @@
 
 .imgContainer{
     padding-left: 2vh;
+    margin-top: 3vh;
 }
 
 .descriptionContainer{
     padding-top: 3vh;
+    margin-top: 3vh;
 }
 
-div{
-    margin-top: 3vh;
+.descriptionContainer div{
+    margin-top: 2vh;
 }
 
 #proSaleActivate {

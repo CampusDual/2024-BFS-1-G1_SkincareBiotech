@@ -11,17 +11,19 @@
 .div-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
-.pro-enabled-container {
-    padding-right: 15px;
-    padding-left: 15px;
+.add-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding: 5%;
+    align-items: space-around;
+    background-color: white;
 }
+
 .image-container {
     max-width: 400px;
 }
-#proSaleActivate {
-    margin: 0px 2%;
-}
+
 
 
