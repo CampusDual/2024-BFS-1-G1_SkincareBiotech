@@ -1,4 +1,4 @@
-<o-form attr="productsForm" service="products" entity="product" PRO_ID="PRO_ID" (onInsert)="onInsert($event)">
+<o-form attr="productsForm" service="products" entity="product" PRO_ID="PRO_ID">
     <o-column class="pro-enabled-container">
         <div class="header-area">
             <div class="add-details-title">{{'ADD_PRODUCT' | oTranslate}}</div>
@@ -19,7 +19,7 @@
                 <div class="div-container">
                     <o-real-input fxFlex="40" attr="PRO_PRICE" required="yes" max-decimal-digits="2"
                         min-decimal-digits="2" decimal-separator=","></o-real-input>
-                        <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE" label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
+                        <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE" label="PRO_SALE_ACTIVATE" read-only="no"></o-slide-toggle>
                     <o-real-input fxFlex="40" attr="PRO_SALE" required="no" max-decimal-digits="2"
                         min-decimal-digits="2" decimal-separator=","></o-real-input>
                 </div>
