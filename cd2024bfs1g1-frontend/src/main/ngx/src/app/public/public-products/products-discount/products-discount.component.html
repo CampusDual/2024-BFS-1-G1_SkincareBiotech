@@ -1,0 +1,13 @@
+<h2>{{'BEST_DISCOUNTS' | oTranslate}}</h2>
+<div class="container">
+  <div *ngFor="let prod of prodList">
+    <div class="productCard" routerLink="{{prod.PRO_ID}}">
+      <img alt="Imagen_producto" [src]="getImageSrc(prod.PRO_IMAGE)" class="img_produc">
+      <div class="despre">
+        <span class="titulo">{{ prod.PRO_NAME }}</span>
+        <span class="precio">{{ prod.PRO_SALE | number: '1.2-2' }} €</span>
+        <span class="descuento">{{'DISCOUNT' | oTranslate}}: {{ prod.discount | number: '1.2-2' }} %</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,13 +6,15 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductsViewComponent } from './products-view/products-view.component';
 import { ProductsRecentComponent } from './products-recent/products-recent.component';
 import { ProductsFeaturedComponent } from './products-featured/products-featured.component';
+import { ProductsDiscountComponent } from './products-discount/products-discount.component';
 
 @NgModule({
   declarations: [
     ProductDetailComponent,
     ProductsViewComponent,
     ProductsFeaturedComponent,
-    ProductsRecentComponent
+    ProductsRecentComponent,
+    ProductsDiscountComponent
   ],
   imports: [
     CommonModule,
