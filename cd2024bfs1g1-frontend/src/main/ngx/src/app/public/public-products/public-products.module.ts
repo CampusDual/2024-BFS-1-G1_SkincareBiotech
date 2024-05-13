@@ -7,6 +7,7 @@ import { ProductsViewComponent } from './products-view/products-view.component';
 import { ProductsRecentComponent } from './products-recent/products-recent.component';
 import { ProductsFeaturedComponent } from './products-featured/products-featured.component';
 import { ProductsDiscountComponent } from './products-discount/products-discount.component';
+import { ProductCardComponent } from 'src/app/shared/components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ProductsDiscountComponent } from './products-discount/products-discount
     ProductsViewComponent,
     ProductsFeaturedComponent,
     ProductsRecentComponent,
-    ProductsDiscountComponent
+    ProductsDiscountComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,

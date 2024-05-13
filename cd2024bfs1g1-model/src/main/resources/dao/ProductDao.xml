@@ -32,11 +32,11 @@
             <Sentence>
                 <![CDATA[
                     WITH discount AS (
-                    SELECT *,
-                    ((pro_price - pro_sale) / pro_price) * 100 AS discount
-                    FROM ${mainschema}.PRODUCTS
-                    WHERE PRO_ENABLED = TRUE
-                )
+                        SELECT *,
+                        coalesce (((pro_price - pro_sale) / pro_price) * 100, 0) AS descuento
+                        FROM ${mainschema}.PRODUCTS
+                        WHERE PRO_ENABLED = TRUE
+                    )
                 SELECT #COLUMNS#
                 FROM discount
                 #WHERE#

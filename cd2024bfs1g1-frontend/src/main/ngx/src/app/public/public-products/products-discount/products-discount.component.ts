@@ -27,11 +27,11 @@ export class ProductsDiscountComponent implements OnInit {
       "PRO_DESCRIPTION",
       "PRO_PRICE",
       "PRO_SALE",
-      "discount",
+      "descuento",
       "PRO_IMAGE"
     ];
     const filter = {};
-    const order = [{ "columnName": "discount", "ascendent": false }]
+    const order = [{ "columnName": "descuento", "ascendent": false}]
     this.service.advancedQuery(filter, columns, "product", null, 0, 5, order)
       .subscribe((data) => {
         if (data.data.length > 0) {
