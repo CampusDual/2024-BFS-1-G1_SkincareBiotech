@@ -6,7 +6,14 @@
             columns="BRA_ID;BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID"></o-combo>
     </o-row>
 
-    <o-filter-builder #filterBuilder attr="categFilter" filters="CAT_ID:CAT_ID;BRA_ID:BRA_ID" [target]="productsGrid"
+    <div fxLayout="column" layout-padding fxFlex="30">
+        <label class="input-comp-title">{{ 'PRO_PRICE' | oTranslate }}</label>
+        <o-slider attr="PRO_PRICE"  read-only="no"
+           layout="column" [max]="maxPrice" min="0" thumb-label="true" step="5"
+           tick-interval="auto"></o-slider>
+      </div>
+
+    <o-filter-builder #filterBuilder attr="categFilter" filters="CAT_ID:CAT_ID;BRA_ID:BRA_ID;PRO_PRICE:PRO_PRICE" [target]="productsGrid"
         query-on-change="yes" query-on-change-delay="500" [expression-builder]="filter">
     </o-filter-builder>
 </o-form>

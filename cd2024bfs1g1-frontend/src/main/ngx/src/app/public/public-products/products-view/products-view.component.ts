@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FilterExpressionUtils, Expression } from 'ontimize-web-ngx';
+import { FilterExpressionUtils, Expression, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-products-view',
@@ -9,11 +9,30 @@ import { FilterExpressionUtils, Expression } from 'ontimize-web-ngx';
 })
 
 export class ProductsViewComponent implements OnInit {
+  service: OntimizeService;
+  maxPrice: number;
   constructor(
+    protected injector: Injector,
     protected sanitizer: DomSanitizer
-  ) { }
+  ) {
+    this.service = this.injector.get(OntimizeService)
+   }
   
   ngOnInit(): void {
+
+      const conf = this.service.getDefaultServiceConfiguration('products');
+      this.service.configureService(conf);
+      const columns = [
+        "PRO_PRICE",
+      ];
+      const filter = { "PRO_ENABLED": true };
+      const order = [{ "columnName": "PRO_PRICE", "ascendent": false }];
+      this.service.advancedQuery(filter, columns, "product", null, 0, 1, order)
+        .subscribe((data) => {
+          if (data.data.length > 0) {
+            this.maxPrice = data.data[0].PRO_PRICE;
+          }
+        })   
 
   }
 
@@ -32,6 +51,9 @@ export class ProductsViewComponent implements OnInit {
         if(fil.attr ==='BRA_ID'){
           filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
         }
+        if(fil.attr == 'PRO_PRICE'){
+          filters.push(FilterExpressionUtils.buildExpressionLessEqual(fil.attr, fil.value));
+        }
       }
     });
 
@@ -42,4 +64,9 @@ export class ProductsViewComponent implements OnInit {
       return null;
     }
   }
+
+
+
+
+  
 }
