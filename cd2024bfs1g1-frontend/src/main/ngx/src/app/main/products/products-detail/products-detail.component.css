@@ -1,8 +1,22 @@
-.image{
-    height: 70vh;
-}
-div{
+
+
+.gridContainer{
+    display: grid;
     margin-top: 2vh;
+    height: 60vh;
+    grid-template-columns: 30% 70%;
+}
+
+.imgContainer{
+    padding-left: 2vh;
+}
+
+.descriptionContainer{
+    padding-top: 3vh;
+}
+
+div{
+    margin-top: 3vh;
 }
 
 #proSaleActivate {
