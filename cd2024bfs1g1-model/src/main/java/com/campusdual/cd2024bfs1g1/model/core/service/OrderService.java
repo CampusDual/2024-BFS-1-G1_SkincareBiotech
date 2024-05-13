@@ -3,15 +3,15 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 import com.campusdual.cd2024bfs1g1.api.core.service.IOrderService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.OrderDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
+import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,4 +59,17 @@ public class OrderService implements IOrderService {
     public EntityResult orderDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.orderDao, keyMap);
     }
+
+    @Override
+    public EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException {
+
+        int userId = Utils.getUserId();
+        Map<String, Object> filter = new HashMap<>(keysValues);
+        filter.put(ProductDao.PRO_SELLER_ID, userId);
+        EntityResult er = this.daoHelper.query(this.orderDao, filter, attributes);
+        return er;
+    }
+
+
+
 }
