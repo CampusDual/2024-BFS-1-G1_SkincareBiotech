@@ -1,6 +1,9 @@
 <div class="order-container">
     <div class="cart-container">
         Carrito
+        <o-form *ngFor="let item of cart">
+
+        </o-form>
     </div>
 
 <o-form class="order-form" #formOrder attr="newOrder" service="orders" entity="order" keys="ORD_ID"
