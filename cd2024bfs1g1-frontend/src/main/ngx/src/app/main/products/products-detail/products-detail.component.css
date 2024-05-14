@@ -1,24 +1,60 @@
-.gridContainer{
+.add-container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+    width: 60%;
+    background-color: white;
+}
+.header-area{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.add-details-title {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 20px;   
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-left:50px;
+    width: 100%;
+    align-items: center;
+}
+#image{
+    max-width: 30%;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+}
+.name{
     display: grid;
-    margin-top: 2vh;
-    height: 60vh;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 90% 10%;
+    gap:10px;
+    margin:10px;
+}
+.prices {
+    display: grid;
+    grid-template-columns: 45% 45% 10%;
+    gap:5px;
+    margin:10px;
+}
+.filter{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    gap:10px;
+    margin:10px;
+}
+.description{
+    width: calc(90% - 10px);
+    margin:10px;
 }
 
-.imgContainer{
-    padding-left: 2vh;
-    margin-top: 3vh;
-}
 
-.descriptionContainer{
-    padding-top: 3vh;
-    margin-top: 3vh;
-}
 
-.descriptionContainer div{
-    margin-top: 2vh;
-}
-
-#proSaleActivate {
-    margin: 0px 2%;
-}

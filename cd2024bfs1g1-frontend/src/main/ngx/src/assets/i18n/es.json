@@ -114,5 +114,6 @@
   "BRA_NAME": "Nombre",
   "BRANDS": "Marcas",
   "ADD_BRAND": "Añadir Marca",
-  "BRA_ID":"Marcas"
+  "BRA_ID":"Marcas",
+  "DETAIL_PRODUCT":"Detalles Producto"
 }
