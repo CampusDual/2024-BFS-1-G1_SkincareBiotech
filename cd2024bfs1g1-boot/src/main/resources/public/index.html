@@ -11,13 +11,13 @@
         const queryString = window.location.search;
         if (queryString !== "") {
             const urlParams = new URLSearchParams(queryString);
-            url = url + "/featured/";
+            url = url + "/app";
             const redirect = urlParams.get('redirect');
             if(redirect && redirect !== '') {
                 url = url + "?redirect=" + redirect;
             }
         } else {
-            url = url + "/featured/";
+            url = url + "/app";
         }
         location.href = url;
      </script>
