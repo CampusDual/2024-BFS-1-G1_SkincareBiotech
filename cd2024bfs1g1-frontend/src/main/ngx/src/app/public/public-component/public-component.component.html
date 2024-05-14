@@ -6,8 +6,11 @@
 
     <div class="links">
         <a routerLink="/view">{{'PRODUCTS_LINK' | oTranslate}}</a>
-        <a routerLink="">{{'FEATURED_LINK' | oTranslate}}</a>
+        <a routerLink="">{{'FEATURED_LINK' | oTranslate}}</a>        
     </div>
+    <nav>
+        <button mat-raised-button color="primary" routerLink="/login">{{ 'LOGIN' | oTranslate }}</button>
+    </nav>
 
 </mat-toolbar>
 <router-outlet></router-outlet>
