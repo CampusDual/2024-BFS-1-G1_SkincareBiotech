@@ -2,7 +2,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService, NavigationService, ServiceResponse, OUserInfoService } from 'ontimize-web-ngx';
+import { AuthService, NavigationService, ServiceResponse, OUserInfoService, OntimizeService } from 'ontimize-web-ngx';
 import { Observable } from 'rxjs';
 import { MainService } from '../shared/services/main.service';
 import { UserInfoService } from '../shared/services/user-info.service';
@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit {
 
   public sessionExpired = false;
   private redirect = '/main';
+  private roleName = {
+    user: 'user',
+    seller: 'seller',
+    admin: 'admin',
+  };
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -29,7 +34,7 @@ export class LoginComponent implements OnInit {
     @Inject(MainService) private mainService: MainService,
     @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
     @Inject(UserInfoService) private userInfoService: UserInfoService,
-    @Inject(DomSanitizer) private domSanitizer: DomSanitizer
+    @Inject(DomSanitizer) private domSanitizer: DomSanitizer,
   ) {
     const qParamObs: Observable<any> = this.actRoute.queryParams;
     qParamObs.subscribe(params => {
@@ -67,16 +72,26 @@ export class LoginComponent implements OnInit {
       this.authService.login(userName, password)
         .subscribe(() => {
           self.sessionExpired = false;
-          this.loadUserInfo();
-          self.router.navigate([this.redirect]);
+          this.loadUserInfo((data) => {
+            this.mainService.getUserRolName().subscribe((rol) => {
+              if (rol.ROLE_NAME === self.roleName.user) {
+                self.router.navigate(['']);
+              } else if (rol.ROLE_NAME === self.roleName.seller || rol.ROLE_NAME === self.roleName.admin) {
+                self.router.navigate([this.redirect]);
+              } else {
+                self.router.navigate(['']);
+              }
+            });
+          });
         }, this.handleError);
     }
   }
 
-  private loadUserInfo() {
+  private loadUserInfo(cb) {
     this.mainService.getUserInfo()
       .subscribe(
         (result: ServiceResponse) => {
+          cb(result)
           this.userInfoService.storeUserInfo(result.data);
           let avatar = './assets/images/user_profile.png';
           if (result.data['usr_photo']) {

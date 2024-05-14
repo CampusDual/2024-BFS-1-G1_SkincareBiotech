@@ -1,42 +1,44 @@
 {
   "code": 0,
-  "data": {
-    "menu": [
-      {
-        "attr": "home",
-        "visible": false,
-        "enabled": false
-      },
-      {
-        "attr": "products",
-        "visible": false,
-        "enabled": false
-      },
-      {
-        "attr": "categories",
-        "visible": false,
-        "enabled": false
-      },
-      {
-        "attr": "orders",
-        "visible": false,
-        "enabled": false
-      },
-      {
-        "attr": "logout",
-        "visible": false,
-        "enabled": false
-      }
-    ],
-    "routes": [
-      {
-        "permissionId": "candidates-table-route",
-        "enabled": false
-      },
-      {
-        "permissionId": "home-route",
-        "enabled": false
-      }
-    ]
-  }
+  "data": [
+    {
+      "menu": [
+        {
+          "attr": "home",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "products",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "categories",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "orders",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "logout",
+          "visible": false,
+          "enabled": false
+        }
+      ],
+      "routes": [
+        {
+          "permissionId": "candidates-table-route",
+          "enabled": false
+        },
+        {
+          "permissionId": "home-route",
+          "enabled": false
+        }
+      ]
+    }
+  ]
 }

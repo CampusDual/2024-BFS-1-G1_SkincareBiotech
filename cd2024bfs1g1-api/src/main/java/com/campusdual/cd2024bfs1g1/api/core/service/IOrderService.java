@@ -9,8 +9,6 @@ import java.util.Map;
 
 public interface IOrderService {
 
-    EntityResult orderQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
-
     EntityResult orderByUserQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException, JsonProcessingException;
 
     EntityResult orderInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, JsonProcessingException, JsonProcessingException;
@@ -19,5 +17,5 @@ public interface IOrderService {
 
     EntityResult orderDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
-    EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
+    EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
 }
