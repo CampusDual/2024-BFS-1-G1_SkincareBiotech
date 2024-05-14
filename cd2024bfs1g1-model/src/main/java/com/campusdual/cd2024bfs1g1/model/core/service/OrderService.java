@@ -34,7 +34,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public EntityResult orderInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-
+/*
         Map<String, Object> proIdMap = new HashMap<String, Object>();
         proIdMap.put(ProductDao.PRO_ID, attrMap.get(OrderDao.ATTR_PRO_ID));
         List<String> attrList = List.of(ProductDao.PRO_PRICE, ProductDao.PRO_SALE);
@@ -48,6 +48,9 @@ public class OrderService implements IOrderService {
             attrMap.put(OrderDao.ATTR_ORD_PRICE, price);
         }
         return this.daoHelper.insert(this.orderDao, attrMap);
+
+ */
+        return null;
     }
 
     @Override
