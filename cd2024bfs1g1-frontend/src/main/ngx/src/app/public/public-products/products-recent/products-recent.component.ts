@@ -27,7 +27,7 @@ export class ProductsRecentComponent implements OnInit {
       "PRO_DESCRIPTION",
       "PRO_PRICE",
       "PRO_SALE",
-      "descuento",
+      "DISCOUNT",
       "PRO_IMAGE"
     ];
     const filter = { "PRO_ENABLED": true };
