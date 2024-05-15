@@ -6,6 +6,7 @@ import { AuthService, NavigationService, ServiceResponse, OUserInfoService, Onti
 import { Observable } from 'rxjs';
 import { MainService } from '../shared/services/main.service';
 import { UserInfoService } from '../shared/services/user-info.service';
+import { userRoleName, sellerRoleName, adminRoleName } from '../shared/constants';
 
 @Component({
   selector: 'login',
@@ -19,12 +20,8 @@ export class LoginComponent implements OnInit {
   public pwdCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
 
   public sessionExpired = false;
+  public sessionNotStarted = false;
   private redirect = '/main';
-  private roleName = {
-    user: 'user',
-    seller: 'seller',
-    admin: 'admin',
-  };
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -41,6 +38,9 @@ export class LoginComponent implements OnInit {
       if (params) {
         if (params['session-expired']) {
           this.sessionExpired = (params['session-expired'] === 'true');
+          this.authService.clearSessionData();
+        } else if (params['session-not-started']) {
+          this.sessionNotStarted = (params['session-not-started'] === 'true');
         } else {
           if (params['redirect']) {
             this.redirect = params['redirect'];
@@ -74,9 +74,9 @@ export class LoginComponent implements OnInit {
           self.sessionExpired = false;
           this.loadUserInfo((data) => {
             this.mainService.getUserRolName().subscribe((rol) => {
-              if (rol.ROLE_NAME === self.roleName.user) {
+              if (rol.ROLE_NAME === userRoleName) {
                 self.router.navigate(['']);
-              } else if (rol.ROLE_NAME === self.roleName.seller || rol.ROLE_NAME === self.roleName.admin) {
+              } else if (rol.ROLE_NAME === sellerRoleName || rol.ROLE_NAME === adminRoleName) {
                 self.router.navigate([this.redirect]);
               } else {
                 self.router.navigate(['']);

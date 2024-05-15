@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { AuthGuardService, PermissionsGuardService, PermissionsService } from 'ontimize-web-ngx';
-import { CustomPermissionsService } from './shared/services/custom-permissions.service';
-
+import { AuthGuardService } from 'ontimize-web-ngx';
 
 export const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
@@ -22,4 +20,4 @@ const opt: ExtraOptions = {
   exports: [RouterModule],
   providers: []
 })
-export class AppRoutingModule {  }
+export class AppRoutingModule { }

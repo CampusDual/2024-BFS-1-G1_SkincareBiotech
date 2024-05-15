@@ -110,5 +110,7 @@
   "PRODUCTS": "Products",
   "PRO_SALE": "Sale",
   "PRO_SALE_ACTIVATE": "Activated sale",
-  "ADDED_RECENTLY": "Added Recently"
+  "ADDED_RECENTLY": "Added Recently",
+  "ORDERS_HISTORY": "Orders History",
+  "MSG_BUY_BUTTON": "You must log in to buy a product."
 }

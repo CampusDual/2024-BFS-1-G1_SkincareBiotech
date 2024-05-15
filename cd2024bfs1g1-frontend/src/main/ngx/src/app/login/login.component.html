@@ -10,6 +10,7 @@
 
           <div class="login-title-container" fxLayout="column">
             <p class="session-expired text" *ngIf="sessionExpired">{{ 'ERROR_SESSION_EXPIRED' | oTranslate }}</p>
+            <p class="session-expired text" *ngIf="sessionNotStarted">{{ 'MSG_BUY_BUTTON' | oTranslate }}</p>
             <span class="title_text">{{ 'LOGIN_TITLE' | oTranslate }}:</span>
           </div>
 

@@ -21,7 +21,7 @@ export class CustomPermissionsService extends OntimizeEEPermissionsService {
   }
 
   loadPublicPermissions(): Observable<any> {
-    const url = '../../assets/permissions/public-permission.json';
+    const url = './assets/permissions/public-permission.json';
     const self = this;
     const dataObservable: Observable<any> = new Observable(_innerObserver => {
       self.httpClient.get(url).subscribe((res: any) => {

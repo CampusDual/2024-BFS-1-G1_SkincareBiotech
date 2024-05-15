@@ -34,7 +34,7 @@ public class OrderService implements IOrderService {
     public EntityResult orderByUserQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException, JsonProcessingException {
         int userId = Utils.getUserId();
         Map<String, Object> orderMap = new HashMap<>(keyMap);
-        orderMap.put(OrderDao.ATTR_USR_ID, userId);
+        orderMap.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
         return this.daoHelper.query(this.orderDao, orderMap, attrList);
     }
 
@@ -53,7 +53,7 @@ public class OrderService implements IOrderService {
         } else {
             attrMap.put(OrderDao.ATTR_ORD_PRICE, price);
         }
-        attrMap.put(UserDao.USR_ID, userId);
+        attrMap.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
         return this.daoHelper.insert(this.orderDao, attrMap);
     }
 

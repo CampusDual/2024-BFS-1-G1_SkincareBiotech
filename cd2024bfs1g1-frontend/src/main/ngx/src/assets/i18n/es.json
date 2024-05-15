@@ -110,5 +110,7 @@
   "PRODUCTS": "Productos",
   "PRO_SALE": "Oferta",
   "PRO_SALE_ACTIVATE": "Activar oferta",
-  "ADDED_RECENTLY": "Añadido Recientemente"
+  "ADDED_RECENTLY": "Añadido Recientemente",
+  "ORDERS_HISTORY": "Historial de pedidos",
+  "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto."
 }
