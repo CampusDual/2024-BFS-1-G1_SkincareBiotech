@@ -1,12 +1,10 @@
 .filter{
     display:grid;
-    grid-template-columns: 15% 15% 15%;
+    grid-template-columns: repeat(4,1fr);
     gap:10px;
     margin-top: 20px;
     margin-left: 10px;
-}
-.cosas{
-    background-color: black;
+    margin-right: 10px;
 }
 .productCard {
     display: flex;
@@ -79,4 +77,12 @@
 }
 a {
     text-decoration: none;
+}
+.o-form{
+    height: 64px;
+}
+.o-grid.o-grid-fixed{
+    display: block;
+    max-height: calc(100% - 64px);
+    height: calc(100% - 64px);
 }

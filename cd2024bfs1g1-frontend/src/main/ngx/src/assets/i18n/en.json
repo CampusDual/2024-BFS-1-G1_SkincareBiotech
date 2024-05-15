@@ -117,5 +117,6 @@
   "ADD_BRAND": "Add Brand",
   "DETAIL_PRODUCT":"Product Details",
   "PRO_MAX_PRICE": "Max price",
-  "PRO_MIN_PRICE": "Min price"
+  "PRO_MIN_PRICE": "Min price",
+  "PRO_REAL_PRICE":"Price"
 }
