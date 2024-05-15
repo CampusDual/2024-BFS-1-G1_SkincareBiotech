@@ -29,7 +29,7 @@
   "LANGUAGE_de": "Alemán",
   "LANGUAGE_en": "Inglés",
   "LANGUAGE_es": "Español",
-  "LOGIN": "Entrar",
+  "LOGIN": "Iniciar sesión",
   "LOGIN_TITLE": "Inicia sesión en tu cuenta",
   "LOGOUT": "Salir",
   "new": "Nuevo",
@@ -110,5 +110,6 @@
   "PRODUCTS": "Productos",
   "PRO_SALE": "Oferta",
   "PRO_SALE_ACTIVATE": "Activar oferta",
-  "ADDED_RECENTLY": "Añadido Recientemente"
+  "ADDED_RECENTLY": "Añadido Recientemente",
+  "MAIN_SCREEN": "Página principal"
 }
