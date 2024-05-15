@@ -15,9 +15,9 @@
     <Queries>
         <Query id="PRO_ENABLED">
             <Sentence>
-                <![CDATA[
-                    WITH ENABLED_CHECKER AS (
-                    SELECT *
+            <![CDATA[
+                WITH ENABLED_CHECKER AS (
+                    SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS PRO_REAL_PRICE
                     FROM ${mainschema}.PRODUCTS
                     WHERE PRO_ENABLED = TRUE
                 )
@@ -27,6 +27,20 @@
             ]]>
         </Sentence>
         </Query>
-
+        <!--<Query id="PRO_FILTER_PRICE">
+            <Sentence>
+                <![CDATA[
+                    WITH PRICE_FILTER AS (
+                    SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS REAL_PRICE
+                    FROM ${mainschema}.PRODUCTS
+                    WHERE PRO_ENABLED = TRUE
+                    )
+                    SELECT #COLUMNS#
+                    FROM PRICE_FILTER
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>-->
     </Queries>
+
 </JdbcEntitySetup>
