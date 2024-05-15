@@ -111,5 +111,9 @@
   "PRO_SALE": "Oferta",
   "PRO_SALE_ACTIVATE": "Activar oferta",
   "ADDED_RECENTLY": "Añadido Recientemente",
-  "MAIN_SCREEN": "Página principal"
+  "MAIN_SCREEN": "Página principal",
+  "PAYMENT_METHODS": "Métodos de pago",
+  "CASH_ON_DELIVERY": "Contrareembolso",
+  "PAY_WITH_CARD": "Tarjeta"
+
 }

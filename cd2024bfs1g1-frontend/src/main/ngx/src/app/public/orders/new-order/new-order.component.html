@@ -11,9 +11,28 @@
                     thousand-separator="" required="yes" placeholder="ORD_ZIPCODE"></o-integer-input>
                 <o-text-input class="order-input" fxFlex="40" attr="ORD_ADDRESS" required="yes"
                     placeholder="ORD_ADDRESS"></o-text-input>
-                <o-integer-input #pro_id class="order-input" attr="PRO_ID" hidden></o-integer-input>
-                <o-button (onClick)="submitOrder()" type="RAISED" label="BUY_BUTTON" class="order-button"></o-button>
+                <o-integer-input #pro_id class="order-input" attr="PRO_ID" hidden></o-integer-input>                
+            </div>
+        </o-column>
+        <o-column class="order-column2" fxFlex title="PAYMENT_METHODS">           
+            <div fxLayout="column" fxLayoutGap="8px">               
+                <o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>                
+                
             </div>
         </o-column>
     </div>
 </o-form>
+
+<form name="form" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST" (submit)="submitRedsysOrder()" ngNoForm>
+    <input type="submit" value="enviar">
+    <!-- Valor fijo -->
+    <input  type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
+    <!-- Cadena en formato JSON con todos los datos de la petición (ver formulario del js) -->
+    <!-- Tras montar la cadena, es necesario codificarla en BASE64 -->
+    <input  type="hidden" name="Ds_MerchantParameters" value="" id="Ds_MerchantParameters"#Ds_MerchantParameters/>
+    <input  type="hidden" name="Ds_Signature" value="" id="Ds_Signature" #Ds_Signature/>
+</form>
+
+
+
+
