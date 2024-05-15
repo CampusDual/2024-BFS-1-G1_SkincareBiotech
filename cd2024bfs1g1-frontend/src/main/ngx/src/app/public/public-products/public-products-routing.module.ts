@@ -5,6 +5,7 @@ import { ProductsViewComponent } from './products-view/products-view.component';
 import { ProductsFeaturedComponent } from './products-featured/products-featured.component';
 
 const routes: Routes = [
+  
   { path: '', component: ProductsFeaturedComponent},
   { path: 'view', component: ProductsViewComponent },  
   { path: 'view/:prod_id', component: ProductDetailComponent},
