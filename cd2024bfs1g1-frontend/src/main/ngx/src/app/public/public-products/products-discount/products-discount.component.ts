@@ -33,11 +33,14 @@ export class ProductsDiscountComponent implements OnInit {
     const filter = {};
     const order = [{ "columnName": "DISCOUNT", "ascendent": false}]
     this.service.advancedQuery(filter, columns, "product", null, 0, 5, order)
-      .subscribe((data) => {
-        if (data.data.length > 0) {
-          this.prodList = data.data;
-        }
-      })
+  .subscribe((data) => {
+    if (data.data.length > 0) {
+      this.prodList = data.data.filter(prod => prod.PRO_SALE !== null && prod.PRO_SALE < prod.PRO_PRICE);
+    } else {
+      this.prodList = [];
+    }
+  });
+
   }
 
   public getImageSrc(base64: any): any {

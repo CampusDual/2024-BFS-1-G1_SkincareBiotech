@@ -15,18 +15,17 @@
     cursor: pointer;
 }
 
-.titulo{
+.titulo {
     font-size: 24px;
     font-weight: bolder;
     text-align: left;
     font-family: Poppins, "Helvetica Neue", sans-serif;
+    max-width: 80%;
 }
 
-.sale{
-    /* font-size: 24px; */
-    /* font-weight: bolder; */
+.sale {
     text-align: left;
-    margin-top: 15%;
+    margin-top: 5%;
     font-family: Poppins, "Helvetica Neue", sans-serif;
 }
 
@@ -55,11 +54,6 @@
     border-radius: 15px;
 }
 
-/* .productCard span {
-    display: block;
-    width: 100%;
-    margin-bottom: 4px;
-} */
 .productCard strong {
     font-size: 1.1em;
     color: #333;
@@ -75,7 +69,7 @@ a {
     text-decoration: none;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -86,26 +80,21 @@ h2 {
     margin-left: 4vh;
 }
 
-.originalPrice{
-    /* font-weight: lighter; */
+.originalPrice {
     font-size: 0.9em;
     text-decoration: line-through;
     font-style: italic;
 }
 
-.priceSale{
+.priceSale {
     display: flex;
     justify-content: flex-start;
 }
 
 .discount-span {
-    /* background-color: red; */
-    /* width: 6vh;
-    height: 4.5vh; */
     color: red;
     font-size: 2em;
     font-style: italic;
-    /* border-radius: 5px; */
 }
 
 .sale-span {
@@ -117,7 +106,6 @@ h2 {
 .price {
     font-size: 1.5em;
     font-weight: bolder;
-    /* margin: 5vh; */
     text-align: left;
     margin-top: 17%;
     margin-bottom: 12%;
