@@ -1,0 +1,113 @@
+.productCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #e1e1e1;
+    width: 15vw;
+    height: 100%;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+    max-width: 80%;
+}
+
+.sale {
+    text-align: left;
+    margin-top: 5%;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+
+.description-div {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 5%;
+    margin-left: 20%;
+}
+
+.img_produc {
+    margin-top: 5%;
+    max-width: 90%;
+    min-height: 50%;
+    max-height: 51%;
+    overflow: hidden;
+}
+
+.productCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.productCard img {
+    border-radius: 15px;
+}
+
+.productCard strong {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.productCard em {
+    font-size: 0.9em;
+    color: #777;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+h2 {
+    padding: 2vh;
+    margin-left: 4vh;
+}
+
+.originalPrice {
+    font-size: 0.9em;
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.priceSale {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.discount-span {
+    color: red;
+    font-size: 2em;
+    font-style: italic;
+}
+
+.sale-span {
+    margin: 0.75vh 2.5vh;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+.price {
+    font-size: 1.5em;
+    font-weight: bolder;
+    text-align: left;
+    margin-top: 17%;
+    margin-bottom: 12%;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+}

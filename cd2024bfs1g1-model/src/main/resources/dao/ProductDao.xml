@@ -27,20 +27,27 @@
             ]]>
         </Sentence>
         </Query>
-        <!--<Query id="PRO_FILTER_PRICE">
+
+        <Query id="pro_featured">
             <Sentence>
                 <![CDATA[
-                    WITH PRICE_FILTER AS (
-                    SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS REAL_PRICE
-                    FROM ${mainschema}.PRODUCTS
-                    WHERE PRO_ENABLED = TRUE
+                    WITH complete_overview AS (
+                        SELECT *, COALESCE (((pro_price - pro_sale) / pro_price) * 100, 0) AS DISCOUNT, (
+                            SELECT COUNT(*)
+                            FROM ${mainschema}.ORDERS AS o
+           			        WHERE o.pro_id = p.pro_id
+                        ) AS AMMOUNT_OF_SALES
+                        FROM ${mainschema}.PRODUCTS AS p
+                        WHERE pro_enabled = TRUE
                     )
-                    SELECT #COLUMNS#
-                    FROM PRICE_FILTER
-                    #WHERE#
-                ]]>
+                SELECT #COLUMNS#
+                FROM complete_overview
+                #WHERE#
+                #ORDER#
+            ]]>
             </Sentence>
-        </Query>-->
+        </Query>
+
     </Queries>
 
 </JdbcEntitySetup>
