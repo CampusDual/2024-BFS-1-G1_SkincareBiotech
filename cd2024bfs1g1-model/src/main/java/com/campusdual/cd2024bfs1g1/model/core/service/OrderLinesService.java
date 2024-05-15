@@ -32,8 +32,8 @@ public class OrderLinesService implements IOrderLinesService {
     }
 
     @Override
-    public EntityResult orderLinesInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.orderLinesDao, attributes);
+    public EntityResult orderLinesInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.orderLinesDao, attrMap);
 
     }
 }

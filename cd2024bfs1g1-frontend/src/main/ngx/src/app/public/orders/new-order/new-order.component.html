@@ -11,7 +11,7 @@
         <div fxLayout="row">
             <o-column class="order-column" fxFlex title="ORDER_INFORMATION">
                 <div fxLayout="column" fxLayoutGap="8px">
-                    <o-text-input class="order-input" fxFlex="40" attr="ORD_NAME" required="yes"
+                    <o-text-input #nameInput class="order-input" fxFlex="40" attr="ORD_NAME" required="yes"
                         placeholder="ORD_NAME"></o-text-input>
                     <o-integer-input class="order-input" fxFlex="40" attr="ORD_PHONE" thousand-separator=" "
                         required="yes" placeholder="ORD_PHONE"></o-integer-input>

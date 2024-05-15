@@ -11,22 +11,4 @@
         <Column>ORD_ID</Column>
     </UpdateKeys>
     <GeneratedKey>ord_id</GeneratedKey>
-    <Queries>
-        <Query id="default">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="PRO_ID" prefix="P"/>
-            </AmbiguousColumns>
-            <Sentence>
-                <![CDATA[
-               SELECT
-                  #COLUMNS#
-               FROM
-                  ${mainschema}.ORDERS AS O
-                  INNER JOIN ${mainschema}.PRODUCTS AS P ON O.PRO_ID = P.PRO_ID
-               #WHERE#
-               #ORDER#
-            ]]>
-            </Sentence>
-        </Query>
-    </Queries>
 </JdbcEntitySetup>
