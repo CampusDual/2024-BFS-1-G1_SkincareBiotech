@@ -12,6 +12,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'products', name: 'PRODUCTS', route: '/main/products', icon: 'inventory_2'},
   { id: 'categories', name: 'CATEGORIES', icon: 'collections_bookmark', route: '/main/categories' },
   { id: 'orders', name: 'ORDERS', icon: 'local_shipping', route: '/main/orders' },
+  { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];
 
