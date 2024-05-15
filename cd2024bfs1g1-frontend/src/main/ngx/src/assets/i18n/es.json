@@ -114,5 +114,7 @@
   "ADD_CART_BUTTON": "Añadir al carrito",
   "PRO_ID": "Id del producto",
   "OL_PRICE": "Precio del producto",
-  "OL_UNITS": "Unidades del producto"
+  "OL_UNITS": "Unidades del producto",
+  "PRICE": "Precio",
+  "BACK_BUTTON": "Volver"
 }

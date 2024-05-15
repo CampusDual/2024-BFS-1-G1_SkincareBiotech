@@ -114,5 +114,7 @@
   "ADD_CART_BUTTON": "Add to cart",
   "PRO_ID": "Product id",
   "OL_PRICE": "Product price",
-  "OL_UNITS": "Product units"
+  "OL_UNITS": "Product units",
+  "PRICE": "Price",
+  "BACK_BUTTON": "Back"
 }

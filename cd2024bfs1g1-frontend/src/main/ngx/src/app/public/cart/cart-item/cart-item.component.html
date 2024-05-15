@@ -1,15 +1,22 @@
 <div class="cart-item">
-  <div>
+  <div class="img-container">
     <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
   </div>
-  <div class="item-details">
-    <div>{{product.PRO_NAME}}</div>
-    <div>{{product.PRO_PRICE | number: '1.2-2'}}€</div>
-    <div>{{item.units}}</div>
-    <div>Total: {{itemAmount(product) | number: '1.2-2'}}€</div>
-    <div>
-      <button *ngIf="showBtns" id="add_btn" (click)="addItem()">+</button>
+
+  <div class="item-details-container">
+
+    <div class="tittle">
+      {{product.PRO_NAME}}
     </div>
-    <div><button  *ngIf="showBtns" id="rm_btn" (click)="removeItem()">-</button></div>
+
+    <div class="units-container">
+      <button class="item-btn" *ngIf="showBtns" id="rm_btn" (click)="removeItem()">-</button>
+      <div class="item-amount">{{item.units}}</div>
+      <button class="item-btn" *ngIf="showBtns" id="add_btn" (click)="addItem()">+</button>
+    </div>
+
+    <div class="price-container">
+      {{'PRICE' | oTranslate}}: {{product.PRO_PRICE | number: '1.2-2'}}
+    </div>
   </div>
 </div>

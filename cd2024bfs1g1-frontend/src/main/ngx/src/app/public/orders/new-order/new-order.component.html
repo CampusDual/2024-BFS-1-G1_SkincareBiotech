@@ -1,9 +1,10 @@
 <div class="order-container">
-    <div class="cart-container">
-        <div *ngFor="let item of cart">
-            <app-cart-item [item]="item" [showBtns]="false"></app-cart-item>
-        </div>
-        <div>Precio del pedido: {{totalAmount() | number: '1.2-2' }}€</div>
+
+    <div class="cart-item-container">
+            <div *ngFor="let item of cart">
+                <app-cart-item [item]="item" [showBtns]="false"></app-cart-item>
+            </div>
+            <div class="total-amount">Precio del pedido: {{totalAmount() | number: '1.2-2' }}€</div>
     </div>
 
     <o-form class="order-form" #formOrder attr="newOrder" service="orders" entity="order" keys="ORD_ID"
@@ -25,6 +26,4 @@
             </o-column>
         </div>
     </o-form>
-
-
 </div>

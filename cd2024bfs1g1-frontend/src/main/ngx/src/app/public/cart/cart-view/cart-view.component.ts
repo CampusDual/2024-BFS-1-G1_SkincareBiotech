@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-view',
@@ -13,7 +14,10 @@ export class CartViewComponent implements OnInit{
   
   cart : any[] = [];
 
-  constructor(private cartService : CartService) {
+  constructor(
+    private cartService : CartService,
+    private router: Router
+  ) {
     
     this.cart = this.cartService.getCart();
   } 
@@ -23,5 +27,14 @@ export class CartViewComponent implements OnInit{
 
   updateCart(): void {
     this.cart = this.cartService.getCart();
+  }
+
+  createOrder(): void {
+    this.router.navigate(["/order/cart"]);
+  }
+
+  
+  goBack(): void {
+    this.router.navigate(["/"]);
   }
 }

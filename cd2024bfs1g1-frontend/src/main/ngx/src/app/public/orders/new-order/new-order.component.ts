@@ -35,18 +35,18 @@ export class NewOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const conf = this.service.getDefaultServiceConfiguration('products');
-    // this.service.configureService(conf);
-    // const cartProductsId = this.cart.map(item => item.id)
-    // for (let i = 0; i < cartProductsId.length; i++) {
+    const conf_prods = this.service.getDefaultServiceConfiguration('products');
+    this.service.configureService(conf_prods);
+    const cartProductsId = this.cart.map(item => item.id)
+    for (let i = 0; i < cartProductsId.length; i++) {
 
-    //   this.service.query({ "PRO_ID": cartProductsId[i] }, ["PRO_ID", "PRO_NAME", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
-    //     .subscribe((data) => {
-    //       if (data.data.length > 0) {
-    //         this.products_cart.push(data.data);
-    //       }
-    //     })
-    // }
+      this.service.query({ "PRO_ID": cartProductsId[i] }, ["PRO_ID", "PRO_NAME", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
+        .subscribe((data) => {
+          if (data.data.length > 0) {
+            this.products_cart.push(data.data);
+          }
+        })
+    }
   }
 
   public totalAmount(): any {
@@ -92,7 +92,7 @@ export class NewOrderComponent implements OnInit {
       ORD_ITEMS: this.cartService.getCart()
     };
     console.log(data)
-    this.service.insert(data,"order")
+    this.service.insert(data, "order")
       .subscribe(res => {
         console.log(res)
       })

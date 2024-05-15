@@ -1,0 +1,29 @@
+.cart-item-container{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.buy-button {
+    border-radius: 10px;
+    width: 150px;
+    height: 60px;
+    background-color: rgb(242, 242, 115);
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.back-button {
+    border-radius: 10px;
+    width: 150px;
+    height: 60px;
+    background-color: lightcyan;
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-left: 20px;
+
+}
