@@ -25,7 +25,7 @@
                 <span class="tittle">{{ data.PRO_NAME }}</span>
                 <div class="sale" *ngIf="(data.PRO_SALE != null); else priceBlock">
                     <div class="priceSale">
-                        <p><span>{{'SALE' | oTranslate}}:</span>{{ data.PRO_SALE | number: '1.2-2' }} €</p>
+                        <p style="color:red"><span>{{'SALE' | oTranslate}}:</span>{{ data.PRO_SALE | number: '1.2-2' }} €</p>
                         <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ data.PRO_PRICE | number: '1.2-2' }}
                             €
                         </p>
