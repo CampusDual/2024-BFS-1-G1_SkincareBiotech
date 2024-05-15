@@ -111,5 +111,8 @@
   "PRO_SALE": "Oferta",
   "PRO_SALE_ACTIVATE": "Activar oferta",
   "ADDED_RECENTLY": "Añadido Recientemente",
-  "ADD_CART_BUTTON": "Añadir al carrito"
+  "ADD_CART_BUTTON": "Añadir al carrito",
+  "PRO_ID": "Id del producto",
+  "OL_PRICE": "Precio del producto",
+  "OL_UNITS": "Unidades del producto"
 }

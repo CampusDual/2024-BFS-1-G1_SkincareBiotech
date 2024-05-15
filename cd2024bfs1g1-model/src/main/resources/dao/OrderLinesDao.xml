@@ -13,7 +13,7 @@
     </UpdateKeys>
     <GeneratedKey>ol_id</GeneratedKey>
     <Queries>
-        <Query id="ORD_QUERY">
+        <Query id="default">
             <AmbiguousColumns>
                 <AmbiguousColumn name="ORD_ID" prefix="OL"/>
                 <AmbiguousColumn name="PRO_ID" prefix="OL"/>
