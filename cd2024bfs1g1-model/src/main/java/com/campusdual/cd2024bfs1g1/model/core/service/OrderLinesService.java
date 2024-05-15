@@ -21,7 +21,7 @@ public class OrderLinesService implements IOrderLinesService {
 
     @Override
     public EntityResult orderLinesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.orderLinesDao, keysValues, attributes, OrderLinesDao.ATTR_ORD_QUERY);
+        return this.daoHelper.query(this.orderLinesDao, keysValues, attributes);
     }
 
     @Override

@@ -11,7 +11,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 export class CartItemComponent implements OnInit {
 
   @Input() item: any;
-  @Input() idItem: any;
+  @Input() showBtns: boolean = true;
   @Output() updateCart = new EventEmitter<void>();
   service: OntimizeService;
   product: any={};  

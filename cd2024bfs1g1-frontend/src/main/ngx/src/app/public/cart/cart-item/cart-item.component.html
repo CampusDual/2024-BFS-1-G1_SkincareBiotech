@@ -7,7 +7,9 @@
     <div>{{product.PRO_PRICE | number: '1.2-2'}}€</div>
     <div>{{item.units}}</div>
     <div>Total: {{itemAmount(product) | number: '1.2-2'}}€</div>
-    <div><button id="add_btn" (click)="addItem()">+</button></div>
-    <div><button id="rm_btn" (click)="removeItem()">-</button></div>
+    <div>
+      <button *ngIf="showBtns" id="add_btn" (click)="addItem()">+</button>
+    </div>
+    <div><button  *ngIf="showBtns" id="rm_btn" (click)="removeItem()">-</button></div>
   </div>
 </div>
