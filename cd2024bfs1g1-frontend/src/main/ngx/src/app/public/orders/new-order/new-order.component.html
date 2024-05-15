@@ -1,10 +1,7 @@
 <div class="order-container">
     <div class="cart-container">
-        <div *ngFor="let item of products_cart">
-            <img class="img-product" [src]="getImageSrc(item.PRO_IMAGE)" alt="imagen">
-            <div>{{ item.PRO_NAME }}</div>
-            <div>Units: {{ item.units }}</div>
-            <div>Price: {{ item.PRO_PRICE | number: '1.2-2' }}€</div>
+        <div *ngFor="let item of cart">
+            <app-cart-item [item]="item" [showBtns]="false"></app-cart-item>
         </div>
         <div>Precio del pedido: {{totalAmount() | number: '1.2-2' }}€</div>
     </div>

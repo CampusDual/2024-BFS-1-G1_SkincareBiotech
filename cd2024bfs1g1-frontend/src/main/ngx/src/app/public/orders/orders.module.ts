@@ -5,17 +5,20 @@ import { OrdersRoutingModule } from './orders-routing.module';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { NewOrderDetailsComponent } from './new-order-details/new-order-details.component';
+import { CartModule } from '../cart/cart.module';
 
 
 @NgModule({
   declarations: [
     NewOrderComponent,
-    NewOrderDetailsComponent
+    NewOrderDetailsComponent,
+    
   ],
   imports: [
     CommonModule,
     OrdersRoutingModule,
-    OntimizeWebModule
+    OntimizeWebModule,
+    CartModule
   ]
 })
 export class OrdersModule { }

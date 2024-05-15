@@ -15,6 +15,10 @@ import { CartViewComponent } from './cart-view/cart-view.component';
     CommonModule,
     CartRoutingModule,
     OntimizeWebModule,
+  ],
+  exports: [
+    CartViewComponent,
+    CartItemComponent
   ]
 })
 export class CartModule { }
