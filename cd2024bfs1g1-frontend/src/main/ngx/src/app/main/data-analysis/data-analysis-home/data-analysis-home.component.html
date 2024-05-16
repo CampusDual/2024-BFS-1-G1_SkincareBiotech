@@ -1,1 +1,6 @@
-<p>data-analysis-home works!</p>
+<h1>{{"Facturación_dia" | oTranslate}}</h1>
+<o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE" x-data-type="time"
+       y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)" [chart-parameters]="chartParameters">
+</o-chart>
+
+
