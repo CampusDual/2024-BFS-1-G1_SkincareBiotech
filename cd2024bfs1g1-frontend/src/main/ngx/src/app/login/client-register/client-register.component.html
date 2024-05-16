@@ -1,61 +1,42 @@
 <div class="full-page">
-    <div class="register-container">
-        <div class="wrapp-login">
-            <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
-                <fieldset>
-                <form [formGroup]="registerForm" (ngSubmit)="register()">
-
-                    <div class="login-title-container" fxLayout="column">
-                        <span class="title_text">{{ 'REGISTER_TITLE' | oTranslate }}:</span>
-                    </div>
-                    <div fxLayout="column" fxLayoutGap="10px">
-                        <mat-form-field fxFill class="register-field">
-                            <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}"
-                                id="username" [formControl]="userCtrl">
-                            <mat-error *ngIf="userCtrl.hasError('required')">
-                                {{ 'ERROR_USER_REQUIRED' | oTranslate }}
-                            </mat-error>
-                        </mat-form-field>
-                        <mat-form-field fxFill class="register-field">
-                            <input matInput class="mat-input" #password placeholder="{{ 'PASSWORD' | oTranslate }}"
-                                id="password" type="password" [formControl]="pwdCtrl">
-                            <mat-error *ngIf="pwdCtrl.hasError('required')">
-                                {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
-                            </mat-error>
-                        </mat-form-field>
-                            <div fxLayout="row" fxLayoutGap="5px">
-                                <mat-form-field>
-                                    <input matInput class="mat-input" #user_name
-                                        placeholder="{{ 'USER_NAME' | oTranslate }}" id="username"
-                                        [formControl]="usernameCtrl">
-                                    <mat-error *ngIf="usernameCtrl.hasError('required')">
-                                        {{ 'ERROR_USER_NAME_REQUIRED' | oTranslate }}
-                                    </mat-error>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput class="mat-input" #user_surname
-                                        placeholder="{{ 'USER_SURNAME' | oTranslate }}" id="userSurname"
-                                        [formControl]="userSurnameCtrl">
-                                    <mat-error *ngIf="userSurnameCtrl.hasError('required')">
-                                        {{ 'ERROR_USER_NAME_REQUIRED' | oTranslate }}
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <mat-form-field>
-                                <input matInput class="mat-input" #email placeholder="{{ 'USER_EMAIL' | oTranslate }}"
-                                id="userEmail">
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput class="mat-input" #phone placeholder="{{ 'USER_PHONE' | oTranslate }}"
-                                id="userPhone">
-                            </mat-form-field>
-                            
-                            <button mat-raised-button id="botones" type="submit">{{ 'LOGIN' | oTranslate }}</button>
-                        </div>
-                    </form>
-                </fieldset>
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+            <mat-form-field  class="register-field">
+                <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username"
+                    [formControl]="userCtrl">
+                <mat-error *ngIf="userCtrl.hasError('required')">
+                    {{ 'ERROR_USER_REQUIRED' | oTranslate }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="register-field">
+                <input matInput class="mat-input" #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password"
+                    type="password" [formControl]="pwdCtrl">
+                <mat-error *ngIf="pwdCtrl.hasError('required')">
+                    {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
+                </mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="5px">
+                <mat-form-field>
+                    <input matInput class="mat-input" #user_name placeholder="{{ 'USER_NAME' | oTranslate }}"
+                        id="username" [formControl]="usernameCtrl">
+                    <mat-error *ngIf="usernameCtrl.hasError('required')">
+                        {{ 'ERROR_USER_NAME_REQUIRED' | oTranslate }}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput class="mat-input" #user_surname placeholder="{{ 'USER_SURNAME' | oTranslate }}"
+                        id="userSurname" [formControl]="userSurnameCtrl">
+                    <mat-error *ngIf="userSurnameCtrl.hasError('required')">
+                        {{ 'ERROR_USER_NAME_REQUIRED' | oTranslate }}
+                    </mat-error>
+                </mat-form-field>
             </div>
+            <mat-form-field>
+                <input matInput class="mat-input" #email placeholder="{{ 'USER_EMAIL' | oTranslate }}" id="userEmail">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput class="mat-input" #phone placeholder="{{ 'USER_PHONE' | oTranslate }}" id="userPhone">
+            </mat-form-field>
 
-        </div>
-    </div>
+            <button mat-raised-button id="botones" type="submit">{{ 'LOGIN' | oTranslate }}</button>
+    </form>
 </div>
