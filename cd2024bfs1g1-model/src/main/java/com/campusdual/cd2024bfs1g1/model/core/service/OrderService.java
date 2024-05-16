@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +23,8 @@ public class OrderService implements IOrderService {
 
     @Autowired
     private OrderDao orderDao;
+    @Autowired
+    private OrderLinesDao orderLineDao;
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
     @Autowired
@@ -38,44 +39,25 @@ public class OrderService implements IOrderService {
 
     @Override
     public EntityResult orderInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
-/*
-        Map<String, Object> proIdMap = new HashMap<String, Object>();
-        proIdMap.put(ProductDao.PRO_ID, attrMap.get(OrderDao.ATTR_PRO_ID));
-        List<String> attrList = List.of(ProductDao.PRO_PRICE, ProductDao.PRO_SALE);
-        EntityResult productER = productService.productQuery(proIdMap, attrList);
-        BigDecimal sale = (BigDecimal) ((List) productER.get(ProductDao.PRO_SALE)).get(0);
-        BigDecimal price = (BigDecimal) ((List) productER.get(ProductDao.PRO_PRICE)).get(0);
 
-        if (sale != null) {
-            attrMap.put(OrderDao.ATTR_ORD_PRICE, sale);
-        } else {
-            attrMap.put(OrderDao.ATTR_ORD_PRICE, price);
-        }
-        return this.daoHelper.insert(this.orderDao, attrMap);
-
- */
         Map<String, Object> orderData = new HashMap<>(attributes);
+        Map<String, Object> orderLineData = new HashMap<>();
         orderData.remove("ORD_ITEMS");
         List<Map<String, Integer>> itemList = (List<Map<String, Integer>>) attributes.get("ORD_ITEMS");
-        Map<String, Integer> item = itemList.get(0);
-
-        Integer id = item.get("id");
-        Integer units = item.get("units");
-
-        EntityResult pro = productService.productQuery(Map.of(ProductDao.PRO_ID, id), List.of(ProductDao.PRO_PRICE, ProductDao.PRO_SALE));
-
-        for (int i = 0; i < pro.calculateRecordNumber(); i++) {
-            Map<String, Object> prod = pro.getRecordValues(0);
-        }
-
-        EntityResult ordInsertResult = this.daoHelper.insert(this.orderDao, attributes);
+        EntityResult ordInsertResult = this.daoHelper.insert(this.orderDao, orderData);
         Integer ordId = (Integer) ordInsertResult.get(OrderDao.ATTR_ORD_ID);
-
-
-        for (int i = 0; i < itemList.size(); i++) {
-
+        
+        for(int i = 0;i<itemList.size();i++){
+            Map<String, Integer> item = itemList.get(i);
+            Integer id = item.get("id");
+            Integer units = item.get("units");
+            orderLineData.put(ProductDao.PRO_ID,id);
+            orderLineData.put(OrderLinesDao.ATTR_OL_UNITS,units);
+            orderLineData.put(OrderLinesDao.ATTR_OL_PRICE,productService.getProductPriceById(id));
+            orderLineData.put(OrderLinesDao.ATTR_ORD_ID,ordId);
+            this.daoHelper.insert(this.orderLineDao, orderLineData);
         }
-        return null;
+        return ordInsertResult;
     }
 
     @Override
