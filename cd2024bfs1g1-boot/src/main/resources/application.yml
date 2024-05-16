@@ -30,7 +30,7 @@ ontimize:
       upper-like: true
   security:
     mode: default
-    ignore-paths: '/index.html,/app/**,/error,/test,/ontimize/health,/restapi/**,/swagger-ui/**,/orders/order,/orders/order/search,/products/productEnabled/search,/categories/category/search,/products/product/advancedsearch'
+    ignore-paths: '/index.html,/app/**,/error,/test,/ontimize/health,/restapi/**,/swagger-ui/**,/orders/order,/orders/order/search,/products/productEnabled/search,/categories/category/search,/products/product/advancedsearch, /login/*'
     role-information-service:
       role-repository: RoleDao
       role-name-column: rol_name
