@@ -116,6 +116,8 @@
   "BEST_SELLER": "Más Vendidos",
   "DISCOUNT": "Descuento",
   "CREATE_ACCOUNT": "Crear cuenta",
-  "ARE_NEW_CLIENT": "¿Eres un nuevo cliente?"
+  "ARE_NEW_CLIENT": "¿Eres un nuevo cliente?",
+  "ALREADY_CLIENT": "¿Ya eres cliente?",
+  "REGISTER": "Registrarse"
 
 }

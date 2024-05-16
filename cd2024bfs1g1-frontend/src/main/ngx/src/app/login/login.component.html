@@ -5,7 +5,9 @@
     </div>
 
     <div class="wrapp-login">
+      <mat-icon class="flecha" routerLink="">arrow_back</mat-icon>
       <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
+ 
         <form [formGroup]="loginForm" (ngSubmit)="login()">
 
           <div class="login-title-container" fxLayout="column">
@@ -36,7 +38,7 @@
           </div>
 
           <button mat-raised-button id="botones" type="submit">{{ 'LOGIN' | oTranslate }}</button>
-          <button mat-raised-button id="botones" routerLink="">{{ 'MAIN_SCREEN' | oTranslate }}</button>
+          <!-- <button mat-raised-button id="botones" routerLink="">{{ 'MAIN_SCREEN' | oTranslate }}</button> -->
 
           <div class="linea"></div>
           <label class="etiqueta">{{ 'ARE_NEW_CLIENT' | oTranslate }}</label>

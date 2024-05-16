@@ -1,42 +1,45 @@
 <div class="full-page">
+    <mat-icon class="flecha" routerLink="">arrow_back</mat-icon>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
-            <mat-form-field  class="register-field">
-                <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username"
-                    [formControl]="userCtrl">
-                <mat-error *ngIf="userCtrl.hasError('required')">
-                    {{ 'ERROR_USER_REQUIRED' | oTranslate }}
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="register-field">
-                <input matInput class="mat-input" #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password"
-                    type="password" [formControl]="pwdCtrl">
-                <mat-error *ngIf="pwdCtrl.hasError('required')">
-                    {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
-                </mat-error>
-            </mat-form-field>
-            <div fxLayout="row" fxLayoutGap="5px">
-                <mat-form-field>
-                    <input matInput class="mat-input" #user_name placeholder="{{ 'USER_NAME' | oTranslate }}"
-                        id="username" [formControl]="usernameCtrl">
-                    <mat-error *ngIf="usernameCtrl.hasError('required')">
-                        {{ 'ERROR_USER_NAME_REQUIRED' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput class="mat-input" #user_surname placeholder="{{ 'USER_SURNAME' | oTranslate }}"
-                        id="userSurname" [formControl]="userSurnameCtrl">
-                    <mat-error *ngIf="userSurnameCtrl.hasError('required')">
-                        {{ 'ERROR_USER_NAME_REQUIRED' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <mat-form-field>
-                <input matInput class="mat-input" #email placeholder="{{ 'USER_EMAIL' | oTranslate }}" id="userEmail">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput class="mat-input" #phone placeholder="{{ 'USER_PHONE' | oTranslate }}" id="userPhone">
-            </mat-form-field>
+        <mat-form-field class="register-field">
+            <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username"
+                [formControl]="userCtrl">
+            <mat-error *ngIf="userCtrl.hasError('required')">
+                {{ 'ERROR_USER_REQUIRED' | oTranslate }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="register-field">
+            <input matInput class="mat-input" #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password"
+                type="password" [formControl]="pwdCtrl">
+            <mat-error *ngIf="pwdCtrl.hasError('required')">
+                {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
+            </mat-error>
+        </mat-form-field>
 
-            <button mat-raised-button id="botones" type="submit">{{ 'LOGIN' | oTranslate }}</button>
+        <mat-form-field>
+            <input matInput class="mat-input" #user_name placeholder="{{ 'usr_name' | oTranslate }}" id="username"
+                [formControl]="usernameCtrl">
+            <mat-error *ngIf="usernameCtrl.hasError('required')">
+                {{ 'ERROR_USER_NAME_REQUIRED' | oTranslate }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput class="mat-input" #user_surname placeholder="{{ 'usr_surname' | oTranslate }}"
+                id="userSurname" [formControl]="userSurnameCtrl">
+            <mat-error *ngIf="userSurnameCtrl.hasError('required')">
+                {{ 'ERROR_USER_NAME_REQUIRED' | oTranslate }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput class="mat-input" #email placeholder="{{ 'usr_email' | oTranslate }}" id="userEmail">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput class="mat-input" #phone placeholder="{{ 'usr_phone' | oTranslate }}" id="userPhone">
+        </mat-form-field>
+
+        <button mat-raised-button id="botones" type="submit">{{ 'REGISTER' | oTranslate }}</button>
+        <div class="linea"></div>
+        <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate }}</label>
+        <button mat-raised-button id="botones" routerLink="/login">{{ 'LOGIN' | oTranslate }}</button>
     </form>
 </div>

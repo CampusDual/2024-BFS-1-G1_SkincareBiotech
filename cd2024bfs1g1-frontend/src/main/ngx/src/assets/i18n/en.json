@@ -116,5 +116,7 @@
   "DISCOUNT": "Discount",
   "MAIN_SCREEN": "Main screen",
   "CREATE_ACCOUNT": "Create account",
-  "ARE_NEW_CLIENT": "Are you a new client?"
+  "ARE_NEW_CLIENT": "Are you a new client?",
+  "ALREADY_CLIENT": "Already a client?",
+  "REGISTER": "Register"
 }

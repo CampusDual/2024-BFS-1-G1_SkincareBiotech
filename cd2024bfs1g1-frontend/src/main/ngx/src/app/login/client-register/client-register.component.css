@@ -1,19 +1,48 @@
 .full-page {
     background-image: url('^assets/images/register.png');
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
     height: 100vh;
     width: 100vw;
 }
-.form{
-    display:flex;
+
+.form {
+    display: flex;
     flex-direction: column;
-    gap : 10px;
     box-sizing: border-box;
     align-items: center;
-    place-content: center;  
-    margin-top: calc(30vh - 10vh);
+    place-content: center;
+    margin-top: calc(23vh - 10vh);
     height: 10vh;
+}
+
+#botones {
+    background-color: #f8b88c;
+}
+
+.flecha {
+    color: #f29a60;
+    transform: scale(3);
+    margin: 5%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.flecha:hover {
+    color: #f29a60;
+    transform: scale(3.5);
+}
+
+.linea {
+    border: 1px solid #686464;
+    margin: 15px;
+    margin-top: 20px;
+    width: 13%;
+}
+
+.etiqueta {
+    margin-bottom: 10px;
+    color: #686464;
 }

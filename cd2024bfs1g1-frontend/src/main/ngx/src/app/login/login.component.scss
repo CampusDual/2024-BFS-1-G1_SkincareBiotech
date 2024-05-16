@@ -3,8 +3,8 @@
 }
 
 .linea {
-  border-bottom: 2px solid #ccc;
-  margin: 10px 0; 
+  border-bottom: 1px solid #686464;
+  margin: 10px 0;
   margin-top: 30px;
 }
 
@@ -14,12 +14,26 @@
 }
 
 #botones {
-  background-color:  #f8b88c;
+  background-color: #f8b88c;
 }
 
 #pie {
-  color:#312f2f
+  color: #312f2f
 }
+
+.flecha {
+  color: #f29a60;
+  transform: scale(1.5);
+  margin: 5%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.flecha:hover {
+  color: #f29a60;
+  transform: scale(1.9);
+}
+
 .full-page {
   width: 100%;
   height: 100%;
@@ -64,7 +78,7 @@
 
     .wrapp-login {
       width: 640px;
-      min-height: 100%;
+      max-height: calc(100% - 100px);
 
       .login-inner-container {
         width: 100%;
