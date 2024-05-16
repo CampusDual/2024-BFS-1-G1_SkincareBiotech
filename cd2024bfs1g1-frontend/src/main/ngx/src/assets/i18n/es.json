@@ -114,5 +114,8 @@
   "MAIN_SCREEN": "Página principal",
   "BEST_DISCOUNTS": "Mejores Descuentos",
   "BEST_SELLER": "Más Vendidos",
-  "DISCOUNT": "Descuento"
+  "DISCOUNT": "Descuento",
+  "CREATE_ACCOUNT": "Crear cuenta",
+  "ARE_NEW_CLIENT": "¿Eres un nuevo cliente?"
+
 }
