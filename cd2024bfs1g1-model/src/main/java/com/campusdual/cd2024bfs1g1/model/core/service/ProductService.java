@@ -44,13 +44,9 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        Map<String, Object> values = new HashMap<>(attrMap);
-        if (!((boolean) values.get("PRO_SALE_ACTIVATE"))) {
-            values.replace(this.productDao.PRO_SALE, null);
-        }
-        values.remove("PRO_SALE_ACTIVATE");
-        return this.daoHelper.update(this.productDao, values, keyMap);
+    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.productDao, attrMap, keyMap);
     }
 
     @Override
@@ -71,7 +67,6 @@ public class ProductService implements IProductService {
 
     @Override
     public AdvancedEntityResult productPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) {
-        return this.daoHelper.paginationQuery(this.productDao, keysValues, attributes, recordNumber, startIndex, orderBy);
+        return this.daoHelper.paginationQuery(this.productDao, keysValues, attributes, recordNumber, startIndex, orderBy, "pro_featured");
     }
-
 }

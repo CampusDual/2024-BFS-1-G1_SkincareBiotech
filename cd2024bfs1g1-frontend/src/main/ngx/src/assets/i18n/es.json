@@ -29,7 +29,7 @@
   "LANGUAGE_de": "Alemán",
   "LANGUAGE_en": "Inglés",
   "LANGUAGE_es": "Español",
-  "LOGIN": "Entrar",
+  "LOGIN": "Iniciar sesión",
   "LOGIN_TITLE": "Inicia sesión en tu cuenta",
   "LOGOUT": "Salir",
   "new": "Nuevo",
@@ -111,6 +111,10 @@
   "PRO_SALE": "Oferta",
   "PRO_SALE_ACTIVATE": "Activar oferta",
   "ADDED_RECENTLY": "Añadido Recientemente",
+  "MAIN_SCREEN": "Página principal",
+  "BEST_DISCOUNTS": "Mejores Descuentos",
+  "BEST_SELLER": "Más Vendidos",
+  "DISCOUNT": "Descuento",
   "ORDERS_HISTORY": "Historial de pedidos",
   "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto."
 }

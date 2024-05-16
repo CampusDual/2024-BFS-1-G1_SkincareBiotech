@@ -8,9 +8,18 @@
     padding: 25px;
     margin: auto;
 }
-.mat-tool-bar{
-    
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
 }
-.prueba{
-    height: 500px;
+
+.links a:hover{
+    color: #B6A522;
+    text-decoration: underline;
+}
+
+nav{
+    margin-left: auto;
 }

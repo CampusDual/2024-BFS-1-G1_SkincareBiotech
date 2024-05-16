@@ -112,5 +112,9 @@
   "PRO_SALE_ACTIVATE": "Activated sale",
   "ADDED_RECENTLY": "Added Recently",
   "ORDERS_HISTORY": "Orders History",
-  "MSG_BUY_BUTTON": "You must log in to buy a product."
+  "MSG_BUY_BUTTON": "You must log in to buy a product.",
+  "BEST_DISCOUNTS": "Best Discounts",
+  "BEST_SELLER": "Best Sellers",
+  "DISCOUNT": "Discount",
+  "MAIN_SCREEN": "Main screen"
 }
