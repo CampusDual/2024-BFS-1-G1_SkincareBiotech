@@ -18,9 +18,11 @@ export class NewOrderComponent implements OnInit {
   insertedData: any;
   service: OntimizeService;
 
-  @ViewChild("pro_id") pro_id: OIntegerInputComponent;
   @ViewChild("formOrder") formOrder: OFormComponent;
   @ViewChild("nameInput") nameInput: OTextInputComponent;
+  @ViewChild("phoneInput") phoneInput: OIntegerInputComponent;
+  @ViewChild("zipInput") zipInput: OIntegerInputComponent;
+  @ViewChild("addressInput") addressInput: OTextInputComponent;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -40,7 +42,7 @@ export class NewOrderComponent implements OnInit {
     const cartProductsId = this.cart.map(item => item.id)
     for (let i = 0; i < cartProductsId.length; i++) {
 
-      this.service.query({ "PRO_ID": cartProductsId[i] }, ["PRO_ID", "PRO_NAME", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
+      this.service.query({ "PRO_ID": cartProductsId[i] }, ["PRO_ID","PRO_PRICE", "PRO_SALE"], "productEnabled")
         .subscribe((data) => {
           if (data.data.length > 0) {
             this.products_cart.push(data.data);
@@ -89,6 +91,9 @@ export class NewOrderComponent implements OnInit {
     this.service.configureService(conf);
     let data = {
       ORD_NAME: this.nameInput.getValue(),
+      ORD_PHONE: this.phoneInput.getValue(),
+      ORD_ZIPCODE: this.zipInput.getValue(),
+      ORD_ADDRESS: this.addressInput.getValue(),
       ORD_ITEMS: this.cartService.getCart()
     };
     console.log(data)
@@ -96,8 +101,5 @@ export class NewOrderComponent implements OnInit {
       .subscribe(res => {
         console.log(res)
       })
-
-
   }
-
 }
