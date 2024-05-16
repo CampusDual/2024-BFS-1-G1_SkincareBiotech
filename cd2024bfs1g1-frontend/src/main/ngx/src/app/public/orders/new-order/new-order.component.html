@@ -16,15 +16,15 @@
         </o-column>
         <o-column class="order-column2" fxFlex title="PAYMENT_METHODS">           
             <div fxLayout="column" fxLayoutGap="8px">               
-                <o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>                
+                <o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>  
+                <o-button (onClick)="submitOrderTest()" type="RAISED" label="RED" class="order-button"></o-button>              
                 
             </div>
         </o-column>
     </div>
 </o-form>
 
-<form name="form" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST" (submit)="submitRedsysOrder()" ngNoForm>
-    <input type="submit" value="enviar">
+<form name="form" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST" (submit)="submitRedsysOrder()" ngNoForm>    
     <!-- Valor fijo -->
     <input  type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
     <!-- Cadena en formato JSON con todos los datos de la petición (ver formulario del js) -->
