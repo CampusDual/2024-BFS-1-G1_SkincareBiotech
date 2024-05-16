@@ -26,7 +26,7 @@ export class PublicComponentComponent implements OnInit {
   logout(){
     this.authService.clearSessionData();
     this.isLogedIn = false;
-    // this.isLoaded = false;
+    this.isLoaded = false;
     this.loadPermissions();
   }
 }
