@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OFormComponent, OIntegerInputComponent, OntimizeService } from 'ontimize-web-ngx';
 import * as CryptoJS from 'crypto-js';
+import { query } from '@angular/animations';
  
  
 @Component({
@@ -13,8 +14,8 @@ export class NewOrderComponent implements AfterViewInit {
  
   productId: number;
   insertedData: any;
-  price = "3000";  
-  order = "2000";
+  price = "333";  
+  order = "333";
  
  
   @ViewChild("pro_id") pro_id: OIntegerInputComponent;
@@ -53,9 +54,13 @@ export class NewOrderComponent implements AfterViewInit {
  
   }
   
+  
   submitOrderTest(): void {
     this.formOrder.onInsert.subscribe(
       (data) => {
+        this.order=(data[0].ORD_ID).toString().padStart(12, "0");
+        this.price=(data[0].ORD_PRICE*100).toString();        
+        
         this.submitRedsysOrder();
       },
       (error) => {
@@ -67,7 +72,10 @@ export class NewOrderComponent implements AfterViewInit {
  
   submitRedsysOrder(): void{      
     
+    console.log(typeof(this.price));
     // Datos de la transacción
+
+    
     const datosTransaccion = {
       "DS_MERCHANT_AMOUNT": this.price,//this.price, // Los dos últimos son decimales (5000 = 50,00)
       "DS_MERCHANT_CURRENCY": "978",
