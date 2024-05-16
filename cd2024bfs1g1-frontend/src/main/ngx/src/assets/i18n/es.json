@@ -115,6 +115,14 @@
   "BEST_DISCOUNTS": "Mejores Descuentos",
   "BEST_SELLER": "Más Vendidos",
   "DISCOUNT": "Descuento",
+  "BRA_NAME": "Nombre",
+  "BRANDS": "Marcas",
+  "ADD_BRAND": "Añadir Marca",
+  "BRA_ID":"Marcas",
+  "DETAIL_PRODUCT":"Detalles Producto",
+  "PRO_MAX_PRICE": "Precio máximo",
+  "PRO_MIN_PRICE": "Precio mínimo",
+  "PRO_REAL_PRICE":"Precio",
   "ORDERS_HISTORY": "Historial de pedidos",
   "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto."
 }
