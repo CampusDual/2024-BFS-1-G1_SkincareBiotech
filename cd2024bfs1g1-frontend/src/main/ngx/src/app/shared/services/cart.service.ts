@@ -55,6 +55,16 @@ export class CartService {
 
   }
 
+  emptyCart(): void {
+    localStorage.removeItem("cart");
+  }
+
+  deleteItem(productID: any) {
+    this.loadLocalStorageCart();
+    this.cart = this.cart.filter(x => x.id !== productID);
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
+
   constructor() {
   }
 

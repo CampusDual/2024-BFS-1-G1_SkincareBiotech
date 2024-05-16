@@ -42,7 +42,7 @@ export class NewOrderComponent implements OnInit {
     const cartProductsId = this.cart.map(item => item.id)
     for (let i = 0; i < cartProductsId.length; i++) {
 
-      this.service.query({ "PRO_ID": cartProductsId[i] }, ["PRO_ID","PRO_PRICE", "PRO_SALE"], "productEnabled")
+      this.service.query({ "PRO_ID": cartProductsId[i] }, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "productEnabled")
         .subscribe((data) => {
           if (data.data.length > 0) {
             this.products_cart.push(data.data);
@@ -54,7 +54,11 @@ export class NewOrderComponent implements OnInit {
   public totalAmount(): any {
     let totalAmount = 0;
     for (let z = 0; z < this.products_cart.length; z++) {
-      totalAmount += this.products_cart[z][0].PRO_PRICE * this.cart[z].units
+      if (this.products_cart[z][0].PRO_SALE) {
+        totalAmount += this.products_cart[z][0].PRO_SALE * this.cart[z].units
+      } else {
+        totalAmount += this.products_cart[z][0].PRO_PRICE * this.cart[z].units
+      }
     }
     return totalAmount;
 
@@ -74,6 +78,7 @@ export class NewOrderComponent implements OnInit {
       ORD_ITEMS: this.cartService.getCart()
     };
     console.log(data)
+    this.cartService.emptyCart();
     this.service.insert(data, "order")
       .subscribe(res => {
         console.log(res)

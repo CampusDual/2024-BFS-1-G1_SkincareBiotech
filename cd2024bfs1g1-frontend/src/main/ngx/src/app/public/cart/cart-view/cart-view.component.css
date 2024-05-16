@@ -6,17 +6,17 @@
     gap: 30px;
 }
 
-.buy-button {
+#buy-button {
     border-radius: 10px;
     width: 150px;
     height: 60px;
-    background-color: rgb(242, 242, 115);
+    background-color: #f8b88c;
     font-size: large;
     text-transform: uppercase;
     font-weight: bolder;
 }
 
-.back-button {
+#back-button {
     border-radius: 10px;
     width: 150px;
     height: 60px;

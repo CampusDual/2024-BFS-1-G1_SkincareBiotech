@@ -67,4 +67,9 @@ export class CartItemComponent implements OnInit {
     }
     this.updateCart.emit();
   }
+
+  public deleteItem() {
+    this.cartService.deleteItem(this.product.PRO_ID);
+    this.updateCart.emit();
+  }
 }
