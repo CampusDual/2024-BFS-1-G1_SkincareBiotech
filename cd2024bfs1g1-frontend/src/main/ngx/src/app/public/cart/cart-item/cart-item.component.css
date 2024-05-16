@@ -73,3 +73,10 @@
     font-size: x-large;
 }
 
+.priceSale p span{
+    color: red;
+}
+
+.originalPrice {
+    text-decoration: line-through;
+}

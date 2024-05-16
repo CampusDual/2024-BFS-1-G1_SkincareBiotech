@@ -64,29 +64,6 @@ export class NewOrderComponent implements OnInit {
 
   submitOrder(): void {
 
-    // this.formOrder.onInsert.subscribe(
-    //   (data) => {
-
-    //     this.router.navigate(['/order/details', data['ORD_ID']]);
-    //     for (let i = 0; i < this.products_cart.length; i++) {
-    //       const av = {
-    //         ORD_ID: data['ORD_ID'],
-    //         PRO_ID: this.products_cart[i][0].PRO_ID,
-    //         OL_PRICE: this.products_cart[i][0].PRO_PRICE,
-    //         OL_UNITS: this.cart[i].units
-    //       };
-    //       this.service.insert(av, 'orderlines')
-    //       console.log(av)
-    //     }
-    //   },
-    //   (error) => {
-
-    //     console.error(error);
-
-    //   });
-
-    // this.formOrder.insert();
-
     const conf = this.service.getDefaultServiceConfiguration('orders');
     this.service.configureService(conf);
     let data = {
