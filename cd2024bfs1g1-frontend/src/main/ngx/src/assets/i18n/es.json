@@ -29,7 +29,7 @@
   "LANGUAGE_de": "Alemán",
   "LANGUAGE_en": "Inglés",
   "LANGUAGE_es": "Español",
-  "LOGIN": "Entrar",
+  "LOGIN": "Iniciar sesión",
   "LOGIN_TITLE": "Inicia sesión en tu cuenta",
   "LOGOUT": "Salir",
   "new": "Nuevo",
@@ -116,5 +116,9 @@
   "OL_PRICE": "Precio del producto",
   "OL_UNITS": "Unidades del producto",
   "PRICE": "Precio",
-  "BACK_BUTTON": "Volver"
+  "BACK_BUTTON": "Volver",
+  "MAIN_SCREEN": "Página principal",
+  "BEST_DISCOUNTS": "Mejores Descuentos",
+  "BEST_SELLER": "Más Vendidos",
+  "DISCOUNT": "Descuento"
 }

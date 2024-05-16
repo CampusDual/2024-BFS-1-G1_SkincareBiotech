@@ -1,20 +1,20 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-products-recent',
-  templateUrl: './products-recent.component.html',
-  styleUrls: ['./products-recent.component.scss']
+  selector: 'app-products-best-seller',
+  templateUrl: './products-best-seller.component.html',
+  styleUrls: ['./products-best-seller.component.css']
 })
-export class ProductsRecentComponent implements OnInit {
-
+export class ProductsBestSellerComponent implements OnInit {
   service: OntimizeService;
   prodList: any = [];
+
   constructor(
     protected injector: Injector,
     protected sanitizer: DomSanitizer
-  ) {
+  ) { 
     this.service = this.injector.get(OntimizeService)
   }
 
@@ -28,20 +28,17 @@ export class ProductsRecentComponent implements OnInit {
       "PRO_PRICE",
       "PRO_SALE",
       "DISCOUNT",
-      "PRO_IMAGE"
+      "PRO_IMAGE",
+      "AMMOUNT_OF_SALES"
     ];
-    const filter = { "PRO_ENABLED": true };
-    const order = [{ "columnName": "PRO_ID", "ascendent": false }]
+    const filter = {};
+    const order = [{ "columnName": "AMMOUNT_OF_SALES", "ascendent": false}]
     this.service.advancedQuery(filter, columns, "product", null, 0, 5, order)
       .subscribe((data) => {
         if (data.data.length > 0) {
           this.prodList = data.data;
         }
       })
-  }
-
-  public getImageSrc(base64: any): any {
-    return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
 
 }

@@ -116,5 +116,9 @@
   "OL_PRICE": "Product price",
   "OL_UNITS": "Product units",
   "PRICE": "Price",
-  "BACK_BUTTON": "Back"
+  "BACK_BUTTON": "Back",
+  "BEST_DISCOUNTS": "Best Discounts",
+  "BEST_SELLER": "Best Sellers",
+  "DISCOUNT": "Discount",
+  "MAIN_SCREEN": "Main screen"
 }

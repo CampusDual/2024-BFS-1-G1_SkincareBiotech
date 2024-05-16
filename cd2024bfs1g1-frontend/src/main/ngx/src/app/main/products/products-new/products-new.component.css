@@ -1,0 +1,27 @@
+.add-details-title {
+    font-weight: bold;
+    font-size: large;
+    padding: 20px;   
+}
+.header-area{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.div-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.pro-enabled-container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.image-container {
+    max-width: 400px;
+}
+#proSaleActivate {
+    margin: 0px 2%;
+}
+
+
