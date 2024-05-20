@@ -117,6 +117,8 @@
   "OL_UNITS": "Product units",
   "PRICE": "Price",
   "BACK_BUTTON": "Back",
+  "ORDERS_HISTORY": "Orders History",
+  "MSG_BUY_BUTTON": "You must log in to buy a product.",
   "BEST_DISCOUNTS": "Best Discounts",
   "BEST_SELLER": "Best Sellers",
   "DISCOUNT": "Discount",

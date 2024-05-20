@@ -129,5 +129,7 @@
   "PRO_MAX_PRICE": "Precio máximo",
   "PRO_MIN_PRICE": "Precio mínimo",
   "PRO_REAL_PRICE":"Precio",
-  "ORD_DATE": "Fecha"
+  "ORD_DATE": "Fecha",
+  "ORDERS_HISTORY": "Historial de pedidos",
+  "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto."
 }

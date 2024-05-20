@@ -1,23 +1,16 @@
-<mat-toolbar id="nav">
+<header class="header">
+  <div class="imgContainer">
     <a routerLink="">
-        <img src="./assets/images/skincare-biotech-high-resolution-logo-transparent.png" routerLink=""
-            alt="SkinCare BioTech">
+      <img class="logo" src="./assets/images/logo_bw.svg" routerLink=""
+        alt="SkinCare BioTech">
     </a>
-    <div class="links">
-        <a routerLink="/view">{{'PRODUCTS_LINK' | oTranslate}}</a>
-        <a routerLink="">{{'FEATURED_LINK' | oTranslate}}</a>        
-        <div class="shopping-cart">
-            <a routerLink="/cart/view">Carrito</a>
-        </div>
-    </div>
-
-    
-
-    <nav>
-        <button mat-raised-button color="primary" routerLink="/login">{{ 'LOGIN' | oTranslate }}</button>
-    </nav>
-
-</mat-toolbar>
-<div class="content">
-    <router-outlet></router-outlet>
-</div>
+  </div>
+  <o-bar-menu *ngIf="isLoaded">
+    <o-bar-menu-item *ngIf="isLogedIn" (click)="logout()" title="LOGOUT" icon="power_settings_new"></o-bar-menu-item>
+    <o-bar-menu-group title="LANGUAGE">
+      <o-locale-bar-menu-item locale="en" title="English"></o-locale-bar-menu-item>
+      <o-locale-bar-menu-item locale="es" title="Español"></o-locale-bar-menu-item>
+    </o-bar-menu-group>
+  </o-bar-menu>
+</header>
+<router-outlet></router-outlet>
