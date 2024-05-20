@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OntimizeService } from 'ontimize-web-ngx';
@@ -16,9 +16,10 @@ export class ClientRegisterComponent implements OnInit{
   public usernameCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
   public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
   public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
+  public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
 
   service: OntimizeService;
-  redirect = '/main';
+  redirect = '';
   adminRole = 'admin';
   userRole = 'user';
   sellerRole = 'seller';
@@ -36,7 +37,8 @@ export class ClientRegisterComponent implements OnInit{
     this.registerForm.addControl('usr_password', this.pwdCtrl);    
     this.registerForm.addControl('usr_name', this.usernameCtrl);    
     this.registerForm.addControl('usr_surname', this.userSurnameCtrl);    
-    this.registerForm.addControl('usr_email', this.userEmailCtrl);       
+    this.registerForm.addControl('usr_email', this.userEmailCtrl);  
+    this.registerForm.addControl('usr_phone', this.userPhoneCtrl);     
   }
 
   register() {
@@ -46,22 +48,16 @@ export class ClientRegisterComponent implements OnInit{
     const usr_name = this.registerForm.value.usr_name;
     const usr_surname = this.registerForm.value.usr_surname;
     const usr_email = this.registerForm.value.usr_email;
-
-    console.log("inside register");
-    console.log(usr_login);
-    console.log(usr_password);
-    console.log(usr_name);
-    console.log(usr_surname);
-    console.log(usr_email);
-    
-    
+    const usr_phone = this.registerForm.value.usr_phone;
+  
+  
     if(usr_login && usr_login.length>0 && 
       usr_password && usr_password.length>0 && 
       usr_name && usr_name.length>0 &&
       usr_surname && usr_surname.length>0 &&
       usr_email && usr_email.length>0){
         
-        console.log("inside register IF");
+        
         this.insertUser(this.userRole);
         
     }
@@ -71,23 +67,19 @@ export class ClientRegisterComponent implements OnInit{
   insertUser(userRole: string){
 
 
-    console.log("inside insertUser");
     const data = {
       "USR_LOGIN": this.registerForm.value.usr_login,
       "USR_PASSWORD": this.registerForm.value.usr_password,
       "USR_NAME": this.registerForm.value.usr_name,
       "USR_SURNAME": this.registerForm.value.usr_surname,
       "USR_EMAIL": this.registerForm.value.usr_email,
-      "ROL_NAME" : userRole
+      "USR_PHONE": this.registerForm.value.usr_phone,
     }
-
-    console.log(data);
 
     const conf = this.service.getDefaultServiceConfiguration('users');
     this.service.configureService(conf);
-    this.service.insert(data, "userRoles")
+    this.service.insert(data, "clientRole")
       .subscribe((resp) => {
-        console.log(resp);
         if (resp.code === 0) {
           this.router.navigate([this.redirect]);
         }

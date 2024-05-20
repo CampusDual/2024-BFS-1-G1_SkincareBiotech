@@ -37,12 +37,12 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput class="mat-input" #phone placeholder="{{ 'USR_PHONE' | oTranslate }}" id="usr_phone">
+            <input matInput class="mat-input" #phone placeholder="{{ 'USR_PHONE' | oTranslate }}" id="usr_phone" [formControl]="userPhoneCtrl">
         </mat-form-field>
  
-        <button mat-raised-button id="botones" type="submit">{{ 'REGISTER' | oTranslate }}</button>
+        <button mat-raised-button style="background-color: #f8b88c;" type="submit">{{ 'REGISTER' | oTranslate }}</button>
         <div class="linea"></div>
         <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate }}</label>
-        <button mat-raised-button id="botones" routerLink="/login">{{ 'LOGIN' | oTranslate }}</button>
+        <button mat-raised-button style="background-color: #f8b88c;" routerLink="/login">{{ 'LOGIN' | oTranslate }}</button>
     </form>
 </div>
