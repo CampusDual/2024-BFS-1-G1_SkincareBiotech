@@ -17,6 +17,9 @@
   "ERROR_SESSION_EXPIRED": "La sesión ha caducado",
   "ERROR_USER_PASS_INCORRECT": "Usuario o contraseña incorrecta.",
   "ERROR_USER_REQUIRED": "Nombre de usuario incorrecto.",
+  "ERROR_USER_SURNAME_REQUIRED": "El apellido es obligatorio.",
+  "ERROR_USER_NAME_REQUIRED": "El nombre es obligatorio.",
+  "ERROR_USER_EMAIL_REQUIRED": "El correo es obligatorio.",
   "EXAMPLE_LOGIN_INFO": "Usuario y contraseña de ejemplo",
   "FILTER_PROFILES": "Filtrar roles: ",
   "FILTER_USERS": "Filtrar usuarios: ",
@@ -118,6 +121,8 @@
   "CREATE_ACCOUNT": "Crear cuenta",
   "ARE_NEW_CLIENT": "¿Eres un nuevo cliente?",
   "ALREADY_CLIENT": "¿Ya eres cliente?",
-  "REGISTER": "Registrarse"
-
+  "REGISTER": "Registrarse",
+  "CONFIRMATION_REGISTER_TITLE":"¡Enhorabuena!",
+  "CONFIRMATION_REGISTER_TEXT": "Te has registrado correctamente en nuestra tienda.",
+  "CONFIRMATION_REGISTER_BUTTON": "Continuar"
 }

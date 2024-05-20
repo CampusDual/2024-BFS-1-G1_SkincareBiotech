@@ -17,6 +17,9 @@
   "ERROR_SESSION_EXPIRED": "Session expired.",
   "ERROR_USER_PASS_INCORRECT": "Invalid username or password.",
   "ERROR_USER_REQUIRED": "Incorrect username.",
+  "ERROR_USER_SURNAME_REQUIRED": "The surname is required.",
+  "ERROR_USER_NAME_REQUIRED": "The username is required.",
+  "ERROR_USER_EMAIL_REQUIRED": "The email is required.",
   "EXAMPLE_LOGIN_INFO": "Use this user and password for login",
   "FILTER_PROFILES": "Filter the roles",
   "FILTER_USERS": "Filter users:",
@@ -118,5 +121,8 @@
   "CREATE_ACCOUNT": "Create account",
   "ARE_NEW_CLIENT": "Are you a new client?",
   "ALREADY_CLIENT": "Already a client?",
-  "REGISTER": "Register"
+  "REGISTER": "Register",
+  "CONFIRMATION_REGISTER_TITLE":"Congratulations!",
+  "CONFIRMATION_REGISTER_TEXT": "You have successfully registered in our store.",
+  "CONFIRMATION_REGISTER_BUTTON": "Continue"
 }
