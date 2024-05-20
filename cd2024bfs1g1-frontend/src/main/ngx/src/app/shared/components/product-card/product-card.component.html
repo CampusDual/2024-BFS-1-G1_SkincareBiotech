@@ -1,0 +1,18 @@
+<div class="productCard" routerLink="{{product.PRO_ID}}">
+  <img alt="Imagen_producto" [src]="getImageSrc(product.PRO_IMAGE)" class="img_produc">
+  <div class="description-div">
+    <span class="titulo">{{ product.PRO_NAME }}</span>
+    <div class="sale" *ngIf="(product.DISCOUNT != 0 ); else priceBlock">
+      <div class="priceSale">
+        <span class="discount-span">-{{product.DISCOUNT | number: '1.0-0' }}%</span>
+        <span class="sale-span">{{ product.PRO_SALE | number: '1.2-2' }} €</span>
+      </div>
+      <div>
+        <span class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ product.PRO_PRICE | number: '1.2-2' }} €</span>
+      </div>
+    </div>  
+    <ng-template #priceBlock>
+      <span class="price">{{ product.PRO_PRICE | number: '1.2-2' }} €</span>
+    </ng-template>
+  </div>
+</div>
