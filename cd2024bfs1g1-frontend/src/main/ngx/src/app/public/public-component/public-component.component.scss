@@ -1,25 +1,56 @@
-#nav {
-    background-color: white;
-    color: black;
-    display: flex;
-    font-family: Poppins, "Helvetica Neue", sans-serif;
-    height: 64px;
-}
-img{
-    height: 20px;
-    width: 200px;
+::ng-deep .header .mat-toolbar {
+    margin: 5px auto 5px auto;
+    background-color: #f8b88c;
+    color: white;
+    box-shadow: 0 2px 4px 0px rgba(248, 184, 140, 0), 0 4px 5px 0 rgba(248, 184, 140, 0), 0 1px 10px 0 rgba(248, 184, 140, 0);
 }
 
-.links{
-    display: flex;
-    gap: 20px;
-    margin-left: 10%;
+::ng-deep .header .o-bar-menu-item-title{
+    color: white;
+    font-weight: bold;
+}
+
+::ng-deep .header .o-bar-menu-group-title{
+    color: white;
+    font-weight: bold;
+}
+
+::ng-deep .o-bar-menu nav .fake-li a {
+    background-color: #f8b88c;
+}
+
+::ng-deep .o-bar-menu nav .fake-ul .fake-ul .o-bar-menu-item-title {
+    color: white;
+}
+
+::ng-deep .o-bar-menu nav .fake-ul .fake-ul .fake-li-hover a {
+    background-color: rgb(255, 178, 126);
+}
+
+::ng-deep .header .mat-icon{
+    color: white;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    background: #f8b88c;
+}
+.logo {
+    display: block;
+    width: 35%;
+    margin: auto;
+}
+.imgContainer {
+    display: flexbox;
 }
 
 a{
+    display: block;
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 15px;
+    padding: 10px;
 }
 
 .links a:hover{
@@ -30,6 +61,6 @@ a{
     height: calc(100vh - 64px);
 }
 
-nav{
-    margin-left: auto;
+::ng-deep .o-bar-menu{
+    box-shadow: 0 2px 4px 0px rgba(248, 184, 140, 0), 0 4px 5px 0 rgba(248, 184, 140, 0), 0 1px 10px 0 rgba(248, 184, 140, 0);
 }

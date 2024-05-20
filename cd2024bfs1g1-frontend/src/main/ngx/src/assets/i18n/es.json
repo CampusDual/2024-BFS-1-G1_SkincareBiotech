@@ -127,5 +127,8 @@
   "DATA_ANALYSIS": "Análisis de Datos",
   "Facturación_dia": "Facturación por día (€)",
   "LABEL_X_AXIS": "Tiempo",
-  "LABEL_Y_AXIS": "Euros"
+  "LABEL_Y_AXIS": "Euros",
+  "PRO_REAL_PRICE":"Precio",
+  "ORDERS_HISTORY": "Historial de pedidos",
+  "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto."
 }
