@@ -5,6 +5,7 @@
 }
 
 .grid_item_y {
-    writing-mode: vertical-rl;
+    padding-top: 20%;
+    padding-left: 30%;
     text-orientation: upright;
 }

@@ -44,6 +44,7 @@
                 SELECT #COLUMNS#
                 FROM total_price
                 #WHERE#
+                ORDER BY ORD_DATE
             ]]>
             </Sentence>
         </Query>

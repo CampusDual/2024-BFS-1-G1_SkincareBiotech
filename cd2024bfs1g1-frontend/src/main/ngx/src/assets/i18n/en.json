@@ -128,6 +128,6 @@
   "MAIN_SCREEN": "Main screen",
   "DATA_ANALYSIS": "Data analysis",
   "FACTURATION_TITLE": "Billing per day (€)",
-  "LABEL_X_AXIS": "Time",
-  "LABEL_Y_AXIS": "Euros"
+  "LABEL_X_AXIS": "Day",
+  "LABEL_Y_AXIS": "Total(€)"
 }

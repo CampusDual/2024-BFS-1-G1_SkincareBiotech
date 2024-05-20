@@ -37,6 +37,11 @@
           "attr": "history",
           "visible": false,
           "enabled": false
+        },
+        {
+          "attr": "data-analysis",
+          "visible": false,
+          "enabled": false
         }
       ],
       "routes": [
