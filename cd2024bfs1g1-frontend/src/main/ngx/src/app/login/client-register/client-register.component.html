@@ -15,6 +15,14 @@
                 {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
             </mat-error>
         </mat-form-field>
+
+        <mat-form-field class="register-field">
+            <input matInput class="mat-input" #password placeholder="{{ 'confirm_usr_password' | oTranslate }}" id="usr_password2"
+                type="password" [formControl]="pwdCtrl2">
+            <mat-error *ngIf="pwdCtrl2.hasError('required')">
+                {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
+            </mat-error>
+        </mat-form-field>
  
         <mat-form-field>
             <input matInput class="mat-input" #user_name placeholder="{{ 'usr_name' | oTranslate }}" id="usr_name"

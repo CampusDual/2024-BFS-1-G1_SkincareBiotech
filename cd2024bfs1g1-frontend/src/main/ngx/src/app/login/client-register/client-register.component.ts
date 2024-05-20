@@ -13,23 +13,22 @@ import Swal from 'sweetalert2';
   templateUrl: './client-register.component.html',
   styleUrls: ['./client-register.component.css']
 })
-export class ClientRegisterComponent implements OnInit{
-  
+export class ClientRegisterComponent implements OnInit {
+
   public registerForm: UntypedFormGroup = new UntypedFormGroup({});
-  public userCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
-  public pwdCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
-  public usernameCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
-  public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
-  public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
-  public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.required);
+  public userCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(16), Validators.pattern('^[a-zA-Z0-9]*$')]);
+  public pwdCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(8)]);
+  public pwdCtrl2: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(8)]);
+  public usernameCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜçÇ]*$')]);
+  public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜçÇ]*$')]);
+  public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.email]);
+  public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.pattern('^[0-9]{9}$'));
 
   service: OntimizeService;
   redirect = '';
   adminRole = 'admin';
   userRole = 'user';
   sellerRole = 'seller';
-
-
 
   constructor(
     private router: Router,
@@ -40,44 +39,40 @@ export class ClientRegisterComponent implements OnInit{
     @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
     @Inject(UserInfoService) private userInfoService: UserInfoService,
     @Inject(DomSanitizer) private domSanitizer: DomSanitizer
-  ){ 
+  ) {
     this.service = this.injector.get(OntimizeService)
     this.translate = this.injector.get(OTranslateService);
-   }
-  
+  }
+
   ngOnInit(): void {
     this.registerForm.addControl('usr_login', this.userCtrl);
-    this.registerForm.addControl('usr_password', this.pwdCtrl);    
-    this.registerForm.addControl('usr_name', this.usernameCtrl);    
-    this.registerForm.addControl('usr_surname', this.userSurnameCtrl);    
-    this.registerForm.addControl('usr_email', this.userEmailCtrl);  
-    this.registerForm.addControl('usr_phone', this.userPhoneCtrl);     
+    this.registerForm.addControl('usr_password', this.pwdCtrl);
+    this.registerForm.addControl('usr_password2', this.pwdCtrl2);
+    this.registerForm.addControl('usr_name', this.usernameCtrl);
+    this.registerForm.addControl('usr_surname', this.userSurnameCtrl);
+    this.registerForm.addControl('usr_email', this.userEmailCtrl);
+    this.registerForm.addControl('usr_phone', this.userPhoneCtrl);
   }
 
   register() {
-
-    const usr_login = this.registerForm.value.usr_login;
-    const usr_password = this.registerForm.value.usr_password;
-    const usr_name = this.registerForm.value.usr_name;
-    const usr_surname = this.registerForm.value.usr_surname;
-    const usr_email = this.registerForm.value.usr_email;
-  
-  
-    if(usr_login && usr_login.length>0 && 
-      usr_password && usr_password.length>0 && 
-      usr_name && usr_name.length>0 &&
-      usr_surname && usr_surname.length>0 &&
-      usr_email && usr_email.length>0){
-        
-        
-        this.insertUser(this.userRole);
-        
+    if (this.passwordMatchValidator() && this.registerForm.valid) {
+      this.insertUser(this.userRole);
+    } else {
+      Swal.fire({
+        title: "ERROR",
+        text: "Formulario incorrecto",
+        icon: 'error',
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: '#f8b88c',
+      });
     }
   }
 
+  passwordMatchValidator(): boolean {
+    return this.registerForm.value.usr_password === this.registerForm.value.usr_password2;
+  }
 
-  insertUser(userRole: string){
-
+  insertUser(userRole: string) {
     const login = this.registerForm.value.usr_login;
     const password = this.registerForm.value.usr_password;
 
@@ -94,7 +89,7 @@ export class ClientRegisterComponent implements OnInit{
     this.service.configureService(conf);
     this.service.insert(data, "clientRole")
       .subscribe((resp) => {
-        if (resp.code === 0) {      
+        if (resp.code === 0) {
 
           this.registerLogin(login, password)
 
@@ -109,12 +104,12 @@ export class ClientRegisterComponent implements OnInit{
             confirmButtonText: button,
             confirmButtonColor: '#f8b88c',
           });
-        } 
-    }, this.handleError)
+        }
+      }, this.handleError)
   }
 
   private handleError(error) {
-    
+
     switch (error.status) {
       case 500:
         Swal.fire({
@@ -129,12 +124,12 @@ export class ClientRegisterComponent implements OnInit{
     }
   }
 
-  registerLogin(userName: string, password: string){
+  registerLogin(userName: string, password: string) {
     this.authService.login(userName, password)
-        .subscribe(() => {
-          this.loadUserInfo();
-          this.router.navigate([this.redirect]);
-        })
+      .subscribe(() => {
+        this.loadUserInfo();
+        this.router.navigate([this.redirect]);
+      })
   }
 
   private loadUserInfo() {
@@ -142,13 +137,8 @@ export class ClientRegisterComponent implements OnInit{
       .subscribe(
         (result: ServiceResponse) => {
           this.userInfoService.storeUserInfo(result.data);
-          let avatar = './assets/images/user_profile.png';
-          if (result.data['usr_photo']) {
-            (avatar as any) = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + result.data['usr_photo']);
-          }
           this.oUserInfoService.setUserInfo({
             username: result.data['usr_name'],
-            avatar: avatar
           });
         }
       );

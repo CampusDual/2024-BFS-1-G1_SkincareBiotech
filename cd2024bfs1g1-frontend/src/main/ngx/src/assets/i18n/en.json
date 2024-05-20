@@ -70,6 +70,7 @@
   "usr_name": "Name",
   "usr_notes": "Notes",
   "usr_password": "Password",
+  "confirm_usr_password": "Confirm password",
   "usr_phone": "Phone",
   "usr_surname": "Surname",
   "VALIDATION_MATCHPASSWORD": "Old password and new password doesn't match",

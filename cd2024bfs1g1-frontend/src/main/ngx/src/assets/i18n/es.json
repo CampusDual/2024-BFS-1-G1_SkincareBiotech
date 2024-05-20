@@ -70,6 +70,7 @@
   "usr_name": "Nombre de usuario",
   "usr_notes": "Notas",
   "usr_password": "Contraseña",
+  "confirm_usr_password": "Confirmar contraseña",
   "usr_phone": "Teléfono",
   "usr_surname": "Apellidos",
   "VALIDATION_MATCHPASSWORD": "Las contraseñas no coinciden.",
