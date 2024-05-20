@@ -1,9 +1,8 @@
-<mat-toolbar>
+<mat-toolbar id="nav">
     <a routerLink="">
         <img src="./assets/images/skincare-biotech-high-resolution-logo-transparent.png" routerLink=""
             alt="SkinCare BioTech">
     </a>
-
     <div class="links">
         <a routerLink="/view">{{'PRODUCTS_LINK' | oTranslate}}</a>
         <a routerLink="">{{'FEATURED_LINK' | oTranslate}}</a>        
@@ -19,4 +18,6 @@
     </nav>
 
 </mat-toolbar>
-<router-outlet></router-outlet>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>

@@ -1,3 +1,11 @@
+.filter{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 .productCard {
     display: flex;
     flex-direction: column;
@@ -5,14 +13,16 @@
     align-items: center;
     border: 1px solid #e1e1e1;
     width: 15vw;
-    height: 100%;
+    height: 90%;
     border-radius: 15px;
     background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     font-family: Poppins, "Helvetica Neue", sans-serif;
+    margin-top: 15px;
+    transition: transform 0.3s ease; 
+}
+.productCard:hover {
+    transform: scale(1.05);    
 }
 .tittle{
     font-size: 1.35em;
@@ -54,10 +64,6 @@
     max-height: 51%;
     overflow: hidden;
 }
-.productCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
 .productCard img {
     border-radius: 15px;
 }
@@ -72,4 +78,12 @@
 }
 a {
     text-decoration: none;
+}
+.o-form{
+    height: 64px;
+}
+.o-grid.o-grid-fixed{
+    display: block;
+    max-height: calc(100% - 64px);
+    height: calc(100% - 64px);
 }

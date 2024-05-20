@@ -120,5 +120,13 @@
   "MAIN_SCREEN": "Página principal",
   "BEST_DISCOUNTS": "Mejores Descuentos",
   "BEST_SELLER": "Más Vendidos",
-  "DISCOUNT": "Descuento"
+  "DISCOUNT": "Descuento",
+  "BRA_NAME": "Nombre",
+  "BRANDS": "Marcas",
+  "ADD_BRAND": "Añadir Marca",
+  "BRA_ID":"Marcas",
+  "DETAIL_PRODUCT":"Detalles Producto",
+  "PRO_MAX_PRICE": "Precio máximo",
+  "PRO_MIN_PRICE": "Precio mínimo",
+  "PRO_REAL_PRICE":"Precio"
 }

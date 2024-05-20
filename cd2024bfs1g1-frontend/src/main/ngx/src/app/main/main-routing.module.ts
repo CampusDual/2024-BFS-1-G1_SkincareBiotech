@@ -18,8 +18,8 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
       { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)},
-      { path: 'categories', loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)}
-    
+      { path: 'categories', loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)},
+      { path: 'brands', loadChildren: () => import('./brands/brands.module').then(m => m.BrandsModule)}
     ]
   }
 ];

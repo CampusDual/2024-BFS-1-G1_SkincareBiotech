@@ -14,6 +14,9 @@ export const SERVICE_CONFIG: Object = {
   'orderlines': {
     'path': '/order-lines'
   },
+  'brands':{
+    'path': '/brands'
+  },
   permissions: {
     'path': '/permissions'
   },
