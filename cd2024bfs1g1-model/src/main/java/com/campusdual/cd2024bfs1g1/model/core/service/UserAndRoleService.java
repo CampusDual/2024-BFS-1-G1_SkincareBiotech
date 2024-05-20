@@ -398,6 +398,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 
 			Map<String,Object> usrValues = new HashMap<>(attributes);
 			Map<String, Object> usrRoleValues = new HashMap<>();
+			usrValues.put(UserDao.PASSWORD, this.encryptPassword((String) attributes.get(UserDao.PASSWORD)));
 			EntityResult userValuesInsert = this.daoHelper.insert(this.userDao, usrValues);
 			Integer usrID = (Integer) userValuesInsert.get(UserDao.USR_ID);
 			usrRoleValues.put(RoleDao.ROL_NAME, "user");
