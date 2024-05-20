@@ -127,7 +127,7 @@
   "PRO_REAL_PRICE":"Price",
   "MAIN_SCREEN": "Main screen",
   "DATA_ANALYSIS": "Data analysis",
-  "Facturación_dia": "Billing per day (€)",
+  "FACTURATION_TITLE": "Billing per day (€)",
   "LABEL_X_AXIS": "Time",
   "LABEL_Y_AXIS": "Euros"
 }
