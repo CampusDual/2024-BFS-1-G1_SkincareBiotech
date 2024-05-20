@@ -15,9 +15,9 @@
     <Queries>
         <Query id="PRO_ENABLED">
             <Sentence>
-                <![CDATA[
-                    WITH ENABLED_CHECKER AS (
-                    SELECT *
+            <![CDATA[
+                WITH ENABLED_CHECKER AS (
+                    SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS PRO_REAL_PRICE
                     FROM ${mainschema}.PRODUCTS
                     WHERE PRO_ENABLED = TRUE
                 )
@@ -28,5 +28,26 @@
         </Sentence>
         </Query>
 
+        <Query id="pro_featured">
+            <Sentence>
+                <![CDATA[
+                    WITH complete_overview AS (
+                        SELECT *, COALESCE (((pro_price - pro_sale) / pro_price) * 100, 0) AS DISCOUNT, (
+                            SELECT COUNT(*)
+                            FROM ${mainschema}.ORDERS AS o
+           			        WHERE o.pro_id = p.pro_id
+                        ) AS AMMOUNT_OF_SALES
+                        FROM ${mainschema}.PRODUCTS AS p
+                        WHERE pro_enabled = TRUE
+                    )
+                SELECT #COLUMNS#
+                FROM complete_overview
+                #WHERE#
+                #ORDER#
+            ]]>
+            </Sentence>
+        </Query>
+
     </Queries>
+
 </JdbcEntitySetup>

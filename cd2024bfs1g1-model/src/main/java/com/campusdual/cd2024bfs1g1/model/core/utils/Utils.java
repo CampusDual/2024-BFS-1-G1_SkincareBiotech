@@ -17,4 +17,13 @@ public class Utils {
         int userId = otherData.path("usr_id").asInt();
         return userId;
     }
+
+    public static String getUserRolName() throws JsonProcessingException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(authentication.getAuthorities());
+        JsonNode rootNode = objectMapper.readTree(json);
+        String userRolName = rootNode.get(0).get("authority").asText();
+        return userRolName;
+    }
 }

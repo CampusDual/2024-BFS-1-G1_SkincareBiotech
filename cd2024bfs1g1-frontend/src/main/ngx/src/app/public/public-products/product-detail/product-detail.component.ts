@@ -1,5 +1,5 @@
 import { Component, Inject, Injector, OnInit } from '@angular/core';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { AuthService, OntimizeService } from 'ontimize-web-ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -17,7 +17,8 @@ export class ProductDetailComponent implements OnInit {
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.service = this.injector.get(OntimizeService)
   }
@@ -48,9 +49,13 @@ export class ProductDetailComponent implements OnInit {
   }
 
   createOrder(): void {
-
-    this.router.navigate(["/order", this.product.PRO_ID]);
-
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(["/order", this.product.PRO_ID]);
+    }else{
+      this.router.navigate(
+        ["/login"],
+        {queryParams: {'session-not-started':'true'}}
+      )
+    }
   }
-
 }

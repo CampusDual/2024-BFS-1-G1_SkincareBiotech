@@ -1,0 +1,13 @@
+<o-form attr="brandForm" service="brands" entity="brand" keys="BRA_ID" (onInsert)="onInsert($event)">
+  <o-column title="ADD_BRAND">
+    <div fxLayout="row" fxLayoutGap="8px">
+      <div fxFlex="70">
+        <div>
+          <o-text-input fxFlex="30" attr="BRA_NAME" class="input-padding" step="0" grouping="no"
+            required="yes"></o-text-input>
+        </div>
+        <br>
+      </div>
+    </div>
+  </o-column>
+</o-form>

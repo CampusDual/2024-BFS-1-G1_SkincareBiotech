@@ -115,5 +115,21 @@
   "PAYMENT_METHODS": "Métodos de pago",
   "CASH_ON_DELIVERY": "Contrareembolso",
   "PAY_WITH_CARD": "Tarjeta",
-  "MAIN_SCREEN":"Página principal"
+  "BEST_DISCOUNTS": "Mejores Descuentos",
+  "BEST_SELLER": "Más Vendidos",
+  "DISCOUNT": "Descuento",
+  "BRA_NAME": "Nombre",
+  "BRANDS": "Marcas",
+  "ADD_BRAND": "Añadir Marca",
+  "BRA_ID":"Marcas",
+  "DETAIL_PRODUCT":"Detalles Producto",
+  "PRO_MAX_PRICE": "Precio máximo",
+  "PRO_MIN_PRICE": "Precio mínimo",
+  "DATA_ANALYSIS": "Análisis de Datos",
+  "FACTURATION_TITLE": "Facturación por día (€)",
+  "LABEL_X_AXIS": "Día",
+  "LABEL_Y_AXIS": "Total(€)",
+  "PRO_REAL_PRICE":"Precio",
+  "ORDERS_HISTORY": "Historial de pedidos",
+  "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto."
 }
