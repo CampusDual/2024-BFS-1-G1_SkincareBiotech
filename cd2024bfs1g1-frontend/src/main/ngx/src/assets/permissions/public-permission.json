@@ -19,6 +19,11 @@
           "enabled": false
         },
         {
+          "attr": "brands",
+          "visible": false,
+          "enabled": false
+        },
+        {
           "attr": "orders",
           "visible": false,
           "enabled": false
