@@ -131,5 +131,6 @@
   "PRO_REAL_PRICE":"Precio",
   "ORD_DATE": "Fecha",
   "ORDERS_HISTORY": "Historial de pedidos",
-  "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto."
+  "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto.",
+  "CART": "Carrito"
 }

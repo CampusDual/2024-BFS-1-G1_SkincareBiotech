@@ -60,7 +60,7 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
 
   loadOrderDetails(): void {
 
-    this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "ORD_NAME", "ORD_PHONE", "ORD_ZIPCODE", "ORD_ADDRESS", "ORD_SENT", "ORD_DATE"], "order")
+    this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "ORD_NAME", "ORD_PHONE", "ORD_ZIPCODE", "ORD_ADDRESS", "ORD_SENT", "ORD_DATE"], "orderByUser")
       .subscribe((orderData) => {
         this.order = orderData.data[0];
       });
@@ -69,7 +69,8 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
 
   timestampToDate(order) {     
     let date = new Date(order);     
-    return date.toLocaleString(); }
+    return date.toLocaleString(); 
+  }
 
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';

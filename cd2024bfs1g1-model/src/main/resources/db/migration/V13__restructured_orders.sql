@@ -15,3 +15,7 @@ CREATE TABLE public.ord_lines (
 	CONSTRAINT ord_lines_products_fk FOREIGN KEY (pro_id) REFERENCES public.products(pro_id)
 );
 
+UPDATE public.usr_role
+    SET rol_json_client_permission='{ "menu": [ { "attr": "productsPublic", "visible": false, "enabled": false }, { "attr": "featuredPublic", "visible": false, "enabled": false }, { "attr": "history", "visible": false, "enabled": false }, { "attr": "login", "visible": false, "enabled": false }, { "attr": "cart", "visible": false, "enabled": false } ] }'
+    WHERE rol_name= 'seller';
+

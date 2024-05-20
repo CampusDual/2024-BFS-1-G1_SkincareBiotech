@@ -43,7 +43,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public EntityResult orderInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
+    public EntityResult orderInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
          
         int userId = Utils.getUserId();
         Map<String, Object> orderData = new HashMap<>(attributes);

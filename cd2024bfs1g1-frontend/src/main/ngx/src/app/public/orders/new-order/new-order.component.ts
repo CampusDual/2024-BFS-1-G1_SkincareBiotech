@@ -79,6 +79,7 @@ export class NewOrderComponent implements OnInit {
     };
     console.log(data)
     this.cartService.emptyCart();
+    
     this.service.insert(data, "order")
       .subscribe(res => {
 

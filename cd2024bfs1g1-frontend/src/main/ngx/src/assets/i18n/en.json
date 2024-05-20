@@ -131,5 +131,6 @@
   "PRO_MAX_PRICE": "Max price",
   "PRO_MIN_PRICE": "Min price",
   "PRO_REAL_PRICE":"Price",
-  "ORD_DATE": "Date"
+  "ORD_DATE": "Date",
+  "CART": "Cart"
 }

@@ -17,7 +17,6 @@ const routes: Routes = [
     path: 'cart',
     component: NewOrderComponent
   },
-
 ];
 
 @NgModule({
