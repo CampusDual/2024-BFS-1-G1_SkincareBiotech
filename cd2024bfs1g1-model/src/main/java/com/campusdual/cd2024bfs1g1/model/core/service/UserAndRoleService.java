@@ -392,6 +392,29 @@ public class UserAndRoleService implements IUserAndRoleService {
 		}
 	}
 
+	@Override
+	@Secured({ PermissionsProviderSecured.SECURED })
+	@Transactional(rollbackFor = Throwable.class)
+	public EntityResult userRolesInsert(Map<String, Object> attributes) {
+
+			Map<String,Object> usrValues = new HashMap<>(attributes);
+			Map<String, Object> usrRoleValues = new HashMap<>();
+			usrValues.remove("ROL_NAME");
+			EntityResult userValuesInsert = this.daoHelper.insert(this.userDao, usrValues);
+			Integer usrID = (Integer) userValuesInsert.get(UserDao.USR_ID);
+			usrRoleValues.put(RoleDao.ROL_NAME, attributes.get("ROL_NAME"));
+			EntityResult roleQuery = this.daoHelper.query(this.roleDao, usrRoleValues, List.of(RoleDao.ROL_ID));
+//			EntityResult roleQuery = this.daoHelper.query(this.roleDao, usrRoleValues, "default");
+			Integer roleID = (Integer) roleQuery.get(RoleDao.ROL_NAME);
+			usrRoleValues.clear();
+			usrRoleValues.put(UserRoleDao.ROL_ID, roleID);
+			usrRoleValues.put(UserRoleDao.USR_ID, usrID);
+			EntityResult userRoleInsert = this.daoHelper.insert(this.userRolesDao, usrRoleValues);
+
+			return userRoleInsert;
+
+	}
+
 	protected boolean checkPasswords(final String storedPassword, final String password) throws OntimizeJEERuntimeException {
 		if (this.passwordEncrypter == null) {
 			return (password != null && storedPassword.equals(password));

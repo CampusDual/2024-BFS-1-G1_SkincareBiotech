@@ -305,4 +305,6 @@ public interface IUserAndRoleService {
      * @throws OntimizeJEERuntimeException if occurs
      */
 	EntityResult getClientPermissions() throws OntimizeJEERuntimeException;
+
+	EntityResult userRolesInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
 }
