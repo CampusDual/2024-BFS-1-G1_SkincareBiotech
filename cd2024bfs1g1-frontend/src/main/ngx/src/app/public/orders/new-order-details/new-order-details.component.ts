@@ -46,12 +46,13 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
   }
 
   loadOrderDetails(): void {
-
-    this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "ORD_NAME", "ORD_PHONE", "ORD_ZIPCODE", "ORD_ADDRESS", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE"], "order")
-      .subscribe((orderData) => {
-        this.order = orderData.data[0];
+    this.service.update({ "ORD_ID": this.orderId }, {"ORD_PAID": true}, "order").
+      subscribe((data) => {
+        this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "ORD_NAME", "ORD_PHONE", "ORD_ZIPCODE", "ORD_ADDRESS", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE"], "order")
+        .subscribe((orderData) => {
+          this.order = orderData.data[0];
+        });
       });
-
   }
 
   public getImageSrc(base64: any): any {

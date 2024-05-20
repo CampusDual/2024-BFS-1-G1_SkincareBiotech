@@ -7,8 +7,8 @@ const routes: Routes = [
     component: PublicComponentComponent,
     path: '',
     children: [
+      { path: 'order', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
       { path: '', loadChildren: () => import('./public-products/public-products.module').then(m => m.PublicProductsModule) },
-      { path: 'order', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) }
     ]
   },
 

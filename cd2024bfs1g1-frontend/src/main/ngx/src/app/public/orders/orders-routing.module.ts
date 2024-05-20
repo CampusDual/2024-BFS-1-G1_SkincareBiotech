@@ -5,7 +5,7 @@ import { NewOrderDetailsComponent } from './new-order-details/new-order-details.
 
 const routes: Routes = [
   {
-    path: 'details/:ORD_ID',
+    path: 'accepted/:ORD_ID',
     component: NewOrderDetailsComponent
   },
   {

@@ -14,8 +14,8 @@ export class NewOrderComponent implements AfterViewInit {
  
   productId: number;
   insertedData: any;
-  price = "333";  
-  order = "333";
+  price : string;  
+  order : string;
  
  
   @ViewChild("pro_id") pro_id: OIntegerInputComponent;
@@ -41,7 +41,7 @@ export class NewOrderComponent implements AfterViewInit {
     this.formOrder.onInsert.subscribe(
       (data) => {
  
-        this.router.navigate(['/order/details', data['ORD_ID']]);
+        //this.router.navigate(['/accepted', data['ORD_ID']]);
  
       },
       (error) => {
@@ -55,7 +55,7 @@ export class NewOrderComponent implements AfterViewInit {
   }
   
   
-  submitOrderTest(): void {
+  submitOrderRedsys(): void {
     this.formOrder.onInsert.subscribe(
       (data) => {
         this.order=(data[0].ORD_ID).toString().padStart(12, "0");
@@ -80,12 +80,12 @@ export class NewOrderComponent implements AfterViewInit {
       "DS_MERCHANT_AMOUNT": this.price,//this.price, // Los dos últimos son decimales (5000 = 50,00)
       "DS_MERCHANT_CURRENCY": "978",
       "DS_MERCHANT_MERCHANTCODE": "999008881",
-      "DS_MERCHANT_MERCHANTURL": "http://localhost:4200",
+      "DS_MERCHANT_MERCHANTURL": "http://localhost:4299",
       "DS_MERCHANT_ORDER": this.order,//this.order, // No se puede repetir(= id pedido)
       "DS_MERCHANT_TERMINAL": "1",
       "DS_MERCHANT_TRANSACTIONTYPE": "0",
-      "DS_MERCHANT_URLKO": "http://localhost:4200/rechazado",
-      "DS_MERCHANT_URLOK": "http://localhost:4200/aceptado",
+      "DS_MERCHANT_URLKO": "http://localhost:4299/order/rejected",
+      "DS_MERCHANT_URLOK": `http://localhost:4299/order/accepted/${this.order}`,
       "DS_MERCHANT_CONSUMERLANGUAGE": "1"  // 1: Español - 2:Inglés
     }
  
