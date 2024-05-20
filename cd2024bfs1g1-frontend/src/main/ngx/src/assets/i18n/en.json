@@ -132,5 +132,9 @@
   "PRO_MIN_PRICE": "Min price",
   "PRO_REAL_PRICE":"Price",
   "ORD_DATE": "Date",
-  "CART": "Cart"
+  "CART": "Cart",
+  "DATA_ANALYSIS": "Data analysis",
+  "FACTURATION_TITLE": "Billing per day (€)",
+  "LABEL_X_AXIS": "Day",
+  "LABEL_Y_AXIS": "Total(€)"
 }

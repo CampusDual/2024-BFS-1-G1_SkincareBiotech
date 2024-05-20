@@ -1,0 +1,11 @@
+.grid_container {
+    display: grid;
+    grid-template-columns: 2% 90%;
+    text-align: center;
+}
+
+.grid_item_y {
+    padding-top: 20%;
+    padding-left: 30%;
+    text-orientation: upright;
+}

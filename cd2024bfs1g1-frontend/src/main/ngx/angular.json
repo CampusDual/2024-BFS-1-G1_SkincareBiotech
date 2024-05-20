@@ -35,6 +35,11 @@
               "src/assets",
               {
                 "glob": "**/*",
+                "input": "node_modules/ontimize-web-ngx-charts/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
                 "input": "node_modules/ontimize-web-ngx/assets",
                 "output": "/assets"
               },
@@ -43,7 +48,8 @@
             "styles": [
               "node_modules/ontimize-web-ngx/ontimize.scss",
               "src/assets/css/app.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ontimize-web-ngx-charts/styles.scss"
             ],
             "scripts": [],
             "vendorChunk": true,

@@ -130,6 +130,10 @@
   "PRO_MIN_PRICE": "Precio mínimo",
   "PRO_REAL_PRICE":"Precio",
   "ORD_DATE": "Fecha",
+  "DATA_ANALYSIS": "Análisis de Datos",
+  "FACTURATION_TITLE": "Facturación por día (€)",
+  "LABEL_X_AXIS": "Día",
+  "LABEL_Y_AXIS": "Total(€)",
   "ORDERS_HISTORY": "Historial de pedidos",
   "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto.",
   "CART": "Carrito"

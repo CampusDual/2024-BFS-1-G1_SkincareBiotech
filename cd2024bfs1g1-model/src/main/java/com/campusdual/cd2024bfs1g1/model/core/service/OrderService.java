@@ -92,4 +92,12 @@ public class OrderService implements IOrderService {
         return this.daoHelper.query(this.orderDao, keyMap, attrList, "orderLinesView");
     }
 
+    @Override
+    public EntityResult totalPriceOrdersQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException {
+
+        int userId = Utils.getUserId();
+        Map<String, Object> filter = new HashMap<>(keysValues);
+        filter.put(ProductDao.PRO_SELLER_ID, userId);
+        return this.daoHelper.query(this.orderDao, filter, attributes,"total_price");
+    }
 }
