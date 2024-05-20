@@ -1,0 +1,10 @@
+.grid_container {
+    display: grid;
+    grid-template-columns: 2% 90%;
+    text-align: center;
+}
+
+.grid_item_y {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}

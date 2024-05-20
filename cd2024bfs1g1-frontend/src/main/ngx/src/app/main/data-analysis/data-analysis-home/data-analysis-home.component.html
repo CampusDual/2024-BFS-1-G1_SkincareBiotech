@@ -1,6 +1,18 @@
 <h1>{{"Facturación_dia" | oTranslate}}</h1>
-<o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE" x-data-type="time"
-       y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)" [chart-parameters]="chartParameters">
-</o-chart>
+<div class="grid_container">
+       <div class="grid_item_y">
+              {{"LABEL_Y_AXIS" | oTranslate}}
+       </div>
+       <div class="grid_item_chart">
+              <o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE" x-data-type="time"
+                     y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)" [chart-parameters]="chartParameters">
+              </o-chart>
+       </div>
+       <div class="grid_item_legend">
 
+       </div>
+       <div class="grid_item_x">
+              {{"LABEL_X_AXIS" | oTranslate}}
+       </div>
+</div>
 

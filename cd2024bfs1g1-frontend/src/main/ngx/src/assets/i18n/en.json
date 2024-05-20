@@ -113,5 +113,7 @@
   "ADDED_RECENTLY": "Added Recently",
   "MAIN_SCREEN": "Main screen",
   "DATA_ANALYSIS": "Data analysis",
-  "Facturación_dia": "Billing per day (€)"
+  "Facturación_dia": "Billing per day (€)",
+  "LABEL_X_AXIS": "Time",
+  "LABEL_Y_AXIS": "Euros"
 }
