@@ -1,7 +1,7 @@
 ALTER TABLE public.orders DROP CONSTRAINT orders_products_fk;
 ALTER TABLE public.orders DROP COLUMN pro_id;
 ALTER TABLE public.orders DROP COLUMN ord_price;
-ALTER TABLE public.orders ADD ord_date timestamp DEFAULT now() NOT NULL;
+ALTER TABLE public.orders ALTER COLUMN ord_date SET NOT NULL;
 
 
 CREATE TABLE public.ord_lines (
