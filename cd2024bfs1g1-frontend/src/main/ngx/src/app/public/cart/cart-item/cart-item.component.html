@@ -25,11 +25,11 @@
         </div>
       </div>
       <ng-template #priceBlock>
-        {{'PRICE' | oTranslate}}: {{product.PRO_PRICE | number: '1.2-2'}} €
+        {{product.PRO_PRICE | number: '1.2-2'}} €
       </ng-template>
     </div>
-    <div>
-      <button (click)="deleteItem()">x</button>
+    <div class="delete-container">
+      <button class="delete-button" *ngIf="showBtns" (click)="deleteItem()"><mat-icon>close</mat-icon>  </button>
     </div>
   </div>
 </div>

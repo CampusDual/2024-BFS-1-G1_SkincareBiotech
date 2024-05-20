@@ -1,29 +1,46 @@
 <div class="order-container">
+    <ng-container *ngIf="cart.length; else showMessage">
 
-    <div class="cart-item-container">
+        <div class="cart-item-container">
             <div *ngFor="let item of cart">
                 <app-cart-item [item]="item" [showBtns]="false"></app-cart-item>
             </div>
-            <div class="total-amount">Precio del pedido: {{totalAmount() | number: '1.2-2' }}€</div>
-    </div>
-
-    <o-form class="order-form" #formOrder attr="newOrder" service="orders" entity="order" keys="ORD_ID"
-        show-header-navigation="no" show-header="false">
-        <div fxLayout="row">
-            <o-column class="order-column" fxFlex title="ORDER_INFORMATION">
-                <div fxLayout="column" fxLayoutGap="8px">
-                    <o-text-input #nameInput class="order-input" fxFlex="40" attr="ORD_NAME" required="yes"
-                        placeholder="ORD_NAME"></o-text-input>
-                    <o-integer-input #phoneInput class="order-input" fxFlex="40" attr="ORD_PHONE" thousand-separator=" "
-                        required="yes" placeholder="ORD_PHONE"></o-integer-input>
-                    <o-integer-input #zipInput class="order-input" fxFlex="40" attr="ORD_ZIPCODE" min="0" max="99999"
-                        thousand-separator="" required="yes" placeholder="ORD_ZIPCODE"></o-integer-input>
-                    <o-text-input #addressInput class="order-input" fxFlex="40" attr="ORD_ADDRESS" required="yes"
-                        placeholder="ORD_ADDRESS"></o-text-input>
-                    <o-button (onClick)="submitOrder()" type="RAISED" label="BUY_BUTTON"
-                        class="order-button"></o-button>
-                </div>
-            </o-column>
+            <div class="total-amount">Total: {{totalAmount() | number: '1.2-2' }}€</div>
         </div>
-    </o-form>
+
+        <o-form class="order-form" #formOrder attr="newOrder" service="orders" entity="order" keys="ORD_ID"
+            show-header-navigation="no" show-header="false">
+            <div fxLayout="row">
+                <o-column class="order-column" fxFlex title="ORDER_INFORMATION">
+                    <div fxLayout="column" fxLayoutGap="8px">
+                        <o-text-input #nameInput class="order-input" fxFlex="40" attr="ORD_NAME" required="yes"
+                            placeholder="ORD_NAME"></o-text-input>
+                        <o-integer-input #phoneInput class="order-input" fxFlex="40" attr="ORD_PHONE"
+                            thousand-separator=" " required="yes" placeholder="ORD_PHONE"></o-integer-input>
+                        <o-integer-input #zipInput class="order-input" fxFlex="40" attr="ORD_ZIPCODE" min="0"
+                            max="99999" thousand-separator="" required="yes"
+                            placeholder="ORD_ZIPCODE"></o-integer-input>
+                        <o-text-input #addressInput class="order-input" fxFlex="40" attr="ORD_ADDRESS" required="yes"
+                            placeholder="ORD_ADDRESS"></o-text-input>
+                            <div class="order-buttons-container">
+                                <button mat-raised-button id="order-button" (click)="submitOrder()" type="RAISED" 
+                                >{{'BUY' | oTranslate}}</button>
+
+                                <button mat-raised-button id="back-button" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>  
+
+                            </div>
+                    </div>
+                </o-column>
+            </div>
+        </o-form>
+    </ng-container>
+
+    <ng-template  #showMessage>
+        <div class="no-cart">
+            <div class="mensaje">
+                El carrito está vacío
+              </div>
+              <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>        
+        </div>
+      </ng-template>
 </div>

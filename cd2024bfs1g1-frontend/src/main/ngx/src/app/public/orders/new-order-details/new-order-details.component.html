@@ -3,16 +3,15 @@
     <div class="details-container">
       <h2>{{'ORD_ID' | oTranslate}}: {{ order.ORD_ID }}</h2>
       <div class="product-details">
-        <h3>{{'PRO_DETAILS' | oTranslate}}</h3>
-        <div class="product-info">
-          <div class="image-container">
-            <img class="img-product" [src]="getImageSrc(order.PRO_IMAGE)">
-          </div>
-          <div class="text-info">
-            <p>{{'PRO_NAME' | oTranslate}}: {{ order.PRO_NAME }}</p>
-            <p>{{'PRO_PRICE' | oTranslate}}: {{ price }}</p>
-            <p>{{'PRO_DESCRIPTION' | oTranslate}}: {{ order.PRO_DESCRIPTION }}</p>
-          </div>
+        <div *ngFor="let ol of orderLines">
+          <div class="ol-container">
+            <img class="img-product" [src]="getImageSrc(ol.PRO_IMAGE)" alt="imagen">
+            <div class="ol-details">
+              <div>Product: {{ ol.PRO_NAME }}</div>
+              <div>Units: {{  ol.OL_UNITS }}</div>
+              <div>Price: {{  ol.OL_PRICE  }}</div>  
+            </div>
+          </div>  
         </div>
       </div>
       <div class="order-details">
@@ -21,9 +20,11 @@
           <p>{{'ORD_NAME' | oTranslate}}: {{ order.ORD_NAME }}</p>
           <p>{{'ORD_ADDRESS' | oTranslate}}: {{ order.ORD_ADDRESS }}</p>
           <p>{{'ORD_ZIPCODE' | oTranslate}}: {{ order.ORD_ZIPCODE }}</p>
+          <p>{{'ORD_DATE' | oTranslate}}: {{ timestampToDate(order.ORD_DATE) }}</p>
         </div>
       </div>
     </div>
   </div>
+  <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>        
 </div>
  

@@ -128,5 +128,6 @@
   "DETAIL_PRODUCT":"Detalles Producto",
   "PRO_MAX_PRICE": "Precio máximo",
   "PRO_MIN_PRICE": "Precio mínimo",
-  "PRO_REAL_PRICE":"Precio"
+  "PRO_REAL_PRICE":"Precio",
+  "ORD_DATE": "Fecha"
 }

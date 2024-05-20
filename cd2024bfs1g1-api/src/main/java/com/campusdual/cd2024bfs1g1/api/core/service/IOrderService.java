@@ -18,4 +18,6 @@ public interface IOrderService {
     EntityResult orderDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
+
+    EntityResult orderLinesViewQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 }

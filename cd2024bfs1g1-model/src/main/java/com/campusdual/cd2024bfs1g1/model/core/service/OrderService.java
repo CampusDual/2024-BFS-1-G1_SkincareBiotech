@@ -80,5 +80,9 @@ public class OrderService implements IOrderService {
         return er;
     }
 
+    @Override
+    public EntityResult orderLinesViewQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.orderDao, keyMap, attrList, "orderLinesView");
+    }
 
 }

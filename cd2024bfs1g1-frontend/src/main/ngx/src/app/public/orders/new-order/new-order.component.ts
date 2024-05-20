@@ -81,7 +81,13 @@ export class NewOrderComponent implements OnInit {
     this.cartService.emptyCart();
     this.service.insert(data, "order")
       .subscribe(res => {
-        console.log(res)
+
+        console.log(res.data);
+        this.router.navigate(['/order/details', res.data['ORD_ID']]);
       })
+  }
+
+  goBack(): void {
+    this.router.navigate(["/cart/view"]);
   }
 }

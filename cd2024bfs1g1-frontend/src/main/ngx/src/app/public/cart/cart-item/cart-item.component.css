@@ -2,7 +2,7 @@
     display: flex;
     border-radius: 10px;
     background-color: white;
-    width: 1200px;
+    min-width: 50vw;
     margin: auto;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
@@ -23,8 +23,7 @@
 
 .item-details-container{
     margin-left: 5%;
-    margin-right: 5%;
-    width: 75%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,4 +78,17 @@
 
 .originalPrice {
     text-decoration: line-through;
+}
+
+.delete-container{
+    align-self: start;
+    margin-top: 3%;
+    margin-right: 3%;
+}
+
+.delete-button{
+    color: red;
+    font-size: 30px;
+    border:none;
+    background-color: transparent;
 }
