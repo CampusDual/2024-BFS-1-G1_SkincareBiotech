@@ -114,5 +114,6 @@
   "MAIN_SCREEN": "Main screen",
   "PAYMENT_METHODS": "Payment methods",
   "CASH_ON_DELIVERY": "Cash on delivery",
-  "PAY_WITH_CARD": "Pay with card"
+  "PAY_WITH_CARD": "Pay with card",
+  "MAIN_SCREEN":"Home page"
 }
