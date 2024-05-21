@@ -155,6 +155,6 @@
   "ERROR_USERNAME_PATTERN": "Solo letras",
   "MAX_LENGTH_50": "Máximo 50 caracteres",
   "ERROR_EMAIL_PATTERN": "Correo incorrecto",
-  "ERROR_PHONE_PATTERN": "Tiene que tener 9 dígitos",
+  "ERROR_PHONE_PATTERN": "Deben ser 9 dígitos y empezar por 6, 7, 8 o 9",
   "PASSWORDS_DO_NOT_MATCH": "Las contraseñas no coinciden"
 }

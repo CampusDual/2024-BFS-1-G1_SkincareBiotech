@@ -20,7 +20,7 @@ export class ClientRegisterComponent implements OnInit {
     Validators.required,
     Validators.minLength(4),
     Validators.maxLength(16),
-    Validators.pattern('^[a-zA-Z0-9]*$')
+    Validators.pattern('^[a-zA-Z0-9_]*$')
   ]);
   public pwdCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required,
@@ -35,18 +35,18 @@ export class ClientRegisterComponent implements OnInit {
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(50),
-    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ]*$')
+    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
   ]);
   public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required, Validators.minLength(3),
     Validators.maxLength(50),
-    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ]*$')
+    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
   ]);
   public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required,
     Validators.email
   ]);
-  public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.pattern('^[0-9]{9}$'));
+  public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.pattern('^[6-9][0-9]{8}$'));
 
   service: OntimizeService;
   redirect = '';
