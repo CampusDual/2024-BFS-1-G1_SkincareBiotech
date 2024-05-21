@@ -392,6 +392,26 @@ public class UserAndRoleService implements IUserAndRoleService {
 		}
 	}
 
+	@Override
+	@Transactional(rollbackFor = Throwable.class)
+	public EntityResult clientRoleInsert(Map<String, Object> attributes) {
+
+			Map<String,Object> usrValues = new HashMap<>(attributes);
+			Map<String, Object> usrRoleValues = new HashMap<>();
+			usrValues.put(UserDao.PASSWORD, this.encryptPassword((String) attributes.get(UserDao.PASSWORD)));
+			EntityResult userValuesInsert = this.daoHelper.insert(this.userDao, usrValues);
+			Integer usrID = (Integer) userValuesInsert.get(UserDao.USR_ID);
+			usrRoleValues.put(RoleDao.ROL_NAME, "user");
+			EntityResult roleQuery = this.daoHelper.query(this.roleDao, usrRoleValues, List.of(RoleDao.ROL_ID));
+			Integer roleID = (Integer) ((List) roleQuery.get(RoleDao.ROL_ID)).get(0);
+			usrRoleValues.clear();
+			usrRoleValues.put(UserRoleDao.ROL_ID, roleID);
+			usrRoleValues.put(UserRoleDao.USR_ID, usrID);
+			EntityResult userRoleInsert = this.daoHelper.insert(this.userRolesDao, usrRoleValues);
+			return userRoleInsert;
+
+	}
+
 	protected boolean checkPasswords(final String storedPassword, final String password) throws OntimizeJEERuntimeException {
 		if (this.passwordEncrypter == null) {
 			return (password != null && storedPassword.equals(password));

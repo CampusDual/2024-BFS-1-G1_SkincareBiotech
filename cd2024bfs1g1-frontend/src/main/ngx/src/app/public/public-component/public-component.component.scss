@@ -1,17 +1,17 @@
 ::ng-deep .header .mat-toolbar {
     margin: 5px auto 5px auto;
     background-color: #f8b88c;
-    color: white;
+    color: #686464;
     box-shadow: 0 2px 4px 0px rgba(248, 184, 140, 0), 0 4px 5px 0 rgba(248, 184, 140, 0), 0 1px 10px 0 rgba(248, 184, 140, 0);
 }
 
 ::ng-deep .header .o-bar-menu-item-title{
-    color: white;
+    color: #686464;
     font-weight: bold;
 }
 
 ::ng-deep .header .o-bar-menu-group-title{
-    color: white;
+    color: #686464;
     font-weight: bold;
 }
 
@@ -20,7 +20,7 @@
 }
 
 ::ng-deep .o-bar-menu nav .fake-ul .fake-ul .o-bar-menu-item-title {
-    color: white;
+    color: #686464;
 }
 
 ::ng-deep .o-bar-menu nav .fake-ul .fake-ul .fake-li-hover a {
@@ -28,7 +28,7 @@
 }
 
 ::ng-deep .header .mat-icon{
-    color: white;
+    color: #686464;
 }
 
 .header {
@@ -48,13 +48,13 @@
 a{
     display: block;
     text-decoration: none;
-    color: white;
+    color: #686464;
     font-size: 15px;
     padding: 10px;
 }
 
 .links a:hover{
-    color: #B6A522;
+    color: #f8b88c;
     text-decoration: underline;
 }
 .content{
@@ -64,3 +64,8 @@ a{
 ::ng-deep .o-bar-menu{
     box-shadow: 0 2px 4px 0px rgba(248, 184, 140, 0), 0 4px 5px 0 rgba(248, 184, 140, 0), 0 1px 10px 0 rgba(248, 184, 140, 0);
 }
+
+#botones {
+    background-color:  #f8b88c;
+  }
+  
