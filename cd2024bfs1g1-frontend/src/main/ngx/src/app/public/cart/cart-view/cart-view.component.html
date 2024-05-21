@@ -1,0 +1,20 @@
+<div class="cart-item-container">
+  
+  <ng-container *ngIf="cart.length; else showMessage">
+    <div *ngFor="let item of cart">
+      <app-cart-item [item]="item" [showBtns]="true" (updateCart)="updateCart()"></app-cart-item>
+    </div>
+    <div>
+      <button mat-raised-button id="buy-button" attr="BUY_BUTTON" (click)="createOrder()">{{'BUY_BUTTON' | oTranslate}}</button>
+      <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>  
+    </div>
+  </ng-container>
+
+
+  <ng-template #showMessage>
+    <div class="mensaje">
+      El carrito está vacío
+    </div>
+    <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>  
+  </ng-template>
+</div>

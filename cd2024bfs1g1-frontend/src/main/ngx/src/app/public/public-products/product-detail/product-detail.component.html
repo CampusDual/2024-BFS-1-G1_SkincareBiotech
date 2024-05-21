@@ -8,7 +8,7 @@
             <div class="price" *ngIf="(sale != null); else priceBlock">
                 <div class="priceSale">
                     <p>
-                        <span>{{'SALE' | oTranslate}}:</span>{{ sale }} €
+                        <span>{{'SALE' | oTranslate}}: {{ sale }} €</span>
                     </p>
                     <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ price }} €</p>
                 </div>
@@ -17,8 +17,10 @@
                 <p class="regularPrice">{{price}}€</p>
             </ng-template>
 
-            <button class="buy-button" attr="BUY_BUTTON" (click)="createOrder()">{{'BUY_BUTTON' | oTranslate}}</button>
-            <div class="description">{{product.PRO_DESCRIPTION}}</div>
+            <div class="buttons">
+                <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON" (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
+                <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>  
+            </div>
         </div>
     </div>
 </div>

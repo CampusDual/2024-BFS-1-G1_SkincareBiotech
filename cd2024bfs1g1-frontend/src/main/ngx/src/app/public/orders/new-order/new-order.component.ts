@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { OFormComponent, OIntegerInputComponent, OTranslateService } from 'ontimize-web-ngx';
+import { AfterViewInit, Component, ViewChild, ElementRef, OnInit,Injector, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
 import * as CryptoJS from 'crypto-js';
-
+import { DomSanitizer } from '@angular/platform-browser';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-new-order',
@@ -13,63 +14,93 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
 
   currLang: string;
   productId: number;
-  insertedData: any;
   price: string;
   order: string;
   url: string;
 
+  @Input() item: any;
+  @Input() showBtns: boolean = true;
+  cart: any[] = [];
+  products_cart: any[] = []
+  insertedData: any;
+  service: OntimizeService;
 
-  @ViewChild("pro_id") pro_id: OIntegerInputComponent;
   @ViewChild("formOrder") formOrder: OFormComponent;
   @ViewChild("Ds_MerchantParameters") ds_merchantParameters: ElementRef;
   @ViewChild("Ds_Signature") ds_signature: ElementRef;
   @ViewChild("language") language: OIntegerInputComponent;
-
+  @ViewChild("nameInput") nameInput: OTextInputComponent;
+  @ViewChild("phoneInput") phoneInput: OIntegerInputComponent;
+  @ViewChild("zipInput") zipInput: OIntegerInputComponent;
+  @ViewChild("addressInput") addressInput: OTextInputComponent;
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
+    private cartService: CartService,
+    protected injector: Injector,
+    protected sanitizer: DomSanitizer,
     private translateService: OTranslateService,
+
   ) {
-    
-  }
-
-  ngOnInit(): void {   
+    this.service = this.injector.get(OntimizeService);
+    this.cart = this.cartService.getCart();
 
   }
 
-  
+  ngOnInit() {
+    const conf_prods = this.service.getDefaultServiceConfiguration('products');
+    this.service.configureService(conf_prods);
+    const cartProductsId = this.cart.map(item => item.id)
+    for (let i = 0; i < cartProductsId.length; i++) {
+
+      this.service.query({ "PRO_ID": cartProductsId[i] }, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "productEnabled")
+        .subscribe((data) => {
+          if (data.data.length > 0) {
+            this.products_cart.push(data.data);
+          }
+        });
+    }
+  }
+
+  public totalAmount(): any {
+    let totalAmount = 0;
+    for (let z = 0; z < this.products_cart.length; z++) {
+      if (this.products_cart[z][0].PRO_SALE) {
+        totalAmount += this.products_cart[z][0].PRO_SALE * this.cart[z].units
+      } else {
+        totalAmount += this.products_cart[z][0].PRO_PRICE * this.cart[z].units
+      }
+    }
+    return totalAmount;
+
+  }
 
   ngAfterViewInit(): void {
-
-    this.route.params.subscribe(params => {
-      this.productId = Number(params['PRO_ID']);
-      this.pro_id.setValue(this.productId);
-      console.log(this.pro_id.getValue());
-    });
-
 
   }
 
   submitOrder(): void {
 
-    this.formOrder.insert();
+    const conf = this.service.getDefaultServiceConfiguration('orders');
+    this.service.configureService(conf);
+    let data = {
+      ORD_NAME: this.nameInput.getValue(),
+      ORD_PHONE: this.phoneInput.getValue(),
+      ORD_ZIPCODE: this.zipInput.getValue(),
+      ORD_ADDRESS: this.addressInput.getValue(),
+      ORD_ITEMS: this.cartService.getCart()
+    };
+    console.log(data)
+    this.cartService.emptyCart();
+    
+    this.service.insert(data, "order")
+      .subscribe(res => {
 
-  }
-
-  submitOrderRedsys(): void {
-
-    this.formOrder.onInsert.subscribe(
-      (data) => {
-
-        this.order = (data[0].ORD_ID).toString().padStart(12, "0");
-        this.price = (data[0].ORD_PRICE * 100).toString();
-
+        console.log(res.data);
+        this.order = (res[0].ORD_ID).toString().padStart(12, "0");
+        this.price = (this.totalAmount() * 100).toString();
         this.submitRedsysOrder();
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-    this.formOrder.insert();
+      })
   }
 
   currentLang(): void {
@@ -87,6 +118,10 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
     }
 
 
+  }
+
+  goBack(): void {
+    this.router.navigate(["/cart/view"]);
   }
 
   submitRedsysOrder(): void {

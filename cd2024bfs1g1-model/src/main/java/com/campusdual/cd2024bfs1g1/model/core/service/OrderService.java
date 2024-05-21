@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IOrderService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.OrderDao;
+import com.campusdual.cd2024bfs1g1.model.core.dao.OrderLinesDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.UserDao;
 import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +25,13 @@ public class OrderService implements IOrderService {
     @Autowired
     private OrderDao orderDao;
     @Autowired
+    private OrderLinesDao orderLineDao;
+    @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private OrderLinesService orderLinesService;
 
 
     @Override
@@ -39,25 +43,32 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public EntityResult orderInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, JsonProcessingException {
+    public EntityResult orderInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
+         
         int userId = Utils.getUserId();
-        Map<String, Object> proIdFilter = new HashMap<String, Object>();
-        proIdFilter.put(ProductDao.PRO_ID, attrMap.get(OrderDao.ATTR_PRO_ID));
-        List<String> attrList = List.of(ProductDao.PRO_PRICE, ProductDao.PRO_SALE);
-        EntityResult productER = productService.productQuery(proIdFilter, attrList);
-        BigDecimal sale = (BigDecimal) ((List) productER.get(ProductDao.PRO_SALE)).get(0);
-        BigDecimal price = (BigDecimal) ((List) productER.get(ProductDao.PRO_PRICE)).get(0);
-
-        if (sale != null) {
-            attrMap.put(OrderDao.ATTR_ORD_PRICE, sale);
-        } else {
-            attrMap.put(OrderDao.ATTR_ORD_PRICE, price);
+        Map<String, Object> orderData = new HashMap<>(attributes);
+        Map<String, Object> orderLineData = new HashMap<>();
+        orderData.remove("ORD_ITEMS");
+        List<Map<String, Integer>> itemList = (List<Map<String, Integer>>) attributes.get("ORD_ITEMS");
+        orderData.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
+        EntityResult ordInsertResult = this.daoHelper.insert(this.orderDao, orderData);
+        Integer ordId = (Integer) ordInsertResult.get(OrderDao.ATTR_ORD_ID);
+        
+        for(int i = 0;i<itemList.size();i++){
+            Map<String, Integer> item = itemList.get(i);
+            Integer id = item.get("id");
+            Integer units = item.get("units");
+            orderLineData.put(ProductDao.PRO_ID,id);
+            orderLineData.put(OrderLinesDao.ATTR_OL_UNITS,units);
+            orderLineData.put(OrderLinesDao.ATTR_OL_PRICE,productService.getProductPriceById(id));
+            orderLineData.put(OrderLinesDao.ATTR_ORD_ID,ordId);
+            this.daoHelper.insert(this.orderLineDao, orderLineData);
         }
         attrMap.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
         EntityResult er = this.daoHelper.insert(this.orderDao, attrMap);
         Map<String, Object> ordIdMap = new HashMap<String, Object>();
-        Integer ordId = (Integer) er.get(OrderDao.ATTR_ORD_ID);
-        ordIdMap.put(OrderDao.ATTR_ORD_ID, ordId);
+        Integer ordIdEr = (Integer) er.get(OrderDao.ATTR_ORD_ID);
+        ordIdMap.put(OrderDao.ATTR_ORD_ID, ordIdEr);
         List<String> columns = List.of(OrderDao.ATTR_ORD_ID, OrderDao.ATTR_ORD_PRICE);
         return this.orderByUserQuery(ordIdMap, columns);
     }
@@ -80,6 +91,11 @@ public class OrderService implements IOrderService {
         filter.put(ProductDao.PRO_SELLER_ID, userId);
         EntityResult er = this.daoHelper.query(this.orderDao, filter, attributes);
         return er;
+    }
+
+    @Override
+    public EntityResult orderLinesViewQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.orderDao, keyMap, attrList, "orderLinesView");
     }
 
     @Override

@@ -11,6 +11,9 @@ export const SERVICE_CONFIG: Object = {
   'categories': {
     'path': '/categories'
   },
+  'orderlines': {
+    'path': '/order-lines'
+  },
   'brands':{
     'path': '/brands'
   },

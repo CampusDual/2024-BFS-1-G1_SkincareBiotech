@@ -45,6 +45,7 @@
 }
 .priceSale p span {
     margin-right: 3%;
+    color: red;
 }
 .originalPrice{
     font-weight: lighter;

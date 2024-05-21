@@ -1,13 +1,10 @@
-<o-form-layout-manager attr="ordersHistory" title="{{'ORDERS' | oTranslate}}" separator=" " mode="dialog">
-    <o-table attr="ordersTable" service="orders" entity="orderByUser" keys="ORD_ID"
-    insert-button="no" delete-button="no" edition-mode="none" detail-mode="none"
-        columns="ORD_ID;PRO_NAME;ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_ADDRESS;ORD_SENT;ORD_PRICE"
-        visible-columns="ORD_NAME;PRO_NAME;ORD_PHONE;ORD_SENT;ORD_PRICE;ORD_ZIPCODE;ORD_ADDRESS" query-rows="15">
-        <o-table-column attr="ORD_NAME" title="ORD_NAME" width="150px"></o-table-column>
-        <o-table-column attr="PRO_NAME" title="PRO_NAME_COMPLETE" width="150px"></o-table-column>
-        <o-table-column attr="ORD_PHONE" title="ORD_PHONE" width="150px"></o-table-column>
-        <o-table-column attr="ORD_SENT" title="ORD_SENT" width="50px"></o-table-column>
-        <o-table-column attr="ORD_PRICE" title="ORD_PRICE" width="50px"></o-table-column>
-        <o-table-column attr="ORD_ZIPCODE" title="ORD_ZIPCODE" width="50px"></o-table-column>
-    </o-table>
-</o-form-layout-manager>
+<o-table attr="ordersTable" service="orders" entity="orderByUser" keys="ORD_ID" insert-button="no" delete-button="no"
+    columns="ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_DATE;ORD_ID;ORD_SENT"
+    visible-columns="ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_DATE;ORD_ID;ORD_SENT" query-rows="15">
+    <o-table-column attr="ORD_NAME" title="ORD_NAME" width="150px"></o-table-column>
+    <o-table-column attr="ORD_PHONE" title="ORD_PHONE" width="150px"></o-table-column>
+    <o-table-column attr="ORD_SENT" title="ORD_SENT" width="50px"></o-table-column>
+    <o-table-column attr="ORD_ZIPCODE" title="ORD_ZIPCODE" width="50px"></o-table-column>
+    <o-table-column attr="ORD_DATE" title="ORD_DATE" type="time" width="150px"></o-table-column>
+    <o-table-column attr="ORD_ID" title="ORD_ID" width="150px"></o-table-column>
+</o-table>

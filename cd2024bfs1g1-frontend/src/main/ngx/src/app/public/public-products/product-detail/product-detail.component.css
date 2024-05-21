@@ -34,7 +34,8 @@
 }
 
 .priceSale p span {
-    margin-right: 3%;
+    margin-right: 3%;    
+    color:red;
 }
 
 .originalPrice {
@@ -47,7 +48,7 @@
     font-size: 1.5em;
     font-weight: 900;
     text-align: left;
-    margin-top: 10%;
+    margin-top: 10%;  
 }
 
 h1 {
@@ -77,12 +78,30 @@ h1 {
 }
 
 
-.buy-button {
+#add-cart-button {
     border-radius: 10px;
-    width: 150px;
     height: 60px;
-    background-color: rgb(242, 242, 115);
+    background-color: #f8b88c;
     font-size: large;
     text-transform: uppercase;
     font-weight: bolder;
+}
+
+
+
+.buttons {
+    display: flex;
+    margin-top: 5%;
+}
+
+#back-button {
+    border-radius: 10px;
+    width: 150px;
+    height: 60px;
+    background-color: lightcyan;
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-left: 20px;
+
 }
