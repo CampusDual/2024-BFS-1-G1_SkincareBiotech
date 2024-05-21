@@ -11,6 +11,8 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +55,22 @@ public class ProductService implements IProductService {
     public EntityResult productEnabledQuery(Map<String, Object> keysValues, List<String> attributes)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.productDao, keysValues, attributes, ProductDao.PRO_ENABLED);
+    }
+
+    @Override
+    public BigDecimal getProductPriceById(Integer proId) {
+        Map<String, Object> proIdMap = new HashMap<String, Object>();
+        proIdMap.put(ProductDao.PRO_ID, proId);
+        List<String> attrList = List.of(ProductDao.PRO_PRICE, ProductDao.PRO_SALE);
+        EntityResult productER = productQuery(proIdMap, attrList);
+        BigDecimal sale = (BigDecimal) ((List) productER.get(ProductDao.PRO_SALE)).get(0);
+        BigDecimal price = (BigDecimal) ((List) productER.get(ProductDao.PRO_PRICE)).get(0);
+
+        if (sale != null) {
+            return sale;
+        } else {
+           return price;
+        }
     }
 
     @Override

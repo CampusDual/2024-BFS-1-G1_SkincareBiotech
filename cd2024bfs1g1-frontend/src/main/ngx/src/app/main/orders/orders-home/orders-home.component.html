@@ -1,10 +1,9 @@
-<o-form-layout-manager attr="ordersHome" title="{{'ORDERS' | oTranslate}}" separator=" " mode="dialog">
-    <o-table attr="ordersTable" service="orders" entity="orderBySeller" keys="ORD_ID"
-        columns="ORD_ID;PRO_NAME;ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_ADDRESS;ORD_SENT"
-        visible-columns="ORD_NAME;PRO_NAME;ORD_PHONE;ORD_SENT" query-rows="15" delete-button='no'>
-        <o-table-column attr="ORD_NAME" title="ORD_NAME" width="150px"></o-table-column>
-        <o-table-column attr="PRO_NAME" title="PRO_NAME_COMPLETE" width="150px"></o-table-column>
-        <o-table-column attr="ORD_PHONE" title="ORD_PHONE" width="150px"></o-table-column>
-        <o-table-column attr="ORD_SENT" title="ORD_SENT" width="50px"></o-table-column>
-    </o-table>
-</o-form-layout-manager>
+<o-table attr="ordersTable" service="orderlines" entity="orderLines" keys="OL_ID" insert-button="false" delete-button="false"
+    columns="OL_ID;ORD_ID;PRO_NAME;OL_PRICE;OL_UNITS;ORD_DATE"
+    visible-columns="ORD_ID;PRO_NAME;OL_PRICE;OL_UNITS;ORD_DATE" query-rows="15">
+    <o-table-column attr="ORD_ID" title="ORD_ID" width="100px"></o-table-column>
+    <o-table-column attr="PRO_NAME" title="PRO_NAME" width="100px"></o-table-column>
+    <o-table-column attr="OL_PRICE" title="OL_PRICE" width="100px"></o-table-column>
+    <o-table-column attr="OL_UNITS" title="OL_UNITS" width="100px"></o-table-column>
+    <o-table-column attr="ORD_DATE" title="ORD_DATE" type="time" width="100px"></o-table-column>
+</o-table>

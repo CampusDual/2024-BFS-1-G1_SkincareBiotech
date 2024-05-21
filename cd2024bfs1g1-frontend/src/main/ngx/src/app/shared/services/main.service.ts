@@ -22,11 +22,19 @@ export class MainService extends OntimizeEEService {
     return headers;
   }
 
-  public getUserInfo() : Observable<any> {
+  public getUserInfo(): Observable<any> {
     const options = { headers: this.buildHeaders() };
     const requestBody = {};
     return this.httpClient.post(
       this._appConfig.apiEndpoint + '/users/loginUser/search',
+      requestBody,
+      options);
+  }
+  public getUserRolName(): Observable<any> {
+    const options = { headers: this.buildHeaders() };
+    const requestBody = {};
+    return this.httpClient.post(
+      this._appConfig.apiEndpoint + '/users/userRolName',
       requestBody,
       options);
   }
