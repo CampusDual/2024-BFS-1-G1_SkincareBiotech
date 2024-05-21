@@ -16,12 +16,36 @@ import Swal from 'sweetalert2';
 export class ClientRegisterComponent implements OnInit {
 
   public registerForm: UntypedFormGroup = new UntypedFormGroup({});
-  public userCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(16), Validators.pattern('^[a-zA-Z0-9]*$')]);
-  public pwdCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(8)]);
-  public pwdCtrl2: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(8)]);
-  public usernameCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜçÇ]*$')]);
-  public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜçÇ]*$')]);
-  public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', [Validators.required, Validators.email]);
+  public userCtrl: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required,
+    Validators.minLength(4),
+    Validators.maxLength(16),
+    Validators.pattern('^[a-zA-Z0-9]*$')
+  ]);
+  public pwdCtrl: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required,
+    Validators.minLength(8),
+    Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")
+  ]);
+  public pwdCtrl2: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required,
+    Validators.minLength(8)
+  ]);
+  public usernameCtrl: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(50),
+    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ]*$')
+  ]);
+  public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required, Validators.minLength(3),
+    Validators.maxLength(50),
+    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ]*$')
+  ]);
+  public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
   public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.pattern('^[0-9]{9}$'));
 
   service: OntimizeService;
@@ -55,16 +79,21 @@ export class ClientRegisterComponent implements OnInit {
   }
 
   register() {
-    if (this.passwordMatchValidator() && this.registerForm.valid) {
-      this.insertUser(this.userRole);
-    } else {
-      Swal.fire({
-        title: "ERROR",
-        text: "Formulario incorrecto",
-        icon: 'error',
-        confirmButtonText: "Aceptar",
-        confirmButtonColor: '#f8b88c',
-      });
+    if (this.registerForm.valid) {
+      if (this.passwordMatchValidator()) {
+        this.insertUser(this.userRole);
+      } else {
+        const text = this.translate.get('PASSWORDS_DO_NOT_MATCH');
+        const button = this.translate.get('CONFIRMATION_REGISTER_BUTTON');
+
+        Swal.fire({
+          title: "ERROR",
+          text: text,
+          icon: 'error',
+          confirmButtonText: button,
+          confirmButtonColor: '#f8b88c',
+        });
+      }
     }
   }
 

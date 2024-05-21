@@ -16,7 +16,7 @@
   "ERROR_REQUIRED_FIELD": "Field is required",
   "ERROR_SESSION_EXPIRED": "Session expired.",
   "ERROR_USER_PASS_INCORRECT": "Invalid username or password.",
-  "ERROR_USER_REQUIRED": "Incorrect username.",
+  "ERROR_USER_REQUIRED": "Incorrect username",
   "ERROR_USER_SURNAME_REQUIRED": "The surname is required.",
   "ERROR_USER_NAME_REQUIRED": "The username is required.",
   "ERROR_USER_EMAIL_REQUIRED": "The email is required.",
@@ -125,5 +125,16 @@
   "REGISTER": "Register",
   "CONFIRMATION_REGISTER_TITLE":"Congratulations!",
   "CONFIRMATION_REGISTER_TEXT": "You have successfully registered in our store.",
-  "CONFIRMATION_REGISTER_BUTTON": "Continue"
+  "CONFIRMATION_REGISTER_BUTTON": "Continue",
+  "DATA_FORM_INVALID": "The data entered is not valid",
+  "MIN_LENGTH_4": "4 characters minimum",
+  "MIN_LENGTH_3": "3 characters minimum",
+  "MIN_LENGTH_8": "8 characters minimum",
+  "ERROR_USER_PATTERN": "Only letters and numbers",
+  "ERROR_PASSWORD_PATTERN": "1 number, 1 capital letter and 1 lowercase letter",
+  "ERROR_USERNAME_PATTERN": "Only letters",
+  "MAX_LENGTH_50": "50 characters maximum",
+  "ERROR_EMAIL_PATTERN": "Invalid email",
+  "ERROR_PHONE_PATTERN": "Must have 9 digits",
+  "PASSWORDS_DO_NOT_MATCH": "Passwords do not match"
 }

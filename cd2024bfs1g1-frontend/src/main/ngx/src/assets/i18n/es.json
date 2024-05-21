@@ -124,6 +124,15 @@
   "ALREADY_CLIENT": "¿Ya eres cliente?",
   "REGISTER": "Registrarse",
   "CONFIRMATION_REGISTER_TITLE":"¡Enhorabuena!",
-  "CONFIRMATION_REGISTER_TEXT": "Te has registrado correctamente en nuestra tienda.",
-  "CONFIRMATION_REGISTER_BUTTON": "Continuar"
+  "CONFIRMATION_REGISTER_TEXT": "Te has registrado correctamente en nuestra tienda",
+  "CONFIRMATION_REGISTER_BUTTON": "Continuar",
+  "DATA_FORM_INVALID": "Los datos introducidos no son válidos",
+  "MIN_LENGTH_4": "Mínimo 4 caracteres",
+  "ERROR_USER_PATTERN": "Solo números y letras",
+  "ERROR_PASSWORD_PATTERN": "1 número, 1 mayúscula y 1 minúscula",
+  "ERROR_USERNAME_PATTERN": "Solo letras",
+  "MAX_LENGTH_50": "Máximo 50 caracteres",
+  "ERROR_EMAIL_PATTERN": "Correo incorrecto",
+  "ERROR_PHONE_PATTERN": "Tiene que tener 9 dígitos",
+  "PASSWORDS_DO_NOT_MATCH": "Las contraseñas no coinciden"
 }

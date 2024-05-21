@@ -46,3 +46,8 @@
     margin-bottom: 10px;
     color: #686464;
 }
+
+.mat-mdc-form-field {
+    min-width: 300px;
+    margin-bottom: 5px;
+}
