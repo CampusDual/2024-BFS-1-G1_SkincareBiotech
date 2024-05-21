@@ -53,15 +53,13 @@ public class OrderService implements IOrderService {
         } else {
             attrMap.put(OrderDao.ATTR_ORD_PRICE, price);
         }
+        attrMap.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
         EntityResult er = this.daoHelper.insert(this.orderDao, attrMap);
         Map<String, Object> ordIdMap = new HashMap<String, Object>();
         Integer ordId = (Integer) er.get(OrderDao.ATTR_ORD_ID);
         ordIdMap.put(OrderDao.ATTR_ORD_ID, ordId);
         List<String> columns = List.of(OrderDao.ATTR_ORD_ID, OrderDao.ATTR_ORD_PRICE);
-        return this.orderQuery(ordIdMap, columns);
-
-        attrMap.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
-        return this.daoHelper.insert(this.orderDao, attrMap);
+        return this.orderByUserQuery(ordIdMap, columns);
     }
 
     @Override

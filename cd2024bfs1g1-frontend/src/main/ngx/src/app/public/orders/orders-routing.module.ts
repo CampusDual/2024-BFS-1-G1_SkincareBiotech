@@ -17,9 +17,6 @@ const routes: Routes = [
   },
   {
     path: 'accepted/:ORD_ID',
-  },
-  {
-    path: 'details/:ORD_ID',
     component: NewOrderDetailsComponent
   },
   {
