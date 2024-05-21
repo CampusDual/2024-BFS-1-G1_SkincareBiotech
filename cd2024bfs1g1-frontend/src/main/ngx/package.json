@@ -36,10 +36,12 @@
     "@angular/service-worker": "^15.2.10",
     "@angular/upgrade": "^15.2.10",
     "core-js": "^3.6.4",
+    "crypto-js": "^4.2.0",
     "ngx-material-timepicker": "5.4.3",
     "ontimize-web-ngx": "15.0.2",
     "ontimize-web-ngx-charts": "^15.0.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.11.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

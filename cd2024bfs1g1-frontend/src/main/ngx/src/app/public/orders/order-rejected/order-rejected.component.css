@@ -1,0 +1,13 @@
+#back-button {
+    border-radius: 10px;
+    width: 150px;
+    height: 60px;
+    background-color: lightcyan;
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-left: 20px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  
+  }

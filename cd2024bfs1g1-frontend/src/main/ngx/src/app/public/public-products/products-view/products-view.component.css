@@ -87,3 +87,7 @@ a {
     max-height: calc(100% - 64px);
     height: calc(100% - 64px);
 }
+
+::ng-deep body{
+    background-color: #ffe0cb;
+}

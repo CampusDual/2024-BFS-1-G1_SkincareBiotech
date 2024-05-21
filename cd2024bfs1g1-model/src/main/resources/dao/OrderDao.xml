@@ -38,7 +38,7 @@
             <Sentence>
                 <![CDATA[
                 WITH total_price AS (
-                    SELECT ORD_DATE::DATE AS ORD_DATE,PRO_SELLER_ID, SUM(OL_PRICE) AS AMOUNT_PRICE, COUNT(OL.ORD_ID) as ORD_COUNT
+                    SELECT ORD_DATE::DATE AS ORD_DATE,PRO_SELLER_ID, SUM(OL_PRICE * OL_UNITS) AS AMOUNT_PRICE, COUNT(OL.ORD_ID) as ORD_COUNT
                     FROM ${mainschema}.ORDERS AS O
                     JOIN ${mainschema}.ORD_LINES AS OL ON O.ORD_ID = OL.ORD_ID
                     JOIN ${mainschema}.PRODUCTS AS P ON OL.PRO_ID = P.PRO_ID

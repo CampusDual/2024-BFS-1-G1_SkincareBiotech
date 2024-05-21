@@ -23,12 +23,14 @@
                         <o-text-input #addressInput class="order-input" fxFlex="40" attr="ORD_ADDRESS" required="yes"
                             placeholder="ORD_ADDRESS"></o-text-input>
                             <div class="order-buttons-container">
-                                <button mat-raised-button id="order-button" (click)="submitOrder()" type="RAISED" 
-                                >{{'BUY' | oTranslate}}</button>
-
                                 <button mat-raised-button id="back-button" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>  
-
                             </div>
+                            <o-column class="order-column" fxFlex title="PAYMENT_METHODS">           
+                                <div fxLayout="column" fxLayoutGap="8px">               
+                                    <!--<o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>-->
+                                    <o-button (onClick)="submitOrder()" type="RAISED" label="REDSYS" class="order-button"></o-button>              
+                                </div>
+                            </o-column>
                     </div>
                 </o-column>
             </div>
@@ -44,3 +46,12 @@
         </div>
       </ng-template>
 </div>
+
+<form name="form" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST" (submit)="submitRedsysOrder()" ngNoForm>    
+    <!-- Valor fijo -->
+    <input  type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
+    <!-- Cadena en formato JSON con todos los datos de la petición (ver formulario del js) -->
+    <!-- Tras montar la cadena, es necesario codificarla en BASE64 -->
+    <input  type="hidden" name="Ds_MerchantParameters" value="" id="Ds_MerchantParameters"#Ds_MerchantParameters/>
+    <input  type="hidden" name="Ds_Signature" value="" id="Ds_Signature" #Ds_Signature/>
+</form>

@@ -14,11 +14,11 @@ import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 		)
 public class RoleDao extends OntimizeJdbcDaoSupport {
 
-	public static final String ROL_ID                 = "rol_id";
-	public static final String ROL_NAME               = "rol_name";
-	public static final String XML_CLIENT_PERMISSION  = "rol_xml_client_permission";
-	public static final String JSON_CLIENT_PERMISSION = "rol_json_client_permission";
-	public static final String NOTES                  = "rol_notes";
+	public static final String ROL_ID                 = "ROL_ID";
+	public static final String ROL_NAME               = "ROL_NAME";
+	public static final String XML_CLIENT_PERMISSION  = "ROL_XML_CLIENT_PERMISSION";
+	public static final String JSON_CLIENT_PERMISSION = "ROL_JSON_CLIENT_PERMISSION";
+	public static final String NOTES                  = "ROL_NOTES";
 
 	public RoleDao() {
 		super();

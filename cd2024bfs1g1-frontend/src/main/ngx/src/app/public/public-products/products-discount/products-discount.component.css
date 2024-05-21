@@ -74,3 +74,7 @@ h2 {
     margin-left: 4vh;
     margin-top: 5vh;
 }
+
+::ng-deep body{
+    background-color: #ffe0cb;
+}
