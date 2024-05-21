@@ -5,7 +5,7 @@
             <div *ngFor="let item of cart">
                 <app-cart-item [item]="item" [showBtns]="false"></app-cart-item>
             </div>
-            <div class="total-amount">Total: {{totalAmount() | number: '1.2-2' }}€</div>
+            <div class="total-amount">Total: {{totalAmount | number: '1.2-2' }}€</div>
         </div>
 
         <o-form class="order-form" #formOrder attr="newOrder" service="orders" entity="order" keys="ORD_ID"

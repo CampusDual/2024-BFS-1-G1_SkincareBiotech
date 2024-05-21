@@ -1,7 +1,7 @@
 import { OnInit, Component, ViewChild, Injector, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OFormComponent, OIntegerInputComponent, OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
+import { Expression, FilterExpression, FilterExpressionUtils, OFormComponent, OIntegerInputComponent, OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
 import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
@@ -17,6 +17,9 @@ export class NewOrderComponent implements OnInit {
   products_cart: any[] = []
   insertedData: any;
   service: OntimizeService;
+  filterExp: {};
+  PRO_ID = "PRO_ID";
+  totalAmount:number = 0;
 
   @ViewChild("formOrder") formOrder: OFormComponent;
   @ViewChild("nameInput") nameInput: OTextInputComponent;
@@ -39,29 +42,30 @@ export class NewOrderComponent implements OnInit {
   ngOnInit() {
     const conf_prods = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf_prods);
-    const cartProductsId = this.cart.map(item => item.id)
-    for (let i = 0; i < cartProductsId.length; i++) {
+    const cartProductsId = this.cart.map(item => item.id);
+    this.filterExp = {"@basic_expression":this.filter(cartProductsId)};
+    this.service.query(this.filterExp, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "product").subscribe((data) => {
+      data.data.forEach(product => {
+        if (product.PRO_SALE) {
+          let units = (this.cart.find(item => item.id === product.PRO_ID)).units;
+          this.totalAmount += product.PRO_SALE * units;
+        } else {
+          let units = (this.cart.find(item => item.id === product.PRO_ID)).units;
+          this.totalAmount += product.PRO_PRICE * units;
 
-      this.service.query({ "PRO_ID": cartProductsId[i] }, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "productEnabled")
-        .subscribe((data) => {
-          if (data.data.length > 0) {
-            this.products_cart.push(data.data);
-          }
-        })
-    }
+        }
+      });
+    });
   }
 
-  public totalAmount(): any {
-    let totalAmount = 0;
-    for (let z = 0; z < this.products_cart.length; z++) {
-      if (this.products_cart[z][0].PRO_SALE) {
-        totalAmount += this.products_cart[z][0].PRO_SALE * this.cart[z].units
-      } else {
-        totalAmount += this.products_cart[z][0].PRO_PRICE * this.cart[z].units
-      }
+  filter(cartProductsId) {
+    let filter: Array<Expression> = [];
+    cartProductsId.forEach(id => {
+      filter.push(FilterExpressionUtils.buildExpressionEquals(this.PRO_ID, id));
+    })
+    if (filter.length !== 0) {
+      return filter.reduce((exp1, exp2) => FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_OR));
     }
-    return totalAmount;
-
   }
 
 
@@ -79,7 +83,7 @@ export class NewOrderComponent implements OnInit {
     };
     console.log(data)
     this.cartService.emptyCart();
-    
+
     this.service.insert(data, "order")
       .subscribe(res => {
 
