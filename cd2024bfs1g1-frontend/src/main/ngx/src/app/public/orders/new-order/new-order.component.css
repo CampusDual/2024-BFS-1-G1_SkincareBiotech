@@ -50,12 +50,10 @@
 }
 
 #order-button:hover {
-  background-color: #45a049;
   transform: translateY(-2px);
 }
 
 #order-button:active {
-  background-color: #4caf50;
   transform: translateY(0);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }

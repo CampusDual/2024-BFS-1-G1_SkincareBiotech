@@ -9,7 +9,7 @@
             <div class="ol-details">
               <div>Product: {{ ol.PRO_NAME }}</div>
               <div>Units: {{  ol.OL_UNITS }}</div>
-              <div>Price: {{  ol.OL_PRICE  }}</div>  
+              <div>Price: {{  ol.OL_PRICE | number: '1.2-2' }}€</div>  
             </div>
           </div>  
         </div>

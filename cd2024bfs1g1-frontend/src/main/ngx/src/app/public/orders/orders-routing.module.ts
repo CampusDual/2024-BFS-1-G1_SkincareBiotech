@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'cart',
     component: NewOrderComponent
   },
+  {
+    path: 'history/:ORD_ID',
+    component: NewOrderDetailsComponent
+  }
 ];
 
 @NgModule({
