@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OFormComponent, OIntegerInputComponent, OTranslateService } from 'ontimize-web-ngx';
 import * as CryptoJS from 'crypto-js';
@@ -9,13 +9,14 @@ import * as CryptoJS from 'crypto-js';
   templateUrl: './new-order.component.html',
   styleUrls: ['./new-order.component.css']
 })
-export class NewOrderComponent implements AfterViewInit {
+export class NewOrderComponent implements AfterViewInit , OnInit{
 
   currLang: string;
   productId: number;
   insertedData: any;
   price: string;
   order: string;
+  url: string;
 
 
   @ViewChild("pro_id") pro_id: OIntegerInputComponent;
@@ -28,9 +29,14 @@ export class NewOrderComponent implements AfterViewInit {
     private route: ActivatedRoute,
     private translateService: OTranslateService,
   ) {
-    console.log(this.translateService.get("REDSYS_LANGUAGE_CODE"));
-    console.log(this.translateService.getCurrentLang())
+    
   }
+
+  ngOnInit(): void {   
+
+  }
+
+  
 
   ngAfterViewInit(): void {
 
@@ -85,6 +91,8 @@ export class NewOrderComponent implements AfterViewInit {
 
   submitRedsysOrder(): void {
 
+    this.url = document.querySelector("base").href;
+
 
     this.currentLang();
     // Datos de la transacción
@@ -92,12 +100,12 @@ export class NewOrderComponent implements AfterViewInit {
       "DS_MERCHANT_AMOUNT": this.price,//this.price, // Los dos últimos son decimales (5000 = 50,00)
       "DS_MERCHANT_CURRENCY": "978",
       "DS_MERCHANT_MERCHANTCODE": "999008881",
-      "DS_MERCHANT_MERCHANTURL": "http://localhost:4299",
+      "DS_MERCHANT_MERCHANTURL": this.url,
       "DS_MERCHANT_ORDER": this.order,//this.order, // No se puede repetir(= id pedido)
       "DS_MERCHANT_TERMINAL": "1",
       "DS_MERCHANT_TRANSACTIONTYPE": "0",
-      "DS_MERCHANT_URLKO": `http://localhost:4299/order/rejected/${this.order}`,
-      "DS_MERCHANT_URLOK": `http://localhost:4299/order/accepted/${this.order}`,
+      "DS_MERCHANT_URLKO": `${this.url}/order/rejected/${this.order}`,
+      "DS_MERCHANT_URLOK": `${this.url}/order/accepted/${this.order}`,
       "DS_MERCHANT_CONSUMERLANGUAGE": this.currLang // 1: Español - 2:Inglés
     }
 
