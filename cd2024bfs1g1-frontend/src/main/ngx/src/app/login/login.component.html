@@ -5,7 +5,9 @@
     </div>
 
     <div class="wrapp-login">
+      <mat-icon class="flecha" routerLink="">arrow_back</mat-icon>
       <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
+ 
         <form [formGroup]="loginForm" (ngSubmit)="login()">
 
           <div class="login-title-container" fxLayout="column">
@@ -16,14 +18,15 @@
 
           <div fxLayout="column" fxLayoutGap="10px">
             <mat-form-field fxFill class="m-top-24">
-              <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username" [formControl]="userCtrl">
+              <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username"
+                [formControl]="userCtrl">
               <mat-error *ngIf="userCtrl.hasError('required')">
                 {{ 'ERROR_USER_REQUIRED' | oTranslate }}
               </mat-error>
             </mat-form-field>
             <mat-form-field fxFill class="m-top-24">
-              <input matInput class="mat-input" #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password"
-                [formControl]="pwdCtrl">
+              <input matInput class="mat-input" #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password"
+                type="password" [formControl]="pwdCtrl">
               <mat-error *ngIf="pwdCtrl.hasError('required')">
                 {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
               </mat-error>
@@ -35,19 +38,23 @@
             <!-- <span class="text link_text">{{ 'FORGOT_PWD' | oTranslate }}</span> -->
           </div>
 
-          <button mat-raised-button color="primary" type="submit">{{ 'LOGIN' | oTranslate }}</button>
-          <button mat-raised-button color="primary" routerLink="">{{ 'MAIN_SCREEN' | oTranslate }}</button>
+          <button mat-raised-button id="botones" type="submit">{{ 'LOGIN' | oTranslate }}</button>
+          <!-- <button mat-raised-button id="botones" routerLink="">{{ 'MAIN_SCREEN' | oTranslate }}</button> -->
+
+          <div class="linea"></div>
+          <label class="etiqueta">{{ 'ARE_NEW_CLIENT' | oTranslate }}</label>
+          <button mat-raised-button id="botones" routerLink="register">{{ 'CREATE_ACCOUNT' | oTranslate }}</button>
         </form>
       </div>
 
     </div>
   </div>
 
-  <div id="footer" class="footer-container">
+  <div id="footer" style="background-color:#f8b88c" class="footer-container">
     <div fxLayout="row" fxLayoutAlign="end center">
-      <span>{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
-      <span> &copy; 2021 </span>
-      <span>{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
+      <span id="pie">{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
+      <span id="pie"> &copy; 2021 </span>
+      <span id="pie">{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
     </div>
   </div>
 

@@ -105,3 +105,7 @@ h1 {
     margin-left: 20px;
 
 }
+
+::ng-deep body{
+    background-color: #ffe0cb;
+}
