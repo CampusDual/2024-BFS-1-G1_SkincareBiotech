@@ -1,8 +1,9 @@
 .center-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    margin-top: 5vh;
 }
  
 .container {
@@ -10,11 +11,12 @@
 }
  
 .details-container {
-    max-width: 400px;
+    max-width: 60vh;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    margin: auto;
 }
  
 h2 {
@@ -52,3 +54,33 @@ h3 {
     font-size: 20px;
     margin-bottom: 10px;
 }
+
+
+.ol-container{
+    display: flex;
+    padding: 3vh;
+    border-bottom: 1px solid gray;
+}
+
+.ol-details{
+    margin-left: 5%;
+}
+
+.img-product{
+    max-width: 80%;
+    max-height: 80%;
+}
+
+#back-button {
+    border-radius: 10px;
+    width: 150px;
+    height: 60px;
+    background-color: lightcyan;
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-left: 20px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  
+  }

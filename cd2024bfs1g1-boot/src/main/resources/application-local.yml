@@ -1,7 +1,7 @@
 spring:
   datasource:
-    jdbc-url: jdbc:postgresql://45.84.210.174:65432/cd2024bfs1g1
-    username: testuser
-    password: testuser
+    jdbc-url: jdbc:postgresql://79.137.80.214:35432/postgres
+    username: postgres
+    password: passwordG3
 environment:
   profile: local

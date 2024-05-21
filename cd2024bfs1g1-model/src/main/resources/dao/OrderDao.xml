@@ -12,19 +12,43 @@
     </UpdateKeys>
     <GeneratedKey>ord_id</GeneratedKey>
     <Queries>
-        <Query id="default">
+        <Query id="orderLinesView">
             <AmbiguousColumns>
+                <AmbiguousColumn name="ORD_ID" prefix="O"/>
                 <AmbiguousColumn name="PRO_ID" prefix="P"/>
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
-               SELECT
-                  #COLUMNS#
-               FROM
-                  ${mainschema}.ORDERS AS O
-                  INNER JOIN ${mainschema}.PRODUCTS AS P ON O.PRO_ID = P.PRO_ID
-               #WHERE#
-               #ORDER#
+                    SELECT
+                       #COLUMNS#
+                    FROM
+                       ${mainschema}.ORDERS AS O
+                        INNER JOIN ${mainschema}.ORD_LINES AS OL ON O.ORD_ID = OL.ORD_ID
+                        INNER JOIN ${mainschema}.PRODUCTS AS P ON OL.PRO_ID = P.PRO_ID
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="total_price">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="ORD_ID" prefix="O"/>
+                <AmbiguousColumn name="PRO_ID" prefix="P"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                WITH total_price AS (
+                    SELECT ORD_DATE::DATE AS ORD_DATE,PRO_SELLER_ID, SUM(OL_PRICE) AS AMOUNT_PRICE, COUNT(OL.ORD_ID) as ORD_COUNT
+                    FROM ${mainschema}.ORDERS AS O
+                    JOIN ${mainschema}.ORD_LINES AS OL ON O.ORD_ID = OL.ORD_ID
+                    JOIN ${mainschema}.PRODUCTS AS P ON OL.PRO_ID = P.PRO_ID
+                    JOIN ${mainschema}.USR_USER AS UU ON UU.USR_ID = P.PRO_SELLER_ID
+                    GROUP BY ORD_DATE::DATE, PRO_SELLER_ID
+                )
+                SELECT #COLUMNS#
+                FROM total_price
+                #WHERE#
+                ORDER BY ORD_DATE
             ]]>
             </Sentence>
         </Query>

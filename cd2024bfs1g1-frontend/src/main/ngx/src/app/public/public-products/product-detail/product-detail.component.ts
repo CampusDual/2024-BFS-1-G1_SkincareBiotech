@@ -1,8 +1,8 @@
-import { Component, Inject, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { CartService } from 'src/app/shared/services/cart.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -17,7 +17,8 @@ export class ProductDetailComponent implements OnInit {
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cartService: CartService,
   ) {
     this.service = this.injector.get(OntimizeService)
   }
@@ -47,10 +48,13 @@ export class ProductDetailComponent implements OnInit {
     return this.product.PRO_SALE?.toFixed(2);
   }
 
-  createOrder(): void {
 
-    this.router.navigate(["/order", this.product.PRO_ID]);
+  addProduct(product: any) {
+    this.cartService.addProductToCart(product);
+  }
 
+  goBack(): void {
+    this.router.navigate(["/"]);
   }
 
 }

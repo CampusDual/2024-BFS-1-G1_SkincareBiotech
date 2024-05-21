@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
   ## provided as basic setup. replace as needed
   repository: ghcr.io/campusdual/cd2024bfs1g1
-  version: dev82e0d10
+  version: dev590668f
 imagePullSecrets: 
   - name: "github-ecr-cred" 
 nameOverride: ""
@@ -55,7 +55,8 @@ resources:
 
 database:
 ## Provided as basic setup. Configure as needed. Provided instance is dev environment instance
-  url: jdbc:postgresql://cd2024bfs1g1-postgresql/cd2024bfs1g1-dev ## injected as DATABASE_URL environment variable
+  url: jdbc:postgresql://45.84.210.174:65432/cd2024bfs1g1 ## injected as DATABASE_URL environment variable
+  secret: cd2024bfs1g1-dev-db-secret
 
 jwt:
   enabled: false
@@ -75,16 +76,16 @@ grafana:
 
 # Optional configmap. Will be injected as environment variables.
 configmap:
-  enabled: false
+  enabled: true
   ## defaults to chart name + -config
   #name:
-  #data:
+  data:
   #  key: "value"
   #  key2: "value2"
   #  S3_ENDPOINT: "xxxxxx"
   #  S3_BUCKET: "xxxxxx"
   #  S3_REGION: "xxxxxx"
-  #  ENVIRONMENT_PROFILE: "staging/production/..."
+    ENVIRONMENT_PROFILE: "dev"
   #  KEYCLOAK_SERVICE
   #  KEYCLOAK_AUTH_CLIENT: cd2024bfs1g1-backend
   #  KEYCLOAK_AUTH_FRONT_CLIENT: cd2024bfs1g1-frontend
@@ -158,9 +159,6 @@ storage:
   mountPath: "/opt/cd2024bfs1g1/"
 
 jvmOptions: "-Xmx300m -Xms100m"  ## adjust according to pod requests
-
-flyway:
-  enabled: false
 
 postgresql:
   enabled: false
