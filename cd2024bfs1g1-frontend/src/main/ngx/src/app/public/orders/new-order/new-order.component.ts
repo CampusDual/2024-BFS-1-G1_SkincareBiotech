@@ -103,7 +103,7 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
         console.log(res.data);
         this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
         this.orderView = (res.data["ORD_ID"]).toString();
-        this.price = (this.totalAmount * 100).toString();
+        this.price = (this.totalAmount * 100).toFixed(0);
         this.submitRedsysOrder();
       })
   }
