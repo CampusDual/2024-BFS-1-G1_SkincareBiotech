@@ -23,11 +23,7 @@
                         <o-text-input #addressInput class="order-input" fxFlex="40" attr="ORD_ADDRESS" required="yes"
                             placeholder="ORD_ADDRESS"></o-text-input>
                             <div class="order-buttons-container">
-                                <button mat-raised-button id="order-button" (click)="submitOrder()" type="RAISED" 
-                                >{{'BUY' | oTranslate}}</button>
-
                                 <button mat-raised-button id="back-button" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>  
-
                             </div>
                             <o-column class="order-column" fxFlex title="PAYMENT_METHODS">           
                                 <div fxLayout="column" fxLayoutGap="8px">               

@@ -16,6 +16,7 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
   productId: number;
   price: string;
   order: string;
+  orderView : string;
   url: string;
 
   @Input() item: any;
@@ -97,7 +98,8 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
       .subscribe(res => {
 
         console.log(res.data);
-        this.order = (res[0].ORD_ID).toString().padStart(12, "0");
+        this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
+        this.orderView = (res.data["ORD_ID"]).toString();
         this.price = (this.totalAmount() * 100).toString();
         this.submitRedsysOrder();
       })
@@ -140,7 +142,7 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
       "DS_MERCHANT_TERMINAL": "1",
       "DS_MERCHANT_TRANSACTIONTYPE": "0",
       "DS_MERCHANT_URLKO": `${this.url}/order/rejected/${this.order}`,
-      "DS_MERCHANT_URLOK": `${this.url}/order/accepted/${this.order}`,
+      "DS_MERCHANT_URLOK": `${this.url}/order/history/${this.orderView}`,
       "DS_MERCHANT_CONSUMERLANGUAGE": this.currLang // 1: Español - 2:Inglés
     }
 

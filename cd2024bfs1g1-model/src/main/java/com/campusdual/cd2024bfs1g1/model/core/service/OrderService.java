@@ -64,13 +64,7 @@ public class OrderService implements IOrderService {
             orderLineData.put(OrderLinesDao.ATTR_ORD_ID,ordId);
             this.daoHelper.insert(this.orderLineDao, orderLineData);
         }
-        attrMap.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
-        EntityResult er = this.daoHelper.insert(this.orderDao, attrMap);
-        Map<String, Object> ordIdMap = new HashMap<String, Object>();
-        Integer ordIdEr = (Integer) er.get(OrderDao.ATTR_ORD_ID);
-        ordIdMap.put(OrderDao.ATTR_ORD_ID, ordIdEr);
-        List<String> columns = List.of(OrderDao.ATTR_ORD_ID, OrderDao.ATTR_ORD_PRICE);
-        return this.orderByUserQuery(ordIdMap, columns);
+        return ordInsertResult;
     }
 
     @Override

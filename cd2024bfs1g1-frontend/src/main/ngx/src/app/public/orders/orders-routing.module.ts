@@ -16,10 +16,6 @@ const routes: Routes = [
     component: OrderRejectedComponent
   },
   {
-    path: 'accepted/:ORD_ID',
-    component: NewOrderDetailsComponent
-  },
-  {
     path: 'cart',
     component: NewOrderComponent
   },
