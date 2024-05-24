@@ -5,18 +5,25 @@
     margin-top: 3%;
 }
 
+.desc{
+    width: 60%;
+    margin: auto;
+    padding-top: 3%;
+}
 
 .img-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    width: 50%;
 }
 
 
 .img-product {
     min-width: 20vw;
-    min-height: auto;
+    min-height: 25em; 
     max-width: 50vw;
-    max-height: auto;
+    max-height: 25em;
     border-radius: 5%;
 }
 
@@ -25,7 +32,6 @@
     display: flex;
     flex-direction: column;
     width: 70%;
-    border-left: solid 2px darkgray;
     padding-left: 5%;
 }
 
@@ -45,7 +51,7 @@
 }
 
 .regularPrice {
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 900;
     text-align: left;
     margin-top: 10%;  

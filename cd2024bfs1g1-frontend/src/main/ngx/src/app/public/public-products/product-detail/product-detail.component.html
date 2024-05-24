@@ -3,6 +3,7 @@
         <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
     </div>
     <div class="prod-container">
+        <h3 class="brand">{{product.BRA_NAME}}</h3>
         <h1 class="title">{{product.PRO_NAME}}</h1>
         <div class="buy-container">
             <div class="price" *ngIf="(sale != null); else priceBlock">
@@ -18,10 +19,11 @@
             </ng-template>
 
             <div class="buttons">
-                <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON" (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
-                <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>  
+                <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON" (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>  
             </div>
-            <p>{{product.PRO_DESCRIPTION}}</p>
         </div>
     </div>
+</div>
+<div class="desc">
+    <p>{{product.PRO_DESCRIPTION}}</p>
 </div>
