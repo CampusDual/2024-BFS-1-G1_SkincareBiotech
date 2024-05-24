@@ -23,6 +23,8 @@ public interface IProductService {
 
     public EntityResult productEnabledQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
+    public AdvancedEntityResult productEnabledPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy);
+
     public BigDecimal getProductPriceById(Integer proId);
 
 }
