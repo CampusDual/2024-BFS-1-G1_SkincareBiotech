@@ -1,5 +1,5 @@
-import { Component, Inject, Injector, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Component, Inject, Injector, OnInit } from '@angular/core';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService, OTranslateService, OUserInfoService, OntimizeService, ServiceResponse } from 'ontimize-web-ngx';
@@ -49,6 +49,7 @@ export class ClientRegisterComponent implements OnInit {
   public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.pattern('^[6-9][0-9]{8}$'));
   public userDateCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required,
+    this.ageValidator()
   ]);
 
   service: OntimizeService;
@@ -178,5 +179,15 @@ export class ClientRegisterComponent implements OnInit {
           });
         }
       );
+  }
+
+  ageValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const birthdate = new Date(control.value);
+      const cutoffDate = new Date();
+      cutoffDate.setFullYear(cutoffDate.getFullYear() - 18);
+
+      return birthdate <= cutoffDate ? null : { 'ageValidator': { value: control.value } };
+    };
   }
 }

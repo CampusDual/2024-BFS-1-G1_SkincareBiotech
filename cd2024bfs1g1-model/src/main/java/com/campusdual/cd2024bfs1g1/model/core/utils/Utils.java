@@ -33,17 +33,13 @@ public class Utils {
 
     public static String getUserDate(Object json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Object> dateInfo = objectMapper.convertValue(json, new TypeReference<Map<String, Object>>() {
+        });
+        int year = (Integer) dateInfo.get("year");
+        int month = (Integer) dateInfo.get("month") + 1;
+        int day = (Integer) dateInfo.get("date");
+        String formattedDate = String.format("%d-%02d-%02d", year, month, day);
 
-        Map<String, Object> dateInfo = objectMapper.convertValue(json, new TypeReference<Map<String, Object>>(){});
-        String year = String.valueOf(dateInfo.get("year"));
-        System.out.println(year);
-        String month = String.valueOf(dateInfo.get("month"));
-        String day = String.valueOf(dateInfo.get("date"));
-
-        String date = year + "-" + month + "-" + day;
-        //LocalDate date = LocalDate.of(dateInfo.get("year"), dateInfo.get("month"), dateInfo.get("day"));
-        System.out.println(date);
-        return date;
-
+        return formattedDate;
     }
 }

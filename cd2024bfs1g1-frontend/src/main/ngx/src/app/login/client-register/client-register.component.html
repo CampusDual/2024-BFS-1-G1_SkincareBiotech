@@ -69,15 +69,17 @@
                 {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
             </mat-error>
         </mat-form-field>
- 
+
         <mat-form-field>
             <input matInput [matDatepicker]="picker" [formControl]="userDateCtrl" #upr_birthdate>
-
-            <mat-label>Choose a date</mat-label>
+            <mat-label>{{ 'USR_BIRTHDAY' | oTranslate }}</mat-label>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="userDateCtrl.hasError('required')">
                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+            </mat-error>
+            <mat-error *ngIf="userDateCtrl.hasError('ageValidator')">
+                {{ 'ERROR_MUST_BE_ADULT' | oTranslate }}
             </mat-error>
         </mat-form-field>
 
