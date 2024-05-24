@@ -57,6 +57,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public EntityResult productEnabledQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.productDao, keysValues, attributes, ProductDao.PRO_ENABLED);
+    }
+
+    @Override
     public BigDecimal getProductPriceById(Integer proId) {
         Map<String, Object> proIdMap = new HashMap<String, Object>();
         proIdMap.put(ProductDao.PRO_ID, proId);
