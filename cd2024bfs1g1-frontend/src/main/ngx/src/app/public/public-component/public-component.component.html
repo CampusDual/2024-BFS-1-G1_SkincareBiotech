@@ -6,11 +6,14 @@
     </a>
   </div>
   <o-bar-menu *ngIf="isLoaded">
-    <o-bar-menu-item *ngIf="isLogedIn" (click)="logout()" title="LOGOUT" icon="power_settings_new"></o-bar-menu-item>
+    <o-bar-menu-separator> </o-bar-menu-separator>
     <o-bar-menu-group title="LANGUAGE">
       <o-locale-bar-menu-item locale="en" title="English"></o-locale-bar-menu-item>
       <o-locale-bar-menu-item locale="es" title="Español"></o-locale-bar-menu-item>
     </o-bar-menu-group>
+    <o-bar-menu-separator> </o-bar-menu-separator>
+    <o-bar-menu-item *ngIf="isLogedIn" (click)="logout()" title="LOGOUT" icon="power_settings_new"></o-bar-menu-item>
+    <o-bar-menu-item [title]="cartCount"></o-bar-menu-item>
   </o-bar-menu>
 </header>
 <router-outlet></router-outlet>
