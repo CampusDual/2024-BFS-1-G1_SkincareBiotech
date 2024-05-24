@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.campusdual.cd2024bfs1g1.model.core.dao.*;
+import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.annotation.Secured;
@@ -14,10 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IUserAndRoleService;
-import com.campusdual.cd2024bfs1g1.model.core.dao.RoleDao;
-import com.campusdual.cd2024bfs1g1.model.core.dao.RoleServerPermissionDao;
-import com.campusdual.cd2024bfs1g1.model.core.dao.UserDao;
-import com.campusdual.cd2024bfs1g1.model.core.dao.UserRoleDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -28,6 +27,8 @@ import com.ontimize.jee.common.util.remote.BytesBlock;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import com.ontimize.jee.server.security.SecurityTools;
 import com.ontimize.jee.server.security.encrypt.IPasswordEncryptHelper;
+
+import static com.campusdual.cd2024bfs1g1.model.core.utils.Utils.getUserDate;
 
 @Lazy
 @Service("UserAndRoleService")
@@ -42,6 +43,8 @@ public class UserAndRoleService implements IUserAndRoleService {
 	/** The user dao. */
 	@Autowired
 	private RoleDao roleDao;
+	@Autowired
+	private UserProfileDao userProfileDao;
 
 	/** The server role dao. */
 	@Autowired
@@ -51,6 +54,9 @@ public class UserAndRoleService implements IUserAndRoleService {
 
 	@Autowired(required = false)
 	private IPasswordEncryptHelper passwordEncrypter;
+
+	@Autowired
+	private UserProfileService userProfileService;
 
 	/*
 	 * (non-Javadoc)
@@ -394,10 +400,12 @@ public class UserAndRoleService implements IUserAndRoleService {
 
 	@Override
 	@Transactional(rollbackFor = Throwable.class)
-	public EntityResult clientRoleInsert(Map<String, Object> attributes) {
+	public EntityResult clientRoleInsert(Map<String, Object> attributes) throws JsonProcessingException {
 
 			Map<String,Object> usrValues = new HashMap<>(attributes);
 			Map<String, Object> usrRoleValues = new HashMap<>();
+			Map<String, Object> usrProfile = new HashMap<>();
+
 			usrValues.put(UserDao.PASSWORD, this.encryptPassword((String) attributes.get(UserDao.PASSWORD)));
 			EntityResult userValuesInsert = this.daoHelper.insert(this.userDao, usrValues);
 			Integer usrID = (Integer) userValuesInsert.get(UserDao.USR_ID);
@@ -407,6 +415,13 @@ public class UserAndRoleService implements IUserAndRoleService {
 			usrRoleValues.clear();
 			usrRoleValues.put(UserRoleDao.ROL_ID, roleID);
 			usrRoleValues.put(UserRoleDao.USR_ID, usrID);
+
+			String birthDate = Utils.getUserDate(attributes.get("UPR_BIRTHDATE"));
+			usrProfile.put(UserProfileDao.USR_ID, usrID);
+			usrProfile.put(UserProfileDao.UPR_BIRTHDATE, birthDate);
+
+			EntityResult userProfileInsert = this.daoHelper.insert(this.userProfileDao, usrProfile);
+			System.out.println(usrProfile);
 			EntityResult userRoleInsert = this.daoHelper.insert(this.userRolesDao, usrRoleValues);
 			return userRoleInsert;
 
