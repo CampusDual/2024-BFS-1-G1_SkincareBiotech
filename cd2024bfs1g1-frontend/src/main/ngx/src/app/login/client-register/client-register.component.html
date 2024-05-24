@@ -1,9 +1,9 @@
 <div class="full-page">
-    <mat-icon class="flecha" routerLink="">arrow_back</mat-icon>
+    <mat-icon class="flecha" routerLink="/login">arrow_back</mat-icon>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
         <mat-form-field class="register-field">
-            <input matInput class="mat-input" #user placeholder="{{ 'usr_login' | oTranslate }}" id="usr_login"
-                [formControl]="userCtrl">
+            <mat-label>{{ 'usr_login' | oTranslate }}</mat-label>
+            <input matInput class="mat-input" #user id="usr_login" [formControl]="userCtrl">
             <mat-error *ngIf="userCtrl.hasError('required')">
                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
             </mat-error>
@@ -16,8 +16,8 @@
         </mat-form-field>
 
         <mat-form-field class="register-field">
-            <input matInput class="mat-input" #password placeholder="{{ 'usr_password' | oTranslate }}"
-                id="usr_password" type="password" [formControl]="pwdCtrl">
+            <mat-label>{{ 'usr_password' | oTranslate }}</mat-label>
+            <input matInput class="mat-input" #password id="usr_password" type="password" [formControl]="pwdCtrl">
             <mat-error *ngIf="pwdCtrl.hasError('required')">
                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
             </mat-error>
@@ -30,16 +30,16 @@
         </mat-form-field>
 
         <mat-form-field class="register-field">
-            <input matInput class="mat-input" #password placeholder="{{ 'confirm_usr_password' | oTranslate }}"
-                id="usr_password2" type="password" [formControl]="pwdCtrl2">
+            <mat-label>{{ 'confirm_usr_password' | oTranslate }}</mat-label>
+            <input matInput class="mat-input" #password id="usr_password2" type="password" [formControl]="pwdCtrl2">
             <mat-error *ngIf="pwdCtrl2.hasError('required')">
                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput class="mat-input" #user_name placeholder="{{ 'usr_name' | oTranslate }}" id="usr_name"
-                [formControl]="usernameCtrl">
+            <mat-label>{{ 'usr_name' | oTranslate }}</mat-label>
+            <input matInput class="mat-input" #user_name id="usr_name" [formControl]="usernameCtrl">
             <mat-error *ngIf="usernameCtrl.hasError('required')">
                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
             </mat-error>
@@ -53,9 +53,10 @@
                 {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
             </mat-error>
         </mat-form-field>
+
         <mat-form-field>
-            <input matInput class="mat-input" #user_surname placeholder="{{ 'usr_surname' | oTranslate }}"
-                id="usr_surname" [formControl]="userSurnameCtrl">
+            <mat-label>{{ 'usr_surname' | oTranslate }}</mat-label>
+            <input matInput class="mat-input" #user_surname id="usr_surname" [formControl]="userSurnameCtrl">
             <mat-error *ngIf="userSurnameCtrl.hasError('required')">
                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
             </mat-error>
@@ -69,9 +70,10 @@
                 {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
             </mat-error>
         </mat-form-field>
+
         <mat-form-field>
-            <input matInput class="mat-input" #user_email placeholder="{{ 'usr_email' | oTranslate }}" id="usr_email"
-                [formControl]="userEmailCtrl">
+            <mat-label>{{ 'usr_email' | oTranslate }}</mat-label>
+            <input matInput class="mat-input" #user_email id="usr_email" [formControl]="userEmailCtrl">
             <mat-error *ngIf="userEmailCtrl.hasError('required')">
                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
             </mat-error>
@@ -79,9 +81,10 @@
                 {{ 'ERROR_EMAIL_PATTERN' | oTranslate }}
             </mat-error>
         </mat-form-field>
+
         <mat-form-field>
-            <input matInput class="mat-input" #phone placeholder="{{ 'usr_phone' | oTranslate }}" id="usr_phone"
-                [formControl]="userPhoneCtrl">
+            <mat-label>{{ 'usr_phone' | oTranslate }}</mat-label>
+            <input matInput class="mat-input" #phone id="usr_phone" [formControl]="userPhoneCtrl">
             <mat-error *ngIf="userPhoneCtrl.hasError('pattern')">
                 {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
             </mat-error>
