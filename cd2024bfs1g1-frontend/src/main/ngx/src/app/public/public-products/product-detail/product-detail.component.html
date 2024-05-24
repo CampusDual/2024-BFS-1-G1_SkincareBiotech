@@ -7,11 +7,9 @@
         <h1 class="title">{{product.PRO_NAME}}</h1>
         <div class="buy-container">
             <div class="price" *ngIf="(sale != null); else priceBlock">
-                <div class="priceSale">
-                    <p>
-                        <span>{{'SALE' | oTranslate}}: {{ sale }} €</span>
-                    </p>
-                    <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ price }} €</p>
+                <div class="price-container">
+                    <p class="originalPrice"> {{ price }} €</p>
+                    <p class="salePrice"><span> {{ sale }} €</span></p>
                 </div>
             </div>
             <ng-template #priceBlock>

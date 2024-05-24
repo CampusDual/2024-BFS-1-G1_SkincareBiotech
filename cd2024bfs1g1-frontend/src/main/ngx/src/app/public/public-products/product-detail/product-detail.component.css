@@ -35,19 +35,22 @@
     padding-left: 5%;
 }
 
-.priceSale p {
+.price-container p {
     margin: 0px;
 }
 
-.priceSale p span {
-    margin-right: 3%;    
-    color:red;
+.salePrice {
+    font-size: 1.5em;
+    font-weight: 900;
+    text-align: left;
+    margin-top: 10%;  
 }
 
 .originalPrice {
     font-weight: lighter;
     font-size: 0.7em;
     text-decoration: line-through;
+    color: black;
 }
 
 .regularPrice {
