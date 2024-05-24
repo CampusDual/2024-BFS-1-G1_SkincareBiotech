@@ -3,8 +3,11 @@
       <div fxLayout="row" fxLayoutGap="8px">
         <div fxFlex="70">
           <div>
-            <o-text-input fxFlex="30" attr="CAT_NAME" class="input-padding" step="0" grouping="no"
-              required="yes"></o-text-input>
+            <o-text-input fxFlex="40" attr="CAT_NAME" label="CAT_NAME" required="yes" class="input-padding" step="0" grouping="no">
+              <o-validator [validator-function]="catNameValidator">
+                  <o-error name="requiredLowercaseA" text="{{'CAT_NAME_ERROR' | oTranslate}}"></o-error>
+                </o-validator>
+          </o-text-input>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
             <span style="color: gray; font-size: 12px; padding-left: 8px;">*La primera letra debe empezar con mayúscula</span>
