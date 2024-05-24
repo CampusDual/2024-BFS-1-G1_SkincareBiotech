@@ -3,8 +3,8 @@
         <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
     </div>
     <div class="prod-container">
-        <h3 class="brand">{{product.BRA_NAME}}</h3>
         <h1 class="title">{{product.PRO_NAME}}</h1>
+        <h3 class="brand">{{product.BRA_NAME}}</h3>
         <div class="buy-container">
             <div class="price" *ngIf="(sale != null); else priceBlock">
                 <div class="price-container">

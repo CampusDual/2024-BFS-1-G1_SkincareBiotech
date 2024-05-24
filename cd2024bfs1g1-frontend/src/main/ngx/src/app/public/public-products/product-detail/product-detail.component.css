@@ -5,7 +5,7 @@
     margin-top: 3%;
 }
 
-.desc{
+.desc {
     width: 60%;
     margin: auto;
     padding-top: 3%;
@@ -21,7 +21,7 @@
 
 .img-product {
     min-width: 20vw;
-    min-height: 25em; 
+    min-height: 25em;
     max-width: 50vw;
     max-height: 25em;
     border-radius: 5%;
@@ -44,7 +44,7 @@
     font-size: 1.35em;
     font-weight: 900;
     text-align: left;
-    margin-top: 10%;  
+    margin-top: 10%;
 }
 
 .originalPrice {
@@ -58,13 +58,16 @@
     font-size: 2em;
     font-weight: 900;
     text-align: left;
-    margin-top: 10%;  
+    margin-top: 10%;
 }
 
 h1 {
     margin-top: 0px;
 }
 
+.brand {
+    margin-top: 0px;
+}
 
 .title::first-letter {
     text-transform: capitalize;
@@ -91,7 +94,7 @@ h1 {
 #add-cart-button {
     border-radius: 10px;
     height: 60px;
-    background-color: #f8b88c;
+    background-color: #a7bfc7;
     font-size: large;
     text-transform: uppercase;
     font-weight: bolder;
@@ -114,8 +117,4 @@ h1 {
     font-weight: bolder;
     margin-left: 20px;
 
-}
-
-::ng-deep body{
-    background-color: #ffe0cb;
 }
