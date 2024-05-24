@@ -9,13 +9,14 @@ export class CartService {
   private numberItems = new BehaviorSubject<Number>(0);
   number$ = this.numberItems.asObservable();
 
-  getCartItemsCount() {
+  updateCartItemsCount()  {
     let countItems  = 0;
     let cart = this.getCart();
     cart.forEach(element => {
       countItems += element.units;
     });
-    return this.numberItems.next(countItems);
+
+    this.numberItems.next(countItems);
   }
 
   cart: any[] = [];
@@ -33,7 +34,7 @@ export class CartService {
       this.cart.push(p);
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.getCartItemsCount();
+    this.updateCartItemsCount();
   }
 
   removeItem(productID: any) {
@@ -50,7 +51,7 @@ export class CartService {
       this.cart = this.cart.filter(x => x.id !== productID)
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.getCartItemsCount();
+    this.updateCartItemsCount();
   }
 
   loadLocalStorageCart(): void {
@@ -76,7 +77,7 @@ export class CartService {
     this.loadLocalStorageCart();
     this.cart = this.cart.filter(x => x.id !== productID);
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.getCartItemsCount();
+    this.updateCartItemsCount();
   }
 
   constructor() {

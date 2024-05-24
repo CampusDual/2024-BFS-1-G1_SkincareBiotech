@@ -26,6 +26,7 @@ export class PublicComponentComponent implements OnInit {
     this.cartService.number$.subscribe((count) => {
       this.cartCount = count;
     });
+    this.cartService.updateCartItemsCount();
   }
 
   loadPermissions(){
