@@ -14,27 +14,11 @@
     </o-filter-builder>
 </o-form>
 <o-grid #productsGrid attr="productsGrid" service="products" entity="productEnabled" keys="PRO_ID"
-    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID;PRO_SALE;PRO_REAL_PRICE" cols="5" query-rows="10"
+    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID;PRO_SALE;PRO_REAL_PRICE;DISCOUNT" cols="5" query-rows="10"
     page-size-options="5;10;15;20" orderable="true" sortable-columns="PRO_REAL_PRICE:esc;PRO_REAL_PRICE:asc"
     insert-button="false" pagination-controls="true" gutter-size="3%" fixed-header="yes" grid-item-height="45%"
     detail-mode="none" quick-filter-columns="PRO_NAME">
     <o-grid-item *ngFor="let data of productsGrid.dataArray">
-        <div class="productCard" routerLink="{{data.PRO_ID}}">
-            <img alt="Imagen_producto" [src]="getImageSrc(data.PRO_IMAGE)" class="img_produc">
-            <div class="productInfo">
-                <span class="tittle">{{ data.PRO_NAME }}</span>
-                <div class="sale" *ngIf="(data.PRO_SALE != null); else priceBlock">
-                    <div class="priceSale">
-                        <p style="color:red"><span>{{'SALE' | oTranslate}}:</span>{{ data.PRO_SALE | number: '1.2-2' }} €</p>
-                        <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ data.PRO_PRICE | number: '1.2-2' }}
-                            €
-                        </p>
-                    </div>
-                </div>
-                <ng-template #priceBlock>
-                    <div class="price">{{ data.PRO_PRICE | number: '1.2-2' }} €</div>
-                </ng-template>
-            </div>
-        </div>
+        <app-product-card [product]="data"></app-product-card>
     </o-grid-item>
 </o-grid>
