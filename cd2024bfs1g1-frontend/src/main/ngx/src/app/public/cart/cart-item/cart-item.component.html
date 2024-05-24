@@ -21,7 +21,7 @@
         </div>
       </div>
       <ng-template #priceBlock>
-        {{product.PRO_PRICE | number: '1.2-2'}} €
+        {{product.PRO_PRICE*item.units | number: '1.2-2'}} €
       </ng-template>
     </div>
     <div class="delete-container">

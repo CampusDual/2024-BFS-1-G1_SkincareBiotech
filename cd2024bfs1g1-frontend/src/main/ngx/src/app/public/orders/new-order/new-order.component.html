@@ -7,7 +7,6 @@
             </div>
             <div class="total-amount">Total: {{totalAmount | number: '1.2-2' }}€</div>
         </div>
-
         <o-form class="order-form" #formOrder attr="newOrder" service="orders" entity="order" keys="ORD_ID"
             show-header-navigation="no" show-header="false">
             <div fxLayout="row">
@@ -22,13 +21,10 @@
                             placeholder="ORD_ZIPCODE"></o-integer-input>
                         <o-text-input #addressInput class="order-input" fxFlex="40" attr="ORD_ADDRESS" required="yes"
                             placeholder="ORD_ADDRESS"></o-text-input>
-                            <div class="order-buttons-container">
-                                <button mat-raised-button id="back-button" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>  
-                            </div>
                             <o-column class="order-column" fxFlex title="PAYMENT_METHODS">           
                                 <div fxLayout="column" fxLayoutGap="8px">               
                                     <!--<o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>-->
-                                    <o-button (onClick)="submitOrder()" type="RAISED" label="REDSYS" class="order-button"></o-button>              
+                                    <button mat-raised-button id="back-button"(click)="submitOrder()" type="RAISED" label="Comprar:Redsys">{{'PURCHASE_BUTTON' | oTranslate}}</button>  
                                 </div>
                             </o-column>
                     </div>
@@ -36,7 +32,6 @@
             </div>
         </o-form>
     </ng-container>
-
     <ng-template  #showMessage>
         <div class="no-cart">
             <div class="mensaje">

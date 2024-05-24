@@ -4,6 +4,7 @@ import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeServ
 import * as CryptoJS from 'crypto-js';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CartService } from 'src/app/shared/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-order',
@@ -45,10 +46,12 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
     private translateService: OTranslateService,
+    protected translate: OTranslateService,
 
   ) {
     this.service = this.injector.get(OntimizeService);
     this.cart = this.cartService.getCart();
+    this.translate = this.injector.get(OTranslateService);
 
   }
 
@@ -72,7 +75,6 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
       return filter.reduce((exp1, exp2) => FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_OR));
     }
   }
-
   ngAfterViewInit(): void {
 
   }
@@ -85,10 +87,13 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
         const price = product.PRO_SALE || product.PRO_PRICE;
         totalAmount += price * units; 
       }
-    });
+    });1
      this.totalAmount = totalAmount;
+     this.updateCard();
   }
-
+  updateCard(){
+    this.cart = this.cartService.getCart();
+  }
   submitOrder(): void {
 
     const conf = this.service.getDefaultServiceConfiguration('orders');
@@ -99,21 +104,26 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
       ORD_ZIPCODE: this.zipInput.getValue(),
       ORD_ADDRESS: this.addressInput.getValue(),
       ORD_ITEMS: this.cartService.getCart()
-    };
-    console.log(data)
-    this.cartService.emptyCart();
-
-    this.service.insert(data, "order")
-      .subscribe(res => {
-
-        console.log(res.data);
-        this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
-        this.orderView = (res.data["ORD_ID"]).toString();
-        this.price = (this.totalAmount * 100).toFixed(0);
-        this.submitRedsysOrder();
-      })
+    }
+    if(data.ORD_NAME != null && data.ORD_PHONE !=null && data.ORD_ZIPCODE !=null && data.ORD_ADDRESS !=null){
+      this.cartService.emptyCart();
+      this.service.insert(data, "order").subscribe(res => {
+          this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
+          this.orderView = (res.data["ORD_ID"]).toString();
+          this.price = (this.totalAmount * 100).toFixed(0);
+          this.submitRedsysOrder();
+        })
+    }else{
+      console.log("espabila");
+      Swal.fire({
+        title: this.translate.get('ERROR_COMPLETE_FORM'),
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+      
+    }
+    
   }
-
   currentLang(): void {
 
     const lang = this.translateService.getCurrentLang();
@@ -127,19 +137,13 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
       this.currLang = "1";
 
     }
-
-
   }
-
   goBack(): void {
-    this.router.navigate(["/cart/view"]);
+    this.router.navigate(["/"]);
   }
-
   submitRedsysOrder(): void {
 
     this.url = document.querySelector("base").href;
-
-
     this.currentLang();
     // Datos de la transacción
     const datosTransaccion = {
@@ -192,8 +196,5 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
     if (form) {
       form.submit();
     }
-
   }
-
-
 }

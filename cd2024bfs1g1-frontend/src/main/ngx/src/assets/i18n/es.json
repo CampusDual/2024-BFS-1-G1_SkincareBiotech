@@ -81,6 +81,7 @@
   "VERSION": "Versión",
   "VIEW": "Vistas",
   "BUY_BUTTON":"Comprar",
+  "BACK_BUTTON": "Volver",
   "ORDERS": "Pedidos",
   "ORD_ID": "Id del pedido",
   "ORD_NAME": "Nombre de contacto",
@@ -120,7 +121,7 @@
   "OL_PRICE": "Precio del producto",
   "OL_UNITS": "Unidades del producto",
   "PRICE": "Precio",
-  "BACK_BUTTON": "Volver",
+  "PURCHASE_BUTTON": "Finalizar pedido",
   "MAIN_SCREEN": "Página principal",
   "PAYMENT_METHODS": "Métodos de pago",
   "CASH_ON_DELIVERY": "Contrareembolso",
@@ -159,5 +160,7 @@
   "MAX_LENGTH_50": "Máximo 50 caracteres",
   "ERROR_EMAIL_PATTERN": "Correo incorrecto",
   "ERROR_PHONE_PATTERN": "Deben ser 9 dígitos y empezar por 6, 7, 8 o 9",
-  "PASSWORDS_DO_NOT_MATCH": "Las contraseñas no coinciden"
+  "PASSWORDS_DO_NOT_MATCH": "Las contraseñas no coinciden",
+  "DELETE_CART_WARNING":"Esta seguro que quiere eliminar del carrito?",
+  "ERROR_COMPLETE_FORM":"Rellena el formulario para finalizar pedido"
 }

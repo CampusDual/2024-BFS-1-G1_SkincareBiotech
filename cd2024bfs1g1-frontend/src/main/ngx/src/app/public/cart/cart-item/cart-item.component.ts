@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Injector, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
 import { CartService } from 'src/app/shared/services/cart.service';
+import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart-item',
@@ -22,10 +24,12 @@ export class CartItemComponent implements OnInit {
   constructor(
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
-    private cartService: CartService
+    private cartService: CartService,
+    protected translate: OTranslateService,
 
   ) {
     this.service = this.injector.get(OntimizeService)
+    this.translate = this.injector.get(OTranslateService);
   }
 
   ngOnInit() {
@@ -79,7 +83,18 @@ export class CartItemComponent implements OnInit {
   }
 
   public deleteItem() {
-    this.cartService.deleteItem(this.product.PRO_ID);
-    this.updateCart.emit();
+    Swal.fire({
+      title: this.translate.get('DELETE_CART_WARNING'),
+      icon: 'info',
+      showCancelButton:true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result)=>{
+      if (result.isConfirmed) {
+        this.cartService.deleteItem(this.product.PRO_ID);
+        this.updateCart.emit();
+      }
+    });
+    
   }
 }
