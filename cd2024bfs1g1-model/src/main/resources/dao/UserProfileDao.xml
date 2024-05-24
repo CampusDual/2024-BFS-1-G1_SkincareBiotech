@@ -6,10 +6,9 @@
         catalog="" schema="${mainschema}" table="usr_profile"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
-        <Column>UPR_ID</Column>
+        <Column>USR_ID</Column>
     </DeleteKeys>
     <UpdateKeys>
-        <Column>UPR_ID</Column>
+        <Column>USR_ID</Column>
     </UpdateKeys>
-    <GeneratedKey>upr_id</GeneratedKey>
 </JdbcEntitySetup>
