@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, ElementRef, OnInit,Injector, Input } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ElementRef, OnInit, Injector, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils } from 'ontimize-web-ngx';
 import * as CryptoJS from 'crypto-js';
@@ -11,13 +11,13 @@ import Swal from 'sweetalert2';
   templateUrl: './new-order.component.html',
   styleUrls: ['./new-order.component.css']
 })
-export class NewOrderComponent implements AfterViewInit , OnInit{
+export class NewOrderComponent implements AfterViewInit, OnInit {
 
   currLang: string;
   productId: number;
   price: string;
   order: string;
-  orderView : string;
+  orderView: string;
   url: string;
 
   @Input() item: any;
@@ -59,7 +59,7 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
     const conf_prods = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf_prods);
     const cartProductsId = this.cart.map(item => item.id);
-    this.filterExp = {"@basic_expression":this.filter(cartProductsId)};
+    this.filterExp = { "@basic_expression": this.filter(cartProductsId) };
     this.service.query(this.filterExp, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "product").subscribe((data) => {
       this.products = data.data;    
       this.updateTotalAmount();
@@ -132,7 +132,7 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
 
       this.currLang = "2";
 
-    } else  {
+    } else {
 
       this.currLang = "1";
 

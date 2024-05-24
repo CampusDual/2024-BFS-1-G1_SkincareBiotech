@@ -5,12 +5,14 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesHomeComponent } from './categories-home/categories-home.component';
 import { CategoriesNewComponent } from './categories-new/categories-new.component';
+import { CategoriesDetailComponent } from './categories-detail/categories-detail.component';
 
 
 @NgModule({
   declarations: [
     CategoriesHomeComponent,
-    CategoriesNewComponent
+    CategoriesNewComponent,
+    CategoriesDetailComponent
   ],
   imports: [
     CommonModule,

@@ -164,5 +164,6 @@
   "ERROR_PHONE_PATTERN": "Must have 9 digits and start with 6, 7, 8 or 9",
   "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
   "DELETE_CART_WARNING":"Are you sure you want to remove it from cart ?",
-  "ERROR_COMPLETE_FORM":"Complete form to purchase"
+  "ERROR_COMPLETE_FORM":"Complete form to purchase",
+  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces"
 }
