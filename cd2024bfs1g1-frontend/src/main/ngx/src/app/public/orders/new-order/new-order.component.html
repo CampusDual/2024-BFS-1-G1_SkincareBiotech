@@ -3,7 +3,7 @@
 
         <div class="cart-item-container">
             <div *ngFor="let item of cart">
-                <app-cart-item [item]="item" ></app-cart-item>
+                <app-cart-item [item]="item" (updateCart)="updateTotalAmount()" ></app-cart-item>
             </div>
             <div class="total-amount">Total: {{totalAmount | number: '1.2-2' }}€</div>
         </div>

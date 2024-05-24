@@ -2,19 +2,15 @@
   <div class="img-container">
     <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
   </div>
-
   <div class="item-details-container">
-
     <div class="tittle">
       {{product.PRO_NAME}}
     </div>
-
     <div class="units-container">
       <button #less class="item-btn" *ngIf="showBtns" id="rm_btn"[disabled]="isButtonDisabled" (click)="removeItem()">-</button>
       <div class="item-amount">{{item.units}}</div>
       <button class="item-btn" *ngIf="showBtns" id="add_btn" (click)="addItem()">+</button>
     </div>
-
     <div class="price-container">
       <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock">
         <div class="priceSale">

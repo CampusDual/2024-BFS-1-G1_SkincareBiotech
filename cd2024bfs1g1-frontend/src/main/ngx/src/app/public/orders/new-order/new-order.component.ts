@@ -28,6 +28,7 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
   filterExp: {};
   PRO_ID = "PRO_ID";
   totalAmount:number = 0;
+  products = [];
 
   @ViewChild("formOrder") formOrder: OFormComponent;
   @ViewChild("Ds_MerchantParameters") ds_merchantParameters: ElementRef;
@@ -57,15 +58,8 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
     const cartProductsId = this.cart.map(item => item.id);
     this.filterExp = {"@basic_expression":this.filter(cartProductsId)};
     this.service.query(this.filterExp, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "product").subscribe((data) => {
-      data.data.forEach(product => {
-        if (product.PRO_SALE) {
-          let units = (this.cart.find(item => item.id === product.PRO_ID)).units;
-          this.totalAmount += product.PRO_SALE * units;
-        } else {
-          let units = (this.cart.find(item => item.id === product.PRO_ID)).units;
-          this.totalAmount += product.PRO_PRICE * units;
-        }
-      });
+      this.products = data.data;    
+      this.updateTotalAmount();
     });
   }
 
@@ -81,6 +75,18 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
 
   ngAfterViewInit(): void {
 
+  }
+  updateTotalAmount( ) {
+    let totalAmount = 0;
+    this.products.forEach(product => {
+      const cartItem = this.cart.find(item => item.id === product.PRO_ID);
+      if (cartItem) {
+        const units = cartItem.units;
+        const price = product.PRO_SALE || product.PRO_PRICE;
+        totalAmount += price * units; 
+      }
+    });
+     this.totalAmount = totalAmount;
   }
 
   submitOrder(): void {

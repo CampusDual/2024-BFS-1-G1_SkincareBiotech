@@ -15,14 +15,15 @@ export class CartItemComponent implements OnInit {
   @Output() updateCart = new EventEmitter<void>();
   service: OntimizeService;
   product: any = {};
-  @ViewChild('less') less :ElementRef ;
-  isButtonDisabled;
+  @ViewChild('less') less: ElementRef;
+  isButtonDisabled: boolean;
+
 
   constructor(
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
     private cartService: CartService
-    
+
   ) {
     this.service = this.injector.get(OntimizeService)
   }
@@ -37,11 +38,10 @@ export class CartItemComponent implements OnInit {
           this.itemAmount(this.product)
         }
       })
-      if (this.item.units <= 1) {
-        this.isButtonDisabled =true;
-      }
+    if (this.item.units <= 1) {
+      this.isButtonDisabled = true;
+    }
   }
-
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
@@ -56,17 +56,14 @@ export class CartItemComponent implements OnInit {
   public itemAmount(product: any): any {
     return product.PRO_PRICE * this.item.units;
   }
-
-
   public addItem() {
     this.cartService.addProductToCart(this.product);
     this.item.units = this.cartService.getCart().find(x => x.id == this.item.id).units;
     this.updateCart.emit();
-    if(this.item.units >1){
-      (<HTMLButtonElement> this.less.nativeElement).disabled =false;
-    }    
+    if (this.item.units > 1) {
+      (<HTMLButtonElement>this.less.nativeElement).disabled = false;
+    }
   }
-
   public removeItem() {
     if (this.item.units > 1) {
       this.cartService.removeItem(this.product.PRO_ID);
@@ -77,7 +74,7 @@ export class CartItemComponent implements OnInit {
       this.updateCart.emit();
     }
     if (this.item.units <= 1) {
-      (<HTMLButtonElement> this.less.nativeElement).disabled =true;
+      (<HTMLButtonElement>this.less.nativeElement).disabled = true;
     }
   }
 
