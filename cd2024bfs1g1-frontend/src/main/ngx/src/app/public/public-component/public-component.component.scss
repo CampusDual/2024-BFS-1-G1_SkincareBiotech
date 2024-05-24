@@ -8,7 +8,6 @@
 ::ng-deep .header .o-bar-menu-item-title {
     color: #000000;
     font-weight: bold;
-    
 }
 
 ::ng-deep .header .o-bar-menu-group-title {
@@ -28,7 +27,7 @@
 ::ng-deep .header .o-bar-menu-item .o-bar-menu-item-text {
     display: inline-flex;
     flex-direction: row;
-    align-items:  flex-end;
+    align-items: flex-end;
     box-sizing: border-box;
     font-size: 20px;
     height: 48px;
@@ -52,11 +51,9 @@
     align-items: center;
 }
 
-
 ::ng-deep .header .mat-icon {
     color: #000000;
     align-items: center;
-    
 }
 
 .header {
@@ -75,9 +72,8 @@
     flex: 0 0 auto;
 }
 
-
 .toolbar-container {
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
 }
 
 a {
@@ -103,4 +99,35 @@ a {
 
 #botones {
     background-color: #f8b88c;
+}
+
+@media (max-width: 13in) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    ::ng-deep .header .o-bar-menu-item .o-bar-menu-item-text {
+        font-size: 16px;
+        height: auto;
+        padding: 8px 16px;
+    }
+
+    ::ng-deep .o-bar-menu nav .fake-li a {
+        font-size: 16px;
+        padding: 0 10px;
+        line-height: 40px;
+    }
+
+    .imgContainer {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center; 
+        width: 100%; 
+    }
 }
