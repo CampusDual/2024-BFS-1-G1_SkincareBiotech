@@ -4,8 +4,10 @@
 
 .card1{
     background-color: #ae988a;
-    /* margin: 40px;
-    padding: 40px; */
+    margin: 40px;
+    padding: 40px;
+    min-width: 1200px;
+    min-height: 400px;
 }
 
 .card2{

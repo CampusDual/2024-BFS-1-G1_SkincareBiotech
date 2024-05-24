@@ -1,32 +1,87 @@
-.productCard {
+.productCard {   
+
+    background-color: #ffffff;
+    width: 15vw;
+    height: 90%;
+    min-width: 200px;
+    min-height: 300px;    
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    border: 1px solid #e1e1e1;
-    width: 15vw;
-    height: 100%;
+    
+    
+    /*
+    padding: 10px;
     margin: 10px;
-    border-radius: 15px;
-    background-color: #ffffff;
+    text-align: center;    
+    flex-direction: column;
+    justify-content: space-around;    
+    border: 1px solid #e1e1e1;    
+    margin: 10px;
+    border-radius: 15px;    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    cursor: pointer;  */
 }
 
-.titulo {
-    font-size: 24px;
+.productCard:hover {
+    /* transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); */
+}
+
+.productCard img {
+    position: relative;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 20px;    
+    /*  
+    width: 100px; 
+    height: 100px; 
+    border-radius: 15px; */
+}
+
+.img_produc {
+    /* margin-top: 5%;
+    max-width: 90%;
+    min-height: 50%;
+    max-height: 51%;
+    overflow: hidden; */
+}
+
+.productCard strong {
+    /* font-size: 1.1em;
+    color: #333; */
+}
+
+.productCard em {
+    /* font-size: 0.9em;
+    color: #777;
+    font-style: normal; */
+}
+
+.title {
+    font-size: 14px;
     font-weight: bolder;
     text-align: left;
     font-family: Poppins, "Helvetica Neue", sans-serif;
-    max-width: 80%;
+    max-width: 150px;
+    /* display: block; */
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /* margin: 10px; */
 }
 
+.title:hover {
+    overflow: visible;
+  }
+
 .sale {
-    text-align: left;
+    /* text-align: left;
     margin-top: 5%;
-    font-family: Poppins, "Helvetica Neue", sans-serif;
+    font-family: Poppins, "Helvetica Neue", sans-serif; */
 }
 
 .description-div {
@@ -37,77 +92,49 @@
     margin-left: 20%;
 }
 
-.img_produc {
-    margin-top: 5%;
-    max-width: 90%;
-    min-height: 50%;
-    max-height: 51%;
-    overflow: hidden;
-}
-
-.productCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.productCard img {
-    border-radius: 15px;
-}
-
-.productCard strong {
-    font-size: 1.1em;
-    color: #333;
-}
-
-.productCard em {
-    font-size: 0.9em;
-    color: #777;
-    font-style: normal;
-}
-
 a {
-    text-decoration: none;
+    /* text-decoration: none; */
 }
 
 .container {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-around; */
 }
 
 h2 {
-    padding: 2vh;
-    margin-left: 4vh;
+    /* padding: 2vh;
+    margin-left: 4vh; */
 }
 
 .originalPrice {
-    font-size: 0.9em;
+    /* font-size: 0.9em;
     text-decoration: line-through;
-    font-style: italic;
+    font-style: italic; */
 }
 
 .priceSale {
-    display: flex;
-    justify-content: flex-start;
+    /* display: flex;
+    justify-content: flex-start; */
 }
 
 .discount-span {
-    color: red;
+    /* color: red;
     font-size: 2em;
-    font-style: italic;
+    font-style: italic; */
 }
 
 .sale-span {
-    margin: 0.75vh 2.5vh;
+    /* margin: 0.75vh 2.5vh;
     font-size: 1.5em;
-    font-weight: bolder;
+    font-weight: bolder; */
 }
 
 .price {
-    font-size: 1.5em;
+    /* font-size: 1.5em;
     font-weight: bolder;
     text-align: left;
     margin-top: 17%;
     margin-bottom: 12%;
-    font-family: Poppins, "Helvetica Neue", sans-serif;
+    font-family: Poppins, "Helvetica Neue", sans-serif; */
 }
