@@ -69,6 +69,21 @@
                 {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
             </mat-error>
         </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" [formControl]="userDateCtrl" #upr_birthdate>
+            <mat-label>{{ 'USR_BIRTHDAY' | oTranslate }}</mat-label>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="userDateCtrl.hasError('required')">
+                {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+            </mat-error>
+            <mat-error *ngIf="userDateCtrl.hasError('ageValidator')">
+                {{ 'ERROR_MUST_BE_ADULT' | oTranslate }}
+            </mat-error>
+        </mat-form-field>
+
+
         <mat-form-field>
             <input matInput class="mat-input" #user_email placeholder="{{ 'usr_email' | oTranslate }}" id="usr_email"
                 [formControl]="userEmailCtrl">
@@ -79,14 +94,28 @@
                 {{ 'ERROR_EMAIL_PATTERN' | oTranslate }}
             </mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput class="mat-input" #phone placeholder="{{ 'usr_phone' | oTranslate }}" id="usr_phone"
-                [formControl]="userPhoneCtrl">
-            <mat-error *ngIf="userPhoneCtrl.hasError('pattern')">
-                {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
-            </mat-error>
-        </mat-form-field>
-
+        <div>
+            <mat-form-field>
+                <input matInput class="mat-input" #phone placeholder="{{ 'usr_phone' | oTranslate }}" id="usr_phone"
+                    [formControl]="userPhoneCtrl">
+                <mat-error *ngIf="userPhoneCtrl.hasError('pattern')">
+                    {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput class="mat-input" #user_name placeholder="{{ 'UPR_ADDRESS' | oTranslate }}" id="UPR_ADDRESS"
+                    [formControl]="userAddressCtrl">
+                <mat-error *ngIf="usernameCtrl.hasError('required')">
+                    {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                </mat-error>
+                <mat-error *ngIf="usernameCtrl.hasError('minlength')">
+                    {{ 'MIN_LENGTH_3' | oTranslate }}
+                </mat-error>
+                <mat-error *ngIf="usernameCtrl.hasError('pattern')">
+                    {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
         <button mat-raised-button style="background-color: #f8b88c;" type="submit">{{ 'REGISTER' | oTranslate
             }}</button>
         <div class="linea"></div>

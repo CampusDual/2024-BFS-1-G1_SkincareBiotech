@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.campusdual.cd2024bfs1g1.model.core.dao.*;
+import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.annotation.Secured;
@@ -14,10 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IUserAndRoleService;
-import com.campusdual.cd2024bfs1g1.model.core.dao.RoleDao;
-import com.campusdual.cd2024bfs1g1.model.core.dao.RoleServerPermissionDao;
-import com.campusdual.cd2024bfs1g1.model.core.dao.UserDao;
-import com.campusdual.cd2024bfs1g1.model.core.dao.UserRoleDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -29,21 +28,33 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import com.ontimize.jee.server.security.SecurityTools;
 import com.ontimize.jee.server.security.encrypt.IPasswordEncryptHelper;
 
+import static com.campusdual.cd2024bfs1g1.model.core.utils.Utils.getUserDate;
+
 @Lazy
 @Service("UserAndRoleService")
 public class UserAndRoleService implements IUserAndRoleService {
 
-	/** The user dao. */
+	/**
+	 * The user dao.
+	 */
 	@Autowired
 	private UserDao userDao;
-	/** The user roles dao. */
+	/**
+	 * The user roles dao.
+	 */
 	@Autowired
 	private UserRoleDao userRolesDao;
-	/** The user dao. */
+	/**
+	 * The user dao.
+	 */
 	@Autowired
 	private RoleDao roleDao;
+	@Autowired
+	private UserProfileDao userProfileDao;
 
-	/** The server role dao. */
+	/**
+	 * The server role dao.
+	 */
 	@Autowired
 	private RoleServerPermissionDao roleServerPermissionDao;
 	@Autowired
@@ -52,11 +63,14 @@ public class UserAndRoleService implements IUserAndRoleService {
 	@Autowired(required = false)
 	private IPasswordEncryptHelper passwordEncrypter;
 
+	@Autowired
+	private UserProfileService userProfileService;
+
 	/*
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	public EntityResult userQuery(final Map<?, ?> keysValues, final List<?> attributes) throws OntimizeJEERuntimeException {
 
 		final EntityResult toRet = this.daoHelper.query(this.userDao, keysValues, attributes);
@@ -77,7 +91,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	public AdvancedEntityResult userPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
 			throws OntimizeJEERuntimeException {
 		return this.daoHelper.paginationQuery(this.userDao, keysValues, attributes, recordNumber, startIndex, orderBy);
@@ -87,7 +101,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult userUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		try {
@@ -101,7 +115,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult userDelete(final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		try {
@@ -115,7 +129,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult userInsert(final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		return this.daoHelper.insert(this.userDao, this.encryptPassword(keysValues));
@@ -125,7 +139,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	public EntityResult roleQuery(final Map<?, ?> keysValues, final List<?> attributes) throws OntimizeJEERuntimeException {
 		return this.daoHelper.query(this.roleDao, keysValues, attributes);
 	}
@@ -134,7 +148,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	public AdvancedEntityResult rolePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
 			throws OntimizeJEERuntimeException {
 		return this.daoHelper.paginationQuery(this.roleDao, keysValues, attributes, recordNumber, startIndex, orderBy);
@@ -144,7 +158,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult roleUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		try {
@@ -158,7 +172,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult roleDelete(final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		try {
@@ -173,7 +187,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult roleInsert(final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		try {
@@ -187,7 +201,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	public EntityResult serverRoleQuery(final Map<?, ?> keysValues, final List<?> attributes) throws OntimizeJEERuntimeException {
 		return this.daoHelper.query(this.roleServerPermissionDao, keysValues, attributes, "fullRolesWithServerPermissions");
 	}
@@ -196,7 +210,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	public AdvancedEntityResult serverRolePaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
 			throws OntimizeJEERuntimeException {
 		return this.daoHelper.paginationQuery(this.roleServerPermissionDao, keysValues, attributes, recordNumber, startIndex, orderBy, "fullRolesWithServerPermissions");
@@ -206,7 +220,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult serverRoleUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		try {
@@ -229,7 +243,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	}
 
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult rolesForUserQuery(final Map<?, ?> keysValues, final List<?> attributes) throws OntimizeJEERuntimeException {
 		return this.daoHelper.query(this.userRolesDao, keysValues, attributes, "fullRolesWithUser");
@@ -239,7 +253,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 * (non-Javadoc)
 	 */
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	public AdvancedEntityResult rolesForUserPaginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy)
 			throws OntimizeJEERuntimeException {
 		return this.daoHelper.paginationQuery(this.userRolesDao, keysValues, attributes, recordNumber, startIndex, orderBy, "fullRolesWithUser");
@@ -250,7 +264,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 	 */
 
 	@Override
-	@Secured({ PermissionsProviderSecured.SECURED })
+	@Secured({PermissionsProviderSecured.SECURED})
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult rolesForUserUpdate(final Map<?, ?> attributesValues, final Map<?, ?> keysValues)
 			throws OntimizeJEERuntimeException {
@@ -394,23 +408,33 @@ public class UserAndRoleService implements IUserAndRoleService {
 
 	@Override
 	@Transactional(rollbackFor = Throwable.class)
-	public EntityResult clientRoleInsert(Map<String, Object> attributes) {
+	public EntityResult clientRoleInsert(Map<String, Object> attributes) throws JsonProcessingException {
 
-			Map<String,Object> usrValues = new HashMap<>(attributes);
-			Map<String, Object> usrRoleValues = new HashMap<>();
-			usrValues.put(UserDao.PASSWORD, this.encryptPassword((String) attributes.get(UserDao.PASSWORD)));
-			EntityResult userValuesInsert = this.daoHelper.insert(this.userDao, usrValues);
-			Integer usrID = (Integer) userValuesInsert.get(UserDao.USR_ID);
-			usrRoleValues.put(RoleDao.ROL_NAME, "user");
-			EntityResult roleQuery = this.daoHelper.query(this.roleDao, usrRoleValues, List.of(RoleDao.ROL_ID));
-			Integer roleID = (Integer) ((List) roleQuery.get(RoleDao.ROL_ID)).get(0);
-			usrRoleValues.clear();
-			usrRoleValues.put(UserRoleDao.ROL_ID, roleID);
-			usrRoleValues.put(UserRoleDao.USR_ID, usrID);
-			EntityResult userRoleInsert = this.daoHelper.insert(this.userRolesDao, usrRoleValues);
-			return userRoleInsert;
+		Map<String, Object> usrValues = new HashMap<>(attributes);
+		Map<String, Object> usrRoleValues = new HashMap<>();
+		Map<String, Object> usrProfile = new HashMap<>();
+
+		usrValues.put(UserDao.PASSWORD, this.encryptPassword((String) attributes.get(UserDao.PASSWORD)));
+		EntityResult userValuesInsert = this.daoHelper.insert(this.userDao, usrValues);
+		Integer usrID = (Integer) userValuesInsert.get(UserDao.USR_ID);
+		usrRoleValues.put(RoleDao.ROL_NAME, "user");
+		EntityResult roleQuery = this.daoHelper.query(this.roleDao, usrRoleValues, List.of(RoleDao.ROL_ID));
+		Integer roleID = (Integer) ((List) roleQuery.get(RoleDao.ROL_ID)).get(0);
+		usrRoleValues.clear();
+		usrRoleValues.put(UserRoleDao.ROL_ID, roleID);
+		usrRoleValues.put(UserRoleDao.USR_ID, usrID);
+
+		String birthDate = Utils.getUserDate(attributes.get("UPR_BIRTHDATE"));
+		String address = (String) attributes.get("UPR_ADDRESS");
+		usrProfile.put(UserProfileDao.USR_ID, usrID);
+		usrProfile.put(UserProfileDao.UPR_BIRTHDATE, birthDate);
+		usrProfile.put(UserProfileDao.UPR_ADDRESS, address);
+		EntityResult userProfileInsert = this.daoHelper.insert(this.userProfileDao, usrProfile);
+		EntityResult userRoleInsert = this.daoHelper.insert(this.userRolesDao, usrRoleValues);
+		return userRoleInsert;
 
 	}
+
 
 	protected boolean checkPasswords(final String storedPassword, final String password) throws OntimizeJEERuntimeException {
 		if (this.passwordEncrypter == null) {

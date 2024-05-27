@@ -12,15 +12,15 @@
         </o-table>
     </mat-tab>
     <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
-        <o-table attr="usr_profileTable" service="profiles" entity="userProfile" keys="UPR_ID" insert-button="no"
-            delete-button="no" columns="USR_ID;UPR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
-            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS" detail-mode="yes">
-            <o-table-column attr="USR_NAME" title="USR_NAME" width="150px"></o-table-column>
-            <o-table-column attr="USR_SURNAME" title="USR_SURNAME" width="150px"></o-table-column>
-            <o-table-column attr="USR_PHONE" title="USR_PHONE" width="50px"></o-table-column>
-            <o-table-column attr="USR_EMAIL" title="USR_EMAIL" width="50px"></o-table-column>
-            <o-table-column attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" type="time" width="150px"></o-table-column>
-            <o-table-column attr="UPR_ADDRESS" title="UPR_ADDRESS" width="150px"></o-table-column>
-        </o-table>
+        <o-form attr="usrprofileTable" service="profiles" entity="profile" keys="USR_ID" insert-button="no"
+            delete-button="no" columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
+            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS">
+            <o-text-input attr="USR_NAME" title="USR_NAME"></o-text-input>
+            <o-text-input attr="USR_SURNAME" title="USR_SURNAME"></o-text-input>
+            <o-text-input attr="USR_PHONE" title="USR_PHONE"></o-text-input>
+            <o-text-input attr="USR_EMAIL" title="USR_EMAIL"></o-text-input>
+            <o-text-input attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" type="time" width="150px"></o-text-input>
+            <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS" width="150px"></o-text-input>
+        </o-form>
     </mat-tab>
 </mat-tab-group>

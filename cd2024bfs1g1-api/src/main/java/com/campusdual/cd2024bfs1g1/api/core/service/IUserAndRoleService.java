@@ -3,6 +3,7 @@ package com.campusdual.cd2024bfs1g1.api.core.service;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -298,13 +299,13 @@ public interface IUserAndRoleService {
 	 */
 	String encryptPassword(String password) throws OntimizeJEERuntimeException;
 
-    /**
-     * Returns the client permissions
-     *
-     * @return the client permissions
-     * @throws OntimizeJEERuntimeException if occurs
-     */
+	/**
+	 * Returns the client permissions
+	 *
+	 * @return the client permissions
+	 * @throws OntimizeJEERuntimeException if occurs
+	 */
 	EntityResult getClientPermissions() throws OntimizeJEERuntimeException;
 
-	EntityResult clientRoleInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+	EntityResult clientRoleInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
 }
