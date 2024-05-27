@@ -15,9 +15,9 @@
       <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock">
         <div class="priceSale">
           <p>
-            <span>{{'SALE' | oTranslate}}: {{ product.PRO_SALE | number: '1.2-2'}} €</span>
+            <span>{{'SALE' | oTranslate}}: {{ product.PRO_SALE*item.units | number: '1.2-2'}} €</span>
           </p>
-          <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ product.PRO_PRICE | number: '1.2-2'}} €</p>
+          <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ product.PRO_PRICE*item.units | number: '1.2-2'}} €</p>
         </div>
       </div>
       <ng-template #priceBlock>
