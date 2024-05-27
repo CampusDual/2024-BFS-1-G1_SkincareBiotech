@@ -168,5 +168,6 @@
   "BILLING_BY_AGE": "BILLING BY AGE",
   "GRAPHICS": "Graphics",
   "GBA_MIN_AGE": "Minimum age",
-  "GBA_MAX_AGE": "Maximum age"
+  "GBA_MAX_AGE": "Maximum age",
+  "ADD_AGE_RANGE": "Add age range"
 }

@@ -1,5 +1,5 @@
 <o-form attr="age-range-details" service="billed-ages" entity="billedAge" keys="GBA_ID" header-actions="R;U;D"
-    show-header-navigation="yes">
+    show-header-navigation="yes" (onUpdate)="onUpdate($event)">
     <o-integer-input attr="GBA_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
     <div fxLayout="row">
         <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" title="GBA_MIN_AGE">

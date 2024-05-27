@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-billed-age-range-details',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class BilledAgeRangeDetailsComponent {
 
+  constructor(  
+    private router: Router
+  ) { }
+  onUpdate(success: boolean) {
+    if (success) {
+      this.router.navigate(['/main/data-analysis/billed-age']);
+    } 
+  }
 }

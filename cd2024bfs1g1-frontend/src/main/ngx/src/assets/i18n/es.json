@@ -166,5 +166,6 @@
   "BILLING_BY_AGE": "FACTURACIÓN POR EDAD",
   "GRAPHICS": "Gráficas",
   "GBA_MIN_AGE": "Edad mínima",
-  "GBA_MAX_AGE": "Edad máxima"
+  "GBA_MAX_AGE": "Edad máxima",
+  "ADD_AGE_RANGE": "Add age range"
 }
