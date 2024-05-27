@@ -2,16 +2,28 @@
     background-color: #ffe0cb;
 }
 
-.card1{
-    background-color: #ae988a;
-    margin: 40px;
-    padding: 40px;
-    min-width: 1200px;
-    min-height: 400px;
+.slogan{
+    font-family: system-ui;    
+    font-style: italic;   
+    margin: 20px;
+    padding: 20px;
+    font-size: 25px;
 }
 
+.card1 {
+    background-color: #ae988a66;
+    margin: 40px;
+    padding: 40px;
+    border: 1px solid #e1e1e1;
+    border-radius: 15px;
+    display: inline-block; /* Permite que el tamaño se ajuste al contenido */
+    max-width: 100%; /* Asegura que la tarjeta no exceda el ancho del contenedor padre */
+    box-sizing: border-box; /* Incluye el padding y el borde en el cálculo del ancho y alto */
+}
+
+
 .card2{
-    background-color: #ae988a;
+    background-color: #ae988a66;
     /* margin: 40px;
     padding: 40px; */
 }
