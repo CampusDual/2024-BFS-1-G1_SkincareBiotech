@@ -20,4 +20,7 @@ export const SERVICE_CONFIG: Object = {
   permissions: {
     'path': '/permissions'
   },
+  'sellers':{
+    'path': '/new-seller'
+  }
 };

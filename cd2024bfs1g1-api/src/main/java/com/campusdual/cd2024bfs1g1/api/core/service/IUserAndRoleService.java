@@ -307,4 +307,6 @@ public interface IUserAndRoleService {
 	EntityResult getClientPermissions() throws OntimizeJEERuntimeException;
 
 	EntityResult clientRoleInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+	EntityResult sellerRoleInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+	EntityResult sellerRoleQuery(Map<?, ?> keysValues, List<?> attributes) throws OntimizeJEERuntimeException;
 }
