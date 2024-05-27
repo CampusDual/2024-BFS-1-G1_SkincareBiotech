@@ -121,7 +121,7 @@
   "OL_PRICE": "Precio del producto",
   "OL_UNITS": "Unidades del producto",
   "PRICE": "Precio",
-  "PURCHASE_BUTTON": "Finalizar pedido",
+  "PURCHASE_BUTTON": "Pagar con RedSys",
   "MAIN_SCREEN": "Página principal",
   "PAYMENT_METHODS": "Métodos de pago",
   "CASH_ON_DELIVERY": "Contrareembolso",
@@ -163,5 +163,6 @@
   "PASSWORDS_DO_NOT_MATCH": "Las contraseñas no coinciden",
   "DELETE_CART_WARNING":"Esta seguro que quiere eliminar del carrito?",
   "ERROR_COMPLETE_FORM":"Rellena el formulario para finalizar pedido",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios"
+  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
+  "COMPLETE_PAYMENT": "Completar pago:"
 }

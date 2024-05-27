@@ -21,7 +21,7 @@
                             placeholder="ORD_ZIPCODE"></o-integer-input>
                         <o-text-input #addressInput class="order-input" fxFlex="40" attr="ORD_ADDRESS" required="yes"
                             placeholder="ORD_ADDRESS"></o-text-input>
-                            <o-column class="order-column" fxFlex title="PAYMENT_METHODS">           
+                            <o-column class="order-column" fxFlex title="COMPLETE_PAYMENT">           
                                 <div fxLayout="column" fxLayoutGap="8px">               
                                     <!--<o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>-->
                                     <button mat-raised-button id="back-button"(click)="submitOrder()" type="RAISED" label="Comprar:Redsys">{{'PURCHASE_BUTTON' | oTranslate}}</button>  

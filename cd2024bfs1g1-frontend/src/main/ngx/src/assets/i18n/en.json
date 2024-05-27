@@ -125,7 +125,7 @@
   "OL_PRICE": "Product price",
   "OL_UNITS": "Product units",
   "PRICE": "Price",
-  "PURCHASE_BUTTON": "Finalize purchase",
+  "PURCHASE_BUTTON": "Pay with RedSys",
   "ORDERS_HISTORY": "Orders History",
   "MSG_BUY_BUTTON": "You must log in to buy a product.",
   "BEST_DISCOUNTS": "Best Discounts",
@@ -165,5 +165,6 @@
   "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
   "DELETE_CART_WARNING":"Are you sure you want to remove it from cart ?",
   "ERROR_COMPLETE_FORM":"Complete form to purchase",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces"
+  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
+  "COMPLETE_PAYMENT": "Complete payment:"
 }
