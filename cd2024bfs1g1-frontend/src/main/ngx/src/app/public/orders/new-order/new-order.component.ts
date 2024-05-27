@@ -126,7 +126,9 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       }
 
     }else{
-      this.router.navigate(['/login'])  // En el futuro si se cambia esta clase mantener la redireccion de este caso de uso
+      this.router.navigate(['/login'],
+                          {queryParams: {'session-not-started':'true'}}
+      )  // En el futuro si se cambia esta clase mantener la redireccion de este caso de uso
     }
     
   }
