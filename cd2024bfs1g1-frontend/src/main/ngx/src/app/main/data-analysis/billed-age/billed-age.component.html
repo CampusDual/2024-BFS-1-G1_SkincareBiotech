@@ -1,16 +1,25 @@
-<h1>{{"BILLING_BY_AGE" | oTranslate}}</h1>
-<div class="grid_container">
-    <div class="grid_item_y">
-        {{"BILLING_BY_AGE" | oTranslate}}
-    </div>
-    <div>
-        <o-chart type="discreteBar" service="orders" entity="billedAge" x-axis="AGE_RANGE" x-data-type="string"
-        y-axis="TOTAL" x-label="Age" y-label="Amount (€)" >
- </o-chart>
-    </div>
-    <div class="grid_item_x">
-        {{"AGE" | oTranslate}}
-    </div>
-</div>
-
-
+<mat-tab-group fxFlex>
+    <mat-tab label="GRAPHICS">
+        <h1>{{"BILLING_BY_AGE" | oTranslate}}</h1>
+        <div class="grid_container">
+            <div class="grid_item_y">
+                {{"BILLING_BY_AGE" | oTranslate}}
+            </div>
+            <div>
+                <o-chart type="discreteBar" service="orders" entity="billedAge" x-axis="AGE_RANGE" x-data-type="string"
+                    y-axis="TOTAL" x-label="Age" y-label="Amount (€)">
+                </o-chart>
+            </div>
+            <div class="grid_item_x">
+                {{"AGE" | oTranslate}}
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Configuración">
+        <o-table attr="billedAgeTable" service="billed-ages" entity="billedAge" keys="GBA_ID" columns="GBA_ID;GBA_MIN_AGE;GBA_MAX_AGE"
+            visible-columns="GBA_MIN_AGE;GBA_MAX_AGE" query-rows="20" delete-button='yes'>   
+            <o-table-column attr="GBA_MIN_AGE" title="GBA_MIN_AGE" width="20px"></o-table-column>
+            <o-table-column attr="GBA_MAX_AGE" title="GBA_MAX_AGE" width="20px"></o-table-column>         
+        </o-table>
+    </mat-tab>
+</mat-tab-group>

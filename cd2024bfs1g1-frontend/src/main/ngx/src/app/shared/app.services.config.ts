@@ -17,8 +17,8 @@ export const SERVICE_CONFIG: Object = {
   'brands':{
     'path': '/brands'
   },
-  'billed-age': {
-    'path': '/billed-age',
+  'billed-ages': {
+    'path': '/billed-ages',
   },
   permissions: {
     'path': '/permissions'

@@ -24,7 +24,7 @@ public class BilledAgeService implements IBilledAgeService {
     private BilledAgeDao billedAgeDao;
 
     @Override
-    public EntityResult billedAgeQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
+    public EntityResult billedAgeQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.billedAgeDao, keysValues, attributes);
     }
 

@@ -163,5 +163,8 @@
   "ERROR_MUST_BE_ADULT": "Tienes que tener al menos 18 años",
   "USR_BIRTHDAY": "Fecha de nacimiento",
   "BILLED_AGE": "Facturación por edad",
-  "BILLING_BY_AGE": "FACTURACIÓN POR EDAD"
+  "BILLING_BY_AGE": "FACTURACIÓN POR EDAD",
+  "GRAPHICS": "Gráficas",
+  "GBA_MIN_AGE": "Edad mínima",
+  "GBA_MAX_AGE": "Edad máxima"
 }
