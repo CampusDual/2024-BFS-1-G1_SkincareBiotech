@@ -163,6 +163,12 @@
   "ERROR_PHONE_PATTERN": "Must have 9 digits and start with 6, 7, 8 or 9",
   "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
   "MY_INFORMATION": "My information",
-  "MY_ORDERS": "My orders"
+  "MY_ORDERS": "My orders",
+  "USR_NAME": "Name",
+  "USR_SURNAME": "Surname",
+  "USR_PHONE": "Phone",
+  "USR_EMAIL": "Email",
+  "UPR_BIRTHDATE": "Birthdate",
+  "UPR_ADDRESS": "Address"
 
 }

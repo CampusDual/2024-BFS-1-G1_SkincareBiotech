@@ -1,71 +1,26 @@
-<o-form attr="customerDetail" service="customers" entity="customer" keys="CUSTOMERID" header-actions="R;I;U;D"
-    show-header-navigation="no" class="fill-form">
-    <div fxFlex fxLayout="row" fxLayoutGap="8px">
-        <mat-tab-group fxFlex>
-            <mat-tab label="{{ 'ORDERS HISTORY' | oTranslate }}">
-                <o-table attr="accountsTable" service="customers" entity="vCustomerAccount" keys="ACCOUNTID"
-                    parent-keys="CUSTOMERID" insert-button="no" refresh-button="no" detail-mode="none"
-                    delete-button="no" query-rows="20"
-                    columns="ACCOUNTID;ENTITYID;OFFICEID;CDID;ANID;STARTDATE;ENDDATE;INTERESRATE;ACCOUNTTYP"
-                    visible-columns="ACCOUNTNUMBER;STARTDATE;ENDDATE;INTERESRATE;INTERESRATE_MONTHLY;ACCOUNTTYP">
-                    <o-table-column attr="STARTDATE" title="STARTDATE" type="date" format="LL"></o-table-column>
-                    <o-table-column attr="ENDDATE" title="ENDDATE" type="date" format="LL"></o-table-column>
-                    <o-table-column attr="INTERESRATE" title="INTERESRATE" type="percentage" width="150px"
-                        decimal-separator="," content-align="center"></o-table-column>
-                    <o-table-column attr="ACCOUNTNUMBER" title="ACCOUNTNUMBER" content-align="center">
-                        <app-account-number-render></app-account-number-render>
-                    </o-table-column>
-                    <o-table-column-calculated attr="INTERESRATE_MONTHLY" title="INTERESRATE_MONTHLY"
-                        [operation-function]="intRateMonthly" type="percentage" decimal-separator=","
-                        content-align="center">
-                    </o-table-column-calculated>
-                </o-table>
-                <div fxLayout="row" fxLayoutGap="8px">
-                    <o-text-input fxFlex="40" attr="NAME" required="yes"></o-text-input>
-                    <o-text-input fxFlex="40" attr="SURNAME" required="yes"></o-text-input>
-                    <o-date-input fxFlex="20" attr="STARTDATE"></o-date-input>
-                </div>
-                <div fxLayout="row" fxLayoutGap="8px">
-                    <o-nif-input fxFlex="40" attr="ID" required="yes"></o-nif-input>
-                    <o-integer-input fxFlex="40" attr="PHONE" step="0" thousand-separator=" "></o-integer-input>
-                    <o-combo fxFlex="20" attr="CUSTOMERTYPEID" service="customers" entity="customerType"
-                        keys="CUSTOMERTYPEID" columns="CUSTOMERTYPEID;DESCRIPTION" visible-columns="DESCRIPTION"
-                        value-column="CUSTOMERTYPEID"></o-combo>
-                </div>
-                <o-email-input attr="EMAIL"></o-email-input>
-                <o-text-input attr="ADDRESS"></o-text-input>
-                <div fxLayout="row" fxLayoutGap="8px">
-                    <o-real-input fxFlex="50" attr="LONGITUDE" decimal-separator="," max-decimal-digits="10"
-                        min-decimal-digits="0"></o-real-input>
-                    <o-real-input fxFlex="50" attr="LATITUDE" decimal-separator="," max-decimal-digits="10"
-                        min-decimal-digits="0"></o-real-input>
-                </div>
-                <o-textarea-input attr="COMMENTS"></o-textarea-input>
-            </mat-tab>
-            <mat-tab label="{{ 'EDIT PROFILE' | oTranslate }}">
-
-                <div fxLayout="row" fxLayoutGap="8px">
-                    <o-text-input fxFlex="40" attr="NAME" required="yes"></o-text-input>
-                    <o-text-input fxFlex="40" attr="SURNAME" required="yes"></o-text-input>
-                    <o-date-input fxFlex="20" attr="STARTDATE"></o-date-input>
-                </div>
-                <div fxLayout="row" fxLayoutGap="8px">
-                    <o-nif-input fxFlex="40" attr="ID" required="yes"></o-nif-input>
-                    <o-integer-input fxFlex="40" attr="PHONE" step="0" thousand-separator=" "></o-integer-input>
-                    <o-combo fxFlex="20" attr="CUSTOMERTYPEID" service="customers" entity="customerType"
-                        keys="CUSTOMERTYPEID" columns="CUSTOMERTYPEID;DESCRIPTION" visible-columns="DESCRIPTION"
-                        value-column="CUSTOMERTYPEID"></o-combo>
-                </div>
-                <o-email-input attr="EMAIL"></o-email-input>
-                <o-text-input attr="ADDRESS"></o-text-input>
-                <div fxLayout="row" fxLayoutGap="8px">
-                    <o-real-input fxFlex="50" attr="LONGITUDE" decimal-separator="," max-decimal-digits="10"
-                        min-decimal-digits="0"></o-real-input>
-                    <o-real-input fxFlex="50" attr="LATITUDE" decimal-separator="," max-decimal-digits="10"
-                        min-decimal-digits="0"></o-real-input>
-                </div>
-                <o-textarea-input attr="COMMENTS"></o-textarea-input>
-            </mat-tab>
-        </mat-tab-group>
-    </div>
-</o-form>
+<mat-tab-group fxFlex>
+    <mat-tab label="{{ 'ORDERS HISTORY' | oTranslate }}">
+        <o-table attr="ordersTable" service="orders" entity="orderByUser" keys="ORD_ID" insert-button="no"
+            delete-button="no" columns="ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_DATE;ORD_ID;ORD_SENT"
+            visible-columns="ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_DATE;ORD_ID;ORD_SENT" query-rows="15">
+            <o-table-column attr="ORD_NAME" title="ORD_NAME" width="150px"></o-table-column>
+            <o-table-column attr="ORD_PHONE" title="ORD_PHONE" width="150px"></o-table-column>
+            <o-table-column attr="ORD_SENT" title="ORD_SENT" width="50px"></o-table-column>
+            <o-table-column attr="ORD_ZIPCODE" title="ORD_ZIPCODE" width="50px"></o-table-column>
+            <o-table-column attr="ORD_DATE" title="ORD_DATE" type="time" width="150px"></o-table-column>
+            <o-table-column attr="ORD_ID" title="ORD_ID" width="150px"></o-table-column>
+        </o-table>
+    </mat-tab>
+    <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
+        <o-table attr="usr_profileTable" service="profiles" entity="userProfile" keys="UPR_ID" insert-button="no"
+            delete-button="no" columns="USR_ID;UPR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
+            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS" detail-mode="yes">
+            <o-table-column attr="USR_NAME" title="USR_NAME" width="150px"></o-table-column>
+            <o-table-column attr="USR_SURNAME" title="USR_SURNAME" width="150px"></o-table-column>
+            <o-table-column attr="USR_PHONE" title="USR_PHONE" width="50px"></o-table-column>
+            <o-table-column attr="USR_EMAIL" title="USR_EMAIL" width="50px"></o-table-column>
+            <o-table-column attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" type="time" width="150px"></o-table-column>
+            <o-table-column attr="UPR_ADDRESS" title="UPR_ADDRESS" width="150px"></o-table-column>
+        </o-table>
+    </mat-tab>
+</mat-tab-group>
