@@ -101,8 +101,5 @@ public class OrderService implements IOrderService {
         return this.daoHelper.query(this.orderDao, filter, attributes,"total_price");
     }
 
-    public EntityResult billedAgeQuery (Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException {
-        Map<String, Object> filter = new HashMap<>(keysValues);
-        return this.daoHelper.query(this.orderDao, filter, attributes,"billed_age");
-    }
+
 }

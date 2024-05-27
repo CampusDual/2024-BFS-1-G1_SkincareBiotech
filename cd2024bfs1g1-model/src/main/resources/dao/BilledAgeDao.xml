@@ -12,4 +12,46 @@
         <Column>GBA_ID</Column>
     </UpdateKeys>
     <GeneratedKey>gba_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.gra_billed_age
+                    #WHERE#
+                    ORDER BY GBA_MIN_AGE, GBA_MAX_AGE
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="billed_age">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="ORD_ID" prefix="O"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+
+                    WITH price_age AS (
+                        SELECT ROUND(SUM(OL_PRICE * OL_UNITS):: numeric, 2) AS TOTAL_PRICE , DATE_PART('year', AGE(ORD_DATE, UPR_BIRTHDATE)) as AGE
+                        FROM ${mainschema}.ORDERS AS O
+                        JOIN ${mainschema}.ORD_LINES AS OL ON O.ORD_ID = OL.ORD_ID
+                        JOIN ${mainschema}.USR_PROFILE AS UP ON O.ORD_CLIENT_ID = UP.USR_ID
+                        WHERE O.ORD_PAID = true
+                        GROUP BY AGE
+                    ),
+                    age_ranges AS(
+                        SELECT GBA.*, CONCAT_WS(' - ',GBA_MIN_AGE,GBA_MAX_AGE) AS AGE_RANGE, coalesce(sum(price_age.total_price),0) AS TOTAL
+                        FROM ${mainschema}.GRA_BILLED_AGE AS GBA
+                        LEFT JOIN price_age on price_age.age BETWEEN GBA_MIN_AGE and GBA_MAX_AGE
+                        GROUP BY GBA_ID
+                    )
+                    SELECT #COLUMNS#
+                    FROM age_ranges
+                    #WHERE#
+                    ORDER BY GBA_MIN_AGE
+                    ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
