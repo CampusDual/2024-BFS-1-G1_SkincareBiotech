@@ -1,5 +1,4 @@
-.productCard {   
-
+.productCard {  
     background-color: #ffffff;
     width: 15vw;
     height: 92%;
@@ -13,11 +12,11 @@
     border-radius: 15px;
     margin: 10px;       
     cursor: pointer; 
+    transition: transform 0.3s ease-in-out;
 }
 
 .productCard:hover {
-    /* transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); */
+    transform: scale(1.03);
 }
 
 .productCard img {
@@ -25,26 +24,7 @@
     max-width: 150px;
     max-height: 150px;
     min-height: 150px;
-    margin: 20px;      
-}
-
-.img_produc {
-    /* margin-top: 5%;
-    max-width: 90%;
-    min-height: 50%;
-    max-height: 51%;
-    overflow: hidden; */
-}
-
-.productCard strong {
-    /* font-size: 1.1em;
-    color: #333; */
-}
-
-.productCard em {
-    /* font-size: 0.9em;
-    color: #777;
-    font-style: normal; */
+    margin: 20px;   
 }
 
 .title {
@@ -62,16 +42,6 @@
     text-overflow: ellipsis; 
     margin: 0 0 15px;
 }
- 
-.title:hover {    
-   
-  }
-
-.sale {
-    /* text-align: left;
-    margin-top: 5%;
-    font-family: Poppins, "Helvetica Neue", sans-serif; */
-}
 
 .description-div {    
     width: 90%;    
@@ -79,19 +49,10 @@
 
 }
 
-a {
-    /* text-decoration: none; */
-}
-
 .container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
-
-h2 {
-    /* padding: 2vh;
-    margin-left: 4vh; */
 }
 
 .originalPrice {
@@ -119,20 +80,11 @@ h2 {
     color: darkgreen;
     font-size: 1.2em;
     margin: 0px 0px 0px 0px;
-    font-weight: bold;
-    /* margin: 0.75vh 2.5vh;
-    font-size: 1.5em;
-    font-weight: bolder; */
+    font-weight: bold;    
 }
 
 .price {
     text-align: right; 
     font-weight: bold; 
-    font-size: 1.2em;  
-    /* font-size: 1.5em;
-    font-weight: bolder;
-    text-align: left;
-    margin-top: 17%;
-    margin-bottom: 12%;
-    font-family: Poppins, "Helvetica Neue", sans-serif; */
+    font-size: 1.2em;
 }
