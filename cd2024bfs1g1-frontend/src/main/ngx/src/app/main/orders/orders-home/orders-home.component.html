@@ -1,12 +1,12 @@
 <o-table attr="ordersTable" service="orders" entity="orderBySeller" keys="ORD_ID" insert-button="false" delete-button="false"
-    columns="ORD_ID;ORD_DATE;TOTAL_PRICE;ORD_PAID;NUM_UNITS;NUM_PRODUCTS;ALL_SEND"
-    visible-columns="ORD_ID;ORD_DATE;TOTAL_PRICE;ORD_PAID;NUM_UNITS;NUM_PRODUCTS;ALL_SEND">
-    <o-table-column attr="ORD_ID" title="ORD_ID" content-align="center" width="100px"></o-table-column>
-    <o-table-column attr="ORD_DATE" title="ORD_DATE" type="date" content-align="center" width="500px"></o-table-column>
+    columns="ORD_ID;ORD_DATE;TOTAL_PRICE;NUM_UNITS;NUM_PRODUCTS;ORD_PAID;ALL_SENT"
+    visible-columns="ORD_ID;ORD_DATE;TOTAL_PRICE;NUM_UNITS;NUM_PRODUCTS;ORD_PAID;ALL_SENT">
+    <o-table-column attr="ORD_ID" title="ORD_ID" content-align="center"></o-table-column>
+    <o-table-column attr="ORD_DATE" title="ORD_DATE" type="date" content-align="center"></o-table-column>
     <o-table-column attr="TOTAL_PRICE" title="TOTAL_PRICE" type="currency" currency-symbol="€" currency-symbol-position="right"
         thousand-separator="." decimal-separator="," content-align="center"></o-table-column>
-    <o-table-column attr="ORD_PAID" title="ORD_PAID" content-align="center"></o-table-column>
     <o-table-column attr="NUM_UNITS" title="NUM_UNITS" content-align="center"></o-table-column>
     <o-table-column attr="NUM_PRODUCTS" title="NUM_PRODUCTS" content-align="center"></o-table-column>
-    <o-table-column attr="ALL_SEND" title="ALL_SEND" content-align="center"></o-table-column>
+    <o-table-column attr="ORD_PAID" title="ORD_PAID" content-align="center"></o-table-column>
+    <o-table-column attr="ALL_SENT" title="ALL_SENT" content-align="center"></o-table-column>
 </o-table>

@@ -55,23 +55,38 @@
         <Query id="orderBySeller">
             <Sentence>
                 <![CDATA[
-                    SELECT
-	                    o.ord_id,
-	                    o.ord_date,
-                        SUM(ol.ol_price * ol.ol_units) AS total_price,
-                        o.ord_paid,
-                        SUM(ol.ol_units) AS num_units,
-                        COUNT(ol.pro_id) AS num_products,
-                        CASE
-                            WHEN COUNT(ol.ol_sent) = SUM(CASE WHEN ol.ol_sent = true THEN 1 ELSE 0 END) THEN true
-                            ELSE false
-                        END AS all_send
-                    FROM ${mainschema}.orders o
-                        INNER JOIN ${mainschema}.ord_lines ol ON o.ord_id = ol.ord_id
-                        INNER JOIN ${mainschema}.products p ON ol.pro_id = p.pro_id
-                    #WHERE#
-                    GROUP BY o.ord_id, o.ord_date, o.ord_paid
-                    ORDER BY o.ord_id asc;
+                    WITH ORDERSGROUP AS (
+                        SELECT
+                            O.*,
+                            P.PRO_SELLER_ID,
+                            SUM(OL.OL_PRICE * OL.OL_UNITS) AS TOTAL_PRICE,
+                            SUM(OL.OL_UNITS) AS NUM_UNITS,
+                            COUNT(OL.PRO_ID) AS NUM_PRODUCTS,
+                            BOOL_AND(OL.OL_SENT) AS ALL_SENT
+                        FROM ORDERS AS O
+                        INNER JOIN ORD_LINES AS OL ON O.ORD_ID = OL.ORD_ID
+                        INNER JOIN PRODUCTS AS P ON OL.PRO_ID = P.PRO_ID
+                        GROUP BY O.ORD_ID, P.PRO_SELLER_ID
+                    )
+                    SELECT #COLUMNS#
+                    FROM ORDERSGROUP
+                    #WHERE#;
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="orderByUser">
+            <Sentence>
+                <![CDATA[
+                    WITH ODERLISTUSER AS (
+                        SELECT
+                            O.*,
+                            BOOL_AND(OL.OL_SENT) AS SENT
+                        FROM ORDERS AS O INNER JOIN ORD_LINES AS OL ON O.ORD_ID = OL.ORD_ID
+                        GROUP BY O.ORD_ID
+                    )
+                    SELECT #COLUMNS#
+                    FROM ODERLISTUSER
+                    #WHERE#;
                 ]]>
             </Sentence>
         </Query>

@@ -39,7 +39,7 @@ public class OrderService implements IOrderService {
         int userId = Utils.getUserId();
         Map<String, Object> orderMap = new HashMap<>(keyMap);
         orderMap.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
-        return this.daoHelper.query(this.orderDao, orderMap, attrList);
+        return this.daoHelper.query(this.orderDao, orderMap, attrList, "orderByUser");
     }
 
     @Override
