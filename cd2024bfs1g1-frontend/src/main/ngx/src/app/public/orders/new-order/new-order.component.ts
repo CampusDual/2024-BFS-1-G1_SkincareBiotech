@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ViewChild, ElementRef, OnInit, Injector, Input } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ElementRef, OnInit, Injector, Input, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils } from 'ontimize-web-ngx';
+import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils, AuthService } from 'ontimize-web-ngx';
 import * as CryptoJS from 'crypto-js';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -40,6 +40,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   @ViewChild("zipInput") zipInput: OIntegerInputComponent;
   @ViewChild("addressInput") addressInput: OTextInputComponent;
   constructor(
+    @Inject(AuthService) private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
     private cartService: CartService,
@@ -96,31 +97,36 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   }
   submitOrder(): void {
 
-    const conf = this.service.getDefaultServiceConfiguration('orders');
-    this.service.configureService(conf);
-    let data = {
-      ORD_NAME: this.nameInput.getValue(),
-      ORD_PHONE: this.phoneInput.getValue(),
-      ORD_ZIPCODE: this.zipInput.getValue(),
-      ORD_ADDRESS: this.addressInput.getValue(),
-      ORD_ITEMS: this.cartService.getCart()
-    }
-    if(data.ORD_NAME != null && data.ORD_PHONE !=null && data.ORD_ZIPCODE !=null && data.ORD_ADDRESS !=null){
-      this.cartService.emptyCart();
-      this.service.insert(data, "order").subscribe(res => {
-          this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
-          this.orderView = (res.data["ORD_ID"]).toString();
-          this.price = (this.totalAmount * 100).toFixed(0);
-          this.submitRedsysOrder();
-        })
+    if(this.authService.isLoggedIn()){
+
+      const conf = this.service.getDefaultServiceConfiguration('orders');
+      this.service.configureService(conf);
+      let data = {
+        ORD_NAME: this.nameInput.getValue(),
+        ORD_PHONE: this.phoneInput.getValue(),
+        ORD_ZIPCODE: this.zipInput.getValue(),
+        ORD_ADDRESS: this.addressInput.getValue(),
+        ORD_ITEMS: this.cartService.getCart()
+      }
+      if(data.ORD_NAME != null && data.ORD_PHONE !=null && data.ORD_ZIPCODE !=null && data.ORD_ADDRESS !=null){
+        this.cartService.emptyCart();
+        this.service.insert(data, "order").subscribe(res => {
+            this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
+            this.orderView = (res.data["ORD_ID"]).toString();
+            this.price = (this.totalAmount * 100).toFixed(0);
+            this.submitRedsysOrder();
+          })
+      }else{
+        Swal.fire({
+          title: this.translate.get('ERROR_COMPLETE_FORM'),
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+        
+      }
+
     }else{
-      console.log("espabila");
-      Swal.fire({
-        title: this.translate.get('ERROR_COMPLETE_FORM'),
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
-      
+      this.router.navigate(['/login'])  // En el futuro si se cambia esta clase mantener la redireccion de este caso de uso
     }
     
   }
