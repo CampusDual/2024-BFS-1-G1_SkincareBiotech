@@ -4,6 +4,7 @@ import com.campusdual.cd2024bfs1g1.api.core.service.IOrderService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.OrderDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.OrderLinesDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
+import com.campusdual.cd2024bfs1g1.model.core.dao.UserDao;
 import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ontimize.jee.common.dto.EntityResult;
@@ -77,8 +78,11 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public EntityResult orderBySellerQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException, JsonProcessingException {
-        return this.daoHelper.query(this.orderDao, keyMap, attrList, "orderBySeller");
+    public EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
+        int userId = Utils.getUserId();
+        Map<String, Object> filter = new HashMap<>(keysValues);
+        filter.put(ProductDao.PRO_SELLER_ID, userId);
+        return this.daoHelper.query(this.orderDao, filter, attributes, "orderBySeller");
     }
 
     @Override

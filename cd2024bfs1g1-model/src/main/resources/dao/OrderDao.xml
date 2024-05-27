@@ -65,7 +65,7 @@
                         CASE
                             WHEN COUNT(ol.ol_sent) = SUM(CASE WHEN ol.ol_sent = true THEN 1 ELSE 0 END) THEN true
                             ELSE false
-                        END AS enviado
+                        END AS all_send
                     FROM ${mainschema}.orders o
                         INNER JOIN ${mainschema}.ord_lines ol ON o.ord_id = ol.ord_id
                         INNER JOIN ${mainschema}.products p ON ol.pro_id = p.pro_id
