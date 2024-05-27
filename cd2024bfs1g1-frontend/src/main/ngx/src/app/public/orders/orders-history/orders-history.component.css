@@ -1,0 +1,94 @@
+::ng-deep .order_history .order_history_list .o-list-container .o-data-toolbar {
+    width: 80%;
+    margin: auto;
+    align-items: end;
+}
+
+::ng-deep .order_history .o-data-toolbar .o-search-input {
+    display: block;
+}
+
+::ng-deep .order_history .o-data-toolbar .o-list-button {
+    color: red;
+
+}
+
+::ng-deep .order_history .order_history_list .o-list-container .o-list-content .mdc-list {
+    padding-top: 0px;
+}
+
+.order_history .order_history_list .order_card {
+    display: block;
+    width: 80%;
+    margin: 25px auto 25px auto;
+    border: 1px solid #e1e1e1;
+    border-radius: 15px;
+    background-color: #ffffff;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order_card .order_card_header {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.order_card .order_card_header .order_date {
+    text-align: right;
+}
+
+.order_card .order_body_container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding: 0px 16px 0px 16px;
+    margin-bottom: 16px;
+}
+
+.order_card .order_body_container .user_info .order_data {
+    display: grid;
+}
+
+.order_card .order_body_container .user_info {
+    grid-row-start: 1;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: 30% auto;
+}
+
+.order_card .order_body_container .order_products {
+    grid-row-start: 2;
+    margin-left: 5%;
+}
+
+.order_card .order_body_container .user_info span {
+    font-weight: 800
+}
+
+.order_card .order_body_container .total_price_container .paid_status {
+    text-align: center;
+}
+
+.order_card .order_body_container .total_price_container {
+    margin: 10% 5% auto auto;
+}
+
+.order_card .order_body_container .total_price_container .paid_status .paid {
+    color: green;
+}
+
+.order_card .order_body_container .total_price_container .paid_status .unpaid {
+    color: red;
+}
+
+.order_card .order_body_container .total_price_container .total_price {
+    text-align: center;
+    width: 100%;
+    font-weight: 800;
+    font-size: 25px;
+}
+
+.order_card .order_body_container .total_price_container .total_price p {
+    margin: 10px 0px;
+}
