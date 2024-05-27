@@ -16,10 +16,11 @@
         </div>
     </mat-tab>
     <mat-tab label="Configuración">
-        <o-table attr="billedAgeTable" service="billed-ages" entity="billedAge" keys="GBA_ID" columns="GBA_ID;GBA_MIN_AGE;GBA_MAX_AGE"
-            visible-columns="GBA_MIN_AGE;GBA_MAX_AGE" query-rows="20" delete-button='yes'>   
+        <o-table attr="billedAgeTable" service="billed-ages" entity="billedAge" keys="GBA_ID"
+            columns="GBA_ID;GBA_MIN_AGE;GBA_MAX_AGE" visible-columns="GBA_MIN_AGE;GBA_MAX_AGE" query-rows="20"
+            delete-button='true' header-actions="R;U;D">
             <o-table-column attr="GBA_MIN_AGE" title="GBA_MIN_AGE" width="20px"></o-table-column>
-            <o-table-column attr="GBA_MAX_AGE" title="GBA_MAX_AGE" width="20px"></o-table-column>         
+            <o-table-column attr="GBA_MAX_AGE" title="GBA_MAX_AGE" width="20px"></o-table-column>
         </o-table>
     </mat-tab>
 </mat-tab-group>

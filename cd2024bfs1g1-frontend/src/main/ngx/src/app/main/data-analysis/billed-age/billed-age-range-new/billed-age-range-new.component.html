@@ -1,0 +1,15 @@
+<o-form attr="new-range-age" service="billed-ages" entity="billedAge" keys="GBA_ID">
+    <o-column title="ADD_AGE_RANGE">
+      <div fxLayout="row" fxLayoutGap="8px">
+        <div fxFlex="70">
+          <div>
+            <o-integer-input fxFlex="30" attr="GBA_MIN_AGE" class="input-padding" min="18" max="100" grouping="no"
+              required="yes"></o-integer-input>
+
+              <o-integer-input fxFlex="30" attr="GBA_MAX_AGE" class="input-padding" min="18" max="100" grouping="no"
+              required="yes"></o-integer-input>
+          </div>
+        </div>
+      </div>
+    </o-column>
+  </o-form>

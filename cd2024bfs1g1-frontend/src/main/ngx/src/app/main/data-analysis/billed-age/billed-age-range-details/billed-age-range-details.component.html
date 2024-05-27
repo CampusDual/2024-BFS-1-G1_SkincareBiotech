@@ -1,0 +1,18 @@
+<o-form attr="age-range-details" service="billed-ages" entity="billedAge" keys="GBA_ID" header-actions="R;U;D"
+    show-header-navigation="yes">
+    <o-integer-input attr="GBA_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
+    <div fxLayout="row">
+        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" title="GBA_MIN_AGE">
+            <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
+                <o-integer-input fxFlex="40" attr="GBA_MIN_AGE" label="GBA_MIN_AGE" min="18" max="100"
+                    required="yes"></o-integer-input>
+            </div>
+        </o-column>
+        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" title="GBA_MAX_AGE">
+            <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
+                <o-integer-input fxFlex="40" attr="GBA_MAX_AGE" label="GBA_MAX_AGE" min="18" max="100"
+                    required="yes"></o-integer-input>
+            </div>
+        </o-column>
+    </div>
+</o-form>
