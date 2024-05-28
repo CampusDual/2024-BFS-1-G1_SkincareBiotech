@@ -1,8 +1,11 @@
 <div style="padding-bottom: 80px;">
-    <div class="slogan">    
-        Descubre productos excepcionales para tu cuidado personal
-    </div>      
-        <app-products-recent></app-products-recent>  
-        <app-products-best-seller></app-products-best-seller>  
-        <app-products-discount></app-products-discount>    
+    <div class="background-container">
+        <div class="text-overlay-container">
+            <div class="text-container">{{'SLOGAN' | oTranslate}}</div>
+            <a href="#best-sellers" class="overlay-link"> {{'SHOW_MORE' | oTranslate}} </a>
+        </div>
+    </div>
+    <app-products-recent></app-products-recent>
+    <app-products-best-seller id="best-sellers"></app-products-best-seller>
+    <app-products-discount></app-products-discount>
 </div>

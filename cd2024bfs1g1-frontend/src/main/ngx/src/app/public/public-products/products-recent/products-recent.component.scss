@@ -2,12 +2,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: rgba(167, 191, 199, 0.25);
+    background-color: rgba(42, 73, 85, 0.233);
     margin: 0px 30px 20px 30px;
     padding: 20px 20px 30px 20px;   
     border-radius: 15px;
     min-width: min-content; /* Ajusta automáticamente al contenido mínimo */
     box-sizing: border-box; /* Asegura que padding y border se incluyan en el cálculo del ancho */
+    flex-wrap: wrap;
 }
 
 h2 {
@@ -16,4 +17,5 @@ h2 {
 
     padding: 2vh;
     margin-left: 4vh;
+    margin-top: 5vh;
 }
