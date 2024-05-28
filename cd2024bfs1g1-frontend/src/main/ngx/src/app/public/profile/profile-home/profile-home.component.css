@@ -1,0 +1,23 @@
+.Nombre{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap:5px;
+    margin:10px;
+    padding-bottom: 50px
+}
+
+.Contacto{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap:5px;
+    margin:10px;
+    padding-bottom: 50px
+}
+
+.Info{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap:5px;
+    margin:10px;
+    padding-bottom: 50px
+}
