@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +7,6 @@ import { Injectable } from '@angular/core';
 export class CartService {
 
   cart: any[] = [];
-
-
   addProductToCart(product: any) {
     let p = { id: product.PRO_ID, units: 1 };
     this.loadLocalStorageCart();
@@ -64,7 +63,6 @@ export class CartService {
     this.cart = this.cart.filter(x => x.id !== productID);
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }
-
   constructor() {
   }
 
