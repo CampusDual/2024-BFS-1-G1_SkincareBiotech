@@ -52,7 +52,7 @@
             ]]>
             </Sentence>
         </Query>
-        <Query id="orderBySeller">
+        <Query id="ORD_SELLER">
             <Sentence>
                 <![CDATA[
                     WITH ORDERSGROUP AS (
@@ -74,7 +74,7 @@
                 ]]>
             </Sentence>
         </Query>
-        <Query id="orderByUser">
+        <Query id="ORD_USER">
             <Sentence>
                 <![CDATA[
                     WITH ODERLISTUSER AS (
