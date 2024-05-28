@@ -165,9 +165,14 @@
   "ERROR_MUST_BE_ADULT": "You must be at least 18 years old",
   "USR_BIRTHDAY": "Birthdate",
   "BILLED_AGE": "Billing by age",
-  "BILLING_BY_AGE": "BILLING BY AGE",
+  "BILLING_BY_AGE": "Billed",
+  "BILLING_BY_AGE_TITTLE": "BILLING BY AGE",
   "GRAPHICS": "Graphics",
   "GBA_MIN_AGE": "Minimum age",
   "GBA_MAX_AGE": "Maximum age",
-  "ADD_AGE_RANGE": "Add age range"
+  "ADD_AGE_RANGE": "Add age range",
+  "MIN_RANGE_HIGHER": "Minimum age can't be higher than maximum age",
+  "RANGE_NOT_VALID": "Range not valid. Ages cannot overlap.",
+  "AGE_GRAPH": "Age ranges",
+  "SETTINGS": "Settings"
 }

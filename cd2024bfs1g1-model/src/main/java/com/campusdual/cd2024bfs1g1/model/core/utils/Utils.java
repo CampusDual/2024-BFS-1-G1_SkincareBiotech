@@ -1,9 +1,12 @@
 package com.campusdual.cd2024bfs1g1.model.core.utils;
 
+import com.campusdual.cd2024bfs1g1.model.core.dao.BilledAgeDao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -42,4 +45,25 @@ public class Utils {
 
         return formattedDate;
     }
+
+    public static boolean isAgeRangeValid(int minAge, int maxAge, EntityResult existingRanges){
+        int recordCount = existingRanges.calculateRecordNumber();
+
+        for (int i=0; i < recordCount; i++) {
+
+            int minRecord = (int) existingRanges.getRecordValues(i).get(BilledAgeDao.ATTR_MIN_AGE);
+            int maxRecord  = (int) existingRanges.getRecordValues(i).get(BilledAgeDao.ATTR_MAX_AGE);
+
+            if ( minAge >= minRecord && minAge <= maxRecord ||
+                 minAge <= minRecord && maxAge >= maxRecord ||
+                 maxAge >= minRecord && maxAge <= maxRecord  )
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }
+

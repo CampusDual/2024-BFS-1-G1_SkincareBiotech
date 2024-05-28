@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IBilledAgeService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.BilledAgeDao;
+import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -46,35 +47,45 @@ public class BilledAgeService implements IBilledAgeService {
             Map<String, Object> queryKeys = new HashMap<>();
             List<String> queryAttributes = Arrays.asList(BilledAgeDao.ATTR_GBA_ID, BilledAgeDao.ATTR_MIN_AGE, BilledAgeDao.ATTR_MAX_AGE);
 
-            EntityResult existingRangesEr = this.daoHelper.query(this.billedAgeDao, queryKeys, queryAttributes);
+            EntityResult existingRanges = this.daoHelper.query(this.billedAgeDao, queryKeys, queryAttributes);
 
-            int recordCount = existingRangesEr.calculateRecordNumber();
-
-            for (int i=0; i < recordCount; i++) {
-            System.out.println(recordCount);
-
-                    int minRecord = (int) existingRangesEr.getRecordValues(i).get(BilledAgeDao.ATTR_MIN_AGE);
-                    int maxRecord  = (int) existingRangesEr.getRecordValues(i).get(BilledAgeDao.ATTR_MAX_AGE);
-                System.out.println("Entra en el bucle");
-                    if ( minAge >= minRecord && minAge <= maxRecord ||
-                         minAge <= minRecord && maxAge >= maxRecord ||
-                         maxAge >= minRecord && maxAge <= maxRecord  )
-                    {
-                        System.out.println("Entra en el error");
-                        EntityResult result2 = new EntityResultMapImpl();
-                        result2.setCode(EntityResult.OPERATION_WRONG);
-                        result2.setMessage("RANGE_NOT_VALID");
-                        return result2;
-                    }
+            if(!Utils.isAgeRangeValid(minAge, maxAge, existingRanges)){
+                EntityResult result = new EntityResultMapImpl();
+                result.setCode(EntityResult.OPERATION_WRONG);
+                result.setMessage("RANGE_NOT_VALID");
+                return result;
             }
-            System.out.println("Inserta");
-        return this.daoHelper.insert(this.billedAgeDao, attributes);
+            return this.daoHelper.insert(this.billedAgeDao, attributes);
         }
     }
 
     @Override
-    public EntityResult billedAgeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.update(this.billedAgeDao, attrMap, keyMap);
+    public EntityResult billedAgeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException{
+        int minAge = (int) attrMap.get(BilledAgeDao.ATTR_MIN_AGE);
+        int maxAge = (int) attrMap.get(BilledAgeDao.ATTR_MAX_AGE);
+        int id = (int) keyMap.get(BilledAgeDao.ATTR_GBA_ID);
+
+        if(minAge > maxAge){
+            EntityResult result = new EntityResultMapImpl();
+            result.setCode(EntityResult.OPERATION_WRONG);
+            result.setMessage("MIN_RANGE_HIGHER");
+            return result;
+        } else {
+            Map<String, Object> queryKeys = new HashMap<>();
+            List<String> queryAttributes = Arrays.asList(BilledAgeDao.ATTR_GBA_ID, BilledAgeDao.ATTR_MIN_AGE, BilledAgeDao.ATTR_MAX_AGE);
+
+            EntityResult existingRanges = this.daoHelper.query(this.billedAgeDao, queryKeys, queryAttributes);
+            System.out.println(existingRanges);
+            existingRanges.remove(keyMap);
+            System.out.println(existingRanges);
+            if(!Utils.isAgeRangeValid(minAge, maxAge, existingRanges)){
+                EntityResult result = new EntityResultMapImpl();
+                result.setCode(EntityResult.OPERATION_WRONG);
+                result.setMessage("RANGE_NOT_VALID");
+                return result;
+            }
+            return this.daoHelper.update(this.billedAgeDao, attrMap, keyMap);
+        }
     }
 
     @Override

@@ -1,21 +1,25 @@
 <mat-tab-group fxFlex>
-    <mat-tab label="GRAPHICS">
-        <h1>{{"BILLING_BY_AGE" | oTranslate}}</h1>
-        <div class="grid_container">
-            <div class="grid_item_y">
-                {{"BILLING_BY_AGE" | oTranslate}}
+    <mat-tab>
+        <ng-template mat-tab-label>{{ "GRAPHICS" | oTranslate }}</ng-template>
+        <h1>{{"BILLING_BY_AGE_TITTLE" | oTranslate}}</h1>
+        <div class="chart-container">
+            <div class="chart-tittle-y-container">
+                <div class="tittle-y">
+                    {{"BILLING_BY_AGE" | oTranslate}}
+                </div>
+                <div class="chart">
+                    <o-chart  type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE"
+                        x-data-type="string" y-axis="TOTAL" x-label="Age" y-label="Amount (€)">
+                    </o-chart>
+                </div>
             </div>
-            <div>
-                <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE" x-data-type="string"
-                    y-axis="TOTAL" x-label="Age" y-label="Amount (€)">
-                </o-chart>
-            </div>
-            <div class="grid_item_x">
-                {{"AGE" | oTranslate}}
+            <div class="tittle-x">
+                {{"AGE_GRAPH" | oTranslate}}
             </div>
         </div>
     </mat-tab>
-    <mat-tab label="Configuración">
+    <mat-tab class="label" label="Configuración">
+        <ng-template mat-tab-label>{{ "SETTINGS" | oTranslate }}</ng-template>
         <o-table attr="billedAgeTable" service="billed-ages" entity="billedAge" keys="GBA_ID"
             columns="GBA_ID;GBA_MIN_AGE;GBA_MAX_AGE" visible-columns="GBA_MIN_AGE;GBA_MAX_AGE" query-rows="20"
             delete-button='true' header-actions="R;U;D">

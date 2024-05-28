@@ -163,9 +163,14 @@
   "ERROR_MUST_BE_ADULT": "Tienes que tener al menos 18 años",
   "USR_BIRTHDAY": "Fecha de nacimiento",
   "BILLED_AGE": "Facturación por edad",
-  "BILLING_BY_AGE": "FACTURACIÓN POR EDAD",
+  "BILLING_BY_AGE": "Facturación",
+  "BILLING_BY_AGE_TITTLE": "FACTURACIÓN POR EDAD",
   "GRAPHICS": "Gráficas",
   "GBA_MIN_AGE": "Edad mínima",
   "GBA_MAX_AGE": "Edad máxima",
-  "ADD_AGE_RANGE": "Add age range"
+  "ADD_AGE_RANGE": "Add age range",
+  "MIN_RANGE_HIGHER": "La edad mínima no puede ser menor que la máxima",
+  "RANGE_NOT_VALID": "Rango no válido. Las edades no se pueden solapar.",
+  "AGE_GRAPH": "Rangos de edad",
+  "SETTINGS": "Ajustes"
 }

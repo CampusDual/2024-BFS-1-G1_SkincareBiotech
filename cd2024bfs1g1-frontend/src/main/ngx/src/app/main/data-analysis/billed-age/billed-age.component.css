@@ -1,0 +1,35 @@
+.chart-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-tittle-y-container{
+    display: flex;
+    width: 100%;
+}
+
+.chart{
+    width: 100%;
+}
+
+.tittle-y{
+    display: flex;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    margin-top: 0;
+    font-weight: bold;
+    
+}
+
+.tittle-x{
+   display: flex;
+   justify-content: center;
+   font-weight: bold;
+}
+
+mat-tab-group{
+    background-color: white;
+}
+
