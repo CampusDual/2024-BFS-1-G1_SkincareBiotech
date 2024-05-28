@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ErrorData } from 'ontimize-web-ngx';
 
 @Component({
-  selector: 'app-categories-new',
-  templateUrl: './categories-new.component.html',
-  styleUrls: ['./categories-new.component.scss']
+  selector: 'app-categories-detail',
+  templateUrl: './categories-detail.component.html',
+  styleUrls: ['./categories-detail.component.css']
 })
-export class CategoriesNewComponent{
+export class CategoriesDetailComponent {
 
   constructor(
     private router: Router
   ) { }
 
-onInsert(success: boolean) {
+  onUpdate(success: boolean) {
     if (success) {
       this.router.navigate(['/main/categories']);
-    }
+    } 
   }
-  
+
   catNameValidator(control: FormControl): ValidationErrors {
     let result = {};
     const regex = /^[A-Z][a-z]*$/
@@ -27,6 +28,5 @@ onInsert(success: boolean) {
     }
     return result;
   }
-
 
 }

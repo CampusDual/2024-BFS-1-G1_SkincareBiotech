@@ -81,6 +81,7 @@
   "VERSION": "Version",
   "VIEW": "Views",
   "BUY_BUTTON":"Buy",
+  "BACK_BUTTON": "Back",
   "ORDERS": "Orders",
   "ORD_ID": "Order id",
   "ORD_NAME": "Contact name",
@@ -124,7 +125,7 @@
   "OL_PRICE": "Product price",
   "OL_UNITS": "Product units",
   "PRICE": "Price",
-  "BACK_BUTTON": "Back",
+  "PURCHASE_BUTTON": "Pay",
   "ORDERS_HISTORY": "Orders History",
   "MSG_BUY_BUTTON": "You must log in to buy a product.",
   "BEST_DISCOUNTS": "Best discounts",
@@ -161,5 +162,8 @@
   "MAX_LENGTH_50": "50 characters maximum",
   "ERROR_EMAIL_PATTERN": "Invalid email",
   "ERROR_PHONE_PATTERN": "Must have 9 digits and start with 6, 7, 8 or 9",
-  "PASSWORDS_DO_NOT_MATCH": "Passwords do not match"
+  "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
+  "DELETE_CART_WARNING":"Are you sure you want to remove it from cart ?",
+  "ERROR_COMPLETE_FORM":"Complete form to purchase",
+  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces"
 }

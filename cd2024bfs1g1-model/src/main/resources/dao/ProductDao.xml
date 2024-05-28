@@ -19,7 +19,8 @@
                 WITH ENABLED_CHECKER AS (
                     SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS PRO_REAL_PRICE,
                     COALESCE (((PRO_PRICE - PRO_SALE) / PRO_PRICE) * 100, 0) AS DISCOUNT
-                    FROM ${mainschema}.PRODUCTS
+                    FROM ${mainschema}.PRODUCTS AS P
+                    INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
                     WHERE PRO_ENABLED = TRUE
                 )
                 SELECT #COLUMNS#
