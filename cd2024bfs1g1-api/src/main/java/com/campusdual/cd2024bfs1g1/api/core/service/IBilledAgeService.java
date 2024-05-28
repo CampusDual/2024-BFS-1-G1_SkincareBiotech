@@ -12,8 +12,6 @@ public interface IBilledAgeService {
 
     EntityResult billedAgeInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
 
-    EntityResult billedAgeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
-
     EntityResult billedAgeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
     EntityResult billedAgeChartQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;

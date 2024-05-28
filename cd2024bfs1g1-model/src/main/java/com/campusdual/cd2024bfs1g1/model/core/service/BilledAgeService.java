@@ -58,35 +58,7 @@ public class BilledAgeService implements IBilledAgeService {
             return this.daoHelper.insert(this.billedAgeDao, attributes);
         }
     }
-
-    @Override
-    public EntityResult billedAgeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException{
-        int minAge = (int) attrMap.get(BilledAgeDao.ATTR_MIN_AGE);
-        int maxAge = (int) attrMap.get(BilledAgeDao.ATTR_MAX_AGE);
-        int id = (int) keyMap.get(BilledAgeDao.ATTR_GBA_ID);
-
-        if(minAge > maxAge){
-            EntityResult result = new EntityResultMapImpl();
-            result.setCode(EntityResult.OPERATION_WRONG);
-            result.setMessage("MIN_RANGE_HIGHER");
-            return result;
-        } else {
-            Map<String, Object> queryKeys = new HashMap<>();
-            List<String> queryAttributes = Arrays.asList(BilledAgeDao.ATTR_GBA_ID, BilledAgeDao.ATTR_MIN_AGE, BilledAgeDao.ATTR_MAX_AGE);
-
-            EntityResult existingRanges = this.daoHelper.query(this.billedAgeDao, queryKeys, queryAttributes);
-            System.out.println(existingRanges);
-            existingRanges.remove(keyMap);
-            System.out.println(existingRanges);
-            if(!Utils.isAgeRangeValid(minAge, maxAge, existingRanges)){
-                EntityResult result = new EntityResultMapImpl();
-                result.setCode(EntityResult.OPERATION_WRONG);
-                result.setMessage("RANGE_NOT_VALID");
-                return result;
-            }
-            return this.daoHelper.update(this.billedAgeDao, attrMap, keyMap);
-        }
-    }
+    
 
     @Override
     public EntityResult billedAgeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
