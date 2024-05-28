@@ -58,7 +58,7 @@ public class BilledAgeService implements IBilledAgeService {
             return this.daoHelper.insert(this.billedAgeDao, attributes);
         }
     }
-    
+
 
     @Override
     public EntityResult billedAgeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
