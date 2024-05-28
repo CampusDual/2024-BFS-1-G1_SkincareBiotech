@@ -27,7 +27,7 @@ export class ProductDetailComponent implements OnInit {
     let id = parseInt(this.route.snapshot.paramMap.get('prod_id'))
     const conf = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf);
-    this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
+    this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE", "BRA_NAME"], "productEnabled")
       .subscribe((data) => {
         if (data.data.length > 0) {
           this.product = data.data[0];
@@ -51,10 +51,6 @@ export class ProductDetailComponent implements OnInit {
 
   addProduct(product: any) {
     this.cartService.addProductToCart(product);
-  }
-
-  goBack(): void {
-    this.router.navigate(["/"]);
   }
 
 }
