@@ -19,5 +19,6 @@ update public.usr_role
 	{ "attr": "login", "visible": false, "enabled": false }, { "attr": "logout", "visible": false, "enabled": false },
 	{ "attr": "data-analysis", "visible": false, "enabled": false },
 	{ "attr": "history", "visible": false, "enabled": false },
-	{ "attr": "productsPublic", "visible": false, "enabled": false }] }'
+	{ "attr": "productsPublic", "visible": false, "enabled": false },
+	{ "attr": "featuredPublic", "visible": false, "enabled": false }] }'
 	where rol_id=1;
