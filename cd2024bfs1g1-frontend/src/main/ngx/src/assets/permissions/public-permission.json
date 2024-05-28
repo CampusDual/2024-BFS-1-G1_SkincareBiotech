@@ -42,6 +42,11 @@
           "attr": "data-analysis",
           "visible": false,
           "enabled": false
+        },
+        {
+          "attr": "sellers",
+          "visible": false,
+          "enabled": false
         }
       ],
       "routes": [

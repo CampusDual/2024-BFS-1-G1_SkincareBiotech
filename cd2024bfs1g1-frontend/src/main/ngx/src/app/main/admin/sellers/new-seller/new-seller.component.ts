@@ -1,10 +1,8 @@
-import { Component, Inject, Injector, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, Injector } from '@angular/core';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService, OTranslateService, OUserInfoService, OntimizeService, ServiceResponse } from 'ontimize-web-ngx';
-import { MainService } from 'src/app/shared/services/main.service';
-import { UserInfoService } from 'src/app/shared/services/user-info.service';
+import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,96 +10,41 @@ import Swal from 'sweetalert2';
   templateUrl: './new-seller.component.html',
   styleUrls: ['./new-seller.component.css']
 })
-export class NewSellerComponent { //implements OnInit {
+export class NewSellerComponent {
 
   public registerForm: UntypedFormGroup = new UntypedFormGroup({});
-  // public userCtrl: UntypedFormControl = new UntypedFormControl('', [
-  //   Validators.required,
-  //   Validators.minLength(4),
-  //   Validators.maxLength(16),
-  //   Validators.pattern('^[a-zA-Z0-9_]*$')
-  // ]);
-  // public pwdCtrl: UntypedFormControl = new UntypedFormControl('', [
-  //   Validators.required,
-  //   Validators.minLength(8),
-  //   Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")
-  // ]);
-  // // public pwdCtrl2: UntypedFormControl = new UntypedFormControl('', [
-  // //   Validators.required,
-  // //   Validators.minLength(8)
-  // // ]);
-  // public usernameCtrl: UntypedFormControl = new UntypedFormControl('', [
-  //   Validators.required,
-  //   Validators.minLength(3),
-  //   Validators.maxLength(50),
-  //   Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
-  // ]);
-  // public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', [
-  //   Validators.required, Validators.minLength(3),
-  //   Validators.maxLength(50),
-  //   Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
-  // ]);
-  // public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', [
-  //   Validators.required,
-  //   Validators.email
-  // ]);
-  // public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.pattern('^[6-9][0-9]{8}$'));
+
 
   service: OntimizeService;
-  // redirect = '';
-  // adminRole = 'admin';
+
   userRole = 'user';
-  // sellerRole = 'seller';
+
 
   constructor(
     private router: Router,
     protected injector: Injector,
     protected translate: OTranslateService,
-    // @Inject(AuthService) private authService: AuthService,
-    // @Inject(MainService) private mainService: MainService,
-    // @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
-    // @Inject(UserInfoService) private userInfoService: UserInfoService,
-    @Inject(DomSanitizer) private domSanitizer: DomSanitizer
+
   ) {
     this.service = this.injector.get(OntimizeService)
     this.translate = this.injector.get(OTranslateService);
   }
 
-  // ngOnInit(): void {
-  //   this.registerForm.addControl('usr_login', this.userCtrl);
-  //   this.registerForm.addControl('usr_password', this.pwdCtrl);
-  //   // this.registerForm.addControl('usr_password2', this.pwdCtrl2);
-  //   this.registerForm.addControl('usr_name', this.usernameCtrl);
-  //   this.registerForm.addControl('usr_surname', this.userSurnameCtrl);
-  //   this.registerForm.addControl('usr_email', this.userEmailCtrl);
-  //   this.registerForm.addControl('usr_phone', this.userPhoneCtrl);
-  // }
-
   register() {
     if (this.registerForm.valid) {
-      // if (this.passwordMatchValidator()) {
-      //   this.insertSeller(this.userRole);
-      // } else {
-      //   const text = this.translate.get('PASSWORDS_DO_NOT_MATCH');
-      //   const button = this.translate.get('CONFIRMATION_REGISTER_BUTTON');
-      this.insertSeller(this.userRole);
+      this.insertSeller();
     }else{
         Swal.fire({
           title: "ERROR",
-          // text: text,
           icon: 'error',
-          // confirmButtonText: button,
           confirmButtonColor: '#f8b88c',
         });
       }
     }
   
 
-  // passwordMatchValidator(): boolean {
-  //   return this.registerForm.value.usr_password === this.registerForm.value.usr_password2;
-  // }
 
-  insertSeller(userRole: string) {
+  insertSeller() {
 
     const data = {
       "USR_LOGIN": this.registerForm.value.usr_login,
