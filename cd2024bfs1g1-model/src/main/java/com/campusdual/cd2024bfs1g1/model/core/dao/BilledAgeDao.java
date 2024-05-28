@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
 public class BilledAgeDao  extends OntimizeJdbcDaoSupport {
     public static final String ATTR_GBA_ID = "GBA_ID";
     public static final String ATTR_MIN_AGE = "GBA_MIN_AGE";
-    public static final String ATTR_MAN_AGE = "GBA_MAN_AGE";
+    public static final String ATTR_MAX_AGE = "GBA_MAX_AGE";
 }

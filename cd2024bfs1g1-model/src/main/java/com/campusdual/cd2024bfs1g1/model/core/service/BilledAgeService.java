@@ -37,40 +37,39 @@ public class BilledAgeService implements IBilledAgeService {
         int minAge = (int) attributes.get("GBA_MIN_AGE");
         int maxAge = (int) attributes.get("GBA_MAX_AGE");
 
-        if(minAge>maxAge){
+        if(minAge > maxAge){
             EntityResult result = new EntityResultMapImpl();
             result.setCode(EntityResult.OPERATION_WRONG);
             result.setMessage("MIN_RANGE_HIGHER");
             return result;
         } else {
             Map<String, Object> queryKeys = new HashMap<>();
-            List<String> queryAttributes = Arrays.asList("gba_id", "gba_min_age", "gba_max_age"); //usar dao MAYUS
+            List<String> queryAttributes = Arrays.asList(BilledAgeDao.ATTR_GBA_ID, BilledAgeDao.ATTR_MIN_AGE, BilledAgeDao.ATTR_MAX_AGE);
 
             EntityResult existingRangesEr = this.daoHelper.query(this.billedAgeDao, queryKeys, queryAttributes);
 
             int recordCount = existingRangesEr.calculateRecordNumber();
 
-            int count = 0;
-            if(recordCount>0){
-                do{
-                    int minRecord = (int) existingRangesEr.getRecordValues(count).get("gba_min_age");
-                    int maxRecord  = (int) existingRangesEr.getRecordValues(count).get("gba_max_age");
+            for (int i=0; i < recordCount; i++) {
+            System.out.println(recordCount);
 
-                    if(minAge<minRecord && maxAge<minRecord){
-                        return this.daoHelper.insert(this.billedAgeDao, attributes);
-                    } else if (!(minAge>maxRecord && maxAge>maxRecord)) {
+                    int minRecord = (int) existingRangesEr.getRecordValues(i).get(BilledAgeDao.ATTR_MIN_AGE);
+                    int maxRecord  = (int) existingRangesEr.getRecordValues(i).get(BilledAgeDao.ATTR_MAX_AGE);
+                System.out.println("Entra en el bucle");
+                    if ( minAge >= minRecord && minAge <= maxRecord ||
+                         minAge <= minRecord && maxAge >= maxRecord ||
+                         maxAge >= minRecord && maxAge <= maxRecord  )
+                    {
+                        System.out.println("Entra en el error");
                         EntityResult result2 = new EntityResultMapImpl();
                         result2.setCode(EntityResult.OPERATION_WRONG);
                         result2.setMessage("RANGE_NOT_VALID");
                         return result2;
                     }
-                    count++;
-
-                }while(count<recordCount);
             }
-        }
-
+            System.out.println("Inserta");
         return this.daoHelper.insert(this.billedAgeDao, attributes);
+        }
     }
 
     @Override
