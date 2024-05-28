@@ -10,6 +10,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'brands', name: 'BRANDS', icon: 'label', route: '/main/brands' },
   { id: 'orders', name: 'ORDERS', icon: 'local_shipping', route: '/main/orders' },
   { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
+  { id: 'sells-by-category', name: 'DATA_BY_CATEGORY', icon: 'category', route: '/main/data-analysis/bycategory'},
   { id: 'login', name: 'LOGIN', route: '/login', icon: 'power_settings_new'},
   { id: 'cart', name:'CART', route: '/order/cart', icon: 'shopping_cart'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },

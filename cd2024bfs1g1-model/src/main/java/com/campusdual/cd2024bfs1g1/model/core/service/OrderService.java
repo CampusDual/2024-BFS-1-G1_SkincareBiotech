@@ -100,4 +100,11 @@ public class OrderService implements IOrderService {
         filter.put(ProductDao.PRO_SELLER_ID, userId);
         return this.daoHelper.query(this.orderDao, filter, attributes,"total_price");
     }
+
+    @Override
+    public EntityResult totalAmmountOrdersQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
+
+        // This is a sudo query, it shouldnt require ID filtering as it uses all available data, but currently it doesnt check if the querying agent is an admin
+        return this.daoHelper.query(this.orderDao, keysValues, attributes,"ammount_by_category");
+    }
 }

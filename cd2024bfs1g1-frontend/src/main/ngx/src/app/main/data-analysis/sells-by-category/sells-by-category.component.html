@@ -1,0 +1,11 @@
+<h1>{{"SELLS_BYCATEGORY_TITLE" | oTranslate}}</h1>
+<div class="grid_container">
+       <div class="grid_item_chart">
+              <o-chart type="pie" service="orders" entity="totalAmmountOrders" x-axis="CAT_NAME" 
+                     y-axis="TOTAL_SOLD"  [chart-parameters]="chartParameters" >
+              </o-chart>
+       </div>
+       <div class="grid_item_legend">
+
+       </div>
+</div>

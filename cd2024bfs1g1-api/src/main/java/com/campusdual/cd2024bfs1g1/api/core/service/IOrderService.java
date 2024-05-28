@@ -23,4 +23,6 @@ public interface IOrderService {
 
     EntityResult totalPriceOrdersQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
 
+    EntityResult totalAmmountOrdersQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
+
 }
