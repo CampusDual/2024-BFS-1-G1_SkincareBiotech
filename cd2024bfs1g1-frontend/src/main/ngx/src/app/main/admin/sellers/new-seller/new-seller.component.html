@@ -1,100 +1,30 @@
-<div class="full-page">
-    <mat-icon class="flecha" routerLink="/login">arrow_back</mat-icon>
-    <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
-        <mat-form-field class="register-field">
-            <mat-label>{{ 'usr_login' | oTranslate }}</mat-label>
-            <input matInput class="mat-input" #user id="usr_login" [formControl]="userCtrl">
-            <mat-error *ngIf="userCtrl.hasError('required')">
-                {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="userCtrl.hasError('minlength')">
-                {{ 'MIN_LENGTH_4' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="userCtrl.hasError('pattern')">
-                {{ 'ERROR_USER_PATTERN' | oTranslate }}
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="register-field">
-            <mat-label>{{ 'usr_password' | oTranslate }}</mat-label>
-            <input matInput class="mat-input" #password id="usr_password" type="password" [formControl]="pwdCtrl">
-            <mat-error *ngIf="pwdCtrl.hasError('required')">
-                {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="pwdCtrl.hasError('minlength')">
-                {{ 'MIN_LENGTH_8' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="pwdCtrl.hasError('pattern')">
-                {{ 'ERROR_PASSWORD_PATTERN' | oTranslate }}
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="register-field">
-            <mat-label>{{ 'confirm_usr_password' | oTranslate }}</mat-label>
-            <input matInput class="mat-input" #password id="usr_password2" type="password" [formControl]="pwdCtrl2">
-            <mat-error *ngIf="pwdCtrl2.hasError('required')">
-                {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>{{ 'usr_name' | oTranslate }}</mat-label>
-            <input matInput class="mat-input" #user_name id="usr_name" [formControl]="usernameCtrl">
-            <mat-error *ngIf="usernameCtrl.hasError('required')">
-                {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="usernameCtrl.hasError('minlength')">
-                {{ 'MIN_LENGTH_3' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="userSurnameCtrl.hasError('maxlength')">
-                {{ 'MAX_LENGTH_50' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="usernameCtrl.hasError('pattern')">
-                {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>{{ 'usr_surname' | oTranslate }}</mat-label>
-            <input matInput class="mat-input" #user_surname id="usr_surname" [formControl]="userSurnameCtrl">
-            <mat-error *ngIf="userSurnameCtrl.hasError('required')">
-                {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="userSurnameCtrl.hasError('minlength')">
-                {{ 'MIN_LENGTH_3' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="userSurnameCtrl.hasError('maxlength')">
-                {{ 'MAX_LENGTH_50' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="userSurnameCtrl.hasError('pattern')">
-                {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>{{ 'usr_email' | oTranslate }}</mat-label>
-            <input matInput class="mat-input" #user_email id="usr_email" [formControl]="userEmailCtrl">
-            <mat-error *ngIf="userEmailCtrl.hasError('required')">
-                {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-            </mat-error>
-            <mat-error *ngIf="userEmailCtrl.hasError('email')">
-                {{ 'ERROR_EMAIL_PATTERN' | oTranslate }}
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>{{ 'usr_phone' | oTranslate }}</mat-label>
-            <input matInput class="mat-input" #phone id="usr_phone" [formControl]="userPhoneCtrl">
-            <mat-error *ngIf="userPhoneCtrl.hasError('pattern')">
-                {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
-            </mat-error>
-        </mat-form-field>
-
-        <button mat-raised-button style="background-color: #f8b88c;" type="submit">{{ 'REGISTER' | oTranslate
-            }}</button>
-        <div class="linea"></div>
-        <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate }}</label>
-        <button mat-raised-button style="background-color: #f8b88c;" routerLink="/login">{{ 'LOGIN' | oTranslate
-            }}</button>
-    </form>
-</div>
+<o-form attr="newSellerForm" service="users" entity="sellerRole" keys="USR_ID" after-insert-mode="new"
+    (afterInsert)="onInsert($event)">
+    <div class="add-container">
+        <div class="header-area">
+            <div class="add-details-title">{{'ADD_SELLER' | oTranslate}}</div>
+        </div>
+        <div class="content">
+            <div class="info">
+                <div class="login">
+                    <o-text-input attr="USR_LOGIN" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="name">
+                    <o-text-input attr="USR_NAME" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="surname">
+                    <o-text-input attr="USR_SURNAME" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="email">
+                    <o-text-input attr="USR_EMAIL" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="password">
+                    <o-text-input attr="USR_PASSWORD" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="phone">
+                    <o-text-input attr="USR_PHONE" step="0" grouping="no" required="no"></o-text-input>
+                </div>
+            </div>
+        </div>
+    </div>
+</o-form>

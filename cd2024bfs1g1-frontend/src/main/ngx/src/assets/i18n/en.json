@@ -167,6 +167,9 @@
   "USR_LOGIN": "User",
   "USR_SURNAME": "Surname",
   "USR_EMAIL": "Email",
-  "USR_PHONE": "Phone"
+  "USR_PHONE": "Phone",
+  "USR_PASSWORD": "Password",
+  "ADD_SELLER": "ADD NEW SELLER",
+  "SELLERS": "Sellers"
 
 }

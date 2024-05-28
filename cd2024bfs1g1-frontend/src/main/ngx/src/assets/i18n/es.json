@@ -165,5 +165,8 @@
   "USR_LOGIN": "Nombre de acceso",
   "USR_SURNAME": "Apellidos",
   "USR_EMAIL": "Correo",
-  "USR_PHONE": "Teléfono"
+  "USR_PHONE": "Teléfono",
+  "USR_PASSWORD": "Contraseña",
+  "ADD_SELLER": "AÑADIR NUEVO VENDEDOR",
+  "SELLERS": "Vendedores"
 }
