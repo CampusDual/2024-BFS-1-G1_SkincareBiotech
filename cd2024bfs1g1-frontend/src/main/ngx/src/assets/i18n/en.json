@@ -173,6 +173,7 @@
   "USR_PHONE": "Phone",
   "USR_EMAIL": "Email",
   "UPR_BIRTHDATE": "Birthdate",
-  "UPR_ADDRESS": "Address"
+  "UPR_ADDRESS": "Address",
+  "SKIN_TYPES": "Skin types"
 
 }

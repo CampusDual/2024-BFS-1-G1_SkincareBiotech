@@ -171,6 +171,8 @@
   "USR_PHONE": "Teléfono",
   "USR_EMAIL": "Email",
   "UPR_BIRTHDATE": "Fecha de nacimiento",
-  "UPR_ADDRESS": "Dirección"
+  "UPR_ADDRESS": "Dirección",
+  "SKIN_TYPES": "Tipos de piel"
+
 
 }
