@@ -165,7 +165,7 @@
   "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "UNITS_ABBR": "u",
   "TOTAL": "Total",
-  "ORD_ADRESS_INFO": "Shipping address",
+  "ORD_ADDRESS_INFO": "Shipping address",
   "PHONE_ABBR": "Ph",
   "UNITS_OF": "units of",
   "PAID": "payment complete",

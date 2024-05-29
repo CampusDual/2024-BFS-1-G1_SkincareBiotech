@@ -163,7 +163,7 @@
   "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
   "UNITS_ABBR": "uds",
   "TOTAL": "Total",
-  "ORD_ADRESS_INFO": "Dirección de envío",
+  "ORD_ADDRESS_INFO": "Dirección de envío",
   "PHONE_ABBR": "Tlf",
   "UNITS_OF": "unidades de",
   "PAID": "Pago realizado",
