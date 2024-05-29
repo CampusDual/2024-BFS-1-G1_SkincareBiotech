@@ -164,5 +164,11 @@
   "ORD_PAID": "Pagado",
   "NUM_UNITS": "Unidades",
   "NUM_PRODUCTS": "Productos",
-  "ALL_SENT": "Enviado"
+  "ALL_SENT": "Enviado",
+  "ORDERLINES_TABLE": "Información líneas de pedido",
+  "OL_ID": "Id líneas de pedido",
+  "OL_SENT": "Enviado",
+  "PRO_NAME_OLD": "Nombre del producto",
+  "OL_UNITS_OLD": "Unidades",
+  "OL_PRICE_OLD": "Precio unidad"
 }

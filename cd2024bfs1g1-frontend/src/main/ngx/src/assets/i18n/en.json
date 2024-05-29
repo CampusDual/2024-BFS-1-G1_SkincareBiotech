@@ -98,7 +98,7 @@
   "ADD_PRODUCT" : "ADD PRODUCT",
   "PRODUCTS_LINK" : "Products",
   "FEATURED_LINK" : "Featured",
-  "ORDER_INFORMATION": "Order Information",
+  "ORDER_INFORMATION": "Order information",
   "SENT": "Sent",
   "UNSENT": "Unsent",
   "CAT_ID": "Categories",
@@ -166,5 +166,11 @@
   "ORD_PAID": "Paid",
   "NUM_UNITS": "Units",
   "NUM_PRODUCTS": "Products",
-  "ALL_SENT": "Sent"
+  "ALL_SENT": "Sent",
+  "ORDERLINES_TABLE": "Order lines information",
+  "OL_ID": "Order lines Id",
+  "OL_SENT": "Sent",
+  "PRO_NAME_OLD": "Product name",
+  "OL_UNITS_OLD": "Units",
+  "OL_PRICE_OLD": "Unit price"
 }
