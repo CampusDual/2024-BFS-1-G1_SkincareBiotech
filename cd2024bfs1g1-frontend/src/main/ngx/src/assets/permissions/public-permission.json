@@ -44,6 +44,11 @@
           "enabled": false
         },
         {
+          "attr": "billed-age",
+          "visible": false,
+          "enabled": false
+        },
+        {
           "attr": "sellers",
           "visible": false,
           "enabled": false

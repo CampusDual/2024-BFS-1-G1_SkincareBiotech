@@ -100,4 +100,6 @@ public class OrderService implements IOrderService {
         filter.put(ProductDao.PRO_SELLER_ID, userId);
         return this.daoHelper.query(this.orderDao, filter, attributes,"total_price");
     }
+
+
 }
