@@ -1,6 +1,14 @@
-.bg-container{
+mat-tab-group{
     background-color: white;
     padding-top: 1vh;
+}
+
+md-tabs md-ink-bar {
+    background-color: black;
+  }
+
+h1{
+    padding-left: 2vw;
 }
 
 .chart-container{
@@ -16,16 +24,11 @@
     
 }
 
-h1{
-    padding-left: 2vw;
-}
-
 .chart{
     width: 100%;
 }
 
-
-.grid_item_y {
+.tittle-y{
     display: flex;
     justify-content: center;
     writing-mode: vertical-rl;
@@ -34,12 +37,17 @@ h1{
     margin-top: 0;
     font-weight: bold;
     padding-left: 2vw;
+    
 }
 
-.grid_item_x{
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+.tittle-x{
+   display: flex;
+   justify-content: center;
+   font-weight: bold;
+   padding-top: 2vh;
+   padding-bottom: 2vh;
+}
+
+.mdc-tab .mat-mdc-tab .mat-mdc-focus-indicator .mdc-tab--active .ng-star-inserted .mdc-tab-indicator--active{
+    height: 100px;
 }
