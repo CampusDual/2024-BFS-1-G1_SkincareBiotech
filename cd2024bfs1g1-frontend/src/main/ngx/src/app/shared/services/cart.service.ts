@@ -1,13 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
+  private numberItems = new BehaviorSubject<Number>(0);
+  number$ = this.numberItems.asObservable();
+
+  updateCartItemsCount()  {
+    let countItems  = 0;
+    let cart = this.getCart();
+    cart.forEach(element => {
+      countItems += element.units;
+    });
+
+    this.numberItems.next(countItems);
+  }
+
   cart: any[] = [];
-
-
   addProductToCart(product: any) {
     let p = { id: product.PRO_ID, units: 1 };
     this.loadLocalStorageCart();
@@ -20,7 +32,7 @@ export class CartService {
       this.cart.push(p);
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
-
+    this.updateCartItemsCount();
   }
 
   removeItem(productID: any) {
@@ -37,7 +49,7 @@ export class CartService {
       this.cart = this.cart.filter(x => x.id !== productID)
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
-
+    this.updateCartItemsCount();
   }
 
   loadLocalStorageCart(): void {
@@ -63,8 +75,8 @@ export class CartService {
     this.loadLocalStorageCart();
     this.cart = this.cart.filter(x => x.id !== productID);
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.updateCartItemsCount();
   }
-
   constructor() {
   }
 
