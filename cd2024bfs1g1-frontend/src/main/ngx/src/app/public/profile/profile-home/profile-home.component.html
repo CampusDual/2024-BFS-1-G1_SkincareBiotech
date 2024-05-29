@@ -12,12 +12,15 @@
         </o-table>
     </mat-tab>
     <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
-        <o-form attr="usrprofileTable" service="profiles" entity="profile" keys="USR_ID" insert-button="no"
-            delete-button="no" columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
-            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS">
+        <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="R;U"
+           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
+            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS" 
+            show-header-navigation="yes">
             <label>Nombre</label>
+            <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
+        
             <div class="Nombre">
-                <o-text-input attr="USR_NAME" title="USR_NAME"></o-text-input>
+                <o-text-input attr="USR_NAME" label="USR_NAME" required="yes"></o-text-input>
                 <o-text-input attr="USR_SURNAME" title="USR_SURNAME"></o-text-input>
             </div>
             <div>Contacto</div>
