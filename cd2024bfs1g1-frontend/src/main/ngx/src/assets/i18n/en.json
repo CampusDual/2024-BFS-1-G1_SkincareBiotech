@@ -163,6 +163,7 @@
   "ERROR_EMAIL_PATTERN": "Invalid email",
   "ERROR_PHONE_PATTERN": "Must have 9 digits and start with 6, 7, 8 or 9",
   "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
+  "CART_ITEMS": "My cart",
   "ERROR_MUST_BE_ADULT": "You must be at least 18 years old",
   "USR_BIRTHDAY": "Birthdate",
   "BILLED_AGE": "Billing by age",
