@@ -10,5 +10,7 @@ UPDATE public.usr_role
                                        { "attr": "home", "visible": false, "enabled": false },
                                        { "attr": "login", "visible": false, "enabled": false },
                                        { "attr": "logout", "visible": false, "enabled": false },
-                                       {"attr": "data-analysis", "visible": false, "enabled": false }, { "attr": "sellers", "visible": false, "enabled": false }]}'
+                                       {"attr": "data-analysis", "visible": false, "enabled": false },
+                                       { "attr": "sellers", "visible": false, "enabled": false },
+                                       { "attr": "billed-age", "visible": false, "enabled": false }]}'
     WHERE rol_name= 'user';
