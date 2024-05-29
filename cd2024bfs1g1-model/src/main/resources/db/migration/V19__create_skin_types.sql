@@ -19,7 +19,7 @@ UPDATE public.usr_role
     { "attr": "login", "visible": false, "enabled": false },
     { "attr": "logout", "visible": false, "enabled": false },
     {"attr": "data-analysis", "visible": false, "enabled": false },
-	{"attr": "skin_types", "visible": false, "enabled": false }]}'
+	{"attr": "skin-types", "visible": false, "enabled": false }]}'
     WHERE rol_name= 'user';
 
 
@@ -29,6 +29,7 @@ UPDATE public.usr_role
 { "attr": "history", "visible": false, "enabled": false },
 { "attr": "login", "visible": false, "enabled": false },
 {"attr": "data-analysis", "visible": false, "enabled": false },
+{"attr": "skin-types", "visible": false, "enabled": false },
 { "attr": "cart", "visible": false, "enabled": false } ] }'
     WHERE rol_name= 'seller';
 
