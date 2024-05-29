@@ -51,12 +51,21 @@ export class ClientRegisterComponent implements OnInit {
     Validators.required,
     this.ageValidator()
   ]);
+  public userGenderCtrl: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required,
+  ]);
 
   service: OntimizeService;
   redirect = '';
   adminRole = 'admin';
   userRole = 'user';
   sellerRole = 'seller';
+  genderData = [
+    { 'UGE_ID': 1, 'UGE_NAME': 'MAN' },
+    { 'UGE_ID': 2, 'UGE_NAME': 'WOMAN' },
+    { 'UGE_ID': 3, 'UGE_NAME': 'OTHER' },
+    { 'UGE_ID': 4, 'UGE_NAME': 'PREFER_NOT_ANSWER' },
+  ];
 
   constructor(
     private router: Router,
@@ -81,6 +90,7 @@ export class ClientRegisterComponent implements OnInit {
     this.registerForm.addControl('upr_birthdate', this.userDateCtrl);
     this.registerForm.addControl('usr_email', this.userEmailCtrl);
     this.registerForm.addControl('usr_phone', this.userPhoneCtrl);
+    this.registerForm.addControl('uge_id', this.userGenderCtrl);
   }
 
   register() {
@@ -117,10 +127,12 @@ export class ClientRegisterComponent implements OnInit {
       "USR_SURNAME": this.registerForm.value.usr_surname,
       "USR_EMAIL": this.registerForm.value.usr_email,
       "USR_PHONE": this.registerForm.value.usr_phone,
-      "UPR_BIRTHDATE": this.registerForm.value.upr_birthdate._i
+      "UPR_BIRTHDATE": this.registerForm.value.upr_birthdate._i,
+      "UGE_ID": this.registerForm.value.uge_id
     }
     console.log(data);
     console.log(data.UPR_BIRTHDATE._i);
+    console.log(data.UGE_ID);
 
     const conf = this.service.getDefaultServiceConfiguration('users');
     this.service.configureService(conf);

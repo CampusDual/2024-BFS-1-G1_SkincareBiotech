@@ -31,7 +31,6 @@
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
-
                     WITH price_age AS (
                         SELECT ROUND(SUM(OL_PRICE * OL_UNITS):: numeric, 2) AS TOTAL_PRICE , DATE_PART('year', AGE(ORD_DATE, UPR_BIRTHDATE)) as AGE
                         FROM ${mainschema}.ORDERS AS O
@@ -50,7 +49,7 @@
                     FROM age_ranges
                     #WHERE#
                     ORDER BY GBA_MIN_AGE
-                    ]]>
+                ]]>
             </Sentence>
         </Query>
     </Queries>

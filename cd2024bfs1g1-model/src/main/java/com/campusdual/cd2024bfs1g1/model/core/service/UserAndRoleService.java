@@ -427,6 +427,7 @@ public class UserAndRoleService implements IUserAndRoleService {
         String birthDate = Utils.getUserDate(attributes.get("UPR_BIRTHDATE"));
         usrProfile.put(UserProfileDao.USR_ID, usrID);
         usrProfile.put(UserProfileDao.UPR_BIRTHDATE, birthDate);
+        usrProfile.put(UserProfileDao.UGE_ID, attributes.get(UserProfileDao.UGE_ID));
         EntityResult userProfileInsert = this.daoHelper.insert(this.userProfileDao, usrProfile);
 
         EntityResult userRoleInsert = this.daoHelper.insert(this.userRolesDao, usrRoleValues);

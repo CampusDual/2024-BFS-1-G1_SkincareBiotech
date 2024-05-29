@@ -176,7 +176,12 @@
   "RANGE_NOT_VALID": "Range not valid. Ages cannot overlap.",
   "AGE_GRAPH": "Age ranges",
   "SETTINGS": "Settings",
-  "DELETE_CART_WARNING":"Are you sure you want to remove it from cart ?",
-  "ERROR_COMPLETE_FORM":"Complete form to purchase",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces"
+  "DELETE_CART_WARNING": "Are you sure you want to remove it from cart ?",
+  "ERROR_COMPLETE_FORM": "Complete form to purchase",
+  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
+  "GENDER": "Gender",
+  "MAN": "Man",
+  "WOMAN": "Woman",
+  "OTHER": "Other",
+  "PREFER_NOT_ANSWER": "I would rather not answer"
 }
