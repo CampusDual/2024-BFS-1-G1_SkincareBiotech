@@ -81,6 +81,7 @@
   "VERSION": "Versión",
   "VIEW": "Vistas",
   "BUY_BUTTON":"Comprar",
+  "BACK_BUTTON": "Volver",
   "ORDERS": "Pedidos",
   "ORD_ID": "Id del pedido",
   "ORD_NAME": "Nombre de contacto",
@@ -120,7 +121,7 @@
   "OL_PRICE": "Precio del producto",
   "OL_UNITS": "Unidades del producto",
   "PRICE": "Precio",
-  "BACK_BUTTON": "Volver",
+  "PURCHASE_BUTTON": "Pagar",
   "MAIN_SCREEN": "Página principal",
   "PAYMENT_METHODS": "Métodos de pago",
   "CASH_ON_DELIVERY": "Contrareembolso",
@@ -172,5 +173,8 @@
   "MIN_RANGE_HIGHER": "La edad mínima no puede ser menor que la máxima",
   "RANGE_NOT_VALID": "Rango no válido. Las edades no se pueden solapar.",
   "AGE_GRAPH": "Rangos de edad",
-  "SETTINGS": "Ajustes"
+  "SETTINGS": "Ajustes",
+  "DELETE_CART_WARNING":"Esta seguro que quiere eliminar del carrito?",
+  "ERROR_COMPLETE_FORM":"Rellena el formulario para finalizar pedido",
+  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios"
 }
