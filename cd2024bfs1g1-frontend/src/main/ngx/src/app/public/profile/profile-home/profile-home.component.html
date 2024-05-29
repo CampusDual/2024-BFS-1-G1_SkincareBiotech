@@ -10,7 +10,7 @@
             <o-table-column attr="ORD_DATE" title="ORD_DATE" type="time" width="150px"></o-table-column>
             <o-table-column attr="ORD_ID" title="ORD_ID" width="150px"></o-table-column>
         </o-table>
-    </mat-tab>
+    </mat-tab>    
     <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
         <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="R;U"
            columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
@@ -30,7 +30,7 @@
             </div>
             <label>Información adicional</label>
             <div class="Info">
-                <o-text-input attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" type="time"></o-text-input>
+                <o-date-input attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" format="YYYY-MM-DD"></o-date-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
             </div>
         </o-form>
