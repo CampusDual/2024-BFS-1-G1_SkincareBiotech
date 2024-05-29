@@ -1,44 +1,21 @@
 .background-container {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     width: 100%;
-    height: 50vh;
-    background-image: url('/assets/images/slogan.webp');
+    height: 27vh;
+    background-image: url('../../../../assets/images/slogan.webp');
     background-size: cover;
     background-position: center;
-}
-
-.background-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    max-height: 500px;
-    object-fit: cover;
-    object-position: center;
-}
-
-.text-overlay-container {
-    position: absolute;
-    top: 100px;
-    left: 65%;
-    transform: translateX(-60%);
-    color: rgb(0, 0, 0);
-    z-index: 20; /* Aseguramos que el contenedor esté por encima de la imagen */
 }
 
 .text-container {
     font-family: system-ui;
     font-style: italic;
-    font-size: 35px;
-    margin-bottom: 30px; /* Espacio entre el texto del eslogan y el enlace */
-}
-
-.overlay-link {
-    color: rgb(255, 255, 255);
-    font-family: system-ui;
-    font-style: italic;
-    font-size: 20px;
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    margin: 20px;
+    z-index: 20;
+    padding-left: 43%;
+    min-height: 50px;
 }
