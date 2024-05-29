@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { OComboComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-orders-lines-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders-lines-detail.component.css']
 })
 export class OrdersLinesDetailComponent implements OnInit {
+  @ViewChild ("sent") sent:OComboComponent;
+  orderPaid: boolean;
 
   public optionSent = [{
     valueSent: true,
@@ -20,5 +23,8 @@ export class OrdersLinesDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onDataLoaded(event: any) {
+    this.sent.enabled = event.ORD_PAID;
+    this.orderPaid = event.ORD_PAID;
+    }
 }

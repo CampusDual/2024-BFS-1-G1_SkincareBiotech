@@ -32,6 +32,9 @@
             </Sentence>
         </Query>
         <Query id="ORD_LINES">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="ORD_ID" prefix="O"/>
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     WITH T AS (
@@ -41,6 +44,7 @@
                     )
                     SELECT #COLUMNS#
                     FROM T
+                    INNER JOIN ORDERS O ON O.ORD_ID = T.ORD_ID
                     #WHERE#
                     #ORDER#
                 ]]>

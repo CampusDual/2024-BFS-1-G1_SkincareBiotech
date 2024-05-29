@@ -36,3 +36,9 @@
 .details-row o-currency-input {
     flex: 1;
 }
+.unpaidOrder{
+    width: 100%;
+    color: red;
+    text-align: center;
+    font-size: 14px;
+}

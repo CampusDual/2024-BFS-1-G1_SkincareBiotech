@@ -175,5 +175,6 @@
   "OL_SENT": "Enviado",
   "PRO_NAME_OLD": "Nombre del producto",
   "OL_UNITS_OLD": "Unidades",
-  "OL_PRICE_OLD": "Precio unidad"
+  "OL_PRICE_OLD": "Precio unidad",
+  "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido"
 }
