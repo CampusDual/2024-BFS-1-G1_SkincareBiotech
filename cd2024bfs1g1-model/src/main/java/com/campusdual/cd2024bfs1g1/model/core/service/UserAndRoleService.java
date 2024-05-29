@@ -28,8 +28,6 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import com.ontimize.jee.server.security.SecurityTools;
 import com.ontimize.jee.server.security.encrypt.IPasswordEncryptHelper;
 
-import static com.campusdual.cd2024bfs1g1.model.core.utils.Utils.getUserDate;
-
 @Lazy
 @Service("UserAndRoleService")
 public class UserAndRoleService implements IUserAndRoleService {
@@ -408,7 +406,40 @@ public class UserAndRoleService implements IUserAndRoleService {
 
     @Override
     @Transactional(rollbackFor = Throwable.class)
-    public EntityResult clientRoleInsert(Map<String, Object> attributes) throws JsonProcessingException {
+    public EntityResult clientRoleInsert(Map<String, Object> attributes) throws JsonProcessingException  {
+		return this.insertUserWithRole(attributes,"user");
+	}
+
+	@Override
+	@Transactional(rollbackFor = Throwable.class)
+	public EntityResult sellerRoleInsert(Map<String, Object> attributes) throws JsonProcessingException {
+		return this.insertSeller(attributes,"seller");
+	}
+
+	@Override
+	public EntityResult sellerRoleQuery(Map<?, ?> keysValues, List<?> attributes) throws OntimizeJEERuntimeException {
+		return this.daoHelper.query(this.userRolesDao, keysValues, attributes, "sellerRole");
+	}
+
+    @Transactional(rollbackFor = Throwable.class)
+    public EntityResult insertSeller(Map<String, Object> attributes, String role)  {
+        Map<String,Object> usrValues = new HashMap<>(attributes);
+        Map<String, Object> usrRoleValues = new HashMap<>();
+        usrValues.put(UserDao.PASSWORD, this.encryptPassword((String) attributes.get(UserDao.PASSWORD)));
+        EntityResult userValuesInsert = this.daoHelper.insert(this.userDao, usrValues);
+        Integer usrID = (Integer) userValuesInsert.get(UserDao.USR_ID);
+        usrRoleValues.put(RoleDao.ROL_NAME, role);
+        EntityResult roleQuery = this.daoHelper.query(this.roleDao, usrRoleValues, List.of(RoleDao.ROL_ID));
+        Integer roleID = (Integer) ((List) roleQuery.get(RoleDao.ROL_ID)).get(0);
+        usrRoleValues.clear();
+        usrRoleValues.put(UserRoleDao.ROL_ID, roleID);
+        usrRoleValues.put(UserRoleDao.USR_ID, usrID);
+        EntityResult userRoleInsert = this.daoHelper.insert(this.userRolesDao, usrRoleValues);
+        return userRoleInsert;
+    }
+
+	@Transactional(rollbackFor = Throwable.class)
+	public EntityResult insertUserWithRole(Map<String, Object> attributes, String role) throws JsonProcessingException {
 
         Map<String, Object> usrValues = new HashMap<>(attributes);
         Map<String, Object> usrRoleValues = new HashMap<>();

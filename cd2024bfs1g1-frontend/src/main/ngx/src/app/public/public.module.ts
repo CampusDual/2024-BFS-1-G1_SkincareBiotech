@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { PublicComponentComponent } from './public-component/public-component.component';
+import { CartModule } from './cart/cart.module';
 
 
 
@@ -25,6 +26,7 @@ import { PublicComponentComponent } from './public-component/public-component.co
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    CartModule
   ]
 })
 export class PublicModule { }
