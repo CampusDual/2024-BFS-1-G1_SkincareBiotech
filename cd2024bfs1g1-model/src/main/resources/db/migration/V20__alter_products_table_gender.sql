@@ -1,16 +1,15 @@
-CREATE TABLE public.gender (
-	gen_id serial NOT NULL,
-	gen_name varchar NOT NULL,
-	CONSTRAINT gender_pk PRIMARY KEY (gen_id)
+CREATE TABLE public.pro_gender (
+	pge_id serial NOT NULL,
+	pge_name varchar NOT NULL,
+	CONSTRAINT pro_gender_pk PRIMARY KEY (pge_id)
 );
 
-INSERT INTO public.gender (gen_name) VALUES
-	 ('female'),
-	 ('male'),
-	 ('unisex');
+INSERT INTO public.pro_gender (pge_name) VALUES
+	 ('FEMALE'),
+	 ('MALE'),
+	 ('UNISEX');
 
-
-ALTER TABLE public.products ADD pro_gender int NOT NULL;
-ALTER TABLE public.products ADD CONSTRAINT products_gender_fk FOREIGN KEY (pro_gender) REFERENCES public.gender(gen_id);
-ALTER TABLE public.products ALTER COLUMN pro_gender SET DEFAULT 3;
-UPDATE public.products SET pro_gender = 3 WHERE pro_gender IS NULL;
+ALTER TABLE public.products ADD pge_id int;
+UPDATE public.products SET pge_id = 3 WHERE pge_id IS NULL;
+ALTER TABLE public.products ADD CONSTRAINT products_gender_fk FOREIGN KEY (pge_id) REFERENCES public.pro_gender(pge_id);
+ALTER TABLE public.products ALTER COLUMN pge_id SET NOT NULL;
