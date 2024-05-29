@@ -32,14 +32,30 @@ export class SellsByCategoryComponent implements OnInit {
   loadChart(event: any) {
     console.log(event);
     
+    const groupedData = event.reduce((acc, item) => {
+      if (!acc[item.CAT_NAME]) {
+        acc[item.CAT_NAME] = 0;
+      }
+      acc[item.CAT_NAME] += item.TOTAL_SOLD;
+      console.log(`Accumulated ${item.CAT_NAME}:`, acc[item.CAT_NAME]);
+      return acc;
+    }, {});
 
-    this.data =  event.map((item) => { 
-          return{
-            name: item.CAT_NAME,
-            value: item.TOTAL_SOLD
-          }
-        }) 
-    ;
+    this.data = Object.keys(groupedData).map(key => {
+      return {
+        name: key,
+        value: groupedData[key]
+      };
+    });
+
+
+    // this.data =  event.map((item) => { 
+    //       return{
+    //         name: item.CAT_NAME,
+    //         value: item.TOTAL_SOLD
+    //       }
+    //     }) 
+    // ;
   
     console.log(this.data);
   }
