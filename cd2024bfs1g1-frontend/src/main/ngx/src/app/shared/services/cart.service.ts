@@ -20,8 +20,6 @@ export class CartService {
   }
 
   cart: any[] = [];
-
-
   addProductToCart(product: any) {
     let p = { id: product.PRO_ID, units: 1 };
     this.loadLocalStorageCart();
@@ -79,7 +77,6 @@ export class CartService {
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.updateCartItemsCount();
   }
-
   constructor() {
   }
 

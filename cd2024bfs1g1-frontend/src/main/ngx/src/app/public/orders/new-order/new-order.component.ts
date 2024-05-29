@@ -1,22 +1,23 @@
-import { AfterViewInit, Component, ViewChild, ElementRef, OnInit,Injector, Input } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ElementRef, OnInit, Injector, Input, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils } from 'ontimize-web-ngx';
+import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils, AuthService } from 'ontimize-web-ngx';
 import * as CryptoJS from 'crypto-js';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CartService } from 'src/app/shared/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-order',
   templateUrl: './new-order.component.html',
   styleUrls: ['./new-order.component.css']
 })
-export class NewOrderComponent implements AfterViewInit , OnInit{
+export class NewOrderComponent implements AfterViewInit, OnInit {
 
   currLang: string;
   productId: number;
   price: string;
   order: string;
-  orderView : string;
+  orderView: string;
   url: string;
 
   @Input() item: any;
@@ -28,6 +29,7 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
   filterExp: {};
   PRO_ID = "PRO_ID";
   totalAmount:number = 0;
+  products = [];
 
   @ViewChild("formOrder") formOrder: OFormComponent;
   @ViewChild("Ds_MerchantParameters") ds_merchantParameters: ElementRef;
@@ -38,16 +40,19 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
   @ViewChild("zipInput") zipInput: OIntegerInputComponent;
   @ViewChild("addressInput") addressInput: OTextInputComponent;
   constructor(
+    @Inject(AuthService) private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
     private cartService: CartService,
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
     private translateService: OTranslateService,
+    protected translate: OTranslateService,
 
   ) {
     this.service = this.injector.get(OntimizeService);
     this.cart = this.cartService.getCart();
+    this.translate = this.injector.get(OTranslateService);
 
   }
 
@@ -55,17 +60,10 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
     const conf_prods = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf_prods);
     const cartProductsId = this.cart.map(item => item.id);
-    this.filterExp = {"@basic_expression":this.filter(cartProductsId)};
+    this.filterExp = { "@basic_expression": this.filter(cartProductsId) };
     this.service.query(this.filterExp, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "product").subscribe((data) => {
-      data.data.forEach(product => {
-        if (product.PRO_SALE) {
-          let units = (this.cart.find(item => item.id === product.PRO_ID)).units;
-          this.totalAmount += product.PRO_SALE * units;
-        } else {
-          let units = (this.cart.find(item => item.id === product.PRO_ID)).units;
-          this.totalAmount += product.PRO_PRICE * units;
-        }
-      });
+      this.products = data.data;    
+      this.updateTotalAmount();
     });
   }
 
@@ -78,36 +76,62 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
       return filter.reduce((exp1, exp2) => FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_OR));
     }
   }
-
   ngAfterViewInit(): void {
 
   }
-
+  updateTotalAmount( ) {
+    let totalAmount = 0;
+    this.products.forEach(product => {
+      const cartItem = this.cart.find(item => item.id === product.PRO_ID);
+      if (cartItem) {
+        const units = cartItem.units;
+        const price = product.PRO_SALE || product.PRO_PRICE;
+        totalAmount += price * units; 
+      }
+    });1
+     this.totalAmount = totalAmount;
+     this.updateCard();
+  }
+  updateCard(){
+    this.cart = this.cartService.getCart();
+  }
   submitOrder(): void {
 
-    const conf = this.service.getDefaultServiceConfiguration('orders');
-    this.service.configureService(conf);
-    let data = {
-      ORD_NAME: this.nameInput.getValue(),
-      ORD_PHONE: this.phoneInput.getValue(),
-      ORD_ZIPCODE: this.zipInput.getValue(),
-      ORD_ADDRESS: this.addressInput.getValue(),
-      ORD_ITEMS: this.cartService.getCart()
-    };
-    console.log(data)
-    this.cartService.emptyCart();
+    if(this.authService.isLoggedIn()){
 
-    this.service.insert(data, "order")
-      .subscribe(res => {
+      const conf = this.service.getDefaultServiceConfiguration('orders');
+      this.service.configureService(conf);
+      let data = {
+        ORD_NAME: this.nameInput.getValue(),
+        ORD_PHONE: this.phoneInput.getValue(),
+        ORD_ZIPCODE: this.zipInput.getValue(),
+        ORD_ADDRESS: this.addressInput.getValue(),
+        ORD_ITEMS: this.cartService.getCart()
+      }
+      if(data.ORD_NAME != null && data.ORD_PHONE !=null && data.ORD_ZIPCODE !=null && data.ORD_ADDRESS !=null){
+        this.cartService.emptyCart();
+        this.service.insert(data, "order").subscribe(res => {
+            this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
+            this.orderView = (res.data["ORD_ID"]).toString();
+            this.price = (this.totalAmount * 100).toFixed(0);
+            this.submitRedsysOrder();
+          })
+      }else{
+        Swal.fire({
+          title: this.translate.get('ERROR_COMPLETE_FORM'),
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+        
+      }
 
-        console.log(res.data);
-        this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
-        this.orderView = (res.data["ORD_ID"]).toString();
-        this.price = (this.totalAmount * 100).toFixed(0);
-        this.submitRedsysOrder();
-      })
+    }else{
+      this.router.navigate(['/login'],
+                          {queryParams: {'session-not-started':'true'}}
+      )  // En el futuro si se cambia esta clase mantener la redireccion de este caso de uso
+    }
+    
   }
-
   currentLang(): void {
 
     const lang = this.translateService.getCurrentLang();
@@ -116,24 +140,18 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
 
       this.currLang = "2";
 
-    } else  {
+    } else {
 
       this.currLang = "1";
 
     }
-
-
   }
-
   goBack(): void {
-    this.router.navigate(["/cart/view"]);
+    this.router.navigate(["/"]);
   }
-
   submitRedsysOrder(): void {
 
     this.url = document.querySelector("base").href;
-
-
     this.currentLang();
     // Datos de la transacción
     const datosTransaccion = {
@@ -186,8 +204,5 @@ export class NewOrderComponent implements AfterViewInit , OnInit{
     if (form) {
       form.submit();
     }
-
   }
-
-
 }

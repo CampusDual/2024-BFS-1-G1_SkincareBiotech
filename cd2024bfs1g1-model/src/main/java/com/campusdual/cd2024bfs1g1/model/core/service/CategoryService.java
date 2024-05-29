@@ -7,12 +7,14 @@ import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Service("CategoryService")
+@Lazy
 public class CategoryService implements ICategoryService {
 
     @Autowired
@@ -29,5 +31,11 @@ public class CategoryService implements ICategoryService {
     @Override
     public EntityResult categoryInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.categoryDao, attributes);
+    }
+
+    @Override
+    public EntityResult categoryUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.categoryDao, attrMap, keyMap);
     }
 }
