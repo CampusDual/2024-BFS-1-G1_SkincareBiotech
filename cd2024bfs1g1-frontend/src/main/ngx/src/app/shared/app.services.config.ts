@@ -20,6 +20,9 @@ export const SERVICE_CONFIG: Object = {
   'brands':{
     'path': '/brands'
   },
+  'skintypes':{
+    'path': '/skintypes'
+  },
   permissions: {
     'path': '/permissions'
   },

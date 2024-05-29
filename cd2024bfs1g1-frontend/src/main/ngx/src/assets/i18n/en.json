@@ -174,6 +174,8 @@
   "USR_EMAIL": "Email",
   "UPR_BIRTHDATE": "Birthdate",
   "UPR_ADDRESS": "Address",
-  "SKIN_TYPES": "Skin types"
+  "SKIN_TYPES": "Skin types",
+  "SKIN_NAME": "Name"
+
 
 }
