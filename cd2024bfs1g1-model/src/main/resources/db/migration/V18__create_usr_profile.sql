@@ -33,3 +33,19 @@ UPDATE public.usr_role
 	 { "attr": "data-analysis", "visible": false, "enabled": false }, { "attr": "login", "visible": false, "enabled": false },
 	 { "attr": "cart", "visible": false, "enabled": false } ] }'
 	WHERE rol_name= 'admin';
+
+INSERT INTO usr_profile (usr_id, upr_birthdate)
+SELECT
+    uu.usr_id,
+    '1970-01-01'::date + (random() * ('2000-12-31'::date - '1980-01-01'::date) + 1)::int AS birthdate
+FROM
+    usr_user uu
+LEFT JOIN
+    usr_profile up ON uu.usr_id = up.usr_id
+JOIN
+    usr_user_role uur ON uur.usr_id = uu.usr_id
+JOIN
+    usr_role ur ON uur.rol_id = ur.rol_id
+WHERE
+    up.usr_id IS NULL
+    AND ur.rol_name = 'user';
