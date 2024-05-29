@@ -1,13 +1,13 @@
 <header class="header">
   <div class="imgContainer">
     <a routerLink="">
-      <img class="logo" src="./assets/images/logo_bw.svg" alt="SkinCare BioTech">
+      <img class="logo" src="./assets/images/logo_bw.svg" routerLink="" alt="SkinCare BioTech">
     </a>
   </div>
-
+ 
   <o-bar-menu *ngIf="isLoaded">
     <o-bar-menu-item *ngIf="isLogedIn" (click)="logout()" title="LOGOUT" icon="power_settings_new"></o-bar-menu-item>
-    <o-bar-menu-group title="LANGUAGE" icon="language" >
+    <o-bar-menu-group title="LANGUAGE" icon="language">
       <o-locale-bar-menu-item locale="en" title="English"></o-locale-bar-menu-item>
       <o-locale-bar-menu-item locale="es" title="Español"></o-locale-bar-menu-item>
     </o-bar-menu-group>
