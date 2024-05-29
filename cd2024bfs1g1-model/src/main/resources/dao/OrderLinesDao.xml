@@ -31,5 +31,20 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="ORD_LINES">
+            <Sentence>
+                <![CDATA[
+                    WITH T AS (
+                        SELECT OL.*, (OL.OL_PRICE * OL.OL_UNITS) AS TOTAL_PRICE, P.PRO_NAME, P.PRO_SELLER_ID
+                        FROM ORD_LINES AS OL
+                        INNER JOIN PRODUCTS AS P ON OL.PRO_ID = P.PRO_ID
+                    )
+                    SELECT #COLUMNS#
+                    FROM T
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

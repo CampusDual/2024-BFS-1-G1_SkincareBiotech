@@ -1,6 +1,7 @@
 package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IOrderLinesService;
+import com.campusdual.cd2024bfs1g1.model.core.dao.OrderDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.OrderLinesDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
 import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
@@ -29,6 +30,13 @@ public class OrderLinesService implements IOrderLinesService {
         Map<String, Object> filter = new HashMap<>(keysValues);
         filter.put(ProductDao.PRO_SELLER_ID, userId);
         return this.daoHelper.query(this.orderLinesDao, filter, attributes);
+    }
+
+    public EntityResult orderLinesProductQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
+        int userId = Utils.getUserId();
+        Map<String, Object> filter = new HashMap<>(keysValues);
+        filter.put(ProductDao.PRO_SELLER_ID, userId);
+        return this.daoHelper.query(this.orderLinesDao, filter, attributes, OrderLinesDao.ATTR_ORD_LINES_QUERY);
     }
 
     @Override
