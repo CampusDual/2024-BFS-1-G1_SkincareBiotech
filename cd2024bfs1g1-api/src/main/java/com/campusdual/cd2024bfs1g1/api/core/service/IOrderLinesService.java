@@ -12,5 +12,5 @@ public interface IOrderLinesService {
     public EntityResult orderLinesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
     public EntityResult orderLinesInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
     public EntityResult orderLinesProductQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
-
+    public EntityResult orderLinesProductUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }

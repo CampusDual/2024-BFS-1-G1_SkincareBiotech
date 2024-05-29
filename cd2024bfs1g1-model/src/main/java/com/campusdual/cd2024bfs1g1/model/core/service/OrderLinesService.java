@@ -1,7 +1,6 @@
 package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IOrderLinesService;
-import com.campusdual.cd2024bfs1g1.model.core.dao.OrderDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.OrderLinesDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
 import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
@@ -42,6 +41,10 @@ public class OrderLinesService implements IOrderLinesService {
     @Override
     public EntityResult orderLinesInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.orderLinesDao, attrMap);
+    }
 
+    @Override
+    public EntityResult orderLinesProductUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.orderLinesDao, attrMap, keyMap);
     }
 }
