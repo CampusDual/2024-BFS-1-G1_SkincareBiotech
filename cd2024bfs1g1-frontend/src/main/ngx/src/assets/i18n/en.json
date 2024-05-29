@@ -182,5 +182,6 @@
   "FEMALE": "Female",
   "MALE": "Male",
   "UNISEX": "Unisex",
-  "PGE_ID": "Genre"
+  "PGE_ID": "Genre",
+  "BRAND": "Brand"
 }
