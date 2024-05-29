@@ -1,11 +1,26 @@
 <o-form attr="orderLinesDetail" service="orderlines" entity="orderLinesProduct"  keys="OL_ID" header-actions="R;U"
   show-header-navigation="yes">
-  <o-image attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
-  <o-combo attr="Ol_SENT" value-column="valueSent" [static-data]="optionSent" columns="textSent" required="yes" 
-    sql-type="boolean" null-selection="no" translate="yes"></o-combo>
-  <o-text-input attr="OL_ID" sql-type="INTEGER" read-only="yes"></o-text-input>
-  <o-text-input attr="PRO_NAME" read-only="yes"></o-text-input>
-  <o-text-input attr="OL_UNITS" read-only="yes"></o-text-input>
-  <o-currency-input attr="OL_PRICE" read-only="yes"></o-currency-input>
-  <o-currency-input attr="TOTAL_PRICE" read-only="yes"></o-currency-input>
+  <div class="main-container">
+    <div class="image-container">
+      <o-image id="pro-image" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER" 
+        show-controls="no" read-only="yes"></o-image>
+    </div>
+    <div class="details-container">
+      <div class="details-row">
+        <o-text-input attr="OL_ID" sql-type="INTEGER" read-only="yes"></o-text-input>
+        <o-combo attr="OL_SENT" value-column="valueSent" [static-data]="optionSent" columns="textSent" required="yes" 
+          sql-type="boolean" null-selection="no" translate="yes"></o-combo>
+      </div>
+      <div class="details-row">
+        <o-text-input attr="PRO_NAME" label="PRO_NAME_OLD" read-only="yes"></o-text-input>
+      </div>
+      <div class="details-row">
+        <o-text-input attr="OL_UNITS" label="OL_UNITS_OLD" read-only="yes"></o-text-input>
+        <o-currency-input attr="OL_PRICE" label="OL_PRICE_OLD" read-only="yes"></o-currency-input>
+      </div>
+      <div class="details-row">
+        <o-currency-input attr="TOTAL_PRICE" read-only="yes"></o-currency-input>
+      </div>
+    </div>
+  </div>
 </o-form>
