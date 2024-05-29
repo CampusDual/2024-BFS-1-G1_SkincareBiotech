@@ -62,8 +62,9 @@
                     SELECT
                         ORD_ID,
                         SUM(OL_PRICE * OL_UNITS) AS OP_TOTAL,
-                        COUNT(OL_ID) as OP_NUMERO_PRODUCTOS,
-                        SUM(OL_UNITS) as OP_NUMERO_UNIDADES
+                        COUNT(OL_ID) AS OP_NUMERO_PRODUCTOS,
+                        SUM(OL_UNITS) AS OP_NUMERO_UNIDADES,
+                        BOOL_AND(OL_SENT) AS OP_ALL_SENT
                     FROM ${mainschema}.ORD_LINES
                     GROUP BY ORD_ID
                 )
@@ -71,7 +72,7 @@
                 FROM ${mainschema}.ORDERS AS O
                 INNER JOIN ORDER_PRICE AS OP ON OP.ORD_ID = O.ORD_ID
                 #WHERE#
-                ORDER BY ORD_DATE
+                #ORDER#
             ]]>
             </Sentence>
         </Query>

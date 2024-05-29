@@ -160,5 +160,13 @@
   "ERROR_EMAIL_PATTERN": "Correo incorrecto",
   "ERROR_PHONE_PATTERN": "Deben ser 9 dígitos y empezar por 6, 7, 8 o 9",
   "PASSWORDS_DO_NOT_MATCH": "Las contraseñas no coinciden",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios"
+  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
+  "UNITS_ABBR": "uds",
+  "TOTAL": "Total",
+  "ORD_ADRESS_INFO": "Dirección de envío",
+  "PHONE_ABBR": "Tlf",
+  "UNITS_OF": "unidades de",
+  "PAID": "Pago realizado",
+  "UNPAID": "Pendiente de pago",
+  "TOTAL_PRICE": "Precio total"
 }
