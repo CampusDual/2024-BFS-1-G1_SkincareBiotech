@@ -50,9 +50,6 @@ export class ClientRegisterComponent implements OnInit {
 
   service: OntimizeService;
   redirect = '';
-  adminRole = 'admin';
-  userRole = 'user';
-  sellerRole = 'seller';
 
   constructor(
     private router: Router,
@@ -81,7 +78,7 @@ export class ClientRegisterComponent implements OnInit {
   register() {
     if (this.registerForm.valid) {
       if (this.passwordMatchValidator()) {
-        this.insertUser(this.userRole);
+        this.insertUser();
       } else {
         const text = this.translate.get('PASSWORDS_DO_NOT_MATCH');
         const button = this.translate.get('CONFIRMATION_REGISTER_BUTTON');
@@ -101,7 +98,7 @@ export class ClientRegisterComponent implements OnInit {
     return this.registerForm.value.usr_password === this.registerForm.value.usr_password2;
   }
 
-  insertUser(userRole: string) {
+  insertUser() {
     const login = this.registerForm.value.usr_login;
     const password = this.registerForm.value.usr_password;
 
