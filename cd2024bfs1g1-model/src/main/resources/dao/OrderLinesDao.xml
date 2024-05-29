@@ -35,7 +35,7 @@
             <Sentence>
                 <![CDATA[
                     WITH T AS (
-                        SELECT OL.*, (OL.OL_PRICE * OL.OL_UNITS) AS TOTAL_PRICE, P.PRO_NAME, P.PRO_SELLER_ID
+                        SELECT OL.*, (OL.OL_PRICE * OL.OL_UNITS) AS TOTAL_PRICE, P.PRO_NAME, P.PRO_SELLER_ID, PRO_IMAGE
                         FROM ORD_LINES AS OL
                         INNER JOIN PRODUCTS AS P ON OL.PRO_ID = P.PRO_ID
                     )

@@ -5,12 +5,14 @@ import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersHomeComponent } from './orders-home/orders-home.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { OrdersDetailComponent } from './orders-detail/orders-detail.component';
+import { OrdersLinesDetailComponent } from './orders-lines-detail/orders-lines-detail.component';
 
 
 @NgModule({
   declarations: [
     OrdersHomeComponent,
-    OrdersDetailComponent
+    OrdersDetailComponent,
+    OrdersLinesDetailComponent
   ],
   imports: [
     OntimizeWebModule,
