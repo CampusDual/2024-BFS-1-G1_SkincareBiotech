@@ -1,0 +1,30 @@
+<o-form attr="newSellerForm" service="users" entity="sellerRole" keys="USR_ID" after-insert-mode="new"
+    (afterInsert)="onInsert($event)">
+    <div class="add-container">
+        <div class="header-area">
+            <div class="add-details-title">{{'ADD_SELLER' | oTranslate}}</div>
+        </div>
+        <div class="content">
+            <div class="info">
+                <div class="login">
+                    <o-text-input attr="USR_LOGIN" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="name">
+                    <o-text-input attr="USR_NAME" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="surname">
+                    <o-text-input attr="USR_SURNAME" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="email">
+                    <o-text-input attr="USR_EMAIL" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="password">
+                    <o-text-input attr="USR_PASSWORD" step="0" grouping="no" required="yes"></o-text-input>
+                </div>
+                <div class="phone">
+                    <o-text-input attr="USR_PHONE" step="0" grouping="no" required="no"></o-text-input>
+                </div>
+            </div>
+        </div>
+    </div>
+</o-form>

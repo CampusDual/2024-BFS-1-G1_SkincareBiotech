@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    jdbc-url: jdbc:postgresql://79.137.80.214:45432/postgres
+    username: postgres
+    password: passwordG4
+environment:
+  profile: g4

@@ -1,5 +1,5 @@
 import { MenuRootItem } from 'ontimize-web-ngx';
-
+ 
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
   { id: 'featuredPublic', name: 'FEATURED_LINK', icon: 'stars', route: '/' },
@@ -11,7 +11,8 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'orders', name: 'ORDERS', icon: 'local_shipping', route: '/main/orders' },
   { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
   { id: 'sells-by-category', name: 'DATA_BY_CATEGORY', icon: 'category', route: '/main/data-analysis/bycategory'},
+  { id: 'sellers', name:'SELLERS', route: '/main/admin/sellers/', icon: 'person'},
+  { id: 'billed-age', name: 'BILLED_AGE', icon: 'bar_chart', route: '/main//data-analysis/billed-age' },
   { id: 'login', name: 'LOGIN', route: '/login', icon: 'power_settings_new'},
-  { id: 'cart', name:'CART', route: '/order/cart', icon: 'shopping_cart'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
 ];

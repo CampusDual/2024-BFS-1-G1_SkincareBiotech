@@ -39,12 +39,12 @@ public class OrderService implements IOrderService {
         int userId = Utils.getUserId();
         Map<String, Object> orderMap = new HashMap<>(keyMap);
         orderMap.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
-        return this.daoHelper.query(this.orderDao, orderMap, attrList);
+        return this.daoHelper.query(this.orderDao, orderMap, attrList, OrderDao.QUERY_ORD_USER);
     }
 
     @Override
     public EntityResult orderInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
-         
+
         int userId = Utils.getUserId();
         Map<String, Object> orderData = new HashMap<>(attributes);
         Map<String, Object> orderLineData = new HashMap<>();
@@ -53,15 +53,15 @@ public class OrderService implements IOrderService {
         orderData.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
         EntityResult ordInsertResult = this.daoHelper.insert(this.orderDao, orderData);
         Integer ordId = (Integer) ordInsertResult.get(OrderDao.ATTR_ORD_ID);
-        
-        for(int i = 0;i<itemList.size();i++){
+
+        for (int i = 0; i < itemList.size(); i++) {
             Map<String, Integer> item = itemList.get(i);
             Integer id = item.get("id");
             Integer units = item.get("units");
-            orderLineData.put(ProductDao.PRO_ID,id);
-            orderLineData.put(OrderLinesDao.ATTR_OL_UNITS,units);
-            orderLineData.put(OrderLinesDao.ATTR_OL_PRICE,productService.getProductPriceById(id));
-            orderLineData.put(OrderLinesDao.ATTR_ORD_ID,ordId);
+            orderLineData.put(ProductDao.PRO_ID, id);
+            orderLineData.put(OrderLinesDao.ATTR_OL_UNITS, units);
+            orderLineData.put(OrderLinesDao.ATTR_OL_PRICE, productService.getProductPriceById(id));
+            orderLineData.put(OrderLinesDao.ATTR_ORD_ID, ordId);
             this.daoHelper.insert(this.orderLineDao, orderLineData);
         }
         return ordInsertResult;
@@ -79,12 +79,10 @@ public class OrderService implements IOrderService {
 
     @Override
     public EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
-
         int userId = Utils.getUserId();
         Map<String, Object> filter = new HashMap<>(keysValues);
         filter.put(ProductDao.PRO_SELLER_ID, userId);
-        EntityResult er = this.daoHelper.query(this.orderDao, filter, attributes);
-        return er;
+        return this.daoHelper.query(this.orderDao, filter, attributes, OrderDao.QUERY_ORD_SELLER);
     }
 
     @Override
@@ -93,12 +91,12 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public EntityResult totalPriceOrdersQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException {
+    public EntityResult totalPriceOrdersQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
 
         int userId = Utils.getUserId();
         Map<String, Object> filter = new HashMap<>(keysValues);
         filter.put(ProductDao.PRO_SELLER_ID, userId);
-        return this.daoHelper.query(this.orderDao, filter, attributes,"total_price");
+        return this.daoHelper.query(this.orderDao, filter, attributes, "total_price");
     }
 
     @Override
