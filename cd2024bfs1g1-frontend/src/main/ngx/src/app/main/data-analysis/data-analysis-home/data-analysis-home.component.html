@@ -1,18 +1,19 @@
-<h1>{{"FACTURATION_TITLE" | oTranslate}}</h1>
-<div class="grid_container">
-       <div class="grid_item_y">
-              {{"LABEL_Y_AXIS" | oTranslate}}
-       </div>
-       <div class="grid_item_chart">
-              <o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE" x-data-type="time"
-                     y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)" [chart-parameters]="chartParameters">
-              </o-chart>
-       </div>
-       <div class="grid_item_legend">
-
-       </div>
-       <div class="grid_item_x">
-              {{"LABEL_X_AXIS" | oTranslate}}
+<div class="bg-container">
+       <h1>{{"FACTURATION_TITLE" | oTranslate}}</h1>
+       <div class="chart-container">
+              <div class="chart-tittle-y-container">
+                     <div class="grid_item_y">
+                            {{"LABEL_Y_AXIS" | oTranslate}}
+                     </div>
+                     <div class="chart">
+                            <o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE"
+                                   x-data-type="time" y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)"
+                                   [chart-parameters]="chartParameters">
+                            </o-chart>
+                     </div>
+              </div>
+              <div class="grid_item_x">
+                     {{"LABEL_X_AXIS" | oTranslate}}
+              </div>
        </div>
 </div>
-
