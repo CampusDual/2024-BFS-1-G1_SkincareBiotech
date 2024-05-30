@@ -14,6 +14,7 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
   orderId: number;
   order: any;
   orderLines: any[] = [];
+  totalOrderPrice: number = 0;
   @ViewChild('ord_id') ord_id: OIntegerInputComponent;
   @ViewChild("formOrder") formOrder: OFormComponent;
 
@@ -62,11 +63,12 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
 
   loadOrderLines(): void {
     this.configureService('orders');
-    this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "PRO_NAME", "PRO_IMAGE", "OL_PRICE", "OL_UNITS"], "orderLinesView")
+    this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID","PRO_ID", "PRO_NAME", "PRO_IMAGE", "OL_PRICE", "OL_UNITS", "OL_SENT"], "orderLinesView")
       .subscribe((orderLinesViewData) => {
 
         this.orderLines = orderLinesViewData.data;
         console.log(this.orderLines);
+        this.totalOrderPrice = orderLinesViewData.data.reduce((total, orderLine ) => total + (orderLine.OL_PRICE * orderLine.OL_UNITS), 0);
 
       })
 
@@ -77,15 +79,10 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
     this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "ORD_NAME", "ORD_PHONE", "ORD_ZIPCODE", "ORD_ADDRESS", "ORD_DATE"], "orderByUser")
       .subscribe((orderData) => {
         this.order = orderData.data[0];
+
       });
 
   }
-
-  timestampToDate(order) {
-    let date = new Date(order);
-    return date.toLocaleString();
-  }
-
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }

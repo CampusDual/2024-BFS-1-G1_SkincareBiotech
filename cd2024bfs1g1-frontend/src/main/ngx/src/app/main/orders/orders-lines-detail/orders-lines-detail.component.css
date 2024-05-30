@@ -1,0 +1,44 @@
+
+.main-container {
+    display: flex;
+    gap: 20px;
+    margin: auto;
+}
+
+.image-container, .details-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+#pro-image {
+    max-height: 500px;
+    max-width: 400px;
+    
+}
+
+.details-container {
+    align-items: flex-start;
+}
+
+.details-row {
+    display: flex;
+    gap: 10px; 
+    align-items: center; 
+    width: 100%;
+    margin: 5px auto;
+}
+
+.details-row o-combo,
+.details-row o-text-input,
+.details-row o-currency-input {
+    flex: 1;
+}
+.unpaidOrder{
+    width: 100%;
+    color: red;
+    text-align: center;
+    font-size: 14px;
+}
