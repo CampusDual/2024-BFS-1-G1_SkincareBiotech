@@ -35,7 +35,7 @@
                 <![CDATA[
                    with category_graph_query as (
                        select
-                           sum(ol.ol_units) as total_prod,
+                           sum(ol.ol_units) as total_sold,
                            cat_name,
                            o.ord_date::date
                        from ord_lines as ol
