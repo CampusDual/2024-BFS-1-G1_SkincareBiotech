@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="product_skin"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>PS_ID</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>PS_ID</Column>
+    </UpdateKeys>
+    <GeneratedKey>ps_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="SKIN_ID" prefix="ST"/>
+                <AmbiguousColumn name="PRO_ID" prefix="P"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                       #COLUMNS#
+                    FROM
+                       ${mainschema}.PRODUCT_SKIN AS PS
+                        INNER JOIN ${mainschema}.SKIN_TYPES AS ST ON ST.SKIN_ID = PS.SKIN_ID
+                        INNER JOIN ${mainschema}.PRODUCTS AS P ON PS.PRO_ID = P.PRO_ID
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
