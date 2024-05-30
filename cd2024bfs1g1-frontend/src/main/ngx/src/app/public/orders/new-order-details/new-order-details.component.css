@@ -41,6 +41,7 @@ h3 {
     height: 75px;
     width: 75px;
     padding: 4px;
+    cursor: pointer;
 }
  
  
@@ -55,6 +56,7 @@ h3 {
     display: flex;
     padding: 3vh;
     border-bottom: 1px solid gray;
+    
 }
 
 .ol-details{
@@ -66,8 +68,12 @@ h3 {
 }
 .ol_data{
     margin-left: 5%;
-    
+    cursor: pointer;   
 }
+.ol_data:hover{
+    text-decoration: underline;
+}
+
 .units{
     font-size: 12px;
 }
