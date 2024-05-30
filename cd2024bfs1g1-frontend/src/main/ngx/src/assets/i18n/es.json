@@ -200,5 +200,6 @@
   "OL_PRICE_OLD": "Precio unidad",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
   "SELLS_BYCATEGORY_TITLE": "Total de ventas de cada categoría",
-  "DATA_BY_CATEGORY": "Info. por categoría"
+  "DATA_BY_CATEGORY": "Info. por categoría",
+  "TOTAL_SOLD": "Unidades vendidas"
 }

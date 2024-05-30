@@ -31,36 +31,18 @@
             </Sentence>
         </Query>
         <Query id="ammount_by_category">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="ORD_ID" prefix="O"/>
-                <AmbiguousColumn name="PRO_ID" prefix="P"/>
-            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                    with category_graph_query as (
-                        with prod_total_sales as (
-                            select
-                                sum(ol.ol_units) as total_prod,
-                                p.pro_id,
-                                p.cat_id,
-                                o.ord_date
-                            from ord_lines as ol
-                            inner join products as p
-                                on p.pro_id = ol.pro_id
-                            inner join orders as o
-                                on o.ord_id = ol.ord_id
-                            group by p.pro_id, p.cat_id, o.ord_date
-                        )
-                        select
-                            pts.cat_id,
-                            c.cat_name,
-                            sum(pts.total_prod) as total_sold,
-                            pts.ord_date
-                        from prod_total_sales as pts
-                        inner join categories as c
-                            on pts.cat_id = c.cat_id
-                        group by pts.cat_id, c.cat_name, pts.ord_date
-                        order by total_sold desc
+                       select
+                           sum(ol.ol_units) as total_prod,
+                           cat_name,
+                           o.ord_date::date
+                       from ord_lines as ol
+                       inner join products as p on p.pro_id = ol.pro_id
+                       inner join orders as o on o.ord_id = ol.ord_id
+                       inner join categories c on p.cat_id = c.cat_id
+                       group by p.cat_id, o.ord_date::date, cat_name
                    )
                    SELECT
                    #COLUMNS#

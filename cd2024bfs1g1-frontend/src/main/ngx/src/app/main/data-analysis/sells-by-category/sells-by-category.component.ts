@@ -1,9 +1,7 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { Expression, FilterExpressionUtils, OntimizeService } from 'ontimize-web-ngx';
-import { OChartComponent, ChartService, DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
-import { ODateRangeInputComponent } from 'ontimize-web-ngx';
-import DaterangepickerComponent from 'ontimize-web-ngx/lib/components/input/date-range/o-daterange-picker.component';
-import moment from 'moment';
+import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
+
 
 @Component({
   selector: 'app-sells-by-category',
@@ -11,26 +9,30 @@ import moment from 'moment';
   styleUrls: ['./sells-by-category.component.css']
 })
 
-
-export class SellsByCategoryComponent implements OnInit {
-
-  @ViewChild('dateRange') dateRange: ODateRangeInputComponent;
-  @ViewChild('pieChart') pieChart: OChartComponent;
-
+export class SellsByCategoryComponent {
 
   data: any []; 
-   public chartParameters: DiscreteBarChartConfiguration;
   service: OntimizeService;
-
+  pieParameters: PieChartConfiguration;
+  colors = {};
 
   constructor(
     protected injector: Injector,
   ) {
+    this._pieConfiguration();
     this.service = this.injector.get(OntimizeService);
   }
 
-  loadChart(event: any) {
+  _pieConfiguration(){
+    this.pieParameters = new PieChartConfiguration();
+    this.pieParameters.showLeyend = true;
+    this.pieParameters.legendPosition = 'right';
+    this.colors = {
+      domain: ['#31d4f8', '#2aaecb', '#1f6e9a', '#154865', '#0499ec', '#03649b', '#03649b']
+    };
+    }
     
+  loadChart(event: any) {
     const groupedData = event.reduce((acc, item) => {
       if (!acc[item.CAT_NAME]) {
         acc[item.CAT_NAME] = 0;
@@ -47,12 +49,7 @@ export class SellsByCategoryComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
-
   filter(values: Array<{ attr, value }>): Expression {
-    console.log(values);
     let filters: Array<Expression> = [];
     values.forEach(fil => {
       if (fil.value) {

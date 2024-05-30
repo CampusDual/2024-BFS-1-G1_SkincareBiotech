@@ -202,5 +202,6 @@
   "PRO_NAME_OLD": "Product name",
   "OL_UNITS_OLD": "Units",
   "OL_PRICE_OLD": "Unit price",
-  "ERROR_UNPAID": "It is not possible to ship the order until it is paid for"
+  "ERROR_UNPAID": "It is not possible to ship the order until it is paid for",
+  "TOTAL_SOLD": "Units sold"
 }
