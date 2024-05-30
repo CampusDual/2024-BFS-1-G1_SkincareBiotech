@@ -5,8 +5,13 @@
     </div>
 
     <div class="wrapp-login">
-      <mat-icon class="flecha" routerLink="">arrow_back</mat-icon>
+      <mat-icon class="flecha" routerLink="">arrow_back</mat-icon>      
+
       <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
+
+        <div class="logo-container">
+          <img class="logo-login" src="./assets/images/logo_bw.svg" alt="SkinCare BioTech">
+        </div>
  
         <form [formGroup]="loginForm" (ngSubmit)="login()">
 
@@ -50,10 +55,10 @@
     </div>
   </div>
 
-  <div id="footer" style="background-color:#f8b88c" class="footer-container">
+  <div id="footer" style="background-color:#a7bfc7" class="footer-container">
     <div fxLayout="row" fxLayoutAlign="end center">
       <span id="pie">{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
-      <span id="pie"> &copy; 2021 </span>
+      <span id="pie"> &copy; 2024 </span>
       <span id="pie">{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
     </div>
   </div>

@@ -1,5 +1,5 @@
 .full-page {
-    background-image: url('^assets/images/register_webp.webp');
+    background-image: url('^assets/images/skinCare3_portada.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,11 +19,11 @@
 }
  
 #botones {
-    background-color: #f8b88c;
+    background-color: #a7bfc7;
 }
  
 .flecha {
-    color: #f29a60;
+    color: #a7bfc7;
     transform: scale(3);
     margin: 5%;
     cursor: pointer;
@@ -31,12 +31,12 @@
 }
  
 .flecha:hover {
-    color: #f29a60;
+    color: #587580;
     transform: scale(3.5);
 }
  
 .linea {
-    border: 1px solid #686464;
+    border: 1px solid black;
     margin: 15px;
     margin-top: 20px;
     width: 13%;
@@ -44,7 +44,7 @@
  
 .etiqueta {
     margin-bottom: 10px;
-    color: #686464;
+    color: black;
 }
 
 .mat-mdc-form-field {
