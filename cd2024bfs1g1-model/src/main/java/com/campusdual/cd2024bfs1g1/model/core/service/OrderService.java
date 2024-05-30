@@ -63,8 +63,6 @@ public class OrderService implements IOrderService {
         Integer ordId = (Integer) ordInsertResult.get(OrderDao.ATTR_ORD_ID);
 
         for (int i = 0; i < itemList.size(); i++) {
-
-        for (int i = 0; i < itemList.size(); i++) {
             Map<String, Integer> item = itemList.get(i);
             Integer id = item.get("id");
             Integer units = item.get("units");
@@ -106,13 +104,11 @@ public class OrderService implements IOrderService {
 
     @Override
     public EntityResult totalPriceOrdersQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
-    public EntityResult totalPriceOrdersQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
 
         int userId = Utils.getUserId();
         Map<String, Object> filter = new HashMap<>(keysValues);
         filter.put(ProductDao.PRO_SELLER_ID, userId);
-        return this.daoHelper.query(this.orderDao, filter, attributes, "total_price");
-        return this.daoHelper.query(this.orderDao, filter, attributes, "total_price");
+        return this.daoHelper.query(this.orderDao, filter, attributes, OrderDao.QUERY_ORD_TOTAL_PRICE);
     }
 
 
