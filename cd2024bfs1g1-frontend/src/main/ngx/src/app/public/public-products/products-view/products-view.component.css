@@ -1,6 +1,6 @@
 .filter{
     display:grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(5,1fr);
     gap:10px;
     margin-top: 20px;
     margin-left: 10px;
@@ -86,8 +86,4 @@ a {
     display: block;
     max-height: calc(100% - 64px);
     height: calc(100% - 64px);
-}
-
-::ng-deep body{
-    background-color: #ffe0cb;
 }

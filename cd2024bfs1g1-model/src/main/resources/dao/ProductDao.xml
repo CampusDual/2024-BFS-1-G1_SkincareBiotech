@@ -14,15 +14,23 @@
     <GeneratedKey>pro_id</GeneratedKey>
     <Queries>
         <Query id="PRO_ENABLED">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="CAT_ID" prefix="ENABLED_CHECKER"/>
+                <AmbiguousColumn name="BRA_ID" prefix="ENABLED_CHECKER"/>
+                <AmbiguousColumn name="PGE_ID" prefix="ENABLED_CHECKER"/>
+            </AmbiguousColumns>
             <Sentence>
             <![CDATA[
                 WITH ENABLED_CHECKER AS (
                     SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS PRO_REAL_PRICE
-                    FROM ${mainschema}.PRODUCTS
+                    FROM ${mainschema}.PRODUCTS AS P
                     WHERE PRO_ENABLED = TRUE
                 )
                 SELECT #COLUMNS#
                 FROM ENABLED_CHECKER
+                    INNER JOIN ${mainschema}.BRANDS AS B ON ENABLED_CHECKER.BRA_ID = B.BRA_ID
+                    INNER JOIN ${mainschema}.PRO_GENDER AS G ON ENABLED_CHECKER.PGE_ID = G.PGE_ID
+                    INNER JOIN ${mainschema}.CATEGORIES AS C ON ENABLED_CHECKER.CAT_ID = C.CAT_ID
                 #WHERE#
             ]]>
         </Sentence>

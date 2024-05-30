@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OFormComponent, OIntegerInputComponent, OntimizeService } from 'ontimize-web-ngx';
+import { Observable, OFormComponent, OIntegerInputComponent, OntimizeService } from 'ontimize-web-ngx';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-new-order-details',
@@ -13,6 +14,7 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
   orderId: number;
   order: any;
   orderLines: any[] = [];
+  totalOrderPrice: number = 0;
   @ViewChild('ord_id') ord_id: OIntegerInputComponent;
   @ViewChild("formOrder") formOrder: OFormComponent;
 
@@ -22,18 +24,23 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
     protected sanitizer: DomSanitizer,
     protected router: Router,
   ) {
+    this.orderId = parseInt(this.route.snapshot.paramMap.get('ORD_ID'));
+    const qParamObs: Observable<any> = this.route.queryParams;
+    qParamObs.subscribe(params => {
+      if (params['Ds_MerchantParameters']) {
+        const paramsDecode = CryptoJS.enc.Base64.parse(params['Ds_MerchantParameters']);
+        const paramsDecodeText = CryptoJS.enc.Utf8.stringify(paramsDecode);
+        const paramsJSON = JSON.parse(paramsDecodeText);
+        if (paramsJSON.Ds_SecurePayment === '1' && (this.orderId === Number(paramsJSON.Ds_Order))) {
+          this.payOrder(Number(paramsJSON.Ds_Order));
+        }
+      }
+    });
 
   }
   ngAfterViewInit(): void {
-
-    this.route.params.subscribe(params => {
-      this.orderId = Number(params['ORD_ID']);
-      this.configureService('orders');
-      this.loadOrderDetails();
-      this.loadOrderLines();
-
-    });
-
+    this.loadOrderDetails();
+    this.loadOrderLines();
   }
 
   ngOnInit(): void {
@@ -46,33 +53,36 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
     this.service.configureService(conf);
 
   }
+  payOrder(id: number) {
+    this.configureService('orders');
+    this.service.update({ "ORD_ID": id }, { "ORD_PAID": true }, "order")
+      .subscribe((data) => {
+        console.log('Pago realizado');
+      });
+  }
 
   loadOrderLines(): void {
-    this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "PRO_NAME", "PRO_IMAGE", "OL_PRICE", "OL_UNITS"], "orderLinesView")
+    this.configureService('orders');
+    this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID","PRO_ID", "PRO_NAME", "PRO_IMAGE", "OL_PRICE", "OL_UNITS", "OL_SENT"], "orderLinesView")
       .subscribe((orderLinesViewData) => {
 
         this.orderLines = orderLinesViewData.data;
         console.log(this.orderLines);
+        this.totalOrderPrice = orderLinesViewData.data.reduce((total, orderLine ) => total + (orderLine.OL_PRICE * orderLine.OL_UNITS), 0);
 
       })
 
   }
 
   loadOrderDetails(): void {
-    this.service.update({ "ORD_ID": this.orderId }, { "ORD_PAID": true }, "order").
-      subscribe((data) => {
-        this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "ORD_NAME", "ORD_PHONE", "ORD_ZIPCODE", "ORD_ADDRESS", "ORD_DATE"], "orderByUser")
-          .subscribe((orderData) => {
-            this.order = orderData.data[0];
-          });
+    this.configureService('orders');
+    this.service.query({ "ORD_ID": this.orderId }, ["ORD_ID", "ORD_NAME", "ORD_PHONE", "ORD_ZIPCODE", "ORD_ADDRESS", "ORD_DATE"], "orderByUser")
+      .subscribe((orderData) => {
+        this.order = orderData.data[0];
+
       });
-  }
 
-  timestampToDate(order) {
-    let date = new Date(order);
-    return date.toLocaleString();
   }
-
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
