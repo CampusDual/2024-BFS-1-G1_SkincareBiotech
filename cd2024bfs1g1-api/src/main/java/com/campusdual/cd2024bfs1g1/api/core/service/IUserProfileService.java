@@ -11,4 +11,6 @@ public interface IUserProfileService {
     public EntityResult userProfileQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
     public EntityResult userProfileInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
 
+    public EntityResult userProfileUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+
 }

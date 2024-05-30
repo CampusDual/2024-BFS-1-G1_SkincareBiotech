@@ -5,10 +5,10 @@
 	catalog="" schema="${mainschema}" table="usr_user" datasource="mainDataSource"
 	sqlhandler="dbSQLStatementHandler">
 	<DeleteKeys>
-		<Column>usr_id</Column>
+		<Column>USR_ID</Column>
 	</DeleteKeys>
 	<UpdateKeys>
-		<Column>usr_id</Column>
+		<Column>USR_ID</Column>
 	</UpdateKeys>
 	<GeneratedKey>usr_id</GeneratedKey>
 	<Queries>
