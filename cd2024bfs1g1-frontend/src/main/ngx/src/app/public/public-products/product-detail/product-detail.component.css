@@ -18,7 +18,6 @@
     border-radius: 5%;
 }
 
-
 .img-product {
     min-width: 20vw;
     min-height: 25em;
@@ -37,47 +36,57 @@
 }
 
 .price-container p {
-    margin: 0px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .salePrice {
-    font-size: 1.35em;
-    font-weight: 900;
-    text-align: left;
     margin-top: 10%;
+    margin-left: 9px;
+    color: darkgreen;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .originalPrice {
-    font-weight: lighter;
-    font-size: 0.7em;
+    display: flex;
+    color: red;
     text-decoration: line-through;
-    color: black;
+    font-size: 1.2em;
 }
 
 .regularPrice {
-    font-size: 2em;
-    font-weight: 900;
-    text-align: left;
+    font-size: 1.2em;
+    font-weight: bold;
     margin-top: 10%;
 }
 
-h1 {
+.title {
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
     margin-top: 0px;
+    margin-bottom: 10px; 
+    white-space: normal;
 }
 
 .brand {
     margin-top: 0px;
+    width: 100%;
+    white-space: normal;
 }
 
-.title::first-letter {
-    text-transform: capitalize;
+.discount-span {
+    margin: 0 25px 0 0;
+    color: darkgreen;
+    font-style: italic;
+    font-size: 1.2em;
 }
-
 
 .description::first-letter {
     text-transform: capitalize;
 }
-
 
 .description {
     text-align: justify;
@@ -85,11 +94,8 @@ h1 {
 }
 
 .price {
-    font-weight: bold;
-    font-size: x-large;
     margin-top: 5%;
 }
-
 
 #add-cart-button {
     border-radius: 10px;
@@ -99,8 +105,6 @@ h1 {
     text-transform: uppercase;
     font-weight: bolder;
 }
-
-
 
 .buttons {
     display: flex;
