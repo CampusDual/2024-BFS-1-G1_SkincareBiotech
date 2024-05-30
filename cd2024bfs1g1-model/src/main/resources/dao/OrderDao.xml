@@ -30,7 +30,7 @@
                 ]]>
             </Sentence>
         </Query>
-        <Query id="total_price">
+        <Query id="TOTAL_PRICE">
             <AmbiguousColumns>
                 <AmbiguousColumn name="ORD_ID" prefix="O"/>
                 <AmbiguousColumn name="PRO_ID" prefix="P"/>

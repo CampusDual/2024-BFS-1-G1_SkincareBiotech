@@ -66,11 +66,13 @@ h3 {
     flex-grow: 1;
     justify-content: space-between;
 }
-.ol_data{
+.ol_data_container{
     margin-left: 5%;
     cursor: pointer;   
+    display: flex;
+    align-items: center;
 }
-.ol_data:hover{
+.ol_data_container:hover{
     text-decoration: underline;
 }
 
