@@ -17,7 +17,11 @@ export const SERVICE_CONFIG: Object = {
   'brands':{
     'path': '/brands'
   },
+  'productsView':{
+    'path':'/productsView'
+  },
   permissions: {
     'path': '/permissions'
   },
+  
 };
