@@ -1,10 +1,64 @@
-<o-table attr="ordersTable" service="orders" entity="orderByUser" keys="ORD_ID" insert-button="no" delete-button="no"
-    columns="ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_DATE;ORD_ID;ORD_SENT"
-    visible-columns="ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_DATE;ORD_ID;ORD_SENT" query-rows="15">
-    <o-table-column attr="ORD_NAME" title="ORD_NAME" width="150px"></o-table-column>
-    <o-table-column attr="ORD_PHONE" title="ORD_PHONE" width="150px"></o-table-column>
-    <o-table-column attr="ORD_SENT" title="ORD_SENT" width="50px"></o-table-column>
-    <o-table-column attr="ORD_ZIPCODE" title="ORD_ZIPCODE" width="50px"></o-table-column>
-    <o-table-column attr="ORD_DATE" title="ORD_DATE" type="time" width="150px"></o-table-column>
-    <o-table-column attr="ORD_ID" title="ORD_ID" width="150px"></o-table-column>
-</o-table>
+<section class="order_history">
+  <o-list #ordersList attr="ordersList" service="orders" entity="orderByUser" keys="ORD_ID"
+    columns="ORD_ID;ORD_DATE;ORD_NAME;ORD_PHONE;ORD_ADDRESS;ORD_ZIPCODE;OP_TOTAL;ORD_PAID;OP_NUMERO_PRODUCTOS;OP_NUMERO_UNIDADES;OP_ALL_SENT"
+    class="order_history_list" delete-button="false" pagination-controls="yes" show-page-size="true" pageable="true"
+    page-size-options="5;10;20" quick-filter-columns="ORD_DATE;ORD_NAME;ORD_ADDRESS" sort-columns="ORD_DATE">
+
+    <mat-card [ngStyle]="{'border-right': row.ORD_PAID && row.OP_ALL_SENT ? '10px solid green':'10px solid red'}"
+      class="order_card" *ngFor="let row of ordersList.dataArray" [o-list-item]="row">
+      <mat-card-header class="order_card_header">
+        <mat-card-title class="order_card_tittle">
+          {{'ORD_ID' | oTranslate}} : {{ row.ORD_ID }}
+        </mat-card-title>
+        <div class="order_date">
+          <span>{{row.ORD_DATE | date: 'dd/MM/yyyy'}}</span>
+        </div>
+      </mat-card-header>
+      <div class="order_body_container">
+        <div class="order_data">
+          <div class="user_info">
+
+            <p>
+              <span>{{'ORD_NAME' | oTranslate}} : </span>{{row.ORD_NAME}}
+            </p>
+            <p>
+              <span>{{'ORD_ADDRESS' | oTranslate}} : </span> {{row.ORD_ADDRESS}}
+            </p>
+            <p>
+              <span>{{'PHONE_ABBR' | oTranslate}} : </span> {{row.ORD_PHONE}}
+            </p>
+            <p>
+              <span>{{'ORD_ZIPCODE' | oTranslate}} : </span>{{row.ORD_ZIPCODE}}
+            </p>
+
+          </div>
+          <div class="order_products">
+            <p>{{row.OP_NUMERO_UNIDADES}} {{"UNITS_OF" | oTranslate}} {{row.OP_NUMERO_PRODUCTOS}} {{"PRODUCTS"|
+              oTranslate | lowercase}}.</p>
+          </div>
+        </div>
+
+        <div class="total_price_container">
+          <div class="paid_status">
+            <div class="paid" *ngIf="row.ORD_PAID && row.ORD_PAID != undefined">
+              {{'PAID' | oTranslate}}
+            </div>
+            <div class="unpaid" *ngIf="!row.ORD_PAID || row.ORD_PAID === undefined">
+              {{'UNPAID' | oTranslate}}
+            </div>
+            <span class="sent" *ngIf="row.OP_ALL_SENT && row.OP_ALL_SENT != undefined">
+              {{'SENT' | oTranslate}}
+            </span>
+            <span class="unsent" *ngIf="!row.OP_ALL_SENT || row.OP_ALL_SENT === undefined">
+              {{'UNSENT' | oTranslate}}
+            </span>
+          </div>
+          <div class="total_price">
+            <p>{{'TOTAL_PRICE' | oTranslate}} :</p>
+            <p class="price">{{row.OP_TOTAL}} €</p>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </o-list>
+</section>

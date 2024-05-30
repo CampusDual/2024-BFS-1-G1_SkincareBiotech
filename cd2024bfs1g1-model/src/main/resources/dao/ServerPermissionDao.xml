@@ -12,6 +12,7 @@
 		<Column>srp_id</Column>
 	</UpdateKeys>
 	<GeneratedKey>srp_id</GeneratedKey>
+	<Queries>
 		<Query id="default">
 			<Sentence>
                 <![CDATA[
@@ -24,4 +25,5 @@
                 ]]>
 			</Sentence>
 		</Query>
+	</Queries>
 </JdbcEntitySetup>
