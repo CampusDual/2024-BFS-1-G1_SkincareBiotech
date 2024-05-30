@@ -169,8 +169,12 @@
   "USR_NAME": "Nombre",
   "USR_SURNAME": "Apellidos",
   "USR_PHONE": "Teléfono",
-  "USR_EMAIL": "Email",
+  "USR_EMAIL": "Correo",
   "UPR_BIRTHDATE": "Fecha de nacimiento",
-  "UPR_ADDRESS": "Dirección"
+  "UPR_ADDRESS": "Dirección",
+  "MY_PROFILE": "Mi perfil",
+  "NAME": "Nombre",
+  "CONTACT": "Contacto",
+  "ADDITIONAL_INFO": "Información adicional"
 
 }

@@ -1,4 +1,12 @@
-.Nombre{
+.orders{
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+}
+.o-table-pagination {
+    position: sticky;
+    z-index: 1; 
+}
+.name{
     display: grid;
     grid-template-columns: 50% 50%;
     gap:5px;
@@ -6,7 +14,7 @@
     padding-bottom: 50px
 }
 
-.Contacto{
+.contact{
     display: grid;
     grid-template-columns: 50% 50%;
     gap:5px;
@@ -14,7 +22,7 @@
     padding-bottom: 50px
 }
 
-.Info{
+.info{
     display: grid;
     grid-template-columns: 50% 50%;
     gap:5px;

@@ -173,6 +173,11 @@
   "USR_PHONE": "Phone",
   "USR_EMAIL": "Email",
   "UPR_BIRTHDATE": "Birthdate",
-  "UPR_ADDRESS": "Address"
+  "UPR_ADDRESS": "Address",
+  "MY_PROFILE": "My profile",
+  "NAME": "Name",
+  "CONTACT": "Contact",
+  "ADDITIONAL_INFO": "Additional information"
+  
 
 }
