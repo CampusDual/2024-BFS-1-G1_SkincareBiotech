@@ -1,5 +1,6 @@
 .general-container{
     margin: 20px;     
+    min-width: 560px;
 }
 
 .filter{
@@ -8,11 +9,20 @@
     gap:10px;
     
 }
+
+@media only screen and (max-width: 940px) {
+    .filter {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
 .o-form{    
     margin: 10px;    
 }
 
 .grid-container{
+    min-width: 560px;
     margin: 10px;   
 }
 

@@ -134,8 +134,8 @@
   "ADD_BRAND": "Añadir Marca",
   "BRA_ID":"Marcas",
   "DETAIL_PRODUCT":"Detalles Producto",
-  "PRO_MAX_PRICE": "Precio máximo",
-  "PRO_MIN_PRICE": "Precio mínimo",
+  "PRO_MAX_PRICE": "Precio máximo (€)",
+  "PRO_MIN_PRICE": "Precio mínimo (€)",
   "PRO_REAL_PRICE":"Precio",
   "ORD_DATE": "Fecha",
   "DATA_ANALYSIS": "Análisis de Datos",
@@ -199,6 +199,5 @@
   "OL_PRICE_OLD": "Precio unidad",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
   "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
-  "SLOGAN": "Descubre productos excepcionales para tu cuidado personal",
-  "SHOW_MORE": "Mostrar más"
+  "SLOGAN": "Descubre productos excepcionales para tu cuidado personal"
 }
