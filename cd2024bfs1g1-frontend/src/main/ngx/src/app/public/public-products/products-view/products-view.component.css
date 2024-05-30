@@ -1,16 +1,19 @@
+.general-container{
+    margin: 20px;     
+}
+
 .filter{
     display:grid;
     grid-template-columns: repeat(4,1fr);
     gap:10px;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
+    
 }
-.o-form{
-    height: 64px;
+.o-form{    
+    margin: 10px;    
 }
-.o-grid.o-grid-fixed{
-    display: block;
-    max-height: calc(100% - 64px);
-    height: calc(100% - 64px);
+
+.grid-container{
+    margin: 10px;   
 }
+
+
