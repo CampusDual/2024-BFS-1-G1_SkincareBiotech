@@ -116,5 +116,28 @@ h1 {
     text-transform: uppercase;
     font-weight: bolder;
     margin-left: 20px;
+}
 
+.for{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+   
+}
+.pill{
+    border: 1px solid #e1e1e1;
+    border-radius: 7px;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    
+}
+.flex{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category{
+    font-weight: bold;
 }
