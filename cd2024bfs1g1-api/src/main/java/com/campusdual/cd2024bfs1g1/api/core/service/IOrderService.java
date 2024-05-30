@@ -9,6 +9,8 @@ import java.util.Map;
 
 public interface IOrderService {
 
+    EntityResult orderByUserPaginationQuery(Map<String, Object> keyMap, List<String> attrList, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException, JsonProcessingException;
+
     EntityResult orderByUserQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException, JsonProcessingException;
 
     EntityResult orderInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException, JsonProcessingException, JsonProcessingException;
@@ -17,11 +19,11 @@ public interface IOrderService {
 
     EntityResult orderDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
-    EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
+    EntityResult orderBySellerQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
 
     EntityResult orderLinesViewQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
-    EntityResult totalPriceOrdersQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
+    EntityResult totalPriceOrdersQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
 
     EntityResult totalAmmountOrdersQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
 
