@@ -33,5 +33,10 @@ public class ProductViewService implements IProductViewService {
         return this.daoHelper.insert(this.productViewDao,attributes);
     }
 
+    @Override
+    public EntityResult viewByProductQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.productViewDao,keysValues,attributes,ProductViewDao.QUERY_PROV_VIEW_PRODUCT);
+    }
+
 
 }

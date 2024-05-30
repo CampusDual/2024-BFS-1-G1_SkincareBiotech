@@ -12,5 +12,26 @@
         <Column>PROV_ID</Column>
     </UpdateKeys>
     <GeneratedKey>prov_id</GeneratedKey>
-
+    <Queries>
+        <Query id="PROV_VIEW_PRODUCT">
+            <Sentence>
+                    <![CDATA[
+                        WITH T as(
+                            SELECT
+                                pro_id,
+                                DATE(prov_date) AS visit_date,
+                                COUNT(DISTINCT prov_uid) AS visit_count
+                            FROM
+                                public.products_view
+                            GROUP BY
+                                pro_id,
+                                DATE(prov_date)
+                        )
+                        SELECT #COLUMNS#
+                        FROM T
+                        #WHERE#
+                    ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
