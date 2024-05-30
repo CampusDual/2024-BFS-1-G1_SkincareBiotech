@@ -188,7 +188,6 @@
   "SELLERS": "Sellers",
   "DELETE_CART_WARNING":"Are you sure you want to remove it from cart ?",
   "ERROR_COMPLETE_FORM":"Complete form to purchase",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "TOTAL_PRICE": "Total price",
   "ORD_PAID": "Paid",
   "NUM_UNITS": "Units",
@@ -200,5 +199,8 @@
   "PRO_NAME_OLD": "Product name",
   "OL_UNITS_OLD": "Units",
   "OL_PRICE_OLD": "Unit price",
-  "ERROR_UNPAID": "It is not possible to ship the order until it is paid for"
+  "ERROR_UNPAID": "It is not possible to ship the order until it is paid for",
+  "DATE_NOT_VALID": "Range not valid. Dates cannot overlap.",
+  "MIN_DATE_HIGHER": "Minimum date can't be higher than maximum date"
+  
 }

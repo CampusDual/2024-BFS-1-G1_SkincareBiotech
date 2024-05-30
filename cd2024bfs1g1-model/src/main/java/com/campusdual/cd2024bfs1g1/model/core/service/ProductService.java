@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IProductService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
+import com.campusdual.cd2024bfs1g1.model.core.dao.SaleDao;
 import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
@@ -24,6 +25,11 @@ public class ProductService implements IProductService {
 
     @Autowired
     private ProductDao productDao;
+
+    @Autowired
+    private SaleService saleService;
+    @Autowired
+    private SaleDao saleDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -65,9 +71,12 @@ public class ProductService implements IProductService {
     public BigDecimal getProductPriceById(Integer proId) {
         Map<String, Object> proIdMap = new HashMap<String, Object>();
         proIdMap.put(ProductDao.PRO_ID, proId);
-        List<String> attrList = List.of(ProductDao.PRO_PRICE, ProductDao.PRO_SALE);
-        EntityResult productER = productQuery(proIdMap, attrList);
-        BigDecimal sale = (BigDecimal) ((List) productER.get(ProductDao.PRO_SALE)).get(0);
+
+        List<String> proPriceList = List.of(ProductDao.PRO_PRICE);
+        List<String> salePriceList = List.of(SaleDao.ATTR_SAL_PRICE);
+        EntityResult productER = productQuery(proIdMap, proPriceList);
+        EntityResult saleER = saleService.saleQuery(proIdMap, salePriceList);
+        BigDecimal sale = (BigDecimal) ((List) saleER.get(SaleDao.ATTR_SAL_PRICE)).get(0);
         BigDecimal price = (BigDecimal) ((List) productER.get(ProductDao.PRO_PRICE)).get(0);
 
         if (sale != null) {

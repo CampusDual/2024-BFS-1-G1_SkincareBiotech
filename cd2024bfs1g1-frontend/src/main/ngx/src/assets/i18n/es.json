@@ -197,5 +197,7 @@
   "PRO_NAME_OLD": "Nombre del producto",
   "OL_UNITS_OLD": "Unidades",
   "OL_PRICE_OLD": "Precio unidad",
-  "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido"
+  "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
+  "DATE_NOT_VALID": "Rango no válido. Las fechas no se pueden solapar.",
+  "MIN_DATE_HIGHER": "La fecha mínima no puede ser menor que la máxima"
 }

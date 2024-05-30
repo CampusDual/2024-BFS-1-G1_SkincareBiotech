@@ -1,0 +1,12 @@
+<o-form attr="newSalesForm" service="sales" entity="sale" keys="SAL_ID" after-insert-mode="new">
+    <div class="add-container">
+        <div class="header-area">
+            <div class="add-details-title" >{{'ADD_SALE' | oTranslate}}</div>
+        </div>
+        <div class="content">
+          <o-currency-input attr="SAL_PRICE" label="PRO_PRICE" max-decimal-digits="2" decimal-separator="," required="yes"></o-currency-input>
+          <o-date-input attr="SAL_IDATE" label="Fecha inicio" ></o-date-input>
+          <o-date-input attr="SAL_EDATE" label="Fecha fin" ></o-date-input>
+        </div>
+    </div>
+</o-form>
