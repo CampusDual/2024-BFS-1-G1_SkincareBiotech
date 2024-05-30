@@ -17,8 +17,8 @@
                 <div>{{ ol.OL_PRICE | number: '1.2-2' }}€</div>
               </div>
               <div class="sent_container">
-                <p class="sent" *ngIf="ol.ol_sent && ol.ol_sent != undefined">{{'SENT' | oTranslate}}</p>
-                <p class="unsent" *ngIf="!ol.ol_sent">{{'UNSENT' | oTranslate}}</p>
+                <p class="sent" *ngIf="ol.OL_SENT && ol.OL_SENT != undefined">{{'SENT' | oTranslate}}</p>
+                <p class="unsent" *ngIf="!ol.OL_SENT">{{'UNSENT' | oTranslate}}</p>
               </div>
               <div class="ol_total_price">
                 <p>{{ol.OL_PRICE | number: '1.2-2' }}€ X {{ol.OL_UNITS}} <span class="units">{{'UNITS' | oTranslate}}</span> =
