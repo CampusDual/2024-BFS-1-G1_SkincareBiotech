@@ -7,13 +7,15 @@ import { OCurrencyInputComponent, OSlideToggleComponent } from 'ontimize-web-ngx
   templateUrl: './products-new.component.html',
   styleUrls: ['./products-new.component.css']
 })
-export class ProductsNewComponent {
+export class ProductsNewComponent{
 
-  @ViewChild ("proSaleToggle")
-  proSaleToggle : OSlideToggleComponent;
+  @ViewChild("proSaleToggle")
+  proSaleToggle: OSlideToggleComponent;
 
-  @ViewChild ("proSaleCurrency")
-  proSaleCurrency : OCurrencyInputComponent;
+  @ViewChild("proSaleCurrency")
+  proSaleCurrency: OCurrencyInputComponent;
+
+  public priceUser;
 
   constructor(
     private router: Router
@@ -25,14 +27,19 @@ export class ProductsNewComponent {
     }
   }
 
-  onChange(event){
-    if(!this.proSaleToggle.isChecked()){
+  onChange(event) {
+    if (!this.proSaleToggle.isChecked()) {
       this.proSaleCurrency.readOnly = true;
       this.proSaleCurrency.setValue(null);
-    }else{
+    } else {
       this.proSaleCurrency.readOnly = false;
       this.proSaleCurrency.setEnabled(this.proSaleToggle.getValue());
     }
+  }
+
+  onPriceChanged(event){
+    console.log(event);
+    this.priceUser = Number(event) /*aquí divido con el com_value*/;
   }
 
 }

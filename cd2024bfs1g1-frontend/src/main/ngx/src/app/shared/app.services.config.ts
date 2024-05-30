@@ -20,4 +20,7 @@ export const SERVICE_CONFIG: Object = {
   permissions: {
     'path': '/permissions'
   },
+  'commissions': {
+    'path': '/commissions'
+  }
 };
