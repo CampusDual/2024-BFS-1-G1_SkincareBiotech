@@ -4,7 +4,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { HashService } from 'src/app/shared/services/hash.service';
-import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',

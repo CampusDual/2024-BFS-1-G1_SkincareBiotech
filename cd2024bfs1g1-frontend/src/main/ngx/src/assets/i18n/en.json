@@ -219,5 +219,8 @@
   "PHONE_ABBR": "Ph",
   "UNITS_OF": "units of",
   "PAID": "Payment complete",
-  "UNPAID": "Unpaid balance"
+  "UNPAID": "Unpaid balance",
+  "GRAFIC_DETAILS":"Graph views per day",
+  "GRAFIC_DATE":"Date",
+  "GRAFIC_VIEW":"Views"
 }
