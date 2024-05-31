@@ -2,17 +2,19 @@
     display: flex;
     border-radius: 10px;
     background-color: white;
+    max-width: 50vw;
     min-width: 50vw;
     margin: auto;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    
 }
 
 .img-container{
-    width: 25%;
+    min-width: 200px;
+    min-height: 350px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 300px;
+    align-items: center;    
 }
 
 .img-product{
@@ -23,24 +25,33 @@
 
 .item-details-container{
     margin-left: 5%;
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .tittle{
-    font-weight: bold;
-    font-size: x-large;
-    width: 40%;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;    
+    width: 100%;    
+    height: 2em;
+    line-height: 1em; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    margin:10px; 
 }
-
-
 
 .units-container{
     display: flex;
     justify-content: center;
     width: 30%;
+    margin: 10px;
 }
 
 .item-amount{
@@ -51,8 +62,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     font-size: large;
     
 }
@@ -65,20 +76,24 @@
 }
 
 .price-container{
-    margin: 0 auto;
+    
+    margin: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 30%;
-    font-size: x-large;
+    font-size: 1.2em;
+    
 }
 
 .priceSale p span{
-    color: red;
+    color: darkgreen;    
 }
 
-.originalPrice {
+.priceSale p del {
+    color: red;
     text-decoration: line-through;
+    font-size: 0.7em;
 }
 
 .delete-container{
