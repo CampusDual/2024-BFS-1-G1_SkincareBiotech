@@ -70,11 +70,12 @@ user_genders AS (
             WHEN usr_login IN ('juan.perez', 'maria.garcia', 'luis.lopez', 'carmen.gomez') THEN CAST('2006-01-01' AS DATE)
             WHEN usr_login IN ('miguel.martinez', 'ana.ruiz', 'pedro.fernandez', 'laura.ramos') THEN CAST('1994-01-01' AS DATE)
             WHEN usr_login IN ('antonio.sanchez', 'elena.diaz', 'jorge.morales', 'marta.ortega') THEN CAST('1959-01-01' AS DATE)
-        END AS upr_birthdate
-    FROM new_users
+        END AS upr_birthdate,
+        'Calle 123' AS upr_address
+        FROM new_users
 )
-INSERT INTO usr_profile (usr_id, upr_birthdate, uge_id)
-SELECT usr_id, upr_birthdate, uge_id
+INSERT INTO usr_profile (usr_id, upr_birthdate, uge_id, upr_address)
+SELECT usr_id, upr_birthdate, uge_id, upr_address
 FROM user_genders;
 
 INSERT INTO usr_user_role (usr_id, rol_id)
@@ -114,6 +115,7 @@ FROM (
 JOIN products p ON sub.pro_id = p.pro_id;
 
 INSERT INTO public.gra_billed_age (gba_min_age,gba_max_age) VALUES
-	 (30,30),
-	 (18,18),
+	 (18,23),
+	 (24,30),
+	 (31,64),
 	 (65,65);
