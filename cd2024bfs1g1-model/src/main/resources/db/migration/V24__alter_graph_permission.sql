@@ -30,5 +30,6 @@ update public.usr_role
 	{ "attr": "data-analysis", "visible": false, "enabled": false },
 	{ "attr": "history", "visible": false, "enabled": false },
 	{ "attr": "productsPublic", "visible": false, "enabled": false },
-	{ "attr": "featuredPublic", "visible": false, "enabled": false }] }'
+	{ "attr": "featuredPublic", "visible": false, "enabled": false },
+	{"attr": "sellers", "visible": false, "enabled": false} ] }'
 	where rol_name='admin';
