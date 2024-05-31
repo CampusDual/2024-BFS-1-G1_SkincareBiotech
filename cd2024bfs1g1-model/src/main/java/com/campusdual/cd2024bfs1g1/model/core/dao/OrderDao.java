@@ -26,6 +26,7 @@ public class OrderDao extends OntimizeJdbcDaoSupport {
     public static final String QUERY_ORD_USER = "ORD_USER";
     public static final String QUERY_ORD_PRICE_USER = "ORDER_TOTAL_FOR_USER";
     public static final String QUERY_ORD_TOTAL_PRICE = "TOTAL_PRICE";
+    public static final String QUERY_ORD_LINES_VIEW = "orderLinesView";
 
 
 }
