@@ -1,8 +1,8 @@
 .full-page {
-    background-image: url('^assets/images/register_webp.webp');
-    background-position: center;
+    background-image: url('^assets/images/skinCare4_portadaRecortada.png');
+    background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -19,11 +19,11 @@
 }
  
 #botones {
-    background-color: #f8b88c;
+    background-color: #a7bfc7;
 }
  
 .flecha {
-    color: #f29a60;
+    color: #a7bfc7;
     transform: scale(3);
     margin: 5%;
     cursor: pointer;
@@ -31,12 +31,12 @@
 }
  
 .flecha:hover {
-    color: #f29a60;
+    color: #c4dde6;
     transform: scale(3.5);
 }
  
 .linea {
-    border: 1px solid #686464;
+    border: 1px solid black;
     margin: 15px;
     margin-top: 20px;
     width: 13%;
@@ -44,10 +44,18 @@
  
 .etiqueta {
     margin-bottom: 10px;
-    color: #686464;
+    color: black;
 }
 
 .mat-mdc-form-field {
     min-width: 300px;
     margin-bottom: 5px;
+}
+
+.title-register{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 2%;
+    margin-top: 5%;
+
 }

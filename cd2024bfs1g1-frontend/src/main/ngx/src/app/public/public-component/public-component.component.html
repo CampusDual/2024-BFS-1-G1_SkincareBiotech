@@ -10,8 +10,8 @@
     <o-bar-menu-item [title]="('CART_ITEMS' | oTranslate) + ' (' +cartCount+')'" icon="shopping_cart" route="/order/cart"></o-bar-menu-item>
     <o-bar-menu-item *ngIf="isLogedIn" (click)="logout()" title="LOGOUT" icon="power_settings_new"></o-bar-menu-item>
     <o-bar-menu-group title="LANGUAGE" icon="language" >
-      <o-locale-bar-menu-item locale="en" title="English"></o-locale-bar-menu-item>
-      <o-locale-bar-menu-item locale="es" title="Español"></o-locale-bar-menu-item>
+      <o-locale-bar-menu-item locale="en" title="{{'LANG_en' | oTranslate}}"></o-locale-bar-menu-item>
+      <o-locale-bar-menu-item locale="es" title="{{'LANG_es' | oTranslate}}"></o-locale-bar-menu-item>
     </o-bar-menu-group>
     <o-bar-menu-separator> </o-bar-menu-separator>
   </o-bar-menu>

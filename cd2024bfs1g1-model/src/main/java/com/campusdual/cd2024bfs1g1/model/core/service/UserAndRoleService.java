@@ -28,35 +28,37 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import com.ontimize.jee.server.security.SecurityTools;
 import com.ontimize.jee.server.security.encrypt.IPasswordEncryptHelper;
 
+import static com.campusdual.cd2024bfs1g1.model.core.utils.Utils.getUserDate;
+
 @Lazy
 @Service("UserAndRoleService")
 public class UserAndRoleService implements IUserAndRoleService {
 
-    /**
-     * The user dao.
-     */
-    @Autowired
-    private UserDao userDao;
-    /**
-     * The user roles dao.
-     */
-    @Autowired
-    private UserRoleDao userRolesDao;
-    /**
-     * The user dao.
-     */
-    @Autowired
-    private RoleDao roleDao;
-    @Autowired
-    private UserProfileDao userProfileDao;
+	/**
+	 * The user dao.
+	 */
+	@Autowired
+	private UserDao userDao;
+	/**
+	 * The user roles dao.
+	 */
+	@Autowired
+	private UserRoleDao userRolesDao;
+	/**
+	 * The user dao.
+	 */
+	@Autowired
+	private RoleDao roleDao;
+	@Autowired
+	private UserProfileDao userProfileDao;
 
-    /**
-     * The server role dao.
-     */
-    @Autowired
-    private RoleServerPermissionDao roleServerPermissionDao;
-    @Autowired
-    private DefaultOntimizeDaoHelper daoHelper;
+	/**
+	 * The server role dao.
+	 */
+	@Autowired
+	private RoleServerPermissionDao roleServerPermissionDao;
+	@Autowired
+	private DefaultOntimizeDaoHelper daoHelper;
 
     @Autowired(required = false)
     private IPasswordEncryptHelper passwordEncrypter;
@@ -257,10 +259,10 @@ public class UserAndRoleService implements IUserAndRoleService {
         return this.daoHelper.paginationQuery(this.userRolesDao, keysValues, attributes, recordNumber, startIndex, orderBy, "fullRolesWithUser");
     }
 
+    
     /*
      * (non-Javadoc)
      */
-
     @Override
     @Secured({PermissionsProviderSecured.SECURED})
     @Transactional(rollbackFor = Throwable.class)
@@ -404,22 +406,46 @@ public class UserAndRoleService implements IUserAndRoleService {
         }
     }
 
-    @Override
-    @Transactional(rollbackFor = Throwable.class)
-    public EntityResult clientRoleInsert(Map<String, Object> attributes) throws JsonProcessingException  {
-		return this.insertUserWithRole(attributes,"user");
-	}
 
 	@Override
 	@Transactional(rollbackFor = Throwable.class)
-	public EntityResult sellerRoleInsert(Map<String, Object> attributes) throws JsonProcessingException {
-		return this.insertSeller(attributes,"seller");
+	public EntityResult clientRoleInsert(Map<String, Object> attributes) throws JsonProcessingException {
+
+		Map<String, Object> usrValues = new HashMap<>(attributes);
+		Map<String, Object> usrRoleValues = new HashMap<>();
+		Map<String, Object> usrProfile = new HashMap<>();
+
+		usrValues.put(UserDao.PASSWORD, this.encryptPassword((String) attributes.get(UserDao.PASSWORD)));
+		EntityResult userValuesInsert = this.daoHelper.insert(this.userDao, usrValues);
+		Integer usrID = (Integer) userValuesInsert.get(UserDao.USR_ID);
+		usrRoleValues.put(RoleDao.ROL_NAME, "user");
+		EntityResult roleQuery = this.daoHelper.query(this.roleDao, usrRoleValues, List.of(RoleDao.ROL_ID));
+		Integer roleID = (Integer) ((List) roleQuery.get(RoleDao.ROL_ID)).get(0);
+		usrRoleValues.clear();
+		usrRoleValues.put(UserRoleDao.ROL_ID, roleID);
+		usrRoleValues.put(UserRoleDao.USR_ID, usrID);
+
+		String birthDate = Utils.getUserDate(attributes.get("UPR_BIRTHDATE"));
+		String address = (String) attributes.get("UPR_ADDRESS");
+		usrProfile.put(UserProfileDao.USR_ID, usrID);
+		usrProfile.put(UserProfileDao.UPR_BIRTHDATE, birthDate);
+		usrProfile.put(UserProfileDao.UPR_ADDRESS, address);
+		EntityResult userProfileInsert = this.daoHelper.insert(this.userProfileDao, usrProfile);
+		EntityResult userRoleInsert = this.daoHelper.insert(this.userRolesDao, usrRoleValues);
+		return userRoleInsert;
+
 	}
 
-	@Override
-	public EntityResult sellerRoleQuery(Map<?, ?> keysValues, List<?> attributes) throws OntimizeJEERuntimeException {
-		return this.daoHelper.query(this.userRolesDao, keysValues, attributes, "sellerRole");
-	}
+    @Override
+    @Transactional(rollbackFor = Throwable.class)
+    public EntityResult sellerRoleInsert(Map<String, Object> attributes) throws JsonProcessingException {
+        return this.insertSeller(attributes,"seller");
+    }
+
+    @Override
+    public EntityResult sellerRoleQuery(Map<?, ?> keysValues, List<?> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.userRolesDao, keysValues, attributes, "sellerRole");
+    }
 
     @Transactional(rollbackFor = Throwable.class)
     public EntityResult insertSeller(Map<String, Object> attributes, String role)  {
@@ -438,8 +464,8 @@ public class UserAndRoleService implements IUserAndRoleService {
         return userRoleInsert;
     }
 
-	@Transactional(rollbackFor = Throwable.class)
-	public EntityResult insertUserWithRole(Map<String, Object> attributes, String role) throws JsonProcessingException {
+    @Transactional(rollbackFor = Throwable.class)
+    public EntityResult insertUserWithRole(Map<String, Object> attributes, String role) throws JsonProcessingException {
 
         Map<String, Object> usrValues = new HashMap<>(attributes);
         Map<String, Object> usrRoleValues = new HashMap<>();
@@ -465,16 +491,19 @@ public class UserAndRoleService implements IUserAndRoleService {
 
     }
 
-    protected boolean checkPasswords(final String storedPassword, final String password) throws OntimizeJEERuntimeException {
-        if (this.passwordEncrypter == null) {
-            return (password != null && storedPassword.equals(password));
-        } else {
-            try {
-                this.passwordEncrypter.checkPasswords(storedPassword, password);
-                return true;
-            } catch (final Exception e) {
-                return false;
-            }
-        }
+
+	protected boolean checkPasswords(final String storedPassword, final String password) throws OntimizeJEERuntimeException {
+		if (this.passwordEncrypter == null) {
+			return (password != null && storedPassword.equals(password));
+		} else {
+			try {
+				this.passwordEncrypter.checkPasswords(storedPassword, password);
+				return true;
+			} catch (final Exception e) {
+				return false;
+			}
+		}
     }
+
+
 }

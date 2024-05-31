@@ -5,6 +5,9 @@ export const SERVICE_CONFIG: Object = {
   'products': {
     'path': '/products',
   },
+  'profiles': {
+    'path': '/profiles',
+  },
   'orders': {
     'path': '/orders',
   },
@@ -19,6 +22,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'billed-ages': {
     'path': '/billed-ages',
+  },
+  'product-genders': {
+    'path': '/product-genders',
   },
   permissions: {
     'path': '/permissions'
