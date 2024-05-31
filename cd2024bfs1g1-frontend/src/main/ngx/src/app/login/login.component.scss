@@ -54,11 +54,11 @@
     overflow: auto;
 
     .login-bg-container {
-      background-image: url('^assets/images/skinCare3_portada.png');
+      background-image: url('^assets/images/skinCare3_portadaRecortada.png');
       width: calc(100% - 640px);
       background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
+      background-size: 100% 100%;
+      background-position: center center;
       position: relative;
       z-index: 1;
     }

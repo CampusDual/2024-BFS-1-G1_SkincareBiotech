@@ -166,5 +166,6 @@
   "CART_ITEMS": "My cart",
   "DELETE_CART_WARNING":"Are you sure you want to remove it from cart ?",
   "ERROR_COMPLETE_FORM":"Complete form to purchase",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces"
+  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
+  "title_register": "Create your account:"
 }

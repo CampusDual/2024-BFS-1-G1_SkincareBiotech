@@ -1,6 +1,9 @@
 <div class="full-page">
     <mat-icon class="flecha" routerLink="/login">arrow_back</mat-icon>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="title-register">
+            <mat-label>{{ 'title_register' | oTranslate }}</mat-label>
+        </div>
         <mat-form-field class="register-field">
             <mat-label>{{ 'usr_login' | oTranslate }}</mat-label>
             <input matInput class="mat-input" #user id="usr_login" [formControl]="userCtrl">

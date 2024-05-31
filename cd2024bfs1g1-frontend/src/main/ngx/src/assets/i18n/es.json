@@ -164,5 +164,6 @@
   "CART_ITEMS": "Mi cesta",
   "DELETE_CART_WARNING":"Esta seguro que quiere eliminar del carrito?",
   "ERROR_COMPLETE_FORM":"Rellena el formulario para finalizar pedido",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios"
+  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
+  "title_register": "Crea tu cuenta:"
 }
