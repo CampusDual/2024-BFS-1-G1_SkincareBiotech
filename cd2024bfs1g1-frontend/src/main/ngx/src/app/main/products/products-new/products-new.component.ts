@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
 
@@ -7,7 +7,7 @@ import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 
   templateUrl: './products-new.component.html',
   styleUrls: ['./products-new.component.css']
 })
-export class ProductsNewComponent {
+export class ProductsNewComponent implements OnInit{
 
   @ViewChild("proSaleToggle")
   proSaleToggle: OSlideToggleComponent;
@@ -20,10 +20,10 @@ export class ProductsNewComponent {
 
   service: OntimizeService;
 
-  private commissionPlataform;
-  private commissionRedSys;
+  commissionPlataform: number;
+  commissionRedSys: number;
 
-  public priceUser;
+  public priceUser: number;
 
   constructor(
     private router: Router,
@@ -31,7 +31,18 @@ export class ProductsNewComponent {
   ) {
     this.service = this.injector.get(OntimizeService)
   }
-
+  ngOnInit(){
+    const conf = this.service.getDefaultServiceConfiguration('commissions');
+      this.service.configureService(conf);
+      this.service.query({}, ["COM_NAME","COM_VALUE"], "commission")
+        .subscribe((data) => {
+          if (data.data.length > 0) {
+            this.commissionRedSys = data.data.find((element) => (element.COM_NAME === "Redsys_commissions")).COM_VALUE;            
+            this.commissionPlataform = data.data.find((element) => (element.COM_NAME === "Plataform_commissions")).COM_VALUE;
+          }
+        })
+      this.priceUser = 0;
+  }
   onInsert(success: boolean) {
     if (success) {
       this.router.navigate(['/main/products']);
@@ -42,44 +53,19 @@ export class ProductsNewComponent {
     if (!this.proSaleToggle.isChecked()) {
       this.proSaleCurrency.readOnly = true;
       this.proSaleCurrency.setValue(null);
+      this.proPriceCurrency.readOnly = false;
     } else {
       this.proSaleCurrency.readOnly = false;
-      this.proSaleCurrency.setEnabled(this.proSaleToggle.getValue());
+      this.proSaleCurrency.enabled = this.proSaleToggle.getValue();     
+      this.proPriceCurrency.readOnly = true;
     }
   }
 
-
-  onPriceChanged(event) {
-    if (!event) {
-      this.priceUser = 0;
+  onInputChanged(event){
+    if (!this.proSaleToggle.isChecked()) {
+      this.priceUser = (this.proPriceCurrency.getValue() / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
     } else {
-      const conf = this.service.getDefaultServiceConfiguration('commissions');
-      this.service.configureService(conf);
-      this.service.query({}, ["COM_VALUE"], "commission")
-        .subscribe((data) => {
-          if (data.data.length > 0) {
-            const commissionRedSys = data.data[0];
-            const commissionPlataform = data.data[1];
-            this.priceUser = Number(event) + (Number(event) * (commissionPlataform.COM_VALUE / 100));
-            this.priceUser = this.priceUser + (this.priceUser * (commissionRedSys.COM_VALUE / 100));
-            this.priceUser = parseFloat(this.priceUser.toFixed(2));
-          }
-        })
+      this.priceUser = (this.proSaleCurrency.getValue() / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
     }
-  }
-
-  onSaleChanged(event) {
-      const conf = this.service.getDefaultServiceConfiguration('commissions');
-      this.service.configureService(conf);
-      this.service.query({}, ["COM_VALUE","COM_NAME"], "commission")
-        .subscribe((data) => {
-          if (data.data.length > 0) {
-            const commissionRedSys = data.data[0];
-            const commissionPlataform = data.data[1];
-            this.priceUser = Number(event) + (Number(event) * (commissionPlataform.COM_VALUE / 100));
-            this.priceUser = this.priceUser + (this.priceUser * (commissionRedSys.COM_VALUE / 100));
-            this.priceUser = parseFloat(this.priceUser.toFixed(2));
-          }
-        })
   }
 }
