@@ -81,6 +81,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   }
   updateTotalAmount( ) {
     let totalAmount = 0;
+    this.updateCard();
     this.products.forEach(product => {
       const cartItem = this.cart.find(item => item.id === product.PRO_ID);
       if (cartItem) {
@@ -88,9 +89,8 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
         const price = product.PRO_SALE || product.PRO_PRICE;
         totalAmount += price * units; 
       }
-    });1
+    });
      this.totalAmount = totalAmount;
-     this.updateCard();
   }
   updateCard(){
     this.cart = this.cartService.getCart();

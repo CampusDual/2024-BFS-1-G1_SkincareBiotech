@@ -4,6 +4,7 @@ import { NewOrderComponent } from './new-order/new-order.component';
 import { NewOrderDetailsComponent } from './new-order-details/new-order-details.component';
 import { OrderRejectedComponent } from './order-rejected/order-rejected.component';
 import { OrdersHistoryComponent } from './orders-history/orders-history.component';
+import { ProductDetailComponent } from '../public-products/product-detail/product-detail.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'history/:ORD_ID',
     component: NewOrderDetailsComponent
+  },
+  {
+    path: 'history/:ORD_ID/:PRO_ID',
+    redirectTo: '/:PRO_ID',
   }
 ];
 
