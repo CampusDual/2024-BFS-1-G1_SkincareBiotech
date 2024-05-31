@@ -32,23 +32,42 @@
             <Sentence>
                 <![CDATA[
                     WITH price_age AS (
-                        SELECT ROUND(SUM(OL_PRICE * OL_UNITS):: numeric, 2) AS TOTAL_PRICE , DATE_PART('year', AGE(ORD_DATE, UPR_BIRTHDATE)) as AGE
-                        FROM ${mainschema}.ORDERS AS O
-                        JOIN ${mainschema}.ORD_LINES AS OL ON O.ORD_ID = OL.ORD_ID
-                        JOIN ${mainschema}.USR_PROFILE AS UP ON O.ORD_CLIENT_ID = UP.USR_ID
-                        WHERE O.ORD_PAID = true
-                        GROUP BY AGE
+                        SELECT
+                            ROUND(SUM(OL.OL_PRICE * OL.OL_UNITS)::numeric, 2) AS TOTAL_PRICE,
+                            DATE_PART('year', AGE(O.ORD_DATE, UP.UPR_BIRTHDATE)) AS AGE,
+                            UP.UGE_ID
+                        FROM
+                            ${mainschema}.ORDERS AS O
+                            JOIN ${mainschema}.ORD_LINES AS OL ON O.ORD_ID = OL.ORD_ID
+                            JOIN ${mainschema}.USR_PROFILE AS UP ON O.ORD_CLIENT_ID = UP.USR_ID
+                        WHERE
+                            O.ORD_PAID = true
+                        GROUP BY
+                            DATE_PART('year', AGE(O.ORD_DATE, UP.UPR_BIRTHDATE)), UP.UGE_ID
                     ),
-                    age_ranges AS(
-                        SELECT GBA.*, CONCAT_WS(' - ',GBA_MIN_AGE,GBA_MAX_AGE) AS AGE_RANGE, coalesce(sum(price_age.total_price),0) AS TOTAL
-                        FROM ${mainschema}.GRA_BILLED_AGE AS GBA
-                        LEFT JOIN price_age on price_age.age BETWEEN GBA_MIN_AGE and GBA_MAX_AGE
-                        GROUP BY GBA_ID
+                    age_ranges AS (
+                        SELECT
+                            GBA.GBA_ID,
+                            CONCAT_WS(' - ', GBA.GBA_MIN_AGE, GBA.GBA_MAX_AGE) AS AGE_RANGE,
+                            SUM(CASE WHEN price_age.UGE_ID = 1 THEN price_age.TOTAL_PRICE ELSE 0 END) AS MAN,
+                            SUM(CASE WHEN price_age.UGE_ID = 2 THEN price_age.TOTAL_PRICE ELSE 0 END) AS WOMAN,
+                            SUM(CASE WHEN price_age.UGE_ID = 3 THEN price_age.TOTAL_PRICE ELSE 0 END ) AS OTHER,
+                            SUM(CASE WHEN price_age.UGE_ID = 4 THEN price_age.TOTAL_PRICE ELSE 0 END) AS PNA,
+                            GBA.GBA_MIN_AGE,
+                            GBA.GBA_MAX_AGE
+                        FROM
+                            ${mainschema}.GRA_BILLED_AGE AS GBA
+                            LEFT JOIN price_age ON price_age.AGE BETWEEN GBA.GBA_MIN_AGE AND GBA.GBA_MAX_AGE
+                        GROUP BY
+                            GBA.GBA_ID, GBA.GBA_MIN_AGE, GBA.GBA_MAX_AGE
                     )
-                    SELECT #COLUMNS#
-                    FROM age_ranges
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        age_ranges
                     #WHERE#
-                    ORDER BY GBA_MIN_AGE
+                    ORDER BY
+                        GBA_MIN_AGE
                 ]]>
             </Sentence>
         </Query>

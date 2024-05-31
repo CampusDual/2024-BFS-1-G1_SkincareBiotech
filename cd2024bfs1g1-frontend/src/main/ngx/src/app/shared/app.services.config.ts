@@ -20,6 +20,9 @@ export const SERVICE_CONFIG: Object = {
   'billed-ages': {
     'path': '/billed-ages',
   },
+  'user-genders': {
+    'path': '/user-genders',
+  },
   permissions: {
     'path': '/permissions'
   },

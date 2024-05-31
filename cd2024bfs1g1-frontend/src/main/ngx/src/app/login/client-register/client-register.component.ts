@@ -1,6 +1,5 @@
-import { Component, Inject, Injector, OnInit } from '@angular/core';
+import { Component, Inject, Injector, Input, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService, OTranslateService, OUserInfoService, OntimizeService, ServiceResponse } from 'ontimize-web-ngx';
 import { MainService } from 'src/app/shared/services/main.service';
@@ -55,7 +54,9 @@ export class ClientRegisterComponent implements OnInit {
     Validators.required,
   ]);
 
+  @Input() item: any;
   service: OntimizeService;
+  gender: any = {};
   redirect = '';
   adminRole = 'admin';
   userRole = 'user';
@@ -75,7 +76,6 @@ export class ClientRegisterComponent implements OnInit {
     @Inject(MainService) private mainService: MainService,
     @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
     @Inject(UserInfoService) private userInfoService: UserInfoService,
-    @Inject(DomSanitizer) private domSanitizer: DomSanitizer
   ) {
     this.service = this.injector.get(OntimizeService)
     this.translate = this.injector.get(OTranslateService);
@@ -91,6 +91,20 @@ export class ClientRegisterComponent implements OnInit {
     this.registerForm.addControl('usr_email', this.userEmailCtrl);
     this.registerForm.addControl('usr_phone', this.userPhoneCtrl);
     this.registerForm.addControl('uge_id', this.userGenderCtrl);
+
+    const conf = this.service.getDefaultServiceConfiguration('user-genders');
+    console.log(conf);
+    this.service.configureService(conf);
+    this.service.query({}, ["UGE_ID", "UGE_NAME"], "userGender")
+      .subscribe((data) => {
+        console.log(data);
+        if (data.data.length > 0) {
+          this.gender = data.data[0];
+          
+        }
+      });
+
+
   }
 
   register() {
