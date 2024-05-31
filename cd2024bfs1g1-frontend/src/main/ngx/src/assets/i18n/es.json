@@ -204,7 +204,6 @@
   "PRO_NAME_OLD": "Nombre del producto",
   "OL_UNITS_OLD": "Unidades",
   "OL_PRICE_OLD": "Precio unidad",
-  "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
   "UNITS_ABBR": "uds",
   "TOTAL": "Total",
   "ORD_ADDRESS_INFO": "Dirección de envío",
@@ -213,6 +212,5 @@
   "PAID": "Pago realizado",
   "UNPAID": "Pendiente de pago",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
   "SLOGAN": "Descubre productos excepcionales para tu cuidado personal"
 }

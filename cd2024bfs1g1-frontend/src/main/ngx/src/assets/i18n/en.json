@@ -177,7 +177,6 @@
   "RANGE_NOT_VALID": "Range not valid. Ages cannot overlap.",
   "AGE_GRAPH": "Age ranges",
   "SETTINGS": "Settings",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "USR_NAME": "Name",
   "USR_LOGIN": "User",
   "USR_SURNAME": "Surname",
