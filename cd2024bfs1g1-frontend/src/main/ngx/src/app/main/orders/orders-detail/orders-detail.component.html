@@ -2,19 +2,21 @@
     show-header-navigation="no">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'ORDER_INFORMATION' | oTranslate }}">
-            <div class="ordInfo-container flex-container">
-                <o-text-input attr="ORD_ID" sql-type="INTEGER" read-only="yes"></o-text-input>
-                <o-date-input attr="ORD_DATE" read-only="yes"></o-date-input>
-            </div>
-            <div class="userInfo-container flex-container">
-                <o-text-input attr="ORD_NAME" read-only="yes"></o-text-input>
-                <o-text-input attr="ORD_ZIPCODE" read-only="yes"></o-text-input>
-                <o-text-input attr="ORD_ADDRESS" read-only="yes"></o-text-input>
-                <o-text-input attr="ORD_PHONE" read-only="yes"></o-text-input>
-            </div>
-            <div class="ordPayInfo-container flex-container">
-                <o-currency-input attr="TOTAL_PRICE" read-only="yes"></o-currency-input>
-                <o-text-input attr="ORD_PAID" read-only="yes"></o-text-input>
+            <div class="main-container">
+                <div class="ordInfo-container flex-container">
+                    <o-text-input attr="ORD_ID" sql-type="INTEGER" read-only="yes"></o-text-input>
+                    <o-date-input attr="ORD_DATE" read-only="yes"></o-date-input>
+                </div>
+                <div class="userInfo-container flex-container">
+                    <o-text-input attr="ORD_NAME" read-only="yes"></o-text-input>
+                    <o-text-input attr="ORD_ZIPCODE" read-only="yes"></o-text-input>
+                    <o-text-input attr="ORD_ADDRESS" read-only="yes"></o-text-input>
+                    <o-text-input attr="ORD_PHONE" read-only="yes"></o-text-input>
+                </div>
+                <div class="ordPayInfo-container flex-container">
+                    <o-currency-input attr="TOTAL_PRICE" read-only="yes"></o-currency-input>
+                    <o-text-input attr="ORD_PAID" read-only="yes"></o-text-input>
+                </div>
             </div>
         </mat-tab>
         <mat-tab label="{{ 'ORDERLINES_TABLE' | oTranslate }}">

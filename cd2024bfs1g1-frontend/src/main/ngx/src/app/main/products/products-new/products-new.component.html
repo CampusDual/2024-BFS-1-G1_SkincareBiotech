@@ -1,21 +1,21 @@
 <o-form attr="productsForm" service="products" entity="product" PRO_ID="PRO_ID" after-insert-mode="new"
     (afterInsert)="onInsert($event)">
-    <div class="add-container">
-        <div class="header-area">
-            <div class="add-details-title">{{'ADD_PRODUCT' | oTranslate}}</div>
-        </div>
-        <div class="content">
-            <o-image id="image" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
-            <div class="info">
-                <div class="name">
-                    <o-text-input attr="PRO_NAME" step="0" grouping="no" required="yes"></o-text-input>
+    <div class="main-container">
+        <span class="title-container"><h3>{{'ADD_PRODUCT' | oTranslate}}</h3></span>
+        <div class="body-container">
+            <div class="image-container">
+                <o-image id="image" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
+            </div>
+            <div class="details-container">
+                <div class="details-row">
                     <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
                 </div>
-                <div class="prices">
-                    <o-real-input attr="PRO_PRICE" required="yes" max-decimal-digits="2" min-decimal-digits="2"
-                        decimal-separator=","></o-real-input>
+                <div class="details-row">
+                    <o-text-input attr="PRO_NAME" step="0" grouping="no" required="yes"></o-text-input>
+                    <o-currency-input attr="PRO_PRICE" required="yes" max-decimal-digits="2"
+                        decimal-separator=","></o-currency-input>
                 </div>
-                <div class="filter">
+                <div class="details-row">
                     <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
                         columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID" required="yes"
                         null-selection="no"></o-combo>
@@ -26,7 +26,7 @@
                         columns="PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" required="yes"
                         null-selection="no" translate="yes"></o-combo>
                 </div>
-                <div class="description">
+                <div class="details-row">
                     <o-textarea-input attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
                 </div>
             </div>

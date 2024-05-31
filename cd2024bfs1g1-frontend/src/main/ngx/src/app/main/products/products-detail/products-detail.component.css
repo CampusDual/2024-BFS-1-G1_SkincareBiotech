@@ -1,60 +1,53 @@
-.add-container {
+.main-container {
     display: flex;
-    flex-direction: column;
-    padding: 50px;
+    justify-content: center;
     align-items: center;
-    width: 70vw;
-    background-color: white;
-}
-.header-area{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+    gap: 20px;
+    margin: auto;
+    max-width: 100%;
+    background-color: #fff;
+    padding-top: 55px;
+    padding-bottom: 45px;
 }
 
-.add-details-title {
-    font-weight: bold;
-    font-size: 24px;
-    padding: 20px;   
-}
-.content{
+.image-container, .details-container {
     display: flex;
-    flex-direction: row;
-    gap: 50px;
-    margin-left:50px;
+    flex-direction: column;
+    flex: 1; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    max-height: 500px;
+    max-width: 400px;
+}
+
+#pro-image {
+    max-height: 500px;
+    max-width: 400px;
+    
+}
+
+.details-container {
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 700px;
+}
+
+.details-row {
+    display: flex;
+    gap: 10px; 
+    align-items: center; 
     width: 100%;
-    align-items: center;
-}
-#image{
-    max-width: 30%;
-}
-.info{
-    display: flex;
-    flex-direction: column;
-    max-width: 70%;
-}
-.name{
-    display: grid;
-    grid-template-columns: 90% 10%;
-    gap:10px;
-    margin:10px;
-}
-.prices {
-    display: grid;
-    grid-template-columns: 45% 45% 10%;
-    gap:5px;
-    margin:10px;
-}
-.filter{
-    display: grid;
-    grid-template-columns: 45% 45%;
-    gap:10px;
-    margin:10px;
-}
-.description{
-    width: calc(90% - 10px);
-    margin:10px;
+    margin: 5px auto;
 }
 
-
-
+.details-row o-combo,
+.details-row o-text-input,
+.details-row o-currency-input,
+.details-row o-textarea-input {
+    flex: 1;
+}
