@@ -49,14 +49,13 @@ export class CartItemComponent implements OnInit {
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
-  /*
-    get price() {
-      return this.product.PRO_PRICE?.toFixed(2);
-    }
-    get sale() {
-      return this.product.PRO_SALE?.toFixed(2);
-    }
-    */
+
+  get price() {
+    return this.product.PRO_PRICE?.toFixed(2);
+  }
+  get sale() {
+    return this.product.PRO_SALE?.toFixed(2);
+  }
   public itemAmount(product: any): any {
     return product.PRO_PRICE * this.item.units;
   }

@@ -15,7 +15,7 @@ public class SaleDao extends OntimizeJdbcDaoSupport {
 
     public static final String ATTR_SAL_ID = "SAL_ID";
     public static final String ATTR_SAL_PRICE = "SAL_PRICE";
-    public static final String ATTR_SAL_IDATE = "SAL_IDATE";
-    public static final String ATTR_SAL_EDATE = "SAL_EDATE";
+    public static final String ATTR_SAL_INITIAL_DATE = "SAL_INITIAL_DATE";
+    public static final String ATTR_SAL_END_DATE = "SAL_END_DATE";
     public static final String ATTR_PRO_ID = "PRO_ID";
 }

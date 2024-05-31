@@ -13,12 +13,21 @@
     </UpdateKeys>
     <GeneratedKey>pro_id</GeneratedKey>
     <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT #COLUMNS#
+                    FROM ${mainschema}.PRODUCTS_WITH_OFFER
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="PRO_ENABLED">
             <Sentence>
-            <![CDATA[
+                <![CDATA[
                 WITH ENABLED_CHECKER AS (
                     SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS PRO_REAL_PRICE
-                    FROM ${mainschema}.PRODUCTS AS P
+                    FROM ${mainschema}.PRODUCTS_WITH_OFFER AS P
                     INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
                     WHERE PRO_ENABLED = TRUE
                 )
@@ -26,7 +35,7 @@
                 FROM ENABLED_CHECKER
                 #WHERE#
             ]]>
-        </Sentence>
+            </Sentence>
         </Query>
 
         <Query id="pro_featured">
@@ -38,7 +47,7 @@
                             FROM ${mainschema}.ORD_LINES AS ol
            			        WHERE ol.pro_id = p.pro_id
                         ) AS AMMOUNT_OF_SALES
-                        FROM ${mainschema}.PRODUCTS AS p
+                        FROM ${mainschema}.PRODUCTS_WITH_OFFER AS p
                         WHERE pro_enabled = TRUE
                     )
                 SELECT #COLUMNS#

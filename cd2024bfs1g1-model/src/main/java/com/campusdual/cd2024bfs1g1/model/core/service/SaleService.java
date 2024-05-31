@@ -28,9 +28,9 @@ public class SaleService implements ISaleService {
 
     @Override
     public EntityResult saleInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        Date fechaInicio = (Date) attrMap.get(SaleDao.ATTR_SAL_IDATE);
+        Date fechaInicio = (Date) attrMap.get(SaleDao.ATTR_SAL_INITIAL_DATE);
         long minDate = fechaInicio.getTime();
-        Date fechaFin = (Date) attrMap.get((SaleDao.ATTR_SAL_EDATE));
+        Date fechaFin = (Date) attrMap.get((SaleDao.ATTR_SAL_END_DATE));
         long maxDate = fechaFin.getTime();
         int productId = (int) attrMap.get(SaleDao.ATTR_PRO_ID);
 
@@ -42,7 +42,7 @@ public class SaleService implements ISaleService {
             return result;
         } else {
             Map<String, Object> queryKeys = new HashMap<>();
-            List<String> queryAttributes = Arrays.asList(SaleDao.ATTR_SAL_ID, SaleDao.ATTR_SAL_IDATE, SaleDao.ATTR_SAL_EDATE,SaleDao.ATTR_PRO_ID);
+            List<String> queryAttributes = Arrays.asList(SaleDao.ATTR_SAL_ID, SaleDao.ATTR_SAL_INITIAL_DATE, SaleDao.ATTR_SAL_END_DATE,SaleDao.ATTR_PRO_ID);
 
             EntityResult existingRanges = this.daoHelper.query(this.saleDao, queryKeys, queryAttributes);
 

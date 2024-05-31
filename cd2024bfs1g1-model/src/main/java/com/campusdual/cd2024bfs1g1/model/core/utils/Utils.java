@@ -71,8 +71,8 @@ public class Utils {
 
         for (int i = 0; i < recordCount; i++) {
             if ((int) existingRanges.getRecordValues(i).get(SaleDao.ATTR_PRO_ID) == productId) {
-                Date fechaInicio = (Date) existingRanges.getRecordValues(i).get(SaleDao.ATTR_SAL_IDATE);
-                Date fechaFin = (Date) existingRanges.getRecordValues(i).get((SaleDao.ATTR_SAL_EDATE));
+                Date fechaInicio = (Date) existingRanges.getRecordValues(i).get(SaleDao.ATTR_SAL_INITIAL_DATE);
+                Date fechaFin = (Date) existingRanges.getRecordValues(i).get((SaleDao.ATTR_SAL_END_DATE));
 
                 long minRecord = fechaInicio.getTime();
                 long maxRecord = fechaFin.getTime();
@@ -85,7 +85,7 @@ public class Utils {
                 return true;
             }
         }
-        return false;
+        return true;
     }
 
 }
