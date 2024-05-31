@@ -1,35 +1,45 @@
-<o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
-    show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="onDataLoaded($event)">
-    <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
-    <div class="add-container">
-        <div class="header-area">
-            <div class="add-details-title">{{'DETAIL_PRODUCT' | oTranslate}}</div>
-        </div>
-        <div class="content">
+<mat-tab-group fxFlex>
+    <mat-tab label="{{'PRO_DETAILS' | oTranslate}}">
+        <o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
+            show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="onDataLoaded($event)">
+            <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
+            <div class="add-container">
+                <div class="header-area">
+                    <div class="add-details-title">{{'DETAIL_PRODUCT' | oTranslate}}</div>
+                </div>
+                <div class="content">
             <o-image id="image" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
-            <div class="info">
-                <div class="name">
-                    <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
-                    <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
-                </div>
-                <div class="prices">
-                    <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
-                    <o-currency-input #proSaleCurrency attr="PRO_SALE" label="PRO_SALE"
-                        required="no"></o-currency-input>
-                    <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE"
-                        label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
-                </div>
-                <div class="filter">
+                    <div class="info">
+                        <div class="name">
+                            <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
+                            <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+                        </div>
+                        <div class="prices">
+                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
+                            <o-currency-input #proSaleCurrency attr="PRO_SALE" label="PRO_SALE"
+                                required="no"></o-currency-input>
+                            <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE"
+                                label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
+                        </div>
+                        <div class="filter">
                     <o-combo  attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
-                    columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
-                <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
-                    columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
-                    null-selection="no"></o-combo>
-                </div>
-                <div class="description">
-                    <o-textarea-input attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
+                                columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
+                            <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
+                                columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
+                                null-selection="no"></o-combo>
+                        </div>
+                        <div class="description">
+                            <o-textarea-input attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</o-form>
+        </o-form>
+    </mat-tab>
+    <mat-tab label="{{ 'SKIN_TYPES' | oTranslate }}">
+        <o-table attr="skintypesTable" service="skintypes" entity="skintype" keys="SKIN_ID" 
+            columns="SKIN_ID;SKIN_NAME" visible-columns="SKIN_NAME" query-rows="5" delete-button="no" detail-mode="yes">
+            <o-table-column attr="SKIN_NAME" title="SKIN_NAME" width="100px"></o-table-column>
+        </o-table>
+    </mat-tab>
+</mat-tab-group>
