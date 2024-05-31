@@ -14,7 +14,7 @@
 }
 
 #boton_registro, #boton_crear {
-  background-color: #f8b88c;
+  background-color: #a7bfc7;
 }
 
 #pie {
@@ -22,7 +22,7 @@
 }
 
 .flecha {
-  color: #f29a60;
+  color: #a7bfc7;
   transform: scale(1.5);
   margin: 5%;
   cursor: pointer;
@@ -30,7 +30,7 @@
 }
 
 .flecha:hover {
-  color: #f29a60;
+  color: #587580;
   transform: scale(1.9);
 }
 
@@ -54,11 +54,11 @@
     overflow: auto;
 
     .login-bg-container {
-      background-image: url('^assets/images/skinCare1_portada.png');
+      background-image: url('^assets/images/skinCare3_portadaRecortada.png');
       width: calc(100% - 640px);
       background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
+      background-size: 100% 100%;
+      background-position: center center;
       position: relative;
       z-index: 1;
     }
@@ -89,15 +89,6 @@
           min-width: 368px;
         }
 
-        .logo-container {
-          width: 368px;
-          height: 110px;
-
-          img {
-            max-height: 110px;
-            max-width: 368px;
-          }
-        }
 
         .session-expired {
           text-align: center;
@@ -158,6 +149,15 @@
 
   }
 
+}
+
+.logo-container{
+  display: flex; 
+}
+
+.logo-login{
+  max-width: 30%;
+  margin-left: 33%;
 }
 
 @media(max-width:576px) {

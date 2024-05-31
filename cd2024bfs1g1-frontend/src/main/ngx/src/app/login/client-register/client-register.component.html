@@ -1,6 +1,9 @@
 <div class="full-page">
     <mat-icon class="flecha" routerLink="/login">arrow_back</mat-icon>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="title-register">
+            <mat-label>{{ 'title_register' | oTranslate }}</mat-label>
+        </div>
         <mat-form-field class="register-field">
             <mat-label>{{ 'usr_login' | oTranslate }}</mat-label>
             <input matInput class="mat-input" #user id="usr_login" [formControl]="userCtrl">
@@ -131,11 +134,11 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <button mat-raised-button style="background-color: #f8b88c;" type="submit">{{ 'REGISTER' | oTranslate
+        <button mat-raised-button style="background-color: #a7bfc7;" type="submit">{{ 'REGISTER' | oTranslate
             }}</button>
         <div class="linea"></div>
         <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate }}</label>
-        <button mat-raised-button style="background-color: #f8b88c;" routerLink="/login">{{ 'LOGIN' | oTranslate
+        <button mat-raised-button style="background-color: #a7bfc7;" routerLink="/login">{{ 'LOGIN' | oTranslate
             }}</button>
     </form>
 </div>
