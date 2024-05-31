@@ -55,6 +55,11 @@
     width: calc(90% - 10px);
     margin:10px;
 }
-
-
-
+.price-label {
+    font-weight: bold;
+    padding: 5px;
+}
+.price-message {
+    padding: 5px;
+    text-align: center;
+}

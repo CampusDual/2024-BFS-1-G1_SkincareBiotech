@@ -13,18 +13,23 @@
                     <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
                 </div>
                 <div class="prices">
-                    <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
+                    <o-currency-input #proPriceCurrency attr="PRO_PRICE" label="PRO_PRICE" required="yes"
+                        max-decimal-digits="2" min-decimal-digits="2" (onChange)="onInputChanged($event)"></o-currency-input>
                     <o-currency-input #proSaleCurrency attr="PRO_SALE" label="PRO_SALE"
-                        required="no"></o-currency-input>
+                        required="no" (onChange)="onInputChanged($event)"></o-currency-input>
                     <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE"
                         label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
+                    <div class="price-message">
+                        <p>{{ 'PRICE_USER_MESSAGE' | oTranslate }}: <label class="price-label">{{ priceUser |
+                                number:"1.2-2" }}</label></p>
+                    </div>
                 </div>
                 <div class="filter">
-                    <o-combo  attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
-                    columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
-                <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
-                    columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
-                    null-selection="no"></o-combo>
+                    <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
+                        columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
+                    <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
+                        columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
+                        null-selection="no"></o-combo>
                     <o-combo attr="PGE_ID" service="product-genders" entity="productGender" keys="PGE_ID"
                         columns="PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" required="yes"
                         null-selection="no" translate="yes"></o-combo>
