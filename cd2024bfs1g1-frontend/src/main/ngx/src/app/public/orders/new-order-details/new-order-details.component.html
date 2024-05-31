@@ -12,9 +12,11 @@
               <img class="img-product" [src]="getImageSrc(ol.PRO_IMAGE)" alt="imagen">
             </div>
             <div class="ol-details">
-              <div class="ol_data" routerLink="{{ol.PRO_ID}}">
-                <div>{{ ol.PRO_NAME }}</div>
-                <div>{{ ol.OL_PRICE | number: '1.2-2' }}€</div>
+              <div class="ol_data_container" routerLink="{{ol.PRO_ID}}">
+                <div class="ol_data">
+                  <div>{{ ol.PRO_NAME }}</div>
+                  <div>{{ ol.OL_PRICE | number: '1.2-2' }}€</div>
+                </div>
               </div>
               <div class="sent_container">
                 <p class="sent" *ngIf="ol.OL_SENT && ol.OL_SENT != undefined">{{'SENT' | oTranslate}}</p>
