@@ -56,17 +56,11 @@ export class ClientRegisterComponent implements OnInit {
 
   @Input() item: any;
   service: OntimizeService;
-  gender: any = {};
+  genderData: any = {};
   redirect = '';
   adminRole = 'admin';
   userRole = 'user';
   sellerRole = 'seller';
-  genderData = [
-    { 'UGE_ID': 1, 'UGE_NAME': 'MAN' },
-    { 'UGE_ID': 2, 'UGE_NAME': 'WOMAN' },
-    { 'UGE_ID': 3, 'UGE_NAME': 'OTHER' },
-    { 'UGE_ID': 4, 'UGE_NAME': 'PREFER_NOT_ANSWER' },
-  ];
 
   constructor(
     private router: Router,
@@ -93,18 +87,13 @@ export class ClientRegisterComponent implements OnInit {
     this.registerForm.addControl('uge_id', this.userGenderCtrl);
 
     const conf = this.service.getDefaultServiceConfiguration('user-genders');
-    console.log(conf);
     this.service.configureService(conf);
     this.service.query({}, ["UGE_ID", "UGE_NAME"], "userGender")
       .subscribe((data) => {
-        console.log(data);
         if (data.data.length > 0) {
-          this.gender = data.data[0];
-          
+          this.genderData = data.data;
         }
       });
-
-
   }
 
   register() {

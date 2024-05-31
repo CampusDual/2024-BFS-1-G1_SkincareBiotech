@@ -183,5 +183,5 @@
   "MAN": "Man",
   "WOMAN": "Woman",
   "OTHER": "Other",
-  "PREFER_NOT_ANSWER": "I would rather not answer"
+  "RATHER_NOT_ANSWER": "I would rather not answer"
 }

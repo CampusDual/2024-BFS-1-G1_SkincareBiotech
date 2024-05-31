@@ -7,5 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface IUserGenderService {
-    EntityResult userGenderQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+    public EntityResult userGenderQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
 }
