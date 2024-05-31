@@ -92,7 +92,7 @@
   "PRO_NAME": "Nombre",
   "PRO_NAME_COMPLETE": "Nombre del producto",
   "PRO_DESCRIPTION": "Descripción",
-  "PRO_PRICE":"Precio (esperado)",
+  "PRO_PRICE":"Precio",
   "PRO_ENABLED":"Visible",
   "IMAGE":"Imagen",
   "PRO_IMAGE":"Imagen",
@@ -199,5 +199,6 @@
   "PRO_NAME_OLD": "Nombre del producto",
   "OL_UNITS_OLD": "Unidades",
   "OL_PRICE_OLD": "Precio unidad",
-  "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido"
+  "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
+  "PRICE_USER_MESSAGE": "El usuario pagará"
 }

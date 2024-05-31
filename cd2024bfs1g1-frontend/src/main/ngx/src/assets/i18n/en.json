@@ -92,7 +92,7 @@
   "PRO_NAME": "Name",
   "PRO_NAME_COMPLETE": "Product name",
   "PRO_DESCRIPTION": "Description",
-  "PRO_PRICE":"Price (expected)",
+  "PRO_PRICE":"Price",
   "PRO_ENABLED": "Visible",
   "IMAGE": "Image",
   "PRO_IMAGE": "Image",
@@ -201,5 +201,6 @@
   "PRO_NAME_OLD": "Product name",
   "OL_UNITS_OLD": "Units",
   "OL_PRICE_OLD": "Unit price",
-  "ERROR_UNPAID": "It is not possible to ship the order until it is paid for"
+  "ERROR_UNPAID": "It is not possible to ship the order until it is paid for",
+  "PRICE_USER_MESSAGE": "The user will pay"
 }

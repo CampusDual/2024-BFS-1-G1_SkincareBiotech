@@ -12,13 +12,15 @@
                     <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
                 </div>
                 <div class="prices">
-                    <o-real-input attr="PRO_PRICE" required="yes" max-decimal-digits="2" min-decimal-digits="2"
-                        decimal-separator="," (onChange)="onPriceChanged($event)"></o-real-input>
+                    <o-currency-input #proPriceCurrency attr="PRO_PRICE" required="yes" max-decimal-digits="2" min-decimal-digits="2"
+                        decimal-separator="," (onChange)="onPriceChanged($event)"></o-currency-input>
                     <o-currency-input #proSaleCurrency attr="PRO_SALE" label="PRO_SALE"
-                        required="no"></o-currency-input>
+                        required="no" (onChange)="onSaleChanged($event)"></o-currency-input>
                     <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE"
                         label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
-                    <label>{{priceUser}}</label>
+                        <div class="price-message">
+                            <p>{{ 'PRICE_USER_MESSAGE' | oTranslate }}: <label class="price-label">{{ priceUser }}</label></p>
+                        </div>
                 </div>
                 <div class="filter">
                     <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"

@@ -88,7 +88,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
         const price = product.PRO_SALE || product.PRO_PRICE;
         totalAmount += price * units; 
       }
-    });1
+    });
      this.totalAmount = totalAmount;
      this.updateCard();
   }

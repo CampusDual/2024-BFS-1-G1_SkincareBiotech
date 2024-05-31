@@ -1,13 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Injector, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { OCurrencyInputComponent, OSlideToggleComponent } from 'ontimize-web-ngx';
+import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-products-new',
   templateUrl: './products-new.component.html',
   styleUrls: ['./products-new.component.css']
 })
-export class ProductsNewComponent{
+export class ProductsNewComponent {
 
   @ViewChild("proSaleToggle")
   proSaleToggle: OSlideToggleComponent;
@@ -15,11 +15,22 @@ export class ProductsNewComponent{
   @ViewChild("proSaleCurrency")
   proSaleCurrency: OCurrencyInputComponent;
 
+  @ViewChild("proPriceCurrency")
+  proPriceCurrency: OCurrencyInputComponent;
+
+  service: OntimizeService;
+
+  private commissionPlataform;
+  private commissionRedSys;
+
   public priceUser;
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    protected injector: Injector
+  ) {
+    this.service = this.injector.get(OntimizeService)
+  }
 
   onInsert(success: boolean) {
     if (success) {
@@ -37,9 +48,38 @@ export class ProductsNewComponent{
     }
   }
 
-  onPriceChanged(event){
-    console.log(event);
-    this.priceUser = Number(event) /*aquí divido con el com_value*/;
+
+  onPriceChanged(event) {
+    if (!event) {
+      this.priceUser = 0;
+    } else {
+      const conf = this.service.getDefaultServiceConfiguration('commissions');
+      this.service.configureService(conf);
+      this.service.query({}, ["COM_VALUE"], "commission")
+        .subscribe((data) => {
+          if (data.data.length > 0) {
+            const commissionRedSys = data.data[0];
+            const commissionPlataform = data.data[1];
+            this.priceUser = Number(event) + (Number(event) * (commissionPlataform.COM_VALUE / 100));
+            this.priceUser = this.priceUser + (this.priceUser * (commissionRedSys.COM_VALUE / 100));
+            this.priceUser = parseFloat(this.priceUser.toFixed(2));
+          }
+        })
+    }
   }
 
+  onSaleChanged(event) {
+      const conf = this.service.getDefaultServiceConfiguration('commissions');
+      this.service.configureService(conf);
+      this.service.query({}, ["COM_VALUE","COM_NAME"], "commission")
+        .subscribe((data) => {
+          if (data.data.length > 0) {
+            const commissionRedSys = data.data[0];
+            const commissionPlataform = data.data[1];
+            this.priceUser = Number(event) + (Number(event) * (commissionPlataform.COM_VALUE / 100));
+            this.priceUser = this.priceUser + (this.priceUser * (commissionRedSys.COM_VALUE / 100));
+            this.priceUser = parseFloat(this.priceUser.toFixed(2));
+          }
+        })
+  }
 }
