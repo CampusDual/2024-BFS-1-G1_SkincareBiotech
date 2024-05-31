@@ -7,13 +7,4 @@ import { Component } from '@angular/core';
 })
 export class OrdersDetailComponent {
 
-  public optionSent = [{
-    valueSent: true,
-    textSent: "SENT"
-  },
-  {
-    valueSent: false,
-    textSent: "UNSENT"
-  }];
-
 }

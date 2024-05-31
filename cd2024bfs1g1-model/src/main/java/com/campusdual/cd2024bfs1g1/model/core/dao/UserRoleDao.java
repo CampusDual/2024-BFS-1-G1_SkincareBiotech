@@ -11,11 +11,11 @@ import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 @Repository(value = "UserRoleDao")
 @Lazy
 @ConfigurationFile(
-	configurationFile = "dao/UserRoleDao.xml",
-	configurationFilePlaceholder = "dao/placeholders.properties")
+        configurationFile = "dao/UserRoleDao.xml",
+        configurationFilePlaceholder = "dao/placeholders.properties")
 public class UserRoleDao extends OntimizeJdbcDaoSupport {
-	public static final String URO_ID       = "URO_ID";
-	public static final String USR_ID       = "USR_ID";
-	public static final String ROL_ID       = "ROL_ID";
-	public static final String ACTIVED      = "ACTIVED";
+    public static final String URO_ID = "URO_ID";
+    public static final String USR_ID = "USR_ID";
+    public static final String ROL_ID = "ROL_ID";
+    public static final String ACTIVED = "ACTIVED";
 }

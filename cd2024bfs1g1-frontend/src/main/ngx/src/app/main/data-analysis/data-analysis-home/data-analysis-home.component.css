@@ -1,11 +1,45 @@
-.grid_container {
-    display: grid;
-    grid-template-columns: 2% 90%;
-    text-align: center;
+.bg-container{
+    background-color: white;
+    padding-top: 1vh;
 }
 
+.chart-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.chart-tittle-y-container{
+    display: flex;
+    padding-left: 2vw;
+    padding-right: 4vw;
+    
+}
+
+h1{
+    padding-left: 2vw;
+}
+
+.chart{
+    width: 100%;
+}
+
+
 .grid_item_y {
-    padding-top: 20%;
-    padding-left: 30%;
-    text-orientation: upright;
+    display: flex;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    margin-top: 0;
+    font-weight: bold;
+    padding-left: 2vw;
+}
+
+.grid_item_x{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
