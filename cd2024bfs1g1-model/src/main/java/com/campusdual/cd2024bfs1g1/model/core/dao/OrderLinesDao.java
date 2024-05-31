@@ -19,4 +19,6 @@ public class OrderLinesDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_OL_PRICE = "OL_PRICE";
     public static final String ATTR_ORD_ID = "ORD_ID";
     public static final String ATTR_ORD_QUERY = "ORD_QUERY";
+    public static final String ATTR_ORD_LINES_QUERY = "ORD_LINES";
+
 }

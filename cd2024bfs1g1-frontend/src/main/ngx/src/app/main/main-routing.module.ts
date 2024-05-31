@@ -21,6 +21,7 @@ export const routes: Routes = [
       { path: 'categories', loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)},
       { path: 'data-analysis', loadChildren: () => import('./data-analysis/data-analysis.module').then(m => m.DataAnalysisModule)},
       { path: 'skin-types', loadChildren: () => import('./skin-types/skin-types.module').then(m => m.SkinTypesModule)},
+      { path: 'billed-age', loadChildren: () => import('./data-analysis/data-analysis.module').then(m => m.DataAnalysisModule)},
       { path: 'brands', loadChildren: () => import('./brands/brands.module').then(m => m.BrandsModule)}
     ]
   }

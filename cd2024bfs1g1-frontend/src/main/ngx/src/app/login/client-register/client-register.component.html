@@ -1,6 +1,9 @@
 <div class="full-page">
     <mat-icon class="flecha" routerLink="/login">arrow_back</mat-icon>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="title-register">
+            <mat-label>{{ 'title_register' | oTranslate }}</mat-label>
+        </div>
         <mat-form-field class="register-field">
             <mat-label>{{ 'usr_login' | oTranslate }}</mat-label>
             <input matInput class="mat-input" #user id="usr_login" [formControl]="userCtrl">
@@ -84,8 +87,6 @@
             </mat-error>
         </mat-form-field>
 
-
-
         <mat-form-field>
             <mat-label>{{ 'usr_email' | oTranslate }}</mat-label>
             <input matInput class="mat-input" #user_email id="usr_email" [formControl]="userEmailCtrl">
@@ -106,25 +107,28 @@
                     {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
                 </mat-error>
             </mat-form-field>
+        </div>
+        <div>
             <mat-form-field>
+                <mat-label>{{ 'UPR_ADDRESS' | oTranslate }}</mat-label>
                 <input matInput class="mat-input" #user_name placeholder="{{ 'UPR_ADDRESS' | oTranslate }}" id="UPR_ADDRESS"
                     [formControl]="userAddressCtrl">
-                <mat-error *ngIf="usernameCtrl.hasError('required')">
+                <mat-error *ngIf="userAddressCtrl.hasError('required')">
                     {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
                 </mat-error>
-                <mat-error *ngIf="usernameCtrl.hasError('minlength')">
+                <mat-error *ngIf="userAddressCtrl.hasError('minlength')">
                     {{ 'MIN_LENGTH_3' | oTranslate }}
                 </mat-error>
-                <mat-error *ngIf="usernameCtrl.hasError('pattern')">
+                <mat-error *ngIf="userAddressCtrl.hasError('pattern')">
                     {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
                 </mat-error>
             </mat-form-field>
         </div>
-        <button mat-raised-button style="background-color: #f8b88c;" type="submit">{{ 'REGISTER' | oTranslate
+        <button mat-raised-button style="background-color: #a7bfc7;" type="submit">{{ 'REGISTER' | oTranslate
             }}</button>
         <div class="linea"></div>
         <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate }}</label>
-        <button mat-raised-button style="background-color: #f8b88c;" routerLink="/login">{{ 'LOGIN' | oTranslate
+        <button mat-raised-button style="background-color: #a7bfc7;" routerLink="/login">{{ 'LOGIN' | oTranslate
             }}</button>
     </form>
 </div>

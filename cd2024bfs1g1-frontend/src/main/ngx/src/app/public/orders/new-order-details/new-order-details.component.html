@@ -1,30 +1,44 @@
 <div class="center-container">
   <div *ngIf="order" class="container">
     <div class="details-container">
-      <h2>{{'ORD_ID' | oTranslate}}: {{ order.ORD_ID }}</h2>
+      <div class="details_header">
+        <h2>{{'ORD_ID' | oTranslate}}: {{ order.ORD_ID }}</h2>
+        <p>{{ order.ORD_DATE | date: 'dd/MM/yyyy' }}</p>
+      </div>
       <div class="product-details">
         <div *ngFor="let ol of orderLines">
           <div class="ol-container">
-            <img class="img-product" [src]="getImageSrc(ol.PRO_IMAGE)" alt="imagen">
-            <div class="ol-details">
-              <div>Product: {{ ol.PRO_NAME }}</div>
-              <div>Units: {{  ol.OL_UNITS }}</div>
-              <div>Price: {{  ol.OL_PRICE | number: '1.2-2' }}€</div>  
+            <div class="img-container" routerLink="{{ol.PRO_ID}}">
+              <img class="img-product" [src]="getImageSrc(ol.PRO_IMAGE)" alt="imagen">
             </div>
-          </div>  
+            <div class="ol-details">
+              <div class="ol_data_container" routerLink="{{ol.PRO_ID}}">
+                <div class="ol_data">
+                  <div>{{ ol.PRO_NAME }}</div>
+                  <div>{{ ol.OL_PRICE | number: '1.2-2' }}€</div>
+                </div>
+              </div>
+              <div class="sent_container">
+                <p class="sent" *ngIf="ol.OL_SENT && ol.OL_SENT != undefined">{{'SENT' | oTranslate}}</p>
+                <p class="unsent" *ngIf="!ol.OL_SENT">{{'UNSENT' | oTranslate}}</p>
+              </div>
+              <div class="ol_total_price">
+                <p>{{ol.OL_PRICE | number: '1.2-2' }}€ X {{ol.OL_UNITS}} <span class="units">{{'UNITS' | oTranslate}}</span> =
+                  {{(ol.OL_PRICE * ol.OL_UNITS) | number: '1.2-2' }}€</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="order_total_price">{{'Total' | oTranslate}} : {{totalOrderPrice | number: '1.2-2' }} €</div>
       </div>
       <div class="order-details">
-        <h3>{{'ORD_DETAILS' | oTranslate}}</h3>
+        <h3>{{'ORD_ADDRESS_INFO' | oTranslate}}</h3>
         <div class="order-info">
           <p>{{'ORD_NAME' | oTranslate}}: {{ order.ORD_NAME }}</p>
           <p>{{'ORD_ADDRESS' | oTranslate}}: {{ order.ORD_ADDRESS }}</p>
           <p>{{'ORD_ZIPCODE' | oTranslate}}: {{ order.ORD_ZIPCODE }}</p>
-          <p>{{'ORD_DATE' | oTranslate}}: {{ timestampToDate(order.ORD_DATE) }}</p>
         </div>
       </div>
     </div>
-  </div>
-  <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>        
+  </div> 
 </div>
- 

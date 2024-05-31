@@ -26,7 +26,16 @@ export const SERVICE_CONFIG: Object = {
   'productSkin':{
     'path': '/productsSkin'
   },
+  'billed-ages': {
+    'path': '/billed-ages',
+  },
+  'product-genders': {
+    'path': '/product-genders',
+  },
   permissions: {
     'path': '/permissions'
   },
+  'sellers':{
+    'path': '/new-seller'
+  }
 };
