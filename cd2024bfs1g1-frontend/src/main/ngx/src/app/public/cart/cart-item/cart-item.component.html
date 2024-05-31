@@ -17,11 +17,15 @@
       <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock2">
         <div class="priceSale">          
           <p>
-            <del>{{ product.PRO_PRICE | number: '1.2-2'}} €/u</del>                        
+            <span>{{ product.PRO_SALE | number: '1.2-2'}} €/u </span>
+          </p>
+          <p class="percent">
+            -{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) * 100 | number: '1.0-0' }}%
           </p>
           <p>
-            <span>-{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) * 100 | number: '1.0-0' }}%{{ product.PRO_SALE | number: '1.2-2'}} €/u </span>
+            <del>{{ product.PRO_PRICE | number: '1.2-2'}} €/u</del>                        
           </p>
+         
         </div>
       </div>
       <ng-template #priceBlock2>
@@ -32,12 +36,12 @@
 
       <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock">
         <div class="priceSale">
-          <p>{{'TOTAL'| oTranslate}}</p>
-          <p>
-            <del>{{ product.PRO_PRICE*item.units | number: '1.2-2'}} €</del>
-          </p>
+          <p>{{'TOTAL'| oTranslate}}</p>          
           <p>
             <span>{{ product.PRO_SALE*item.units | number: '1.2-2'}} € </span>            
+          </p>
+          <p>
+            <del>{{ product.PRO_PRICE*item.units | number: '1.2-2'}} €</del>
           </p>
         </div>
       </div>
