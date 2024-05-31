@@ -10,5 +10,6 @@ public interface IProductSkinService {
     public EntityResult productSkinQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
     public EntityResult productSkinInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+    public EntityResult productSkinUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
 }

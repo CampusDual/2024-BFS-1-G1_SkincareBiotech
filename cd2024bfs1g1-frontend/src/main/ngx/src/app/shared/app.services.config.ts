@@ -23,6 +23,9 @@ export const SERVICE_CONFIG: Object = {
   'skintypes':{
     'path': '/skintypes'
   },
+  'productSkin':{
+    'path': '/productsSkin'
+  },
   permissions: {
     'path': '/permissions'
   },
