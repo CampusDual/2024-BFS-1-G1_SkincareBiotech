@@ -30,7 +30,7 @@
                 ]]>
             </Sentence>
         </Query>
-        <Query id="total_price">
+        <Query id="TOTAL_PRICE">
             <AmbiguousColumns>
                 <AmbiguousColumn name="ORD_ID" prefix="O"/>
                 <AmbiguousColumn name="PRO_ID" prefix="P"/>
@@ -88,6 +88,30 @@
                     FROM ODERLISTUSER
                     #WHERE#;
                 ]]>
+            </Sentence>
+        </Query>
+        <Query id="ORDER_TOTAL_FOR_USER">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="ORD_ID" prefix="O"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                WITH ORDER_PRICE AS (
+                    SELECT
+                        ORD_ID,
+                        SUM(OL_PRICE * OL_UNITS) AS OP_TOTAL,
+                        COUNT(OL_ID) AS OP_NUMERO_PRODUCTOS,
+                        SUM(OL_UNITS) AS OP_NUMERO_UNIDADES,
+                        BOOL_AND(OL_SENT) AS OP_ALL_SENT
+                    FROM ${mainschema}.ORD_LINES
+                    GROUP BY ORD_ID
+                )
+                SELECT #COLUMNS#
+                FROM ${mainschema}.ORDERS AS O
+                INNER JOIN ORDER_PRICE AS OP ON OP.ORD_ID = O.ORD_ID
+                #WHERE#
+                #ORDER#
+            ]]>
             </Sentence>
         </Query>
     </Queries>

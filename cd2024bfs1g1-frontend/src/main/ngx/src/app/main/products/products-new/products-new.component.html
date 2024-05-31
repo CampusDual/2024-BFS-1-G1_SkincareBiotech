@@ -2,7 +2,7 @@
     (afterInsert)="onInsert($event)">
     <div class="add-container">
         <div class="header-area">
-            <div class="add-details-title" >{{'ADD_PRODUCT' | oTranslate}}</div>
+            <div class="add-details-title">{{'ADD_PRODUCT' | oTranslate}}</div>
         </div>
         <div class="content">
             <o-image id="image" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
@@ -29,6 +29,9 @@
                     <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
                         columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
                         null-selection="no"></o-combo>
+                    <o-combo attr="PGE_ID" service="product-genders" entity="productGender" keys="PGE_ID"
+                        columns="PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" required="yes"
+                        null-selection="no" translate="yes"></o-combo>
                 </div>
                 <div class="description">
                     <o-textarea-input attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
