@@ -166,6 +166,7 @@
   "BILLED_AGE": "Facturación por edad",
   "BILLING_BY_AGE": "Facturación",
   "BILLING_BY_AGE_TITTLE": "FACTURACIÓN POR EDAD",
+  "BILLING_BY_AGE_AND_GENDER_TITTLE": "FACTURACIÓN POR EDAD Y GÉNERO",
   "GRAPHICS": "Gráficas",
   "GBA_MIN_AGE": "Edad mínima",
   "GBA_MAX_AGE": "Edad máxima",
@@ -181,5 +182,7 @@
   "MAN": "Hombre",
   "WOMAN": "Mujer",
   "OTHER": "Otro",
-  "RATHER_NOT_ANSWER": "Prefiero no contestar"
+  "RATHER_NOT_ANSWER": "Prefiero no contestar",
+  "AGE_RANGE": "Rango de edad",
+  "AGE_GENDER": "Edad y género"
 }

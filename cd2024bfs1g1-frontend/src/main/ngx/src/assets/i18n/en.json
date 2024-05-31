@@ -168,6 +168,7 @@
   "BILLED_AGE": "Billing by age",
   "BILLING_BY_AGE": "Billed",
   "BILLING_BY_AGE_TITTLE": "BILLING BY AGE",
+  "BILLING_BY_AGE_AND_GENDER_TITTLE": "BILLING BY AGE AND GENDER",
   "GRAPHICS": "Graphics",
   "GBA_MIN_AGE": "Minimum age",
   "GBA_MAX_AGE": "Maximum age",
@@ -183,5 +184,7 @@
   "MAN": "Man",
   "WOMAN": "Woman",
   "OTHER": "Other",
-  "RATHER_NOT_ANSWER": "I would rather not answer"
+  "RATHER_NOT_ANSWER": "I would rather not answer",
+  "AGE_RANGE": "Age range",
+  "AGE_GENDER": "Age and gender"
 }
