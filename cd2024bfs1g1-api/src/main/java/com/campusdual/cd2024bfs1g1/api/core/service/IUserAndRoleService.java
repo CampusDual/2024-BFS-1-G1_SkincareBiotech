@@ -299,13 +299,16 @@ public interface IUserAndRoleService {
 	 */
 	String encryptPassword(String password) throws OntimizeJEERuntimeException;
 
-    /**
-     * Returns the client permissions
-     *
-     * @return the client permissions
-     * @throws OntimizeJEERuntimeException if occurs
-     */
+	/**
+	 * Returns the client permissions
+	 *
+	 * @return the client permissions
+	 * @throws OntimizeJEERuntimeException if occurs
+	 */
 	EntityResult getClientPermissions() throws OntimizeJEERuntimeException;
 
+	EntityResult sellerRoleInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
+	EntityResult sellerRoleQuery(Map<?, ?> keysValues, List<?> attributes) throws OntimizeJEERuntimeException;
 	EntityResult clientRoleInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException;
+
 }

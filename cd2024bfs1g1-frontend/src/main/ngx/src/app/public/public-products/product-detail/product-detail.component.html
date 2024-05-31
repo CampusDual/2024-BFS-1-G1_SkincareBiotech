@@ -4,7 +4,20 @@
     </div>
     <div class="prod-container">
         <h1 class="title">{{product.PRO_NAME}}</h1>
-        <h3 class="brand">{{product.BRA_NAME}}</h3>
+        <div class="for">
+            <div class="flex">
+                <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
+                <p class="pill">{{product.BRA_NAME}}</p>
+            </div >
+            <div class="flex">
+                <!-- <p class="category">{{"CATEGORY" | oTranslate}}: </p> -->
+                <p class="pill">{{product.CAT_NAME}}</p>
+            </div>
+            <div class="flex">
+                <!-- <p class="category">{{"PGE_ID" | oTranslate}}: </p> -->
+                <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
+            </div>
+        </div>
         <div class="buy-container">
             <div class="price" *ngIf="(sale != null); else priceBlock">
                 <div class="price-container">
@@ -17,7 +30,8 @@
             </ng-template>
 
             <div class="buttons">
-                <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON" (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>  
+                <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON"
+                    (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
             </div>
         </div>
     </div>

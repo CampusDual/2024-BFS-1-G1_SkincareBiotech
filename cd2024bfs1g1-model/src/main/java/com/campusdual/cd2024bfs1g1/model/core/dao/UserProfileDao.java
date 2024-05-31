@@ -12,11 +12,9 @@ import org.springframework.stereotype.Repository;
         configurationFilePlaceholder = "dao/placeholders.properties")
 
 public class UserProfileDao extends OntimizeJdbcDaoSupport {
-    public static final String USR_ID = "USR_ID";
+    public static final String UPR_ID = "UPR_ID";
     public static final String UPR_BIRTHDATE = "UPR_BIRTHDATE";
+    public static final String UPR_ADDRESS = "UPR_ADDRESS";
+    public static final String USR_ID = "USR_ID";
     public static final String UGE_ID = "UGE_ID";
 }
-
-
-
-
