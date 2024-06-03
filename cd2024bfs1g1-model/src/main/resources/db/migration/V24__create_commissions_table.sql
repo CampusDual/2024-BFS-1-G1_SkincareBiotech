@@ -18,9 +18,10 @@ AS WITH cr AS (
            FROM commissions c
           WHERE c.com_name::text = 'Plataform_commissions'::text
         )
-SELECT p.pro_id,
-    (p.pro_price / (1 - (cp.com_pla::numeric/100))) / (1-(cr.com_redsys::numeric/100)) AS "USER_FINAL_PRICE",
-    (p.pro_sale / (1 - (cp.com_pla::numeric/100))) / (1-(cr.com_redsys::numeric/100)) AS "USER_FINAL_PRICE_SALE"
+ SELECT p.pro_id,
+    ROUND((p.pro_price / (1 - (cp.com_pla::numeric/100))) / (1-(cr.com_redsys::numeric/100)),2) AS user_final_price,
+    ROUND((p.pro_sale / (1 - (cp.com_pla::numeric/100))) / (1-(cr.com_redsys::numeric/100)),2) AS user_final_price_sale,
+    ROUND(COALESCE((p.pro_sale / (1 - (cp.com_pla::numeric/100))) / (1-(cr.com_redsys::numeric/100)), (p.pro_price / (1 - (cp.com_pla::numeric/100))) / (1-(cr.com_redsys::numeric/100))),2) as user_final_price_checked_sale
    FROM products p,
     cr,
     cp;
