@@ -29,6 +29,9 @@ export const SERVICE_CONFIG: Object = {
   'product-genders': {
     'path': '/product-genders',
   },
+  'user-genders': {
+    'path': '/user-genders',
+  },
   permissions: {
     'path': '/permissions'
   },
