@@ -5,7 +5,8 @@ import { NewOrderDetailsComponent } from '../orders/new-order-details/new-order-
 
 const routes: Routes = [
   { path: '', component: ProfileHomeComponent },
-  // { path: '/:ORD_ID', component: NewOrderDetailsComponent },
+  { path: ':ORD_ID', component: NewOrderDetailsComponent },
+  { path: ':ORD_ID/:PRO_ID', redirectTo: '/:PRO_ID',}
 ];
 
 @NgModule({

@@ -19,10 +19,6 @@ const routes: Routes = [
   {
     path: 'cart',
     component: NewOrderComponent
-  },
-  {
-    path: 'history/:ORD_ID/:PRO_ID',
-    redirectTo: '/:PRO_ID',
   }
 ];
 
