@@ -21,10 +21,6 @@ const routes: Routes = [
     component: NewOrderComponent
   },
   {
-    path: 'history/:ORD_ID',
-    component: NewOrderDetailsComponent
-  },
-  {
     path: 'history/:ORD_ID/:PRO_ID',
     redirectTo: '/:PRO_ID',
   }

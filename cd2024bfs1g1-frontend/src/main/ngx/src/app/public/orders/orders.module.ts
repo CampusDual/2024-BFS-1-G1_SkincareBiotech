@@ -22,6 +22,10 @@ import { OrdersHistoryComponent } from './orders-history/orders-history.componen
     OrdersRoutingModule,
     OntimizeWebModule,
     CartModule
+  ],
+  exports: [
+    OrdersHistoryComponent,
+    NewOrderDetailsComponent
   ]
 })
 export class OrdersModule { }
