@@ -4,7 +4,7 @@
             columns="CAT_ID;CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
         <o-combo attr="BRA_ID" searchable="yes" read-only="no" service="brands" entity="brand" keys="BRA_ID"
             columns="BRA_ID;BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID"></o-combo>
-        <o-combo attr="PGE_ID" read-only="no" service="product-genders" entity="productGender" keys="PGE_ID" 
+        <o-combo attr="PGE_ID" read-only="no" service="product-genders" entity="productGender" keys="PGE_ID"
             columns="PGE_ID;PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" translate="yes"></o-combo>
         <o-real-input attr="PRO_MIN_PRICE" read-only="false"></o-real-input>
         <o-real-input attr="PRO_MAX_PRICE" read-only="false"></o-real-input>
@@ -16,26 +16,29 @@
     </o-filter-builder>
 </o-form>
 <o-grid #productsGrid attr="productsGrid" keys="PRO_ID" service="products" entity="productEnabled" pageable="true"
-    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID;PRO_SALE;PRO_REAL_PRICE" cols="5"
-    query-rows="10" page-size-options="5;10;15;20" orderable="true"
-    sortable-columns="PRO_REAL_PRICE:esc;PRO_REAL_PRICE:asc" insert-button="false" pagination-controls="true"
-    gutter-size="3%" fixed-header="yes" grid-item-height="45%" detail-mode="none" quick-filter-columns="PRO_NAME">
+    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;USER_FINAL_PRICE;PRO_IMAGE;CAT_ID;USER_FINAL_PRICE_SALE;USER_FINAL_PRICE_CHECKED_SALE"
+    cols="5" query-rows="10" page-size-options="5;10;15;20" orderable="true"
+    sortable-columns="USER_FINAL_PRICE_CHECKED_SALE:esc;USER_FINAL_PRICE_CHECKED_SALE:asc" insert-button="false"
+    pagination-controls="true" gutter-size="3%" fixed-header="yes" grid-item-height="45%" detail-mode="none"
+    quick-filter-columns="PRO_NAME">
     <o-grid-item *ngFor="let data of productsGrid.dataArray">
         <div class="productCard" routerLink="{{data.PRO_ID}}">
             <img alt="Imagen_producto" [src]="getImageSrc(data.PRO_IMAGE)" class="img_produc">
             <div class="productInfo">
                 <span class="tittle">{{ data.PRO_NAME }}</span>
-                <div class="sale" *ngIf="(data.PRO_SALE != null); else priceBlock">
+                <div class="sale" *ngIf="(data.USER_FINAL_PRICE_SALE != null); else priceBlock">
                     <div class="priceSale">
-                        <p style="color:red"><span>{{'SALE' | oTranslate}}:</span>{{ data.PRO_SALE | number: '1.2-2' }}
+                        <p style="color:red"><span>{{'SALE' | oTranslate}}:</span>{{ data.USER_FINAL_PRICE_SALE |
+                            number: '1.2-2' }}
                             €</p>
-                        <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ data.PRO_PRICE | number: '1.2-2' }}
+                        <p class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ data.USER_FINAL_PRICE | number: '1.2-2'
+                            }}
                             €
                         </p>
                     </div>
                 </div>
                 <ng-template #priceBlock>
-                    <div class="price">{{ data.PRO_PRICE | number: '1.2-2' }} €</div>
+                    <div class="price">{{ data.USER_FINAL_PRICE | number: '1.2-2' }} €</div>
                 </ng-template>
             </div>
         </div>
