@@ -19,8 +19,9 @@
 .content{
     display: flex;
     gap: 50px;
-    align-items: center;
+    align-items: start;
 }
+
 #boton{
     background-color: #5B93C0;
     border:none;
@@ -98,3 +99,6 @@
     margin-top:7.5vh;
 }
 
+o-image{
+    margin-top: 10px;
+}
