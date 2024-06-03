@@ -223,5 +223,9 @@
   "PHONE_ABBR": "Ph",
   "UNITS_OF": "units of",
   "PAID": "Payment complete",
-  "UNPAID": "Unpaid balance"
+  "UNPAID": "Unpaid balance",
+  "DETAIL_COMMISSION": "Commission Details",
+  "COM_NAME": "Commission name",
+  "COM_VALUE": "Commission value",
+  "COM_ID": "Commission id"
 }

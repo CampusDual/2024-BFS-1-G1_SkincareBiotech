@@ -57,6 +57,11 @@
           "attr": "sellers",
           "visible": false,
           "enabled": false
+        },
+        {
+          "attr": "commissions",
+          "visible": false,
+          "enabled": false
         }
       ],
       "routes": [
