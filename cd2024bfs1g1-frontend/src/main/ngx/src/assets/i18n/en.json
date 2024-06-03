@@ -169,6 +169,7 @@
   "BILLED_AGE": "Billing by age",
   "BILLING_BY_AGE": "Billed",
   "BILLING_BY_AGE_TITTLE": "BILLING BY AGE",
+  "BILLING_BY_AGE_AND_GENDER_TITTLE": "BILLING BY AGE AND GENDER",
   "GRAPHICS": "Graphics",
   "GBA_MIN_AGE": "Minimum age",
   "GBA_MAX_AGE": "Maximum age",
@@ -228,5 +229,15 @@
   "GRAFIC_DETAILS":"Graph views per day",
   "GRAFIC_DATE":"Date",
   "GRAFIC_VIEW":"Views",
-  "FOR": "For"
+  "FOR": "For",
+  "DELETE_CART_WARNING": "Are you sure you want to remove it from cart ?",
+  "ERROR_COMPLETE_FORM": "Complete form to purchase",
+  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
+  "GENDER": "Gender",
+  "MAN": "Man",
+  "WOMAN": "Woman",
+  "OTHER": "Other",
+  "RATHER_NOT_ANSWER": "I would rather not answer",
+  "AGE_RANGE": "Age range",
+  "AGE_GENDER": "Age and gender"
 }
