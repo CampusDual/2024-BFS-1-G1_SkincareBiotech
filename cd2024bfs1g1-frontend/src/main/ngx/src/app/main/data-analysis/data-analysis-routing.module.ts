@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DataAnalysisHomeComponent } from './data-analysis-home/data-analysis-home.component';
 import { BilledAgeComponent } from './billed-age/billed-age.component';
 import { BilledAgeRangeNewComponent } from './billed-age/billed-age-range-new/billed-age-range-new.component';
+import { SellsByCategoryComponent } from './sells-by-category/sells-by-category.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   {
     path: "billed-age/new",
     component: BilledAgeRangeNewComponent
-  }
+  },
+  {
+    path: "bycategory",
+    component: SellsByCategoryComponent
+  },
 ];
 
 @NgModule({
