@@ -3,7 +3,6 @@
     flex-direction: column;
     padding: 50px;
     align-items: center;
-    width: 70vw;
     background-color: white;
 }
 .header-area{
@@ -19,14 +18,19 @@
 }
 .content{
     display: flex;
-    flex-direction: row;
     gap: 50px;
-    margin-left:50px;
-    width: 100%;
     align-items: center;
 }
-#image{
-    max-width: 30%;
+#boton{
+    background-color: #5B93C0;
+    border:none;
+    border-radius: 5px;
+    margin-top: 10%
+}
+
+.grafica{
+    margin-top: 50px;
+    width: 100%;
 }
 .info{
     display: flex;
@@ -55,6 +59,42 @@
     width: calc(90% - 10px);
     margin:10px;
 }
+.chart-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+.chart{
+    width: 90%;
+}
 
-
+.tittle-y{
+    display: flex;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-weight: bold;
+    padding-left: 2vw;
+    
+}
+.tittle-x{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+.chart-tittle-y-container{
+    display: flex;
+    padding-left: 2vw;
+    padding-right: 4vw;
+    
+}
+.grafic-details-title{
+    font-weight: bold;
+    font-size: 24px;
+    margin-top:7.5vh;
+}
 
