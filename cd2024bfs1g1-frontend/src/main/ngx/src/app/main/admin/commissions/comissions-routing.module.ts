@@ -5,7 +5,7 @@ import { CommissionDetailComponent } from './commission-detail/commission-detail
 
 const routes: Routes = [
     { path: '', component: CommissionsHomeComponent },
-    { path: ':com_id', component: CommissionDetailComponent }
+    { path: ':COM_ID', component: CommissionDetailComponent }
 ];
 
 @NgModule({
