@@ -218,5 +218,11 @@
   "PHONE_ABBR": "Tlf",
   "UNITS_OF": "unidades de",
   "PAID": "Pago realizado",
-  "UNPAID": "Pendiente de pago"
+  "UNPAID": "Pendiente de pago",
+  "FOR": "Para",
+  "PGE_ID": "Género",
+  "FEMALE": "Femenino",
+  "MALE": "Masculino",
+  "UNISEX": "Unisex"
+
 }
