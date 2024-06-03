@@ -173,7 +173,7 @@
   "GRAPHICS": "Gráficas",
   "GBA_MIN_AGE": "Edad mínima",
   "GBA_MAX_AGE": "Edad máxima",
-  "ADD_AGE_RANGE": "Add age range",
+  "ADD_AGE_RANGE": "Insertar rango de edad",
   "MIN_RANGE_HIGHER": "La edad mínima no puede ser menor que la máxima",
   "RANGE_NOT_VALID": "Rango no válido. Las edades no se pueden solapar.",
   "AGE_GRAPH": "Rangos de edad",
@@ -221,7 +221,7 @@
   "PHONE_ABBR": "Tlf",
   "UNITS_OF": "unidades de",
   "PAID": "Pago realizado",
-  "UNPAID": "Pendiente de pago"
+  "UNPAID": "Pendiente de pago",
   "DELETE_CART_WARNING": "Esta seguro que quiere eliminar del carrito?",
   "ERROR_COMPLETE_FORM": "Rellena el formulario para finalizar pedido",
   "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
