@@ -71,18 +71,15 @@ public class ProductService implements IProductService {
     public BigDecimal getProductPriceById(Integer proId) {
         Map<String, Object> proIdMap = new HashMap<String, Object>();
         proIdMap.put(ProductDao.PRO_ID, proId);
-
-        List<String> proPriceList = List.of(ProductDao.PRO_PRICE);
-        List<String> salePriceList = List.of(SaleDao.ATTR_SAL_PRICE);
-        EntityResult productER = productQuery(proIdMap, proPriceList);
-        EntityResult saleER = saleService.saleQuery(proIdMap, salePriceList);
-        BigDecimal sale = (BigDecimal) ((List) saleER.get(SaleDao.ATTR_SAL_PRICE)).get(0);
+        List<String> attrList = List.of(ProductDao.PRO_PRICE, ProductDao.PRO_SALE);
+        EntityResult productER = productQuery(proIdMap, attrList);
+        BigDecimal sale = (BigDecimal) ((List) productER.get(ProductDao.PRO_SALE)).get(0);
         BigDecimal price = (BigDecimal) ((List) productER.get(ProductDao.PRO_PRICE)).get(0);
 
         if (sale != null) {
             return sale;
         } else {
-           return price;
+            return price;
         }
     }
 
