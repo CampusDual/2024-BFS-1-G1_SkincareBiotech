@@ -218,6 +218,14 @@
   "UNITS_OF": "unidades de",
   "PAID": "Pago realizado",
   "UNPAID": "Pendiente de pago",
+  "GRAFIC_DETAILS":"Gráfica visitas por día",
+  "GRAFIC_DATE":"Fecha",
+  "GRAFIC_VIEW":"Visitas",
+  "FOR": "Para",
+  "PGE_ID": "Género",
+  "FEMALE": "Femenino",
+  "MALE": "Masculino",
+  "UNISEX": "Unisex",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
   "SLOGAN": "Descubre productos excepcionales para tu cuidado personal"
 }
