@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.css']
 })
-export class CartItemComponent implements OnInit {
+export class CartItemComponent  implements OnInit{
 
   @Input() item: any;
   @Input() showBtns: boolean = true;

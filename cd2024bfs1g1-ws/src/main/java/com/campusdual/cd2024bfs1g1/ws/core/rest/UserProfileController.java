@@ -17,4 +17,3 @@ public class UserProfileController extends ORestController<IUserProfileService> 
         return this.userProfileService;
     }
 }
-

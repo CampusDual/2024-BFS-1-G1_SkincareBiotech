@@ -55,7 +55,6 @@ public class OrderService implements IOrderService {
 
         int userId = Utils.getUserId();
         Map<String, Object> orderData = new HashMap<>(attributes);
-        Map<String, Object> orderLineData = new HashMap<>();
         orderData.remove("ORD_ITEMS");
         List<Map<String, Integer>> itemList = (List<Map<String, Integer>>) attributes.get("ORD_ITEMS");
         orderData.put(OrderDao.ATTR_ORD_CLIENT_ID, userId);
@@ -66,14 +65,11 @@ public class OrderService implements IOrderService {
             Map<String, Integer> item = itemList.get(i);
             Integer id = item.get("id");
             Integer units = item.get("units");
-            orderLineData.put(ProductDao.PRO_ID, id);
-            orderLineData.put(OrderLinesDao.ATTR_OL_UNITS, units);
-            orderLineData.put(OrderLinesDao.ATTR_OL_PRICE, productService.getProductPriceById(id));
-            orderLineData.put(OrderLinesDao.ATTR_ORD_ID, ordId);
-            orderLineData.put(ProductDao.PRO_ID, id);
-            orderLineData.put(OrderLinesDao.ATTR_OL_UNITS, units);
-            orderLineData.put(OrderLinesDao.ATTR_OL_PRICE, productService.getProductPriceById(id));
-            orderLineData.put(OrderLinesDao.ATTR_ORD_ID, ordId);
+            Map<String, Object> orderLineData = new HashMap<>();
+            orderLineData.put(ProductDao.PRO_ID,id);
+            orderLineData.put(OrderLinesDao.ATTR_OL_UNITS,units);
+            orderLineData.put(OrderLinesDao.ATTR_OL_PRICE,productService.getProductPriceById(id));
+            orderLineData.put(OrderLinesDao.ATTR_ORD_ID,ordId);
             this.daoHelper.insert(this.orderLineDao, orderLineData);
         }
         return ordInsertResult;
@@ -111,5 +107,10 @@ public class OrderService implements IOrderService {
         return this.daoHelper.query(this.orderDao, filter, attributes, OrderDao.QUERY_ORD_TOTAL_PRICE);
     }
 
+    @Override
+    public EntityResult totalAmmountOrdersQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
 
+        // This is a sudo query, it shouldnt require ID filtering as it uses all available data, but currently it doesnt check if the querying agent is an admin
+        return this.daoHelper.query(this.orderDao, keysValues, attributes,"ammount_by_category");
+    }
 }

@@ -1,87 +1,19 @@
-.productCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid #e1e1e1;
-    width: 15vw;
-    height: 100%;
-    border-radius: 15px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
-
-.titulo {
-    font-size: 1.35em;
-    text-align: left;
-    font-family: Poppins, "Helvetica Neue", sans-serif;
-}
-
-.precio {
-    font-size: 1.5em;
-    font-weight: 900;
-    text-align: left;
-    margin-top: 15%;
-    font-family: Poppins, "Helvetica Neue", sans-serif;
-}
-
-.despre {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin-bottom: 5%;
-}
-
-.img_produc {
-    margin-top: 5%;
-    max-width: 90%;
-    min-height: 50%;
-    max-height: 51%;
-    overflow: hidden;
-}
-
-.productCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.productCard img {
-    border-radius: 15px;
-}
-
-.productCard span {
-    display: block;
-    width: 100%;
-    margin-bottom: 4px;
-}
-
-.productCard strong {
-    font-size: 1.1em;
-    color: #333;
-}
-
-.productCard em {
-    font-size: 0.9em;
-    color: #777;
-    font-style: normal;
-}
-
-a {
-    text-decoration: none;
-}
-
 .container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-bottom: 80px;
+    background-color: rgba(42, 73, 85, 0.233);
+    margin: 0px 30px 20px 30px;
+    padding: 20px 20px 30px 20px;   
+    border-radius: 15px;
+    min-width: min-content; /* Ajusta automáticamente al contenido mínimo */
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el cálculo del ancho */
+    flex-wrap: wrap;
 }
 
 h2 {
-    padding: 2vh;
-    margin-left: 4vh;
-    margin-top: 5vh;
+    text-align: center;
+    margin-bottom: 15px; 
+    padding: 10px;    
+    margin-top: 10px;
 }

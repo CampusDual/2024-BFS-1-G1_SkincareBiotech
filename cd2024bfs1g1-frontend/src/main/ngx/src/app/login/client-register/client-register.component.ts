@@ -51,12 +51,14 @@ export class ClientRegisterComponent implements OnInit {
     Validators.required,
     this.ageValidator()
   ]);
+  public userAddressCtrl: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required, Validators.minLength(3),
+    Validators.maxLength(200),
+    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
+  ]);
 
   service: OntimizeService;
   redirect = '';
-  adminRole = 'admin';
-  userRole = 'user';
-  sellerRole = 'seller';
 
   constructor(
     private router: Router,
@@ -79,6 +81,7 @@ export class ClientRegisterComponent implements OnInit {
     this.registerForm.addControl('usr_name', this.usernameCtrl);
     this.registerForm.addControl('usr_surname', this.userSurnameCtrl);
     this.registerForm.addControl('upr_birthdate', this.userDateCtrl);
+    this.registerForm.addControl('upr_address', this.userAddressCtrl);
     this.registerForm.addControl('usr_email', this.userEmailCtrl);
     this.registerForm.addControl('usr_phone', this.userPhoneCtrl);
   }
@@ -86,7 +89,7 @@ export class ClientRegisterComponent implements OnInit {
   register() {
     if (this.registerForm.valid) {
       if (this.passwordMatchValidator()) {
-        this.insertUser(this.userRole);
+        this.insertUser();
       } else {
         const text = this.translate.get('PASSWORDS_DO_NOT_MATCH');
         const button = this.translate.get('CONFIRMATION_REGISTER_BUTTON');
@@ -106,7 +109,7 @@ export class ClientRegisterComponent implements OnInit {
     return this.registerForm.value.usr_password === this.registerForm.value.usr_password2;
   }
 
-  insertUser(userRole: string) {
+  insertUser() {
     const login = this.registerForm.value.usr_login;
     const password = this.registerForm.value.usr_password;
 
@@ -117,7 +120,9 @@ export class ClientRegisterComponent implements OnInit {
       "USR_SURNAME": this.registerForm.value.usr_surname,
       "USR_EMAIL": this.registerForm.value.usr_email,
       "USR_PHONE": this.registerForm.value.usr_phone,
-      "UPR_BIRTHDATE": this.registerForm.value.upr_birthdate._i
+      "UPR_BIRTHDATE": this.registerForm.value.upr_birthdate._i,
+      "UPR_ADDRESS": this.registerForm.value.upr_address
+
     }
     console.log(data);
     console.log(data.UPR_BIRTHDATE._i);
