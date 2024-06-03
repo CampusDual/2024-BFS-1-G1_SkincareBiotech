@@ -17,8 +17,7 @@
 </o-form>
 <o-grid #productsGrid attr="productsGrid" keys="PRO_ID" service="products" entity="productEnabled" pageable="true"
     columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID;PRO_SALE;PRO_REAL_PRICE" cols="5"
-    query-rows="10" page-size-options="5;10;15;20" orderable="true"
-    sortable-columns="PRO_REAL_PRICE:esc;PRO_REAL_PRICE:asc" insert-button="false" pagination-controls="true"
+    query-rows="10" page-size-options="5;10;15;20" orderable="true" insert-button="false" pagination-controls="true"
     gutter-size="3%" fixed-header="yes" grid-item-height="45%" detail-mode="none" quick-filter-columns="PRO_NAME">
     <o-grid-item *ngFor="let data of productsGrid.dataArray">
         <div class="productCard" routerLink="{{data.PRO_ID}}">
