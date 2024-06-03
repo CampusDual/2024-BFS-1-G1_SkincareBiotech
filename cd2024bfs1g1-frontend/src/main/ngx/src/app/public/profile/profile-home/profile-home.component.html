@@ -1,17 +1,6 @@
 <mat-tab-group fxFlex>
     <mat-tab label="{{ 'ORDERS_HISTORY' | oTranslate }}">
-        <div class="orders">
-            <o-table attr="ordersTable" service="orders" entity="orderByUser" keys="ORD_ID" insert-button="no"
-                delete-button="no" columns="ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_DATE;ORD_ID;ORD_PAID"
-                visible-columns="ORD_NAME;ORD_PHONE;ORD_ZIPCODE;ORD_DATE;ORD_ID;ORD_PAID" query-rows="15">
-                <o-table-column attr="ORD_NAME" title="ORD_NAME" width="150px"></o-table-column>
-                <o-table-column attr="ORD_PHONE" title="ORD_PHONE" width="150px"></o-table-column>
-                <o-table-column attr="ORD_PAID" title="ORD_PAID" width="50px"></o-table-column>
-                <o-table-column attr="ORD_ZIPCODE" title="ORD_ZIPCODE" width="50px"></o-table-column>
-                <o-table-column attr="ORD_DATE" title="ORD_DATE" type="time" width="150px"></o-table-column>
-                <o-table-column attr="ORD_ID" title="ORD_ID" width="150px"></o-table-column>
-            </o-table>
-        </div>
+        <app-orders-history></app-orders-history>
     </mat-tab>      
     <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
         <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="U"
