@@ -30,6 +30,27 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="ammount_by_category">
+            <Sentence>
+                <![CDATA[
+                   with category_graph_query as (
+                       select
+                           sum(ol.ol_units) as total_sold,
+                           cat_name,
+                           o.ord_date::date
+                       from ord_lines as ol
+                       inner join products as p on p.pro_id = ol.pro_id
+                       inner join orders as o on o.ord_id = ol.ord_id
+                       inner join categories c on p.cat_id = c.cat_id
+                       group by p.cat_id, o.ord_date::date, cat_name
+                   )
+                   SELECT
+                   #COLUMNS#
+                   FROM category_graph_query
+                   #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="TOTAL_PRICE">
             <AmbiguousColumns>
                 <AmbiguousColumn name="ORD_ID" prefix="O"/>

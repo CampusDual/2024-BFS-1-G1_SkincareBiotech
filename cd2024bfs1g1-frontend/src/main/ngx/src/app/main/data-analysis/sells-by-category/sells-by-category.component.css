@@ -1,0 +1,13 @@
+
+o-form{
+    display: flex;
+    flex-direction: column;
+}
+
+o-daterange-input{
+    align-self: self-start;
+}
+
+o-chart {
+    background-color: white;
+}
