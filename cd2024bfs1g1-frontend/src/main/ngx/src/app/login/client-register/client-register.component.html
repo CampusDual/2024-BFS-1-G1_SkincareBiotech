@@ -129,9 +129,6 @@
                 <mat-error *ngIf="userAddressCtrl.hasError('minlength')">
                     {{ 'MIN_LENGTH_3' | oTranslate }}
                 </mat-error>
-                <mat-error *ngIf="userAddressCtrl.hasError('pattern')">
-                    {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
-                </mat-error>
             </mat-form-field>
         </div>
         <button mat-raised-button style="background-color: #a7bfc7;" type="submit">{{ 'REGISTER' | oTranslate
