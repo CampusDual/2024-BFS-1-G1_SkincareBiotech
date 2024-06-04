@@ -45,10 +45,11 @@
     color: #a7bfc7;
     transform: scale(3);
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: -25px;
+    left: -25px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    z-index: 1;
 }
 
 .flecha:hover {
