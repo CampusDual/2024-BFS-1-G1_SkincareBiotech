@@ -2,26 +2,28 @@
     show-header-navigation="no">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'ORDER_INFORMATION' | oTranslate }}">
-            <div class="ordInfo-container flex-container">
-                <o-text-input attr="ORD_ID" sql-type="INTEGER" read-only="yes"></o-text-input>
-                <o-date-input attr="ORD_DATE" read-only="yes"></o-date-input>
-            </div>
-            <div class="userInfo-container flex-container">
-                <o-text-input attr="ORD_NAME" read-only="yes"></o-text-input>
-                <o-text-input attr="ORD_ZIPCODE" read-only="yes"></o-text-input>
-                <o-text-input attr="ORD_ADDRESS" read-only="yes"></o-text-input>
-                <o-text-input attr="ORD_PHONE" read-only="yes"></o-text-input>
-            </div>
-            <div class="ordPayInfo-container flex-container">
-                <o-currency-input attr="TOTAL_PRICE" read-only="yes"></o-currency-input>
-                <o-text-input attr="ORD_PAID" read-only="yes"></o-text-input>
+            <div class="main-container">
+                <div class="ordInfo-container flex-container">
+                    <o-text-input attr="ORD_ID" sql-type="INTEGER" read-only="yes"></o-text-input>
+                    <o-date-input attr="ORD_DATE" read-only="yes"></o-date-input>
+                </div>
+                <div class="userInfo-container flex-container">
+                    <o-text-input attr="ORD_NAME" read-only="yes"></o-text-input>
+                    <o-text-input attr="ORD_ZIPCODE" read-only="yes"></o-text-input>
+                    <o-text-input attr="ORD_ADDRESS" read-only="yes"></o-text-input>
+                    <o-text-input attr="ORD_PHONE" read-only="yes"></o-text-input>
+                </div>
+                <div class="ordPayInfo-container flex-container">
+                    <o-currency-input attr="TOTAL_PRICE" read-only="yes"></o-currency-input>
+                    <o-text-input attr="ORD_PAID" read-only="yes"></o-text-input>
+                </div>
             </div>
         </mat-tab>
         <mat-tab label="{{ 'ORDERLINES_TABLE' | oTranslate }}">
             <o-table attr="orderLinesTable" service="orderlines" entity="orderLinesProduct" 
                 keys="OL_ID" parent-keys="ORD_ID" insert-button="false" delete-button="false"
                 columns="OL_ID;PRO_NAME;OL_UNITS;OL_PRICE;TOTAL_PRICE;OL_SENT"
-                visible-columns="OL_ID;PRO_NAME;OL_UNITS;OL_PRICE;TOTAL_PRICE;OL_SENT">
+                visible-columns="PRO_NAME;OL_UNITS;OL_PRICE;TOTAL_PRICE;OL_SENT">
                 <o-table-column attr="OL_ID" title="OL_ID" content-align="center"></o-table-column>
                 <o-table-column attr="PRO_NAME" title="PRO_NAME_OLD" content-align="center"></o-table-column>
                 <o-table-column attr="OL_UNITS" title="OL_UNITS_OLD" content-align="center"></o-table-column>
