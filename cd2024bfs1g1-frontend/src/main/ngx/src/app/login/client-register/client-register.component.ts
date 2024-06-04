@@ -53,7 +53,6 @@ export class ClientRegisterComponent implements OnInit {
   public userAddressCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required, Validators.minLength(3),
     Validators.maxLength(200),
-    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
   ]);
   public userGenderCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required,
