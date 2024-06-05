@@ -239,7 +239,7 @@
   "RATHER_NOT_ANSWER": "Prefiero no contestar",
   "AGE_RANGE": "Rango de edad",
   "AGE_GENDER": "Edad y género",
-  "DATE_NOT_VALID": "Rango no válido. Las fechas no se pueden solapar.",
+  "DATE_NOT_VALID": "Este periodo de oferta ya está en uso. Por favor elija otro que no se solape.",
   "MIN_DATE_HIGHER": "La fecha mínima no puede ser menor que la máxima",
   "SALES_INFORMATION":" Información de descuentos",
   "SAL_ID": "Id del descuento",
