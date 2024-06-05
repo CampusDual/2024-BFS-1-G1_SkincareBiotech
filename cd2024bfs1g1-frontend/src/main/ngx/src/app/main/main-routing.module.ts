@@ -4,6 +4,7 @@ import { AuthGuardService } from 'ontimize-web-ngx';
 
 import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
+import { VideoCallComponent } from './video-call/video-call.component';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,8 @@ export const routes: Routes = [
       { path: 'categories', loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)},
       { path: 'data-analysis', loadChildren: () => import('./data-analysis/data-analysis.module').then(m => m.DataAnalysisModule)},
       { path: 'billed-age', loadChildren: () => import('./data-analysis/data-analysis.module').then(m => m.DataAnalysisModule)},
-      { path: 'brands', loadChildren: () => import('./brands/brands.module').then(m => m.BrandsModule)}
+      { path: 'brands', loadChildren: () => import('./brands/brands.module').then(m => m.BrandsModule)},
+      {path: 'meeting', component: VideoCallComponent},
     ]
   }
 ];

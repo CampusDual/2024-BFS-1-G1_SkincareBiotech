@@ -1,0 +1,26 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav-container>
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <button mat-icon-button>
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span>Video Call</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile>
+              <p class="video-description">local:</p>
+              <video #localVideo [autoplay]="true" [muted]="true"></video>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <p class="video-description">remote:</p>
+              <video #remoteVideo [autoplay]="true"></video>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <button mat-raised-button color="primary" (click)="startLocalVideo()">Start Local</button>
+        <button mat-raised-button color="primary" (click)="pauseLocalVideo()">Stop Local</button>
+        <button mat-raised-button color="primary" (click)="call()">Call Local</button>
+        <button mat-raised-button color="primary" (click)="hangUp()">Hangup</button>
+    </mat-sidenav-container>
+</mat-sidenav-container>

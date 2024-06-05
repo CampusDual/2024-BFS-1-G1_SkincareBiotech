@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
+import { VideoCallComponent } from './video-call/video-call.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   declarations: [
     MainComponent,
-    ProfileComponent
+    ProfileComponent,
+    VideoCallComponent
   ]
 })
 export class MainModule { }
