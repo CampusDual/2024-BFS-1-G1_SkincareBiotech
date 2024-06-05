@@ -20,7 +20,7 @@
         columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID;PRO_SALE;PRO_REAL_PRICE;DISCOUNT"
         query-rows="10" page-size-options="5;10;15;20" orderable="true"
         sortable-columns="PRO_REAL_PRICE:esc;PRO_REAL_PRICE:asc" insert-button="false" pagination-controls="true"
-        fixed-header="yes" grid-item-height="400px" detail-mode="none" quick-filter-columns="PRO_NAME">
+        fixed-header="yes" grid-item-height="400px" detail-mode="none">
         <o-grid-item *ngFor="let data of productsGrid.dataArray">            
                 <app-product-card [product]="data"></app-product-card>               
         </o-grid-item>
