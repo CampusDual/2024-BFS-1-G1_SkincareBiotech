@@ -1,8 +1,9 @@
 <div class="cart-item">
-  <div class="img-container">
-    <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
-  </div>
+  
   <div class="item-details-container">
+    <div class="img-container">
+      <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
+    </div>
     <div class="tittle">
       {{product.PRO_NAME}}
     </div>
@@ -16,27 +17,37 @@
       <div class="price" *ngIf="(product.USER_FINAL_PRICE!= null); else priceBlock">
         <div class="priceSale">
           <p>
-            <span>{{ product.USER_FINAL_PRICE_SALE * item.units | number: '1.2-2'}}€ </span>
-            <del>{{ product.USER_FINAL_PRICE * item.units | number: '1.2-2'}}€</del>
+            <span>{{ product.USER_FINAL_PRICE_SALE | number: '1.2-2'}} €/u </span>
           </p>
-        </div>
-      </div>
-      <ng-template #priceBlock>
-        {{product.USER_FINAL_PRICE * item.units | number: '1.2-2'}}€
-      </ng-template>
-
-      <hr style="width: 80px;" size="1px" color="black" />
-
-      <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock2">
-        <div class="priceSale">
+          <p class="percent">
+            -{{((product.USER_FINAL_PRICE - product.USER_FINAL_PRICE_SALE)/product.USER_FINAL_PRICE) * 100 | number: '1.0-0' }}%
+          </p>
           <p>
-            <span>{{ product.USER_FINAL_PRICE_SALE | number: '1.2-2'}}€ </span>
-            <del>{{ product.USER_FINAL_PRICE | number: '1.2-2'}}€</del>
+            <del>{{ product.USER_FINAL_PRICE | number: '1.2-2'}} €/u</del>                        
           </p>
         </div>
       </div>
       <ng-template #priceBlock2>
-        {{product.USER_FINAL_PRICE| number: '1.2-2'}}€
+        {{product.USER_FINAL_PRICE| number: '1.2-2'}} €/u
+      </ng-template>
+
+      <hr style="width: 80px;" size="1px" color="black" />
+
+      <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock">
+        <div class="priceSale">
+          <p>{{'TOTAL'| oTranslate}}</p>          
+          <p>
+            <span>{{ product.PRO_SALE*item.units | number: '1.2-2'}} € </span>            
+          </p>
+          <p>
+            <span>{{ product.PRO_SALE | number: '1.2-2'}}€  </span>
+            <del>{{ product.PRO_PRICE | number: '1.2-2'}}€</del>
+          </p>
+        </div>
+      </div>
+      <ng-template #priceBlock>
+        <p>{{'TOTAL'| oTranslate}}</p>
+        <p>{{product.USER_FINAL_PRICE*item.units | number: '1.2-2'}} €</p>        
       </ng-template>
     </div>
     <div class="delete-container">

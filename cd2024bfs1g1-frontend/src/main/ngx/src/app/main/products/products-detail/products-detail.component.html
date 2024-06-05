@@ -6,7 +6,8 @@
             <div class="add-details-title">{{'DETAIL_PRODUCT' | oTranslate}}</div>
         </div>
         <div class="content">
-            <o-image id="image" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
+            
+            <o-image attr="PRO_IMAGE" height="300px" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
             <div class="info">
                 <div class="name">
                     <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
@@ -37,6 +38,24 @@
                 <div class="description">
                     <o-textarea-input attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
                 </div>
+            </div>
+        </div>
+        <div class="grafic-details-title">{{'GRAFIC_DETAILS' | oTranslate}}</div>
+
+        <div class="chart-container">
+            <div class="chart-tittle-y-container">
+
+                <div class="tittle-y">
+                    {{"GRAFIC_VIEW" | oTranslate}}
+                </div>
+
+                <div class="chart">
+                    <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView" entity="viewByProduct"
+                        x-label="Date" y-label="views" x-data-type="time" y-axis="COUNT" x-axis="VISIT_DATE"></o-chart>
+                </div>
+            </div>
+            <div class="tittle-x">
+                {{"GRAFIC_DATE" | oTranslate}}
             </div>
         </div>
     </div>

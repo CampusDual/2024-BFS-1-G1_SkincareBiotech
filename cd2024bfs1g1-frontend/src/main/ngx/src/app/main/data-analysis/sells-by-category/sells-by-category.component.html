@@ -1,0 +1,16 @@
+<o-form show-header="false">
+       <h1>{{"SELLS_BYCATEGORY_TITLE" | oTranslate}}</h1>
+
+       <o-daterange-input attr="ORD_DATE" read-only="no"></o-daterange-input>
+
+       <o-filter-builder #filterBuilder attr="orderFilter" filters="ORD_DATE:ORD_DATE" [target]="pieTable"
+              query-on-change="yes" query-on-change-delay="500" [expression-builder]="filter">
+       </o-filter-builder>
+
+       <o-chart type="pie" [data]="data" attr="categoryPieChart" x-axis="CAT_NAME" y-axis="TOTAL_SOLD"
+              [chart-parameters]="pieParameters" [color]="colors" layout-fill>
+       </o-chart>
+       <o-table #pieTable attr="tableOrderChart" service="orders" entity="totalAmmountOrders" keys="CAT_NAME"
+              oHidden="yes" columns="CAT_NAME;TOTAL_SOLD" visible-columns="CAT_NAME;TOTAL_SOLD" query-rows="15"
+              delete-button='no' (onDataLoaded)="loadChart($event)"></o-table>
+</o-form>

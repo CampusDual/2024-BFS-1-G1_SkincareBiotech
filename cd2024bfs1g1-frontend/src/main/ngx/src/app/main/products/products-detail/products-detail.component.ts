@@ -1,6 +1,7 @@
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
+import { Component, Injector, OnInit, Injector, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService, OntimizeService } from 'ontimize-web-ngx';
+import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
 
 @Component({
   selector: 'app-products-detail',
@@ -9,15 +10,26 @@ import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 
 })
 export class ProductsDetailComponent implements OnInit{
 
-  @ViewChild ("proSaleToggle")
-  proSaleToggle : OSlideToggleComponent;
+  @ViewChild("proSaleToggle")
+  proSaleToggle: OSlideToggleComponent;
 
-  @ViewChild ("proSaleCurrency")
-  proSaleCurrency : OCurrencyInputComponent;
+  @ViewChild("proSaleCurrency")
+  proSaleCurrency: OCurrencyInputComponent;
+
+  @ViewChild('discreteBar', { static: false })
+  protected discreteBar: OChartComponent;
 
   @ViewChild("proPriceCurrency")
   proPriceCurrency: OCurrencyInputComponent;
-  
+
+  public chartParameters: DiscreteBarChartConfiguration;
+  service: any;
+  data: any;
+  intermedio: any;
+  id:any;
+  isVisible: boolean = false;
+  Visible:boolean = true;
+
   service: OntimizeService;
 
   commissionPlataform: number;
@@ -26,12 +38,25 @@ export class ProductsDetailComponent implements OnInit{
   public priceUser: number;
 
   constructor(
+    protected injector: Injector,
     private router: Router,
-    protected injector: Injector
-  ) { 
-    this.service = this.injector.get(OntimizeService);
-    }
+    private route: ActivatedRoute,
 
+  ) {
+
+    this.chartParameters = new DiscreteBarChartConfiguration();
+    this.chartParameters.showYAxis = true;
+    this.chartParameters.showXAxis = true;
+    this.chartParameters.showLegend = true;
+    this.chartParameters.showValues = false;
+    this.chartParameters.margin.left = 50;
+    this.service = this.injector.get(OntimizeService);
+  }
+  
+  toggleVisibility(): void {
+    this.isVisible = !this.isVisible;
+    this.Visible = !this.Visible;
+  }
   ngOnInit(){
     const conf = this.service.getDefaultServiceConfiguration('commissions');
       this.service.configureService(conf);
@@ -48,27 +73,21 @@ export class ProductsDetailComponent implements OnInit{
   onUpdate(success: boolean) {
     if (success) {
       this.router.navigate(['/main/products']);
-    } 
+    }
   }
-
-  onDataLoaded(event){
-   
+  onDataLoaded(event) {
     this.proSaleToggle.setValue((event.PRO_SALE !== undefined));
     this.proSaleCurrency.setEnabled((event.PRO_SALE !== undefined));
   }
-
-  onInsert(event){
+  onInsert(event) {
     this.router.navigate(['/main/products']);
   }
-
-  onChange(event){
-    if(!this.proSaleToggle.getValue()){
+  onChange(event) {
+    if (!this.proSaleToggle.getValue()) {
       this.proSaleCurrency.setValue(null);
     }
-  
     this.proSaleCurrency.setEnabled(this.proSaleToggle.getValue());
   }
-
   onInputChanged(event){
     if (!this.proSaleToggle.isChecked()) {
       this.priceUser = (this.proPriceCurrency.getValue() / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));

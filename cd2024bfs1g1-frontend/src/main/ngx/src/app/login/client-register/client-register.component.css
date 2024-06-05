@@ -1,53 +1,81 @@
-.full-page {
-    background-image: url('^assets/images/register_webp.webp');
-    background-position: center;
+.register {
+    background-image: url('^assets/images/skinCare4_portadaRecortada.png');
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
- 
+
+.full-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.formContainer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+}
+
 .form {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     align-items: center;
-    place-content: center;
-    margin-top: calc(23vh - 10vh);
-    height: 10vh;
+    width: 100%;
 }
- 
+
 #botones {
-    background-color: #f8b88c;
+    background-color: #a7bfc7;
 }
- 
+
 .flecha {
-    color: #f29a60;
+    color: #a7bfc7;
     transform: scale(3);
-    margin: 5%;
+    position: absolute;
+    top: 40px;
+    left: 40px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
- 
+
 .flecha:hover {
-    color: #f29a60;
+    color: #c4dde6;
     transform: scale(3.5);
 }
- 
+
 .linea {
-    border: 1px solid #686464;
+    border: 1px solid black;
     margin: 15px;
     margin-top: 20px;
     width: 13%;
 }
- 
+
 .etiqueta {
     margin-bottom: 10px;
-    color: #686464;
+    color: black;
 }
 
 .mat-mdc-form-field {
     min-width: 300px;
     margin-bottom: 5px;
+}
+
+.title-register {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 2%;
+    margin-top: 5%;
 }

@@ -37,7 +37,7 @@
             <Sentence>
                 <![CDATA[
                 WITH ENABLED_CHECKER AS (
-                    SELECT *
+                    SELECT *, COALESCE (((PRO_PRICE - PRO_SALE) / PRO_PRICE) * 100, 0) AS DISCOUNT
                     FROM ${mainschema}.PRODUCTS AS P
                     WHERE PRO_ENABLED = TRUE
                 )
@@ -59,12 +59,13 @@
             <Sentence>
                 <![CDATA[
                     WITH complete_overview AS (
-                        SELECT p.*, COALESCE(((pro_price - pro_sale) / pro_price) * 100, 0) AS DISCOUNT, (
+                        SELECT p.*, COALESCE(((up.user_final_price - up.user_final_price_sale) / up.user_final_price) * 100, 0) AS DISCOUNT, (
                             SELECT COUNT(*)
                             FROM ORD_LINES AS ol
                             WHERE ol.pro_id = p.pro_id
-                        ) AS AMMOUNT_OF_SALES
+                        ) AS AMOUNT_OF_SALES, up.user_final_price, up.user_final_price_sale, up.user_final_price_checked_sale
                         FROM PRODUCTS AS p
+                    	INNER JOIN user_price up ON p.pro_id = up.pro_id
                         WHERE pro_enabled = true
                     )
                     SELECT #COLUMNS#

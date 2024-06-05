@@ -1,15 +1,35 @@
 <mat-tab-group>
     <mat-tab>
-        <ng-template class="label" mat-tab-label>{{ "GRAPHICS" | oTranslate }}</ng-template>
+        <ng-template class="label" mat-tab-label>{{ "AGE_RANGE" | oTranslate }}</ng-template>
         <h1>{{"BILLING_BY_AGE_TITTLE" | oTranslate}}</h1>
         <div class="chart-container">
             <div class="chart-tittle-y-container">
                 <div class="tittle-y">
-                    {{"BILLING_BY_AGE" | oTranslate}}
+                    {{"BILLING_BY_AGE" | oTranslate}} €
                 </div>
                 <div class="chart">
                     <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE"
-                        x-data-type="string" y-axis="TOTAL" x-label="Age" y-label="Amount (€)">
+                       y-axis="TOTAL" x-label="Age" y-label="Amount (€)" [color]="colorScheme">
+                    </o-chart>
+                </div>
+            </div>
+            <div class="tittle-x">
+                {{"AGE_GRAPH" | oTranslate}}
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template class="label" mat-tab-label>{{ "AGE_GENDER" | oTranslate }}</ng-template>
+        <h1>{{"BILLING_BY_AGE_AND_GENDER_TITTLE" | oTranslate}}</h1>
+        <div class="chart-container">
+            <div class="chart-tittle-y-container">
+                <div class="tittle-y">
+                    {{"BILLING_BY_AGE" | oTranslate}} €
+                </div>
+                <div class="chart">
+                    <o-chart type="multiBar" service="billed-ages" entity="billedAgeGenderChart" x-axis="GBA_MIN_AGE"
+                        y-axis="MAN;WOMAN;OTHER;PNA" x-label="Age" y-label="Amount (€)"
+                        [chart-parameters]="chartParameters" [color]="colorScheme">
                     </o-chart>
                 </div>
             </div>
@@ -22,7 +42,8 @@
         <ng-template class="label" mat-tab-label>{{ "SETTINGS" | oTranslate }}</ng-template>
         <o-table attr="billedAgeTable" service="billed-ages" entity="billedAge" keys="GBA_ID"
             columns="GBA_ID;GBA_MIN_AGE;GBA_MAX_AGE" visible-columns="GBA_MIN_AGE;GBA_MAX_AGE" query-rows="20"
-            delete-button='true' header-actions="R;D" quick-filter="false" edition-mode="none" detail-mode="none"  auto-adjust="false" >
+            delete-button='true' header-actions="R;D" quick-filter="false" edition-mode="none" detail-mode="none"
+            auto-adjust="false">
             <o-table-column attr="GBA_MIN_AGE" title="GBA_MIN_AGE" width="300px"></o-table-column>
             <o-table-column attr="GBA_MAX_AGE" title="GBA_MAX_AGE" width="300px"></o-table-column>
         </o-table>

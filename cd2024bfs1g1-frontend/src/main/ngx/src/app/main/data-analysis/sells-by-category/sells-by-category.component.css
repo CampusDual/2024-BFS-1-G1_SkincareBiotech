@@ -1,0 +1,11 @@
+
+o-form{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+}
+
+o-daterange-input{
+    align-self: self-start;
+}
