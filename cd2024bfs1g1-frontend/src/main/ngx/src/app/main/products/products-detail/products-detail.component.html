@@ -8,8 +8,9 @@
                     <div class="add-details-title">{{'DETAIL_PRODUCT' | oTranslate}}</div>
                 </div>
                 <div class="content">
-            
-            <o-image attr="PRO_IMAGE" height="300px" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
+
+                    <o-image attr="PRO_IMAGE" height="300px" empty-image="assets/images/no-image.png"
+                        sql-type="OTHER"></o-image>
                     <div class="info">
                         <div class="name">
                             <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
@@ -23,42 +24,47 @@
                                 label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
                         </div>
                         <div class="filter">
-                    <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
-                                    columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
-                                <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
-                                    columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
-                                    null-selection="no"></o-combo>
+                            <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
+                                columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
+                            <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
+                                columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
+                                null-selection="no"></o-combo>
                         </div>
                         <div class="description">
                             <o-textarea-input attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
                         </div>
                     </div>
                 </div>
-        <div class="grafic-details-title">{{'GRAFIC_DETAILS' | oTranslate}}</div>
+                <div class="grafic-details-title">{{'GRAFIC_DETAILS' | oTranslate}}</div>
 
-        <div class="chart-container">
-            <div class="chart-tittle-y-container">
+                <div class="chart-container">
+                    <div class="chart-tittle-y-container">
 
-                <div class="tittle-y">
-                    {{"GRAFIC_VIEW" | oTranslate}}
-                </div>
+                        <div class="tittle-y">
+                            {{"GRAFIC_VIEW" | oTranslate}}
+                        </div>
 
-                <div class="chart">
-                    <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView" entity="viewByProduct"
-                        x-label="Date" y-label="views" x-data-type="time" y-axis="COUNT" x-axis="VISIT_DATE"></o-chart>
+                        <div class="chart">
+                            <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
+                                entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="COUNT"
+                                x-axis="VISIT_DATE"></o-chart>
+                        </div>
+                    </div>
+                    <div class="tittle-x">
+                        {{"GRAFIC_DATE" | oTranslate}}
+                    </div>
                 </div>
             </div>
-            <div class="tittle-x">
-                {{"GRAFIC_DATE" | oTranslate}}
-            </div>
-        </div>
-            </div>        </o-form>
 
-    </mat-tab>
-    <mat-tab label="{{ 'SKIN_TYPES' | oTranslate }}">
-        <o-table attr="skintypesTable" service="skintypes" entity="skintype" keys="SKIN_ID" 
-            columns="SKIN_ID;SKIN_NAME" visible-columns="SKIN_NAME" query-rows="5" delete-button="no" detail-mode="yes">
-            <o-table-column attr="SKIN_NAME" title="SKIN_NAME" width="100px"></o-table-column>
-        </o-table>
+
+            <mat-tab label="{{ 'SKIN_TYPES' | oTranslate }}">
+                <o-table attr="ProductSkinTable" service="productsSkin" entity="productSkin" keys="PS_ID" parent-keys="PRO_ID"
+                    columns="PS_ID;SKIN_ID;PRO_ID;PRO_NAME;SKIN_NAME" visible-columns="SKIN_NAME;PRO_NAME"
+                    query-rows="5" delete-button="no" detail-mode="yes">
+                    <o-table-column attr="PRO_NAME" title="PRO_NAME" width="100px"></o-table-column>
+                    <o-table-column attr="SKIN_NAME" title="SKIN_NAME" width="100px"></o-table-column>
+                </o-table>
+            </mat-tab>
+        </o-form>
     </mat-tab>
 </mat-tab-group>

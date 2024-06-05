@@ -26,7 +26,7 @@ export const SERVICE_CONFIG: Object = {
   'skintypes':{
     'path': '/skintypes'
   },
-  'productSkin':{
+  'productsSkin':{
     'path': '/productsSkin'
   },
   'billed-ages': {

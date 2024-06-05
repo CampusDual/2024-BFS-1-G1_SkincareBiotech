@@ -27,7 +27,6 @@
                         INNER JOIN ${mainschema}.SKIN_TYPES AS ST ON ST.SKIN_ID = PS.SKIN_ID
                         INNER JOIN ${mainschema}.PRODUCTS AS P ON PS.PRO_ID = P.PRO_ID
                     #WHERE#
-                    #ORDER#
                 ]]>
             </Sentence>
         </Query>
