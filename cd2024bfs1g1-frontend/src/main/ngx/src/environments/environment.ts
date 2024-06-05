@@ -4,12 +4,12 @@
 
 export const environment = {
   apiEndpoint: 'http://localhost:8080',
-  wsEndpoint: 'ws://localhost:8080',
+  wsEndpoint: 'ws://localhost:4299',
   production: false,
   RTCPeerConfiguration: {
     iceServers: [
       {
-        urls: 'stun:stun1.l.google.com:19302'
+        urls: 'stun:stun.l.google.com:19302'
       }
     ]
   }
