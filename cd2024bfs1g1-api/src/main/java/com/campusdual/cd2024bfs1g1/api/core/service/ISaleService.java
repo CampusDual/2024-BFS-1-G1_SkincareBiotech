@@ -8,6 +8,5 @@ import java.util.Map;
 
 public interface ISaleService {
    EntityResult saleQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
-   EntityResult productSaleQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
-   EntityResult productSaleInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
+   EntityResult saleInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
 }
