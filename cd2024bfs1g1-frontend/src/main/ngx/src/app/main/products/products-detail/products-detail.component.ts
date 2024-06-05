@@ -54,17 +54,9 @@ export class ProductsDetailComponent  {
       this.router.navigate(['/main/products']);
     }
   }
-  onDataLoaded(event) {
-    this.proSaleToggle.setValue((event.PRO_SALE !== undefined));
-    this.proSaleCurrency.setEnabled((event.PRO_SALE !== undefined));
-  }
+
   onInsert(event) {
     this.router.navigate(['/main/products']);
   }
-  onChange(event) {
-    if (!this.proSaleToggle.getValue()) {
-      this.proSaleCurrency.setValue(null);
-    }
-    this.proSaleCurrency.setEnabled(this.proSaleToggle.getValue());
-  }
+  
 }

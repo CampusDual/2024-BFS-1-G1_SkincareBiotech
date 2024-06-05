@@ -1,8 +1,8 @@
-<o-form attr="newSalesForm" service="sales" entity="sale" keys="SAL_ID" after-insert-mode="new">
+<o-form attr="newSalesForm" service="sales" entity="productSale" keys="SAL_ID" after-insert-mode="new">
     <div class="main-container">
         <span class="title-container"><h3>{{'ADD_SALE' | oTranslate}}</h3></span>
         <div class="details-row">
-          <o-currency-input attr="SAL_PRICE" label="PRO_PRICE" max-decimal-digits="2" decimal-separator="," required="yes"></o-currency-input>
+          <o-currency-input #originalPrice (keyup)="onKeyUp($event)" attr="SAL_PRICE" label="PRO_PRICE" max-decimal-digits="2" decimal-separator="," required="yes"></o-currency-input>
           <o-date-input attr="SAL_INITIAL_DATE" label="SAL_INITIAL_DATE" required="yes"></o-date-input>
           <o-date-input attr="SAL_END_DATE" label="SAL_END_DATE" required="yes"></o-date-input>
         </div>

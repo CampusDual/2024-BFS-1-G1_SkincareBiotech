@@ -247,5 +247,6 @@
   "SAL_PRICE": "Sale price",
   "SAL_INITIAL_DATE": "Initial date",
   "SAL_END_DATE": "End date",
-  "ADD_SALE": "Add new sale"
+  "ADD_SALE": "Add new sale",
+  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date"
 }

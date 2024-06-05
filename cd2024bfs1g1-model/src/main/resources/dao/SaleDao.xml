@@ -12,4 +12,16 @@
         <Column>SAL_ID</Column>
     </UpdateKeys>
     <GeneratedKey>sal_id</GeneratedKey>
+    <Queries>
+        <Query id="PRO_SALE">
+            <Sentence>
+                <![CDATA[
+                    SELECT S.*, P.PRO_PRICE
+                    FROM SALES S
+                    INNER JOIN PRODUCTS P ON S.PRO_ID = P.PRO_ID
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
