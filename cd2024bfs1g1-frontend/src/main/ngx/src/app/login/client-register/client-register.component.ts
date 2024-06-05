@@ -1,6 +1,5 @@
-import { Component, Inject, Injector, OnInit } from '@angular/core';
+import { Component, Inject, Injector, Input, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService, OTranslateService, OUserInfoService, OntimizeService, ServiceResponse } from 'ontimize-web-ngx';
 import { MainService } from 'src/app/shared/services/main.service';
@@ -54,14 +53,15 @@ export class ClientRegisterComponent implements OnInit {
   public userAddressCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required, Validators.minLength(3),
     Validators.maxLength(200),
-    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
+  ]);
+  public userGenderCtrl: UntypedFormControl = new UntypedFormControl('', [
+    Validators.required,
   ]);
 
+  @Input() item: any;
   service: OntimizeService;
+  genderData: any = {};
   redirect = '';
-  adminRole = 'admin';
-  userRole = 'user';
-  sellerRole = 'seller';
 
   constructor(
     private router: Router,
@@ -71,7 +71,6 @@ export class ClientRegisterComponent implements OnInit {
     @Inject(MainService) private mainService: MainService,
     @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
     @Inject(UserInfoService) private userInfoService: UserInfoService,
-    @Inject(DomSanitizer) private domSanitizer: DomSanitizer
   ) {
     this.service = this.injector.get(OntimizeService)
     this.translate = this.injector.get(OTranslateService);
@@ -87,12 +86,22 @@ export class ClientRegisterComponent implements OnInit {
     this.registerForm.addControl('upr_address', this.userAddressCtrl);
     this.registerForm.addControl('usr_email', this.userEmailCtrl);
     this.registerForm.addControl('usr_phone', this.userPhoneCtrl);
+    this.registerForm.addControl('uge_id', this.userGenderCtrl);
+
+    const conf = this.service.getDefaultServiceConfiguration('user-genders');
+    this.service.configureService(conf);
+    this.service.query({}, ["UGE_ID", "UGE_NAME"], "userGender")
+      .subscribe((data) => {
+        if (data.data.length > 0) {
+          this.genderData = data.data;
+        }
+      });
   }
 
   register() {
     if (this.registerForm.valid) {
       if (this.passwordMatchValidator()) {
-        this.insertUser(this.userRole);
+        this.insertUser();
       } else {
         const text = this.translate.get('PASSWORDS_DO_NOT_MATCH');
         const button = this.translate.get('CONFIRMATION_REGISTER_BUTTON');
@@ -112,7 +121,7 @@ export class ClientRegisterComponent implements OnInit {
     return this.registerForm.value.usr_password === this.registerForm.value.usr_password2;
   }
 
-  insertUser(userRole: string) {
+  insertUser() {
     const login = this.registerForm.value.usr_login;
     const password = this.registerForm.value.usr_password;
 
@@ -124,12 +133,10 @@ export class ClientRegisterComponent implements OnInit {
       "USR_EMAIL": this.registerForm.value.usr_email,
       "USR_PHONE": this.registerForm.value.usr_phone,
       "UPR_BIRTHDATE": this.registerForm.value.upr_birthdate._i,
-      "UPR_ADDRESS": this.registerForm.value.upr_address
-
+      "UPR_ADDRESS": this.registerForm.value.upr_address,
+      "UGE_ID": this.registerForm.value.uge_id
     }
-    console.log(data);
-    console.log(data.UPR_BIRTHDATE._i);
-
+   
     const conf = this.service.getDefaultServiceConfiguration('users');
     this.service.configureService(conf);
     this.service.insert(data, "clientRole")

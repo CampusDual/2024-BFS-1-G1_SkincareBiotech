@@ -20,6 +20,9 @@ export const SERVICE_CONFIG: Object = {
   'brands':{
     'path': '/brands'
   },
+  'productsView':{
+    'path':'/productsView'
+  },
   'skintypes':{
     'path': '/skintypes'
   },
@@ -31,6 +34,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'product-genders': {
     'path': '/product-genders',
+  },
+  'user-genders': {
+    'path': '/user-genders',
   },
   permissions: {
     'path': '/permissions'

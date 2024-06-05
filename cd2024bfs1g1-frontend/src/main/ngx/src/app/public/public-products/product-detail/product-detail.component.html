@@ -3,7 +3,7 @@
         <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
     </div>
     <div class="prod-container">
-        <h1 class="title">{{product.PRO_NAME}}</h1>
+        <div class="title">{{product.PRO_NAME}}</div>
         <div class="for">
             <div class="flex">
                 <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
@@ -21,8 +21,9 @@
         <div class="buy-container">
             <div class="price" *ngIf="(sale != null); else priceBlock">
                 <div class="price-container">
-                    <p class="originalPrice"> {{ price }} €</p>
-                    <p class="salePrice"><span> {{ sale }} €</span></p>
+                    <span class="discount-span">-{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) * 100 | number: '1.0-0' }}%</span>
+                    <span class="salePrice"><span> {{ sale }} €</span></span>
+                    <span class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ price }} €</span>
                 </div>
             </div>
             <ng-template #priceBlock>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="PRODUCTS_VIEW"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>PROV_ID</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>PROV_ID</Column>
+    </UpdateKeys>
+    <GeneratedKey>prov_id</GeneratedKey>
+    <Queries>
+        <Query id="PROV_VIEW_PRODUCT">
+            <Sentence>
+                    <![CDATA[
+                       with visitas as (
+                            with t as(
+                                select
+                                    pro_id,
+                                    DATE(prov_date) AS visit_date,
+                                    prov_uid
+                                FROM
+                                    public.products_view
+                                GROUP BY
+                                    pro_id,
+                                    DATE(prov_date),
+                                    prov_uid
+                             )
+                             select pro_id, visit_date, count(pro_id) from t
+                             where visit_date > now()   - interval '1 month'
+                             group by pro_id, visit_date
+                             order by visit_date
+                        )
+                        SELECT  #COLUMNS#
+                        from visitas
+                        #WHERE#
+                        ;
+                    ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

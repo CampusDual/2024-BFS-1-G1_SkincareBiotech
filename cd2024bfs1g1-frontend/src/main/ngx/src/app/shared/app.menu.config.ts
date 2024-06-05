@@ -9,11 +9,11 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'brands', name: 'BRANDS', icon: 'label', route: '/main/brands' },
   { id: 'orders', name: 'ORDERS', icon: 'local_shipping', route: '/main/orders' },
   { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
+  { id: 'sells-by-category', name: 'DATA_BY_CATEGORY', icon: 'category', route: '/main/data-analysis/bycategory'},
   { id: 'skin-types', name: 'SKIN_TYPES', icon: 'accessibility', route: '/main/skin-types' },
   { id: 'sellers', name:'SELLERS', route: '/main/admin/sellers/', icon: 'person'},
   { id: 'billed-age', name: 'BILLED_AGE', icon: 'bar_chart', route: '/main//data-analysis/billed-age' },
   { id: 'login', name: 'LOGIN', route: '/login', icon: 'power_settings_new'},
-  { id: 'cart', name:'CART', route: '/order/cart', icon: 'shopping_cart'},
   { id: 'profile', name: 'PROFILE', route: '/profile', icon: 'person'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
 ];
