@@ -215,7 +215,7 @@
   "OL_UNITS_OLD": "Unidades",
   "OL_PRICE_OLD": "Precio unidad",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
-  "PRICE_USER_MESSAGE": "El usuario pagará",
+  "PRICE_USER_MESSAGE": "El cliente pagará",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
   "UNITS_ABBR": "uds",
   "TOTAL": "Total",
@@ -228,5 +228,6 @@
   "COM_NAME": "Nombre comisión",
   "COM_VALUE": "Valor de la comisión",
   "COM_ID": "Id de comisión",
-  "COMMISSIONS": "Comisiones"
+  "COMMISSIONS": "Comisiones",
+  "FINAL_PRICE": "Precio final"
 }

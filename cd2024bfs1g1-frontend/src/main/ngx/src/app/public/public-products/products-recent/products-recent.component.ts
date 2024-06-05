@@ -25,8 +25,8 @@ export class ProductsRecentComponent implements OnInit {
       "PRO_ID",
       "PRO_NAME",
       "PRO_DESCRIPTION",
-      "PRO_PRICE",
-      "PRO_SALE",
+      "USER_FINAL_PRICE",
+      "USER_FINAL_PRICE_SALE",
       "DISCOUNT",
       "PRO_IMAGE"
     ];

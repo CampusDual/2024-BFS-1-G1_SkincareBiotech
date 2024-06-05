@@ -53,21 +53,25 @@
         </Query>
 
         <Query id="pro_featured">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="PRO_ID" prefix="co"/>
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     WITH complete_overview AS (
-                        SELECT *, COALESCE (((pro_price - pro_sale) / pro_price) * 100, 0) AS DISCOUNT, (
+                        SELECT p.*, COALESCE(((pro_price - pro_sale) / pro_price) * 100, 0) AS DISCOUNT, (
                             SELECT COUNT(*)
-                            FROM ${mainschema}.ORD_LINES AS ol
-           			        WHERE ol.pro_id = p.pro_id
+                            FROM ORD_LINES AS ol
+                            WHERE ol.pro_id = p.pro_id
                         ) AS AMMOUNT_OF_SALES
-                        FROM ${mainschema}.PRODUCTS AS p
-                        WHERE pro_enabled = TRUE
+                        FROM PRODUCTS AS p
+                        WHERE pro_enabled = true
                     )
-                SELECT #COLUMNS#
-                FROM complete_overview
-                #WHERE#
-                #ORDER#
+                    SELECT #COLUMNS#
+                    FROM complete_overview co
+                    INNER JOIN user_price up ON co.pro_id = up.pro_id
+                    #WHERE#
+                    #ORDER#
             ]]>
             </Sentence>
         </Query>

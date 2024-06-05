@@ -215,7 +215,7 @@
   "OL_UNITS_OLD": "Units",
   "OL_PRICE_OLD": "Unit price",
   "ERROR_UNPAID": "It is not possible to ship the order until it is paid for",
-  "PRICE_USER_MESSAGE": "The user will pay",
+  "PRICE_USER_MESSAGE": "The client will pay",
   "ERROR_UNPAID": "It is not possible to ship the order until it is paid for",
   "UNITS_ABBR": "u",
   "TOTAL": "Total",
@@ -228,5 +228,6 @@
   "COM_NAME": "Commission name",
   "COM_VALUE": "Commission value",
   "COM_ID": "Commission id",
-  "COMMISSIONS": "Commission"
+  "COMMISSIONS": "Commission",
+  "FINAL_PRICE": "Final price"
 }
