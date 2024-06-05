@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({port: 4300}, () => {
+const wss = new WebSocket.Server({port: 4299}, () => {
     console.log('Signalling Server is running on port 4299')
 });
 // const wss = new WebSocket.Server({port: 8080}, () => {

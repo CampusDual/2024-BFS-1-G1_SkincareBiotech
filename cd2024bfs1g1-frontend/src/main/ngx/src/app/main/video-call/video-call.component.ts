@@ -1,11 +1,15 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { DataService } from './data.service';
-import { Message } from './message';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import { environment } from 'src/environments/environment';
+import {DataService} from './data.service';
+import {Message} from './message';
+
+export const ENV_RTCPeerConfiguration = environment.RTCPeerConfiguration;
 
 // variables for media constraints
 const mediaConstraints = {
   audio: true,
-  video: { width: 720, height: 540 }
+  video: {width: 1280, height: 720}
+
 };
 
 const offerOptions = {
@@ -14,160 +18,64 @@ const offerOptions = {
 };
 
 @Component({
-  selector: 'app-video-call',
+  selector: 'app-chat',
   templateUrl: './video-call.component.html',
   styleUrls: ['./video-call.component.css']
 })
-export class VideoCallComponent implements AfterViewInit{
+export class VideoCallComponent implements AfterViewInit {
+
   @ViewChild('localVideo') localVideo: ElementRef;
   @ViewChild('remoteVideo') remoteVideo: ElementRef;
 
-  private localStream: MediaStream;
   private peerConnection: RTCPeerConnection;
 
+  private localStream: MediaStream;
+
+  inCall = false;
+  localVideoActive = false;
+
+
   constructor(private dataService: DataService) { }
-  ngAfterViewInit(): void {
-    this.addIncomingMessageHandler();
-    this.requestMediaDevices();
-  }
 
-
-  private async requestMediaDevices(): Promise<void>{
-    this.localStream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
-   // this.localVideo.nativeElement.srcObject = this.localStream;
-     this.pauseLocalVideo();
-  }
-
-   pauseLocalVideo(): void{
-    this.localStream.getVideoTracks().forEach(track => {
-      track.enabled = false;
-    });
-    this.localVideo.nativeElement.srcObject = undefined;
-  }
-
-  startLocalVideo(): void{
-    this.localStream.getTracks().forEach(track => { 
-      track.enabled = true;
-    });
-    //solo se tiene que agregar la señal del dispositivo al componente (muteado por defecto en el video local)
-    this.localVideo.nativeElement.srcObject = this.localStream;
-  }
-
-  async call(): Promise<void>{
+  async call(): Promise<void> {
+    
     this.createPeerConnection();
-    this.localStream.getTracks().forEach(track => {
-      this.peerConnection.addTrack(track, this.localStream);
-    });
+
+
+    this.localStream.getTracks().forEach(
+      track => this.peerConnection.addTrack(track, this.localStream)
+    );
 
     try {
       // offer contiene toda la informacion de los medios para establecer la sesion
       const offer: RTCSessionDescriptionInit = await this.peerConnection.createOffer(offerOptions);
       await this.peerConnection.setLocalDescription(offer);
 
-      this.dataService.sendMessage({
-        type: 'offer',
-        data: offer
-      });
+      this.inCall = true;
+
+      this.dataService.sendMessage({type: 'offer', data: offer});
     } catch (err) {
       this.handleGetUserMediaError(err);
     }
   }
 
-
-  private handleGetUserMediaError(err: Error): void {
-   switch (err.name) {
-    case 'NotFoundError':
-      alert('No se puede establecer la conexion: no se encuentra la camara/microfono');
-      break;
-    case 'SecurityError':
-      alert('Permisos de Seguridad denegados')
-      break;
-    case 'PermissionDeniedError':
-      alert('Permisos denegados')
-      break;
-    default:
-      console.log(err);
-      alert('Error al establecer la conexion: ' + err.message);
-    }
+  hangUp(): void {
+    this.dataService.sendMessage({type: 'hangup', data: ''});
     this.closeVideoCall();
   }
 
-  private createPeerConnection() {
-    this.peerConnection = new RTCPeerConnection({
-      iceServers: [
-        {
-          // los public STUN servers permiten descubrir la IP publica para determinar la forma en la que estan conectados a internet los users
-          urls: ['stun:stun.l.google.com:19302']
-        }
-      ]
-  });
-  this.peerConnection.onicecandidate= this.handleIceEvent;
-  this.peerConnection.onicegatheringstatechange = this.handleIceConnectionStateChangeEvent;
-  this.peerConnection.onsignalingstatechange = this.handleSignalingStateEvent;
-  this.peerConnection.ontrack = this.handleTrackEvent;
-}
-
-  private closeVideoCall(): void {
-    if(this.peerConnection){
-      this.peerConnection.onicecandidate= null;
-      this.peerConnection.onicegatheringstatechange = null;
-      this.peerConnection.onsignalingstatechange = null;
-      this.peerConnection.ontrack = null;
-    }
-    this.peerConnection.getTransceivers().forEach(transceiver => {
-      transceiver.stop();
-    });
-
-    this.peerConnection.close();
-    this.peerConnection = null;
+  ngAfterViewInit(): void {
+    this.addIncominMessageHandler();
+    this.requestMediaDevices();
   }
 
-  // se recibe un evento desde la api webRTC y me da el candidato, lo envio al otro peer
-  private handleIceEvent = (event: RTCPeerConnectionIceEvent): void => {
-    console.log(event);
-    if(event.candidate){
-      this.dataService.sendMessage({
-        type: 'ice-candidate',
-        data: event.candidate
-      });
-    }
-  }
-
-  // en el caso de erroren la conexion, cerramos la conexion
-  private handleIceConnectionStateChangeEvent = (event: Event): void => {
-    console.log(event);
-    switch (this.peerConnection.iceConnectionState) {
-      case 'closed':
-      case 'failed':
-      case 'disconnected':
-        this.closeVideoCall();
-        break;
-    }
-
-  }
-
-  // en el caso de que el estado de la conexion se mantenga cerrado, cerramos la conexion
-  private handleSignalingStateEvent = (event: Event): void => {
-    console.log(event);
-    switch (this.peerConnection.signalingState) {
-      case 'closed':
-        this.closeVideoCall();
-        break;
-    }
-  }
-
-  // se recibe un check desde el remote y le hacemos un attach al remote
-  private handleTrackEvent = (event: RTCTrackEvent): void => {
-    console.log(event);
-    // se accede a los stremas de RCTrackEvent y se le asigna al remote video el primer stream
-    this.remoteVideo.nativeElement.srcObject = event.streams[0];
-  }
-
-  // controlar los mensajes entrantes
-  addIncomingMessageHandler() {
+  private addIncominMessageHandler(): void {
     this.dataService.connect();
+
+    // this.transactions$.subscribe();
     this.dataService.messages$.subscribe(
       msg => {
+        // console.log('Received message: ' + msg.type);
         switch (msg.type) {
           case 'offer':
             this.handleOfferMessage(msg.data);
@@ -179,68 +87,195 @@ export class VideoCallComponent implements AfterViewInit{
             this.handleHangupMessage(msg);
             break;
           case 'ice-candidate':
-            this.handleIceCandidateMessage(msg.data);
+            this.handleICECandidateMessage(msg.data);
             break;
           default:
-            // para debuggear
-            console.log('Unknown message type: ' + msg.type);
+            console.log('unknown message of type ' + msg.type);
         }
       },
-      error => {
-        console.log(error);
-      }
+      error => console.log(error)
     );
   }
 
-  handleOfferMessage(msg: RTCSessionDescriptionInit): void {
-    if(!this.peerConnection){
+  private handleOfferMessage(msg: RTCSessionDescriptionInit): void {
+    console.log('handle incoming offer');
+    if (!this.peerConnection) {
       this.createPeerConnection();
     }
-    
-    if(!this.localStream){
+
+    if (!this.localStream) {
       this.startLocalVideo();
     }
+
     this.peerConnection.setRemoteDescription(new RTCSessionDescription(msg))
-    .then(() =>{
-      this.localVideo.nativeElement.srcObject = this.localStream;
-      this.localStream.getTracks().forEach(track => {
-        this.peerConnection.addTrack(track, this.localStream);
-      })
-    })
-    .then(() => {
+      .then(() => {
+
+        // añadir la señal del dispositivo al componente
+        this.localVideo.nativeElement.srcObject = this.localStream;
+
+        // añaadir la señal del dispositivo al peer connection
+        this.localStream.getTracks().forEach(
+          track => this.peerConnection.addTrack(track, this.localStream)
+        );
+
+      }).then(() => {
+
+      // Construir la respuesta
       return this.peerConnection.createAnswer();
+
     }).then((answer) => {
+
+     
       return this.peerConnection.setLocalDescription(answer);
+
     }).then(() => {
-      this.dataService.sendMessage({
-        type: 'answer',
-        data: this.peerConnection.localDescription
-      });
+
+
+      this.dataService.sendMessage({type: 'answer', data: this.peerConnection.localDescription});
+
+      this.inCall = true;
+
     }).catch(this.handleGetUserMediaError);
   }
-  
-  handleAnswerMessage(data: any):void {
-    this.peerConnection.setRemoteDescription(data);
+
+  private handleAnswerMessage(msg: RTCSessionDescriptionInit): void {
+    console.log('handle incoming answer');
+    this.peerConnection.setRemoteDescription(msg);
   }
-  
-  handleHangupMessage(msg: Message): void {
+
+  private handleHangupMessage(msg: Message): void {
+    console.log(msg);
     this.closeVideoCall();
   }
-  
-  handleIceCandidateMessage(data: any):void {
-    this.peerConnection.addIceCandidate(data).catch(this.reportError);
+
+  private handleICECandidateMessage(msg: RTCIceCandidate): void {
+    const candidate = new RTCIceCandidate(msg);
+    this.peerConnection.addIceCandidate(candidate).catch(this.reportError);
   }
 
-  private reportError = (err: Error) => {
-    console.log('Error: ' + err.name);
-    console.log(err);
+  private async requestMediaDevices(): Promise<void> {
+    try {
+      this.localStream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
+      // pausa el video local
+      this.pauseLocalVideo();
+    } catch (e) {
+      console.error(e);
+      alert(`getUserMedia() error: ${e.name}`);
+    }
   }
 
-  hangUp(): void{
-    this.dataService.sendMessage({
-      type: 'hangup',
-      data: ''
+  startLocalVideo(): void {
+    //solo se tiene que agregar la señal del dispositivo al componente (muteado por defecto en el video local)
+    console.log('starting local stream');
+    this.localStream.getTracks().forEach(track => {
+      track.enabled = true;
     });
+    this.localVideo.nativeElement.srcObject = this.localStream;
+
+    this.localVideoActive = true;
+  }
+
+  pauseLocalVideo(): void {
+    console.log('pause local stream');
+    this.localStream.getTracks().forEach(track => {
+      track.enabled = false;
+    });
+    this.localVideo.nativeElement.srcObject = undefined;
+
+    this.localVideoActive = false;
+  }
+
+  private createPeerConnection(): void {
+    console.log('creating PeerConnection...');
+    this.peerConnection = new RTCPeerConnection(ENV_RTCPeerConfiguration);
+
+    this.peerConnection.onicecandidate = this.handleICECandidateEvent;
+    this.peerConnection.oniceconnectionstatechange = this.handleICEConnectionStateChangeEvent;
+    this.peerConnection.onsignalingstatechange = this.handleSignalingStateChangeEvent;
+    this.peerConnection.ontrack = this.handleTrackEvent;
+  }
+
+  private closeVideoCall(): void {
+    console.log('Closing call');
+
+    if (this.peerConnection) {
+      console.log('--> Closing the peer connection');
+
+      this.peerConnection.ontrack = null;
+      this.peerConnection.onicecandidate = null;
+      this.peerConnection.oniceconnectionstatechange = null;
+      this.peerConnection.onsignalingstatechange = null;
+
+      // Para todas las transmisiones
+      this.peerConnection.getTransceivers().forEach(transceiver => {
+        transceiver.stop();
+      });
+
+      // Cierra la conexion
+      this.peerConnection.close();
+      this.peerConnection = null;
+
+      this.inCall = false;
+    }
+  }
+
+ 
+  private handleGetUserMediaError(e: Error): void {
+    switch (e.name) {
+      case 'NotFoundError':
+        alert('Unable to open your call because no camera and/or microphone were found.');
+        break;
+      case 'SecurityError':
+      case 'PermissionDeniedError':
+        // no hace nada, como si el user cancelara la llamada
+        break;
+      default:
+        console.log(e);
+        alert('Error opening your camera and/or microphone: ' + e.message);
+        break;
+    }
+
     this.closeVideoCall();
+  }
+
+  private reportError = (e: Error) => {
+    console.log('got Error: ' + e.name);
+    console.log(e);
+  }
+
+  
+  private handleICECandidateEvent = (event: RTCPeerConnectionIceEvent) => {
+    console.log(event);
+    if (event.candidate) {
+      this.dataService.sendMessage({
+        type: 'ice-candidate',
+        data: event.candidate
+      });
+    }
+  }
+
+  private handleICEConnectionStateChangeEvent = (event: Event) => {
+    console.log(event);
+    switch (this.peerConnection.iceConnectionState) {
+      case 'closed':
+      case 'failed':
+      case 'disconnected':
+        this.closeVideoCall();
+        break;
+    }
+  }
+
+  private handleSignalingStateChangeEvent = (event: Event) => {
+    console.log(event);
+    switch (this.peerConnection.signalingState) {
+      case 'closed':
+        this.closeVideoCall();
+        break;
+    }
+  }
+
+  private handleTrackEvent = (event: RTCTrackEvent) => {
+    console.log(event);
+    this.remoteVideo.nativeElement.srcObject = event.streams[0];
   }
 }

@@ -6,6 +6,7 @@ import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
 import { VideoCallComponent } from './video-call/video-call.component';
 
+
 export const routes: Routes = [
   {
     path: '',
