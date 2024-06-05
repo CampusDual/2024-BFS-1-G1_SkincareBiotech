@@ -238,5 +238,6 @@
   "OTHER": "Otro",
   "RATHER_NOT_ANSWER": "Prefiero no contestar",
   "AGE_RANGE": "Rango de edad",
-  "AGE_GENDER": "Edad y género"
+  "AGE_GENDER": "Edad y género",
+  "EMPTY_CART": "El carrito esta vacio"
 }
