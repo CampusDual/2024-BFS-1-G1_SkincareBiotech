@@ -9,7 +9,7 @@ import { DataService } from '../../../shared/services/data.service';
   styleUrls: ['./products-view.component.css']
 })
 
-export class ProductsViewComponent implements AfterViewInit {
+export class ProductsViewComponent implements OnInit {
 
   @ViewChild('nameFilter') nameFilter: OTextInputComponent
 
@@ -19,7 +19,7 @@ export class ProductsViewComponent implements AfterViewInit {
   minPrice: Expression;
   maxSale: Expression;
   minSale: Expression;
-
+  nameFilterValue: string;
   price: number;
   searchQuery: string = '';
   products: any[] = [];
@@ -30,10 +30,9 @@ export class ProductsViewComponent implements AfterViewInit {
   ) {
     this.service = this.injector.get(OntimizeService)
   }
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.loadNameFilter();
   }
-
   public getImageSrc(base64: string): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
@@ -41,7 +40,7 @@ export class ProductsViewComponent implements AfterViewInit {
   loadNameFilter(){
     this.searchQuery = this.dataService.searchQuery;
     if(this.searchQuery !== undefined){
-      this.nameFilter.data = this.searchQuery;
+      this.nameFilterValue = this.searchQuery;
     }
   }
 

@@ -21,4 +21,11 @@ export class PublicBrowserComponent {
       this.router.navigate(['/view']);  
   }
 
+  onKeyUp(event: any){
+    if(event.Key === 'Enter'){
+      this.dataService.searchQuery = this.searchQuery;
+      this.router.navigate(['/view']);  
+    }
+  }
+
 }
