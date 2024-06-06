@@ -4,8 +4,8 @@
     </mat-tab>      
     <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
         <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="U"
-           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
-            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS" 
+           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UPR_ZIPCODE"
+            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UPR_ZIPCODE"
             show-header-navigation="yes">
 
             <label>{{ 'NAME' | oTranslate }}</label>
@@ -25,6 +25,7 @@
             <div class="info">
                 <o-date-input attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
+                <o-integer-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE"></o-integer-input>
             </div>
         </o-form>
     </mat-tab>
