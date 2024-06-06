@@ -5,12 +5,14 @@ import { AllergensRoutingModule } from './allergens-routing.module';
 import { NewAllergenComponent } from './new-allergen/new-allergen.component';
 import { AllergenDetailsComponent } from './allergen-details/allergen-details.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
+import { AllergenHomeComponent } from './allergen-home/allergen-home.component';
 
 
 @NgModule({
   declarations: [
     NewAllergenComponent,
-    AllergenDetailsComponent
+    AllergenDetailsComponent,
+    AllergenHomeComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,11 @@
-<o-table attr="allergensTable" service="allergens" entity="allergen" keys="ALLER_ID"
-    columns="ALLER_ID;ALLER_NAME"
-    visible-columns="ALLER_NAME" query-rows="15" delete-button='no' detail-mode="none">
-    <o-table-column attr="ALLER_NAME" min-width="150px"></o-table-column>
-</o-table>
+<o-form attr="allergensDetail" service="allergens" entity="allergen" keys="ALLER_ID" header-actions="U"
+    show-header-navigation="yes" (onUpdate)="onUpdate($event)">
+    <o-integer-input attr="ALLER_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
+    <div fxLayout="row">
+        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" title="ALLER_NAME">
+            <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
+                <o-text-input fxFlex="40" attr="ALLER_NAME" label="ALLER_NAME" required="yes"></o-text-input>
+            </div>
+        </o-column>
+    </div>
+</o-form>
