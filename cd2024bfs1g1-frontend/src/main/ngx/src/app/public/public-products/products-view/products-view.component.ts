@@ -1,7 +1,7 @@
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import {  AfterViewInit, Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { FilterExpressionUtils, Expression, OntimizeService, ORealInputComponent, OIntegerInputComponent, OGridComponent } from 'ontimize-web-ngx';
+import { FilterExpressionUtils, Expression, OntimizeService, ORealInputComponent, OIntegerInputComponent, OGridComponent, OTextInputComponent } from 'ontimize-web-ngx';
+import { DataService } from '../../../shared/services/data.service';
 
 @Component({
   selector: 'app-products-view',
@@ -9,9 +9,9 @@ import { FilterExpressionUtils, Expression, OntimizeService, ORealInputComponent
   styleUrls: ['./products-view.component.css']
 })
 
-export class ProductsViewComponent implements OnInit {
+export class ProductsViewComponent implements AfterViewInit {
 
-  @ViewChild('productsGrid') productGrid: OGridComponent
+  @ViewChild('nameFilter') nameFilter: OTextInputComponent
 
   service: OntimizeService;
 
@@ -21,57 +21,29 @@ export class ProductsViewComponent implements OnInit {
   minSale: Expression;
 
   price: number;
+  searchQuery: string = '';
+  products: any[] = [];
   constructor(
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
-    private route: ActivatedRoute
+    private dataService: DataService
   ) {
     this.service = this.injector.get(OntimizeService)
   }
-
-  searchQuery: string = ''; 
-  products: any[] = [];
-
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.searchQuery = params['query'];
-      this.loadProducts();
-      console.log(this.searchQuery);
-    });
+  ngAfterViewInit(): void {
+    this.loadNameFilter();
   }
-
-  loadProducts() {  
-    const conf = this.service.getDefaultServiceConfiguration('products');
-    this.service.configureService(conf);
-    const columns = [
-      "PRO_ID",
-      "PRO_NAME",
-      "PRO_DESCRIPTION",
-      "PRO_PRICE",
-      "PRO_SALE",
-      "DISCOUNT",
-      "PRO_IMAGE"
-    ];
-    const filter = {
-      "PRO_NAME":  "*" + this.searchQuery + "*"
-    };
-    const order = []
-    this.service.advancedQuery(filter, columns, "productEnabled", null, 0, 5, order)
-    .subscribe((data) => {
-    if (data.data.length > 0) {
-      this.productGrid.dataArray = data.data;
-      console.log(this.productGrid.dataArray);
-    }
-  });
-  
-  }
-
-
 
   public getImageSrc(base64: string): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
 
+  loadNameFilter(){
+    this.searchQuery = this.dataService.searchQuery;
+    if(this.searchQuery !== undefined){
+      this.nameFilter.data = this.searchQuery;
+    }
+  }
 
   filter(values: Array<{ attr, value }>): Expression {
     // Prepare simple expressions from the filter components values
@@ -95,13 +67,15 @@ export class ProductsViewComponent implements OnInit {
           let value: number = Number(fil.value);
           filters.push(FilterExpressionUtils.buildExpressionMoreEqual("PRO_REAL_PRICE", value));
         }
+        if(fil.attr == 'PRO_NAME'){
+          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, fil.value))
+        }
       }
     });
 
     // Build complex expression
     if (filters.length > 0) {
       return filters.reduce((exp1, exp2) => FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND));
-      console.log(filters);
     } else {
       return null;
     }

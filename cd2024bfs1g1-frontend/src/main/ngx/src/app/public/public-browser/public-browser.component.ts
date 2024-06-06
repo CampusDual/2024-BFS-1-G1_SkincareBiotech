@@ -1,7 +1,6 @@
-import { query } from '@angular/animations';
-import { Component, Injector, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { OTextInputComponent, OntimizeService } from 'ontimize-web-ngx';
+import { DataService } from '../../shared/services/data.service';
 
 @Component({
   selector: 'app-public-browser',
@@ -10,17 +9,16 @@ import { OTextInputComponent, OntimizeService } from 'ontimize-web-ngx';
 })
 export class PublicBrowserComponent {
   
-  
   searchQuery: string = '';
 
   constructor( 
-    private router: Router 
+    private router: Router,
+    private dataService: DataService,
   ) { }
 
-
   search() {
-      this.router.navigate(['/view'], {queryParams: {query: this.searchQuery}})  
+      this.dataService.searchQuery = this.searchQuery;
+      this.router.navigate(['/view']);  
   }
-
 
 }
