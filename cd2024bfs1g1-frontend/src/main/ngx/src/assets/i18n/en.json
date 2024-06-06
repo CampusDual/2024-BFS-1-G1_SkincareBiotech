@@ -241,5 +241,6 @@
   "OTHER": "Other",
   "RATHER_NOT_ANSWER": "I would rather not answer",
   "AGE_RANGE": "Age range",
-  "AGE_GENDER": "Age and gender"
+  "AGE_GENDER": "Age and gender",
+  "RECOMENDADED_FOR": "Recomendaded for"
 }

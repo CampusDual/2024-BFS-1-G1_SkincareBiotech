@@ -145,3 +145,7 @@
 .category{
     font-weight: bold;
 }
+
+.skin{
+    display: flex;
+}

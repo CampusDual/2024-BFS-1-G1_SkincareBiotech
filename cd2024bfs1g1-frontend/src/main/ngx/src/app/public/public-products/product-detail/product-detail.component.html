@@ -17,7 +17,15 @@
                 <!-- <p class="category">{{"PGE_ID" | oTranslate}}: </p> -->
                 <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
             </div>
+
         </div>
+        <div class="title">{{'RECOMENDADED_FOR' | oTranslate}}</div>
+        <div class="for">
+            <div class="skin">
+                <p class="pill">{{skintype.SKIN_NAME | oTranslate}}</p>
+            </div>
+        </div>
+
         <div class="buy-container">
             <div class="price" *ngIf="(sale != null); else priceBlock">
                 <div class="price-container">

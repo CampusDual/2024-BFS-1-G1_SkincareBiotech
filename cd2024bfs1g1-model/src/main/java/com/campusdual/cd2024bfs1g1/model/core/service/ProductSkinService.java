@@ -41,4 +41,9 @@ public class ProductSkinService implements IProductSkinService {
         return this.daoHelper.update(this.productSkinDao, attrMap, keyMap);
     }
 
+    @Override
+    public EntityResult productSkinDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.productSkinDao, keyMap);
+    }
+
 }

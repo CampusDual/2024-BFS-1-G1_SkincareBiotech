@@ -6,13 +6,15 @@ import { ProductsHomeComponent } from './products-home/products-home.component';
 import { ProductsNewComponent } from './products-new/products-new.component';
 import { ProductsDetailComponent } from './products-detail/products-detail.component';
 import { OChartModule } from 'ontimize-web-ngx-charts';
+import { ProductSkinComponent } from './product-skin/product-skin.component';
 
 
 @NgModule({
   declarations: [
     ProductsHomeComponent,
     ProductsNewComponent,
-    ProductsDetailComponent
+    ProductsDetailComponent,
+    ProductSkinComponent
   ],
   imports: [
     CommonModule,

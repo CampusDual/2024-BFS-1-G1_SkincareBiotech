@@ -15,6 +15,7 @@ export class ProductDetailComponent implements OnInit {
   service2:OntimizeService;
   product: any = null;
   hash:string;
+  skintype: any = null;
 
   constructor(
     protected injector: Injector,
@@ -33,6 +34,8 @@ export class ProductDetailComponent implements OnInit {
     this.hash = await this.hashService.generateUniqueHash();
     this.tracker(id,this.hash);
     this.loadProduct(id);
+    this.loadSkin(id);
+
 
   }
 
@@ -63,6 +66,21 @@ export class ProductDetailComponent implements OnInit {
         }
       })
   }
+
+
+  public loadSkin(id){
+    const conf = this.service.getDefaultServiceConfiguration('productsSkin');
+    this.service.configureService(conf);
+    this.service.query({ "PRO_ID": id }, ["SKIN_NAME"], "productSkin")
+      .subscribe((data) => {
+        if (data.data.length > 0) {
+          this.skintype = data.data[0];
+        } else {
+          this.router.navigate(['']);
+        }
+      })
+  }
+
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
