@@ -111,30 +111,7 @@
                         {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
                     </mat-error>
                 </mat-form-field>
-
-                <div>
-                    <mat-form-field>
-                        <mat-label>{{ 'usr_phone' | oTranslate }}</mat-label>
-                        <input matInput class="mat-input" #phone placeholder="{{ 'usr_phone' | oTranslate }}"
-                            id="usr_phone" [formControl]="userPhoneCtrl">
-                        <mat-error *ngIf="userPhoneCtrl.hasError('pattern')">
-                            {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field>
-                        <mat-label>{{ 'UPR_ADDRESS' | oTranslate }}</mat-label>
-                        <input matInput class="mat-input" #user_name placeholder="{{ 'UPR_ADDRESS' | oTranslate }}"
-                            id="UPR_ADDRESS" [formControl]="userAddressCtrl">
-                        <mat-error *ngIf="userAddressCtrl.hasError('required')">
-                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                        </mat-error>
-                        <mat-error *ngIf="userAddressCtrl.hasError('minlength')">
-                            {{ 'MIN_LENGTH_3' | oTranslate }}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
+                
                 <button mat-raised-button style="background-color: #a7bfc7;" type="submit">{{ 'REGISTER' | oTranslate
                     }}</button>
                 <div class="linea"></div>
