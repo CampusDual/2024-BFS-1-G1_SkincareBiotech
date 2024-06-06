@@ -1,0 +1,13 @@
+.main-container {
+    background-color: #fff;
+    padding: 0px 15px 15px 15px;
+}
+.details-row {
+    display: flex;
+    gap: 10px;
+}
+
+.details-row o-currency-input,
+.details-row o-date-input {
+    flex: 1;
+}
