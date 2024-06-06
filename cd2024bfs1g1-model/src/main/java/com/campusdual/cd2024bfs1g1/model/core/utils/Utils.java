@@ -1,6 +1,7 @@
 package com.campusdual.cd2024bfs1g1.model.core.utils;
 
 import com.campusdual.cd2024bfs1g1.model.core.dao.BilledAgeDao;
+import com.campusdual.cd2024bfs1g1.model.core.dao.SaleDao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -12,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Date;
 import java.util.Map;
 
 public class Utils {
@@ -65,6 +67,27 @@ public class Utils {
         return true;
     }
 
+    public static boolean isDateRangeValid(long minAge, long maxAge, EntityResult existingRanges, int productId) {
+        long recordCount = existingRanges.calculateRecordNumber();
+
+        for (int i = 0; i < recordCount; i++) {
+            if ((int) existingRanges.getRecordValues(i).get(SaleDao.ATTR_PRO_ID) == productId) {
+                Date fechaInicio = (Date) existingRanges.getRecordValues(i).get(SaleDao.ATTR_SAL_INITIAL_DATE);
+                Date fechaFin = (Date) existingRanges.getRecordValues(i).get((SaleDao.ATTR_SAL_END_DATE));
+
+                long minRecord = fechaInicio.getTime();
+                long maxRecord = fechaFin.getTime();
+
+                if (minAge >= minRecord && minAge <= maxRecord ||
+                        minAge <= minRecord && maxAge >= maxRecord ||
+                        maxAge >= minRecord && maxAge <= maxRecord) {
+                    return false;
+                }
+                return true;
+            }
+        }
+        return true;
+    }
 
 }
 
