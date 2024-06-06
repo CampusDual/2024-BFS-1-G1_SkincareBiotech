@@ -13,6 +13,15 @@
     </UpdateKeys>
     <GeneratedKey>pro_id</GeneratedKey>
     <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT #COLUMNS#
+                    FROM ${mainschema}.PRODUCTS_WITH_OFFER
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="PRO_ENABLED">
             <AmbiguousColumns>
                 <AmbiguousColumn name="CAT_ID" prefix="ENABLED_CHECKER"/>
@@ -20,21 +29,21 @@
                 <AmbiguousColumn name="PGE_ID" prefix="ENABLED_CHECKER"/>
             </AmbiguousColumns>
             <Sentence>
-            <![CDATA[
+                <![CDATA[
                 WITH ENABLED_CHECKER AS (
-                    SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS PRO_REAL_PRICE,
+                    SELECT P.*,B.BRA_NAME, COALESCE(PRO_SALE, PRO_PRICE) AS PRO_REAL_PRICE,
                     COALESCE (((PRO_PRICE - PRO_SALE) / PRO_PRICE) * 100, 0) AS DISCOUNT
-                    FROM ${mainschema}.PRODUCTS AS P
+                    FROM ${mainschema}.PRODUCTS_WITH_OFFER AS P
+                    INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
                     WHERE PRO_ENABLED = TRUE
                 )
                 SELECT #COLUMNS#
                 FROM ENABLED_CHECKER
-                    INNER JOIN ${mainschema}.BRANDS AS B ON ENABLED_CHECKER.BRA_ID = B.BRA_ID
                     INNER JOIN ${mainschema}.PRO_GENDER AS G ON ENABLED_CHECKER.PGE_ID = G.PGE_ID
                     INNER JOIN ${mainschema}.CATEGORIES AS C ON ENABLED_CHECKER.CAT_ID = C.CAT_ID
                 #WHERE#
             ]]>
-        </Sentence>
+            </Sentence>
         </Query>
 
         <Query id="pro_featured">
@@ -46,7 +55,7 @@
                             FROM ${mainschema}.ORD_LINES AS ol
            			        WHERE ol.pro_id = p.pro_id
                         ) AS AMMOUNT_OF_SALES
-                        FROM ${mainschema}.PRODUCTS AS p
+                        FROM ${mainschema}.PRODUCTS_WITH_OFFER AS p
                         WHERE pro_enabled = TRUE
                     )
                 SELECT #COLUMNS#
