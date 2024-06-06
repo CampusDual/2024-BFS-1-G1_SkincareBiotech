@@ -58,5 +58,8 @@ export class ProductsDetailComponent  {
   onInsert(event) {
     this.router.navigate(['/main/products']);
   }
+  onSelectedTabChange(){
+    this.router.navigate(['/main/products/:PRO_ID/skin']);
+  }
   
 }

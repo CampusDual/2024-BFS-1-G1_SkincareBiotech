@@ -21,6 +21,10 @@ const routes: Routes = [{
 {
   path: ':PRO_ID/new',
   component: ProductsNewSaleComponent
+},
+{
+  path: ':PRO_ID/skin',
+  component: ProductSkinComponent
 }
 ];
 
