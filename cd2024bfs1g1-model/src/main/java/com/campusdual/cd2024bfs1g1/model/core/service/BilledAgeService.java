@@ -38,7 +38,7 @@ public class BilledAgeService implements IBilledAgeService {
         int minAge = (int) attributes.get("GBA_MIN_AGE");
         int maxAge = (int) attributes.get("GBA_MAX_AGE");
 
-        if(minAge > maxAge){
+        if (minAge > maxAge) {
             EntityResult result = new EntityResultMapImpl();
             result.setCode(EntityResult.OPERATION_WRONG);
             result.setMessage("MIN_RANGE_HIGHER");
@@ -49,7 +49,7 @@ public class BilledAgeService implements IBilledAgeService {
 
             EntityResult existingRanges = this.daoHelper.query(this.billedAgeDao, queryKeys, queryAttributes);
 
-            if(!Utils.isAgeRangeValid(minAge, maxAge, existingRanges)){
+            if (!Utils.isAgeRangeValid(minAge, maxAge, existingRanges)) {
                 EntityResult result = new EntityResultMapImpl();
                 result.setCode(EntityResult.OPERATION_WRONG);
                 result.setMessage("RANGE_NOT_VALID");
@@ -66,14 +66,21 @@ public class BilledAgeService implements IBilledAgeService {
     }
 
     @Override
-    public EntityResult billedAgeGenderChartQuery (Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException {
+    public EntityResult billedAgeGenderChartQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
         Map<String, Object> filter = new HashMap<>(keysValues);
-        return this.daoHelper.query(this.billedAgeDao, filter, attributes,"billed_age");
+        return this.daoHelper.query(this.billedAgeDao, filter, attributes, "billed_age");
     }
+
     @Override
-    public EntityResult billedAgeChartQuery (Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException {
+    public EntityResult billedAgeChartQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
         Map<String, Object> filter = new HashMap<>(keysValues);
-        return this.daoHelper.query(this.billedAgeDao, filter, attributes,"total_price");
+        return this.daoHelper.query(this.billedAgeDao, filter, attributes, "total_price");
+    }
+
+    @Override
+    public EntityResult customerAgeAndGenderQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        Map<String, Object> filter = new HashMap<>(keysValues);
+        return this.daoHelper.query(this.billedAgeDao, filter, attributes, "user_count_by_gender_and_age");
     }
 
 }

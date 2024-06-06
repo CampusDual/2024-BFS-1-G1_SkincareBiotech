@@ -16,25 +16,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Lazy
 @Service("CustomersPredominanceService")
+@Lazy
 public class CustomersPredominanceService implements ICustomersPredominanceService {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomersPredominanceService.class);
 
     @Autowired
-    private DefaultOntimizeDaoHelper daoHelper;
-
-    @Autowired
     private CustomersPredominanceDao customersPredominanceDao;
 
+    @Autowired
+    private DefaultOntimizeDaoHelper daoHelper;
+
+
     @Override
-    public EntityResult customerAgeAndGenderQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
+    public EntityResult pruebaQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.customersPredominanceDao, keysValues, attributes);
+    }
+
+    @Override
+    public EntityResult customerAgeAndGenderQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         Map<String, Object> filter = new HashMap<>(keysValues);
         try {
             return this.daoHelper.query(this.customersPredominanceDao, filter, attributes, "user_count_by_gender_and_age");
         } catch (Exception e) {
-            logger.error("Error executing customerAgeAndGenderQuery", e);
+            logger.error("Error executing customerAgeAndGenderQuery: {}", e.getMessage(), e);
             throw new OntimizeJEERuntimeException(e);
         }
     }

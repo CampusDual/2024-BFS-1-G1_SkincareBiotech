@@ -9,5 +9,7 @@ import java.util.Map;
 
 public interface ICustomersPredominanceService {
 
+    EntityResult pruebaQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
     EntityResult customerAgeAndGenderQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
 }

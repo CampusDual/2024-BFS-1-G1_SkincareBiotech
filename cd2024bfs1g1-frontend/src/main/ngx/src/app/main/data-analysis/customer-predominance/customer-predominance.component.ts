@@ -1,5 +1,5 @@
-import { Component, Inject, Injector, Input, OnInit } from '@angular/core';
-import { AuthService, OTranslateService, OUserInfoService, OntimizeService, ServiceResponse } from 'ontimize-web-ngx';
+import { Component, Inject, Injector, OnInit } from '@angular/core';
+import { AuthService, OTranslateService, OUserInfoService, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-customer-predominance',
@@ -7,9 +7,8 @@ import { AuthService, OTranslateService, OUserInfoService, OntimizeService, Serv
   styleUrls: ['./customer-predominance.component.css']
 })
 export class CustomerPredominanceComponent implements OnInit {
-  multi: any[];
+  multi: any[] = [];
   view: any[] = [700, 300];
-  rangeData: any = {};
 
   legend: boolean = true;
   showLabels: boolean = true;
@@ -18,8 +17,8 @@ export class CustomerPredominanceComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Country';
-  yAxisLabel: string = 'Year';
+  xAxisLabel: string = 'Gender';
+  yAxisLabel: string = 'Age Range';
 
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
@@ -33,101 +32,44 @@ export class CustomerPredominanceComponent implements OnInit {
     @Inject(AuthService) private authService: AuthService,
     @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
   ) {
-    this.service = this.injector.get(OntimizeService)
+    this.service = this.injector.get(OntimizeService);
     this.translate = this.injector.get(OTranslateService);
-    this.multi = [
-      {
-        "name": "Germany",
-        "series": [
-          {
-            "name": "1990",
-            "value": 6200000
-          },
-          {
-            "name": "2010",
-            "value": 7300000
-          },
-          {
-            "name": "2011",
-            "value": 8940000
-          }
-        ]
-      },
-      {
-        "name": "USA",
-        "series": [
-          {
-            "name": "1990",
-            "value": 2500000
-          },
-          {
-            "name": "2010",
-            "value": 7870000
-          },
-          {
-            "name": "2011",
-            "value": 8270000
-          }
-        ]
-      },
-      {
-        "name": "France",
-        "series": [
-          {
-            "name": "1990",
-            "value": 5800000
-          },
-          {
-            "name": "2010",
-            "value": 5000002
-          },
-          {
-            "name": "2011",
-            "value": 5800000
-          }
-        ]
-      },
-      {
-        "name": "UK",
-        "series": [
-          {
-            "name": "1990",
-            "value": 4500000
-          },
-          {
-            "name": "2010",
-            "value": 6200000
-          },
-          {
-            "name": "2011",
-            "value": 6200000
-          }
-        ]
-      }
-    ];
   }
 
   ngOnInit(): void {
-    const conf = this.service.getDefaultServiceConfiguration('customers-predominance');
+    const conf = this.service.getDefaultServiceConfiguration('billed-ages');
     this.service.configureService(conf);
     this.service.query({}, ["GENDER", "AGE_RANGE", "USER_COUNT"], "customerAgeAndGender")
       .subscribe((data) => {
         if (data.data.length > 0) {
-          this.rangeData = data.data;
-          console.log(this.rangeData);
+          this.transformDataToHeatMap(data.data);
         }
       });
   }
 
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  transformDataToHeatMap(data: any[]): void {
+    const groupedData = {};
+    
+    data.forEach(item => {
+      const gender = item.GENDER;
+      const ageRange = item.AGE_RANGE;
+      const userCount = item.USER_COUNT;
+
+      if (!groupedData[gender]) {
+        groupedData[gender] = {
+          name: gender,
+          series: []
+        };
+      }
+
+      groupedData[gender].series.push({
+        name: ageRange,
+        value: userCount
+      });
+    });
+
+    this.multi = Object.values(groupedData);
   }
 
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
 
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
 }

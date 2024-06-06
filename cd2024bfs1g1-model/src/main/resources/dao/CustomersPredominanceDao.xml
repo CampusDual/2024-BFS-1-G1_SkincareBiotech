@@ -60,6 +60,7 @@
                         age_ranges ar ON ua.age BETWEEN ar.gba_min_age AND ar.gba_max_age
                     GROUP BY
                         ua.gender, ar.age_range, ar.gba_min_age
+                    #WHERE#
                     ORDER BY
                         ua.gender, ar.gba_min_age
                 ]]>
