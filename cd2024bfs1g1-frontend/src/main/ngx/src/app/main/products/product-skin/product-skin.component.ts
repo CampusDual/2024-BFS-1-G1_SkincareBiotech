@@ -11,8 +11,5 @@ export class ProductSkinComponent {
     private router: Router
 
   ) {}
-  
-  onInsert(event) {
-      this.router.navigate(['/main/products']);
-  }
+
 }

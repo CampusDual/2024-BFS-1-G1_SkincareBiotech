@@ -20,9 +20,10 @@
 
         </div>
         <div class="title">{{'RECOMENDADED_FOR' | oTranslate}}</div>
-        <div class="for">
+        
+        <div class="for" *ngFor="let item of skintypes">
             <div class="skin">
-                <p class="pill">{{skintype.SKIN_NAME | oTranslate}}</p>
+                <p class="pill">{{item.SKIN_NAME | oTranslate}}</p>
             </div>
         </div>
 

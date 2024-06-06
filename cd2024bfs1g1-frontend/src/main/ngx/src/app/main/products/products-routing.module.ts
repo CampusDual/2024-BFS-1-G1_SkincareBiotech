@@ -19,11 +19,11 @@ const routes: Routes = [{
   component: ProductsDetailComponent
 },
 {
-  path: ':PRO_ID/new',
+  path: ':PRO_ID/offer/new',
   component: ProductsNewSaleComponent
 },
 {
-  path: ':PRO_ID/skin',
+  path: ':PRO_ID/skin/new',
   component: ProductSkinComponent
 }
 ];

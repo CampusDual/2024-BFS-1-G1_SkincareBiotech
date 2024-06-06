@@ -54,7 +54,7 @@
         <mat-tab label="{{ 'SALES_INFORMATION' | oTranslate }}">
             <o-table attr="saleTable" service="sales" entity="sale" 
             keys="SAL_ID" parent-keys="PRO_ID" insert-button="true" delete-button="false"
-            columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE"
+            columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" insert-form-route="offer/new"
             visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none">
                 <o-table-column attr="SAL_ID" title="SAL_ID" content-align="center"></o-table-column>
                 <o-table-column attr="SAL_PRICE" title="SAL_PRICE" content-align="center" type="currency" currency-symbol="€" currency-symbol-position="right"
@@ -64,7 +64,7 @@
             </o-table>
         </mat-tab>
         <mat-tab label="{{ 'SKIN_TYPES' | oTranslate }}">
-            <o-table attr="ProductSkinTable" service="productsSkin" entity="productSkin" keys="PS_ID" parent-keys="PRO_ID" insert-form-route="/main/products/:PRO_ID/skin"
+            <o-table attr="ProductSkinTable" service="productsSkin" entity="productSkin" keys="PS_ID" parent-keys="PRO_ID" insert-form-route="skin/new"
                 columns="PS_ID;SKIN_ID;PRO_ID;PRO_NAME;SKIN_NAME" visible-columns="SKIN_NAME;PRO_NAME" (onSelectedTabChange)="onSelectedTabChange()"
                 query-rows="5" delete-button="no" detail-mode="yes">
                 <o-table-column attr="PRO_NAME" title="PRO_NAME" width="100px"></o-table-column>

@@ -15,7 +15,7 @@ export class ProductDetailComponent implements OnInit {
   service2:OntimizeService;
   product: any = null;
   hash:string;
-  skintype: any = null;
+  skintypes: any = null;
 
   constructor(
     protected injector: Injector,
@@ -73,11 +73,9 @@ export class ProductDetailComponent implements OnInit {
     this.service.configureService(conf);
     this.service.query({ "PRO_ID": id }, ["SKIN_NAME"], "productSkin")
       .subscribe((data) => {
-        if (data.data.length > 0) {
-          this.skintype = data.data[0];
-        } else {
-          this.router.navigate(['']);
-        }
+        if (data.data.length != 0) {
+          this.skintypes = data.data;
+        } 
       })
   }
 
