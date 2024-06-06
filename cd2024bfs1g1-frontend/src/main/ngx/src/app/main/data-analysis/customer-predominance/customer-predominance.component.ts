@@ -21,7 +21,7 @@ export class CustomerPredominanceComponent implements OnInit {
   yAxisLabel: string = 'Age Range';
 
   colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#313695', '#4575B4', '#74ADD1', '#ABD9E9', '#E0F3F8', '#FFFFBF', '#FEE090', '#FDAE61', '#F46D43', '#D73027', '#A50026']
   };
 
   service: OntimizeService;
