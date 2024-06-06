@@ -35,7 +35,7 @@ export class CartItemComponent  implements OnInit{
   ngOnInit() {
     const conf = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf);
-    this.service.query({ "PRO_ID": this.item.id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "USER_FINAL_PRICE", "PRO_IMAGE", "USER_FINAL_PRICE_SALE"], "productEnabled")
+    this.service.query({ "PRO_ID": this.item.id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRICE", "PRO_IMAGE", "SALE_PRICE"], "productEnabled")
       .subscribe((data) => {
         if (data.data.length > 0) {
           this.product = data.data[0];
@@ -49,16 +49,8 @@ export class CartItemComponent  implements OnInit{
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
-  /*
-    get price() {
-      return this.product.PRO_PRICE?.toFixed(2);
-    }
-    get sale() {
-      return this.product.PRO_SALE?.toFixed(2);
-    }
-    */
   public itemAmount(product: any): any {
-    return product.PRO_PRICE * this.item.units;
+    return product.PRICE * this.item.units;
   }
   public addItem() {
     this.cartService.addProductToCart(this.product);

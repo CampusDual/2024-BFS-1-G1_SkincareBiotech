@@ -14,21 +14,21 @@
       <button class="item-btn" *ngIf="showBtns" id="add_btn" (click)="addItem()">+</button>
     </div>
     <div class="price-container">
-      <div class="price" *ngIf="(product.USER_FINAL_PRICE!= null); else priceBlock">
+      <div class="price" *ngIf="(product.PRICE!= null); else priceBlock">
         <div class="priceSale">
           <p>
-            <span>{{ product.USER_FINAL_PRICE_SALE | number: '1.2-2'}} €/u </span>
+            <span>{{ product.SALE_PRICE | number: '1.2-2'}} €/u </span>
           </p>
           <p class="percent">
-            -{{((product.USER_FINAL_PRICE - product.USER_FINAL_PRICE_SALE)/product.USER_FINAL_PRICE) * 100 | number: '1.0-0' }}%
+            -{{((product.PRICE - product.SALE_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%
           </p>
           <p>
-            <del>{{ product.USER_FINAL_PRICE | number: '1.2-2'}} €/u</del>                        
+            <del>{{ product.PRICE | number: '1.2-2'}} €/u</del>                        
           </p>
         </div>
       </div>
       <ng-template #priceBlock2>
-        {{product.USER_FINAL_PRICE| number: '1.2-2'}} €/u
+        {{product.PRICE| number: '1.2-2'}} €/u
       </ng-template>
 
       <hr style="width: 80px;" size="1px" color="black" />
@@ -37,17 +37,17 @@
         <div class="priceSale">
           <p>{{'TOTAL'| oTranslate}}</p>          
           <p>
-            <span>{{ product.PRO_SALE*item.units | number: '1.2-2'}} € </span>            
+            <span>{{ product.SALE_PRICE*item.units | number: '1.2-2'}} € </span>            
           </p>
           <p>
-            <span>{{ product.PRO_SALE | number: '1.2-2'}}€  </span>
-            <del>{{ product.PRO_PRICE | number: '1.2-2'}}€</del>
+            <span>{{ product.SALE_PRICE | number: '1.2-2'}}€  </span>
+            <del>{{ product.PRICE | number: '1.2-2'}}€</del>
           </p>
         </div>
       </div>
       <ng-template #priceBlock>
         <p>{{'TOTAL'| oTranslate}}</p>
-        <p>{{product.USER_FINAL_PRICE*item.units | number: '1.2-2'}} €</p>        
+        <p>{{product.PRICE*item.units | number: '1.2-2'}} €</p>        
       </ng-template>
     </div>
     <div class="delete-container">

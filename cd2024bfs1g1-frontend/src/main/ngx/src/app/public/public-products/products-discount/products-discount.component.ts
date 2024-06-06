@@ -25,8 +25,8 @@ export class ProductsDiscountComponent implements OnInit {
       "PRO_ID",
       "PRO_NAME",
       "PRO_DESCRIPTION",
-      "USER_FINAL_PRICE",
-      "USER_FINAL_PRICE_SALE",
+      "PRICE",
+      "SALE_PRICE",
       "DISCOUNT",
       "PRO_IMAGE"
     ];

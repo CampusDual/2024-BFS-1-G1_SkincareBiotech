@@ -1,6 +1,6 @@
-import { Component, Injector, OnInit, Injector, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService, OntimizeService } from 'ontimize-web-ngx';
+import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
 import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
 
 @Component({
@@ -23,7 +23,6 @@ export class ProductsDetailComponent implements OnInit{
   proPriceCurrency: OCurrencyInputComponent;
 
   public chartParameters: DiscreteBarChartConfiguration;
-  service: any;
   data: any;
   intermedio: any;
   id:any;
@@ -76,8 +75,8 @@ export class ProductsDetailComponent implements OnInit{
     }
   }
   onDataLoaded(event) {
-    this.proSaleToggle.setValue((event.PRO_SALE !== undefined));
-    this.proSaleCurrency.setEnabled((event.PRO_SALE !== undefined));
+    this.proSaleToggle.setValue((event.PRICE !== undefined));
+    this.proSaleCurrency.setEnabled((event.SALE_PRICE !== undefined));
   }
   onInsert(event) {
     this.router.navigate(['/main/products']);

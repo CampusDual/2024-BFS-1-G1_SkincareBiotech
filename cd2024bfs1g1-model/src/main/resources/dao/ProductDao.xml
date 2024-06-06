@@ -37,8 +37,9 @@
             <Sentence>
                 <![CDATA[
                 WITH ENABLED_CHECKER AS (
-                    SELECT *, COALESCE (((PRO_PRICE - PRO_SALE) / PRO_PRICE) * 100, 0) AS DISCOUNT
+                    SELECT P.*, COALESCE (((up.PRICE - up.SALE_PRICE) / up.PRICE) * 100, 0) AS DISCOUNT
                     FROM ${mainschema}.PRODUCTS AS P
+                    INNER JOIN ${mainschema}.USER_PRICE up ON P.PRO_ID = UP.PRO_ID
                     WHERE PRO_ENABLED = TRUE
                 )
                 SELECT #COLUMNS#
@@ -46,31 +47,30 @@
                 INNER JOIN ${mainschema}.BRANDS AS B ON EC.BRA_ID = B.BRA_ID
                 INNER JOIN ${mainschema}.PRO_GENDER AS G ON EC.PGE_ID = G.PGE_ID
                 INNER JOIN ${mainschema}.CATEGORIES AS C ON EC.CAT_ID = C.CAT_ID
-                INNER JOIN ${mainschema}.USER_PRICE AS UP ON EC.PRO_ID = UP.PRO_ID
+                INNER JOIN ${mainschema}.USER_PRICE up ON EC.PRO_ID = UP.PRO_ID
                 #WHERE#
             ]]>
             </Sentence>
         </Query>
 
-        <Query id="pro_featured">
+        <Query id="PRO_FEATURED">
             <AmbiguousColumns>
                 <AmbiguousColumn name="PRO_ID" prefix="co"/>
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     WITH complete_overview AS (
-                        SELECT p.*, COALESCE(((up.user_final_price - up.user_final_price_sale) / up.user_final_price) * 100, 0) AS DISCOUNT, (
+                        SELECT p.*, COALESCE(((up.PRICE - up.SALE_PRICE) / up.PRICE) * 100, 0) AS DISCOUNT, (
                             SELECT COUNT(*)
                             FROM ORD_LINES AS ol
                             WHERE ol.pro_id = p.pro_id
-                        ) AS AMOUNT_OF_SALES, up.user_final_price, up.user_final_price_sale, up.user_final_price_checked_sale
+                        ) AS AMMOUNT_OF_SALES, up.PRICE, up.SALE_PRICE, up.REAL_PRICE
                         FROM PRODUCTS AS p
                     	INNER JOIN user_price up ON p.pro_id = up.pro_id
                         WHERE pro_enabled = true
                     )
                     SELECT #COLUMNS#
                     FROM complete_overview co
-                    INNER JOIN user_price up ON co.pro_id = up.pro_id
                     #WHERE#
                     #ORDER#
             ]]>

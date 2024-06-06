@@ -7,14 +7,14 @@
     <div class="sale" *ngIf="(product.DISCOUNT != 0 ); else priceBlock">
       <div class="priceSale">
         <span class="discount-span">-{{product.DISCOUNT | number: '1.0-0' }}%</span>
-        <span class="sale-span">{{ product.USER_FINAL_PRICE_SALE | number: '1.2-2' }} €</span>
+        <span class="sale-span">{{ product.SALE_PRICE | number: '1.2-2' }} €</span>
       </div>
       <div>
-        <span class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ product.USER_FINAL_PRICE | number: '1.2-2' }} €</span>
+        <span class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ product.PRICE | number: '1.2-2' }} €</span>
       </div>
     </div>
     <ng-template #priceBlock>
-      <span class="price">{{ product.USER_FINAL_PRICE  | number: '1.2-2' }} €</span>
+      <span class="price">{{ product.PRICE  | number: '1.2-2' }} €</span>
     </ng-template>
   </div>
 </div>

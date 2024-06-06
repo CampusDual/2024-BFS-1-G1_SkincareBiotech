@@ -61,7 +61,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     this.service.configureService(conf_prods);
     const cartProductsId = this.cart.map(item => item.id);
     this.filterExp = { "@basic_expression": this.filter(cartProductsId) };
-    this.service.query(this.filterExp, ["PRO_ID", "USER_FINAL_PRICE", "USER_FINAL_PRICE_SALE"], "product").subscribe((data) => {
+    this.service.query(this.filterExp, ["PRO_ID", "PRICE", "SALE_PRICE"], "product").subscribe((data) => {
       this.products = data.data;
       this.updateTotalAmount();
     });
@@ -86,7 +86,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       const cartItem = this.cart.find(item => item.id === product.PRO_ID);
       if (cartItem) {
         const units = cartItem.units;
-        const price = product.USER_FINAL_PRICE_SALE || product.USER_FINAL_PRICE;
+        const price = product.SALE_PRICE || product.PRICE;
         totalAmount += price * units;
       }
     });
