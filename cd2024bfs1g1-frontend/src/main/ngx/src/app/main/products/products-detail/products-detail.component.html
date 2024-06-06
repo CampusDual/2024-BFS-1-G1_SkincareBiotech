@@ -1,57 +1,67 @@
 <o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
     show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="onDataLoaded($event)">
-    <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
-    <div class="add-container">
-        <div class="header-area">
-            <div class="add-details-title">{{'DETAIL_PRODUCT' | oTranslate}}</div>
-        </div>
-        <div class="content">
-            
-            <o-image attr="PRO_IMAGE" height="300px" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
-            <div class="info">
-                <div class="name">
-                    <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
-                    <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+    <mat-tab-group fxFlex>
+        <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
+            <div class="main-container">
+                <div class="product-container">
+                    <div class="image-container">
+                        <o-image id="pro-image" attr="PRO_IMAGE" empty-image="assets/images/no-image.png"
+                            sql-type="OTHER"></o-image>
+                    </div>
+                    <div class="details-container">
+                        <div class="details-row">
+                            <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
+                            <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+                        </div>
+                        <div class="details-row">
+                            <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
+                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
+                        </div>
+                        <div class="details-row">
+                            <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
+                                columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
+                            <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
+                                columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
+                                null-selection="no"></o-combo>
+                            <o-combo attr="PGE_ID" service="product-genders" entity="productGender" keys="PGE_ID"
+                                columns="PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" required="yes"
+                                null-selection="no" translate="yes"></o-combo>
+                        </div>
+                        <div class="details-row">
+                            <o-textarea-input attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
+                        </div>
+                    </div>
                 </div>
-                <div class="prices">
-                    <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
-                    <o-currency-input #proSaleCurrency attr="PRO_SALE" label="PRO_SALE"
-                        required="no"></o-currency-input>
-                    <o-slide-toggle id="proSaleActivate" #proSaleToggle attr="PRO_SALE_ACTIVATE"
-                        label="PRO_SALE_ACTIVATE" read-only="no" (onChange)="onChange($event)"></o-slide-toggle>
-                </div>
-                <div class="filter">
-                    <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
-                        columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
-                    <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
-                        columns="BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID" required="yes"
-                        null-selection="no"></o-combo>
-                    <o-combo attr="PGE_ID" service="product-genders" entity="productGender" keys="PGE_ID"
-                        columns="PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" required="yes"
-                        null-selection="no" translate="yes"></o-combo>
-                </div>
-                <div class="description">
-                    <o-textarea-input attr="PRO_DESCRIPTION" required="yes"></o-textarea-input>
+                <div>
+                    <span class="grafic-details-title"><h3>{{'GRAFIC_DETAILS' | oTranslate}}</h3></span>
+                    <div class="chart-container">
+                        <div class="chart-tittle-y-container">
+                            <div class="tittle-y">
+                                {{"GRAFIC_VIEW" | oTranslate}}
+                            </div>
+                            <div class="chart">
+                                <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView" entity="viewByProduct"
+                                    x-label="Date" y-label="views" x-data-type="time" y-axis="COUNT" x-axis="VISIT_DATE"></o-chart>
+                            </div>
+                        </div>
+                        <div class="tittle-x">
+                            {{"GRAFIC_DATE" | oTranslate}}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="grafic-details-title">{{'GRAFIC_DETAILS' | oTranslate}}</div>
-
-        <div class="chart-container">
-            <div class="chart-tittle-y-container">
-
-                <div class="tittle-y">
-                    {{"GRAFIC_VIEW" | oTranslate}}
-                </div>
-
-                <div class="chart">
-                    <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView" entity="viewByProduct"
-                        x-label="Date" y-label="views" x-data-type="time" y-axis="COUNT" x-axis="VISIT_DATE"></o-chart>
-                </div>
-            </div>
-            <div class="tittle-x">
-                {{"GRAFIC_DATE" | oTranslate}}
-            </div>
-        </div>
-    </div>
+        </mat-tab>
+        <mat-tab label="{{ 'SALES_INFORMATION' | oTranslate }}">
+            <o-table attr="saleTable" service="sales" entity="sale" 
+            keys="SAL_ID" parent-keys="PRO_ID" insert-button="true" delete-button="false"
+            columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE"
+            visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none">
+                <o-table-column attr="SAL_ID" title="SAL_ID" content-align="center"></o-table-column>
+                <o-table-column attr="SAL_PRICE" title="SAL_PRICE" content-align="center" type="currency" currency-symbol="€" currency-symbol-position="right"
+                thousand-separator="." decimal-separator=","></o-table-column>
+                <o-table-column attr="SAL_INITIAL_DATE" title="SAL_INITIAL_DATE" content-align="center" type="date"></o-table-column>
+                <o-table-column attr="SAL_END_DATE" title="SAL_END_DATE" content-align="center" type="date"></o-table-column>
+            </o-table>
+        </mat-tab>
+    </mat-tab-group>
 </o-form>

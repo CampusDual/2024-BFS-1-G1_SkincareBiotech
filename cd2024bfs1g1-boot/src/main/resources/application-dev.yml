@@ -11,4 +11,4 @@ management:
       base-path: /ontimize
 spring:
   flyway:
-    enabled: false
+    enabled: true
