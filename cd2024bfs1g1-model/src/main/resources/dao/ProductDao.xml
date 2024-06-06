@@ -14,17 +14,13 @@
     <GeneratedKey>pro_id</GeneratedKey>
     <Queries>
         <Query id="default">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="PRO_ID" prefix="P"/>
-                <AmbiguousColumn name="PRO_ID" prefix="UP"/>
-            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     SELECT #COLUMNS#
-                    FROM ${mainschema}.PRODUCTS P
-                    INNER JOIN ${mainschema}.USER_PRICE AS UP ON P.PRO_ID = UP.PRO_ID
+                    FROM ${mainschema}.PRODUCTS_WITH_OFFER PWO
+                    INNER JOIN ${mainschema}.USER_PRICE AS UP ON PWO.PRO_ID = UP.PRO_ID
                     #WHERE#
-                 ]]>
+                ]]>
             </Sentence>
         </Query>
         <Query id="PRO_ENABLED">
@@ -37,8 +33,10 @@
             <Sentence>
                 <![CDATA[
                 WITH ENABLED_CHECKER AS (
-                    SELECT P.*, COALESCE (((up.PRICE - up.SALE_PRICE) / up.PRICE) * 100, 0) AS DISCOUNT
-                    FROM ${mainschema}.PRODUCTS AS P
+                    SELECT P.*,B.BRA_NAME, UP.REAL_PRICE,
+                    COALESCE (((up.PRICE - up.SALE_PRICE) / up.PRICE) * 100, 0) AS DISCOUNT
+                    FROM ${mainschema}.PRODUCTS_WITH_OFFER AS P
+                    INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
                     INNER JOIN ${mainschema}.USER_PRICE up ON P.PRO_ID = UP.PRO_ID
                     WHERE PRO_ENABLED = TRUE
                 )
@@ -65,7 +63,7 @@
                             FROM ORD_LINES AS ol
                             WHERE ol.pro_id = p.pro_id
                         ) AS AMMOUNT_OF_SALES, up.PRICE, up.SALE_PRICE, up.REAL_PRICE
-                        FROM PRODUCTS AS p
+                        FROM PRODUCTS_WITH_OFFER AS p
                     	INNER JOIN user_price up ON p.pro_id = up.pro_id
                         WHERE pro_enabled = true
                     )

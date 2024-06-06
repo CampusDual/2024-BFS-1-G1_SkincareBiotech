@@ -38,6 +38,9 @@ export const SERVICE_CONFIG: Object = {
   'sellers':{
     'path': '/new-seller'
   },
+  'sales':{
+  'path' : '/sales'
+  },
   'commissions': {
     'path': '/commissions'
   }
