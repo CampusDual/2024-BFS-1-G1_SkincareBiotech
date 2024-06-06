@@ -10,4 +10,5 @@ public interface IAllergenProductService {
 
     EntityResult allergenProductQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
+    EntityResult allergenProductInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
 }

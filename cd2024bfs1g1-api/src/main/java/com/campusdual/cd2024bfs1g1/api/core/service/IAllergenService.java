@@ -8,6 +8,10 @@ import java.util.Map;
 
 public interface IAllergenService {
 
-    public EntityResult allergenQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+    EntityResult allergenQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+
+    EntityResult allergenInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+
+    EntityResult allergenUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
 }

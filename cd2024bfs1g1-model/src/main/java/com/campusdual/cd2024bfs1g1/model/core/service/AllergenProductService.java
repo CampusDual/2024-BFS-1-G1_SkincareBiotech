@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 @Lazy
 @Service("AllergenProductService")
 public class AllergenProductService implements IAllergenProductService {
@@ -23,6 +24,11 @@ public class AllergenProductService implements IAllergenProductService {
 
     @Override
     public EntityResult allergenProductQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.allergenProductDao, keysValues, attributes);
+        return this.daoHelper.query(this.allergenProductDao, keysValues, attributes, "overView");
+    }
+
+    @Override
+    public EntityResult allergenProductInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.allergenProductDao, attributes);
     }
 }

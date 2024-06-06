@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 @Lazy
 @Service("AllergenService")
 public class AllergenService implements IAllergenService {
@@ -25,4 +26,15 @@ public class AllergenService implements IAllergenService {
     public EntityResult allergenQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.allergenDao, keysValues, attributes);
     }
+
+    @Override
+    public EntityResult allergenInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.allergenDao, attributes);
+    }
+
+    @Override
+    public EntityResult allergenUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.allergenDao, attrMap, keyMap);
+    }
+
 }

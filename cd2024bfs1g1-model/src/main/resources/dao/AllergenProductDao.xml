@@ -12,4 +12,25 @@
         <Column>AP_ID</Column>
     </UpdateKeys>
     <GeneratedKey>ap_id</GeneratedKey>
+    <Queries>
+        <Query id="overView">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="ALLER_ID" prefix="a"/>
+                <AmbiguousColumn name="PRO_ID" prefix="p"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                  SELECT
+                     #COLUMNS#
+                  FROM
+                     ${mainschema}.ALLERGENS A
+                  INNER JOIN ${mainschema}.ALLERGENS_PRODUCTS AP ON
+                     A.ALLER_ID = AP.ALLER_ID
+                  INNER JOIN ${mainschema}.PRODUCTS P ON
+                     AP.PRO_ID = P.PRO_ID
+                  #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
