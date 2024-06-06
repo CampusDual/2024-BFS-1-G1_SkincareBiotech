@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IProductService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.ProductDao;
+import com.campusdual.cd2024bfs1g1.model.core.dao.SaleDao;
 import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
@@ -24,6 +25,11 @@ public class ProductService implements IProductService {
 
     @Autowired
     private ProductDao productDao;
+
+    @Autowired
+    private SaleService saleService;
+    @Autowired
+    private SaleDao saleDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -73,7 +79,7 @@ public class ProductService implements IProductService {
         if (sale != null) {
             return sale;
         } else {
-           return price;
+            return price;
         }
     }
 
