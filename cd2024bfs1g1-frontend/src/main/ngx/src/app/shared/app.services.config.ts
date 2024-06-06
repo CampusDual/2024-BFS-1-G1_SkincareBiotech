@@ -32,6 +32,9 @@ export const SERVICE_CONFIG: Object = {
   'user-genders': {
     'path': '/user-genders',
   },
+  'customers-predominance': {
+    'path': '/customers-predominance',
+  },
   permissions: {
     'path': '/permissions'
   },

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="gra_billed_age"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>GBA_ID</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>GBA_ID</Column>
+    </UpdateKeys>
+    <GeneratedKey>gba_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        ${mainschema}.gra_billed_age
+                    #WHERE#
+                    ORDER BY GBA_MIN_AGE, GBA_MAX_AGE
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="user_count_by_gender_and_age">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="USR_ID" prefix="U"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    WITH user_ages AS (
+                        SELECT
+                            u.usr_id,
+                            g.uge_name AS gender,
+                            DATE_PART('year', AGE(CURRENT_DATE, p.upr_birthdate)) AS age
+                        FROM
+                            ${mainschema}.usr_user u
+                        INNER JOIN
+                            ${mainschema}.usr_profile p ON u.usr_id = p.usr_id
+                        INNER JOIN
+                            ${mainschema}.usr_gender g ON p.uge_id = g.uge_id
+                    ),
+                    age_ranges AS (
+                        SELECT
+                            gba.*,
+                            CONCAT_WS(' - ', gba_min_age, gba_max_age) AS age_range
+                        FROM
+                            ${mainschema}.gra_billed_age gba
+                    )
+                    SELECT
+                        ua.gender,
+                        ar.age_range,
+                        COUNT(ua.usr_id) AS user_count
+                    FROM
+                        user_ages ua
+                    LEFT JOIN
+                        age_ranges ar ON ua.age BETWEEN ar.gba_min_age AND ar.gba_max_age
+                    GROUP BY
+                        ua.gender, ar.age_range, ar.gba_min_age
+                    ORDER BY
+                        ua.gender, ar.gba_min_age
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

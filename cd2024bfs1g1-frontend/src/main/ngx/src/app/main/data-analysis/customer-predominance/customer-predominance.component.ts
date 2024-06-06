@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Injector, Input, OnInit } from '@angular/core';
+import { AuthService, OTranslateService, OUserInfoService, OntimizeService, ServiceResponse } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-customer-predominance',
   templateUrl: './customer-predominance.component.html',
   styleUrls: ['./customer-predominance.component.css']
 })
-export class CustomerPredominanceComponent {
+export class CustomerPredominanceComponent implements OnInit {
   multi: any[];
   view: any[] = [700, 300];
+  rangeData: any = {};
 
   legend: boolean = true;
   showLabels: boolean = true;
@@ -23,7 +25,16 @@ export class CustomerPredominanceComponent {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
-  constructor() {
+  service: OntimizeService;
+
+  constructor(
+    protected injector: Injector,
+    protected translate: OTranslateService,
+    @Inject(AuthService) private authService: AuthService,
+    @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
+  ) {
+    this.service = this.injector.get(OntimizeService)
+    this.translate = this.injector.get(OTranslateService);
     this.multi = [
       {
         "name": "Germany",
@@ -94,6 +105,18 @@ export class CustomerPredominanceComponent {
         ]
       }
     ];
+  }
+
+  ngOnInit(): void {
+    const conf = this.service.getDefaultServiceConfiguration('customers-predominance');
+    this.service.configureService(conf);
+    this.service.query({}, ["GENDER", "AGE_RANGE", "USER_COUNT"], "customerAgeAndGender")
+      .subscribe((data) => {
+        if (data.data.length > 0) {
+          this.rangeData = data.data;
+          console.log(this.rangeData);
+        }
+      });
   }
 
   onSelect(data: any): void {
