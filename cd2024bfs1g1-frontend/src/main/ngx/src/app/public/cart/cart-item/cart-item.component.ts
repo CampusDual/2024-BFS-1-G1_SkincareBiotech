@@ -35,7 +35,7 @@ export class CartItemComponent  implements OnInit{
   ngOnInit() {
     const conf = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf);
-    this.service.query({ "PRO_ID": this.item.id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRICE", "PRO_IMAGE", "SALE_PRICE"], "productEnabled")
+    this.service.query({ "PRO_ID": this.item.id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRICE", "REAL_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
       .subscribe((data) => {
         if (data.data.length > 0) {
           this.product = data.data[0];
@@ -51,7 +51,7 @@ export class CartItemComponent  implements OnInit{
   }
 
   get price() {
-    return this.product.PRO_PRICE?.toFixed(2);
+    return this.product.PRICE?.toFixed(2);
   }
   get sale() {
     return this.product.PRO_SALE?.toFixed(2);

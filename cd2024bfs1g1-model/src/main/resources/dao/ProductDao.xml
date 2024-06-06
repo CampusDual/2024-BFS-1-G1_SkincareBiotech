@@ -14,6 +14,9 @@
     <GeneratedKey>pro_id</GeneratedKey>
     <Queries>
         <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="PRO_ID" prefix="PWO"/>
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     SELECT #COLUMNS#
@@ -33,19 +36,17 @@
             <Sentence>
                 <![CDATA[
                 WITH ENABLED_CHECKER AS (
-                    SELECT P.*,B.BRA_NAME, UP.REAL_PRICE,
-                    COALESCE (((up.PRICE - up.SALE_PRICE) / up.PRICE) * 100, 0) AS DISCOUNT
+                    SELECT P.*,B.BRA_NAME, UP.REAL_PRICE, UP.PRICE,
+                    COALESCE (((UP.PRICE - UP.SALE_PRICE) / UP.PRICE) * 100, 0) AS DISCOUNT
                     FROM ${mainschema}.PRODUCTS_WITH_OFFER AS P
                     INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
-                    INNER JOIN ${mainschema}.USER_PRICE up ON P.PRO_ID = UP.PRO_ID
+                    INNER JOIN ${mainschema}.USER_PRICE UP ON P.PRO_ID = UP.PRO_ID
                     WHERE PRO_ENABLED = TRUE
                 )
                 SELECT #COLUMNS#
                 FROM ENABLED_CHECKER EC
-                INNER JOIN ${mainschema}.BRANDS AS B ON EC.BRA_ID = B.BRA_ID
                 INNER JOIN ${mainschema}.PRO_GENDER AS G ON EC.PGE_ID = G.PGE_ID
                 INNER JOIN ${mainschema}.CATEGORIES AS C ON EC.CAT_ID = C.CAT_ID
-                INNER JOIN ${mainschema}.USER_PRICE up ON EC.PRO_ID = UP.PRO_ID
                 #WHERE#
             ]]>
             </Sentence>

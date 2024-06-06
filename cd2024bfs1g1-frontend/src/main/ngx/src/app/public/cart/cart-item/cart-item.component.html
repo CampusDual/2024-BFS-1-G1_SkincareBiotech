@@ -14,13 +14,13 @@
       <button class="item-btn" *ngIf="showBtns" id="add_btn" (click)="addItem()">+</button>
     </div>
     <div class="price-container">
-      <div class="price" *ngIf="(product.PRICE!= null); else priceBlock">
+      <div class="price" *ngIf="(product.PRO_SALE!= null); else priceBlock2">
         <div class="priceSale">
           <p>
-            <span>{{ product.SALE_PRICE | number: '1.2-2'}} €/u </span>
+            <span>{{ product.REAL_PRICE | number: '1.2-2'}} €/u </span>
           </p>
           <p class="percent">
-            -{{((product.PRICE - product.SALE_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%
+            -{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%
           </p>
           <p>
             <del>{{ product.PRICE | number: '1.2-2'}} €/u</del>                        
@@ -37,11 +37,7 @@
         <div class="priceSale">
           <p>{{'TOTAL'| oTranslate}}</p>          
           <p>
-            <span>{{ product.SALE_PRICE*item.units | number: '1.2-2'}} € </span>            
-          </p>
-          <p>
-            <span>{{ product.SALE_PRICE | number: '1.2-2'}}€  </span>
-            <del>{{ product.PRICE | number: '1.2-2'}}€</del>
+            <span>{{ product.REAL_PRICE*item.units | number: '1.2-2'}} € </span>            
           </p>
         </div>
       </div>
@@ -50,6 +46,7 @@
         <p>{{product.PRICE*item.units | number: '1.2-2'}} €</p>        
       </ng-template>
     </div>
+
     <div class="delete-container">
       <button class="delete-button" *ngIf="showBtns" (click)="deleteItem()"><mat-icon>close</mat-icon> </button>
     </div>

@@ -219,7 +219,7 @@
   "PRO_NAME_OLD": "Product name",
   "OL_UNITS_OLD": "Units",
   "OL_PRICE_OLD": "Unit price",
-  "PRICE_USER_MESSAGE": "The client will pay",
+  "REAL_PRICE": "The client will pay",
   "ERROR_UNPAID": "It is not possible to ship the order until it is paid for",
   "TOTAL_SOLD": "Units sold",
   "UNITS_ABBR": "u",

@@ -19,10 +19,10 @@
             </div>
         </div>
         <div class="buy-container">
-            <div class="price" *ngIf="(sale != null); else priceBlock">
+            <div class="price" *ngIf="(product.PRICE != product.REAL_PRICE); else priceBlock">
                 <div class="price-container">
-                    <span class="discount-span">-{{((product.PRICE - product.SALE_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%</span>
-                    <span class="salePrice"><span> {{ sale }} €</span></span>
+                    <span class="discount-span">-{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%</span>
+                    <span class="salePrice"><span> {{ product.REAL_PRICE }} €</span></span>
                     <span class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ price }} €</span>
                 </div>
             </div>
