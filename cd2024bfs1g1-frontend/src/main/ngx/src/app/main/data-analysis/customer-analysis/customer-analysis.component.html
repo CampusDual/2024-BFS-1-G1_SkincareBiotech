@@ -1,4 +1,20 @@
-<ngx-charts-heat-map [view]="view" [scheme]="colorScheme" [results]="multi" [legend]="legend" [xAxis]="xAxis"
-    [yAxis]="yAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel" [animations]="animations" >
-</ngx-charts-heat-map>
+<div class="content-container">
+    <h1>{{"CUSTOMERS_ANALYSIS" | oTranslate}}</h1>
+  <div class="selector-container">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "SELECT_ANALYSIS_FIELDS" | oTranslate }}</mat-label>
+      <mat-select [(ngModel)]="selectedField">
+        <mat-option value="gender-age">{{ "GENDER_AGE" | oTranslate }}</mat-option>
+        <mat-option value="age-skin">{{ "AGE_SKIN" | oTranslate }}</mat-option>
+        <mat-option value="skin-gender">{{ "SKIN_GENDER" | oTranslate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="heat-map-container">
+    <ngx-charts-heat-map [view]="view" [scheme]="colorScheme" [results]="multi" [legend]="legend" [xAxis]="xAxis"
+        [yAxis]="yAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" [animations]="animations" [legendPosition]="'right'">
+    </ngx-charts-heat-map>
+  </div>
+</div>

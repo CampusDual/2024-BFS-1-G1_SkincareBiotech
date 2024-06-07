@@ -7,8 +7,13 @@ import { AuthService, OTranslateService, OUserInfoService, OntimizeService } fro
   styleUrls: ['./customer-analysis.component.css']
 })
 export class CustomerAnalysisComponent implements OnInit {
+
   multi: any[] = [];
-  view: any[] = [700, 300];
+  view: any[] = [900, 500];
+
+  selectedField: string = 'gender-age'; 
+
+  service: OntimizeService;
 
   legend: boolean = true;
   showLabels: boolean = true;
@@ -17,14 +22,12 @@ export class CustomerAnalysisComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Gender';
-  yAxisLabel: string = 'Age Range';
+  xAxisLabel: string;
+  yAxisLabel: string;
 
   colorScheme = {
     domain: ["#ff0000", "#f66d00", "#ffe800", "#a6d600", "#38ff00"]
   };
-
-  service: OntimizeService;
 
   constructor(
     protected injector: Injector,
@@ -37,6 +40,10 @@ export class CustomerAnalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.xAxisLabel = this.translate.get('GENDER');
+    this.yAxisLabel = this.translate.get('AGE_RANGE');
+
     const conf = this.service.getDefaultServiceConfiguration('billed-ages');
     this.service.configureService(conf);
     this.service.query({}, ["GENDER", "AGE_RANGE", "USER_COUNT"], "customerAgeAndGender")
@@ -49,9 +56,9 @@ export class CustomerAnalysisComponent implements OnInit {
 
   transformDataToHeatMap(data: any[]): void {
     const groupedData = {};
-    
+
     data.forEach(item => {
-      const gender = item.GENDER;
+      const gender = this.translate.get(item.GENDER); 
       const ageRange = item.AGE_RANGE;
       const userCount = item.USER_COUNT;
 
@@ -70,6 +77,4 @@ export class CustomerAnalysisComponent implements OnInit {
 
     this.multi = Object.values(groupedData);
   }
-
-
 }

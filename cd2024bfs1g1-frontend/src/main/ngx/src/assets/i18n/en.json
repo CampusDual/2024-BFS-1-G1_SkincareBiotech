@@ -237,7 +237,8 @@
   "RATHER_NOT_ANSWER": "I would rather not answer",
   "AGE_RANGE": "Age range",
   "AGE_GENDER": "Age and gender",
-  "CUSTOMER_ANALYSIS": "Customer analysis",
+  "CUSTOMER_ANALYSIS": "Customers analysis",
+  "CUSTOMERS_ANALYSIS": "Customers analysis",
   "DATE_NOT_VALID": "This offer period is already in use. Please choose another one that does not overlap.",
   "MIN_DATE_HIGHER": "Minimum date can't be higher than maximum date",
   "SALES_INFORMATION":" Sales information",
@@ -247,5 +248,9 @@
   "SAL_END_DATE": "End date",
   "ADD_SALE": "Add new sale",
   "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
-  "AGE_RANGE_CONFIGURATION": "Range configuration"
+  "AGE_RANGE_CONFIGURATION": "Range configuration",
+  "SELECT_ANALYSIS_FIELDS": "Select analysis fields",
+  "GENDER_AGE": "Gender and age",
+  "AGE_SKIN": "Age and skin type",
+  "SKIN_GENDER": "Skin type and gender"
 }

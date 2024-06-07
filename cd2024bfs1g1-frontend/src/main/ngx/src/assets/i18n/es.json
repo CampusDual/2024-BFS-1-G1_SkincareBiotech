@@ -237,6 +237,7 @@
   "AGE_RANGE": "Rango de edad",
   "AGE_GENDER": "Edad y género",
   "CUSTOMER_ANALYSIS": "Análisis clientes",
+  "CUSTOMERS_ANALYSIS": "Análisis de los clientes",
   "DATE_NOT_VALID": "Este periodo de oferta ya está en uso. Por favor elija otro que no se solape.",
   "MIN_DATE_HIGHER": "La fecha mínima no puede ser menor que la máxima",
   "SALES_INFORMATION":" Información de descuentos",
@@ -246,5 +247,9 @@
   "SAL_END_DATE": "Fecha final",
   "ADD_SALE": "Añadir nuevo descuento",
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
-  "AGE_RANGE_CONFIGURATION": "Configuración de rangos"
+  "AGE_RANGE_CONFIGURATION": "Configuración de rangos",
+  "SELECT_ANALYSIS_FIELDS": "Seleccionar campos de análisis",
+  "GENDER_AGE": "Género y edad",
+  "AGE_SKIN": "Edad y tipo de piel",
+  "SKIN_GENDER": "Tipo de piel y género"
 }

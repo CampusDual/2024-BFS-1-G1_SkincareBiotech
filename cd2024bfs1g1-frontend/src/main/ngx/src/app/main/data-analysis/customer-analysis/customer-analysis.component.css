@@ -1,0 +1,27 @@
+.content-container {
+    background-color: white;
+    padding: 20px;
+}
+
+.heat-map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-width: 1000px; 
+}
+
+.scale-legend {
+    height: 600px;
+}
+
+.scale-legend {
+    position: absolute;
+    top: -20px; 
+
+}
+
+.chart-legend {
+    position: absolute;
+    top: -20px; 
+}
