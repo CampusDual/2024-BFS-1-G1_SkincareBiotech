@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-skin',
@@ -7,9 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-skin.component.css']
 })
 export class ProductSkinComponent {
+  proId: number;
   constructor(
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
 
-  ) {}
+  ) {
+    this.proId = parseInt(this.route.snapshot.paramMap.get('PRO_ID'));
+
+  }
+
+  onInsert(event) {
+    this.router.navigate(['/main/products/'+this.proId+'/']);
+  }
 
 }

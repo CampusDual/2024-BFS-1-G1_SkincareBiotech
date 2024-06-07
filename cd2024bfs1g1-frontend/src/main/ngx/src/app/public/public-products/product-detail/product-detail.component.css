@@ -145,7 +145,18 @@
 .category{
     font-weight: bold;
 }
-
-.skin{
+.flex-container {
     display: flex;
+    flex-wrap: wrap; 
+    gap: 10px; 
+    font-size: 15px;
+}
+.subtitle {
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px; 
+    white-space: normal;
 }

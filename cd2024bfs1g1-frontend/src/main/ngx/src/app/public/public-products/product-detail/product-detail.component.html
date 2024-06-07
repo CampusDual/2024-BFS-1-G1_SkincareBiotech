@@ -8,7 +8,7 @@
             <div class="flex">
                 <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
                 <p class="pill">{{product.BRA_NAME}}</p>
-            </div >
+            </div>
             <div class="flex">
                 <!-- <p class="category">{{"CATEGORY" | oTranslate}}: </p> -->
                 <p class="pill">{{product.CAT_NAME}}</p>
@@ -19,18 +19,18 @@
             </div>
 
         </div>
-        <div class="title">{{'RECOMENDADED_FOR' | oTranslate}}</div>
-        
-        <div class="for" *ngFor="let item of skintypes">
-            <div class="skin">
-                <p class="pill">{{item.SKIN_NAME | oTranslate}}</p>
+        <div class="subtitle"><b>{{'RECOMENDATED_FOR' | oTranslate}}:</b></div>
+        <div class="flex-container">
+            <div class="pill" *ngFor="let item of skintypes">
+                {{item.SKIN_NAME | oTranslate}}
             </div>
         </div>
 
         <div class="buy-container">
             <div class="price" *ngIf="(sale != null); else priceBlock">
                 <div class="price-container">
-                    <span class="discount-span">-{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) * 100 | number: '1.0-0' }}%</span>
+                    <span class="discount-span">-{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) * 100 |
+                        number: '1.0-0' }}%</span>
                     <span class="salePrice"><span> {{ sale }} €</span></span>
                     <span class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ price }} €</span>
                 </div>
