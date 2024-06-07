@@ -59,4 +59,7 @@ export class ProductsDetailComponent  {
     this.router.navigate(['/main/products']);
   }
   
+  onSelectedTabChange(){
+    this.router.navigate(['/main/products/:PRO_ID/allergen']);
+  }
 }

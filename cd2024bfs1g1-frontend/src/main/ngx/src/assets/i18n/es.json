@@ -247,5 +247,6 @@
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
   "ALLERGENS": "Alérgenos",
   "ALLER_NAME": "Nombre",
-  "ADD_ALLERGEN": "Añadir nuevo alérgeno"
+  "ADD_ALLERGEN": "Añadir nuevo alérgeno",
+  "SELECT_ALLERGEN": "Selecciona un alérgeno..."
 }
