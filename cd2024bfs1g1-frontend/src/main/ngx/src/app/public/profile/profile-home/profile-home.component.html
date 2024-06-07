@@ -25,7 +25,8 @@
             <div class="info">
                 <o-date-input attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
-                <o-integer-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE"></o-integer-input>
+                <o-integer-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE" min="0"
+                max="99999" thousand-separator=""></o-integer-input>
             </div>
         </o-form>
     </mat-tab>
