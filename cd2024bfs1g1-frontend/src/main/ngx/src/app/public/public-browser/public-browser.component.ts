@@ -17,15 +17,12 @@ export class PublicBrowserComponent {
   ) { }
 
   search() {
-      this.dataService.searchQuery = this.searchQuery;
-      this.router.navigate(['/view']);  
+    this.dataService.setSearchValue(this.searchQuery);
+    this.router.navigate(['/view']);  
   }
 
-  onKeyUp(event: any){
-    if(event.Key === 'Enter'){
-      this.dataService.searchQuery = this.searchQuery;
-      this.router.navigate(['/view']);  
-    }
+  onKeyUp(){
+    this.search();
   }
 
 }

@@ -30,15 +30,18 @@ export class ProductsViewComponent implements OnInit {
   ) {
     this.service = this.injector.get(OntimizeService)
   }
+  
   ngOnInit(): void {
-    this.loadNameFilter();
+    this.dataService.search.subscribe(value =>{
+      this.searchQuery = value;
+      this.loadNameFilter();
+    });
   }
   public getImageSrc(base64: string): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }
 
   loadNameFilter(){
-    this.searchQuery = this.dataService.searchQuery;
     if(this.searchQuery !== undefined){
       this.nameFilterValue = this.searchQuery;
     }

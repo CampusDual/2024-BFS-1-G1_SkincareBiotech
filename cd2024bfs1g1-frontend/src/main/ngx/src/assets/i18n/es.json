@@ -247,5 +247,6 @@
   "SAL_INITIAL_DATE": "Fecha inicial",
   "SAL_END_DATE": "Fecha final",
   "ADD_SALE": "Añadir nuevo descuento",
-  "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual"
+  "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
+  "GLOBAL_BROWSER": "Buscador"
 }
