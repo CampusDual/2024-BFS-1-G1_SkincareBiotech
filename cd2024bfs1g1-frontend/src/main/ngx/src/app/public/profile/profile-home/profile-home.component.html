@@ -27,5 +27,12 @@
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
             </div>
         </o-form>
+        <div class="allergen">
+            <o-combo attr="ALLERGEN" label="ADD_ALLERGENS" service="allergens" entity="allergen" keys="ALLER_ID"
+              columns="ALLER_ID;ALLER_NAME" visible-columns="ALLER_NAME" value-column="ALLER_ID">
+            </o-combo>
+            <o-combo attr="ADD_ALLERGENS" searchable="yes" read-only="no" service="allergens" entity="allergen" keys="ALLER_ID"
+            columns="ALLER_ID;ALLER_NAME" visible-columns="ALLER_NAME" value-column="ALLER_ID"></o-combo>
+        </div>
     </mat-tab>
 </mat-tab-group>
