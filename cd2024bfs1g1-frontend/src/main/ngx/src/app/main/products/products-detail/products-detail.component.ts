@@ -76,7 +76,7 @@ export class ProductsDetailComponent implements OnInit{
   changePrice(event) {
     this.realPriceCurrency.setValue(event);
     this.priceUser = (this.realPriceCurrency.getValue() / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
-    this.realPriceCurrency.setValue(this.priceUser);
-}
+    this.realPriceCurrency.setValue(this.priceUser);  
+  }
 
 }
