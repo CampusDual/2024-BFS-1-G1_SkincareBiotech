@@ -26,5 +26,9 @@ public class SkinTypesService implements ISkinTypesService {
         return this.daoHelper.query(this.skinTypesDao, keyMap, attrList);
     }
 
+    @Override
+    public EntityResult skintypeInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.skinTypesDao, attrMap);
+    }
 
 }

@@ -8,4 +8,5 @@ import java.util.Map;
 
 public interface ISkinTypesService {
     EntityResult skintypeQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+    EntityResult skintypeInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
 }
