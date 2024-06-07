@@ -43,4 +43,8 @@ public class AllergenProductService implements IAllergenProductService {
             return result;
         }
     }
+    @Override
+    public EntityResult allergenProductDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.allergenProductDao, keyMap);
+    }
 }

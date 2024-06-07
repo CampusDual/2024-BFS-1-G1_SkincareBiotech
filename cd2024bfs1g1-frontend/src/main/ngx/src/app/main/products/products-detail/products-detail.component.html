@@ -76,7 +76,7 @@
         <mat-tab label="{{ 'ALLERGENS' | oTranslate }}">
             <o-table attr="AllergenProductTable" service="allergen-products" entity="allergenProduct" keys="AP_ID" parent-keys="PRO_ID"
                 columns="AP_ID;ALLER_ID;PRO_ID;PRO_NAME;ALLER_NAME" visible-columns="ALLER_NAME"
-                query-rows="5" delete-button="no" detail-mode="yes" insert-form-route="allergen/new">
+                query-rows="5" delete-button="yes" detail-mode="yes" insert-form-route="allergen/new" header-actions="D">
                 <o-table-column attr="ALLER_NAME" title="ALLER_NAME" width="100px"></o-table-column>
             </o-table>
         </mat-tab>
