@@ -19,12 +19,16 @@
             </div>
 
         </div>
-        <div class="subtitle"><b>{{'RECOMENDATED_FOR' | oTranslate}}</b></div>
-        <div class="flex-container">
-            <div class="pill" *ngFor="let item of skintypes">
-                {{item.SKIN_NAME | oTranslate}}
+        <div *ngIf="skintypes && skintypes.length > 0">
+            <div class="subtitle"><b>{{'RECOMENDATED_FOR' | oTranslate}}</b></div>
+            <div class="flex-container">
+                <div class="pill" *ngFor="let item of skintypes">
+                    {{item.SKIN_NAME | oTranslate}}
+                </div>
             </div>
         </div>
+
+
 
         <div class="buy-container">
             <div class="price" *ngIf="(sale != null); else priceBlock">

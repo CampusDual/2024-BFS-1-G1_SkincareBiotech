@@ -33,5 +33,9 @@ public class SkinTypesService implements ISkinTypesService {
         return this.daoHelper.insert(this.skinTypesDao, attrMap);
     }
 
+    @Override
+    public EntityResult skintypeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.skinTypesDao, keyMap);
+    }
 
 }

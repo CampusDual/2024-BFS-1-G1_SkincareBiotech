@@ -253,6 +253,8 @@
   "ADD_SALE": "Add new sale",
   "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
   "ADD_SKIN_TYPE": "Add skin types",
-  "SKIN_ID": "Skin type"
-  
+  "SKIN_ID": "Skin type",
+  "ADD_RECOMENDATIONS": "Add recomendations",
+  "NO_RECOMENDATIONS": "There aren't any recomendations"
+
 }

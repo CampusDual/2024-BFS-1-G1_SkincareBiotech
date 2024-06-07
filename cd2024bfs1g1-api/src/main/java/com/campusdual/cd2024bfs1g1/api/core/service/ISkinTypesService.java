@@ -10,5 +10,5 @@ public interface ISkinTypesService {
     public EntityResult skintypeQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
     public EntityResult skintypeInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
-
+    public EntityResult skintypeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }

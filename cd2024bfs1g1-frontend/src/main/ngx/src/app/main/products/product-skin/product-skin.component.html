@@ -1,11 +1,12 @@
 <o-form editable-detail="false" show-header="yes" title="RECOMENDADED_FOR" (onInsert)="onInsert($event)"
-    service="productsSkin" entity="productSkin" keys="PS_ID" header-actions="R;I;U;D" delete-method="productSkinDelete"
-    delete-button="yes">
-    <div>
+    service="productsSkin" entity="productSkin" keys="PS_ID" header-actions="R;I;U;D" delete-method="productSkinDelete">
+    <o-column title="ADD_RECOMENDATIONS">
+        <div>
 
-        <o-radio attr="SKIN_ID" service="skintypes" entity="skintype" value-column="SKIN_ID" columns="SKIN_ID;SKIN_NAME" label-visible="no"
-            visible-columns="SKIN_NAME" read-only="no" required="no">
-        </o-radio>
+            <o-radio attr="SKIN_ID" service="skintypes" entity="skintype" value-column="SKIN_ID"
+                columns="SKIN_ID;SKIN_NAME" label-visible="no" visible-columns="SKIN_NAME" read-only="no" required="no">
+            </o-radio>
 
-    </div>
+        </div>
+    </o-column>
 </o-form>

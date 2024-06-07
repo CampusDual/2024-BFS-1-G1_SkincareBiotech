@@ -252,6 +252,10 @@
   "ADD_SALE": "Añadir nuevo descuento",
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
   "ADD_SKIN_TYPE": "Añade tipos de piel",
-  "SKIN_ID": "Tipo de piel"
+  "SKIN_ID": "Tipo de piel",
+  "ADD_RECOMENDATIONS": "Añadir recomendaciones",
+  "NO_RECOMENDATIONS": "No hay recomendaciones"
+
+
 
 }
