@@ -10,4 +10,6 @@ public interface IAllergenUserService {
     EntityResult allergenUserQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
     EntityResult allergenUserInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+
+    EntityResult allergenUserDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }

@@ -32,4 +32,8 @@ public class AllergenUserService implements IAllergenUserService {
         return this.daoHelper.insert(this.allergenUserDao, attributes);
     }
 
+    @Override
+    public EntityResult allergenUserDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.allergenUserDao, keyMap);
+    }
 }
