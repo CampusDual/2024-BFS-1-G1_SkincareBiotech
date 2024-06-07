@@ -16,7 +16,7 @@
         <Query id="overView">
             <AmbiguousColumns>
                 <AmbiguousColumn name="ALLER_ID" prefix="a"/>
-                <AmbiguousColumn name="USER_ID" prefix="u"/>
+                <AmbiguousColumn name="USR_ID" prefix="u"/>
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
@@ -26,7 +26,7 @@
                      ${mainschema}.ALLERGENS A
                   INNER JOIN ${mainschema}.ALLERGENS_USERS AU ON
                      A.ALLER_ID = AU.ALLER_ID
-                  INNER JOIN ${mainschema}.USERS U ON
+                  INNER JOIN ${mainschema}.USR_USER U ON
                      AU.USR_ID = U.USR_ID
                   #WHERE#
                 ]]>
