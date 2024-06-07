@@ -11,9 +11,11 @@
                     <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
                 </div>
                 <div class="details-row">
-                    <o-text-input attr="PRO_NAME" step="0" grouping="no" required="yes"></o-text-input>
-                    <o-currency-input attr="PRICE" required="yes" max-decimal-digits="2"
-                        decimal-separator=","></o-currency-input>
+                    <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
+                </div>
+                <div class="price-row">
+                    <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
+                    <o-currency-input attr="REAL_PRICE" label="REAL_PRICE" required="yes" read-only="yes"></o-currency-input>
                 </div>
                 <div class="details-row">
                     <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"

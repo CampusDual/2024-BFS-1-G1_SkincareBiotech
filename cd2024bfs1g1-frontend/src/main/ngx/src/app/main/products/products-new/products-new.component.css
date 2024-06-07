@@ -57,6 +57,16 @@ h3 {
 .details-row o-textarea-input {
     flex: 1;
 }
+
+.price-row {
+    display: flex;
+    align-items: center;
+}
+
+.price-row o-currency-input {
+    margin-right: 10px;
+}
+
 .price-label {
     font-weight: bold;
     padding: 5px;

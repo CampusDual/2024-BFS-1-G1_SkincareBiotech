@@ -41,6 +41,7 @@ mat-tab-group{
 .price-row {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .price-row o-currency-input {
