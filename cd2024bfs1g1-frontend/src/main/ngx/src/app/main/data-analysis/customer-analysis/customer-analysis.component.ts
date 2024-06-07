@@ -2,11 +2,11 @@ import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { AuthService, OTranslateService, OUserInfoService, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
-  selector: 'app-customer-predominance',
-  templateUrl: './customer-predominance.component.html',
-  styleUrls: ['./customer-predominance.component.css']
+  selector: 'app-customer-analysis',
+  templateUrl: './customer-analysis.component.html',
+  styleUrls: ['./customer-analysis.component.css']
 })
-export class CustomerPredominanceComponent implements OnInit {
+export class CustomerAnalysisComponent implements OnInit {
   multi: any[] = [];
   view: any[] = [700, 300];
 
@@ -21,7 +21,7 @@ export class CustomerPredominanceComponent implements OnInit {
   yAxisLabel: string = 'Age Range';
 
   colorScheme = {
-    domain: ['#313695', '#4575B4', '#74ADD1', '#ABD9E9', '#E0F3F8', '#FFFFBF', '#FEE090', '#FDAE61', '#F46D43', '#D73027', '#A50026']
+    domain: ["#ff0000", "#f66d00", "#ffe800", "#a6d600", "#38ff00"]
   };
 
   service: OntimizeService;

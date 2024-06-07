@@ -175,7 +175,7 @@
   "GBA_MAX_AGE": "Maximum age",
   "ADD_AGE_RANGE": "Add age range",
   "MIN_RANGE_HIGHER": "Minimum age can't be higher than maximum age",
-  "RANGE_NOT_VALID": "Range not valid. Ages cannot overlap.",
+  "RANGE_NOT_VALID": "This age range is already in use. Please choose another one that does not overlap.",
   "AGE_GRAPH": "Age ranges",
   "SETTINGS": "Settings",
   "USR_NAME": "Name",
@@ -237,7 +237,7 @@
   "RATHER_NOT_ANSWER": "I would rather not answer",
   "AGE_RANGE": "Age range",
   "AGE_GENDER": "Age and gender",
-  "CUSTOMER_PREDOMINANCE": "Customer analysis",
+  "CUSTOMER_ANALYSIS": "Customer analysis",
   "DATE_NOT_VALID": "This offer period is already in use. Please choose another one that does not overlap.",
   "MIN_DATE_HIGHER": "Minimum date can't be higher than maximum date",
   "SALES_INFORMATION":" Sales information",
@@ -246,5 +246,6 @@
   "SAL_INITIAL_DATE": "Initial date",
   "SAL_END_DATE": "End date",
   "ADD_SALE": "Add new sale",
-  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date"
+  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
+  "AGE_RANGE_CONFIGURATION": "Range configuration"
 }

@@ -175,7 +175,7 @@
   "GBA_MAX_AGE": "Edad máxima",
   "ADD_AGE_RANGE": "Insertar rango de edad",
   "MIN_RANGE_HIGHER": "La edad mínima no puede ser menor que la máxima",
-  "RANGE_NOT_VALID": "Rango no válido. Las edades no se pueden solapar.",
+  "RANGE_NOT_VALID": "Este rango de edad ya está en uso. Por favor elija otro que no se solape.",
   "AGE_GRAPH": "Rangos de edad",
   "SETTINGS": "Ajustes",
   "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
@@ -236,7 +236,7 @@
   "RATHER_NOT_ANSWER": "Prefiero no contestar",
   "AGE_RANGE": "Rango de edad",
   "AGE_GENDER": "Edad y género",
-  "CUSTOMER_PREDOMINANCE": "Análisis clientes",
+  "CUSTOMER_ANALYSIS": "Análisis clientes",
   "DATE_NOT_VALID": "Este periodo de oferta ya está en uso. Por favor elija otro que no se solape.",
   "MIN_DATE_HIGHER": "La fecha mínima no puede ser menor que la máxima",
   "SALES_INFORMATION":" Información de descuentos",
@@ -245,5 +245,6 @@
   "SAL_INITIAL_DATE": "Fecha inicial",
   "SAL_END_DATE": "Fecha final",
   "ADD_SALE": "Añadir nuevo descuento",
-  "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual"
+  "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
+  "AGE_RANGE_CONFIGURATION": "Configuración de rangos"
 }

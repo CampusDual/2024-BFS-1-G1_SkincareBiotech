@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DataAnalysisHomeComponent } from './data-analysis-home/data-analysis-home.component';
 import { BilledAgeComponent } from './billed-age/billed-age.component';
-import { BilledAgeRangeNewComponent } from './billed-age/billed-age-range-new/billed-age-range-new.component';
 import { SellsByCategoryComponent } from './sells-by-category/sells-by-category.component';
-import { CustomerPredominanceComponent } from './customer-predominance/customer-predominance.component';
+import { CustomerAnalysisComponent } from './customer-analysis/customer-analysis.component';
 
 const routes: Routes = [
   {
@@ -16,17 +15,17 @@ const routes: Routes = [
     component: BilledAgeComponent
   },
   {
-    path: "billed-age/new",
-    component: BilledAgeRangeNewComponent
-  },
-  {
-    path: "customer-predominance",
-    component: CustomerPredominanceComponent
+    path: "customer-analysis",
+    component: CustomerAnalysisComponent
   },
   {
     path: "bycategory",
     component: SellsByCategoryComponent
   },
+  {
+    path: 'age-range-configuration',
+    loadChildren: () => import('./age-range-configuration/age-range-configuration.module').then(m => m.AgeRangeConfigurationModule)
+  }
 ];
 
 @NgModule({
