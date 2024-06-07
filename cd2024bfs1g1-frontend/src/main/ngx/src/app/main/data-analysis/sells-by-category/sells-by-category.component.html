@@ -14,7 +14,7 @@
               oHidden="yes" columns="CAT_NAME;TOTAL_SOLD" visible-columns="CAT_NAME;TOTAL_SOLD" query-rows="15"
               delete-button='no' (onDataLoaded)="loadChart($event)"></o-table>
 
-       <h1 (onDataLoaded)="loadChart($event)">
+       <h1>
               La categoría {{ catBestSeller }} es la más vendida con un {{percentage | number: '1.2-2' }}% sobre el
               total de ventas para el rango de fecha seleccionado
        </h1>

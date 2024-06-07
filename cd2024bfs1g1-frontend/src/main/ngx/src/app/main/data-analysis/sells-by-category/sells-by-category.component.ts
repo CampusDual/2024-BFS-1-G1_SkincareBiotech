@@ -38,7 +38,11 @@ export class SellsByCategoryComponent {
   }
 
   loadChart(event: any) {
-    const groupedData = event.reduce((acc, item) => {
+    this.catBestSeller='';
+    this.maxCatTotalSold=0;
+    this.totalSold=0;
+    this.percentage=0;
+     const groupedData = event.reduce((acc, item) => {
       if (!acc[item.CAT_NAME]) {
         acc[item.CAT_NAME] = 0;
       }
@@ -53,7 +57,7 @@ export class SellsByCategoryComponent {
       };
     });
 
-    for (const category in groupedData) {
+    for (let category in groupedData) {
       if (groupedData[category] > this.maxCatTotalSold) {
         this.maxCatTotalSold = groupedData[category];
         this.catBestSeller = category;
