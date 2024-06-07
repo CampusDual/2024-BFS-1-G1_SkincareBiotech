@@ -51,6 +51,9 @@ export class ProductsViewComponent implements OnInit {
         if (fil.attr === 'PGE_ID') {
           filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
         }
+        if (fil.attr === 'SKIN_ID') {
+          filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
+        }
         if (fil.attr == 'PRO_MAX_PRICE') {
           let value: number = Number(fil.value);
           filters.push(FilterExpressionUtils.buildExpressionLessEqual("PRO_REAL_PRICE", value));
