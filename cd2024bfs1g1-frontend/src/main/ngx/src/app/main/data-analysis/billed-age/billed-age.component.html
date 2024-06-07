@@ -8,14 +8,20 @@
                     {{"BILLING_BY_AGE" | oTranslate}} €
                 </div>
                 <div class="chart">
-                    <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE"
-                       y-axis="TOTAL" x-label="Age" y-label="Amount (€)" [color]="colorScheme">
+                    <o-chart type="discreteBar" [data]="data" x-axis="AGE_RANGE" y-axis="TOTAL" x-label="Age" y-label="Amount (€)" [color]="colorScheme">
                     </o-chart>
+                    <o-table #discreteBarTable attr="tableOrderChart" service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE"
+                    oHidden="yes" columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15"
+                    delete-button='no' (onDataLoaded)="loadChart($event)"></o-table>
                 </div>
             </div>
             <div class="tittle-x">
                 {{"AGE_GRAPH" | oTranslate}}
             </div>
+            <div *ngIf="isData; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>Los clientes con el rango de edad comprendido entre {{ minAge }} y {{ maxAge }} años es el que más factura con un {{percentage | number: '1.2-2' }}% sobre el
+                   total de facturado</ng-template>
+            <ng-template #elseBlock>No hay datos para el rango de fecha seleccionado</ng-template>
         </div>
     </mat-tab>
     <mat-tab>
