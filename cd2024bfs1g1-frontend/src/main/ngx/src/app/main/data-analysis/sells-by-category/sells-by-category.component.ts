@@ -20,6 +20,8 @@ export class SellsByCategoryComponent {
   maxCatTotalSold: number = 0;
   totalSold: number = 0;
   percentage: number = 0;
+
+  isData: boolean = false;
  
   constructor(
     protected injector: Injector,
@@ -42,11 +44,13 @@ export class SellsByCategoryComponent {
     this.maxCatTotalSold=0;
     this.totalSold=0;
     this.percentage=0;
+    this.isData = false;
      const groupedData = event.reduce((acc, item) => {
       if (!acc[item.CAT_NAME]) {
         acc[item.CAT_NAME] = 0;
       }
       acc[item.CAT_NAME] += item.TOTAL_SOLD;
+      this.isData=true;
       return acc;
     }, {});
 
