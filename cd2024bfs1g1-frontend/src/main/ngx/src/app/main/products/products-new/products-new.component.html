@@ -14,8 +14,8 @@
                     <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
                 </div>
                 <div class="price-row">
-                    <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
-                    <o-currency-input attr="REAL_PRICE" label="REAL_PRICE" required="yes" read-only="yes"></o-currency-input>
+                    <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes" (onValueChange)="changePrice($event)"></o-currency-input>
+                    <o-currency-input #realPriceCurrency attr="REAL_PRICE" label="REAL_PRICE" required="yes" read-only="yes"></o-currency-input>
                 </div>
                 <div class="details-row">
                     <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"

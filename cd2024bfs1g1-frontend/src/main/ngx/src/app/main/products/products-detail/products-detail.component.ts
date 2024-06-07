@@ -13,6 +13,9 @@ export class ProductsDetailComponent implements OnInit{
   @ViewChild('discreteBar', { static: false })
   protected discreteBar: OChartComponent;
 
+  @ViewChild('realPriceCurrency') 
+  realPriceCurrency : OCurrencyInputComponent;
+
   public chartParameters: DiscreteBarChartConfiguration;
   data: any;
   intermedio: any;
@@ -21,6 +24,11 @@ export class ProductsDetailComponent implements OnInit{
   Visible:boolean = true;
 
   service: OntimizeService;
+
+  commissionPlataform: number;
+  commissionRedSys: number;
+
+  public priceUser: number;
 
   constructor(
     protected injector: Injector,
@@ -42,7 +50,17 @@ export class ProductsDetailComponent implements OnInit{
     this.isVisible = !this.isVisible;
     this.Visible = !this.Visible;
   }
-  ngOnInit(){}
+  ngOnInit(){
+    const conf = this.service.getDefaultServiceConfiguration('commissions');
+      this.service.configureService(conf);
+      this.service.query({}, ["COM_NAME","COM_VALUE"], "commission")
+        .subscribe((data) => {
+          if (data.data.length > 0) {
+            this.commissionRedSys = data.data.find((element) => (element.COM_NAME === "Redsys_commissions")).COM_VALUE;            
+            this.commissionPlataform = data.data.find((element) => (element.COM_NAME === "Plataform_commissions")).COM_VALUE;
+          }
+        })
+  }
 
   onUpdate(success: boolean) {
     if (success) {
@@ -54,5 +72,11 @@ export class ProductsDetailComponent implements OnInit{
   onInsert(event) {
     this.router.navigate(['/main/products']);
   }
+
+  changePrice(event) {
+    this.realPriceCurrency.setValue(event);
+    this.priceUser = (this.realPriceCurrency.getValue() / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
+    this.realPriceCurrency.setValue(this.priceUser);
+}
 
 }
