@@ -106,6 +106,11 @@ By default the application provides two users. Adapt as needed:
     - Role: `User`
     - Username: `demo`
     - Password: `demouser`
+  
+ - Seller:
+    - Role: `Seller`
+    - Username: `seller`
+    - Password: `demouser`
 
 ## Ontimize Boot
 
