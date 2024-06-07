@@ -11,11 +11,16 @@ import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
 
 export class SellsByCategoryComponent {
 
-  data: any []; 
+  data: any[];
   service: OntimizeService;
   pieParameters: PieChartConfiguration;
   colors = {};
 
+  catBestSeller: string = '';
+  maxCatTotalSold: number = 0;
+  totalSold: number = 0;
+  percentage: number = 0;
+ 
   constructor(
     protected injector: Injector,
   ) {
@@ -23,15 +28,15 @@ export class SellsByCategoryComponent {
     this.service = this.injector.get(OntimizeService);
   }
 
-  _pieConfiguration(){
+  _pieConfiguration() {
     this.pieParameters = new PieChartConfiguration();
     this.pieParameters.showLeyend = true;
     this.pieParameters.legendPosition = 'right';
     this.colors = {
       domain: ['#31d4f8', '#2aaecb', '#1f6e9a', '#154865', '#0499ec', '#03649b', '#03649b']
     };
-    }
-    
+  }
+
   loadChart(event: any) {
     const groupedData = event.reduce((acc, item) => {
       if (!acc[item.CAT_NAME]) {
@@ -47,7 +52,18 @@ export class SellsByCategoryComponent {
         value: groupedData[key]
       };
     });
+
+    for (const category in groupedData) {
+      if (groupedData[category] > this.maxCatTotalSold) {
+        this.maxCatTotalSold = groupedData[category];
+        this.catBestSeller = category;
+      }
+      this.totalSold += groupedData[category];
+    }
+    this.percentage = ((this.maxCatTotalSold / this.totalSold) * 100);
   }
+
+
 
   filter(values: Array<{ attr, value }>): Expression {
     let filters: Array<Expression> = [];
