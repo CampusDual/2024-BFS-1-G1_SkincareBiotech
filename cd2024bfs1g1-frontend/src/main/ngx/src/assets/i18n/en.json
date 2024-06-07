@@ -186,8 +186,6 @@
   "USR_PASSWORD": "Password",
   "ADD_SELLER": "ADD NEW SELLER",
   "SELLERS": "Sellers",
-  "DELETE_CART_WARNING":"Are you sure you want to remove it from cart ?",
-  "ERROR_COMPLETE_FORM":"Complete form to purchase",
   "title_register": "Create your account:",
   "MY_INFORMATION": "My information",
   "MY_ORDERS": "My orders",
@@ -197,7 +195,6 @@
   "NAME": "Name",
   "CONTACT": "Contact",
   "ADDITIONAL_INFO": "Additional information",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "FEMALE": "Female",
   "MALE": "Male",
   "UNISEX": "Unisex",
@@ -248,5 +245,6 @@
   "SAL_INITIAL_DATE": "Initial date",
   "SAL_END_DATE": "End date",
   "ADD_SALE": "Add new sale",
-  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date"
+  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
+  "SKIN_ID": "Skin type"
 }
