@@ -40,5 +40,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'sales':{
   'path' : '/sales'
-  }
+  },
+  'skintypes': {
+    'path': '/skintypes',
+  },
 };
