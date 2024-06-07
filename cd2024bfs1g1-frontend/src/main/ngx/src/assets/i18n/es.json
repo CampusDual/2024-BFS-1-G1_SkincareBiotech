@@ -248,5 +248,6 @@
   "ALLERGENS": "Alérgenos",
   "ALLER_NAME": "Nombre",
   "ADD_ALLERGEN": "Añadir nuevo alérgeno",
-  "SELECT_ALLERGEN": "Selecciona un alérgeno..."
+  "SELECT_ALLERGEN": "Selecciona un alérgeno...",
+  "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado."
 }

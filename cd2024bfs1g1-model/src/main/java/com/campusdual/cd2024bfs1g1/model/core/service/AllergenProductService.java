@@ -2,11 +2,15 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IAllergenProductService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.AllergenProductDao;
+import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
+import jdk.jshell.execution.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +33,14 @@ public class AllergenProductService implements IAllergenProductService {
 
     @Override
     public EntityResult allergenProductInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.allergenProductDao, attributes);
+        try {
+            return this.daoHelper.insert(this.allergenProductDao, attributes);
+
+        } catch (DuplicateKeyException e) {
+            EntityResult result = new EntityResultMapImpl();
+            result.setCode(EntityResult.OPERATION_WRONG);
+            result.setMessage("ALLERGEN_IS_DUPLICATED");
+            return result;
+        }
     }
 }
