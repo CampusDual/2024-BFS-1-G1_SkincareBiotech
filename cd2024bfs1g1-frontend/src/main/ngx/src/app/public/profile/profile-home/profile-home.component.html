@@ -2,17 +2,26 @@
     <mat-tab label="{{ 'ORDERS_HISTORY' | oTranslate }}">
         <app-orders-history></app-orders-history>
     </mat-tab>      
-    <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
+    <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">  
         <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="U"
-           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
-            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS" 
+           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID"
+            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID" 
             show-header-navigation="yes">
-
+            
             <label>{{ 'NAME' | oTranslate }}</label>
             <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>        
             <div class="name">
-                <o-text-input attr="USR_NAME" label="USR_NAME"></o-text-input>
-                <o-text-input attr="USR_SURNAME" title="USR_SURNAME"></o-text-input>
+                <o-text-input attr="USR_NAME" label="USR_NAME" formControlName="usr_name"></o-text-input>
+                <o-text-input attr="USR_SURNAME" title="USR_SURNAME" formControlName="usr_surname"></o-text-input>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{ 'GENDER' | oTranslate }}</mat-label>
+                    <mat-select formControlName="usr_gender">
+                        <mat-option value="male">{{ 'MALE' | oTranslate }}</mat-option>
+                        <mat-option value="female">{{ 'FEMALE' | oTranslate }}</mat-option>
+                        <mat-option value="other">{{ 'OTHER' | oTranslate }}</mat-option>
+                        <mat-option value="rather_not_answer">{{ 'RATHER_NOT_ANSWER' | oTranslate }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
 
             <label>{{ 'CONTACT' | oTranslate }}</label>
