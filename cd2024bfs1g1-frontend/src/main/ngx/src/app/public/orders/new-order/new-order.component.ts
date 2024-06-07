@@ -39,6 +39,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   @ViewChild("phoneInput") phoneInput: OIntegerInputComponent;
   @ViewChild("zipInput") zipInput: OIntegerInputComponent;
   @ViewChild("addressInput") addressInput: OTextInputComponent;
+
   constructor(
     @Inject(AuthService) private authService: AuthService,
     private route: ActivatedRoute,
@@ -77,7 +78,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     }
   }
   ngAfterViewInit(): void {
-
+    this.formOrder.queryData({"USR_ID": 0});
   }
   updateTotalAmount( ) {
     let totalAmount = 0;

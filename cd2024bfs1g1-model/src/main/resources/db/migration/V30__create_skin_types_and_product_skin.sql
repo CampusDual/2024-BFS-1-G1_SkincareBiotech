@@ -14,6 +14,8 @@ CREATE TABLE public.product_skin (
     CONSTRAINT fk_pro_id FOREIGN KEY (pro_id) REFERENCES public.products(pro_id)
 );
 
+ALTER TABLE public.product_skin ADD CONSTRAINT product_skin_unique UNIQUE (skin_id,pro_id);
+
 UPDATE public.usr_role
     SET rol_json_client_permission='{ "menu": [ { "attr": "products", "visible": false, "enabled": false },
     { "attr": "orders", "visible": false, "enabled": false },
@@ -39,3 +41,4 @@ UPDATE public.usr_role
      { "attr": "sellers", "visible": false, "enabled": false },
      { "attr": "sells-by-category", "visible": false, "enabled": false } ] }'
     WHERE rol_name='seller';
+
