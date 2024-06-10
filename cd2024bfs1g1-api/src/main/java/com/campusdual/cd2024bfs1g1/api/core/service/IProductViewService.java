@@ -10,7 +10,7 @@ import java.util.Map;
 public interface IProductViewService {
 
     public EntityResult productViewQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException;
-
+    EntityResult productViewCountPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException;
     public EntityResult productViewInsert(Map<String, Object>attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
     public EntityResult viewByProductQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 

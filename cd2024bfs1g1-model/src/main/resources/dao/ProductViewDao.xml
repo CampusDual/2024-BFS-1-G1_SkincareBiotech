@@ -41,5 +41,33 @@
                     ]]>
             </Sentence>
         </Query>
+        <Query id="QUERY_PROV_COUNT">
+            <Sentence>
+                <![CDATA[
+                with x as (
+                    with views as(
+                        SELECT
+                            pro_id,
+                            DATE(prov_date) AS visit_date,
+                            prov_uid
+                        FROM
+                            ${mainschema}.products_view
+                        GROUP BY
+                            pro_id,
+                            DATE(prov_date),
+                            prov_uid
+                    )
+                    SELECT count(v.pro_id) as n_views,v.visit_date, p.*
+                    FROM views v
+                    INNER JOIN products p ON v.pro_id = p.pro_id
+                    GROUP BY v.pro_id,p.pro_name, p.pro_id,v.visit_date
+                )
+                SELECT #COLUMNS#
+                FROM x
+                #WHERE#
+                #ORDER#
+                    ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

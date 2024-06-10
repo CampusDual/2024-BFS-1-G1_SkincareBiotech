@@ -65,7 +65,23 @@
             ]]>
             </Sentence>
         </Query>
-
+        <Query id="QUERY_SALES_COUNT">
+            <Sentence>
+                <![CDATA[
+                    WITH SALES AS (
+	                    SELECT SUM(OL.OL_UNITS) AS TOTAL_SALES,DATE(O.ORD_DATE) AS SALES_DATE,P.*
+                        FROM ${mainschema}.PRODUCTS AS P
+                        INNER JOIN ${mainschema}.ORD_LINES AS OL ON OL.PRO_ID = P.PRO_ID
+                        INNER JOIN ${mainschema}.ORDERS AS O ON O.ORD_ID = OL.ORD_ID
+                        GROUP BY P.PRO_ID,DATE(O.ORD_DATE)
+                    )
+                    SELECT #COLUMNS#
+                    FROM SALES
+                    #WHERE#
+                    #ORDER#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 
 </JdbcEntitySetup>

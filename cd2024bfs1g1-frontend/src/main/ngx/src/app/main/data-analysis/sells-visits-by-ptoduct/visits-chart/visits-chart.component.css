@@ -1,0 +1,25 @@
+.header-charts{
+    display: flex;
+    justify-content: space-between;
+}
+.header-charts .filter-container{
+    display: grid;
+    grid-template-areas: "a b b"
+                         "c d e";
+    gap: 10px;
+}
+.header-charts .filter-container .columns-number{
+    grid-area: a;
+}
+.header-charts .filter-container .date-filter{
+    grid-area: b;
+}
+.header-charts .filter-container .cat-filter{
+    grid-area: c;
+}
+.header-charts .filter-container .bra-filter{
+    grid-area: d;
+}
+.header-charts .filter-container .pge-filter{
+    grid-area: e;
+}

@@ -18,6 +18,7 @@ public class ProductViewDao extends OntimizeJdbcDaoSupport {
     public static final String PRO_ID ="PRO_ID";
     public static final String PROV_DATE ="PROV_DATE";
     public static final String QUERY_PROV_VIEW_PRODUCT = "PROV_VIEW_PRODUCT";
+    public static final String QUERY_PROV_COUNT = "QUERY_PROV_COUNT";
 
 
 

@@ -45,15 +45,14 @@ public class ProductService implements IProductService {
     @Override
     public EntityResult productInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
         int userId = Utils.getUserId();
-        Map<String,Object> values = new HashMap<>(attributes);
+        Map<String, Object> values = new HashMap<>(attributes);
         values.put(ProductDao.PRO_SELLER_ID, userId);
         EntityResult er = this.daoHelper.insert(this.productDao, values);
         return er;
     }
 
     @Override
-    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
-            throws OntimizeJEERuntimeException {
+    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.update(this.productDao, attrMap, keyMap);
     }
 
@@ -84,8 +83,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public EntityResult productBySellerQuery(Map<String, Object> keysValues, List<String> attributes)
-            throws OntimizeJEERuntimeException, JsonProcessingException {
+    public EntityResult productBySellerQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException, JsonProcessingException {
         int userId = Utils.getUserId();
         Map<String, Object> filter = new HashMap<>(keysValues);
         filter.put(ProductDao.PRO_SELLER_ID, userId);
@@ -96,5 +94,10 @@ public class ProductService implements IProductService {
     @Override
     public AdvancedEntityResult productPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) {
         return this.daoHelper.paginationQuery(this.productDao, keysValues, attributes, recordNumber, startIndex, orderBy, "pro_featured");
+    }
+
+    @Override
+    public EntityResult salesPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.productDao, keysValues, attributes, recordNumber, startIndex, orderBy, ProductDao.QUERY_SALES_COUNT);
     }
 }

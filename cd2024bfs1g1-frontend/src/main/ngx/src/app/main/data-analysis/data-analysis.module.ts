@@ -7,6 +7,10 @@ import { DataAnalysisHomeComponent } from './data-analysis-home/data-analysis-ho
 import { BilledAgeComponent } from './billed-age/billed-age.component';
 import { BilledAgeRangeNewComponent } from './billed-age/billed-age-range-new/billed-age-range-new.component';
 import { SellsByCategoryComponent } from './sells-by-category/sells-by-category.component';
+import { SellsVisitsByPtoductComponent } from './sells-visits-by-ptoduct/sells-visits-by-ptoduct.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { VisitsChartComponent } from './sells-visits-by-ptoduct/visits-chart/visits-chart.component';
+import { SalesChartComponent } from './sells-visits-by-ptoduct/sales-chart/sales-chart.component';
 
 
 @NgModule({
@@ -14,13 +18,17 @@ import { SellsByCategoryComponent } from './sells-by-category/sells-by-category.
     DataAnalysisHomeComponent,
     BilledAgeComponent,
     BilledAgeRangeNewComponent,
-    SellsByCategoryComponent
+    SellsByCategoryComponent,
+    SellsVisitsByPtoductComponent,
+    VisitsChartComponent,
+    SalesChartComponent
   ],
   imports: [
     CommonModule,
     DataAnalysisRoutingModule,
     OntimizeWebModule,
-    OChartModule
+    OChartModule,
+    NgxChartsModule
   ]
 })
 export class DataAnalysisModule { }
