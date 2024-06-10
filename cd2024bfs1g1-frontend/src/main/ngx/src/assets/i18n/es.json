@@ -239,5 +239,8 @@
   "OTHER": "Otro",
   "RATHER_NOT_ANSWER": "Prefiero no contestar",
   "AGE_RANGE": "Rango de edad",
-  "AGE_GENDER": "Edad y género"
+  "AGE_GENDER": "Edad y género",
+  "UGE_ID": "Genero",
+  "ERROR_NAME": "No se permite usar caracteres numericos",
+  "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!"
 }

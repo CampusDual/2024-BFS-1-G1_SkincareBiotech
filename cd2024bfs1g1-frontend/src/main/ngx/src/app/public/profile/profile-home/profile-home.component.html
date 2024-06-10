@@ -11,30 +11,30 @@
             <label>{{ 'NAME' | oTranslate }}</label>
             <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>        
             <div class="name">
-                <o-text-input attr="USR_NAME" label="USR_NAME" formControlName="usr_name"></o-text-input>
-                <o-text-input attr="USR_SURNAME" title="USR_SURNAME" formControlName="usr_surname"></o-text-input>
-                <mat-form-field appearance="fill">
-                    <mat-label>{{ 'GENDER' | oTranslate }}</mat-label>
-                    <mat-select formControlName="usr_gender">
-                        <mat-option value="male">{{ 'MALE' | oTranslate }}</mat-option>
-                        <mat-option value="female">{{ 'FEMALE' | oTranslate }}</mat-option>
-                        <mat-option value="other">{{ 'OTHER' | oTranslate }}</mat-option>
-                        <mat-option value="rather_not_answer">{{ 'RATHER_NOT_ANSWER' | oTranslate }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <o-text-input attr="USR_NAME" label="USR_NAME" required="yes" [validators]="validatorsNameArray">
+                    <o-validator error-name="pattern"
+                        error-text="{{ 'ERROR_NAME' | oTranslate }}"></o-validator>
+                </o-text-input>
+                <o-text-input attr="USR_SURNAME" title="USR_SURNAME"  required="yes"  formControlName="usr_surname"></o-text-input>
+                <o-combo attr="UGE_ID" searchable="no" service="user-genders" entity="userGender" keys="UGE_ID"
+                columns="UGE_NAME" visible-columns="UGE_NAME" value-column="UGE_ID" translate="yes" required="yes" ></o-combo>
             </div>
 
             <label>{{ 'CONTACT' | oTranslate }}</label>
             <div class="contact">
-                <o-text-input attr="USR_PHONE" title="USR_PHONE"></o-text-input>
-                <o-text-input attr="USR_EMAIL" title="USR_EMAIL"></o-text-input>
+                <o-phone-input attr="USR_PHONE"  required="yes"  title="USR_PHONE"></o-phone-input>
+                <o-email-input attr="USR_EMAIL" required="yes"  title="USR_EMAIL"></o-email-input>
             </div>
 
             <label>{{ 'ADDITIONAL_INFO' | oTranslate }}</label>
             <div class="info">
-                <o-date-input attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
+                <o-date-input attr="UPR_BIRTHDATE" required="yes" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
-            </div>
+              
+                <div *ngIf="form.formGroup.get('UPR_BIRTHDATE').invalid && (form.formGroup.get('UPR_BIRTHDATE').dirty || form.formGroup.get('UPR_BIRTHDATE').touched)" class="error-message">
+                  {{ 'ERROR_BIRTHDATE' | oTranslate }}
+                </div>
+              </div> 
         </o-form>
     </mat-tab>
 </mat-tab-group>

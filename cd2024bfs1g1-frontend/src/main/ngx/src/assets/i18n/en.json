@@ -240,5 +240,8 @@
   "OTHER": "Other",
   "RATHER_NOT_ANSWER": "I would rather not answer",
   "AGE_RANGE": "Age range",
-  "AGE_GENDER": "Age and gender"
+  "AGE_GENDER": "Age and gender",
+  "UGE_ID": "Gender",
+  "ERROR_NAME": "It is not allowed to use numerical characters",
+  "ERROR_BIRTHDATE": "You need to be over 18 years old!"
 }
