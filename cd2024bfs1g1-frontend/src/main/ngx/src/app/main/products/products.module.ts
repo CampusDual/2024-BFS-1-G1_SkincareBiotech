@@ -8,6 +8,7 @@ import { ProductsDetailComponent } from './products-detail/products-detail.compo
 import { ProductsNewSaleComponent } from './products-new-sale/products-new-sale.component';
 
 import { OChartModule } from 'ontimize-web-ngx-charts';
+import { ProductAllergenComponent } from './product-allergen/product-allergen.component';
 import { ProductSkinComponent } from './product-skin/product-skin.component';
 
 
@@ -17,6 +18,7 @@ import { ProductSkinComponent } from './product-skin/product-skin.component';
     ProductsNewComponent,
     ProductsDetailComponent,
     ProductsNewSaleComponent,
+    ProductAllergenComponent,
     ProductSkinComponent
   ],
   imports: [

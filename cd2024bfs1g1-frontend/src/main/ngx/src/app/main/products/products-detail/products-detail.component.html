@@ -1,5 +1,5 @@
-<o-form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
-    show-header-navigation="yes" (onUpdate)="onUpdate($event)">
+<o-form #form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
+    show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="checkName($event)">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
             <div class="main-container">
@@ -29,7 +29,7 @@
                                 null-selection="no" translate="yes"></o-combo>
                         </div>
                         <div class="details-row">
-                            <o-textarea-input  attr="PRO_DESCRIPTION" required="yes" rows="11"></o-textarea-input>
+                            <o-textarea-input attr="PRO_DESCRIPTION" required="yes" rows="11"></o-textarea-input>
                         </div>
                     </div>
                     <div class="switch">
@@ -60,19 +60,37 @@
             </div>
         </mat-tab>
         <mat-tab label="{{ 'SALES_INFORMATION' | oTranslate }}">
-            <o-table attr="saleTable" service="sales" entity="sale" 
-            keys="SAL_ID" parent-keys="PRO_ID" insert-button="true" delete-button="false"
-            columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" insert-form-route="offer/new"
-            visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none">
-                <o-table-column attr="SAL_ID" title="SAL_ID" content-align="center"></o-table-column>
-                <o-table-column attr="SAL_PRICE" title="SAL_PRICE" content-align="center" type="currency"
-                    currency-symbol="€" currency-symbol-position="right" thousand-separator="."
-                    decimal-separator=","></o-table-column>
-                <o-table-column attr="SAL_INITIAL_DATE" title="SAL_INITIAL_DATE" content-align="center"
-                    type="date"></o-table-column>
-                <o-table-column attr="SAL_END_DATE" title="SAL_END_DATE" content-align="center"
-                    type="date"></o-table-column>
-            </o-table>
+            <div class="tab-content">
+                <span class="pro-name-detail">{{productName}}</span>
+                <o-form-layout-manager mode="dialog">
+                    <o-table attr="saleTable" service="sales" entity="sale" keys="SAL_ID" parent-keys="PRO_ID"
+                        insert-button="true" delete-button="false"
+                        columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" sort-columns="SAL_END_DATE:desc"
+                        visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none" >
+                        <o-table-column attr="SAL_ID" title="SAL_ID" content-align="center"></o-table-column>
+                        <o-table-column attr="SAL_PRICE" title="SAL_PRICE" content-align="center" type="currency"
+                            currency-symbol="€" currency-symbol-position="right" thousand-separator="."
+                            decimal-separator=","></o-table-column>
+                        <o-table-column attr="SAL_INITIAL_DATE" title="SAL_INITIAL_DATE" content-align="center"
+                            type="date"></o-table-column>
+                        <o-table-column attr="SAL_END_DATE" title="SAL_END_DATE" content-align="center"
+                            type="date"></o-table-column>
+                    </o-table>
+                </o-form-layout-manager>
+            </div>
+        </mat-tab>
+        <mat-tab label="{{ 'ALLERGENS' | oTranslate }}">
+            <div class="tab-content">
+                <span class="pro-name-detail">{{productName}}</span>
+                <o-form-layout-manager mode="dialog">
+                    <o-table attr="AllergenProductTable" service="allergen-products" entity="allergenProduct"
+                        keys="AP_ID" parent-keys="PRO_ID" columns="AP_ID;ALLER_ID;PRO_ID;PRO_NAME;ALLER_NAME"
+                        visible-columns="ALLER_NAME" query-rows="20" delete-button="yes" detail-mode="yes"
+                        virtual-scroll="false" insert-form-route="allergen/new" header-actions="D">
+                        <o-table-column attr="ALLER_NAME" title="ALLER_NAME" width="100px"></o-table-column>
+                    </o-table>
+                </o-form-layout-manager>
+            </div>
         </mat-tab>
        
         <mat-tab label="{{ 'SKIN_TYPES' | oTranslate }}">
