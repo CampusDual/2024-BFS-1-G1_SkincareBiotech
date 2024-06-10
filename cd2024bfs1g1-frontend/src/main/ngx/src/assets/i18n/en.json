@@ -250,6 +250,7 @@
   "SAL_END_DATE": "End date",
   "ADD_SALE": "Add new sale",
   "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
+  "GLOBAL_BROWSER": "Browser",
   "FIND_PRODUCT": "Find your product",
   "ADD_SKIN_TYPE": "Add skin types",
   "SKIN_ID": "Skin type",

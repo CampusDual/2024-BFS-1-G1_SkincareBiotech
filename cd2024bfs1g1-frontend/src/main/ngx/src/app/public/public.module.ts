@@ -11,12 +11,14 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { PublicComponentComponent } from './public-component/public-component.component';
 import { CartModule } from './cart/cart.module';
+import { PublicBrowserComponent } from './public-browser/public-browser.component';
 
 
 
 @NgModule({
   declarations: [
     PublicComponentComponent,
+    PublicBrowserComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,9 @@ import { CartModule } from './cart/cart.module';
     MatButtonModule,
     MatIconModule,
     CartModule
+  ],
+  exports: [
+    PublicBrowserComponent
   ]
 })
 export class PublicModule { }
