@@ -78,3 +78,14 @@ mat-tab-group{
     font-weight: bold;
     font-size: 24px;
 }
+
+.pro-name-detail{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-weight: bold;
+}
+
+o-table{
+    overflow: hidden;
+}

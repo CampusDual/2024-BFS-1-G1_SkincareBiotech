@@ -9,18 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductAllergenComponent {
 
-  proId: number;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
  
   ) {
-    this.proId = parseInt(this.route.snapshot.paramMap.get('PRO_ID'));
- 
-  }
- 
-  onInsert(event) {
-    this.router.navigate(['/main/products/'+this.proId+'/']);
   }
 
 }
