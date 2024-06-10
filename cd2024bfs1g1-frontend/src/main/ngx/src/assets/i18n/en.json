@@ -237,6 +237,7 @@
   "RATHER_NOT_ANSWER": "I would rather not answer",
   "AGE_RANGE": "Age range",
   "AGE_GENDER": "Age and gender",
+  "EMPTY_CART": "The cart is empty",
   "DATE_NOT_VALID": "This offer period is already in use. Please choose another one that does not overlap.",
   "MIN_DATE_HIGHER": "Minimum date can't be higher than maximum date",
   "SALES_INFORMATION": " Sales information",
@@ -245,10 +246,5 @@
   "SAL_INITIAL_DATE": "Initial date",
   "SAL_END_DATE": "End date",
   "ADD_SALE": "Add new sale",
-  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
-  "ALLERGENS": "Allergens",
-  "ALLER_NAME": "Name",
-  "ADD_ALLERGEN": "Add new allergen",
-  "SELECT_ALLERGEN": "Select an allergen...",
-   "ALLERGEN_IS_DUPLICATED": "This product already has the selected allergen."
+  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date"
 }
