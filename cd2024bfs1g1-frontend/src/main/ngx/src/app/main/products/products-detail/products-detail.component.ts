@@ -1,6 +1,6 @@
 import { Component, Inject, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
+import { OCurrencyInputComponent, OFormComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
 import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
 
 @Component({
@@ -15,6 +15,7 @@ export class ProductsDetailComponent implements OnInit{
 
   @ViewChild('realPriceCurrency') 
   realPriceCurrency : OCurrencyInputComponent;
+  @ViewChild('form') form: OFormComponent;
 
   public chartParameters: DiscreteBarChartConfiguration;
   data: any;
@@ -23,13 +24,11 @@ export class ProductsDetailComponent implements OnInit{
   isVisible: boolean = false;
   Visible:boolean = true;
   product: any;
-
   service: OntimizeService;
-
   commissionPlataform: number;
   commissionRedSys: number;
-
   public priceUser: number;
+  productName: string = '';
 
   constructor(
     protected injector: Injector,
@@ -92,4 +91,11 @@ export class ProductsDetailComponent implements OnInit{
     }
   }
 
+  onSelectedTabChange(){
+    this.router.navigate(['/main/products/:PRO_ID/allergen']);
+  }
+
+  checkName($event: any){
+    this.productName = $event.PRO_NAME;
+  }
 }

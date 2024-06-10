@@ -1,42 +1,49 @@
-<div *ngIf="product" class="container">
-    <div class="img-container">
-        <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
-    </div>
-    <div class="prod-container">
-        <div class="title">{{product.PRO_NAME}}</div>
-        <div class="for">
-            <div class="flex">
-                <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
-                <p class="pill">{{product.BRA_NAME}}</p>
-            </div >
-            <div class="flex">
-                <!-- <p class="category">{{"CATEGORY" | oTranslate}}: </p> -->
-                <p class="pill">{{product.CAT_NAME}}</p>
-            </div>
-            <div class="flex">
-                <!-- <p class="category">{{"PGE_ID" | oTranslate}}: </p> -->
-                <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
-            </div>
+<div class="pad">
+    <div *ngIf="product" class="container">
+        <div class="img-container">
+            <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
         </div>
-        <div class="buy-container">
-            <div class="price" *ngIf="(product.PRICE != product.REAL_PRICE); else priceBlock">
-                <div class="price-container">
-                    <span class="discount-span">-{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%</span>
-                    <span class="salePrice"><span> {{ product.REAL_PRICE }} €</span></span>
-                    <span class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ price }} €</span>
+        <div class="prod-container">
+            <div class="title">{{product.PRO_NAME}}</div>
+            <div class="for">
+                <div class="flex">
+                    <p class="pill">{{product.BRA_NAME}}</p>
+                </div>
+                <div class="flex">
+                    <p class="pill">{{product.CAT_NAME}}</p>
+                </div>
+                <div class="flex">
+                    <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
                 </div>
             </div>
-            <ng-template #priceBlock>
-                <p class="regularPrice">{{price}}€</p>
-            </ng-template>
-
-            <div class="buttons">
-                <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON"
-                    (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
+            <div class="buy-container">
+                <div class="price" *ngIf="(product.PRICE != product.REAL_PRICE); else priceBlock">
+                    <div class="price-container">
+                        <span class="discount-span">-{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%</span>
+                        <span class="salePrice"><span> {{ product.REAL_PRICE }} €</span></span>
+                        <span class="originalPrice">{{'ORIGINAL' | oTranslate}}: {{ price }} €</span>
+                    </div>
+                </div>
+                <ng-template #priceBlock>
+                    <p class="regularPrice">{{price}}€</p>
+                </ng-template>
+                <div class="buttons">
+                    <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON"
+                        (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="desc">
-    <p>{{product.PRO_DESCRIPTION}}</p>
+    <div class="desc">
+        <p>{{product.PRO_DESCRIPTION}}</p>
+    </div>
+    <div class="allergens">
+        <div class="subtitle"><b>{{'ALLERGENS' | oTranslate}}</b></div>
+        <div class="flex-container">
+            <div *ngFor="let item of allergens; let i = index">
+                <span class="allergen-type">{{item.ALLER_NAME}}{{i < allergens.length -1 ? ',' : '.' }}</span>
+            </div>
+        </div>
+    </div>
+
 </div>

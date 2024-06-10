@@ -1,6 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
+import { OCurrencyInputComponent, OFormComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-products-new',
@@ -9,14 +9,13 @@ import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 
 })
 export class ProductsNewComponent implements OnInit{
 
+  @ViewChild('form') form: OFormComponent;
   @ViewChild('realPriceCurrency') 
   realPriceCurrency : OCurrencyInputComponent;
-
   service: OntimizeService;
-
   commissionPlataform: number;
   commissionRedSys: number;
-
+  proId: string;
   public priceUser: number;
 
   constructor(
@@ -25,6 +24,7 @@ export class ProductsNewComponent implements OnInit{
   ) {
     this.service = this.injector.get(OntimizeService)
   }
+
   ngOnInit(){
     const conf = this.service.getDefaultServiceConfiguration('commissions');
       this.service.configureService(conf);
@@ -37,10 +37,10 @@ export class ProductsNewComponent implements OnInit{
         })
   }
 
-  onInsert(success: boolean) {
-    if (success) {
-      this.router.navigate(['/main/products']);
-    }
+  onInsert(success: any) {
+    this.proId = success.PRO_ID;
+    this.form.confirmExit = false;
+    this.router.navigate(['/main/products/' + this.proId]);
   }
 
   changePrice(event) {
