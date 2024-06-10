@@ -26,7 +26,7 @@
     justify-content: center;
     align-items: center;
     width: 90%;
-    max-width: 500px;
+    max-width: 600px; /* Increased max-width to allow for two columns */
 }
 
 .form {
@@ -35,6 +35,18 @@
     box-sizing: border-box;
     align-items: center;
     width: 100%;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
 }
 
 #botones {
