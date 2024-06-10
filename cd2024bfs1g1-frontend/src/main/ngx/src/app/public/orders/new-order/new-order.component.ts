@@ -5,6 +5,7 @@ import * as CryptoJS from 'crypto-js';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CartService } from 'src/app/shared/services/cart.service';
 import Swal from 'sweetalert2';
+import { ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-order',
@@ -40,6 +41,8 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   @ViewChild("zipInput") zipInput: OIntegerInputComponent;
   @ViewChild("addressInput") addressInput: OTextInputComponent;
 
+  validatorsNameArray: ValidatorFn[] = [];
+
   constructor(
     @Inject(AuthService) private authService: AuthService,
     private route: ActivatedRoute,
@@ -54,6 +57,8 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     this.service = this.injector.get(OntimizeService);
     this.cart = this.cartService.getCart();
     this.translate = this.injector.get(OTranslateService);
+    this.validatorsNameArray.push(Validators.minLength(5));
+    this.validatorsNameArray.push(Validators.maxLength(5));  
 
   }
 

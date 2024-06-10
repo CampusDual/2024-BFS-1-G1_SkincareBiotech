@@ -17,12 +17,19 @@
                         <o-text-input #nameInput class="order-input" attr="USR_NAME" required="yes"
                             placeholder="USR_NAME"></o-text-input>
                         <o-integer-input #phoneInput class="order-input" attr="USR_PHONE"
-                            thousand-separator=" " required="yes" placeholder="USR_PHONE"></o-integer-input>
+                            thousand-separator=" " required="yes" placeholder="USR_PHONE">     
+                        </o-integer-input>
                         <o-integer-input #zipInput class="order-input" attr="UPR_ZIPCODE" min="0"
                             max="99999" thousand-separator="" required="yes"
-                            placeholder="UPR_ZIPCODE"></o-integer-input>
+                            placeholder="UPR_ZIPCODE">
+                            <o-validator error-name="pattern" error-text="Only alphanumeric characters and underscores are allowed"></o-validator>
+                            <o-validator error-name="minlength" error-text="Minimum length is 5 characters"></o-validator>
+                            <o-validator error-name="maxlength" error-text="Maximum length is 5 characters"></o-validator>          
+                        </o-integer-input>
                         <o-text-input #addressInput class="order-input" attr="UPR_ADDRESS" required="yes"
                             placeholder="UPR_ADDRESS"></o-text-input>
+                        
+                            <o-checkbox label="Dirección por defecto" boolean-type="boolean"></o-checkbox>
              
                             <!--<o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>-->
                             <button mat-raised-button id="back-button"(click)="submitOrder()" type="RAISED" label="Comprar:Redsys">{{'PURCHASE_BUTTON' | oTranslate}}</button>  
