@@ -229,9 +229,6 @@
   "UNISEX": "Unisex",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
   "SLOGAN": "Descubre productos excepcionales para tu cuidado personal",
-  "DELETE_CART_WARNING": "Esta seguro que quiere eliminar del carrito?",
-  "ERROR_COMPLETE_FORM": "Rellena el formulario para finalizar pedido",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
   "GENDER": "Género",
   "MAN": "Hombre",
   "WOMAN": "Mujer",
@@ -248,5 +245,6 @@
   "SAL_INITIAL_DATE": "Fecha inicial",
   "SAL_END_DATE": "Fecha final",
   "ADD_SALE": "Añadir nuevo descuento",
-  "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual"
+  "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
+  "FIND_PRODUCT": "Encuentra tu producto"
 }
