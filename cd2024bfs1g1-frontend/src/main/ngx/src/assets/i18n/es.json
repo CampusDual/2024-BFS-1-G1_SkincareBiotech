@@ -240,9 +240,6 @@
   "UNISEX": "Unisex",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
   "SLOGAN": "Descubre productos excepcionales para tu cuidado personal",
-  "DELETE_CART_WARNING": "Esta seguro que quiere eliminar del carrito?",
-  "ERROR_COMPLETE_FORM": "Rellena el formulario para finalizar pedido",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
   "GENDER": "Género",
   "MAN": "Hombre",
   "WOMAN": "Mujer",
@@ -250,6 +247,7 @@
   "RATHER_NOT_ANSWER": "Prefiero no contestar",
   "AGE_RANGE": "Rango de edad",
   "AGE_GENDER": "Edad y género",
+  "EMPTY_CART": "El carrito esta vacio",
   "DATE_NOT_VALID": "Este periodo de oferta ya está en uso. Por favor elija otro que no se solape.",
   "MIN_DATE_HIGHER": "La fecha mínima no puede ser menor que la máxima",
   "SALES_INFORMATION":" Información de descuentos",
@@ -260,5 +258,7 @@
   "ADD_SALE": "Añadir nuevo descuento",
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
   "PUBLICATION_PRICE": "Precio de publicaión: ",
-  "REAL_PRICE": "Precio final"
+  "REAL_PRICE": "Precio final",
+  "GLOBAL_BROWSER": "Buscador",
+  "FIND_PRODUCT": "Encuentra tu producto"
 }
