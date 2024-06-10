@@ -22,6 +22,7 @@ export class ProductsDetailComponent implements OnInit{
   id:any;
   isVisible: boolean = false;
   Visible:boolean = true;
+  product: any;
 
   service: OntimizeService;
 
@@ -60,6 +61,16 @@ export class ProductsDetailComponent implements OnInit{
             this.commissionPlataform = data.data.find((element) => (element.COM_NAME === "Plataform_commissions")).COM_VALUE;
           }
         })
+        
+        let id = parseInt(this.route.snapshot.paramMap.get('PRO_ID'))
+        const conf2 = this.service.getDefaultServiceConfiguration('products');
+        this.service.configureService(conf2);
+        this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRICE", "SALE_PRICE", "REAL_PRICE", "PRO_SALE"], "product")
+          .subscribe((data) => {
+            if (data.data.length > 0) {
+              this.product = data.data[0];
+            }
+          })
   }
 
   onUpdate(success: boolean) {
@@ -74,9 +85,11 @@ export class ProductsDetailComponent implements OnInit{
   }
 
   changePrice(event) {
-    this.realPriceCurrency.setValue(event);
-    this.priceUser = (this.realPriceCurrency.getValue() / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
-    this.realPriceCurrency.setValue(this.priceUser);  
+    if(!event){
+      this.priceUser = 0;
+    }else{
+      this.priceUser = (event / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
+    }
   }
 
 }

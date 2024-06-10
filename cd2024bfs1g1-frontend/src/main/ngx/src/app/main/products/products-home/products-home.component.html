@@ -1,6 +1,6 @@
 <o-table attr="productsTable" service="products" entity="productBySeller" keys="PRO_ID"
-    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;REAL_PRICE"
-    visible-columns="PRO_IMAGE;PRO_NAME;PRO_PRICE;REAL_PRICE;PRO_DESCRIPTION" query-rows="15"
+    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_SALE;REAL_PRICE;PRO_IMAGE"
+    visible-columns="PRO_IMAGE;PRO_NAME;PRO_PRICE;PRO_SALE;REAL_PRICE;PRO_DESCRIPTION" query-rows="15"
     delete-button='no'>
     <o-table-column attr="PRO_IMAGE" title="IMAGE" orderable="no" searchable="no" type="image" avatar="yes"
         empty-image="assets/images/no-image.png" image-type="base64"></o-table-column>
@@ -9,7 +9,8 @@
     <o-table-column attr="PRO_DESCRIPTION" max-width="250px"></o-table-column>
     <o-table-column attr="PRO_PRICE" type="currency" currency-symbol="€" currency-symbol-position="right"
         thousand-separator="." decimal-separator="," content-align="center"></o-table-column>
-    <o-table-column attr="REAL_PRICE" title="FINAL_PRICE" type="currency" currency-symbol="€"
-        currency-symbol-position="right" thousand-separator="." decimal-separator=","
-        content-align="center"></o-table-column>
-</o-table> 
+    <o-table-column attr="PRO_SALE" type="currency" currency-symbol="€" currency-symbol-position="right"
+        thousand-separator="." decimal-separator="," content-align="center"></o-table-column>
+    <o-table-column attr="REAL_PRICE" type="currency" currency-symbol="€" currency-symbol-position="right"
+        thousand-separator="." decimal-separator="," content-align="center"></o-table-column>
+</o-table>

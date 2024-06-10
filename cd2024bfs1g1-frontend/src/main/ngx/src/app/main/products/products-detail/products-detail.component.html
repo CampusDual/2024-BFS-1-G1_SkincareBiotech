@@ -19,7 +19,15 @@
                         </div>
                         <div class="price-row">
                             <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes" (onChange)="changePrice($event)"></o-currency-input>
-                            <o-currency-input #realPriceCurrency attr="REAL_PRICE" label="REAL_PRICE" required="yes" read-only="yes"></o-currency-input>
+                            <div *ngIf="(product.PRO_SALE != NULL);else noOfer">
+                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
+                                    number:"1.2-2" }} €</label><label class="no-ofer-label">WITHOUT OFER</label></p>
+                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ product.SALE_PRICE }} €</label></p>
+                            </div>
+                            <ng-template #noOfer>
+                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
+                                    number:"1.2-2" }} €</label></p>
+                            </ng-template>
                         </div>
                         <div class="details-row">
                             <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"

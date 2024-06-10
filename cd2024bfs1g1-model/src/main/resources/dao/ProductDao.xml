@@ -35,20 +35,20 @@
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
-                WITH ENABLED_CHECKER AS (
-                    SELECT P.*,B.BRA_NAME, UP.REAL_PRICE, UP.PRICE,
-                    COALESCE (((UP.PRICE - UP.SALE_PRICE) / UP.PRICE) * 100, 0) AS DISCOUNT
-                    FROM ${mainschema}.PRODUCTS_WITH_OFFER AS P
-                    INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
-                    INNER JOIN ${mainschema}.USER_PRICE UP ON P.PRO_ID = UP.PRO_ID
-                    WHERE PRO_ENABLED = TRUE
-                )
-                SELECT #COLUMNS#
-                FROM ENABLED_CHECKER EC
-                INNER JOIN ${mainschema}.PRO_GENDER AS G ON EC.PGE_ID = G.PGE_ID
-                INNER JOIN ${mainschema}.CATEGORIES AS C ON EC.CAT_ID = C.CAT_ID
-                #WHERE#
-            ]]>
+                    WITH ENABLED_CHECKER AS (
+                        SELECT P.*,B.BRA_NAME, UP.REAL_PRICE, UP.PRICE,
+                        COALESCE (((P.PRO_PRICE - P.PRO_SALE) / P.PRO_PRICE) * 100, 0) AS DISCOUNT
+                        FROM ${mainschema}.PRODUCTS_WITH_OFFER AS P
+                        INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
+                        INNER JOIN ${mainschema}.USER_PRICE UP ON P.PRO_ID = UP.PRO_ID
+                        WHERE PRO_ENABLED = TRUE
+                    )
+                    SELECT #COLUMNS#
+                    FROM ENABLED_CHECKER EC
+                    INNER JOIN ${mainschema}.PRO_GENDER AS G ON EC.PGE_ID = G.PGE_ID
+                    INNER JOIN ${mainschema}.CATEGORIES AS C ON EC.CAT_ID = C.CAT_ID
+                    #WHERE#
+                ]]>
             </Sentence>
         </Query>
 

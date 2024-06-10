@@ -212,7 +212,7 @@
   "OL_UNITS_OLD": "Unidades",
   "OL_PRICE_OLD": "Precio unidad",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
-  "REAL_PRICE": "El cliente pagará",
+  "PRICE_USER_MESSAGE": "El cliente pagará",
   "ERROR_UNPAID": "No se puede realizar el envío mientras no se pague el pedido",
   "SELLS_BYCATEGORY_TITLE": "Total de ventas de cada categoría",
   "DATA_BY_CATEGORY": "Info. por categoría",
@@ -258,5 +258,7 @@
   "SAL_INITIAL_DATE": "Fecha inicial",
   "SAL_END_DATE": "Fecha final",
   "ADD_SALE": "Añadir nuevo descuento",
-  "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual"
+  "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
+  "PUBLICATION_PRICE": "Precio de publicaión: ",
+  "REAL_PRICE": "Precio final"
 }
