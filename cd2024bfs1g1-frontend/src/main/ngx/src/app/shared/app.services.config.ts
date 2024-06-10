@@ -40,5 +40,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'sales':{
   'path' : '/sales'
+  },
+  'allergens':{
+    'path': '/allergens'
   }
 };
