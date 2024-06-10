@@ -1,16 +1,3 @@
-.main-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px;
-
-}
-.general-container{
-    margin: 20px;     
-    min-width: 560px;
-    
-}
-
 .filter{
     display:grid;
     grid-template-columns: repeat(6,1fr);
@@ -22,6 +9,7 @@
     .filter {
         grid-template-columns: repeat(3, 1fr);
     }
+    
 }
 
 @media only screen and (max-width: 730px) {
@@ -41,8 +29,7 @@
 }
 
 .grid-container{
-    min-width: 560px;
-    margin: 10px;   
+   margin: auto;
 }
 
 
