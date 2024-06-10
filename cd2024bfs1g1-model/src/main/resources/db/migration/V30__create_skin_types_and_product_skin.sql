@@ -16,10 +16,10 @@ CREATE TABLE public.product_skin (
 
 ALTER TABLE public.product_skin ADD CONSTRAINT product_skin_unique UNIQUE (skin_id,pro_id);
 
-insert into skin_types (skin_name) values ('Piel seca');
-insert into skin_types (skin_name) values ('Piel grasa');
-insert into skin_types (skin_name) values ('Piel normal');
-insert into skin_types (skin_name) values ('Piel sensible');
+insert into skin_types (skin_name) values ('Seca');
+insert into skin_types (skin_name) values ('Grasa');
+insert into skin_types (skin_name) values ('Normal');
+insert into skin_types (skin_name) values ('Mixta');
 
 UPDATE public.usr_role
     SET rol_json_client_permission='{ "menu": [ { "attr": "products", "visible": false, "enabled": false },
