@@ -126,7 +126,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>{{ 'SKIN_TYPE' | oTranslate }}</mat-label>
                     <mat-select [formControl]="userSkinTypeCtrl" #skin_id>
-                        <mat-option *ngFor="let item of skinData" [value]="item.SKIN_ID">{{ item.SKIN_NAME | oTranslate }}</mat-option>
+                        <mat-option *ngFor="let item of skinData" [value]="item.SKIN_ID">{{item.SKIN_NAME}}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="userSkinTypeCtrl.hasError('required')">
                         {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}

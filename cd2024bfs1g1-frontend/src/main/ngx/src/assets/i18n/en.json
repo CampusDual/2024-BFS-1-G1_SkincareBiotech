@@ -247,9 +247,6 @@
   "ADD_SALE": "Add new sale",
   "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
   "SKIN_ID": "Skin type",
-  "SKIN_TYPE": "Skin type",
-  "Normal": "Normal",
-  "Seca": "Dry",
-  "Mixta": "Combination",
-  "Grasa": "Oily"
+  "DATA_BY_SKIN": "Skin types chart",
+  "SKIN_TYPE": "Skin type"
 }

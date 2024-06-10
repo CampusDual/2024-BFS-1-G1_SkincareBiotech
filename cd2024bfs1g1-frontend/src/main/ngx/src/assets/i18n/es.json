@@ -246,9 +246,6 @@
   "ADD_SALE": "Añadir nuevo descuento",
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
   "SKIN_ID": "Tipo de piel",
-  "SKIN_TYPE": "Tipo de piel",
-  "Normal": "Normal",
-  "Seca": "Seca",
-  "Mixta": "Mixta",
-  "Grasa": "Grasa"
+  "DATA_BY_SKIN": "Gráfica tipos de piel",
+  "SKIN_TYPE": "Tipo de piel"
 }
