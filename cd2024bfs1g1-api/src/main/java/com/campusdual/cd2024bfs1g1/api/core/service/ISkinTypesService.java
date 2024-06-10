@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface ISkinTypesService {
-    public EntityResult skintypeQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
+    public EntityResult skinTypeQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
-    public EntityResult skintypeInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
-    public EntityResult skintypeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    public EntityResult skinTypeInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+    public EntityResult skinTypeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }

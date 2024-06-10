@@ -253,7 +253,8 @@
   "ADD_SKIN_TYPE": "Añade tipos de piel",
   "SKIN_ID": "Tipo de piel",
   "ADD_RECOMENDATIONS": "Añadir recomendaciones",
-  "NO_RECOMENDATIONS": "No hay recomendaciones"
+  "NO_RECOMENDATIONS": "No hay recomendaciones",
+  "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel"
 
 
 

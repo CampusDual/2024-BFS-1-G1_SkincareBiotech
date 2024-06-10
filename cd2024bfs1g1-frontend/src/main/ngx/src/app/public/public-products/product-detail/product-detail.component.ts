@@ -67,7 +67,6 @@ export class ProductDetailComponent implements OnInit {
       })
   }
 
-
   public loadSkin(id){
     const conf = this.service.getDefaultServiceConfiguration('productsSkin');
     this.service.configureService(conf);

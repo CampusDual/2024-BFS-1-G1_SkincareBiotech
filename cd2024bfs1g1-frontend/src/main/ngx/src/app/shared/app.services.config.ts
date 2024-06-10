@@ -23,8 +23,8 @@ export const SERVICE_CONFIG: Object = {
   'productsView':{
     'path':'/productsView'
   },
-  'skintypes':{
-    'path': '/skintypes'
+  'skinTypes':{
+    'path': '/skinTypes'
   },
   'productsSkin':{
     'path': '/productsSkin'

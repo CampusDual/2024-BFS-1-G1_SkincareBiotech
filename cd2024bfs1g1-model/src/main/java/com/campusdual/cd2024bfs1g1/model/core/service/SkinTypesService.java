@@ -23,18 +23,18 @@ public class SkinTypesService implements ISkinTypesService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
-    public EntityResult skintypeQuery(Map<String, Object> keyMap, List<String> attrList)
+    public EntityResult skinTypeQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.skinTypesDao, keyMap, attrList);
     }
 
     @Override
-    public EntityResult skintypeInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+    public EntityResult skinTypeInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.skinTypesDao, attrMap);
     }
 
     @Override
-    public EntityResult skintypeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+    public EntityResult skinTypeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.skinTypesDao, keyMap);
     }
 

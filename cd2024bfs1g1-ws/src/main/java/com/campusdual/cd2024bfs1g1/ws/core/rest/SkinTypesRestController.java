@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/skintypes")
+@RequestMapping("/skinTypes")
 public class SkinTypesRestController extends ORestController<ISkinTypesService> {
 
     @Autowired

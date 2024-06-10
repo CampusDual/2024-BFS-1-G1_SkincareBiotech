@@ -44,6 +44,7 @@ UPDATE public.usr_role
      {"attr": "skin-types", "visible": false, "enabled": false },
      { "attr": "billed-age", "visible": false, "enabled": false },
      { "attr": "sellers", "visible": false, "enabled": false },
+     { "attr": "profile", "visible": false, "enabled": false },
      { "attr": "sells-by-category", "visible": false, "enabled": false } ] }'
     WHERE rol_name='seller';
 
