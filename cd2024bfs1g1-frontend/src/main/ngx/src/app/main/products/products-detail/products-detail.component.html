@@ -65,8 +65,8 @@
                 <o-form-layout-manager mode="dialog">
                     <o-table attr="saleTable" service="sales" entity="sale" keys="SAL_ID" parent-keys="PRO_ID"
                         insert-button="true" delete-button="false"
-                        columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE"
-                        visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none">
+                        columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" sort-columns="SAL_END_DATE:desc"
+                        visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none" >
                         <o-table-column attr="SAL_ID" title="SAL_ID" content-align="center"></o-table-column>
                         <o-table-column attr="SAL_PRICE" title="SAL_PRICE" content-align="center" type="currency"
                             currency-symbol="€" currency-symbol-position="right" thousand-separator="."
