@@ -65,7 +65,6 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     this.validatorZip.push(Validators.minLength(5));
     this.validatorZip.push(Validators.maxLength(5));
     this.validatorZip.push(Validators.pattern('^[0-9]*$')); 
-
     this.validatorPhone.push(Validators.minLength(9));
     this.validatorPhone.push(Validators.maxLength(9));
     this.validatorPhone.push(Validators.pattern('^[6-9][0-9]*$'));

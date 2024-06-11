@@ -254,5 +254,8 @@
   "ALLER_NAME": "Nombre",
   "ADD_ALLERGEN": "Añadir nuevo alérgeno",
   "SELECT_ALLERGEN": "Selecciona un alérgeno...",
-  "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado."
+  "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado.",
+  "ERROR_PATTERN_PHONE": "El número debe comenzar con 6, 7, 8 o 9 y solo se permiten números",
+  "ERROR_PATTERN_ZIP": "Solo se permiten números"
+  
 }
