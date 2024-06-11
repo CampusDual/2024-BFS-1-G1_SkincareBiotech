@@ -263,10 +263,6 @@
   "ADD_RECOMENDATIONS": "Añadir recomendaciones",
   "NO_RECOMENDATIONS": "No hay recomendaciones",
   "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel",
-
-
-
-  "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado.",
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
   "AGE_RANGE_CONFIGURATION": "Configuración de rangos",
   "SELECT_ANALYSIS_FIELDS": "Seleccionar campos de análisis",
