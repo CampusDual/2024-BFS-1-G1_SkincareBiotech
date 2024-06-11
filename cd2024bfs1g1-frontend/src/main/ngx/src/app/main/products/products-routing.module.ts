@@ -4,6 +4,7 @@ import { ProductsHomeComponent } from './products-home/products-home.component';
 import { ProductsNewComponent } from './products-new/products-new.component';
 import { ProductsDetailComponent } from './products-detail/products-detail.component';
 import { ProductsNewSaleComponent } from './products-new-sale/products-new-sale.component';
+import { ProductAllergenComponent } from './product-allergen/product-allergen.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,6 +21,10 @@ const routes: Routes = [{
 {
   path: ':PRO_ID/new',
   component: ProductsNewSaleComponent
+},
+{
+  path: ':PRO_ID/allergen/new',
+  component: ProductAllergenComponent
 }
 ];
 

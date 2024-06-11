@@ -3,7 +3,7 @@
  
         <div class="cart-item-container">
             <div *ngFor="let item of cart">
-                <app-cart-item [item]="item" (updateCart)="updateTotalAmount()" ></app-cart-item>
+                <app-cart-item [item]="item" (updateCart)="updateTotalAmount()"></app-cart-item>
             </div>
             <div class="total-amount">Total: {{totalAmount | number: '1.2-2' }}€</div>
         </div>
@@ -40,22 +40,22 @@
             </div>
         </o-form>
     </ng-container>
-    <ng-template  #showMessage>
+    <ng-template #showMessage>
         <div class="no-cart">
             <div class="mensaje">
-                El carrito está vacío
-                <img style="height: 5px;" src="https://ih1.redbubble.net/image.5076899693.9202/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg"/>
-              </div>
-              <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' | oTranslate}}</button>        
+                {{'EMPTY_CART' | oTranslate}}
+            </div>
+            <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'FIND_PRODUCT' |
+                oTranslate}}</button>
         </div>
-      </ng-template>
+    </ng-template>
 </div>
  
 <form name="form" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST" (submit)="submitRedsysOrder()" ngNoForm>    
     <!-- Valor fijo -->
-    <input  type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
+    <input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1" />
     <!-- Cadena en formato JSON con todos los datos de la petición (ver formulario del js) -->
     <!-- Tras montar la cadena, es necesario codificarla en BASE64 -->
-    <input  type="hidden" name="Ds_MerchantParameters" value="" id="Ds_MerchantParameters"#Ds_MerchantParameters/>
-    <input  type="hidden" name="Ds_Signature" value="" id="Ds_Signature" #Ds_Signature/>
+    <input type="hidden" name="Ds_MerchantParameters" value="" id="Ds_MerchantParameters" #Ds_MerchantParameters />
+    <input type="hidden" name="Ds_Signature" value="" id="Ds_Signature" #Ds_Signature />
 </form>

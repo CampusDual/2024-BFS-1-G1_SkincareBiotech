@@ -8,6 +8,7 @@ import { ProductsDetailComponent } from './products-detail/products-detail.compo
 import { ProductsNewSaleComponent } from './products-new-sale/products-new-sale.component';
 
 import { OChartModule } from 'ontimize-web-ngx-charts';
+import { ProductAllergenComponent } from './product-allergen/product-allergen.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { OChartModule } from 'ontimize-web-ngx-charts';
     ProductsHomeComponent,
     ProductsNewComponent,
     ProductsDetailComponent,
-    ProductsNewSaleComponent
+    ProductsNewSaleComponent,
+    ProductAllergenComponent
   ],
   imports: [
     CommonModule,
