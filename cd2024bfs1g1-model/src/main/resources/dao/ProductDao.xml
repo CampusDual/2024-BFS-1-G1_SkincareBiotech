@@ -27,6 +27,8 @@
                 <AmbiguousColumn name="CAT_ID" prefix="ENABLED_CHECKER"/>
                 <AmbiguousColumn name="BRA_ID" prefix="ENABLED_CHECKER"/>
                 <AmbiguousColumn name="PGE_ID" prefix="ENABLED_CHECKER"/>
+                <AmbiguousColumn name="PRO_ID" prefix="ENABLED_CHECKER"/>
+                <AmbiguousColumn name="SKIN_ID" prefix="st"/>
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
@@ -37,10 +39,12 @@
                     INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
                     WHERE PRO_ENABLED = TRUE
                 )
-                SELECT #COLUMNS#
+                SELECT DISTINCT #COLUMNS#
                 FROM ENABLED_CHECKER
-                    INNER JOIN ${mainschema}.PRO_GENDER AS G ON ENABLED_CHECKER.PGE_ID = G.PGE_ID
-                    INNER JOIN ${mainschema}.CATEGORIES AS C ON ENABLED_CHECKER.CAT_ID = C.CAT_ID
+                INNER JOIN ${mainschema}.PRO_GENDER AS G ON ENABLED_CHECKER.PGE_ID = G.PGE_ID
+                INNER JOIN ${mainschema}.CATEGORIES AS C ON ENABLED_CHECKER.CAT_ID = C.CAT_ID
+                LEFT JOIN ${mainschema}.product_skin ps ON ps.pro_id = ENABLED_CHECKER.pro_id
+                LEFT JOIN ${mainschema}.skin_types st ON st.skin_id = ps.skin_id
                 #WHERE#
             ]]>
             </Sentence>
