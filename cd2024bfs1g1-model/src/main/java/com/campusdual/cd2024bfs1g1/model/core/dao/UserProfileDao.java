@@ -18,6 +18,5 @@ public class UserProfileDao extends OntimizeJdbcDaoSupport {
     public static final String USR_ID = "USR_ID";
     public static final String UGE_ID = "UGE_ID";
     public static final String UPR_ZIPCODE = "UPR_ZIPCODE";
-    public static final String UPR_CHECK = "UPR_CHECK";
 
 }
