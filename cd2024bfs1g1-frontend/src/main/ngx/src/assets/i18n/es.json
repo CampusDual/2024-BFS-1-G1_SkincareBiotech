@@ -196,7 +196,7 @@
   "UPR_ADDRESS": "Dirección",
   "SKIN_TYPES": "Tipos de piel",
   "SKIN_NAME": "Nombre",
-  "MY_PROFILE": "Mi perfil",
+  "MY_PROFILE": "Editar perfil",
   "NAME": "Nombre",
   "CONTACT": "Contacto",
   "ADDITIONAL_INFO": "Información adicional",
@@ -263,7 +263,4 @@
   "ADD_RECOMENDATIONS": "Añadir recomendaciones",
   "NO_RECOMENDATIONS": "No hay recomendaciones",
   "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel"
-
-
-
 }
