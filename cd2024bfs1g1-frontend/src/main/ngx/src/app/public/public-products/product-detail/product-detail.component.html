@@ -52,8 +52,7 @@
     <div class="desc">
         <p>{{product.PRO_DESCRIPTION}}</p>
     </div>
-
-    <div class="allergens">
+    <div class="allergens" *ngIf="allergens && allergens.length > 0">
         <div class="subtitle"><b>{{'ALLERGENS' | oTranslate}}</b></div>
         <div class="flex-container">
             <div *ngFor="let item of allergens; let i = index">
