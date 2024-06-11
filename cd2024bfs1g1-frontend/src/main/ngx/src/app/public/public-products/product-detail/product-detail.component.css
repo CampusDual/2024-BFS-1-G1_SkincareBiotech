@@ -51,7 +51,9 @@
     align-items: flex-end;
 }
 
-
+.prices {
+    margin-bottom: 15px;
+}
 
 .price-container p {
     display: flex;
@@ -67,11 +69,11 @@
 .originalPrice {
     color: darkgray;
     text-decoration: line-through;
-    font-size: 1.2em;
+    font-size: 1.6em;
 }
 
 .regularPrice {
-    font-size: 1.2em;
+    font-size: 1.6em;
     font-weight: bold;
     margin-top: 10%;
 }
@@ -125,16 +127,14 @@
 
 .flex {
     display: flex;
-    align-items: center;
-    align-content: center;
     grid-gap: 10px;
 }
 
 .for {
-    display: grid;
+    display: flex;
     grid-template-columns: auto auto auto;
     gap: 15px;
-    align-items: stretch;
+    width: 100%;
 }
 
 .pill {
@@ -143,7 +143,9 @@
     border-radius: 7px;
     padding: 10px 20px;
     background-color: #f8f9fa;
+    min-width: 50px;
     align-items: center;
+    justify-content: center;
 }
 
 .category {
