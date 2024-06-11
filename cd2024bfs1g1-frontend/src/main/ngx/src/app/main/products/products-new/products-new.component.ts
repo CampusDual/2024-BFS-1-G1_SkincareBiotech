@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { OCurrencyInputComponent, OSlideToggleComponent } from 'ontimize-web-ngx';
+import { OFormComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-products-new',
@@ -9,30 +9,23 @@ import { OCurrencyInputComponent, OSlideToggleComponent } from 'ontimize-web-ngx
 })
 export class ProductsNewComponent {
 
-  @ViewChild ("proSaleToggle")
-  proSaleToggle : OSlideToggleComponent;
+@ViewChild('form') form: OFormComponent;
 
-  @ViewChild ("proSaleCurrency")
-  proSaleCurrency : OCurrencyInputComponent;
-
+  proId: string;
   constructor(
     private router: Router
-  ) { }
-
-  onInsert(success: boolean) {
-    if (success) {
-      this.router.navigate(['/main/products']);
-    }
+  ) {
+    
   }
 
-  onChange(event){
-    if(!this.proSaleToggle.isChecked()){
-      this.proSaleCurrency.readOnly = true;
-      this.proSaleCurrency.setValue(null);
-    }else{
-      this.proSaleCurrency.readOnly = false;
-      this.proSaleCurrency.setEnabled(this.proSaleToggle.getValue());
-    }
+
+  onInsert(success: any) {
+    const proId = success.PRO_ID;
+    this.form.confirmExit = false;
+    this.router.navigate(['/main/products/' + proId]);
+
+    
+
   }
 
 }
