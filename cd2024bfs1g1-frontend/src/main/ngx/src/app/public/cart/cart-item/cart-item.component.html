@@ -1,53 +1,56 @@
 <div class="cart-item">
-  
+
   <div class="item-details-container">
     <div class="img-container">
       <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
     </div>
-    <div class="tittle">
-      {{product.PRO_NAME}}
-    </div>
+    <ng-container *ngIf="product.PRO_SALE != null ;else showSale">
+      <div class="title-price">
+  
+        <p class="title">{{product.PRO_NAME}}</p>
+        <p class="unit-price">{{ product.PRO_SALE | number: '1.2-2'}} €</p>
+  
+        <div class="sale" *ngIf="product.PRO_SALE != null">
+  
+          <p class="price-before">
+            <del>{{ product.PRO_PRICE * item.units | number: '1.2-2' }} €</del>
+          </p>
+  
+          <p class="percent">
+            -{{ ((product.PRO_PRICE - product.PRO_SALE) / product.PRO_PRICE) * 100 | number: '1.0-0' }}%
+          </p>
+  
+        </div>
+  
+      </div>
+    </ng-container>
+
+    <ng-template #showSale>
+
+      <div class="title-price">
+  
+        <p class="title">{{product.PRO_NAME}}</p>
+        <p class="unit-price">{{ product.PRO_PRICE | number: '1.2-2'}} €</p>
+      </div>
+
+    </ng-template>
+    
     <div class="units-container">
       <button #less class="item-btn" *ngIf="showBtns" id="rm_btn" [disabled]="isButtonDisabled"
         (click)="removeItem()">-</button>
       <div class="item-amount">{{item.units}}</div>
       <button class="item-btn" *ngIf="showBtns" id="add_btn" (click)="addItem()">+</button>
     </div>
+
+
     <div class="price-container">
       <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock2">
-        <div class="priceSale">          
           <p>
-            <span>{{ product.PRO_SALE | number: '1.2-2'}} €/u </span>
+            <span>{{ product.PRO_SALE*item.units | number: '1.2-2'}} € </span>
           </p>
-          <p class="percent">
-            -{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) * 100 | number: '1.0-0' }}%
-          </p>
-          <p>
-            <del>{{ product.PRO_PRICE | number: '1.2-2'}} €/u</del>                        
-          </p>
-         
-        </div>
       </div>
       <ng-template #priceBlock2>
-        {{product.PRO_PRICE| number: '1.2-2'}} €/u
-      </ng-template>
-
-      <hr style="width: 80px;" size="1px" color="black" />
-
-      <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock">
-        <div class="priceSale">
-          <p>{{'TOTAL'| oTranslate}}</p>          
-          <p>
-            <span>{{ product.PRO_SALE*item.units | number: '1.2-2'}} € </span>            
-          </p>
-          <p>
-            <del>{{ product.PRO_PRICE*item.units | number: '1.2-2'}} €</del>
-          </p>
-        </div>
-      </div>
-      <ng-template #priceBlock>
-        <p>{{'TOTAL'| oTranslate}}</p>
-        <p>{{product.PRO_PRICE*item.units | number: '1.2-2'}} €</p>        
+        {{product.PRO_PRICE*item.units| number: '1.2-2'}} €
       </ng-template>
     </div>
     <div class="delete-container">

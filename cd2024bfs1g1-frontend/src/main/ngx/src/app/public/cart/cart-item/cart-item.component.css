@@ -1,11 +1,8 @@
 .cart-item{
     display: flex;
-    border-radius: 10px;
     background-color: white;
-    max-width: 50vw;
-    min-width: 50vw;
     margin: auto;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);    
+    border-bottom: solid 1px;
 }
 
 .img-container{
@@ -21,7 +18,6 @@
     max-width: 150px;
     max-height: 150px;
     min-height: 150px;
-    margin: 20px; 
 }
 
 
@@ -33,34 +29,43 @@
 
 }
 
-.tittle{
-    font-size: 18px;
-    font-weight: bolder;
-    text-align: left;
+.title-price{
     font-family: Poppins, "Helvetica Neue", sans-serif;    
     width: 100%;    
-    height: 3em;
-    line-height: 1em; 
-    display: -webkit-box;
-    -webkit-line-clamp: 3; 
-    -webkit-box-orient: vertical; 
-    overflow: hidden; 
-    text-overflow: ellipsis;
     margin:5px; 
     padding: 5px;
+}
+.title{
+    margin:0;
+    font-size: 16px;
+}
+.unit-price{
+    color:#828282;
+    margin:0
+}
+.price-before{
+    color: red; 
+    font-style: italic;
+    font-weight: normal;
+    margin-right: 20px;   
+}
+.percent{
+    color:rgb(41, 218, 41)
+}
+.sale{
+    display:flex;
+    flex-direction: row
 }
 
 .units-container{
     display: flex;
     justify-content: center;
-    /* width: 30%; */
     margin: 10px;
     padding: 20px;
 }
 
 .item-amount{
-    border: solid 1px rgba(160, 147, 147, 0.411);
-    border-radius: 50%;
+    background-color: #F9F9F9;
     width: 50px;
     height: 50px;
     display: flex;
@@ -84,8 +89,9 @@
     flex-direction: column;    
     min-width: fit-content;
     text-align: right; 
-    font-weight: bold;
-    font-size: 1em;    
+    font-weight: 600;    
+    font-size: 22px;
+    color: #438CA1;
 }
 
 .priceSale p span{
@@ -111,8 +117,3 @@
     background-color: transparent;
 }
 
-.percent{
-    color: darkgreen; 
-    font-style: italic;
-    font-weight: normal;   
-}

@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --brand-color: #438CA1;
+  --font :Poppins, "Helvetica Neue", sans-serif;
+
+}
+
 .o-form-layout-manager {
   .o-form {
     form {
@@ -6,7 +12,9 @@
     }
   }
 }
-
+.o-form.form-block .scrolling{
+  display: block !important;
+}
 /* Form toolbar background color */
 .o-form-toolbar .o-form-toolbar-header.mat-toolbar {
   background-color: transparent;
@@ -40,5 +48,5 @@
 }
 
 html,body {
-  background-color: #fff;
+  background-color: #f3f8fb;
 }
