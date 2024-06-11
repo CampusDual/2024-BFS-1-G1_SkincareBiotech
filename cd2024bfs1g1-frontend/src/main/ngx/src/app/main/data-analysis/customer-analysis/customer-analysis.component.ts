@@ -1,5 +1,5 @@
-import { Component, Inject, Injector, OnInit } from '@angular/core';
-import { AuthService, OTranslateService, OUserInfoService, OntimizeService } from 'ontimize-web-ngx';
+import { Component, Injector, OnInit } from '@angular/core';
+import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-customer-analysis',
@@ -11,8 +11,8 @@ export class CustomerAnalysisComponent implements OnInit {
   multi: any[] = [];
   view: any[] = [900, 500];
 
-  selectedXAxis: string = 'gender'; 
-  selectedYAxis: string = 'age'; 
+  selectedXAxis: string = 'GENDER';
+  selectedYAxis: string = 'AGE_RANGE';
 
   service: OntimizeService;
 
@@ -33,14 +33,13 @@ export class CustomerAnalysisComponent implements OnInit {
   constructor(
     protected injector: Injector,
     protected translate: OTranslateService,
-    @Inject(AuthService) private authService: AuthService,
-    @Inject(OUserInfoService) private oUserInfoService: OUserInfoService,
   ) {
     this.service = this.injector.get(OntimizeService);
     this.translate = this.injector.get(OTranslateService);
   }
 
   ngOnInit(): void {
+    this.updateAxisLabels();
     this.fetchCustomerData();
   }
 
@@ -59,49 +58,39 @@ export class CustomerAnalysisComponent implements OnInit {
     const groupedData = {};
 
     data.forEach(item => {
-      const xAxisValue = item[this.getFieldName(this.selectedXAxis)];
-      const yAxisValue = item[this.getFieldName(this.selectedYAxis)];
+      const rawXAxisValue = item[this.selectedXAxis];
+      const rawYAxisValue = item[this.selectedYAxis];
       const userCount = item.USER_COUNT;
 
-      if (!groupedData[xAxisValue]) {
-        groupedData[xAxisValue] = {};
+      const translatedXAxisValue = this.translate.get(rawXAxisValue);  
+      const translatedYAxisValue = this.translate.get(rawYAxisValue);  
+
+      if (!groupedData[translatedXAxisValue]) {
+        groupedData[translatedXAxisValue] = {};
       }
 
-      if (!groupedData[xAxisValue][yAxisValue]) {
-        groupedData[xAxisValue][yAxisValue] = {
-          name: yAxisValue,
-          value: 0
-        };
+      if (!groupedData[translatedXAxisValue][translatedYAxisValue]) {
+        groupedData[translatedXAxisValue][translatedYAxisValue] = 0;
       }
 
-      groupedData[xAxisValue][yAxisValue].value += userCount;
+      groupedData[translatedXAxisValue][translatedYAxisValue] += userCount;
     });
 
     this.multi = Object.keys(groupedData).map(xAxisValue => {
       return {
         name: xAxisValue,
-        series: Object.values(groupedData[xAxisValue])
+        series: Object.keys(groupedData[xAxisValue]).map(yAxisValue => {
+          return {
+            name: yAxisValue,
+            value: groupedData[xAxisValue][yAxisValue]
+          };
+        })
       };
     });
-
-    this.updateAxisLabels();
-  }
-
-  getFieldName(selectedField: string): string {
-    switch (selectedField) {
-      case 'gender':
-        return 'GENDER';
-      case 'age':
-        return 'AGE_RANGE';
-      case 'skin':
-        return 'SKIN_TYPE';
-      default:
-        return '';
-    }
   }
 
   updateAxisLabels(): void {
-    this.xAxisLabel = this.translate.get(this.getFieldName(this.selectedXAxis));
-    this.yAxisLabel = this.translate.get(this.getFieldName(this.selectedYAxis));
+    this.xAxisLabel = this.translate.get(this.selectedXAxis);
+    this.yAxisLabel = this.translate.get(this.selectedYAxis);
   }
 }
