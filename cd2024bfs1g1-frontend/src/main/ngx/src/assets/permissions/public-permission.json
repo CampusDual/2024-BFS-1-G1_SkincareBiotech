@@ -54,6 +54,11 @@
           "enabled": false
         },
         {
+        "attr": "skin-types",
+        "visible": false,
+        "enabled": false
+      },
+        {
           "attr": "billed-age",
           "visible": false,
           "enabled": false
