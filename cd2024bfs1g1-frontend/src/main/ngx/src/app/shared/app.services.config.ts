@@ -17,11 +17,11 @@ export const SERVICE_CONFIG: Object = {
   'orderlines': {
     'path': '/order-lines'
   },
-  'brands':{
+  'brands': {
     'path': '/brands'
   },
-  'productsView':{
-    'path':'/productsView'
+  'productsView': {
+    'path': '/productsView'
   },
   'billed-ages': {
     'path': '/billed-ages',
@@ -32,13 +32,20 @@ export const SERVICE_CONFIG: Object = {
   'user-genders': {
     'path': '/user-genders',
   },
+  'allergen-products': {
+    'path': '/allergen-products'
+  },
   permissions: {
     'path': '/permissions'
   },
-  'sellers':{
+  'sellers': {
     'path': '/new-seller'
   },
-  'sales':{
-  'path' : '/sales'
+  'sales': {
+    'path': '/sales'
+  },
+  'allergens': {
+    'path': '/allergens'
   }
+
 };
