@@ -249,5 +249,6 @@
   "SAL_END_DATE": "End date",
   "ADD_SALE": "Add new sale",
   "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
-  "UPR_ZIPCODE": "Zip code"
+  "UPR_ZIPCODE": "Zip code",
+  "SET_DEFAULT": "Set as default"
 }

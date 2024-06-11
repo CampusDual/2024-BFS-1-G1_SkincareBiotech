@@ -9,27 +9,28 @@
         </div>
         <o-form class="order-form" #formOrder attr="newOrder" service="profiles" entity="userProfile" keys="USR_ID"
         columns="USR_ID;USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE"
-            visible-columns="USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE"
-            show-header-navigation="no" show-header="false">
+            visible-columns="USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE" header-actions="U"
+            show-header-navigation="no" show-header="false" (onDataLoaded)="onFormDataLoaded($event)">
             <div fxLayout="row">
                 <o-column class="order-column" fxFlex title="ORDER_INFORMATION">
                     <div fxLayout="column" fxLayoutGap="12px" class="order-inputs">
+                        <o-integer-input #usrId attr="USR_ID" hidden sql-type="INTEGER" enabled="no" ></o-integer-input>
                         <o-text-input #nameInput class="order-input" attr="USR_NAME" required="yes"
                             placeholder="USR_NAME"></o-text-input>
                         <o-integer-input #phoneInput class="order-input" attr="USR_PHONE"
                             thousand-separator=" " required="yes" placeholder="USR_PHONE">     
                         </o-integer-input>
-                        <o-integer-input #zipInput class="order-input" attr="UPR_ZIPCODE" min="0"
+                        <o-text-input #zipInput class="order-input" attr="UPR_ZIPCODE" min="0"
                             max="99999" thousand-separator="" required="yes"
                             placeholder="UPR_ZIPCODE">
                             <o-validator error-name="pattern" error-text="Only alphanumeric characters and underscores are allowed"></o-validator>
                             <o-validator error-name="minlength" error-text="Minimum length is 5 characters"></o-validator>
                             <o-validator error-name="maxlength" error-text="Maximum length is 5 characters"></o-validator>          
-                        </o-integer-input>
+                        </o-text-input>
                         <o-text-input #addressInput class="order-input" attr="UPR_ADDRESS" required="yes"
                             placeholder="UPR_ADDRESS"></o-text-input>
                         
-                            <o-checkbox label="Dirección por defecto" boolean-type="boolean"></o-checkbox>
+                            <mat-checkbox #defAddress boolean-type="boolean">{{"SET_DEFAULT" | oTranslate}}</mat-checkbox>
              
                             <!--<o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>-->
                             <button mat-raised-button id="back-button"(click)="submitOrder()" type="RAISED" label="Comprar:Redsys">{{'PURCHASE_BUTTON' | oTranslate}}</button>  

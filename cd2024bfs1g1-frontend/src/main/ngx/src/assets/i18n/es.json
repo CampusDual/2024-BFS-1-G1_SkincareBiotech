@@ -248,6 +248,7 @@
   "SAL_END_DATE": "Fecha final",
   "ADD_SALE": "Añadir nuevo descuento",
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
-  "UPR_ZIPCODE": "Código Postal"
+  "UPR_ZIPCODE": "Código Postal",
+  "SET_DEFAULT": "Establecer como predeterminado"
 
 }
