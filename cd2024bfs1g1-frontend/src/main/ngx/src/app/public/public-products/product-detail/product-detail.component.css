@@ -199,6 +199,7 @@
     flex-wrap: wrap; 
     gap: 10px; 
     font-size: 15px;
+    row-gap: 15px;
 }
 .subtitle {
     font-size: 15px;
