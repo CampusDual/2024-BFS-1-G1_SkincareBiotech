@@ -61,7 +61,6 @@
   grid-area: c;
   margin-top: 50px;
   padding: 2%;
-  height: 50%;
   padding: 5%;
 }
 
@@ -73,24 +72,30 @@
   font-family: var(--font);
 
 }
-.order-inputs{
-
+.info-form{
   display: grid;
   grid-template-columns: auto auto;
   gap:5%;
 }
 .order-name{
-  grid-column-start:1;
-  grid-column-end:3;
+  grid-column:1/-1;
 }
-.order-phone{
- 
+.form-button{
+  grid-column:1/-1;
+  width: 100%;
+  margin-top:7.5%;
+  background-color: var(--brand-color);
 }
-.order-zip{
- 
+
+.back-button{
+  background-color: var(--brand-color);
+  color:white;
+  width: 100%;
 }
+
+
 .order-description{
-  grid-column-start:3
+  grid-column:1/-1;
 }
 .info-form{
   height: 100%;
@@ -103,15 +108,6 @@
   align-items: center;
   justify-content: center;
   gap: 10vh;
-}
-.back-button{
-  position:none;
-  margin-top:7.5%;
-  background-color: var(--brand-color);
-  color:white;
-  width: 100%;
-
-
 }
 
 .order-buttons-container {

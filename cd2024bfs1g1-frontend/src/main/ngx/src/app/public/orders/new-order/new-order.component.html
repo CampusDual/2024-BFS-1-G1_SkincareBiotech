@@ -37,9 +37,10 @@
                             <o-text-input #addressInput class="order-input" attr="ORD_ADDRESS" required="yes"
                                 placeholder="ORD_ADDRESS"></o-text-input>
                         </div>
-
-                        <o-button class="back-button" (click)="submitOrder()" type="RAISED"
-                            label="Comprar:Redsys">{{'PURCHASE_BUTTON' | oTranslate}}</o-button>
+                        <div class="form-button">
+                            <o-button class="back-button" (click)="submitOrder()" type="RAISED"
+                                label="Pagar">{{'PURCHASE_BUTTON' | oTranslate}}</o-button>
+                        </div>
                     </div>
                 </o-form>
             </div>
@@ -49,8 +50,6 @@
         <div class="no-cart">
             <div class="mensaje">
                 El carrito está vacío
-                <img style="height: 5px;"
-                    src="https://ih1.redbubble.net/image.5076899693.9202/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg" />
             </div>
             <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'BACK_BUTTON' |
                 oTranslate}}</button>
