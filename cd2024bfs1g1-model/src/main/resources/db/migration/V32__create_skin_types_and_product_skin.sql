@@ -33,7 +33,8 @@ UPDATE public.usr_role
     {"attr": "skin-types", "visible": false, "enabled": false },
     { "attr": "sellers", "visible": false, "enabled": false },
     {"attr": "sells-by-category", "visible": false, "enabled": false },
-    {"attr": "billed-age", "visible": false, "enabled": false }]}'
+    {"attr": "billed-age", "visible": false, "enabled": false },
+    { "attr": "allergens", "visible": false, "enabled": false }]}'
     WHERE rol_name='user';
 UPDATE public.usr_role
     SET rol_json_client_permission='{ "menu": [ { "attr": "productsPublic", "visible": false, "enabled": false },
@@ -45,6 +46,7 @@ UPDATE public.usr_role
      { "attr": "billed-age", "visible": false, "enabled": false },
      { "attr": "sellers", "visible": false, "enabled": false },
      { "attr": "profile", "visible": false, "enabled": false },
-     { "attr": "sells-by-category", "visible": false, "enabled": false } ] }'
+     { "attr": "sells-by-category", "visible": false, "enabled": false },
+     { "attr": "allergens", "visible": false, "enabled": false } ] }'
     WHERE rol_name='seller';
 
