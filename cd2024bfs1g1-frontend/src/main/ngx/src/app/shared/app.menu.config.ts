@@ -15,5 +15,6 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'users-skin-types', name: 'DATA_BY_SKIN', icon: 'category', route: '/main/data-analysis/skintypes'},
   { id: 'login', name: 'LOGIN', route: '/login', icon: 'power_settings_new'},
   { id: 'profile', name: 'PROFILE', route: '/profile', icon: 'person'},
+  { id: 'allergens', name: 'ALLERGENS', route: '/main/admin/allergens', icon: 'priority_high'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
 ];

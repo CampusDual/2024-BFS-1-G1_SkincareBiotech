@@ -1,5 +1,5 @@
 <section class="order_history">
-  <o-list #ordersList attr="ordersList" service="orders" entity="orderByUser" keys="ORD_ID"
+  <o-list title="ORDERS_HISTORY" #ordersList attr="ordersList" service="orders" entity="orderByUser" keys="ORD_ID"
     columns="ORD_ID;ORD_DATE;ORD_NAME;ORD_PHONE;ORD_ADDRESS;ORD_ZIPCODE;OP_TOTAL;ORD_PAID;OP_NUMERO_PRODUCTOS;OP_NUMERO_UNIDADES;OP_ALL_SENT"
     class="order_history_list" delete-button="false" pagination-controls="yes" show-page-size="true" pageable="true"
     page-size-options="5;10;20" quick-filter-columns="ORD_DATE;ORD_NAME;ORD_ADDRESS" sort-columns="ORD_DATE:esc">
