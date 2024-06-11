@@ -158,13 +158,15 @@
 }
 
 .allergens {
-    margin-left: 75px; 
-    margin-right: 75px; 
+    width: 60%;
+    margin: auto;
     margin-top: 30px;
+    /*
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    */
+    background-color: white;
 }
 
 .subtitle {
