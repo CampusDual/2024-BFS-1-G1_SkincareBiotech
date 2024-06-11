@@ -2,28 +2,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
 .title-container {
     margin-bottom: 20px;
+    align-items: end;
 }
 
 .details-row {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
 }
 
 .price-row,
 .date-row {
     display: flex;
     align-items: center;
-    justify-content: center;
     margin-bottom: 10px;
     width: 100%;
 }

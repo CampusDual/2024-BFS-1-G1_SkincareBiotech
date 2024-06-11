@@ -21,7 +21,7 @@
                             <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes" (onChange)="changePrice($event)"></o-currency-input>
                             <div *ngIf="(product.PRO_SALE != NULL);else noOfer">
                                 <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
-                                    number:"1.2-2" }} €</label><label class="no-ofer-label">WITHOUT OFER</label></p>
+                                    number:"1.2-2" }} €</label><label class="no-ofer-label"> {{'WITHOUT_OFFER' | oTranslate |uppercase}}</label></p>
                                 <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ product.SALE_PRICE }} €</label></p>
                             </div>
                             <ng-template #noOfer>
