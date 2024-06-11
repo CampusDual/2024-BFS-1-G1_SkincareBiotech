@@ -29,9 +29,9 @@
 
 .title {
     font-size: 18px;
-    font-weight: bolder;
+    /* font-weight: bolder; */
     text-align: left;
-    font-family: Poppins, "Helvetica Neue", sans-serif;    
+    /* font-family: Poppins, "Helvetica Neue", sans-serif;     */
     width: 100%;    
     height: 2em;
     line-height: 1em; 
