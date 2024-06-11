@@ -253,5 +253,5 @@
   "SELECT_ALLERGEN": "Select an allergen...",
   "ALLERGEN_IS_DUPLICATED": "You've already added this allergen.",
   "MY_ALLERGENS": "My allergens",
-  "ALLERGIC_WARNING": "You are allergic to this product!"
+  "ALLERGIC_WARNING": "This item contains products to which you are allergic."
 }

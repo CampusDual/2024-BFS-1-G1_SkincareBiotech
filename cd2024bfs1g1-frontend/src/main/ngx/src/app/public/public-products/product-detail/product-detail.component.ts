@@ -31,16 +31,27 @@ export class ProductDetailComponent implements OnInit {
     this.service2 = this.injector.get(OntimizeService);
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('prod_id'))
+
+    // In case of emergency, de-comment this:
     //this.hash = await this.hashService.generateUniqueHash();
+
     this.hashService.generateUniqueHash()
     .then(hash=>{
       this.hash = hash;
       this.tracker(id,this.hash);
     })
     this.loadProduct(id);
-    this.loadAllergens(id); // Top stack call for loadUserAllergens and then getMatchingAllergens
+    
+    // Load both allergens simultaneously
+    Promise.all([
+      this.loadAllergens(id),
+      this.loadUserAllergens()
+    ]).then(() => {
+      // Perform matching once both allergens are loaded
+      this.matchingAllergens = this.getMatchingAllergens();
+    });
 
   }
 
@@ -87,38 +98,46 @@ export class ProductDetailComponent implements OnInit {
     this.cartService.addProductToCart(product);
   }
 
-  public loadAllergens(id){
-    const conf = this.service.getDefaultServiceConfiguration('allergen-products');
-    this.service.configureService(conf);
-    this.service.query({ "PRO_ID": id }, ["ALLER_NAME"], "allergenProduct")
-      .subscribe((data) => {
-        if (data.data.length != 0) {
-          this.allergens = data.data;
+  public loadAllergens(id): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const conf = this.service.getDefaultServiceConfiguration('allergen-products');
+      this.service.configureService(conf);
+      this.service.query({ "PRO_ID": id }, ["ALLER_NAME"], "allergenProduct")
+        .subscribe((data) => {
 
-          //To avoid async problems we load user allergens only after promise is fulfilled
-          this.loadUserAllergens();
-        }
-      })
+          if (data.data.length != 0) {
+            this.allergens = data.data;
+            this.loadUserAllergens()
+              .then(() => resolve())
+              .catch(error => reject(error));
+          }
+          resolve();
+
+        }, error => {
+          reject(error);
+        });
+    });
   }
+  
+  public loadUserAllergens(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const conf = this.service.getDefaultServiceConfiguration('allergen-users');
+      this.service.configureService(conf);
+      // Backend for allergen-users query already implements an AuthService to secure IDORs
+      this.service.query({}, ["ALLER_NAME"], "allergenUser")
+        .subscribe((data) => {
 
-  public loadUserAllergens(){
-    const conf = this.service.getDefaultServiceConfiguration('allergen-users');
-    this.service.configureService(conf);
-    // Backend for allergen-users query already implements an AuthService to secure IDORs
-    this.service.query({},["ALLER_NAME"],"allergenUser")
-    .subscribe((data) => {
-      if (data.data.length != 0) {
-        this.userAllergens = data.data;
+          if (data.data.length != 0) {
+            this.userAllergens = data.data; 
+          }
+          resolve();
 
-        // By now we should have userAllergens and product allergens (see onInit)
-        this.matchingAllergens = this.getMatchingAllergens();
-      }
-    })
-
-
-
+        }, error => {
+          reject(error);
+        });
+    });
   }
-
+  
   /**
    * Matches the users allergen list to the product allergens
    * and returns any allergens that match, returns an empty array otherwise
