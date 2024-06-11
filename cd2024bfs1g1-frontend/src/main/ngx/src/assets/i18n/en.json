@@ -246,5 +246,11 @@
   "SAL_INITIAL_DATE": "Initial date",
   "SAL_END_DATE": "End date",
   "ADD_SALE": "Add new sale",
-  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date"
+  "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
+  "ALLERGENS": "Allergens",
+  "ALLER_NAME": "Name",
+  "ADD_ALLERGEN": "Add new allergen",
+  "SELECT_ALLERGEN": "Select an allergen...",
+  "ALLERGEN_IS_DUPLICATED": "You've already added this allergen.",
+  "MY_ALLERGENS":"My allergens"
 }
