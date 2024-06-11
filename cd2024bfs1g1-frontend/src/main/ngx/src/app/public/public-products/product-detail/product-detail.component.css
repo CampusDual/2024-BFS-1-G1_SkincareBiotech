@@ -41,16 +41,13 @@
 }
 
 .salePrice {
-    margin-top: 10%;
-    margin-left: 9px;
-    color: darkgreen;
-    font-size: 1.2em;
+    color: black;
+    font-size: 1.6em;
     font-weight: bold;
 }
 
 .originalPrice {
-    display: flex;
-    color: red;
+    color: darkgray;
     text-decoration: line-through;
     font-size: 1.2em;
 }
@@ -78,10 +75,10 @@
 }
 
 .discount-span {
-    margin: 0 25px 0 0;
-    color: darkgreen;
+    margin-left: 15px;
+    color: rgb(41, 218, 41);
     font-style: italic;
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 .description::first-letter {
@@ -178,7 +175,7 @@
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; 
+    gap: 10px;
 }
 
 .allergen-type {
@@ -190,7 +187,7 @@
     padding: 4px 20px;
 }
 
-.pad{
+.pad {
     padding-bottom: 20px;
 }
 
