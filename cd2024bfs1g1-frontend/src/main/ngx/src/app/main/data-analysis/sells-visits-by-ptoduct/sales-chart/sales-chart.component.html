@@ -5,7 +5,7 @@
             <o-integer-input class="columns-number" #inputNumProducts attr="COLUMNS_NUMBER" label="COLUMNS_NUMBER"
                 [data]="numberOfProducts" min="0" (onValueChange)="updateNoP($event)"></o-integer-input>
             <o-daterange-input class="date-filter" #inputDate attr="SALE_DATE" read-only="no" [data]="selectedDates"
-                format="D-M-Y"></o-daterange-input>
+                format="D/M/Y"></o-daterange-input>
             <o-combo class="cat-filter" attr="CAT_ID" searchable="yes" read-only="no" service="categories"
                 entity="category" keys="CAT_ID" columns="CAT_ID;CAT_NAME" visible-columns="CAT_NAME"
                 value-column="CAT_ID"></o-combo>
