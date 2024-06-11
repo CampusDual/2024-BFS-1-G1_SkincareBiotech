@@ -32,6 +32,8 @@
                 <AmbiguousColumn name="BRA_ID" prefix="EC"/>
                 <AmbiguousColumn name="PGE_ID" prefix="EC"/>
                 <AmbiguousColumn name="PRO_ID" prefix="EC"/>
+                <AmbiguousColumn name="PRO_ID" prefix="EC"/>
+                <AmbiguousColumn name="SKIN_ID" prefix="st"/>
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
@@ -43,11 +45,13 @@
                         INNER JOIN ${mainschema}.USER_PRICE UP ON P.PRO_ID = UP.PRO_ID
                         WHERE PRO_ENABLED = TRUE
                     )
-                    SELECT #COLUMNS#
+                    SELECT DISTINCT #COLUMNS#
                     FROM ENABLED_CHECKER EC
                     INNER JOIN ${mainschema}.PRO_GENDER AS G ON EC.PGE_ID = G.PGE_ID
                     INNER JOIN ${mainschema}.CATEGORIES AS C ON EC.CAT_ID = C.CAT_ID
-                    #WHERE#
+                    LEFT JOIN ${mainschema}.product_skin ps ON ps.pro_id = EC.pro_id
+                    LEFT JOIN ${mainschema}.skin_types st ON st.skin_id = ps.skin_id
+                #WHERE#
                 ]]>
             </Sentence>
         </Query>

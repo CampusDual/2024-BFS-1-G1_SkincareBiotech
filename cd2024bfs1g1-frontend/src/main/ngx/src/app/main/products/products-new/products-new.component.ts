@@ -38,9 +38,12 @@ export class ProductsNewComponent implements OnInit{
   }
 
   onInsert(success: any) {
-    this.proId = success.PRO_ID;
+    const proId = success.PRO_ID;
     this.form.confirmExit = false;
-    this.router.navigate(['/main/products/' + this.proId]);
+    this.router.navigate(['/main/products/' + proId]);
+
+    
+
   }
 
   changePrice(event) {
