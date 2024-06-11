@@ -44,7 +44,7 @@
                 {{"AGE_GRAPH" | oTranslate}}
             </div>
             <div *ngIf="isAgeGenderData; then thenBlock2 else elseBlock2"></div>
-            <ng-template #thenBlock2>Los clientes con el rango de edad comprendido entre {{ minAge2 }} y {{ maxAge2 }}
+            <ng-template #thenBlock2>Los clientes con género {{maxBilledGenre}} y rango de edad comprendido entre {{ minAge2 }} y {{ maxAge2 }}
                 años es el que más factura con un {{percentage2 | number: '1.2-2' }}% sobre el
                 total de facturado</ng-template>
             <ng-template #elseBlock2>No hay datos para el rango de fecha seleccionado</ng-template>
