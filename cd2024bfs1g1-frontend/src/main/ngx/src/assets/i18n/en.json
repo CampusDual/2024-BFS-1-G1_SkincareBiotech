@@ -253,5 +253,6 @@
   "AGE_GENDER": "Age and gender",
   "UGE_ID": "Gender",
   "ERROR_NAME": "It is not allowed to use numerical characters",
-  "ERROR_BIRTHDATE": "You need to be over 18 years old!"
+  "ERROR_BIRTHDATE": "You need to be over 18 years old!",
+  "ERROR_PHONE": "Phone not valid"
 }

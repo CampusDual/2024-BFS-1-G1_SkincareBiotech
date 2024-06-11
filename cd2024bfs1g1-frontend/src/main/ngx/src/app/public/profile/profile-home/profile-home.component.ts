@@ -15,6 +15,7 @@ export class ProfileHomeComponent implements AfterViewInit {
 
   validatorsNameArray: ValidatorFn[] = [];
   validatorsBirthdateArray: ValidatorFn[] = [];
+  validatorsPhoneArray: ValidatorFn[] = [];
 
   constructor(
     protected sanitizer: DomSanitizer,
@@ -25,6 +26,9 @@ export class ProfileHomeComponent implements AfterViewInit {
 
     // Añade validador de edad mínima de 18 años
     this.validatorsBirthdateArray.push(this.ageValidator());
+
+    // Añade validador de telefono
+    this.validatorsPhoneArray.push(Validators.pattern('^[6-9][0-9]{8}$'));
   }
 
   ngAfterViewInit(): void {

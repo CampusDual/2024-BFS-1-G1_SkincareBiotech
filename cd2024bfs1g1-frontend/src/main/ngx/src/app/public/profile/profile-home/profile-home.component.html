@@ -22,7 +22,10 @@
 
             <label>{{ 'CONTACT' | oTranslate }}</label>
             <div class="contact">
-                <o-phone-input attr="USR_PHONE"  required="yes"  title="USR_PHONE"></o-phone-input>
+                <o-text-input attr="USR_PHONE" label="USR_PHONE" required="yes" [validators]="validatorsPhoneArray">
+                    <o-validator error-phone="pattern"
+                        error-text="{{ 'ERROR_PHONE' | oTranslate }}"></o-validator>
+                </o-text-input>
                 <o-email-input attr="USR_EMAIL" required="yes"  title="USR_EMAIL"></o-email-input>
             </div>
 
