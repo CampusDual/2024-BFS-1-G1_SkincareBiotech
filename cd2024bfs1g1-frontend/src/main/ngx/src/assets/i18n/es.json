@@ -252,5 +252,10 @@
   "ALLER_NAME": "Nombre",
   "ADD_ALLERGEN": "Añadir nuevo alérgeno",
   "SELECT_ALLERGEN": "Selecciona un alérgeno...",
-  "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado."
+  "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado.",
+  "VISIT_CHART": "Gráfica de visitas/producto.",
+  "SALES_CHART": "Gráfica de ventas/producto.",
+  "COLUMNS_NUMBER": "Número de columnas.",
+  "VISITS_DATE": "Fecha de visita",
+  "DATA_PRODUCTS": "Estadísticas de productos"
 }

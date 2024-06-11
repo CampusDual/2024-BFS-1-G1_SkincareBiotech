@@ -25,7 +25,7 @@
                 <o-button attr="stroked1" type="STROKED" icon="youtube_searched_for" layout-padding (onClick)="refreshChart()">
                 </o-button>
         </div>
-        <h1> {{"VISIT_CHART" | oTranslate}}</h1>
+        <h1> {{"VISITS_CHART" | oTranslate}}</h1>
 
         <o-chart type="discreteBar" [data]="data" attr="viewsBarChart" x-axis="PRO_NAME" y-axis="N_VIEWS"
                 [chart-parameters]="barParameters" [color]="colors" layout-fill>
