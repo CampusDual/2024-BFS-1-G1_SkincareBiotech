@@ -143,5 +143,64 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="user_count_by_gender_age_skin">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="USR_ID" prefix="U"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    WITH user_ages AS (
+                        SELECT
+                            u.usr_id,
+                            g.uge_name AS gender,
+                            DATE_PART('year', AGE(CURRENT_DATE, p.upr_birthdate)) AS age,
+                            s.skin_name AS skin_type
+                        FROM
+                            usr_user u
+                        INNER JOIN
+                            usr_profile p ON u.usr_id = p.usr_id
+                        INNER JOIN
+                            usr_gender g ON p.uge_id = g.uge_id
+                        INNER JOIN
+                            skin_types s ON p.skin_id = s.skin_id
+                    ),
+                    age_ranges AS (
+                        SELECT
+                            gba.*,
+                            CONCAT_WS(' - ', gba_min_age, gba_max_age) AS age_range
+                        FROM
+                            gra_billed_age gba
+                    ),
+                    gender_combinations AS (
+                        SELECT DISTINCT g.uge_name AS gender
+                        FROM usr_gender g
+                    ),
+                    skin_combinations AS (
+                        SELECT DISTINCT s.skin_name AS skin_type
+                        FROM skin_types s
+                    )
+                    SELECT
+                        gc.gender,
+                        ar.age_range,
+                        sc.skin_type,
+                        COALESCE(COUNT(ua.usr_id), 0) AS user_count
+                    FROM
+                        age_ranges ar
+                    CROSS JOIN
+                        gender_combinations gc
+                    CROSS JOIN
+                        skin_combinations sc
+                    LEFT JOIN
+                        user_ages ua ON ua.age BETWEEN ar.gba_min_age AND ar.gba_max_age
+                                    AND ua.gender = gc.gender
+                                    AND ua.skin_type = sc.skin_type
+                    GROUP BY
+                        gc.gender, ar.age_range, sc.skin_type, ar.gba_min_age
+                    #WHERE#
+                    ORDER BY
+                        gc.gender, ar.gba_min_age, sc.skin_type
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

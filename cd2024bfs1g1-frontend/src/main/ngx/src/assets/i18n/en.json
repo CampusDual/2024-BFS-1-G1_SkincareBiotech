@@ -252,5 +252,8 @@
   "SELECT_ANALYSIS_FIELDS": "Select analysis fields",
   "GENDER_AGE": "Gender and age",
   "AGE_SKIN": "Age and skin type",
-  "SKIN_GENDER": "Skin type and gender"
+  "SKIN_GENDER": "Skin type and gender",
+  "SELECT_X_AXIS": "Select X axis",
+  "SELECT_Y_AXIS": "Select Y axis",
+  "SKIN_TYPE": "Skin type"
 }

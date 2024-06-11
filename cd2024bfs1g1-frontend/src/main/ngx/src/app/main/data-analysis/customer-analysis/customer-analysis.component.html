@@ -1,16 +1,23 @@
 <div class="content-container">
-    <h1>{{"CUSTOMERS_ANALYSIS" | oTranslate}}</h1>
+  <h1>{{"CUSTOMERS_ANALYSIS" | oTranslate}}</h1>
   <div class="selector-container">
     <mat-form-field appearance="fill">
-      <mat-label>{{ "SELECT_ANALYSIS_FIELDS" | oTranslate }}</mat-label>
-      <mat-select [(ngModel)]="selectedField">
-        <mat-option value="gender-age">{{ "GENDER_AGE" | oTranslate }}</mat-option>
-        <mat-option value="age-skin">{{ "AGE_SKIN" | oTranslate }}</mat-option>
-        <mat-option value="skin-gender">{{ "SKIN_GENDER" | oTranslate }}</mat-option>
+      <mat-label>{{ "SELECT_X_AXIS" | oTranslate }}</mat-label>
+      <mat-select [(ngModel)]="selectedXAxis" (selectionChange)="fetchCustomerData()">
+        <mat-option value="gender">{{ "GENDER" | oTranslate }}</mat-option>
+        <mat-option value="age">{{ "AGE_RANGE" | oTranslate }}</mat-option>
+        <mat-option value="skin">{{ "SKIN_TYPE" | oTranslate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "SELECT_Y_AXIS" | oTranslate }}</mat-label>
+      <mat-select [(ngModel)]="selectedYAxis" (selectionChange)="fetchCustomerData()">
+        <mat-option value="gender">{{ "GENDER" | oTranslate }}</mat-option>
+        <mat-option value="age">{{ "AGE_RANGE" | oTranslate }}</mat-option>
+        <mat-option value="skin">{{ "SKIN_TYPE" | oTranslate }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
-
   <div class="heat-map-container">
     <ngx-charts-heat-map [view]="view" [scheme]="colorScheme" [results]="multi" [legend]="legend" [xAxis]="xAxis"
         [yAxis]="yAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"

@@ -251,5 +251,8 @@
   "SELECT_ANALYSIS_FIELDS": "Seleccionar campos de análisis",
   "GENDER_AGE": "Género y edad",
   "AGE_SKIN": "Edad y tipo de piel",
-  "SKIN_GENDER": "Tipo de piel y género"
+  "SKIN_GENDER": "Tipo de piel y género",
+  "SELECT_X_AXIS": "Seleccionar eje X",
+  "SELECT_Y_AXIS": "Seleccionar eje Y",
+  "SKIN_TYPE": "Tipo de piel"
 }

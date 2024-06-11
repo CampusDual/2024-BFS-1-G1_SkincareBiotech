@@ -11,7 +11,8 @@ export class CustomerAnalysisComponent implements OnInit {
   multi: any[] = [];
   view: any[] = [900, 500];
 
-  selectedField: string = 'gender-age'; 
+  selectedXAxis: string = 'gender'; 
+  selectedYAxis: string = 'age'; 
 
   service: OntimizeService;
 
@@ -40,13 +41,13 @@ export class CustomerAnalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchCustomerData();
+  }
 
-    this.xAxisLabel = this.translate.get('GENDER');
-    this.yAxisLabel = this.translate.get('AGE_RANGE');
-
+  fetchCustomerData(): void {
     const conf = this.service.getDefaultServiceConfiguration('billed-ages');
     this.service.configureService(conf);
-    this.service.query({}, ["GENDER", "AGE_RANGE", "USER_COUNT"], "customerAgeAndGender")
+    this.service.query({}, ["GENDER", "AGE_RANGE", "SKIN_TYPE", "USER_COUNT"], "customerAgeGenderAndSkin")
       .subscribe((data) => {
         if (data.data.length > 0) {
           this.transformDataToHeatMap(data.data);
@@ -58,23 +59,49 @@ export class CustomerAnalysisComponent implements OnInit {
     const groupedData = {};
 
     data.forEach(item => {
-      const gender = this.translate.get(item.GENDER); 
-      const ageRange = item.AGE_RANGE;
+      const xAxisValue = item[this.getFieldName(this.selectedXAxis)];
+      const yAxisValue = item[this.getFieldName(this.selectedYAxis)];
       const userCount = item.USER_COUNT;
 
-      if (!groupedData[gender]) {
-        groupedData[gender] = {
-          name: gender,
-          series: []
+      if (!groupedData[xAxisValue]) {
+        groupedData[xAxisValue] = {};
+      }
+
+      if (!groupedData[xAxisValue][yAxisValue]) {
+        groupedData[xAxisValue][yAxisValue] = {
+          name: yAxisValue,
+          value: 0
         };
       }
 
-      groupedData[gender].series.push({
-        name: ageRange,
-        value: userCount
-      });
+      groupedData[xAxisValue][yAxisValue].value += userCount;
     });
 
-    this.multi = Object.values(groupedData);
+    this.multi = Object.keys(groupedData).map(xAxisValue => {
+      return {
+        name: xAxisValue,
+        series: Object.values(groupedData[xAxisValue])
+      };
+    });
+
+    this.updateAxisLabels();
+  }
+
+  getFieldName(selectedField: string): string {
+    switch (selectedField) {
+      case 'gender':
+        return 'GENDER';
+      case 'age':
+        return 'AGE_RANGE';
+      case 'skin':
+        return 'SKIN_TYPE';
+      default:
+        return '';
+    }
+  }
+
+  updateAxisLabels(): void {
+    this.xAxisLabel = this.translate.get(this.getFieldName(this.selectedXAxis));
+    this.yAxisLabel = this.translate.get(this.getFieldName(this.selectedYAxis));
   }
 }
