@@ -6,10 +6,7 @@
     <div class="title">{{ product.PRO_NAME }}</div>
     <div class="sale" *ngIf="(product.DISCOUNT != 0 ); else priceBlock">
       <div class="priceSale">
-        <span class="discount-span">-{{product.DISCOUNT | number: '1.0-0' }}%</span>
         <span class="sale-span">{{ product.REAL_PRICE | number: '1.2-2' }} €</span>
-      </div>
-      <div>
         <span class="originalPrice">{{ product.PRICE | number: '1.2-2' }} €</span>
       </div>
     </div>
