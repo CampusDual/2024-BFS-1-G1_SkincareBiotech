@@ -200,7 +200,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       USR_ID: this.usrId.getValue(),
 
     }
-    if (this.defAddress){
+    if (this.defAddress.checked==true){
       this.updateProfile(data)
     }
 
