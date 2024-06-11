@@ -39,7 +39,7 @@
     "crypto-js": "4.2.0",
     "ngx-material-timepicker": "5.4.3",
     "ontimize-web-ngx": "15.0.2",
-    "ontimize-web-ngx-charts": "15.1.0",
+    "ontimize-web-ngx-charts": "15.1.1",
     "rxjs": "7.8.1",
     "sweetalert2": "11.11.0",
     "tslib": "2.6.2",

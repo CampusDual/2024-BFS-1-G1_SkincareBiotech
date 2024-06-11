@@ -17,8 +17,4 @@ export class ProductSkinComponent {
 
   }
 
-  onInsert(event) {
-    this.router.navigate(['/main/products/'+this.proId+'/']);
-  }
-
 }
