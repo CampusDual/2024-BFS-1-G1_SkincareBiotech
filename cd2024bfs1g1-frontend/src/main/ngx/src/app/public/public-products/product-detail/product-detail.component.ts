@@ -15,7 +15,7 @@ export class ProductDetailComponent implements OnInit {
   service2:OntimizeService;
   product: any = null;
   hash:string;
-  allergens: any = null;
+  allergens: any[] = [];
   skintypes: any = null;
 
   constructor(
