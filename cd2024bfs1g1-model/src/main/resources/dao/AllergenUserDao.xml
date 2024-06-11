@@ -13,7 +13,7 @@
     </UpdateKeys>
     <GeneratedKey>au_id</GeneratedKey>
     <Queries>
-        <Query id="overView">
+        <Query id="default">
             <AmbiguousColumns>
                 <AmbiguousColumn name="ALLER_ID" prefix="a"/>
                 <AmbiguousColumn name="USR_ID" prefix="u"/>
