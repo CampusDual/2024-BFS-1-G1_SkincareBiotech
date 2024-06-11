@@ -263,5 +263,6 @@
   "ADD_ALLERGEN": "Añadir nuevo alérgeno",
   "SELECT_ALLERGEN": "Selecciona un alérgeno...",
   "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado.",
-  "SALE_PRICE": "Precio de publicación"
+  "SALE_PRICE": "Precio de publicación",
+  "WITHOUT_OFFER": "sin oferta"
 }
