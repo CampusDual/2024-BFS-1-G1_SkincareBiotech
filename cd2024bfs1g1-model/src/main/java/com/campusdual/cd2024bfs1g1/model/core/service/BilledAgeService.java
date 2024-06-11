@@ -78,12 +78,6 @@ public class BilledAgeService implements IBilledAgeService {
     }
 
     @Override
-    public EntityResult customerAgeAndGenderQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
-        Map<String, Object> filter = new HashMap<>(keysValues);
-        return this.daoHelper.query(this.billedAgeDao, filter, attributes, "user_count_by_gender_and_age");
-    }
-
-    @Override
     public EntityResult customerAgeGenderAndSkinQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
         Map<String, Object> filter = new HashMap<>(keysValues);
         return this.daoHelper.query(this.billedAgeDao, filter, attributes, "user_count_by_gender_age_skin");
