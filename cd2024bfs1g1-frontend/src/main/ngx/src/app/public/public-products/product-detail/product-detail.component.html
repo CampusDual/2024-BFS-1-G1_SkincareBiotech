@@ -37,6 +37,14 @@
                     <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON"
                         (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
                 </div>
+
+                <div class="allergic-warning-panel" *ngIf="matchingAllergens && matchingAllergens.length > 0">
+                    <mat-icon class="warning-icon-allergy">report</mat-icon>
+                    <span class="allergy-text-area">
+                        <span>{{"ALLERGIC_WARNING" | oTranslate}}</span>
+                        <span class="allergy-list">{{getStringOfAllergies()}}</span>
+                    </span>
+                </div>
             </div>
         </div>
     </div>

@@ -253,5 +253,6 @@
   "ADD_ALLERGEN": "Añadir nuevo alérgeno",
   "SELECT_ALLERGEN": "Selecciona un alérgeno...",
   "ALLERGEN_IS_DUPLICATED": "Este alergeno ya ha sido añadido.",
-  "MY_ALLERGENS":"Mis alergenos"
+  "MY_ALLERGENS": "Mis alergenos",
+  "ALLERGIC_WARNING": "¡Eres alergico a este producto!"
 }

@@ -16,6 +16,8 @@ export class ProductDetailComponent implements OnInit {
   product: any = null;
   hash:string;
   allergens: any = null;
+  userAllergens : any = null;
+  matchingAllergens : any = null;
 
   constructor(
     protected injector: Injector,
@@ -34,7 +36,7 @@ export class ProductDetailComponent implements OnInit {
     this.hash = await this.hashService.generateUniqueHash();
     this.tracker(id,this.hash);
     this.loadProduct(id);
-    this.loadAllergens(id);
+    this.loadAllergens(id); // Top stack call for loadUserAllergens and then getMatchingAllergens
 
   }
 
@@ -88,8 +90,46 @@ export class ProductDetailComponent implements OnInit {
       .subscribe((data) => {
         if (data.data.length != 0) {
           this.allergens = data.data;
+
+          //To avoid async problems we load user allergens only after promise is fulfilled
+          this.loadUserAllergens();
         }
       })
+  }
+
+  public loadUserAllergens(){
+    const conf = this.service.getDefaultServiceConfiguration('allergen-users');
+    this.service.configureService(conf);
+    // Backend for allergen-users query already implements an AuthService to secure IDORs
+    this.service.query({},["ALLER_NAME"],"allergenUser")
+    .subscribe((data) => {
+      if (data.data.length != 0) {
+        this.userAllergens = data.data;
+
+        // By now we should have userAllergens and product allergens (see onInit)
+        this.matchingAllergens = this.getMatchingAllergens();
+      }
+    })
+
+
+
+  }
+
+  /**
+   * Matches the users allergen list to the product allergens
+   * and returns any allergens that match, returns an empty array otherwise
+   */
+  public getMatchingAllergens(){
+    // I decided to use a Set here as it makes lookups 0(1) and allergen listing can be large
+    const userAllergenNames = new Set(this.userAllergens.map(allergen => allergen["ALLER_NAME"]));
+    // Get matches by filtering, remember that entity results are arrays of maps
+    const matchingAllergens = this.allergens.filter(allergen => userAllergenNames.has(allergen["ALLER_NAME"]));
+    // Ensure an array (not a map) is returned
+    return matchingAllergens.map(allergen => allergen["ALLER_NAME"]);
+  }
+
+  public getStringOfAllergies(){
+    return this.matchingAllergens.join(", ");
   }
 
 }

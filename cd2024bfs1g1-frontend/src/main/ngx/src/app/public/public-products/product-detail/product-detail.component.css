@@ -188,3 +188,34 @@
 .pad{
     padding-bottom: 20px;
 }
+
+.allergic-warning-panel {
+    color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.allergy-text-area {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.warning-icon-allergy {
+    flex-shrink: 0;
+    margin: 10px;
+    size: 2em;
+}
+
+.allergy-list {
+    font-size: 12px;
+    text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;    
+    width: 100%;    
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
