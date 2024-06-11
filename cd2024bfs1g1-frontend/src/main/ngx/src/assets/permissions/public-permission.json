@@ -72,6 +72,16 @@
           "attr": "allergens",
           "visible": false,
           "enabled": false
+        },
+        {
+          "attr": "customer-analysis",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "age-range-configuration",
+          "visible": false,
+          "enabled": false
         }
       ],
       "routes": [
