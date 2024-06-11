@@ -26,9 +26,6 @@
         <h1>{{"BILLING_BY_AGE_AND_GENDER_TITTLE" | oTranslate}}</h1>
         <div class="chart-container">
             <div class="chart-tittle-y-container">
-                <div class="tittle-y">
-                    {{"BILLING_BY_AGE" | oTranslate}} €
-                </div>
                 <div class="chart">
                     <o-chart type="multiBar" service="billed-ages" entity="billedAgeGenderChart" x-axis="GBA_MIN_AGE"
                         y-axis="MAN;WOMAN;OTHER;PNA" x-label="Age" y-label="Amount (€)"
@@ -39,9 +36,6 @@
                         visible-columns="AGE_RANGE;MAN;WOMAN;OTHER;PNA;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15"
                         delete-button='no' (onDataLoaded)="loadAGeGender($event)"></o-table>
                 </div>
-            </div>
-            <div class="tittle-x">
-                {{"AGE_GRAPH" | oTranslate}}
             </div>
             <div *ngIf="isAgeGenderData; then thenBlock2 else elseBlock2"></div>
             <ng-template #thenBlock2>Los clientes con género {{maxBilledGenre}} y rango de edad comprendido entre {{ minAge2 }} y {{ maxAge2 }}

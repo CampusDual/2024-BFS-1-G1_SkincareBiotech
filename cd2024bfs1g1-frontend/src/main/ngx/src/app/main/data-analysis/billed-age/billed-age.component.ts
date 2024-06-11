@@ -55,18 +55,14 @@ export class BilledAgeComponent {
   loadBilledAge(event: any) {
     this.initializeBilledAgeParams();
     this.groupDataByAgeRange(event, 'AGE_RANGE', 'TOTAL');
-    this.calculateBilledAgeStatistics(event);
-
-    
+    this.calculateBilledAgeStatistics(event); 
   }
 
 
   loadAGeGender(event: any) {
-
     this.initializeBilledAgeGenderParams();
     this.groupDataByAgeRangeAndGender(event, this.genres, 'AGE_RANGE');
-    this.calculateBilledAgeAndGenderStatistics(event);
-   
+    this.calculateBilledAgeAndGenderStatistics(event); 
   }
 
   private initializeBilledAgeParams() {
@@ -131,8 +127,8 @@ export class BilledAgeComponent {
         if (item[genre] > this.maxBilledGenreTotal) {
           this.maxBilledGenreTotal = item[genre]
           this.maxBilledGenre = genre;
-          this.minAge2 = item['GBA_MIN_AGE'];
-          this.maxAge2 = item['GBA_MAX_AGE'];
+          this.minAge2 = item.GBA_MIN_AGE;
+          this.maxAge2 = item.GBA_MAX_AGE;
         }
       });
     });
