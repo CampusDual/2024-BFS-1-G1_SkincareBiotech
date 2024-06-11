@@ -7,6 +7,7 @@
             </div>
             <div class="total-amount">Total: {{totalAmount | number: '1.2-2' }}€</div>
         </div>
+        
         <o-form class="order-form" #formOrder attr="newOrder" service="profiles" entity="userProfile" keys="USR_ID"
         columns="USR_ID;USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE"
             visible-columns="USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE" header-actions="U"
@@ -18,19 +19,19 @@
                         <o-text-input #nameInput class="order-input" attr="USR_NAME" required="yes"
                             placeholder="USR_NAME"></o-text-input>
 
-                            <o-integer-input #phoneInput class="order-input" attr="USR_PHONE"
+                            <o-phone-input #phoneInput class="order-input" attr="USR_PHONE" 
                             thousand-separator=" " required="yes" placeholder="USR_PHONE" [validators]="validatorPhone"> 
                                 <o-validator error-name="pattern" [error-text]="'ERROR_PATTERN_PHONE' | oTranslate"></o-validator>
                                 <o-validator error-name="minlength" ></o-validator>
                                 <o-validator error-name="maxlength"></o-validator>      
-                            </o-integer-input>
+                            </o-phone-input>
 
-                            <o-text-input #zipInput class="order-input" attr="UPR_ZIPCODE" min="0" max="99999" thousand-separator="" 
+                            <o-integer-input #zipInput class="order-input" attr="UPR_ZIPCODE" min="0" max="99999" thousand-separator="" 
                             required="yes"placeholder="UPR_ZIPCODE" [validators]="validatorZip">
                                 <o-validator error-name="pattern" [error-text]="'ERROR_PATTERN_ZIP' | oTranslate"></o-validator>
                                 <o-validator error-name="minlength"></o-validator>
                                 <o-validator error-name="maxlength"></o-validator>          
-                            </o-text-input>
+                            </o-integer-input>
                         
                         <o-text-input #addressInput class="order-input" attr="UPR_ADDRESS" required="yes"
                             placeholder="UPR_ADDRESS"></o-text-input>

@@ -116,6 +116,9 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     } else {
       this.defAddress.checked = false;
     }
+
+    
+
   }
 
   updateProfile(data: any) {
@@ -204,62 +207,72 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       USR_ID: this.usrId.getValue(),
 
     }
-    if (this.defAddress.checked==true){
-      this.updateProfile(data)
-    }
+    console.log(data.USR_PHONE.length)
+    if(data.USR_ZIP.length!=5 || data.USR_PHONE.length!=13 || !/^\d+$/.test(data.USR_PHONE)){
+      Swal.fire({
+        title: this.translate.get('DATA_FORM_INVALID'),
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }else{
 
-    this.url = document.querySelector("base").href;
-    this.currentLang();
-    // Datos de la transacción
-    const datosTransaccion = {
-      "DS_MERCHANT_AMOUNT": this.price,//this.price, // Los dos últimos son decimales (5000 = 50,00)
-      "DS_MERCHANT_CURRENCY": "978",
-      "DS_MERCHANT_MERCHANTCODE": "999008881",
-      "DS_MERCHANT_MERCHANTURL": this.url,
-      "DS_MERCHANT_ORDER": this.order,//this.order, // No se puede repetir(= id pedido)
-      "DS_MERCHANT_TERMINAL": "1",
-      "DS_MERCHANT_TRANSACTIONTYPE": "0",
-      "DS_MERCHANT_URLKO": `${this.url}/order/rejected/${this.order}`,
-      "DS_MERCHANT_URLOK": `${this.url}/profile/${this.orderView}`,
-      "DS_MERCHANT_CONSUMERLANGUAGE": this.currLang // 1: Español - 2:Inglés
-    }
+      if (this.defAddress.checked==true){
+        this.updateProfile(data)
+      }
 
-    // 1 - Decodificar la clave del comercio en BASE64
-    const claveComercio = "sq7HjrUOBfKmC576ILgskD5srU870gJ7";
-    const claveComercioWordArray = CryptoJS.enc.Base64.parse(claveComercio);
+      this.url = document.querySelector("base").href;
+      this.currentLang();
+      // Datos de la transacción
+      const datosTransaccion = {
+        "DS_MERCHANT_AMOUNT": this.price,//this.price, // Los dos últimos son decimales (5000 = 50,00)
+        "DS_MERCHANT_CURRENCY": "978",
+        "DS_MERCHANT_MERCHANTCODE": "999008881",
+        "DS_MERCHANT_MERCHANTURL": this.url,
+        "DS_MERCHANT_ORDER": this.order,//this.order, // No se puede repetir(= id pedido)
+        "DS_MERCHANT_TERMINAL": "1",
+        "DS_MERCHANT_TRANSACTIONTYPE": "0",
+        "DS_MERCHANT_URLKO": `${this.url}/order/rejected/${this.order}`,
+        "DS_MERCHANT_URLOK": `${this.url}/profile/${this.orderView}`,
+        "DS_MERCHANT_CONSUMERLANGUAGE": this.currLang // 1: Español - 2:Inglés
+      }
 
-    // 2 - Diversificar la clave de firma realizando un cifrado 3DES
+      // 1 - Decodificar la clave del comercio en BASE64
+      const claveComercio = "sq7HjrUOBfKmC576ILgskD5srU870gJ7";
+      const claveComercioWordArray = CryptoJS.enc.Base64.parse(claveComercio);
 
-    // Se define el vector de inicialización (IV)
-    const iv = CryptoJS.enc.Hex.parse("0000000000000000");
+      // 2 - Diversificar la clave de firma realizando un cifrado 3DES
 
-    // Se realiza el cifrado 3DES del número de pedido de la transacción
-    const cifrado = CryptoJS.TripleDES.encrypt(datosTransaccion.DS_MERCHANT_ORDER, claveComercioWordArray, {
-      iv: iv, // Se utiliza el vector de inicialización definido anteriormente
-      mode: CryptoJS.mode.CBC, // Se utiliza el modo de operación Cipher Block Chaining (CBC)
-      padding: CryptoJS.pad.ZeroPadding // No se aplica ningún tipo de relleno (padding)
-    });
+      // Se define el vector de inicialización (IV)
+      const iv = CryptoJS.enc.Hex.parse("0000000000000000");
 
-    // 3 - Codificar los datos de la transacción en Base64 (principio documento oficial)
-    const datosTransaccionWordArray = CryptoJS.enc.Utf8.parse(JSON.stringify(datosTransaccion));
-    const datosTransaccionBase64 = CryptoJS.enc.Base64.stringify(datosTransaccionWordArray);
+      // Se realiza el cifrado 3DES del número de pedido de la transacción
+      const cifrado = CryptoJS.TripleDES.encrypt(datosTransaccion.DS_MERCHANT_ORDER, claveComercioWordArray, {
+        iv: iv, // Se utiliza el vector de inicialización definido anteriormente
+        mode: CryptoJS.mode.CBC, // Se utiliza el modo de operación Cipher Block Chaining (CBC)
+        padding: CryptoJS.pad.ZeroPadding // No se aplica ningún tipo de relleno (padding)
+      });
 
-    // 4 - Calcular el HMAC-256 con los datos de la transacción y la clave diversificada
-    const firma = CryptoJS.HmacSHA256(datosTransaccionBase64, cifrado.ciphertext);
+      // 3 - Codificar los datos de la transacción en Base64 (principio documento oficial)
+      const datosTransaccionWordArray = CryptoJS.enc.Utf8.parse(JSON.stringify(datosTransaccion));
+      const datosTransaccionBase64 = CryptoJS.enc.Base64.stringify(datosTransaccionWordArray);
 
-    // 5 - Codificar la firma en Base64
-    const firmaBase64 = CryptoJS.enc.Base64.stringify(firma);
+      // 4 - Calcular el HMAC-256 con los datos de la transacción y la clave diversificada
+      const firma = CryptoJS.HmacSHA256(datosTransaccionBase64, cifrado.ciphertext);
 
-    // Establecer el valor de los campos en el formulario HTML
+      // 5 - Codificar la firma en Base64
+      const firmaBase64 = CryptoJS.enc.Base64.stringify(firma);
 
-    this.ds_merchantParameters.nativeElement.value = datosTransaccionBase64;
-    this.ds_signature.nativeElement.value = firmaBase64;
-    //console.log(this.ds_merchantParameters.nativeElement.value);
+      // Establecer el valor de los campos en el formulario HTML
 
-    // Enviar el formulario después de establecer los valores
-    const form = document.forms['form'];
-    if (form) {
-      form.submit();
+      this.ds_merchantParameters.nativeElement.value = datosTransaccionBase64;
+      this.ds_signature.nativeElement.value = firmaBase64;
+      //console.log(this.ds_merchantParameters.nativeElement.value);
+
+      // Enviar el formulario después de establecer los valores
+      const form = document.forms['form'];
+      if (form) {
+        form.submit();
+      }
     }
   }
 }
