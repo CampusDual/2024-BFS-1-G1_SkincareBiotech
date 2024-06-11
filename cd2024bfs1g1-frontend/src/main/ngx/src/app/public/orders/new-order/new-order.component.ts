@@ -45,7 +45,8 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   @ViewChild("defAddress") defAddress: MatCheckbox;
 
 
-  validatorsNameArray: ValidatorFn[] = [];
+  validatorZip: ValidatorFn[] = [];
+  validatorPhone: ValidatorFn[] = [];
 
   constructor(
     @Inject(AuthService) private authService: AuthService,
@@ -61,9 +62,13 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     this.service = this.injector.get(OntimizeService);
     this.cart = this.cartService.getCart();
     this.translate = this.injector.get(OTranslateService);
-    this.validatorsNameArray.push(Validators.minLength(5));
-    this.validatorsNameArray.push(Validators.maxLength(5));
-    this.validatorsNameArray.push(Validators.pattern('^[0-9]*$'));  
+    this.validatorZip.push(Validators.minLength(5));
+    this.validatorZip.push(Validators.maxLength(5));
+    this.validatorZip.push(Validators.pattern('^[0-9]*$')); 
+
+    this.validatorPhone.push(Validators.minLength(9));
+    this.validatorPhone.push(Validators.maxLength(9));
+    this.validatorPhone.push(Validators.pattern('^[6-9][0-9]*$'));
   }
 
   private configureService(serviceName: string): void {

@@ -26,8 +26,7 @@
                 <o-date-input attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
                 <o-text-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE" [validators]="validatorsNameArray" thousand-separator="">
-                    <o-validator error-name="pattern"
-                        error-text="Only alphanumeric characters and underscores are allowed"></o-validator>
+                    <o-validator error-name="pattern" error-text="Only alphanumeric characters and underscores are allowed"></o-validator>
                     <o-validator error-name="minlength" error-text="Minimum length is 5 characters"></o-validator>
                     <o-validator error-name="maxlength" error-text="Maximum length is 5 characters"></o-validator>
                 </o-text-input>
