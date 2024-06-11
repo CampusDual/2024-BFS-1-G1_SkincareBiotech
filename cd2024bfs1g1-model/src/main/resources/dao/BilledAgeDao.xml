@@ -102,45 +102,45 @@
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
-            WITH user_ages AS (
-                SELECT
-                    u.usr_id,
-                    g.uge_name AS gender,
-                    DATE_PART('year', AGE(CURRENT_DATE, p.upr_birthdate)) AS age
-                FROM
-                    ${mainschema}.usr_user u
-                INNER JOIN
-                    ${mainschema}.usr_profile p ON u.usr_id = p.usr_id
-                INNER JOIN
-                    ${mainschema}.usr_gender g ON p.uge_id = g.uge_id
-            ),
-            age_ranges AS (
-                SELECT
-                    gba.*,
-                    CONCAT_WS(' - ', gba_min_age, gba_max_age) AS age_range
-                FROM
-                    ${mainschema}.gra_billed_age gba
-            ),
-            gender_combinations AS (
-                SELECT DISTINCT g.uge_name AS gender
-                FROM ${mainschema}.usr_gender g
-            )
-            SELECT
-                gc.gender,
-                ar.age_range,
-                COALESCE(COUNT(ua.usr_id), 0) AS user_count
-            FROM
-                age_ranges ar
-            CROSS JOIN
-                gender_combinations gc
-            LEFT JOIN
-                user_ages ua ON ua.age BETWEEN ar.gba_min_age AND ar.gba_max_age AND ua.gender = gc.gender
-            GROUP BY
-                gc.gender, ar.age_range, ar.gba_min_age
-            #WHERE#
-            ORDER BY
-                gc.gender, ar.gba_min_age
-        ]]>
+                    WITH user_ages AS (
+                        SELECT
+                            u.usr_id,
+                            g.uge_name AS gender,
+                            DATE_PART('year', AGE(CURRENT_DATE, p.upr_birthdate)) AS age
+                        FROM
+                            ${mainschema}.usr_user u
+                        INNER JOIN
+                            ${mainschema}.usr_profile p ON u.usr_id = p.usr_id
+                        INNER JOIN
+                            ${mainschema}.usr_gender g ON p.uge_id = g.uge_id
+                    ),
+                    age_ranges AS (
+                        SELECT
+                            gba.*,
+                            CONCAT_WS(' - ', gba_min_age, gba_max_age) AS age_range
+                        FROM
+                            ${mainschema}.gra_billed_age gba
+                    ),
+                    gender_combinations AS (
+                        SELECT DISTINCT g.uge_name AS gender
+                        FROM ${mainschema}.usr_gender g
+                    )
+                    SELECT
+                        gc.gender,
+                        ar.age_range,
+                        COALESCE(COUNT(ua.usr_id), 0) AS user_count
+                    FROM
+                        age_ranges ar
+                    CROSS JOIN
+                        gender_combinations gc
+                    LEFT JOIN
+                        user_ages ua ON ua.age BETWEEN ar.gba_min_age AND ar.gba_max_age AND ua.gender = gc.gender
+                    GROUP BY
+                        gc.gender, ar.age_range, ar.gba_min_age
+                    #WHERE#
+                    ORDER BY
+                        gc.gender, ar.gba_min_age
+                ]]>
             </Sentence>
         </Query>
     </Queries>
