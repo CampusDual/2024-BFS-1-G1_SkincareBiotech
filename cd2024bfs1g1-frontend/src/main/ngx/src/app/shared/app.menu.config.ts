@@ -9,6 +9,8 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'brands', name: 'BRANDS', icon: 'label', route: '/main/brands' },
   { id: 'orders', name: 'ORDERS', icon: 'local_shipping', route: '/main/orders' },
   { id: 'sellers', name:'SELLERS', route: '/main/admin/sellers/', icon: 'person'},
+  { id: 'skin-types', name: 'SKIN_TYPES', icon: 'accessibility', route: '/main/skin-types' },
+  { id: 'allergens', name: 'ALLERGENS', route: '/main/admin/allergens', icon: 'priority_high'},
   { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
   { id: 'sells-by-category', name: 'DATA_BY_CATEGORY', icon: 'category', route: '/main/data-analysis/bycategory'},
   { id: 'billed-age', name: 'BILLED_AGE', icon: 'bar_chart', route: '/main//data-analysis/billed-age' },
@@ -16,7 +18,6 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'age-range-configuration', name: 'AGE_RANGE_CONFIGURATION', icon: 'timeline', route: '/main/data-analysis/age-range-configuration' }, 
   { id: 'login', name: 'LOGIN', route: '/login', icon: 'power_settings_new'},
   { id: 'profile', name: 'PROFILE', route: '/profile', icon: 'person'},
-  { id: 'allergens', name: 'ALLERGENS', route: '/main/admin/allergens', icon: 'priority_high'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
 ];
 

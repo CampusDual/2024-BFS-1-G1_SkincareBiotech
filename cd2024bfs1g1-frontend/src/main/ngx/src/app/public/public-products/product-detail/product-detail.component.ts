@@ -15,7 +15,8 @@ export class ProductDetailComponent implements OnInit {
   service2:OntimizeService;
   product: any = null;
   hash:string;
-  allergens: any = null;
+  allergens: any[] = [];
+  skintypes: any = null;
 
   constructor(
     protected injector: Injector,
@@ -35,6 +36,8 @@ export class ProductDetailComponent implements OnInit {
     this.tracker(id,this.hash);
     this.loadProduct(id);
     this.loadAllergens(id);
+    this.loadSkin(id);
+
 
   }
 
@@ -65,6 +68,18 @@ export class ProductDetailComponent implements OnInit {
         }
       })
   }
+
+  public loadSkin(id){
+    const conf = this.service.getDefaultServiceConfiguration('productsSkin');
+    this.service.configureService(conf);
+    this.service.query({ "PRO_ID": id }, ["SKIN_NAME"], "productSkin")
+      .subscribe((data) => {
+        if (data.data.length != 0) {
+          this.skintypes = data.data;
+        } 
+      })
+  }
+
   public getImageSrc(base64: any): any {
     return base64 ? this.sanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + base64) : './assets/images/no-image.png';
   }

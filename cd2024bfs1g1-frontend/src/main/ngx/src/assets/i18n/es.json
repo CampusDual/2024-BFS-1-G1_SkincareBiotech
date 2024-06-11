@@ -195,6 +195,8 @@
   "MY_ORDERS": "Mis pedidos",
   "UPR_BIRTHDATE": "Fecha de nacimiento",
   "UPR_ADDRESS": "Dirección",
+  "SKIN_TYPES": "Tipos de piel",
+  "SKIN_NAME": "Nombre",
   "MY_PROFILE": "Mi perfil",
   "NAME": "Nombre",
   "CONTACT": "Contacto",
@@ -238,6 +240,7 @@
   "AGE_RANGE": "Rango de edad",
   "AGE_GENDER": "Edad y género",
   "EMPTY_CART": "El carrito esta vacio",
+  "RECOMMENDED_SKIN": "Pieles recomendadas",
   "CUSTOMER_ANALYSIS": "Análisis clientes",
   "CUSTOMERS_ANALYSIS": "Análisis de los clientes",
   "DATE_NOT_VALID": "Este periodo de oferta ya está en uso. Por favor elija otro que no se solape.",
@@ -254,6 +257,15 @@
   "ALLER_NAME": "Nombre",
   "ADD_ALLERGEN": "Añadir nuevo alérgeno",
   "SELECT_ALLERGEN": "Selecciona un alérgeno...",
+  "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado.",
+  "ADD_SKIN_TYPE": "Añade tipos de piel",
+  "SKIN_ID": "Tipo de piel",
+  "ADD_RECOMENDATIONS": "Añadir recomendaciones",
+  "NO_RECOMENDATIONS": "No hay recomendaciones",
+  "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel",
+
+
+
   "ALLERGEN_IS_DUPLICATED": "El producto ya tiene añadido el alérgeno seleccionado.",
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
   "AGE_RANGE_CONFIGURATION": "Configuración de rangos",
