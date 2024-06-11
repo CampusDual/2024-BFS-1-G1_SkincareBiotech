@@ -125,12 +125,11 @@ export class BilledAgeComponent {
   }
 
   private calculateBilledAgeAndGenderStatistics(data:any[]){
-    let maxBilled = 0;
+  
       data.forEach(item => {
       this.genres.forEach(genre => {
-        if (item[genre] > maxBilled) {
-          maxBilled = item[genre];
-          this.maxBilledGenreTotal = maxBilled;
+        if (item[genre] > this.maxBilledGenreTotal) {
+          this.maxBilledGenreTotal = item[genre]
           this.maxBilledGenre = genre;
           this.minAge2 = item['GBA_MIN_AGE'];
           this.maxAge2 = item['GBA_MAX_AGE'];
