@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { DataAdapterUtils, PieChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
+import { PieChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
 import { OntimizeService } from 'ontimize-web-ngx';
 
 
@@ -12,9 +12,12 @@ export class BilledAgeComponent {
 
   @ViewChild('ageAndGender')
   protected ageAndGender: OChartComponent
-
   chartParameters: PieChartConfiguration;
   service: OntimizeService;
+
+
+  ageRangeKey = 'AGE_RANGE';
+  isGraph: boolean = true;
 
   // Billed age
   minAge: number;
@@ -30,10 +33,6 @@ export class BilledAgeComponent {
   maxBilledGenre: string;
   maxBilledGenreTotal: number;
   totalBilled2: number;
-  man: PersonData;
-  woman: PersonData;
-  pna: PersonData;
-  other: PersonData;
   percentage2: number;
   isAgeGenderData: boolean;
   genres = ['MAN', 'WOMAN', 'PNA', 'OTHER'];
@@ -44,25 +43,18 @@ export class BilledAgeComponent {
 
   constructor() {
     this.chartParameters = new PieChartConfiguration();
-    this.chartParameters.labelType = 'key';
-    this.chartParameters.legend.margin.top = 5;
-    this.chartParameters.legend.margin.bottom = 5;
     this.chartParameters.legendPosition = 'right';
-
   }
-
 
   loadBilledAge(event: any) {
+    console.log(event);
     this.initializeBilledAgeParams();
-    this.groupDataByAgeRange(event, 'AGE_RANGE', 'TOTAL');
-    this.calculateBilledAgeStatistics(event); 
+    this.calculateBilledAgeStatistics(event);
   }
 
-
-  loadAGeGender(event: any) {
+  loadAgeGender(event: any) {
     this.initializeBilledAgeGenderParams();
-    this.groupDataByAgeRangeAndGender(event, this.genres, 'AGE_RANGE');
-    this.calculateBilledAgeAndGenderStatistics(event); 
+    this.calculateBilledAgeAndGenderStatistics(event);
   }
 
   private initializeBilledAgeParams() {
@@ -71,6 +63,7 @@ export class BilledAgeComponent {
     this.maxBilledByAge = 0;
     this.totalBilled = 0;
     this.isBilledAgeData = false;
+    this.isGraph = true;
   }
 
   private initializeBilledAgeGenderParams() {
@@ -79,33 +72,6 @@ export class BilledAgeComponent {
     this.maxBilledGenre = '';
     this.isAgeGenderData = false;
     this.maxBilledGenreTotal = 0;
-  }
-
-  private groupDataByAgeRange(data: any[], ageRangeKey: string, valueKey: string) {
-    return data.reduce((acc, item) => {
-      if (!acc[item[ageRangeKey]]) {
-        acc[item[ageRangeKey]] = 0;
-      }
-      acc[item[ageRangeKey]] += item[valueKey];
-      this.isBilledAgeData = true;
-      return acc;
-    }, {});
-  }
-
-  private groupDataByAgeRangeAndGender(data: any[], genres: string[], ageRangeKey: string) {
-    return data.reduce((acc, item) => {
-      if (!acc[item[ageRangeKey]]) {
-        acc[item[ageRangeKey]] = {};
-        genres.forEach(genre => {
-          acc[item[ageRangeKey]][genre] = 0;
-        });
-      }
-      genres.forEach(genre => {
-        acc[item[ageRangeKey]][genre] += item[genre];
-      })
-      this.isAgeGenderData = true;
-      return acc;
-    }, {});
   }
 
   private calculateBilledAgeStatistics(data: any[]) {
@@ -117,12 +83,16 @@ export class BilledAgeComponent {
       }
       this.totalBilled += item.TOTAL;
     });
+
+    if(this.totalBilled <=0){
+      this.isGraph = false;
+    }
+
     this.percentage = ((this.maxBilledByAge / this.totalBilled) * 100);
   }
 
-  private calculateBilledAgeAndGenderStatistics(data:any[]){
-  
-      data.forEach(item => {
+  private calculateBilledAgeAndGenderStatistics(data: any[]) {
+    data.forEach(item => {
       this.genres.forEach(genre => {
         if (item[genre] > this.maxBilledGenreTotal) {
           this.maxBilledGenreTotal = item[genre]
@@ -132,14 +102,11 @@ export class BilledAgeComponent {
         }
       });
     });
+
+      if(this.totalBilled <=0){
+      this.isGraph = false;
+    }
+    
     this.percentage2 = ((this.maxBilledGenreTotal / this.totalBilled) * 100);
   }
 }
-
-interface PersonData {
-  gender: string;
-  total: number;
-  minAge: number;
-  maxAge: number;
-}
-
