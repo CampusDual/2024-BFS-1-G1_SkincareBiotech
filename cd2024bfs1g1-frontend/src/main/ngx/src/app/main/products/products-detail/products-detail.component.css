@@ -78,3 +78,15 @@ mat-tab-group{
     font-weight: bold;
     font-size: 24px;
 }
+
+.pro-name-detail {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+    }
+    
+.tab-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }

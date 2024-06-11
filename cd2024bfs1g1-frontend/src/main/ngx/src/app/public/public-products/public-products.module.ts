@@ -9,6 +9,7 @@ import { ProductsFeaturedComponent } from './products-featured/products-featured
 import { ProductsDiscountComponent } from './products-discount/products-discount.component';
 import { ProductCardComponent } from 'src/app/shared/components/product-card/product-card.component';
 import { ProductsBestSellerComponent } from './products-best-seller/products-best-seller.component';
+import { PublicModule } from '../public.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductsBestSellerComponent } from './products-best-seller/products-bes
     CommonModule,
     PublicProductsRoutingModule,
     OntimizeWebModule,
+    PublicModule
   ]
 })
 export class PublicProductsModule { }
