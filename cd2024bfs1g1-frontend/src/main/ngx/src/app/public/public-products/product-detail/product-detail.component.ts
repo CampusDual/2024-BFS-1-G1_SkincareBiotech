@@ -33,8 +33,12 @@ export class ProductDetailComponent implements OnInit {
 
   async ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('prod_id'))
-    this.hash = await this.hashService.generateUniqueHash();
-    this.tracker(id,this.hash);
+    //this.hash = await this.hashService.generateUniqueHash();
+    this.hashService.generateUniqueHash()
+    .then(hash=>{
+      this.hash = hash;
+      this.tracker(id,this.hash);
+    })
     this.loadProduct(id);
     this.loadAllergens(id); // Top stack call for loadUserAllergens and then getMatchingAllergens
 
