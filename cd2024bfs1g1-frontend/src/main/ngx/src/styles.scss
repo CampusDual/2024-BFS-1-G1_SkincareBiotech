@@ -42,3 +42,8 @@
 html,body {
   background-color: #fff;
 }
+
+.allergen-radio mat-radio-group {
+  display: grid !important;
+  grid-template-columns: auto auto;
+}
