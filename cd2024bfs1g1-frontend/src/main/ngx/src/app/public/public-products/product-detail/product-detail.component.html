@@ -9,20 +9,18 @@
             <div class="title">{{product.PRO_NAME}}</div>
 
             <div class="for">
-                <div class="flex">
-                    <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
-                    <p class="pill">{{product.BRA_NAME}}</p>
-                </div>
-                <div class="flex">
-                    <!-- <p class="category">{{"CATEGORY" | oTranslate}}: </p> -->
-                    <p class="pill">{{product.CAT_NAME}}</p>
-                </div>
-                <div class="flex">
-                    <!-- <p class="category">{{"PGE_ID" | oTranslate}}: </p> -->
-                    <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
-                </div>
+
+                <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
+                <p class="pill">{{product.BRA_NAME}}</p>
+
+                <!-- <p class="category">{{"CATEGORY" | oTranslate}}: </p> -->
+                <p class="pill">{{product.CAT_NAME}}</p>
+
+                <!-- <p class="category">{{"PGE_ID" | oTranslate}}: </p> -->
+                <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
+
             </div>
-            
+
             <div class="buy-container">
 
                 <div class="price" *ngIf="(sale != null); else priceBlock">
@@ -36,7 +34,7 @@
                     </div>
 
                 </div>
-                
+
                 <ng-template #priceBlock>
                     <p class="regularPrice">{{price}}€</p>
                 </ng-template>

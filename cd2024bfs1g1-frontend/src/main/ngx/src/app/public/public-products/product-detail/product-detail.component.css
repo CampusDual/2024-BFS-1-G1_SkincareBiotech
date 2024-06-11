@@ -126,30 +126,27 @@
     margin-left: 20px;
 }
 
-.for {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 20px;
-
-}
-
 .flex {
     display: flex;
     align-items: center;
-    gap: 10px;
+    align-content: center;
+    grid-gap: 10px;
+}
+
+.for {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 15px;
+    align-items: stretch;
 }
 
 .pill {
+    display: flex;
     border: 1px solid #e1e1e1;
     border-radius: 7px;
     padding: 10px 20px;
     background-color: #f8f9fa;
-    width: 10ch;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
+    align-items: center;
 }
 
 
