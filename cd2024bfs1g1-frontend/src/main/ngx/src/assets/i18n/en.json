@@ -259,6 +259,11 @@
   "REAL_PRICE": "Final price",
   "GLOBAL_BROWSER": "Browser",
   "FIND_PRODUCT": "Find your product",
+  "ALLERGENS": "Allergens",
+  "ALLER_NAME": "Name",
+  "ADD_ALLERGEN": "Add new allergen",
+  "SELECT_ALLERGEN": "Select an allergen...",
+  "ALLERGEN_IS_DUPLICATED": "The product already has the selected allergen added.",
   "SALE_PRICE": "Publication price"
 }
 

@@ -8,6 +8,7 @@ import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx
   templateUrl: './products-detail.component.html',
   styleUrls: ['./products-detail.component.css']
 })
+
 export class ProductsDetailComponent implements OnInit{
 
   @ViewChild('discreteBar', { static: false })
@@ -25,10 +26,11 @@ export class ProductsDetailComponent implements OnInit{
   Visible:boolean = true;
   product: any;
   service: OntimizeService;
-  commissionPlataform: number;
-  commissionRedSys: number;
+  public commissionPlataform: number;
+  public commissionRedSys: number;
   public priceUser: number;
   productName: string = '';
+  isDataLoaded: boolean = false;
 
   constructor(
     protected injector: Injector,
@@ -58,26 +60,25 @@ export class ProductsDetailComponent implements OnInit{
           if (data.data.length > 0) {
             this.commissionRedSys = data.data.find((element) => (element.COM_NAME === "Redsys_commissions")).COM_VALUE;            
             this.commissionPlataform = data.data.find((element) => (element.COM_NAME === "Plataform_commissions")).COM_VALUE;
+            this.isDataLoaded = true;
           }
         })
         
         let id = parseInt(this.route.snapshot.paramMap.get('PRO_ID'))
         const conf2 = this.service.getDefaultServiceConfiguration('products');
-        this.service.configureService(conf2);
-        this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRICE", "SALE_PRICE", "REAL_PRICE", "PRO_SALE"], "product")
-          .subscribe((data) => {
-            if (data.data.length > 0) {
-              this.product = data.data[0];
-            }
-          })
+          this.service.configureService(conf2);
+          this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRICE", "SALE_PRICE", "REAL_PRICE", "PRO_SALE"], "product")
+            .subscribe((data) => {
+              if (data.data.length > 0) {
+                this.product = data.data[0];
+              }
+            })
   }
 
   onUpdate(success: boolean) {
     if (success) {
       this.router.navigate(['/main/products']);
     }
-  }
-  onDataLoaded(event) {
   }
   onInsert(event) {
     this.router.navigate(['/main/products']);
@@ -97,5 +98,16 @@ export class ProductsDetailComponent implements OnInit{
 
   checkName($event: any){
     this.productName = $event.PRO_NAME;
+  }
+
+  finalPriceSale(rowData: Array<any>): number {
+    
+    return (rowData['SAL_PRICE'] / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
+  }
+  getPriceCalculator(){
+    let self = this;
+    return (row)=>{
+      return  self.finalPriceSale(row)
+    }
   }
 }
