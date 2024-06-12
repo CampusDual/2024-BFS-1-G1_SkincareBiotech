@@ -18,7 +18,7 @@ export class ProductDetailComponent implements OnInit {
   allergens: any[] = [];
   skintypes: any = null;
   userAllergens: any[] = [];
-  matchingAllergens: any = null;
+  matchingAllergens: any[] = [];
 
   constructor(
     protected injector: Injector,
@@ -143,8 +143,13 @@ export class ProductDetailComponent implements OnInit {
     // Backend for allergen-users query already implements an AuthService to secure IDORs
     this.service.query({}, ["ALLER_NAME"], "allergenUser")
     .subscribe((data) => {
-      this.userAllergens = data.data;
-      resolve(data.data);
+      if(data.data.length != 0){
+        this.userAllergens = data.data;
+        resolve(data.data);
+      }else{
+        this.userAllergens = [];
+        resolve();
+      }
     }, error => {
       reject(error);
     });
@@ -156,6 +161,7 @@ export class ProductDetailComponent implements OnInit {
    * and returns any allergens that match, returns an empty array otherwise
    */
   public getMatchingAllergens() {
+
     // I decided to use a Set here as it makes lookups 0(1) and allergen listing can be large
     const userAllergenNames = new Set(this.userAllergens.map(allergen => allergen["ALLER_NAME"]));
     // Get matches by filtering, remember that entity results are arrays of maps
