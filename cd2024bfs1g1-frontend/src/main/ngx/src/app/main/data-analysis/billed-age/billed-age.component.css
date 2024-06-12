@@ -3,51 +3,11 @@ mat-tab-group{
     padding-top: 1vh;
 }
 
-md-tabs md-ink-bar {
-    background-color: black;
-  }
-
 h1{
     padding-left: 2vw;
 }
 
 .chart-container{
     display: flex;
-    flex-direction: column;
-    
-}
-
-.chart-tittle-y-container{
-    display: flex;
-    padding-left: 2vw;
-    padding-right: 4vw;
-    
-}
-
-.chart{
-    width: 100%;
-}
-
-.tittle-y{
-    display: flex;
-    justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    margin-top: 0;
-    font-weight: bold;
-    padding-left: 2vw;
-    
-}
-
-.tittle-x{
-   display: flex;
-   justify-content: center;
-   font-weight: bold;
-   padding-top: 2vh;
-   padding-bottom: 2vh;
-}
-
-.mdc-tab .mat-mdc-tab .mat-mdc-focus-indicator .mdc-tab--active .ng-star-inserted .mdc-tab-indicator--active{
-    height: 100px;
+    flex-direction: column;  
 }

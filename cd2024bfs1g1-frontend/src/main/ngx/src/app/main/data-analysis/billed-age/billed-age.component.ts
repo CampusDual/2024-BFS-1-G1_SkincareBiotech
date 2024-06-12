@@ -47,7 +47,6 @@ export class BilledAgeComponent {
   }
 
   loadBilledAge(event: any) {
-    console.log(event);
     this.initializeBilledAgeParams();
     this.calculateBilledAgeStatistics(event);
   }

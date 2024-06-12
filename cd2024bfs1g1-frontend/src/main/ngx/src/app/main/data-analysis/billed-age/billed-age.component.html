@@ -4,21 +4,18 @@
         <h1>{{"BILLING_BY_AGE_TITTLE" | oTranslate}}</h1>
         <ng-container *ngIf="isGraph; else noChart">
             <div class="chart-container">
-                <div class="chart-tittle-y-container">
-                    <div class="chart">
-                        <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE"
-                            y-axis="TOTAL" x-label="Age" y-label="Amount (€)" [color]="colorScheme">
-                        </o-chart>
-                        <o-table service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE" oHidden="yes"
-                            columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE"
-                            visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15" delete-button='no'
-                            (onDataLoaded)="loadBilledAge($event)"></o-table>
-                    </div>
+                <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE"
+                    y-axis="TOTAL" x-label="Age" y-label="Amount (€)" [color]="colorScheme">
+                </o-chart>
+                <o-table service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE" oHidden="yes"
+                    columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE"
+                    visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15" delete-button='no'
+                    (onDataLoaded)="loadBilledAge($event)"></o-table>
+                <div>Los clientes con el rango de edad comprendido entre {{ minAge }} y {{ maxAge }} años
+                    es el que más factura con un {{percentage | number: '1.2-2' }}% sobre el total de facturado
                 </div>
             </div>
-            <div>Los clientes con el rango de edad comprendido entre {{ minAge }} y {{ maxAge }} años
-                es el que más factura con un {{percentage | number: '1.2-2' }}% sobre el total de facturado
-            </div>
+
         </ng-container>
         <ng-template #noChart>No hay datos para los rangos de edad seleccionados</ng-template>
     </mat-tab>
@@ -27,23 +24,18 @@
         <h1>{{"BILLING_BY_AGE_AND_GENDER_TITTLE" | oTranslate}}</h1>
         <ng-container *ngIf="isGraph; else noChart">
             <div class="chart-container">
-                <div class="chart-tittle-y-container">
-                    <div class="chart">
-                        <o-chart type="multiBar" service="billed-ages" entity="billedAgeGenderChart"
-                            x-axis="GBA_MIN_AGE" y-axis="MAN;WOMAN;OTHER;PNA" x-label="Age" y-label="Amount (€)"
-                            [chart-parameters]="chartParameters" [color]="colorScheme">
-                        </o-chart>
-                        <o-table service="billed-ages" entity="billedAgeGenderChart" keys="AGE_RANGE" oHidden="yes"
-                            columns="AGE_RANGE;MAN;WOMAN;OTHER;PNA;GBA_MIN_AGE;GBA_MAX_AGE"
-                            visible-columns="AGE_RANGE;MAN;WOMAN;OTHER;PNA;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15"
-                            delete-button='no' (onDataLoaded)="loadAgeGender($event)"></o-table>
-                    </div>
-                </div>
-                <div>Los clientes con género {{maxBilledGenre}} y rango de edad comprendido entre {{
-                    minAge2 }} y {{ maxAge2 }} años es el que más factura con un {{percentage2 | number: '1.2-2' }}%
-                    sobre
-                    el
-                    total de facturado</div>
+                <o-chart type="multiBar" service="billed-ages" entity="billedAgeGenderChart" x-axis="GBA_MIN_AGE"
+                    y-axis="MAN;WOMAN;OTHER;PNA" x-label="Age" y-label="Amount (€)" [chart-parameters]="chartParameters"
+                    [color]="colorScheme">
+                </o-chart>
+                <o-table service="billed-ages" entity="billedAgeGenderChart" keys="AGE_RANGE" oHidden="yes"
+                    columns="AGE_RANGE;MAN;WOMAN;OTHER;PNA;GBA_MIN_AGE;GBA_MAX_AGE"
+                    visible-columns="AGE_RANGE;MAN;WOMAN;OTHER;PNA;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15"
+                    delete-button='no' (onDataLoaded)="loadAgeGender($event)"></o-table>
+            </div>
+            <div>Los clientes con género {{maxBilledGenre}} y rango de edad comprendido entre {{ minAge2 }} y {{
+                maxAge2 }} años es el que más factura con un {{percentage2 | number: '1.2-2' }}% sobre el total de
+                facturado
             </div>
         </ng-container>
         <ng-template #noChart>No hay datos para los rangos de edad seleccionados</ng-template>
