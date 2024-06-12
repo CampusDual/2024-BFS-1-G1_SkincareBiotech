@@ -199,7 +199,6 @@
   "NAME": "Name",
   "CONTACT": "Contact",
   "ADDITIONAL_INFO": "Additional information",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "FEMALE": "Female",
   "MALE": "Male",
   "UNISEX": "Unisex",
@@ -263,5 +262,7 @@
   "SKIN_ID": "Skin type",
   "ADD_RECOMENDATIONS": "Add recomendations",
   "NO_RECOMENDATIONS": "There aren't any recomendations",
-  "ERROR_DUP_SKIN": "This product already has this skin type"
+  "ERROR_DUP_SKIN": "This product already has this skin type",
+  "DATA_BY_SKIN": "Users by skin type",
+  "SKIN_TYPE": "Skin type"
 }

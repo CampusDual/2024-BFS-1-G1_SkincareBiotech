@@ -178,7 +178,6 @@
   "RANGE_NOT_VALID": "Rango no válido. Las edades no se pueden solapar.",
   "AGE_GRAPH": "Rangos de edad",
   "SETTINGS": "Ajustes",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
   "USR_NAME": "Nombre de usuario",
   "USR_LOGIN": "Nombre de acceso",
   "USR_SURNAME": "Apellidos",
@@ -262,5 +261,7 @@
   "SKIN_ID": "Tipo de piel",
   "ADD_RECOMENDATIONS": "Añadir recomendaciones",
   "NO_RECOMENDATIONS": "No hay recomendaciones",
-  "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel"
+  "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel",
+  "DATA_BY_SKIN": "Usuarios por tipo de piel",
+  "SKIN_TYPE": "Tipo de piel"
 }
