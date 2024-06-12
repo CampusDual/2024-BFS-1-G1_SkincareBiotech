@@ -262,5 +262,6 @@
   "NO_RECOMENDATIONS": "There aren't any recomendations",
   "ERROR_DUP_SKIN": "This product already has this skin type",
   "DATA_BY_SKIN": "Users by skin type",
-  "SKIN_TYPE": "Skin type"
+  "SKIN_TYPE": "Skin type",
+  "TARGET_CUSTOMERS": "Target customers"
 }

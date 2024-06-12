@@ -261,5 +261,6 @@
   "NO_RECOMENDATIONS": "No hay recomendaciones",
   "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel",
   "DATA_BY_SKIN": "Usuarios por tipo de piel",
-  "SKIN_TYPE": "Tipo de piel"
+  "SKIN_TYPE": "Tipo de piel",
+  "TARGET_CUSTOMERS": "Clientes objetivo"
 }

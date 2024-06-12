@@ -77,6 +77,11 @@
           "attr": "users-skin-types",
           "visible": false,
           "enabled": false
+        },
+        {
+          "attr": "target-customers",
+          "visible": false,
+          "enabled": false
         }
       ],
       "routes": [
