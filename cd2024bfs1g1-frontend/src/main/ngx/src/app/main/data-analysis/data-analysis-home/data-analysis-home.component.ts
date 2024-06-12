@@ -1,8 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
-import { OntimizeService } from 'ontimize-web-ngx';
-import { OChartComponent, ChartService, DiscreteBarChartConfiguration, PieChartConfiguration } from 'ontimize-web-ngx-charts';
-
-
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-data-analysis-home',
@@ -11,7 +7,6 @@ import { OChartComponent, ChartService, DiscreteBarChartConfiguration, PieChartC
 })
 
 export class DataAnalysisHomeComponent {
-  public chartParameters: PieChartConfiguration;
 
   maxDate: number;
   maxDay: number;
@@ -42,7 +37,6 @@ export class DataAnalysisHomeComponent {
     this.maxDay = newDate.getDate();
     const monthFormatter = new Intl.DateTimeFormat('es-ES', { month: 'long' });
     this.maxMonth = monthFormatter.format(newDate);
-    
   }
 
 }

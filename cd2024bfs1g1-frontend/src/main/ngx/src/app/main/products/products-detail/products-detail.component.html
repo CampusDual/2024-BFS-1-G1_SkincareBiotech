@@ -1,5 +1,5 @@
 <o-form #form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
-    show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="checkName($event)">
+    show-header-navigation="yes" (onDataLoaded)="checkName($event)">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
             <div class="main-container">
@@ -42,18 +42,10 @@
                         <h3>{{'GRAFIC_DETAILS' | oTranslate}}</h3>
                     </span>
                     <div class="chart-container">
-                        <div class="chart-tittle-y-container">
-                            <div class="tittle-y">
-                                {{"GRAFIC_VIEW" | oTranslate}}
-                            </div>
-                            <div class="chart">
-                                <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
-                                    entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time"
-                                    y-axis="COUNT" x-axis="VISIT_DATE"></o-chart>
-                            </div>
-                        </div>
-                        <div class="tittle-x">
-                            {{"GRAFIC_DATE" | oTranslate}}
+                        <div class="chart">
+                            <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
+                                entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="COUNT"
+                                x-axis="VISIT_DATE"></o-chart>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
                 </o-chart>
                 <o-table service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE" oHidden="yes"
                     columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE"
-                    visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15" delete-button='no'
+                    visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="30" delete-button='no'
                     (onDataLoaded)="loadBilledAge($event)"></o-table>
                 <div>Los clientes con el rango de edad comprendido entre {{ minAge }} y {{ maxAge }} años
                     es el que más factura con un {{percentage | number: '1.2-2' }}% sobre el total de facturado

@@ -1,7 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { OCurrencyInputComponent, OFormComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
-import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
+import { Router } from '@angular/router';
+import { OCurrencyInputComponent, OFormComponent, OSlideToggleComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-products-detail',
@@ -16,16 +15,9 @@ export class ProductsDetailComponent  {
   @ViewChild("proSaleCurrency")
   proSaleCurrency: OCurrencyInputComponent;
 
-  @ViewChild('discreteBar', { static: false })
-  protected discreteBar: OChartComponent;
-
   @ViewChild('form') form: OFormComponent;
 
-  public chartParameters: DiscreteBarChartConfiguration;
-  service: any;
-  data: any;
-  intermedio: any;
-  id:any;
+
   isVisible: boolean = false;
   Visible:boolean = true;
   productName: string = '';
@@ -33,17 +25,7 @@ export class ProductsDetailComponent  {
   constructor(
     protected injector: Injector,
     private router: Router,
-    private route: ActivatedRoute,
-
   ) {
-
-    this.chartParameters = new DiscreteBarChartConfiguration();
-    this.chartParameters.showYAxis = true;
-    this.chartParameters.showXAxis = true;
-    this.chartParameters.showLegend = true;
-    this.chartParameters.showValues = false;
-    this.chartParameters.margin.left = 50;
-    this.service = this.injector.get(OntimizeService);
   }
   
   toggleVisibility(): void {
@@ -52,16 +34,6 @@ export class ProductsDetailComponent  {
   }
  
 
-  onUpdate(success: boolean) {
-    if (success) {
-      this.router.navigate(['/main/products']);
-    }
-  }
-
-  onInsert(event) {
-    this.router.navigate(['/main/products']);
-  }
-  
   onSelectedTabChange(){
     this.router.navigate(['/main/products/:PRO_ID/allergen']);
   }

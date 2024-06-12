@@ -7,8 +7,8 @@
                      </o-chart>
 
                      <o-table service="orders" entity="totalPriceOrders" oHidden="yes" keys="ORD_DATE"
-                            columns="ORD_DATE;AMOUNT_PRICE" visible-columns="ORD_DATE;AMOUNT_PRICE" query-rows="15"
-                            delete-button='no' (onDataLoaded)="loadDataAnalysis($event)"></o-table>
+                            columns="ORD_DATE;AMOUNT_PRICE" visible-columns="ORD_DATE;AMOUNT_PRICE"
+                            (onDataLoaded)="loadDataAnalysis($event)"></o-table>
 
                      <div>El día que más se ha facturado es el {{ maxDay }} de {{ maxMonth }} con un total de {{
                             maxAmount | number: '1.2-2' }}€, representando un
