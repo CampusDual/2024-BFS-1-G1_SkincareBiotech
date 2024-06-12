@@ -49,6 +49,13 @@
     flex-direction: column;
 }
 
+.form-row-centered {
+    display: flex;
+    justify-content: center;
+    margin-top: -8px; /* Adjusted margin to bring the row closer to the columns */
+    width: 100%;
+}
+
 #botones {
     background-color: #a7bfc7;
 }

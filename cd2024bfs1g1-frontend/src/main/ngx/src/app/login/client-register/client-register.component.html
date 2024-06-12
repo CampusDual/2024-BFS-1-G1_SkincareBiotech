@@ -73,7 +73,8 @@
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>{{ 'usr_surname' | oTranslate }}</mat-label>
-                            <input matInput class="mat-input" #user_surname id="usr_surname" [formControl]="userSurnameCtrl">
+                            <input matInput class="mat-input" #user_surname id="usr_surname"
+                                [formControl]="userSurnameCtrl">
                             <mat-error *ngIf="userSurnameCtrl.hasError('required')">
                                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
                             </mat-error>
@@ -102,22 +103,26 @@
                         <mat-form-field appearance="fill">
                             <mat-label>{{ 'GENDER' | oTranslate }}</mat-label>
                             <mat-select [formControl]="userGenderCtrl" #uge_id>
-                                <mat-option *ngFor="let item of genderData" [value]="item.UGE_ID">{{ item.UGE_NAME | oTranslate }}</mat-option>
+                                <mat-option *ngFor="let item of genderData" [value]="item.UGE_ID">{{ item.UGE_NAME |
+                                    oTranslate }}</mat-option>
                             </mat-select>
                             <mat-error *ngIf="userGenderCtrl.hasError('required')">
                                 {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
                             </mat-error>
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
-                            <mat-label>{{ 'SKIN_TYPE' | oTranslate }}</mat-label>
-                            <mat-select [formControl]="userSkinTypeCtrl" #skin_id>
-                                <mat-option *ngFor="let item of skinData" [value]="item.SKIN_ID">{{item.SKIN_NAME}}</mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="userSkinTypeCtrl.hasError('required')">
-                                {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                            </mat-error>
-                        </mat-form-field>
                     </div>
+                </div>
+                <div class="form-row-centered">
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{ 'SKIN_TYPE' | oTranslate }}</mat-label>
+                        <mat-select [formControl]="userSkinTypeCtrl" #skin_id>
+                            <mat-option *ngFor="let item of skinData"
+                                [value]="item.SKIN_ID">{{item.SKIN_NAME}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="userSkinTypeCtrl.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
                 </div>
                 <button mat-raised-button id="botones" type="submit">{{ 'REGISTER' | oTranslate }}</button>
                 <div class="linea"></div>
