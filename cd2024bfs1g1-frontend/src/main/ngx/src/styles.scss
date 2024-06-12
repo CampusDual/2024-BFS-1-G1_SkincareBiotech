@@ -46,6 +46,6 @@ html,body {
 }
 
 //Quitar el botón del Drawer
-o-app-header mat-icon {
-  display: none !important;
+.drawer_hidden .o-app-sidenav.o-app-sidenav .o-app-header .sidenav-toggle{
+  display: none;
 }
