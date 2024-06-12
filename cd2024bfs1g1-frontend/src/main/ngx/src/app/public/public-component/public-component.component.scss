@@ -1,6 +1,6 @@
 ::ng-deep .header .mat-toolbar {
   margin: 5px auto;
-  background-color: #a7bfc7;
+  background-color: transparent;
   color: #686464;
   box-shadow: 0 2px 4px 0px rgba(248, 184, 140, 0),
     0 4px 5px 0 rgba(248, 184, 140, 0), 0 1px 10px 0 rgba(248, 184, 140, 0);
@@ -17,7 +17,7 @@
 }
 
 ::ng-deep .o-bar-menu nav .fake-li a {
-  background-color: #a7bfc7;
+  background-color: transparent;
   display: inline-flexbox;
   align-items: center;
   padding: 0 20px;
@@ -34,7 +34,7 @@
   height: 48px;
   padding: 0 16px;
   font-weight: bold;
-  background: #a7bfc7;
+  background: transparent;
   cursor: pointer;
 }
 
@@ -62,11 +62,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background: #a7bfc7;
+  background: transparent;
+  position: relative; 
+  z-index: 10;
 }
 
 .logo {
-  width: 150px;
+  width: 270px;
+  height: 120px;
 }
 
 .imgContainer {
@@ -133,3 +136,40 @@ a {
     width: 100%;
   }
 }
+
+.navbar {
+  display: flex;
+  align-items: baseline
+}
+
+.navbar-item {
+  margin: 0 15px;
+  display: flex;
+}
+
+.navbar-item a {
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;  
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.material-icons {
+  margin-right: 8px;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.cart-container .cart-count {
+  position: absolute;
+  background-color: rgba(235, 14, 14, 0.92);
+  color: white;
+  border-radius: 50%;
+  width: 28px;
+  height: 25px;
+  font-size: 16px;
+  text-align: center;
+}
+
