@@ -254,5 +254,6 @@
   "SALES_CHART": "Sales/product chart.",
   "COLUMNS_NUMBER": "Number of columns.",
   "VISIT_DATE": "Visit date",
-  "DATA_PRODUCTS": "Product statistics"
+  "DATA_PRODUCTS": "Product statistics",
+  "SKIN_ID": "Skin type"
 }

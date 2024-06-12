@@ -28,8 +28,8 @@ public class ProductViewService implements IProductViewService {
         return this.daoHelper.query(this.productViewDao,keysValues,attributes);
     }
     @Override
-    public EntityResult productViewCountPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
-        return this.daoHelper.paginationQuery(this.productViewDao,keysValues,attributes, recordNumber, startIndex, orderBy,ProductViewDao.QUERY_PROV_COUNT);
+    public EntityResult productViewCountQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.productViewDao,keysValues,attributes,ProductViewDao.QUERY_PROV_COUNT);
     }
 
     @Override

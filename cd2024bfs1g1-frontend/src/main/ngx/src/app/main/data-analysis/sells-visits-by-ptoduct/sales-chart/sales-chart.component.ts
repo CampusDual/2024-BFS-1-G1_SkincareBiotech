@@ -10,9 +10,10 @@ import { DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
 })
 export class SalesChartComponent {
   data: any[];
+  dataChart: any[];
   barParameters: DiscreteBarChartConfiguration;
   colors = {};
-  numberOfProducts: number = 10;
+  numberOfProducts: number;
   selectedDates: any = {};
   @ViewChild('salesTable') salesTable: OTableComponent;
   @ViewChild('inputNumProducts') inputNumProducts: OIntegerInputComponent;
@@ -23,10 +24,6 @@ export class SalesChartComponent {
     this.selectedDates = this.setDefaultDates();
     this._barConfiguration();
   }
-  ngAfterViewInit(): void {
-    this.salesTable.queryRows = this.numberOfProducts;
-    this.salesTable.reloadData();
-  }
   _barConfiguration() {
     this.barParameters = new DiscreteBarChartConfiguration();
     this.barParameters.showLegend = true;
@@ -35,21 +32,24 @@ export class SalesChartComponent {
     };
   }
   loadChart(event: any) {
-    this.data = event
-      .reduce((acc, item) => {
-        const existingProduct = acc.find(prod => prod.name === item.PRO_NAME);
+    const eventObject = event.map(JSON.stringify);
+    const eventSet = new Set(eventObject);
+    const eventProcessed = Array.from(eventSet).map((item: string) => JSON.parse(item));
+    this.data = eventProcessed
+      .reduce((acc, current) => {
+        const existingProduct = acc.find(prod => prod.name === current.PRO_NAME);
         if (existingProduct) {
-          existingProduct.value += item.TOTAL_SALES;
+          existingProduct.value += current.TOTAL_SALES;
         } else {
           acc.push({
-            name: item.PRO_NAME,
-            value: item.TOTAL_SALES
+            name: current.PRO_NAME,
+            value: current.TOTAL_SALES
           });
         }
         return acc;
       }, [])
       .sort((a, b) => b.value - a.value);
-
+    this.setDefaultChart();
   }
   filter(values: Array<{ attr, value }>): Expression {
     let filters: Array<Expression> = [];
@@ -69,6 +69,9 @@ export class SalesChartComponent {
         if (fil.attr === 'PGE_ID') {
           filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
         }
+        if (fil.attr === 'SKIN_ID') {
+          filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
+        }
       }
     });
     if (filters.length > 0) {
@@ -76,6 +79,15 @@ export class SalesChartComponent {
     } else {
       return null;
     }
+  }
+  setDefaultChart() {
+    this.reloadProducts(this.numberOfProducts);
+    if (this.data.length > 10) {
+      this.numberOfProducts = 10;
+    } else {
+      this.numberOfProducts = this.data.length;
+    }
+    this.inputNumProducts.max = this.data.length;
   }
   setDefaultDates() {
     const defaultDates = this.getCurrentAndWeekAgoDates();
@@ -88,8 +100,7 @@ export class SalesChartComponent {
     this.reloadProducts(e.newValue)
   }
   reloadProducts(n) {
-    this.salesTable.queryRows = n;
-    this.salesTable.reloadData();
+    this.dataChart = this.data.slice(0, n);
   }
   refreshChart() {
     this.salesTable.clearFilters();

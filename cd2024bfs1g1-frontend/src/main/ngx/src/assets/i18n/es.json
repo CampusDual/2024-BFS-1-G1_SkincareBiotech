@@ -260,5 +260,6 @@
   "SALES_CHART": "Gráfica de ventas/producto.",
   "COLUMNS_NUMBER": "Número de columnas.",
   "VISITS_DATE": "Fecha de visita",
-  "DATA_PRODUCTS": "Estadísticas de productos"
+  "DATA_PRODUCTS": "Estadísticas de productos",
+  "SKIN_ID": "Tipo de piel"
 }

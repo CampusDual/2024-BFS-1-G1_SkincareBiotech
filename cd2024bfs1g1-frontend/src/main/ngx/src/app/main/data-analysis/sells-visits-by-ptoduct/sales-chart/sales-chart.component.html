@@ -14,6 +14,9 @@
             <o-combo class="pge-filter" attr="PGE_ID" read-only="no" service="product-genders" entity="productGender"
                 keys="PGE_ID" columns="PGE_ID;PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID"
                 translate="yes"></o-combo>
+            <o-combo class="skin-filter" attr="SKIN_ID" read-only="no" service="skinTypes" entity="skinType"
+                keys="SKIN_ID" columns="SKIN_ID;SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID"
+                translate="yes"></o-combo>
 
             <o-filter-builder #filterBuilder attr="salesFilter"
                 filters="SALE_DATE:SALE_DATE;CAT_ID:CAT_ID;BRA_ID:BRA_ID;PGE_ID:PGE_ID" [target]="salesTable"
@@ -25,13 +28,12 @@
     </div>
     <h1> {{"SALES_CHART" | oTranslate}}</h1>
 
-    <o-chart type="discreteBar" [data]="data" attr="salesBarChart" x-axis="PRO_NAME" y-axis="TOTAL_SALES"
+    <o-chart type="discreteBar" [data]="dataChart" attr="salesBarChart" x-axis="PRO_NAME" y-axis="TOTAL_SALES"
         [chart-parameters]="barParameters" [color]="colors" layout-fill>
     </o-chart>
     <o-table #salesTable attr="salesTable" service="products" entity="sales" keys="PRO_ID"
         columns="PRO_ID;PRO_NAME;TOTAL_SALES;SALES_DATE" visible-columns="PRO_ID;PRO_NAME;TOTAL_SALES;SALES_DATE"
-        [query-rows]="numberOfProducts" delete-button='no' (onDataLoaded)="loadChart($event)" pageable="true"
-        sort-columns="TOTAL_SALES:esc" oHidden>
+        delete-button='no' (onDataLoaded)="loadChart($event)" oHidden>
         <o-table-column attr="SALES_DATE" title="SALES_DATE" type="date"></o-table-column>
     </o-table>
 

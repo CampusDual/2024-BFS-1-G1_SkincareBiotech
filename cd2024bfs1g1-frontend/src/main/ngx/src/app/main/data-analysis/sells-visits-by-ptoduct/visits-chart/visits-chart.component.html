@@ -2,8 +2,9 @@
         <div class="header-charts">
 
                 <div class="filter-container">
-                        <o-integer-input class="columns-number" #inputNumProducts attr="COLUMNS_NUMBER" label="COLUMNS_NUMBER"
-                                [data]="numberOfProducts" min="0" (onValueChange)="updateNoP($event)"></o-integer-input>
+                        <o-integer-input class="columns-number" #inputNumProducts attr="COLUMNS_NUMBER"
+                                label="COLUMNS_NUMBER" [data]="numberOfProducts" min="0"
+                                (onValueChange)="updateNoP($event)"></o-integer-input>
                         <o-daterange-input class="date-filter" #inputDate attr="VISIT_DATE" read-only="no"
                                 [data]="selectedDates" format="D/M/Y"></o-daterange-input>
                         <o-combo class="cat-filter" attr="CAT_ID" searchable="yes" read-only="no" service="categories"
@@ -15,24 +16,28 @@
                         <o-combo class="pge-filter" attr="PGE_ID" read-only="no" service="product-genders"
                                 entity="productGender" keys="PGE_ID" columns="PGE_ID;PGE_NAME"
                                 visible-columns="PGE_NAME" value-column="PGE_ID" translate="yes"></o-combo>
+                        <o-combo class="skin-filter" attr="SKIN_ID" read-only="no" service="skinTypes" entity="skinType"
+                                keys="SKIN_ID" columns="SKIN_ID;SKIN_NAME" visible-columns="SKIN_NAME"
+                                value-column="SKIN_ID" translate="yes"></o-combo>
 
                         <o-filter-builder #filterBuilder attr="viewsFilter"
-                                filters="VISIT_DATE:VISIT_DATE;CAT_ID:CAT_ID;BRA_ID:BRA_ID;PGE_ID:PGE_ID"
+                                filters="VISIT_DATE:VISIT_DATE;CAT_ID:CAT_ID;BRA_ID:BRA_ID;PGE_ID:PGE_ID;SKIN_ID:SKIN_ID"
                                 [target]="viewsTable" query-on-change="yes" query-on-change-delay="500"
                                 [expression-builder]="filter">
                         </o-filter-builder>
                 </div>
-                <o-button attr="stroked1" type="STROKED" icon="youtube_searched_for" layout-padding (onClick)="refreshChart()">
+                <o-button attr="stroked1" type="STROKED" icon="youtube_searched_for" layout-padding
+                        (onClick)="refreshChart()">
                 </o-button>
         </div>
         <h1> {{"VISITS_CHART" | oTranslate}}</h1>
 
-        <o-chart type="discreteBar" [data]="data" attr="viewsBarChart" x-axis="PRO_NAME" y-axis="N_VIEWS"
+        <o-chart #viewsChart type="discreteBar" [data]="dataChart" attr="viewsBarChart" x-axis="PRO_NAME" y-axis="N_VIEWS"
                 [chart-parameters]="barParameters" [color]="colors" layout-fill>
         </o-chart>
         <o-table #viewsTable attr="productsView" service="productsView" entity="productViewCount" keys="PRO_ID"
                 columns="PRO_ID;PRO_NAME;N_VIEWS;VISIT_DATE" visible-columns="PRO_ID;PRO_NAME;N_VIEWS;VISIT_DATE"
-                [query-rows]="numberOfProducts" delete-button='no' (onDataLoaded)="loadChart($event)" pageable="true"
+                delete-button='no' (onDataLoaded)="loadChart($event)"
                 sort-columns="VISIT_DATE:esc" oHidden>
                 <o-table-column attr="VISIT_DATE" title="VISIT_DATE" type="date"></o-table-column>
         </o-table>

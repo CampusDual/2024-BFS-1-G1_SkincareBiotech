@@ -70,6 +70,9 @@
             </Sentence>
         </Query>
         <Query id="QUERY_SALES_COUNT">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="PRO_ID" prefix="S"/>
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     WITH SALES AS (
@@ -80,7 +83,8 @@
                         GROUP BY P.PRO_ID,DATE(O.ORD_DATE)
                     )
                     SELECT #COLUMNS#
-                    FROM SALES
+                    FROM SALES S
+                    LEFT JOIN ${mainschema}.PRODUCT_SKIN PS ON PS.PRO_ID = S.PRO_ID
                     #WHERE#
                     #ORDER#
                 ]]>

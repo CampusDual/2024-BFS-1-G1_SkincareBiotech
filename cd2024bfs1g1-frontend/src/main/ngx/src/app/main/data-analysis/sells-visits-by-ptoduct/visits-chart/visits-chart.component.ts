@@ -10,9 +10,10 @@ import { DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
 })
 export class VisitsChartComponent {
   data: any[];
+  dataChart: any[];
   barParameters: DiscreteBarChartConfiguration;
   colors = {};
-  numberOfProducts: number = 10;
+  numberOfProducts: number;
   selectedDates: any = {};
   @ViewChild('viewsTable') viewsTable: OTableComponent;
   @ViewChild('inputNumProducts') inputNumProducts: OIntegerInputComponent;
@@ -23,10 +24,6 @@ export class VisitsChartComponent {
     this.selectedDates = this.setDefaultDates();
     this._barConfiguration();
   }
-  ngAfterViewInit(): void {
-    this.viewsTable.queryRows = this.numberOfProducts;
-    this.viewsTable.reloadData();
-  }
   _barConfiguration() {
     this.barParameters = new DiscreteBarChartConfiguration();
     this.barParameters.showLegend = true;
@@ -35,27 +32,24 @@ export class VisitsChartComponent {
     };
   }
   loadChart(event: any) {
-    this.data = event.reduce((acc, item) => {
-      const existingProduct = acc.find(prod => prod.name === item.PRO_NAME);
-      if (existingProduct) {
-        existingProduct.value += item.N_VIEWS;
-      } else {
-        acc.push({
-          name: item.PRO_NAME,
-          value: item.N_VIEWS
-        });
-      }
-      return acc;
-    }, []).sort((a,b) => {
-      if(a.value > b.value){
-        return -1;
-      }
-      if(a.value < b.value){
-        return 1;
-      }
-      return 0;
-    });
-
+    const eventObject = event.map(JSON.stringify);
+    const eventSet = new Set(eventObject);
+    const eventProcessed = Array.from(eventSet).map((item: string) => JSON.parse(item));
+    this.data = eventProcessed
+      .reduce((acc, item) => {
+        const existingProduct = acc.find(prod => prod.name === item.PRO_NAME);
+        if (existingProduct) {
+          existingProduct.value += item.N_VIEWS;
+        } else {
+          acc.push({
+            name: item.PRO_NAME,
+            value: item.N_VIEWS
+          });
+        }
+        return acc;
+      }, [])
+      .sort((a, b) => b.value - a.value);
+      this.setDefaultChart();
   }
   filter(values: Array<{ attr, value }>): Expression {
     let filters: Array<Expression> = [];
@@ -75,6 +69,9 @@ export class VisitsChartComponent {
         if (fil.attr === 'PGE_ID') {
           filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
         }
+        if (fil.attr === 'SKIN_ID') {
+          filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
+        }
       }
     });
     if (filters.length > 0) {
@@ -82,6 +79,15 @@ export class VisitsChartComponent {
     } else {
       return null;
     }
+  }
+  setDefaultChart() {
+    this.reloadProducts(this.numberOfProducts);
+    if (this.data.length > 10) {
+      this.numberOfProducts = 10;
+    } else {
+      this.numberOfProducts = this.data.length;
+    }
+    this.inputNumProducts.max = this.data.length;
   }
   setDefaultDates() {
     const defaultDates = this.getCurrentAndWeekAgoDates();
@@ -94,8 +100,7 @@ export class VisitsChartComponent {
     this.reloadProducts(e.newValue)
   }
   reloadProducts(n) {
-    this.viewsTable.queryRows = n;
-    this.viewsTable.reloadData();
+    this.dataChart = this.data.slice(0, n);
   }
   refreshChart() {
     this.viewsTable.clearFilters();
