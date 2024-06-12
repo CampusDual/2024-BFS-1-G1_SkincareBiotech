@@ -1,6 +1,5 @@
-.logo {
-  width: 270px;
-  height: 120px;
+.nav-left-side {
+  margin-top: 5px;
 }
 
 .nav-right-side {
@@ -8,7 +7,13 @@
   align-items: center;
   margin-right: 10px;
 }
-
+.logo {
+  width: 150px;
+  height: 100px;
+}
+.browser {
+  margin-top: 36px;
+}
 .title {
   margin-left: 1rem;
   display: flex;
@@ -35,18 +40,19 @@
   display: flex;
   align-items: center;
   font-size: 22px;
-  font-weight: bold;
+  font-weight:normal;
   text-decoration: none;
 }
 
 .material-icons {
-  margin-right: 8px;
+  margin-right: 3px;
   font-size: 24px;
   line-height: 24px;
 }
 
 .cart-container {
   margin-right: 20px;
+  margin-top: 10px;
 }
 
 .cart-container .cart-count {
