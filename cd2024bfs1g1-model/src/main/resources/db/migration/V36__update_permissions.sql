@@ -24,6 +24,7 @@ UPDATE public.usr_role
 	{ "attr": "history", "visible": false, "enabled": false },
 	{ "attr": "products", "visible": false, "enabled": false },
 	{ "attr": "categories", "visible": false, "enabled": false },
+    { "attr": "home", "visible": false, "enabled": false },
 	{ "attr": "brands", "visible": false, "enabled": false },
 	{ "attr": "orders", "visible": false, "enabled": false },
 	{ "attr": "data-analysis", "visible": false, "enabled": false },
