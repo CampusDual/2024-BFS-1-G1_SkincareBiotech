@@ -5,7 +5,7 @@
         <ng-container *ngIf="isGraph; else noChart">
             <div class="chart-container">
                 <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE"
-                    y-axis="TOTAL" x-label="Age" y-label="Amount (€)" [color]="colorScheme">
+                    y-axis="TOTAL" x-label="Age" y-label="Amount (€)" [color]="colorScheme" >
                 </o-chart>
                 <o-table service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE" oHidden="yes"
                     columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE"
@@ -15,10 +15,10 @@
                     es el que más factura con un {{percentage | number: '1.2-2' }}% sobre el total de facturado
                 </div>
             </div>
-
         </ng-container>
         <ng-template #noChart>No hay datos para los rangos de edad seleccionados</ng-template>
     </mat-tab>
+
     <mat-tab>
         <ng-template class="label" mat-tab-label>{{ "AGE_GENDER" | oTranslate }}</ng-template>
         <h1>{{"BILLING_BY_AGE_AND_GENDER_TITTLE" | oTranslate}}</h1>

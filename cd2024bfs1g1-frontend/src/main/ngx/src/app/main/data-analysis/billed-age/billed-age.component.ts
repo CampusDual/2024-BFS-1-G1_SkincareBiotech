@@ -16,7 +16,6 @@ export class BilledAgeComponent {
   service: OntimizeService;
 
 
-  ageRangeKey = 'AGE_RANGE';
   isGraph: boolean = true;
 
   // Billed age
@@ -25,7 +24,6 @@ export class BilledAgeComponent {
   maxBilledByAge: number;
   totalBilled: number;
   percentage: number;
-  isBilledAgeData: boolean;
 
   //Billed age&gender
   minAge2: number;
@@ -34,7 +32,6 @@ export class BilledAgeComponent {
   maxBilledGenreTotal: number;
   totalBilled2: number;
   percentage2: number;
-  isAgeGenderData: boolean;
   genres = ['MAN', 'WOMAN', 'PNA', 'OTHER'];
 
   colorScheme = {
@@ -47,12 +44,10 @@ export class BilledAgeComponent {
   }
 
   loadBilledAge(event: any) {
-    this.initializeBilledAgeParams();
     this.calculateBilledAgeStatistics(event);
   }
 
   loadAgeGender(event: any) {
-    this.initializeBilledAgeGenderParams();
     this.calculateBilledAgeAndGenderStatistics(event);
   }
 
@@ -61,19 +56,18 @@ export class BilledAgeComponent {
     this.maxAge = 0;
     this.maxBilledByAge = 0;
     this.totalBilled = 0;
-    this.isBilledAgeData = false;
-    this.isGraph = true;
   }
 
   private initializeBilledAgeGenderParams() {
     this.minAge2 = 0;
     this.maxAge2 = 0;
     this.maxBilledGenre = '';
-    this.isAgeGenderData = false;
     this.maxBilledGenreTotal = 0;
+    this.totalBilled = 0;
   }
 
   private calculateBilledAgeStatistics(data: any[]) {
+    this.initializeBilledAgeParams();
     data.forEach(item => {
       if (item.TOTAL > this.maxBilledByAge) {
         this.maxBilledByAge = item.TOTAL;
@@ -91,8 +85,10 @@ export class BilledAgeComponent {
   }
 
   private calculateBilledAgeAndGenderStatistics(data: any[]) {
+    this.initializeBilledAgeGenderParams();
     data.forEach(item => {
       this.genres.forEach(genre => {
+        this.totalBilled += item[genre];
         if (item[genre] > this.maxBilledGenreTotal) {
           this.maxBilledGenreTotal = item[genre]
           this.maxBilledGenre = genre;

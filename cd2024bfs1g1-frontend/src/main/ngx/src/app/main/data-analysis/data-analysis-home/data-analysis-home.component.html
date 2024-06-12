@@ -1,12 +1,20 @@
 <div class="bg-container">
        <h1>{{"FACTURATION_TITLE" | oTranslate}}</h1>
        <div class="chart-container">
-              <div class="chart-tittle-y-container">
-                     <div class="chart">
-                            <o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE"
-                                   x-data-type="time" y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)">
-                            </o-chart>
+              <div class="chart">
+                     <o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE"
+                            x-data-type="time" y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)">
+                     </o-chart>
+
+                     <o-table service="orders" entity="totalPriceOrders" oHidden="yes" keys="ORD_DATE"
+                            columns="ORD_DATE;AMOUNT_PRICE" visible-columns="ORD_DATE;AMOUNT_PRICE" query-rows="15"
+                            delete-button='no' (onDataLoaded)="loadDataAnalysis($event)"></o-table>
+
+                     <div>El día que más se ha facturado es el {{ maxDay }} de {{ maxMonth }} con un total de {{
+                            maxAmount | number: '1.2-2' }}€, representando un
+                            {{ percentage | number: '1.2-2' }}% del total de los últimos 30 días
                      </div>
+                     <div> Has facturado un total de {{ totalBilled | number: '1.2-2' }}€ en SkinCare Biotech</div>
               </div>
        </div>
 </div>
