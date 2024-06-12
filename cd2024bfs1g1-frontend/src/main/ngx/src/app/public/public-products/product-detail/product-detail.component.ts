@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { OntimizeService, PermissionsService } from 'ontimize-web-ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -12,13 +12,13 @@ import { HashService } from 'src/app/shared/services/hash.service';
 export class ProductDetailComponent implements OnInit {
 
   service: OntimizeService;
-  service2:OntimizeService;
+  service2: OntimizeService;
   product: any = null;
-  hash:string;
+  hash: string;
   allergens: any[] = [];
   skintypes: any = null;
-  userAllergens : any = null;
-  matchingAllergens : any = null;
+  userAllergens: any[] = [];
+  matchingAllergens: any = null;
 
   constructor(
     protected injector: Injector,
@@ -27,6 +27,7 @@ export class ProductDetailComponent implements OnInit {
     private router: Router,
     private cartService: CartService,
     private hashService: HashService,
+    private permissionService: PermissionsService,
   ) {
     this.service = this.injector.get(OntimizeService);
     this.service2 = this.injector.get(OntimizeService);
@@ -39,33 +40,43 @@ export class ProductDetailComponent implements OnInit {
     //this.hash = await this.hashService.generateUniqueHash();
 
     this.hashService.generateUniqueHash()
-    .then(hash=>{
-      this.hash = hash;
-      this.tracker(id,this.hash);
-    })
+      .then(hash => {
+        this.hash = hash;
+        this.tracker(id, this.hash);
+      })
     this.loadProduct(id);
-    
+
     // Load both allergens simultaneously
-    Promise.all([
-      this.loadAllergens(id),
-      this.loadUserAllergens()
-    ]).then(() => {
-      // Perform matching once both allergens are loaded
-      this.matchingAllergens = this.getMatchingAllergens();
-    });
+    let p1 = this.loadAllergens(id);
+    let pron_arr = [p1];
+    let p2 = this.loadUserAllergens();
+    if(this.isLogged()){
+      pron_arr.push(p2);
+    }
+    Promise.all(pron_arr)
+      //[
+      // this.loadAllergens(id),
+      //this.loadUserAllergens()
+      //])
+      .then((res) => {
+        // Perform matching once both allergens are loaded
+        console.log(res);
+        this.matchingAllergens = this.getMatchingAllergens();
+      })
+      .catch(error => console.warn(error));
     this.loadSkin(id);
 
 
   }
 
-  public tracker(id,hash){
+  public tracker(id, hash) {
 
-      const conf = this.service2.getDefaultServiceConfiguration('productsView');
-      this.service2.configureService(conf); 
-      this.service2.insert({"PROV_UID":hash,"PRO_ID":id},"productView")
+    const conf = this.service2.getDefaultServiceConfiguration('productsView');
+    this.service2.configureService(conf);
+    this.service2.insert({ "PROV_UID": hash, "PRO_ID": id }, "productView")
       .subscribe(
         (data) => {
-          console.log(data);       
+          console.log(data);
         },
         (error) => {
           console.log(error + " ¡algo salió mal!");
@@ -73,7 +84,7 @@ export class ProductDetailComponent implements OnInit {
       );
   }
 
-  public loadProduct(id){
+  public loadProduct(id) {
     const conf = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf);
     this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE", "BRA_NAME", "PGE_NAME", "CAT_NAME"], "productEnabled")
@@ -86,14 +97,14 @@ export class ProductDetailComponent implements OnInit {
       })
   }
 
-  public loadSkin(id){
+  public loadSkin(id) {
     const conf = this.service.getDefaultServiceConfiguration('productsSkin');
     this.service.configureService(conf);
     this.service.query({ "PRO_ID": id }, ["SKIN_NAME"], "productSkin")
       .subscribe((data) => {
         if (data.data.length != 0) {
           this.skintypes = data.data;
-        } 
+        }
       })
   }
 
@@ -119,45 +130,58 @@ export class ProductDetailComponent implements OnInit {
       this.service.configureService(conf);
       this.service.query({ "PRO_ID": id }, ["ALLER_NAME"], "allergenProduct")
         .subscribe((data) => {
-
-          if (data.data.length != 0) {
-            this.allergens = data.data;
-            this.loadUserAllergens()
-              .then(() => resolve())
-              .catch(error => reject(error));
-          }
-          resolve();
-
+          this.allergens = data.data;
+          resolve(data.data);
         }, error => {
           reject(error);
         });
+
+      //       if (data.data.length != 0) {
+      //         this.allergens = data.data;
+      //         this.loadUserAllergens()
+      //           .then(() => resolve())
+      //           .catch(error => reject(error));
+      //       }
+      //       resolve();
+
+      //     }, error => {
+      //       reject(error);
+      //     });
+      // });
     });
   }
-  
+
   public loadUserAllergens(): Promise<void> {
     return new Promise((resolve, reject) => {
-      const conf = this.service.getDefaultServiceConfiguration('allergen-users');
-      this.service.configureService(conf);
-      // Backend for allergen-users query already implements an AuthService to secure IDORs
-      this.service.query({}, ["ALLER_NAME"], "allergenUser")
-        .subscribe((data) => {
-
-          if (data.data.length != 0) {
-            this.userAllergens = data.data; 
-          }
-          resolve();
-
-        }, error => {
-          reject(error);
-        });
+    const conf = this.service.getDefaultServiceConfiguration('allergen-users');
+    this.service.configureService(conf);
+    // Backend for allergen-users query already implements an AuthService to secure IDORs
+    this.service.query({}, ["ALLER_NAME"], "allergenUser")
+    .subscribe((data) => {
+      this.userAllergens = data.data;
+      resolve(data.data);
+    }, error => {
+      reject(error);
     });
-  }
-  
+    //     .subscribe((data) => {
+
+    //       if (data.data.length != 0) {
+    //         this.userAllergens = data.data; 
+    //       }
+    //       resolve();
+
+    //     }, error => {
+    //       reject(error);
+    //     });
+    // });
+  });
+}
+
   /**
    * Matches the users allergen list to the product allergens
    * and returns any allergens that match, returns an empty array otherwise
    */
-  public getMatchingAllergens(){
+  public getMatchingAllergens() {
     // I decided to use a Set here as it makes lookups 0(1) and allergen listing can be large
     const userAllergenNames = new Set(this.userAllergens.map(allergen => allergen["ALLER_NAME"]));
     // Get matches by filtering, remember that entity results are arrays of maps
@@ -166,8 +190,15 @@ export class ProductDetailComponent implements OnInit {
     return matchingAllergens.map(allergen => allergen["ALLER_NAME"]);
   }
 
-  public getStringOfAllergies(){
+  public getStringOfAllergies() {
     return this.matchingAllergens.join(", ");
+  }
+
+  public isLogged(): boolean {
+    this.permissionService.getUserPermissionsAsPromise().then(() => {
+      return true;
+    });
+    return false;
   }
 
 }
