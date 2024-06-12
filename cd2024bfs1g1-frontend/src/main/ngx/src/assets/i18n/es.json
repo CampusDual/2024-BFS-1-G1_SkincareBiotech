@@ -272,5 +272,6 @@
   "SELECT_X_AXIS": "Seleccionar eje X",
   "SELECT_Y_AXIS": "Seleccionar eje Y",
   "DATA_BY_SKIN": "Usuarios por tipo de piel",
-  "SKIN_TYPE": "Tipo de piel"
+  "SKIN_TYPE": "Tipo de piel",
+  "CHART_SETTINGS": "Configuración gráficas"
 }
