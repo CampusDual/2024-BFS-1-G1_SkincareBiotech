@@ -17,7 +17,7 @@
                     <div fxLayout="column" fxLayoutGap="12px" class="order-inputs">
                         <o-integer-input #usrId attr="USR_ID" hidden sql-type="INTEGER" enabled="no" ></o-integer-input>
                         <o-text-input #nameInput class="order-input" attr="USR_NAME" required="yes"
-                            placeholder="USR_NAME"></o-text-input>
+                            placeholder="USR_NAME" read-only="yes"></o-text-input>
 
                             <o-phone-input #phoneInput class="order-input" attr="USR_PHONE" 
                             thousand-separator=" " required="yes" placeholder="USR_PHONE" [validators]="validatorPhone"> 
