@@ -77,6 +77,11 @@
           "attr": "allergens",
           "visible": false,
           "enabled": false
+        },
+        {
+          "attr": "users-skin-types",
+          "visible": false,
+          "enabled": false
         }
       ],
       "routes": [

@@ -178,13 +178,13 @@
   "RANGE_NOT_VALID": "Rango no válido. Las edades no se pueden solapar.",
   "AGE_GRAPH": "Rangos de edad",
   "SETTINGS": "Ajustes",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúsculas y solo contener letras sin espacios",
   "USR_NAME": "Nombre de usuario",
   "USR_LOGIN": "Nombre de acceso",
   "USR_SURNAME": "Apellidos",
   "USR_EMAIL": "Correo",
   "USR_PHONE": "Teléfono",
   "USR_PASSWORD": "Contraseña",
+  "USR_GENRE": "Género",
   "ADD_SELLER": "AÑADIR NUEVO VENDEDOR",
   "SELLERS": "Vendedores",
   "DELETE_CART_WARNING": "Esta seguro que quiere eliminar del carrito?",
@@ -200,7 +200,7 @@
   "MY_PROFILE": "Mi perfil",
   "NAME": "Nombre",
   "CONTACT": "Contacto",
-  "ADDITIONAL_INFO": "Información adicional",
+  "ABOUT_ME": "Sobre mí",
   "TOTAL_PRICE": "Precio total",
   "ORD_PAID": "Pagado",
   "NUM_UNITS": "Unidades",
@@ -272,8 +272,12 @@
   "SKIN_ID": "Tipo de piel",
   "ADD_RECOMENDATIONS": "Añadir recomendaciones",
   "NO_RECOMENDATIONS": "No hay recomendaciones",
-  "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel"
-
-
-
+  "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel",
+  "DATA_BY_SKIN": "Usuarios por tipo de piel",
+  "SKIN_TYPE": "Tipo de piel",
+  "UGE_ID": "Genero",
+  "ERROR_NAME": "No se permite usar caracteres numericos",
+  "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
+  "ERROR_PHONE": "Teléfono no válido",
+  "SHIP_INFO": "Información de envío"
 }

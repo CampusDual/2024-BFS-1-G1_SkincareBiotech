@@ -184,6 +184,7 @@
   "USR_EMAIL": "Email",
   "USR_PHONE": "Phone",
   "USR_PASSWORD": "Password",
+  "USR_GENRE": "Gender",
   "ADD_SELLER": "ADD NEW SELLER",
   "SELLERS": "Sellers",
   "DELETE_CART_WARNING": "Are you sure you want to remove it from cart ?",
@@ -200,7 +201,7 @@
   "MY_PROFILE": "My profile",
   "NAME": "Name",
   "CONTACT": "Contact",
-  "ADDITIONAL_INFO": "Additional information",
+  "ABOUT_ME": "About me",
   "FEMALE": "Female",
   "MALE": "Male",
   "UNISEX": "Unisex",
@@ -273,6 +274,12 @@
   "SKIN_ID": "Skin type",
   "ADD_RECOMENDATIONS": "Add recomendations",
   "NO_RECOMENDATIONS": "There aren't any recomendations",
-  "ERROR_DUP_SKIN": "This product already has this skin type"
+  "ERROR_DUP_SKIN": "This product already has this skin type",
+  "DATA_BY_SKIN": "Users by skin type",
+  "SKIN_TYPE": "Skin type",
+  "UGE_ID": "Gender",
+  "ERROR_NAME": "It is not allowed to use numerical characters",
+  "ERROR_BIRTHDATE": "You need to be over 18 years old!",
+  "ERROR_PHONE": "Phone not valid",
+  "SHIP_INFO": "Shipment information"
 }
-
