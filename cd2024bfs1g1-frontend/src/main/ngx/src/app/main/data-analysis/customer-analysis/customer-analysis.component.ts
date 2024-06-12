@@ -1,12 +1,13 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, OnDestroy } from '@angular/core';
 import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-customer-analysis',
   templateUrl: './customer-analysis.component.html',
   styleUrls: ['./customer-analysis.component.css']
 })
-export class CustomerAnalysisComponent implements OnInit {
+export class CustomerAnalysisComponent implements OnInit, OnDestroy {
 
   multi: any[] = [];
   view: any[] = [900, 500];
@@ -15,6 +16,7 @@ export class CustomerAnalysisComponent implements OnInit {
   selectedYAxis: string = 'AGE_RANGE';
 
   service: OntimizeService;
+  translateSubscription: Subscription;
 
   legend: boolean = true;
   showLabels: boolean = true;
@@ -41,7 +43,20 @@ export class CustomerAnalysisComponent implements OnInit {
   ngOnInit(): void {
     this.updateAxisLabels();
     this.fetchCustomerData();
+
+    this.translateSubscription = this.translate.onLanguageChanged.subscribe(() => {
+      this.updateAxisLabels();
+      this.transformDataToHeatMap(this.rawData);
+    });
   }
+
+  ngOnDestroy(): void {
+    if (this.translateSubscription) {
+      this.translateSubscription.unsubscribe();
+    }
+  }
+
+  rawData: any[] = [];
 
   fetchCustomerData(): void {
     const conf = this.service.getDefaultServiceConfiguration('billed-ages');
@@ -49,7 +64,8 @@ export class CustomerAnalysisComponent implements OnInit {
     this.service.query({}, ["GENDER", "AGE_RANGE", "SKIN_TYPE", "USER_COUNT"], "customerAgeGenderAndSkin")
       .subscribe((data) => {
         if (data.data.length > 0) {
-          this.transformDataToHeatMap(data.data);
+          this.rawData = data.data;
+          this.transformDataToHeatMap(this.rawData);
         }
       });
   }
@@ -62,8 +78,8 @@ export class CustomerAnalysisComponent implements OnInit {
       const rawYAxisValue = item[this.selectedYAxis];
       const userCount = item.USER_COUNT;
 
-      const translatedXAxisValue = this.translate.get(rawXAxisValue);  
-      const translatedYAxisValue = this.translate.get(rawYAxisValue);  
+      const translatedXAxisValue = this.translate.get(rawXAxisValue);
+      const translatedYAxisValue = this.translate.get(rawYAxisValue);
 
       if (!groupedData[translatedXAxisValue]) {
         groupedData[translatedXAxisValue] = {};
