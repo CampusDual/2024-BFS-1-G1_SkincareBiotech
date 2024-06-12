@@ -30,6 +30,9 @@
                     <o-validator error-name="minlength" error-text="Minimum length is 5 characters"></o-validator>
                     <o-validator error-name="maxlength" error-text="Maximum length is 5 characters"></o-validator>
                 </o-text-input>
+                <o-combo attr="SKIN_ID" service="skinTypes" entity="skinType" keys="SKIN_ID"
+                    columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" null-selection="no">
+                </o-combo>
             </div>
         </o-form>
     </mat-tab>
