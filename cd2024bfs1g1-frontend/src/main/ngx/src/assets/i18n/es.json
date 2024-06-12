@@ -184,6 +184,7 @@
   "USR_EMAIL": "Correo",
   "USR_PHONE": "Teléfono",
   "USR_PASSWORD": "Contraseña",
+  "USR_GENRE": "Género",
   "ADD_SELLER": "AÑADIR NUEVO VENDEDOR",
   "SELLERS": "Vendedores",
   "DELETE_CART_WARNING": "Esta seguro que quiere eliminar del carrito?",
@@ -198,7 +199,7 @@
   "MY_PROFILE": "Mi perfil",
   "NAME": "Nombre",
   "CONTACT": "Contacto",
-  "ADDITIONAL_INFO": "Información adicional",
+  "ABOUT_ME": "Sobre mí",
   "TOTAL_PRICE": "Precio total",
   "ORD_PAID": "Pagado",
   "NUM_UNITS": "Unidades",
@@ -264,6 +265,11 @@
   "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel",
   "DATA_BY_SKIN": "Usuarios por tipo de piel",
   "SKIN_TYPE": "Tipo de piel",
+  "UGE_ID": "Genero",
+  "ERROR_NAME": "No se permite usar caracteres numericos",
+  "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
+  "ERROR_PHONE": "Teléfono no válido",
+  "SHIP_INFO": "Información de envío",
   "ERROR_PATTERN_PHONE": "El número debe comenzar con 6, 7, 8 o 9 y solo se permiten números",
   "ERROR_PATTERN_ZIP": "Solo se permiten números"
   
