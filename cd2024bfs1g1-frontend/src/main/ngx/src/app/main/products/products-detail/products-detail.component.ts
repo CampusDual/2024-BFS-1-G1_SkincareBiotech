@@ -24,13 +24,14 @@ export class ProductsDetailComponent implements OnInit {
   id: any;
   isVisible: boolean = false;
   Visible: boolean = true;
-  product: any;
+  product: {};
   service: OntimizeService;
   public commissionPlatform: number;
   public commissionRedSys: number;
   public priceUser: number;
   productName: string = '';
   isDataLoaded: boolean = false;
+  priceSaleUser: any = false;
 
   constructor(
     protected injector: Injector,
@@ -70,9 +71,6 @@ export class ProductsDetailComponent implements OnInit {
       this.router.navigate(['/main/products']);
     }
   }
-  onInsert(event) {
-    this.router.navigate(['/main/products']);
-  }
 
   changePrice(event) {
     if (!event) {
@@ -82,12 +80,9 @@ export class ProductsDetailComponent implements OnInit {
     }
   }
 
-  onSelectedTabChange() {
-    this.router.navigate(['/main/products/'+this.product.PRO_ID+'/allergen']);
-  }
-
   checkName($event: any) {
     this.product = $event;
+    this.priceSaleUser = $event.PRO_SALE;
     this.productName = $event.PRO_NAME;
   }
 

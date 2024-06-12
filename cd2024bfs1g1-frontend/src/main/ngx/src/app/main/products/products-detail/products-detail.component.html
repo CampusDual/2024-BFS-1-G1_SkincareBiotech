@@ -2,7 +2,7 @@
     show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="checkName($event)">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
-            <o-real-input attr="PRO_ID" hidden></o-real-input>
+            <o-integer-input attr="PRO_ID" hidden></o-integer-input>
             <o-real-input attr="PRO_SALE" hidden></o-real-input>
             <o-real-input attr="PRICE" hidden></o-real-input>
             <o-real-input attr="SALE_PRICE" hidden></o-real-input>
@@ -22,16 +22,20 @@
                             <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
                         </div>
                         <div class="price-row">
-                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes" (onChange)="changePrice($event)"></o-currency-input>
-                            <div *ngIf="(PRO_SALE != NULL);else noOfer">
+                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"
+                                (onChange)="changePrice($event)"></o-currency-input>
+                            <div *ngIf="priceSaleUser">
                                 <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
-                                    number:"1.2-2" }} €</label><label class="no-ofer-label"> {{'WITHOUT_OFFER' | oTranslate |uppercase}}</label></p>
-                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ product.SALE_PRICE }} €</label></p>
+                                        number:"1.2-2" }} €</label><label class="no-ofer-label"> {{'WITHOUT_OFFER' |
+                                        oTranslate |uppercase}}</label></p>
+                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{
+                                        product.SALE_PRICE }} €</label></p>
                             </div>
-                            <ng-template #noOfer>
+                            <div #noOfer *ngIf="!priceSaleUser">
                                 <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
-                                    number:"1.2-2" }} €</label></p>
-                            </ng-template>
+                                        number:"1.2-2" }} €</label>
+                                </p>
+                            </div>
                         </div>
                         <div class="details-row">
                             <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
@@ -80,7 +84,8 @@
                 <o-form-layout-manager mode="dialog" attr="sale_layout">
                     <o-table attr="saleTable" service="sales" entity="sale" keys="SAL_ID" parent-keys="PRO_ID"
                         insert-button="true" delete-button="false"
-                        columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE;SALE_PRICE" sort-columns="SAL_END_DATE:desc"
+                        columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE;SALE_PRICE"
+                        sort-columns="SAL_END_DATE:desc"
                         visible-columns="SAL_PRICE;SALE_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none"
                         insert-form-route="offer/new">
                         <o-table-column attr="SAL_ID" title="SAL_ID" content-align="center"></o-table-column>

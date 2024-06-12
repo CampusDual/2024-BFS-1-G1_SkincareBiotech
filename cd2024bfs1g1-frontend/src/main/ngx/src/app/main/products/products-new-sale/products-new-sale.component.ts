@@ -1,4 +1,5 @@
-import { Component, Inject, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
@@ -18,13 +19,14 @@ export class ProductsNewSaleComponent implements OnInit {
 
   service: OntimizeService;
 
-  commissionPlataform: number;
+  commissionPlatform: number;
   commissionRedSys: number;
 
   public priceUser: number;
 
   constructor(
     protected injector: Injector,
+    private router: Router,  
   ) {
     this.service = this.injector.get(OntimizeService);
   }
@@ -36,7 +38,7 @@ export class ProductsNewSaleComponent implements OnInit {
         .subscribe((data) => {
           if (data.data.length > 0) {
             this.commissionRedSys = data.data.find((element) => (element.COM_NAME === "Redsys_commissions")).COM_VALUE;            
-            this.commissionPlataform = data.data.find((element) => (element.COM_NAME === "Plataform_commissions")).COM_VALUE;
+            this.commissionPlatform = data.data.find((element) => (element.COM_NAME === "Platform_commissions")).COM_VALUE;
           }
         })
   }
@@ -45,7 +47,7 @@ export class ProductsNewSaleComponent implements OnInit {
     if(!event){
       this.priceUser = 0;
     }else{
-      this.priceUser = (event / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
+      this.priceUser = (event / (1 - (this.commissionPlatform / 100))) / (1 - (this.commissionRedSys / 100));
     }
   }
 
