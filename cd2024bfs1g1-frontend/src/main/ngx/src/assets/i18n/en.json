@@ -184,6 +184,7 @@
   "USR_EMAIL": "Email",
   "USR_PHONE": "Phone",
   "USR_PASSWORD": "Password",
+  "USR_GENRE": "Gender",
   "ADD_SELLER": "ADD NEW SELLER",
   "SELLERS": "Sellers",
   "DELETE_CART_WARNING": "Are you sure you want to remove it from cart ?",
@@ -198,7 +199,8 @@
   "MY_PROFILE": "My profile",
   "NAME": "Name",
   "CONTACT": "Contact",
-  "ADDITIONAL_INFO": "Additional information",
+  "ABOUT_ME": "About me",
+  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "FEMALE": "Female",
   "MALE": "Male",
   "UNISEX": "Unisex",
@@ -257,5 +259,10 @@
   "SKIN_ID": "Skin type",
   "DATA_BY_SKIN": "Users by skin type",
   "SKIN_TYPE": "Skin type",
-  "SALE_DATE": "SALE DATE"
+  "SALE_DATE": "SALE DATE",
+  "UGE_ID": "Gender",
+  "ERROR_NAME": "It is not allowed to use numerical characters",
+  "ERROR_BIRTHDATE": "You need to be over 18 years old!",
+  "ERROR_PHONE": "Phone not valid",
+  "SHIP_INFO": "Shipment information"
 }
