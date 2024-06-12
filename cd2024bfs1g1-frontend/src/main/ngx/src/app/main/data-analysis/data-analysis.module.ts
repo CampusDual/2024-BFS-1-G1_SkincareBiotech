@@ -8,7 +8,6 @@ import { BilledAgeComponent } from './billed-age/billed-age.component';
 import { BilledAgeRangeNewComponent } from './billed-age/billed-age-range-new/billed-age-range-new.component';
 import { SellsByCategoryComponent } from './sells-by-category/sells-by-category.component';
 import { UsersSkinTypesComponent } from './users-skin-types/users-skin-types.component';
-import { TargetCustomerComponent } from './target-customer/target-customer.component';
 
 
 @NgModule({
@@ -17,8 +16,7 @@ import { TargetCustomerComponent } from './target-customer/target-customer.compo
     BilledAgeComponent,
     BilledAgeRangeNewComponent,
     SellsByCategoryComponent,
-    UsersSkinTypesComponent,
-    TargetCustomerComponent
+    UsersSkinTypesComponent
   ],
   imports: [
     CommonModule,

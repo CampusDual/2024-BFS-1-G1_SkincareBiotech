@@ -13,7 +13,6 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'allergens', name: 'ALLERGENS', route: '/main/admin/allergens', icon: 'priority_high'},
   { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
   { id: 'sells-by-category', name: 'DATA_BY_CATEGORY', icon: 'category', route: '/main/data-analysis/bycategory'},
-  { id: 'target-customers', name: 'TARGET_CUSTOMERS', icon: 'pie_chart', route: '/main/data-analysis/target-customers'},
   { id: 'billed-age', name: 'BILLED_AGE', icon: 'bar_chart', route: '/main//data-analysis/billed-age' },
   { id: 'users-skin-types', name: 'DATA_BY_SKIN', icon: 'category', route: '/main/data-analysis/skintypes'},
   { id: 'login', name: 'LOGIN', route: '/login', icon: 'power_settings_new'},
