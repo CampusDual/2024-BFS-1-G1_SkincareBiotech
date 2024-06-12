@@ -30,8 +30,6 @@
             <label>{{ 'SHIP_INFO' | oTranslate }}</label>
             <div class="info">
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
-                <o-combo attr="SKIN_ID" service="skinTypes" entity="skinType" keys="SKIN_ID"
-                    columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" null-selection="no"></o-combo>
             </div>
 
             <label>{{ 'ABOUT_ME' | oTranslate }}</label>
@@ -42,6 +40,8 @@
                 </div>
                 <o-combo attr="UGE_ID" searchable="no" service="user-genders" entity="userGender" keys="UGE_ID"
                 columns="UGE_NAME" visible-columns="UGE_NAME" value-column="UGE_ID" translate="yes" required="yes" null-selection="no"></o-combo>
+                <o-combo attr="SKIN_ID" service="skinTypes" entity="skinType" keys="SKIN_ID"
+                    columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" null-selection="no"></o-combo>
             </div> 
         </o-form>
     </mat-tab>
