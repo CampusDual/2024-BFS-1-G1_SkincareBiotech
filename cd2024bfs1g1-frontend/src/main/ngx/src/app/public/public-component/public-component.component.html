@@ -17,17 +17,17 @@
       </a>
     </div>
     <div class="navbar-item">
-      <a *ngIf="!isLogedIn" href="/login" title="{{('MY_PROFILE' | oTranslate)}}">
+      <a *ngIf="!isLogedIn" routerLink="/login" title="{{('MY_PROFILE' | oTranslate)}}">
         <i class="material-icons">person</i>
         {{ 'MY_PROFILE' | oTranslate}}
       </a>
-      <a *ngIf="isLogedIn" href="/profile" title="{{('MY_PROFILE' | oTranslate)}}">
+      <a *ngIf="isLogedIn" routerLink="/profile" title="{{('MY_PROFILE' | oTranslate)}}">
         <i class="material-icons">person</i>
         {{ 'MY_PROFILE' | oTranslate}}
       </a>
     </div>
     <div class="navbar-item">
-      <a *ngIf="!isLogedIn" href="/login" title="{{('LOGIN' | oTranslate)}}">
+      <a *ngIf="!isLogedIn" routerLink="/login" title="{{('LOGIN' | oTranslate)}}">
         <i class="material-icons">power_settings_new</i>
         {{('LOGIN' | oTranslate)}}
       </a>
@@ -36,11 +36,6 @@
         {{ isLogedIn ? ('LOGOUT' | oTranslate) : '' }}
       </a>
     </div>
-
-
-
-
-
   </nav>
 
   <!-- <o-bar-menu *ngIf="isLoaded">
