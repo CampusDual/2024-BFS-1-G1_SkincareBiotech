@@ -262,10 +262,11 @@
   "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel",
   "DATA_BY_SKIN": "Usuarios por tipo de piel",
   "SKIN_TYPE": "Tipo de piel",
-  "VISIT_CHART": "Gráfica de visitas/producto.",
-  "SALES_CHART": "Gráfica de ventas/producto.",
-  "COLUMNS_NUMBER": "Número de columnas.",
+  "VISIT_CHART": "Visitas por producto",
+  "SALE_CHART": "Ventas por producto",
+  "COLUMNS_NUMBER": "Número de columnas",
   "VISITS_DATE": "Fecha de visita",
   "DATA_PRODUCTS": "Estadísticas de productos",
-  "SKIN_ID": "Tipo de piel"
+  "SALE_DATE": "Fecha de compra"
+
 }

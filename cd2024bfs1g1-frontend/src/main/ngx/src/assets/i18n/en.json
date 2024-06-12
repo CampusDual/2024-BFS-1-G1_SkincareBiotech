@@ -249,12 +249,13 @@
   "SAL_END_DATE": "End date",
   "ADD_SALE": "Add new sale",
   "START_DATE_BEFORE_CURRENT_DATE": "Start date before current date",
-  "VISITS_CHART": "Visits/product chart.",
-  "SALES_CHART": "Sales/product chart.",
-  "COLUMNS_NUMBER": "Number of columns.",
+  "VISITS_CHART": "Visits by product",
+  "SALE_CHART": "Sales by product",
+  "COLUMNS_NUMBER": "Number of columns",
   "VISIT_DATE": "Visit date",
   "DATA_PRODUCTS": "Product statistics",
   "SKIN_ID": "Skin type",
   "DATA_BY_SKIN": "Users by skin type",
-  "SKIN_TYPE": "Skin type"
+  "SKIN_TYPE": "Skin type",
+  "SALE_DATE": "SALE DATE"
 }

@@ -102,12 +102,6 @@ export class SalesChartComponent {
   reloadProducts(n) {
     this.dataChart = this.data.slice(0, n);
   }
-  refreshChart() {
-    this.salesTable.clearFilters();
-    this.inputNumProducts.setValue(this.numberOfProducts);
-    this.reloadProducts(this.numberOfProducts);
-
-  }
   getCurrentAndWeekAgoDates() {
     const currentDate = new Date();
     const weekAgoDate = new Date();

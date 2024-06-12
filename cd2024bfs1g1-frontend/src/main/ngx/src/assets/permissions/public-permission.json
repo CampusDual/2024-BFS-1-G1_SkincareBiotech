@@ -72,6 +72,11 @@
           "attr": "users-skin-types",
           "visible": false,
           "enabled": false
+        },
+        { 
+          "attr": "sells-visists", 
+          "visible": false, 
+          "enabled": false 
         }
       ],
       "routes": [
