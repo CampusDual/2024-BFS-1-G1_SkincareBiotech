@@ -13,7 +13,7 @@ export class ProductsNewComponent implements OnInit{
   @ViewChild('realPriceCurrency') 
   realPriceCurrency : OCurrencyInputComponent;
   service: OntimizeService;
-  commissionPlataform: number;
+  commissionPlatform: number;
   commissionRedSys: number;
   proId: string;
   public priceUser: number;
@@ -32,7 +32,7 @@ export class ProductsNewComponent implements OnInit{
         .subscribe((data) => {
           if (data.data.length > 0) {
             this.commissionRedSys = data.data.find((element) => (element.COM_NAME === "Redsys_commissions")).COM_VALUE;            
-            this.commissionPlataform = data.data.find((element) => (element.COM_NAME === "Plataform_commissions")).COM_VALUE;
+            this.commissionPlatform = data.data.find((element) => (element.COM_NAME === "Platform_commissions")).COM_VALUE;
           }
         })
   }
@@ -41,16 +41,13 @@ export class ProductsNewComponent implements OnInit{
     const proId = success.PRO_ID;
     this.form.confirmExit = false;
     this.router.navigate(['/main/products/' + proId]);
-
-    
-
-  }
+    }
 
   changePrice(event) {
     if(!event){
       this.priceUser = 0;
     }else{
-      this.priceUser = (event / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
+      this.priceUser = (event / (1 - (this.commissionPlatform / 100))) / (1 - (this.commissionRedSys / 100));
     }
   }
 

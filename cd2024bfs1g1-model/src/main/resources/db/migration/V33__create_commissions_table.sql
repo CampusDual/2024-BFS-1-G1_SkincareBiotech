@@ -6,7 +6,7 @@ CREATE TABLE public.commissions (
 );
 
 INSERT INTO commissions (COM_NAME, COM_VALUE) VALUES ('Redsys_commissions', 1);
-INSERT INTO commissions (COM_NAME, COM_VALUE) VALUES ('Plataform_commissions', 3);
+INSERT INTO commissions (COM_NAME, COM_VALUE) VALUES ('Platform_commissions', 3);
 
 CREATE OR REPLACE VIEW public.user_price
 AS WITH cr AS (
@@ -16,7 +16,7 @@ AS WITH cr AS (
         ), cp AS (
          SELECT c.com_value AS com_pla
            FROM commissions c
-          WHERE c.com_name::text = 'Plataform_commissions'::text
+          WHERE c.com_name::text = 'Platform_commissions'::text
         )
 SELECT p.pro_id,
    ROUND((p.pro_price / (1 - (cp.com_pla::numeric/100))) / (1-(cr.com_redsys::numeric/100)),2) AS PRICE,
@@ -40,9 +40,8 @@ UPDATE public.usr_role
          { "attr": "profile", "visible": false, "enabled": false },
          { "attr": "sellers", "visible": false, "enabled": false },
          { "attr": "allergens", "visible": false, "enabled": false },
-         { "attr": "commissions", "visible": false, "enabled": false }
-         ]
-         }'
+         { "attr": "commissions", "visible": false, "enabled": false },
+         { "attr": "sells-by-category", "visible": false, "enabled": false } ] }'
     WHERE rol_name= 'seller';
 
     UPDATE public.usr_role
@@ -61,7 +60,6 @@ UPDATE public.usr_role
             {"attr": "billed-age", "visible": false, "enabled": false },
             { "attr": "sellers", "visible": false, "enabled": false },
             { "attr": "allergens", "visible": false, "enabled": false },
-            { "attr": "commissions", "visible": false, "enabled": false }
-            ]
-            }'
+            { "attr": "commissions", "visible": false, "enabled": false },
+            { "attr": "billed-age", "visible": false, "enabled": false }]}'
         WHERE rol_name= 'user';

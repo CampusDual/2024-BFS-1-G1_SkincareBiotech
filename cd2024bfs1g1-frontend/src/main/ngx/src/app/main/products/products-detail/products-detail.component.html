@@ -2,6 +2,10 @@
     show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="checkName($event)">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
+            <o-real-input attr="PRO_ID" hidden></o-real-input>
+            <o-real-input attr="PRO_SALE" hidden></o-real-input>
+            <o-real-input attr="PRICE" hidden></o-real-input>
+            <o-real-input attr="SALE_PRICE" hidden></o-real-input>
             <div class="main-container">
                 <div class="header-area">
                     <span class="title">
@@ -19,7 +23,7 @@
                         </div>
                         <div class="price-row">
                             <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes" (onChange)="changePrice($event)"></o-currency-input>
-                            <div *ngIf="(product.PRO_SALE != NULL);else noOfer">
+                            <div *ngIf="(PRO_SALE != NULL);else noOfer">
                                 <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
                                     number:"1.2-2" }} €</label><label class="no-ofer-label"> {{'WITHOUT_OFFER' | oTranslate |uppercase}}</label></p>
                                 <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ product.SALE_PRICE }} €</label></p>
