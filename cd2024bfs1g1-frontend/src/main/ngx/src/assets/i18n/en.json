@@ -199,7 +199,7 @@
   "MY_PROFILE": "My profile",
   "NAME": "Name",
   "CONTACT": "Contact",
-  "ADDITIONAL_INFO": "Additional information",
+  "ABOUT_ME": "About me",
   "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "FEMALE": "Female",
   "MALE": "Male",
@@ -266,5 +266,6 @@
   "UGE_ID": "Gender",
   "ERROR_NAME": "It is not allowed to use numerical characters",
   "ERROR_BIRTHDATE": "You need to be over 18 years old!",
-  "ERROR_PHONE": "Phone not valid"
+  "ERROR_PHONE": "Phone not valid",
+  "SHIP_INFO": "Shipment information"
 }

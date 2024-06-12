@@ -200,7 +200,7 @@
   "MY_PROFILE": "Mi perfil",
   "NAME": "Nombre",
   "CONTACT": "Contacto",
-  "ADDITIONAL_INFO": "Información adicional",
+  "ABOUT_ME": "Sobre mí",
   "TOTAL_PRICE": "Precio total",
   "ORD_PAID": "Pagado",
   "NUM_UNITS": "Unidades",
@@ -262,9 +262,9 @@
   "ADD_RECOMENDATIONS": "Añadir recomendaciones",
   "NO_RECOMENDATIONS": "No hay recomendaciones",
   "ERROR_DUP_SKIN": "Este producto ya tiene este tipo de piel",
-  "AGE_GENDER": "Edad y género",
   "UGE_ID": "Genero",
   "ERROR_NAME": "No se permite usar caracteres numericos",
   "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
-  "ERROR_PHONE": "Teléfono no válido"
+  "ERROR_PHONE": "Teléfono no válido",
+  "SHIP_INFO": "Información de envío"
 }
