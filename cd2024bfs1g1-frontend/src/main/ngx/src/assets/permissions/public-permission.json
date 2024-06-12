@@ -74,6 +74,11 @@
           "enabled": false
         },
         {
+          "attr": "users-skin-types",
+          "visible": false,
+          "enabled": false
+        },
+        {
           "attr": "customer-analysis",
           "visible": false,
           "enabled": false
