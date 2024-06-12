@@ -102,9 +102,9 @@ export class ClientRegisterComponent implements OnInit {
         }
       });
 
-    const skinTypeConf = this.service.getDefaultServiceConfiguration('skintypes');
+    const skinTypeConf = this.service.getDefaultServiceConfiguration('skinTypes');
     this.service.configureService(skinTypeConf);
-    this.service.query({}, ["SKIN_ID","SKIN_NAME"], "skintype").subscribe((data) => {
+    this.service.query({}, ["SKIN_ID","SKIN_NAME"], "skinType").subscribe((data) => {
       if (data.data.length > 0) {
         this.skinData = data.data;
       }
