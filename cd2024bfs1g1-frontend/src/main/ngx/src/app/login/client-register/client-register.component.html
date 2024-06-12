@@ -33,7 +33,6 @@
                         {{ 'ERROR_PASSWORD_PATTERN' | oTranslate }}
                     </mat-error>
                 </mat-form-field>
-
                 <mat-form-field class="register-field">
                     <mat-label>{{ 'confirm_usr_password' | oTranslate }}</mat-label>
                     <input matInput class="mat-input" #password id="usr_password2" type="password"
@@ -42,7 +41,6 @@
                         {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
                     </mat-error>
                 </mat-form-field>
-
                 <mat-form-field>
                     <mat-label>{{ 'usr_email' | oTranslate }}</mat-label>
                     <input matInput class="mat-input" #user_email id="usr_email" [formControl]="userEmailCtrl">
@@ -53,7 +51,6 @@
                         {{ 'ERROR_EMAIL_PATTERN' | oTranslate }}
                     </mat-error>
                 </mat-form-field>
-
                 <mat-form-field>
                     <mat-label>{{ 'usr_name' | oTranslate }}</mat-label>
                     <input matInput class="mat-input" #user_name id="usr_name" [formControl]="usernameCtrl">
@@ -70,7 +67,6 @@
                         {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
                     </mat-error>
                 </mat-form-field>
-
                 <mat-form-field>
                     <mat-label>{{ 'usr_surname' | oTranslate }}</mat-label>
                     <input matInput class="mat-input" #user_surname id="usr_surname" [formControl]="userSurnameCtrl">
@@ -87,7 +83,6 @@
                         {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
                     </mat-error>
                 </mat-form-field>
-
                 <mat-form-field>
                     <input matInput [matDatepicker]="picker" [formControl]="userDateCtrl" #upr_birthdate>
                     <mat-label>{{ 'USR_BIRTHDAY' | oTranslate }}</mat-label>
@@ -100,47 +95,47 @@
                         {{ 'ERROR_MUST_BE_ADULT' | oTranslate }}
                     </mat-error>
                 </mat-form-field>
-
+                <mat-form-field>
+                    <mat-label>{{ 'usr_phone' | oTranslate }}</mat-label>
+                    <input matInput class="mat-input" #phone placeholder="{{ 'usr_phone' | oTranslate }}"
+                        id="usr_phone" [formControl]="userPhoneCtrl">
+                    <mat-error *ngIf="userPhoneCtrl.hasError('pattern')">
+                        {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{ 'UPR_ADDRESS' | oTranslate }}</mat-label>
+                    <input matInput class="mat-input" #user_name placeholder="{{ 'UPR_ADDRESS' | oTranslate }}"
+                        id="UPR_ADDRESS" [formControl]="userAddressCtrl">
+                    <mat-error *ngIf="userAddressCtrl.hasError('required')">
+                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                    </mat-error>
+                    <mat-error *ngIf="userAddressCtrl.hasError('minlength')">
+                        {{ 'MIN_LENGTH_3' | oTranslate }}
+                    </mat-error>
+                </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>{{ 'GENDER' | oTranslate }}</mat-label>
                     <mat-select [formControl]="userGenderCtrl" #uge_id>
-                        <mat-option *ngFor="let item of genderData" [value]="item.UGE_ID">{{ item.UGE_NAME | oTranslate
-                            }}</mat-option>
+                        <mat-option *ngFor="let item of genderData" [value]="item.UGE_ID">{{ item.UGE_NAME | oTranslate }}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="userDateCtrl.hasError('required')">
                         {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
                     </mat-error>
                 </mat-form-field>
-
-                <div>
-                    <mat-form-field>
-                        <mat-label>{{ 'usr_phone' | oTranslate }}</mat-label>
-                        <input matInput class="mat-input" #phone placeholder="{{ 'usr_phone' | oTranslate }}"
-                            id="usr_phone" [formControl]="userPhoneCtrl">
-                        <mat-error *ngIf="userPhoneCtrl.hasError('pattern')">
-                            {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field>
-                        <mat-label>{{ 'UPR_ADDRESS' | oTranslate }}</mat-label>
-                        <input matInput class="mat-input" #user_name placeholder="{{ 'UPR_ADDRESS' | oTranslate }}"
-                            id="UPR_ADDRESS" [formControl]="userAddressCtrl">
-                        <mat-error *ngIf="userAddressCtrl.hasError('required')">
-                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                        </mat-error>
-                        <mat-error *ngIf="userAddressCtrl.hasError('minlength')">
-                            {{ 'MIN_LENGTH_3' | oTranslate }}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <button mat-raised-button style="background-color: #a7bfc7;" type="submit">{{ 'REGISTER' | oTranslate
-                    }}</button>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{ 'SKIN_TYPE' | oTranslate }}</mat-label>
+                    <mat-select [formControl]="userSkinTypeCtrl" #skin_id>
+                        <mat-option *ngFor="let item of skinData" [value]="item.SKIN_ID">{{item.SKIN_NAME}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="userSkinTypeCtrl.hasError('required')">
+                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button style="background-color: #a7bfc7;" type="submit">{{ 'REGISTER' | oTranslate }}</button>
                 <div class="linea"></div>
                 <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate }}</label>
-                <button mat-raised-button style="background-color: #a7bfc7;" routerLink="/login">{{ 'LOGIN' | oTranslate
-                    }}</button>
+                <button mat-raised-button style="background-color: #a7bfc7;" routerLink="/login">{{ 'LOGIN' | oTranslate }}</button>
             </form>
         </div>
     </div>

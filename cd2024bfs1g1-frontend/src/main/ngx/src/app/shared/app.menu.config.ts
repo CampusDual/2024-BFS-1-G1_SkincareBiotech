@@ -14,6 +14,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
   { id: 'sells-by-category', name: 'DATA_BY_CATEGORY', icon: 'category', route: '/main/data-analysis/bycategory'},
   { id: 'billed-age', name: 'BILLED_AGE', icon: 'bar_chart', route: '/main//data-analysis/billed-age' },
+  { id: 'users-skin-types', name: 'DATA_BY_SKIN', icon: 'category', route: '/main/data-analysis/skintypes'},
   { id: 'login', name: 'LOGIN', route: '/login', icon: 'power_settings_new'},
   { id: 'profile', name: 'PROFILE', route: '/profile', icon: 'person'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
