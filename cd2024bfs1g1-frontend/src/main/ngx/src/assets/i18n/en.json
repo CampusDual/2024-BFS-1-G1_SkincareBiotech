@@ -263,6 +263,8 @@
   "ADD_RECOMENDATIONS": "Add recomendations",
   "NO_RECOMENDATIONS": "There aren't any recomendations",
   "ERROR_DUP_SKIN": "This product already has this skin type",
+  "DATA_BY_SKIN": "Users by skin type",
+  "SKIN_TYPE": "Skin type",
   "UGE_ID": "Gender",
   "ERROR_NAME": "It is not allowed to use numerical characters",
   "ERROR_BIRTHDATE": "You need to be over 18 years old!",
