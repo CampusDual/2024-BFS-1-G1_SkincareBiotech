@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { OntimizeService, PermissionsService } from 'ontimize-web-ngx';
+import { AuthService, OntimizeService } from 'ontimize-web-ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -27,7 +27,7 @@ export class ProductDetailComponent implements OnInit {
     private router: Router,
     private cartService: CartService,
     private hashService: HashService,
-    private permissionService: PermissionsService,
+    private authService: AuthService,
   ) {
     this.service = this.injector.get(OntimizeService);
     this.service2 = this.injector.get(OntimizeService);
@@ -47,17 +47,15 @@ export class ProductDetailComponent implements OnInit {
     this.loadProduct(id);
 
     // Load both allergens simultaneously
-    let p1 = this.loadAllergens(id);
-    let pron_arr = [p1];
-    let p2 = this.loadUserAllergens();
-    if(this.isLogged()){
-      pron_arr.push(p2);
+    let prom_function_1 = this.loadAllergens(id);
+    let pron_arr = [prom_function_1];
+    let prom_function_2 = this.loadUserAllergens();
+
+    if(this.authService.isLoggedIn()){
+      pron_arr.push(prom_function_2);
     }
+
     Promise.all(pron_arr)
-      //[
-      // this.loadAllergens(id),
-      //this.loadUserAllergens()
-      //])
       .then((res) => {
         // Perform matching once both allergens are loaded
         console.log(res);
@@ -135,19 +133,6 @@ export class ProductDetailComponent implements OnInit {
         }, error => {
           reject(error);
         });
-
-      //       if (data.data.length != 0) {
-      //         this.allergens = data.data;
-      //         this.loadUserAllergens()
-      //           .then(() => resolve())
-      //           .catch(error => reject(error));
-      //       }
-      //       resolve();
-
-      //     }, error => {
-      //       reject(error);
-      //     });
-      // });
     });
   }
 
@@ -163,17 +148,6 @@ export class ProductDetailComponent implements OnInit {
     }, error => {
       reject(error);
     });
-    //     .subscribe((data) => {
-
-    //       if (data.data.length != 0) {
-    //         this.userAllergens = data.data; 
-    //       }
-    //       resolve();
-
-    //     }, error => {
-    //       reject(error);
-    //     });
-    // });
   });
 }
 
@@ -194,11 +168,5 @@ export class ProductDetailComponent implements OnInit {
     return this.matchingAllergens.join(", ");
   }
 
-  public isLogged(): boolean {
-    this.permissionService.getUserPermissionsAsPromise().then(() => {
-      return true;
-    });
-    return false;
-  }
 
 }
