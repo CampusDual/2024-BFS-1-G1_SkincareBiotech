@@ -9,24 +9,24 @@ import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx
   styleUrls: ['./products-detail.component.css']
 })
 
-export class ProductsDetailComponent implements OnInit{
+export class ProductsDetailComponent implements OnInit {
 
   @ViewChild('discreteBar', { static: false })
   protected discreteBar: OChartComponent;
 
-  @ViewChild('realPriceCurrency') 
-  realPriceCurrency : OCurrencyInputComponent;
+  @ViewChild('realPriceCurrency')
+  realPriceCurrency: OCurrencyInputComponent;
   @ViewChild('form') form: OFormComponent;
 
   public chartParameters: DiscreteBarChartConfiguration;
   data: any;
   intermedio: any;
-  id:any;
+  id: any;
   isVisible: boolean = false;
-  Visible:boolean = true;
+  Visible: boolean = true;
   product: any;
   service: OntimizeService;
-  public commissionPlataform: number;
+  public commissionPlatform: number;
   public commissionRedSys: number;
   public priceUser: number;
   productName: string = '';
@@ -47,32 +47,22 @@ export class ProductsDetailComponent implements OnInit{
     this.chartParameters.margin.left = 50;
     this.service = this.injector.get(OntimizeService);
   }
-  
+
   toggleVisibility(): void {
     this.isVisible = !this.isVisible;
     this.Visible = !this.Visible;
   }
-  ngOnInit(){
+  ngOnInit() {
     const conf = this.service.getDefaultServiceConfiguration('commissions');
-      this.service.configureService(conf);
-      this.service.query({}, ["COM_NAME","COM_VALUE"], "commission")
-        .subscribe((data) => {
-          if (data.data.length > 0) {
-            this.commissionRedSys = data.data.find((element) => (element.COM_NAME === "Redsys_commissions")).COM_VALUE;            
-            this.commissionPlataform = data.data.find((element) => (element.COM_NAME === "Plataform_commissions")).COM_VALUE;
-            this.isDataLoaded = true;
-          }
-        })
-        
-        let id = parseInt(this.route.snapshot.paramMap.get('PRO_ID'))
-        const conf2 = this.service.getDefaultServiceConfiguration('products');
-          this.service.configureService(conf2);
-          this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRICE", "SALE_PRICE", "REAL_PRICE", "PRO_SALE"], "product")
-            .subscribe((data) => {
-              if (data.data.length > 0) {
-                this.product = data.data[0];
-              }
-            })
+    this.service.configureService(conf);
+    this.service.query({}, ["COM_NAME", "COM_VALUE"], "commission")
+      .subscribe((data) => {
+        if (data.data.length > 0) {
+          this.commissionRedSys = data.data.find((element) => (element.COM_NAME === "Redsys_commissions")).COM_VALUE;
+          this.commissionPlatform = data.data.find((element) => (element.COM_NAME === "Platform_commissions")).COM_VALUE;
+          this.isDataLoaded = true;
+        }
+      })
   }
 
   onUpdate(success: boolean) {
@@ -85,29 +75,30 @@ export class ProductsDetailComponent implements OnInit{
   }
 
   changePrice(event) {
-    if(!event){
+    if (!event) {
       this.priceUser = 0;
-    }else{
-      this.priceUser = (event / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
+    } else {
+      this.priceUser = (event / (1 - (this.commissionPlatform / 100))) / (1 - (this.commissionRedSys / 100));
     }
   }
 
-  onSelectedTabChange(){
-    this.router.navigate(['/main/products/:PRO_ID/allergen']);
+  onSelectedTabChange() {
+    this.router.navigate(['/main/products/'+this.product.PRO_ID+'/allergen']);
   }
 
-  checkName($event: any){
+  checkName($event: any) {
+    this.product = $event;
     this.productName = $event.PRO_NAME;
   }
 
   finalPriceSale(rowData: Array<any>): number {
-    
-    return (rowData['SAL_PRICE'] / (1 - (this.commissionPlataform / 100))) / (1 - (this.commissionRedSys / 100));
+
+    return (rowData['SAL_PRICE'] / (1 - (this.commissionPlatform / 100))) / (1 - (this.commissionRedSys / 100));
   }
-  getPriceCalculator(){
+  getPriceCalculator() {
     let self = this;
-    return (row)=>{
-      return  self.finalPriceSale(row)
+    return (row) => {
+      return self.finalPriceSale(row)
     }
   }
 }
