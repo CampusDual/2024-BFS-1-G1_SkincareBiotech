@@ -1,0 +1,15 @@
+<o-form attr="newAllergenForm" service="allergen-products" entity="allergenProduct" keys="AP_ID" after-insert-mode="close">
+    <o-column title="ADD_ALLERGEN">
+        <div fxLayout="row" fxLayoutGap="8px">
+            <div class="allergens" fxFlex="100">
+                <div>
+                    <o-combo attr="ALLER_ID" label="{{ 'SELECT_ALLERGEN' | oTranslate }}" label-visible="true"
+                        searchable="yes" service="allergens" entity="allergen" keys="ALLER_ID" columns="ALLER_NAME"
+                        visible-columns="ALLER_NAME" value-column="ALLER_ID" required="yes" null-selection="no">
+                    </o-combo>
+                </div>
+                <br>
+            </div>
+        </div>
+    </o-column>
+</o-form>
