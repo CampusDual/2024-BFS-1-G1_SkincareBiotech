@@ -179,6 +179,7 @@
   "RANGE_NOT_VALID": "Este rango de edad ya está en uso. Por favor elija otro que no se solape.",
   "AGE_GRAPH": "Rangos de edad",
   "SETTINGS": "Ajustes",
+  "CAT_NAME_ERROR": "El nombre debe empezar por mayúscula y solo contener letras sin espacios",
   "USR_NAME": "Nombre de usuario",
   "USR_LOGIN": "Nombre de acceso",
   "USR_SURNAME": "Apellidos",
@@ -270,6 +271,6 @@
   "SKIN_GENDER": "Tipo de piel y género",
   "SELECT_X_AXIS": "Seleccionar eje X",
   "SELECT_Y_AXIS": "Seleccionar eje Y",
-  "SKIN_TYPE": "Tipo de piel",
   "DATA_BY_SKIN": "Usuarios por tipo de piel",
+  "SKIN_TYPE": "Tipo de piel"
 }
