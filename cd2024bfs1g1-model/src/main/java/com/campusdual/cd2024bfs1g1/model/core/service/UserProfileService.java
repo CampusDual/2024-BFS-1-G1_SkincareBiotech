@@ -9,11 +9,9 @@ import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
-import com.ontimize.jee.server.security.SecurityTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +37,11 @@ public class UserProfileService implements IUserProfileService {
         Map<String, Object> orderMap = new HashMap<>(keyMap);
         orderMap.put(UserProfileDao.USR_ID, userId);
         return this.daoHelper.query(this.userProfileDao, orderMap, attrList);
+    }
+
+    @Override
+    public EntityResult userProfileSkinQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException, JsonProcessingException {
+        return this.daoHelper.query(this.userProfileDao, keyMap, attrList, UserProfileDao.QUERY_USER_PROFILE_SKIN);
     }
 
     @Override

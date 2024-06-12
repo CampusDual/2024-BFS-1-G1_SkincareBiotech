@@ -27,5 +27,21 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="SKIN_COUNT">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="SKIN_ID" prefix="UPR"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        COUNT(UPR.SKIN_ID) AS TOTAL, ST.SKIN_NAME
+                    FROM
+                        USR_PROFILE UPR
+                    INNER JOIN SKIN_TYPES ST ON UPR.SKIN_ID = ST.SKIN_ID
+                    #WHERE#
+                    GROUP BY ST.SKIN_NAME, ST.SKIN_ID;
+                 ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

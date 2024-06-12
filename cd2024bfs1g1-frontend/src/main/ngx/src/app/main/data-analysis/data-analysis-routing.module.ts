@@ -5,6 +5,7 @@ import { BilledAgeComponent } from './billed-age/billed-age.component';
 import { BilledAgeRangeNewComponent } from './billed-age/billed-age-range-new/billed-age-range-new.component';
 import { SellsByCategoryComponent } from './sells-by-category/sells-by-category.component';
 import { SellsVisitsByPtoductComponent } from './sells-visits-by-ptoduct/sells-visits-by-ptoduct.component';
+import { UsersSkinTypesComponent } from './users-skin-types/users-skin-types.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "sells-visits",
     component: SellsVisitsByPtoductComponent
+  },
+  {
+    path: "skintypes",
+    component: UsersSkinTypesComponent
   },
 ];
 

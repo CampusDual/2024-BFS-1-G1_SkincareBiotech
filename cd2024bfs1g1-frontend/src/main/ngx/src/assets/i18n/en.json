@@ -199,7 +199,6 @@
   "NAME": "Name",
   "CONTACT": "Contact",
   "ADDITIONAL_INFO": "Additional information",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "FEMALE": "Female",
   "MALE": "Male",
   "UNISEX": "Unisex",
@@ -255,5 +254,7 @@
   "COLUMNS_NUMBER": "Number of columns.",
   "VISIT_DATE": "Visit date",
   "DATA_PRODUCTS": "Product statistics",
-  "SKIN_ID": "Skin type"
+  "SKIN_ID": "Skin type",
+  "DATA_BY_SKIN": "Users by skin type",
+  "SKIN_TYPE": "Skin type"
 }

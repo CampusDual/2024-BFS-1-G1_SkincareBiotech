@@ -53,5 +53,8 @@ export const SERVICE_CONFIG: Object = {
   'allergens': {
     'path': '/allergens'
   }
-
+,
+  'skintypes': {
+    'path': '/skintypes',
+  },
 };
