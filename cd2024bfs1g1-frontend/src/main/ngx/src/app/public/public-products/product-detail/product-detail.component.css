@@ -237,3 +237,7 @@
     margin-bottom: 10px; 
     white-space: normal;
 }
+
+.allergen-highlight .allergen-type{
+    color: #ff4545;
+  }
