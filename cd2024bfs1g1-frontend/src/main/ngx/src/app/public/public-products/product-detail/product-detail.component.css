@@ -98,13 +98,11 @@
     font-size: large;
     text-transform: uppercase;
     font-weight: bolder;
+    margin-inline-end: auto;
 }
 
 .buttons {
     margin-top: 15px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
 }
 
 #back-button {
