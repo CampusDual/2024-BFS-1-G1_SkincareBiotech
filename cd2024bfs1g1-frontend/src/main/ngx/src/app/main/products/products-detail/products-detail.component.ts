@@ -1,7 +1,8 @@
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { OCurrencyInputComponent, OFormComponent, OSlideToggleComponent } from 'ontimize-web-ngx';
-import { OChartComponent } from 'ontimize-web-ngx-charts';
+import { LanguageService } from 'src/app/shared/services/language.service';
+
 
 @Component({
   selector: 'app-products-detail',
@@ -36,24 +37,29 @@ export class ProductsDetailComponent  {
   constructor(
     protected injector: Injector,
     private router: Router,
+    protected languageService: LanguageService
   ) {
+    this.languageService.getLanguage();
   }
 
   loadClicks(event: any){
-    
+    console.log(this.isGraph)
     event.forEach(item =>{
+      console.log(item)
       this.totalClicks += item.VISITS
       if(item.VISITS > this.maxClick){
         this.maxClick = item.VISITS;
         this.maxDate = item.VISIT_DATE;
       }
     })
-
+    console.log(this.totalClicks)
+    console.log(this.maxClick)
     if(this.maxClick<=0){
       this.isGraph = false;
     }
     this.formatDate(this.maxDate);
     this.percentage = (this.maxClick / this.totalClicks) * 100;
+    console.log(this.isGraph)
   }
 
   private formatDate(date: number){

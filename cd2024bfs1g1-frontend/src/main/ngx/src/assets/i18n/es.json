@@ -265,5 +265,5 @@
   "NO_DATA_FOR_SELECTED_AGE_RANGE": "No hay datos para el rango de edad seleccionado",
   "NO_CLICKS": "No clicks in the last 30 days",
   "NO_SELLS": "Todavía no se ha realizado ninguna venta",
-  "CATEGORY_BEST_SELLER": "La categoría {{ catBestSeller }} es la más vendida con un {{percentage | number: '1.2-2'}}% sobre el total de ventas para el rango de fecha seleccionado"
+  "June": "junio"
 }

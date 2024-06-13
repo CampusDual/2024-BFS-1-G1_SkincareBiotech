@@ -9,14 +9,29 @@
 
                             <o-table service="orders" entity="totalPriceOrders" oHidden="yes" keys="ORD_DATE"
                                    columns="ORD_DATE;AMOUNT_PRICE" visible-columns="ORD_DATE;AMOUNT_PRICE"
-                                   (onDataLoaded)="loadDataAnalysis($event)"></o-table>
+                                   (onDataLoaded)="loadDataAnalysis($event)">
+                            </o-table>
 
-                            <div>El día que más se ha facturado es el {{ maxDay }} de {{ maxMonth }} con un total de {{
-                                   maxAmount | number: '1.2-2' }}€, representando un
-                                   {{ percentage | number: '1.2-2' }}% del total de los últimos 30 días
-                            </div>
-                            <div> Has facturado un total de {{ totalBilled | number: '1.2-2' }}€ en SkinCare Biotech
-                            </div>
+                            <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
+                            <ng-template #enBlock>
+                                   <div>The day with the highest revenue generated is {{ maxDay }} of {{ maxMonth }}
+                                          with a total of {{ maxAmount | number: '1.2-2' }}€, representing {{ percentage
+                                          | number: '1.2-2' }}% of the total over the last 30 days.</div>
+                                   <div>You have billed a total of {{ totalBilled | number: '1.2-2' }}€ at SkinCare
+                                          Biotech.</div>
+                            </ng-template>
+                            <ng-template #esBlock>
+                                   <div>El día que más se ha facturado es el {{ maxDay }} de {{ maxMonth }} con un total
+                                          de {{
+                                          maxAmount | number: '1.2-2' }}€, representando un
+                                          {{ percentage | number: '1.2-2' }}% del total de los últimos 30 días
+                                   </div>
+                                   <div> Has facturado un total de {{ totalBilled | number: '1.2-2' }}€ en SkinCare
+                                          Biotech
+                                   </div>
+                            </ng-template>
+
+
                      </div>
               </div>
        </ng-container>

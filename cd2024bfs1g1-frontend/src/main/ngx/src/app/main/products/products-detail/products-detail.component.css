@@ -44,10 +44,6 @@ mat-tab-group{
     width: 100%;
 }
 
-.chart{
-    width: 90%;
-}
-
 .tittle-y{
     display: flex;
     justify-content: center;

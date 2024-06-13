@@ -11,10 +11,14 @@
                     columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE"
                     visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="30" delete-button='no'
                     (onDataLoaded)="loadBilledAge($event)"></o-table>
-                <div>Los clientes con el rango de edad comprendido entre {{ minAge }} y {{ maxAge }} años
-                    es el que más factura con un {{percentage | number: '1.2-2' }}% sobre el total de facturado
-                </div>
-            </div>
+                    <div  *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>       
+                    <ng-template #enBlock>The customers aged between {{ minAge }} and {{ maxAge }} years old
+                        are the highest revenue generators, accounting for {{percentage | number: '1.2-2' }}% of the total revenue
+                    </ng-template>
+                    <ng-template #esBlock>Los clientes con el rango de edad comprendido entre {{ minAge }} y {{ maxAge }} años
+                        es el que más factura con un {{percentage | number: '1.2-2' }}% sobre el total de facturado
+                    </ng-template>
+                  </div>
         </ng-container>
         <ng-template #noChart>{{'NO_DATA_FOR_SELECTED_AGE_RANGE' | oTranslate }}</ng-template>
     </mat-tab>
@@ -33,10 +37,15 @@
                     visible-columns="AGE_RANGE;MAN;WOMAN;OTHER;PNA;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15"
                     delete-button='no' (onDataLoaded)="loadAgeGender($event)"></o-table>
             </div>
-            <div>Los clientes con género {{maxBilledGenre}} y rango de edad comprendido entre {{ minAge2 }} y {{
+            <div  *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>       
+            <ng-template #enBlock>The customers with gender {{maxBilledGenre}} and age range between {{ minAge2 }} and {{ maxAge2 }} 
+                years old generate the highest revenue, accounting for {{percentage2 | number: '1.2-2' }}% of the total revenue.
+            </ng-template>
+            <ng-template #esBlock>Los clientes con género {{maxBilledGenre}} y rango de edad comprendido entre {{ minAge2 }} y {{
                 maxAge2 }} años es el que más factura con un {{percentage2 | number: '1.2-2' }}% sobre el total de
                 facturado
-            </div>
+            </ng-template>
+
         </ng-container>
         <ng-template #noChart>{{'NO_DATA_FOR_SELECTED_AGE_RANGE' | oTranslate }}</ng-template>
     </mat-tab>

@@ -16,8 +16,10 @@
 
        <div *ngIf="isData; then thenBlock else elseBlock"></div>
        <ng-template #thenBlock>
-              <p>{{ 'CATEGORY_BEST_SELLER' | oTranslate }}</p>
+              <div  *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>       
+              <ng-template #enBlock>The category {{ catBestSeller }} is the best seller with {{ percentage | number: '1.2-2' }}% of total sales for the selected date range</ng-template>
+              <ng-template #esBlock>La categoría {{ catBestSeller }} es la más vendida con un {{percentage | number: '1.2-2'}}% sobre el total de ventas para el rango de fecha seleccionado</ng-template>
        </ng-template>
-       <ng-template #elseBlock>{{'NO_DATA_FOR_SELECTED_RANGE' | oTranslate}}</ng-template>
+       <ng-template #elseBlock>{{'NO_DATA_FOR_SELECTED_RANGE' | oTranslate }}</ng-template>
 
 </o-form>

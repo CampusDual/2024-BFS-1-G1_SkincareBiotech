@@ -14,10 +14,14 @@ export class LanguageService implements OnDestroy {
   isEn$ = this.isEnSubject.asObservable();
   isEs$ = this.isEsSubject.asObservable();
 
+  private currentLanguage: string;
+
   constructor(private translate: OTranslateService) {
     this.getLanguage();
     this.subscribeToLanguageChanges();
   }
+
+
 
   getLanguage() {
     const idiom = this.translate.getCurrentLang();
@@ -29,7 +33,11 @@ export class LanguageService implements OnDestroy {
       this.isEnSubject.next(false);
       this.isEsSubject.next(true);
     }
-    console.log(idiom);
+    this.currentLanguage = idiom;
+  }
+
+  getIdiomCode(){
+    return this.translate.getCurrentLang();
   }
 
   private subscribeToLanguageChanges() {
@@ -37,7 +45,7 @@ export class LanguageService implements OnDestroy {
       this.getLanguage();
     });
   }
-
+        
   ngOnDestroy() {
     if (this.translateSubscription) {
       this.translateSubscription.unsubscribe();

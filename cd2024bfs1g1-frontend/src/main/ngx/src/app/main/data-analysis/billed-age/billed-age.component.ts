@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { PieChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
 import { OntimizeService } from 'ontimize-web-ngx';
-
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-billed-age',
@@ -35,9 +35,13 @@ export class BilledAgeComponent {
     domain: ['#31d4f8', '#2aaecb', '#1f6e9a', '#154865', '#0499ec', '#03649b', '#03649b']
   };
 
-  constructor() {
+  constructor(
+    protected injector: Injector,
+    protected languageService: LanguageService
+  ) {
     this.chartParameters = new PieChartConfiguration();
     this.chartParameters.legendPosition = 'right';
+    this.languageService.getLanguage();
   }
 
   loadBilledAge(event: any) {
