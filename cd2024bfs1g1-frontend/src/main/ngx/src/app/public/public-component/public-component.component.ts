@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, PermissionsService } from 'ontimize-web-ngx';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-public-component',
@@ -17,7 +18,8 @@ export class PublicComponentComponent implements OnInit {
   constructor(
     private permissionService: PermissionsService,
     private authService : AuthService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,7 @@ export class PublicComponentComponent implements OnInit {
     this.isLogedIn = false;
     this.isLoaded = false;
     this.loadPermissions();
+    this.router.navigate(['']);
   }
   
 

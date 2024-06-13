@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./products-home.component.css']
 })
 export class ProductsHomeComponent {
+  constructor(
 
+  ) {
+
+  }
 }
