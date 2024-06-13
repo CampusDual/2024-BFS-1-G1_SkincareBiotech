@@ -53,9 +53,19 @@ html,body {
 .o-app-header.o-app-header.o-app-header-medium.ng-star-inserted{
   height: 85px;
   box-shadow: none;
-  background-color: #f3f8fb;
+  background-color: transparent;
 }
 
 .o-language-selector .menu-button.o-language-selector-text {
   font-size: 17px;
+}
+
+.browser-search > button {
+  border: none;
+    background-color: #f44336;
+    width: 40px;
+    height: 37px;
+    padding: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
