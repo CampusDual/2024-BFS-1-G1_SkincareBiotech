@@ -35,7 +35,7 @@
     padding-left: 5%;
 }
 
-.price-container p {
+.price-container span {
     display: flex;
     justify-content: flex-end;
 }
@@ -88,10 +88,6 @@
 .description {
     text-align: justify;
     margin-right: 3%;
-}
-
-.price {
-    margin-top: 5%;
 }
 
 #add-cart-button {
@@ -192,22 +188,24 @@
 }
 
 .allergic-warning-panel {
-    color: red;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #fd5151;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .allergy-text-area {
-    margin: 10px;
+    margin: 5px;
     display: flex;
     flex-direction: column;
 }
 
 .warning-icon-allergy {
     flex-shrink: 0;
-    margin: 10px;
     size: 2em;
+    color: #fd5151;
 }
 
 .allergy-list {
@@ -226,7 +224,8 @@
     flex-wrap: wrap; 
     gap: 10px; 
     font-size: 15px;
-    row-gap: 15px;
+    row-gap: 20px;
+    padding-bottom: 30px;
 }
 .subtitle {
     font-size: 15px;
@@ -239,5 +238,6 @@
 }
 
 .allergen-highlight .allergen-type{
-    color: #ff4545;
+    background-color: #fd5151;
+    color: white;
   }

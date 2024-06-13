@@ -28,7 +28,14 @@
                     </div>
                 </div>
             </div>
+            
             <div class="buy-container">
+                <div class="allergic-warning-panel" *ngIf="matchingAllergens && matchingAllergens.length > 0">
+                    <mat-icon class="warning-icon-allergy">warning</mat-icon>
+                    <span class="allergy-text-area">
+                        <span>{{"ALLERGIC_WARNING" | oTranslate}}</span>
+                    </span>
+                </div>
                 <div class="price" *ngIf="(sale != null); else priceBlock">
                     <div class="price-container">
                         <span class="originalPrice">{{ price }} €</span>
@@ -40,19 +47,12 @@
                     </div>
                 </div>
                 <ng-template #priceBlock>
-                    <p class="regularPrice">{{price}}€</p>
+                    <span class="regularPrice">{{price}}€</span>
                 </ng-template>
 
                 <div class="buttons">
                     <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON"
                         (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
-                </div>
-
-                <div class="allergic-warning-panel" *ngIf="matchingAllergens && matchingAllergens.length > 0">
-                    <mat-icon class="warning-icon-allergy">report</mat-icon>
-                    <span class="allergy-text-area">
-                        <span>{{"ALLERGIC_WARNING" | oTranslate}}</span>
-                    </span>
                 </div>
             </div>
         </div>

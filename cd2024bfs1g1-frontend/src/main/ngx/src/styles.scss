@@ -47,3 +47,8 @@ html,body {
   display: grid !important;
   grid-template-columns: auto auto;
 }
+
+.allergen-container button.mat-mdc-button-base.mat-mdc-icon-button {
+  visibility: hidden;
+}
+

@@ -35,7 +35,8 @@
             <o-form-layout-manager mode="dialog" title="{{ 'ALLERGENS' | oTranslate }}">
                 <o-table #table attr="AllergenUserTable" service="allergen-users" entity="allergenUser" keys="AU_ID"
                     columns="AU_ID;ALLER_ID;USR_ID;ALLER_NAME" visible-columns="ALLER_NAME" delete-button="yes"
-                    insert-form-route="allergen-users/new" detail-mode="none" query-rows="25" virtual-scroll="no" sort-columns="ALLER_NAME">
+                    insert-form-route="allergen-users/new" detail-mode="none" query-rows="25" virtual-scroll="no" sort-columns="ALLER_NAME"
+                    refresh-button="false" quick-filter="false">
                 </o-table>
             </o-form-layout-manager>
         </div>

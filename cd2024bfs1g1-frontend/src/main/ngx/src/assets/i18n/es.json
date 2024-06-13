@@ -237,7 +237,7 @@
   "RATHER_NOT_ANSWER": "Prefiero no contestar",
   "AGE_RANGE": "Rango de edad",
   "AGE_GENDER": "Edad y género",
-  "EMPTY_CART": "El carrito esta vacio",
+  "EMPTY_CART": "El carrito esta vacio.",
   "RECOMMENDED_SKIN": "Pieles recomendadas",
   "DATE_NOT_VALID": "Este periodo de oferta ya está en uso. Por favor elija otro que no se solape.",
   "MIN_DATE_HIGHER": "La fecha mínima no puede ser menor que la máxima",
