@@ -8,7 +8,7 @@
 .desc {
     width: 60%;
     margin: auto;
-    padding-top: 3%;
+    padding-top: 1%;
 }
 
 .img-container {
@@ -184,7 +184,7 @@
 }
 
 .pad {
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 .allergic-warning-panel {
@@ -211,33 +211,35 @@
 .allergy-list {
     font-size: 12px;
     text-align: left;
-    font-family: Poppins, "Helvetica Neue", sans-serif;    
-    width: 100%;    
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+    width: 100%;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .flex-container {
     display: flex;
-    flex-wrap: wrap; 
-    gap: 10px; 
+    flex-wrap: wrap;
+    gap: 10px;
     font-size: 15px;
     row-gap: 20px;
-    padding-bottom: 30px;
+    
 }
+
 .subtitle {
     font-size: 15px;
     font-weight: bolder;
     text-align: left;
     font-family: Poppins, "Helvetica Neue", sans-serif;
     margin-top: 20px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     white-space: normal;
 }
 
-.allergen-highlight .allergen-type{
+.allergen-highlight .allergen-type {
     background-color: #fd5151;
     color: white;
-  }
+}
