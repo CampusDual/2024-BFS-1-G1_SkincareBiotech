@@ -2,6 +2,10 @@
     show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="checkName($event)">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
+            <o-integer-input attr="PRO_ID" hidden></o-integer-input>
+            <o-real-input attr="PRO_SALE" hidden></o-real-input>
+            <o-real-input attr="PRICE" hidden></o-real-input>
+            <o-real-input attr="SALE_PRICE" hidden></o-real-input>
             <div class="main-container">
                 <div class="header-area">
                     <span class="title">
@@ -16,7 +20,26 @@
                     <div class="details-container">
                         <div class="details-row">
                             <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
-                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"></o-currency-input>
+                            <div class="salePrice-with-offer" *ngIf="priceSaleUser">
+                                {{ 'PUBLICATION_PRICE' | oTranslate }} 
+                                <label class="price-label">
+                                    {{product.SALE_PRICE }} €
+                                </label>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"
+                                (onChange)="changePrice($event)"></o-currency-input>
+                            <div class="price-with-offer" *ngIf="priceSaleUser">
+                                    {{ 'PUBLICATION_PRICE' | oTranslate }} 
+                                    <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
+                                    <label class="no-ofer-label"> {{'WITHOUT_OFFER' | oTranslate |uppercase}}</label>
+                            </div>
+                            <div #noOfer *ngIf="!priceSaleUser">
+                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
+                                        number:"1.2-2" }} €</label>
+                                </p>
+                            </div>
                         </div>
                         <div class="details-row">
                             <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
@@ -67,13 +90,19 @@
                 <o-form-layout-manager mode="dialog" attr="sale_layout">
                     <o-table attr="saleTable" service="sales" entity="sale" keys="SAL_ID" parent-keys="PRO_ID"
                         insert-button="true" delete-button="false"
-                        columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" sort-columns="SAL_END_DATE:desc"
-                        visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none"
+                        columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE;SALE_PRICE"
+                        sort-columns="SAL_END_DATE:desc"
+                        visible-columns="SAL_PRICE;SALE_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none"
                         insert-form-route="offer/new">
                         <o-table-column attr="SAL_ID" title="SAL_ID" content-align="center"></o-table-column>
                         <o-table-column attr="SAL_PRICE" title="SAL_PRICE" content-align="center" type="currency"
                             currency-symbol="€" currency-symbol-position="right" thousand-separator="."
                             decimal-separator=","></o-table-column>
+                        <o-table-column-calculated attr="SALE_PRICE" title="SALE_PRICE"
+                            [operation-function]="getPriceCalculator()" content-align="center" type="currency"
+                            currency-symbol="€" currency-symbol-position="right" thousand-separator="."
+                            decimal-separator=",">
+                        </o-table-column-calculated>
                         <o-table-column attr="SAL_INITIAL_DATE" title="SAL_INITIAL_DATE" content-align="center"
                             type="date"></o-table-column>
                         <o-table-column attr="SAL_END_DATE" title="SAL_END_DATE" content-align="center"

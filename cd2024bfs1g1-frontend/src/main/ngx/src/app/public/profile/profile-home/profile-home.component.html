@@ -1,33 +1,59 @@
 <mat-tab-group fxFlex>
     <mat-tab label="{{ 'ORDERS_HISTORY' | oTranslate }}">
         <app-orders-history></app-orders-history>
-    </mat-tab>      
+    </mat-tab>
     <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
         <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="U"
-           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS"
-            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS" 
+           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID"
+            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID" 
             show-header-navigation="yes">
-
+            
             <label>{{ 'NAME' | oTranslate }}</label>
-            <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>        
+            <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
             <div class="name">
-                <o-text-input attr="USR_NAME" label="USR_NAME"></o-text-input>
-                <o-text-input attr="USR_SURNAME" title="USR_SURNAME"></o-text-input>
+                <o-text-input attr="USR_NAME" label="USR_NAME" required="yes" [validators]="validatorsNameArray">
+                    <o-validator error-name="pattern"
+                        error-text="{{ 'ERROR_NAME' | oTranslate }}"></o-validator>
+                </o-text-input>
+                <o-text-input attr="USR_SURNAME" title="USR_SURNAME"  required="yes"  formControlName="usr_surname"></o-text-input>
             </div>
 
             <label>{{ 'CONTACT' | oTranslate }}</label>
             <div class="contact">
-                <o-text-input attr="USR_PHONE" title="USR_PHONE"></o-text-input>
-                <o-text-input attr="USR_EMAIL" title="USR_EMAIL"></o-text-input>
+                <o-text-input attr="USR_PHONE" label="USR_PHONE" required="yes" [validators]="validatorsPhoneArray">
+                    <o-validator error-phone="pattern"
+                        error-text="{{ 'ERROR_PHONE' | oTranslate }}"></o-validator>
+                </o-text-input>
+                <o-email-input attr="USR_EMAIL" required="yes"  title="USR_EMAIL"></o-email-input>
             </div>
 
-            <label>{{ 'ADDITIONAL_INFO' | oTranslate }}</label>
+            <label>{{ 'SHIP_INFO' | oTranslate }}</label>
             <div class="info">
-                <o-date-input attr="UPR_BIRTHDATE" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
+            </div>
+
+            <label>{{ 'ABOUT_ME' | oTranslate }}</label>
+            <div class="info">
+                <o-date-input attr="UPR_BIRTHDATE" required="yes" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
+                <div *ngIf="form.formGroup.get('UPR_BIRTHDATE').invalid && (form.formGroup.get('UPR_BIRTHDATE').dirty || form.formGroup.get('UPR_BIRTHDATE').touched)" class="error-message">
+                  {{ 'ERROR_BIRTHDATE' | oTranslate }}
+                </div>
+                <o-combo attr="UGE_ID" searchable="no" service="user-genders" entity="userGender" keys="UGE_ID"
+                columns="UGE_NAME" visible-columns="UGE_NAME" value-column="UGE_ID" translate="yes" required="yes" null-selection="no"></o-combo>
                 <o-combo attr="SKIN_ID" service="skinTypes" entity="skinType" keys="SKIN_ID"
                     columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" null-selection="no"></o-combo>
-            </div>
+            </div> 
         </o-form>
+    </mat-tab>
+    <mat-tab label="{{ 'MY_ALLERGENS' | oTranslate }}">
+        <div class="allergen-container">
+            <o-form-layout-manager mode="dialog" title="{{ 'ALLERGENS' | oTranslate }}">
+                <o-table #table attr="AllergenUserTable" service="allergen-users" entity="allergenUser" keys="AU_ID"
+                    columns="AU_ID;ALLER_ID;USR_ID;ALLER_NAME" visible-columns="ALLER_NAME" delete-button="yes"
+                    insert-form-route="allergen-users/new" detail-mode="none" query-rows="25" virtual-scroll="no" sort-columns="ALLER_NAME"
+                    refresh-button="false" quick-filter="false">
+                </o-table>
+            </o-form-layout-manager>
+        </div>
     </mat-tab>
 </mat-tab-group>

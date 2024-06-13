@@ -28,7 +28,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   service: OntimizeService;
   filterExp: {};
   PRO_ID = "PRO_ID";
-  totalAmount:number = 0;
+  totalAmount: number = 0;
   products = [];
 
   @ViewChild("formOrder") formOrder: OFormComponent;
@@ -61,8 +61,8 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     this.service.configureService(conf_prods);
     const cartProductsId = this.cart.map(item => item.id);
     this.filterExp = { "@basic_expression": this.filter(cartProductsId) };
-    this.service.query(this.filterExp, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "product").subscribe((data) => {
-      this.products = data.data;    
+    this.service.query(this.filterExp, ["PRO_ID", "PRICE", "PRO_SALE", "REAL_PRICE"], "product").subscribe((data) => {
+      this.products = data.data;
       this.updateTotalAmount();
     });
   }
@@ -79,25 +79,25 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
 
   }
-  updateTotalAmount( ) {
+  updateTotalAmount() {
     let totalAmount = 0;
     this.updateCard();
     this.products.forEach(product => {
       const cartItem = this.cart.find(item => item.id === product.PRO_ID);
       if (cartItem) {
         const units = cartItem.units;
-        const price = product.PRO_SALE || product.PRO_PRICE;
-        totalAmount += price * units; 
+        const price = product.REAL_PRICE;
+        totalAmount += price * units;
       }
     });
-     this.totalAmount = totalAmount;
+    this.totalAmount = totalAmount;
   }
-  updateCard(){
+  updateCard() {
     this.cart = this.cartService.getCart();
   }
   submitOrder(): void {
 
-    if(this.authService.isLoggedIn()){
+    if (this.authService.isLoggedIn()) {
 
       const conf = this.service.getDefaultServiceConfiguration('orders');
       this.service.configureService(conf);
@@ -108,29 +108,29 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
         ORD_ADDRESS: this.addressInput.getValue(),
         ORD_ITEMS: this.cartService.getCart()
       }
-      if(data.ORD_NAME != null && data.ORD_PHONE !=null && data.ORD_ZIPCODE !=null && data.ORD_ADDRESS !=null){
+      if (data.ORD_NAME != null && data.ORD_PHONE != null && data.ORD_ZIPCODE != null && data.ORD_ADDRESS != null) {
         this.cartService.emptyCart();
         this.service.insert(data, "order").subscribe(res => {
-            this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
-            this.orderView = (res.data["ORD_ID"]).toString();
-            this.price = (this.totalAmount * 100).toFixed(0);
-            this.submitRedsysOrder();
-          })
-      }else{
+          this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
+          this.orderView = (res.data["ORD_ID"]).toString();
+          this.price = (this.totalAmount * 100).toFixed(0);
+          this.submitRedsysOrder();
+        })
+      } else {
         Swal.fire({
           title: this.translate.get('ERROR_COMPLETE_FORM'),
           icon: 'error',
           confirmButtonText: 'OK'
         });
-        
+
       }
 
-    }else{
+    } else {
       this.router.navigate(['/login'],
-                          {queryParams: {'session-not-started':'true'}}
+        { queryParams: { 'session-not-started': 'true' } }
       )  // En el futuro si se cambia esta clase mantener la redireccion de este caso de uso
     }
-    
+
   }
   currentLang(): void {
 
