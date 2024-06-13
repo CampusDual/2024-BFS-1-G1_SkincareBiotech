@@ -59,7 +59,7 @@ export class ProductDetailComponent implements OnInit {
   public loadProduct(id){
     const conf = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf);
-    this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE", "BRA_NAME", "PGE_NAME", "CAT_NAME"], "productEnabled")
+    this.service.query({ "PRO_ID": id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRICE", "PRO_IMAGE", "REAL_PRICE", "BRA_NAME", "PGE_NAME", "CAT_NAME"], "productEnabled")
       .subscribe((data) => {
         if (data.data.length > 0) {
           this.product = data.data[0];
@@ -85,10 +85,10 @@ export class ProductDetailComponent implements OnInit {
   }
 
   get price() {
-    return this.product.PRO_PRICE?.toFixed(2);
+    return this.product.PRICE?.toFixed(2);
   }
   get sale() {
-    return this.product.PRO_SALE?.toFixed(2);
+    return this.product.REAL_PRICE?.toFixed(2);
   }
 
 
