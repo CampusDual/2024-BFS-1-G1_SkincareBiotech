@@ -7,15 +7,12 @@
             <div class="title">{{product.PRO_NAME}}</div>
             <div class="for">
                 <div class="flex">
-                    <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
                     <p class="pill">{{product.BRA_NAME}}</p>
                 </div>
                 <div class="flex">
-                    <!-- <p class="category">{{"CATEGORY" | oTranslate}}: </p> -->
                     <p class="pill">{{product.CAT_NAME}}</p>
                 </div>
                 <div class="flex">
-                    <!-- <p class="category">{{"PGE_ID" | oTranslate}}: </p> -->
                     <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
                 </div>
             </div>
@@ -29,20 +26,18 @@
                 </div>
             </div>
             <div class="buy-container">
-                <div class="price" *ngIf="(sale != null); else priceBlock">
+                <div class="price" *ngIf="(product.PRICE != product.REAL_PRICE); else priceBlock">
                     <div class="price-container">
                         <span class="originalPrice">{{ price }} €</span>
                         <div class="prices">
-                            <span class="salePrice"><span> {{ sale }} €</span></span>
-                            <span class="discount-span">-{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) *
-                                100 |number: '1.0-0' }}%</span>
+                            <span class="salePrice"><span> {{ product.REAL_PRICE }} €</span></span>
+                            <span class="discount-span">-{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%</span>
                         </div>
                     </div>
                 </div>
                 <ng-template #priceBlock>
                     <p class="regularPrice">{{price}}€</p>
                 </ng-template>
-
                 <div class="buttons">
                     <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON"
                         (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>

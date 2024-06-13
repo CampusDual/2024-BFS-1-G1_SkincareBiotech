@@ -69,6 +69,11 @@
           "enabled": false
         },
         {
+          "attr": "commissions",
+          "visible": false,
+          "enabled": false
+        },
+        {
           "attr": "allergens",
           "visible": false,
           "enabled": false
