@@ -38,7 +38,7 @@
 }
 
 #botones {
-    background-color: #a7bfc7;
+    /* background-color: #a7bfc7; */
 }
 
 .flecha {
@@ -49,10 +49,11 @@
     left: 40px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    z-index: 3;
 }
 
 .flecha:hover {
-    color: #c4dde6;
+    /* color: #c4dde6; */
     transform: scale(3.5);
 }
 

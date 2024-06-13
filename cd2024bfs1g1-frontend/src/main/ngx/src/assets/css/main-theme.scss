@@ -39,7 +39,7 @@ $mat-custom-accent: (
 200: #ee92b5,
 300: #e66898,
 400: #e14a84,
-500: #A14372,
+500: red,
 600: #9c3c66,
 700: #96355a,
 800: #912d4e,
@@ -68,5 +68,5 @@ A700: #ffffff)
 $accent: mat.define-palette($mat-custom-accent);
 $primary: mat.define-palette($mat-custom-primary);
 
-$theme: ontimize-style.o-mat-light-theme($primary, $accent);
+$theme: ontimize-style.o-mat-light-theme($primary, $primary);
 $background: #f3f8fb;
