@@ -15,8 +15,9 @@
               delete-button='no' (onDataLoaded)="loadChart($event)"></o-table>
 
        <div *ngIf="isData; then thenBlock else elseBlock"></div>
-       <ng-template #thenBlock>La categoría {{ catBestSeller }} es la más vendida con un {{percentage | number: '1.2-2'}}% 
-              sobre el total de ventas para el rango de fecha seleccionado</ng-template>
+       <ng-template #thenBlock>
+              <p>{{ 'CATEGORY_BEST_SELLER' | oTranslate }}</p>
+       </ng-template>
        <ng-template #elseBlock>{{'NO_DATA_FOR_SELECTED_RANGE' | oTranslate}}</ng-template>
 
 </o-form>

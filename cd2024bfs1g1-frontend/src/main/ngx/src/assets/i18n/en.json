@@ -265,5 +265,6 @@
   "NO_DATA_FOR_SELECTED_RANGE": "No data for selected date range",
   "NO_DATA_FOR_SELECTED_AGE_RANGE": "No data for selected age range",
   "NO_CLICKS": "No clicks in the last 30 days",
-  "NO_SELLS": "No sales have been made yet"
+  "NO_SELLS": "No sales have been made yet",
+  "CATEGORY_BEST_SELLER": "The category {{ category }} is the best seller with {{ percentage | number: '1.2-2' }}% of total sales for the selected date range"
 }

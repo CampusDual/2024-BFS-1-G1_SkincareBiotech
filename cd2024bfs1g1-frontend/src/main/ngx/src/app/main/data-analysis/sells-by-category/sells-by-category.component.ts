@@ -1,6 +1,7 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, OnDestroy } from '@angular/core';
 import { Expression, FilterExpressionUtils, OntimizeService } from 'ontimize-web-ngx';
 import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 
 @Component({
@@ -25,9 +26,18 @@ export class SellsByCategoryComponent {
  
   constructor(
     protected injector: Injector,
+    private languageService: LanguageService
   ) {
     this._pieConfiguration();
     this.service = this.injector.get(OntimizeService);
+
+    this.languageService.isEn$.subscribe(isEn => {
+      if (isEn) {
+        console.log('Idioma actual: inglés');
+      } else {
+        console.log('Idioma actual: español');
+      }
+    });
   }
 
   _pieConfiguration() {
