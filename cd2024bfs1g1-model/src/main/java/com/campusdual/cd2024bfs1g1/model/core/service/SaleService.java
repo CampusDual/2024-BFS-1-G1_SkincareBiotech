@@ -31,7 +31,7 @@ public class SaleService implements ISaleService {
     public EntityResult saleQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.saleDao, keyMap, attrList);
     }
-    
+
     @Override
     public EntityResult saleInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         Date initialDate = (Date) attrMap.get(SaleDao.ATTR_SAL_INITIAL_DATE);
@@ -57,34 +57,34 @@ public class SaleService implements ISaleService {
         calEndDate.set(Calendar.MILLISECOND, 999);
         endDate = calEndDate.getTime();
 
-        if (initialDate.equals(currentDayStart) || initialDate.after(currentDayStart)) {
-            if (minDate > maxDate) {
-                EntityResult result = new EntityResultMapImpl();
-                result.setCode(EntityResult.OPERATION_WRONG);
-                result.setMessage("MIN_DATE_HIGHER");
-                return result;
-            } else {
-                Map<String, Object> queryKeys = new HashMap<>();
-                List<String> queryAttributes = Arrays.asList(SaleDao.ATTR_SAL_ID, SaleDao.ATTR_SAL_INITIAL_DATE, SaleDao.ATTR_SAL_END_DATE, SaleDao.ATTR_PRO_ID);
-
-                EntityResult existingRanges = this.daoHelper.query(this.saleDao, queryKeys, queryAttributes);
-
-                if (!Utils.isDateRangeValid(minDate, maxDate, existingRanges, productId )) {
-                    EntityResult result = new EntityResultMapImpl();
-                    result.setCode(EntityResult.OPERATION_WRONG);
-                    result.setMessage("DATE_NOT_VALID");
-                    return result;
-                }
-
-                attrMap.put(SaleDao.ATTR_SAL_END_DATE, endDate);
-
-                return this.daoHelper.insert(this.saleDao, attrMap);
-            }
-        } else {
+        if (!(initialDate.equals(currentDayStart) || initialDate.after(currentDayStart))) {
             EntityResult result = new EntityResultMapImpl();
             result.setCode(EntityResult.OPERATION_WRONG);
             result.setMessage("START_DATE_BEFORE_CURRENT_DATE");
             return result;
         }
+
+        if (minDate > maxDate) {
+            EntityResult result = new EntityResultMapImpl();
+            result.setCode(EntityResult.OPERATION_WRONG);
+            result.setMessage("MIN_DATE_HIGHER");
+            return result;
+        }
+
+        Map<String, Object> queryKeys = new HashMap<>();
+        List<String> queryAttributes = Arrays.asList(SaleDao.ATTR_SAL_ID, SaleDao.ATTR_SAL_INITIAL_DATE, SaleDao.ATTR_SAL_END_DATE, SaleDao.ATTR_PRO_ID);
+
+        EntityResult existingRanges = this.daoHelper.query(this.saleDao, queryKeys, queryAttributes);
+
+        if (!Utils.isDateRangeValid(minDate, maxDate, existingRanges, productId)) {
+            EntityResult result = new EntityResultMapImpl();
+            result.setCode(EntityResult.OPERATION_WRONG);
+            result.setMessage("DATE_NOT_VALID");
+            return result;
+        }
+
+        attrMap.put(SaleDao.ATTR_SAL_END_DATE, endDate);
+
+        return this.daoHelper.insert(this.saleDao, attrMap);
     }
 }
