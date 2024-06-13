@@ -65,11 +65,12 @@
         <mat-tab label="{{ 'SALES_INFORMATION' | oTranslate }}">
             <div class="tab-content">
                 <span class="pro-name-detail">{{productName}}</span>
-                <o-form-layout-manager mode="dialog">
+                <o-form-layout-manager mode="dialog" attr="sale_layout">
                     <o-table attr="saleTable" service="sales" entity="sale" keys="SAL_ID" parent-keys="PRO_ID"
                         insert-button="true" delete-button="false"
                         columns="SAL_ID;SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" sort-columns="SAL_END_DATE:desc"
-                        visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none" >
+                        visible-columns="SAL_PRICE;SAL_INITIAL_DATE;SAL_END_DATE" detail-mode="none"
+                        insert-form-route="offer/new">
                         <o-table-column attr="SAL_ID" title="SAL_ID" content-align="center"></o-table-column>
                         <o-table-column attr="SAL_PRICE" title="SAL_PRICE" content-align="center" type="currency"
                             currency-symbol="€" currency-symbol-position="right" thousand-separator="."
@@ -85,12 +86,25 @@
         <mat-tab label="{{ 'ALLERGENS' | oTranslate }}">
             <div class="tab-content">
                 <span class="pro-name-detail">{{productName}}</span>
-                <o-form-layout-manager mode="dialog">
+                <o-form-layout-manager mode="dialog" attr="allergens_layout">
                     <o-table attr="AllergenProductTable" service="allergen-products" entity="allergenProduct"
                         keys="AP_ID" parent-keys="PRO_ID" columns="AP_ID;ALLER_ID;PRO_ID;PRO_NAME;ALLER_NAME"
                         visible-columns="ALLER_NAME" query-rows="20" delete-button="yes" detail-mode="yes"
                         virtual-scroll="false" insert-form-route="allergen/new" header-actions="D">
                         <o-table-column attr="ALLER_NAME" title="ALLER_NAME" width="100px"></o-table-column>
+                    </o-table>
+                </o-form-layout-manager>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="{{ 'SKIN_TYPES' | oTranslate }}">
+            <div class="tab-content">
+                <span class="pro-name-detail">{{productName}}</span>
+                <o-form-layout-manager mode="dialog" attr="skinTypes_layout">
+                    <o-table attr="ProductSkinTable" service="productsSkin" entity="productSkin" keys="PS_ID"
+                        parent-keys="PRO_ID" insert-form-route="skin/new" columns="PS_ID;SKIN_ID;PRO_ID;SKIN_NAME"
+                        visible-columns="SKIN_NAME" detail-mode="none" delete-button="yes">
+                        <o-table-column attr="SKIN_NAME" title="SKIN_NAME" width="100px"></o-table-column>
                     </o-table>
                 </o-form-layout-manager>
             </div>
