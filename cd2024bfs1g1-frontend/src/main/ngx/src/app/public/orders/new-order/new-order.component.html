@@ -9,15 +9,15 @@
         </div>
         
         <o-form class="order-form" #formOrder attr="newOrder" service="profiles" entity="userProfile" keys="USR_ID"
-        columns="USR_ID;USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE"
-            visible-columns="USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE" header-actions="U"
+        columns="USR_ID;USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE;UPR_RECIPIENT"
+            visible-columns="USR_NAME;UPR_RECIPIENT;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE" header-actions="U"
             show-header-navigation="no" show-header="false" (onDataLoaded)="onFormDataLoaded($event)">
             <div fxLayout="row">
                 <o-column class="order-column" fxFlex title="ORDER_INFORMATION">
                     <div fxLayout="column" fxLayoutGap="12px" class="order-inputs">
                         <o-integer-input #usrId attr="USR_ID" hidden sql-type="INTEGER" enabled="no" ></o-integer-input>
-                        <o-text-input #nameInput class="order-input" attr="USR_NAME" required="yes"
-                            placeholder="USR_NAME" read-only="yes"></o-text-input>
+                        <o-text-input #nameInput class="order-input" attr="UPR_RECIPIENT" required="yes"
+                            placeholder="UPR_RECIPIENT"></o-text-input>
 
                             <o-text-input #phoneInput class="order-input" attr="USR_PHONE" 
                             thousand-separator=" " required="yes" placeholder="USR_PHONE" [validators]="validatorPhone"> 

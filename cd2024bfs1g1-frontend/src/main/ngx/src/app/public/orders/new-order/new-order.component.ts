@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ElementRef, OnInit, Injector, Input, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils, AuthService, OCheckboxComponent } from 'ontimize-web-ngx';
+import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils, AuthService, OCheckboxComponent, DialogService, OTranslatePipe } from 'ontimize-web-ngx';
 import * as CryptoJS from 'crypto-js';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -45,6 +45,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   @ViewChild("defAddress") defAddress: MatCheckbox;
 
 
+
   validatorZip: ValidatorFn[] = [];
   validatorPhone: ValidatorFn[] = [];
 
@@ -57,6 +58,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     protected sanitizer: DomSanitizer,
     private translateService: OTranslateService,
     protected translate: OTranslateService,
+    protected dialogService: DialogService
 
   ) {
     this.service = this.injector.get(OntimizeService);
@@ -108,6 +110,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       USR_PHONE: this.phoneInput.getValue(),
       USR_ZIP: this.zipInput.getValue(),
       USR_ID: this.usrId.getValue(),
+      UPR_RECIPIENT: this.nameInput.getValue(),
 
     }
     console.log(data);
@@ -123,7 +126,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
 
   updateProfile(data: any) {
     this.configureService('profiles');
-    this.service.update({ "USR_ID": data.USR_ID }, { "UPR_ADDRESS": data.UPR_ADDRESS, "UPR_ZIPCODE": data.USR_ZIP, "USR_PHONE": data.USR_PHONE }, "userProfile")
+    this.service.update({ "USR_ID": data.USR_ID }, { "UPR_ADDRESS": data.UPR_ADDRESS, "UPR_ZIPCODE": data.USR_ZIP, "USR_PHONE": data.USR_PHONE, "UPR_RECIPIENT": data.UPR_RECIPIENT }, "userProfile")
       .subscribe((data) => {
         console.log('Profile updated');
       });
@@ -205,15 +208,16 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       USR_PHONE: this.phoneInput.getValue(),
       USR_ZIP: this.zipInput.getValue(),
       USR_ID: this.usrId.getValue(),
+      UPR_RECIPIENT: this.nameInput.getValue(),
+
 
     }
     console.log(data.USR_PHONE.length)
-    if(data.USR_ZIP.length!=5 || data.USR_PHONE.length!=9 || !/^[6789]\d{8}$/.test(data.USR_PHONE) || data.UPR_ADDRESS.length<1|| data.USR_ZIP===""){
-      Swal.fire({
-        title: this.translate.get('DATA_FORM_INVALID'),
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
+    if(data.USR_ZIP.length!=5 || data.USR_PHONE.length!=9 || !/^[6789]\d{8}$/.test(data.USR_PHONE) 
+      || data.UPR_ADDRESS.length<1 || data.USR_ZIP==="" || data.UPR_RECIPIENT.length<1 ){
+      this.dialogService.alert('Error', this.translate.get(
+        'DATA_FORM_INVALID'
+        ));
     }else{
 
       if (this.defAddress.checked==true){

@@ -26,7 +26,7 @@ export class ProfileHomeComponent implements AfterViewInit {
     // check whether the entered username meets the maximum length
     this.validatorsZipArray.push(Validators.maxLength(5));  
     // Añade validador de patrón para el nombre
-    this.validatorsNameArray.push(Validators.pattern('^[a-zA-Z_]*$'));
+    this.validatorsNameArray.push(Validators.pattern('^[a-zA-Z_ ]*$'));
 
     // Añade validador de edad mínima de 18 años
     this.validatorsBirthdateArray.push(this.ageValidator());

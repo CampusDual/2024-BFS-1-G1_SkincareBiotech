@@ -4,8 +4,8 @@
     </mat-tab>      
     <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">  
         <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="U"
-           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE"
-            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE"
+           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE;UPR_RECIPIENT"
+            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE;UPR_RECIPIENT"
             show-header-navigation="yes">
             
             <label>{{ 'NAME' | oTranslate }}</label>
@@ -35,6 +35,7 @@
                     <o-validator error-name="minlength" error-text="Minimum length is 5 characters"></o-validator>
                     <o-validator error-name="maxlength" error-text="Maximum length is 5 characters"></o-validator>
                 </o-text-input>
+                <o-text-input attr="UPR_RECIPIENT" title="UPR_RECIPIENT"></o-text-input>
             </div>
 
             <label>{{ 'ABOUT_ME' | oTranslate }}</label>
