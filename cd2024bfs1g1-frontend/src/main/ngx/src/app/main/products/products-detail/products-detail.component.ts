@@ -24,7 +24,7 @@ export class ProductsDetailComponent implements OnInit {
   id: any;
   isVisible: boolean = false;
   Visible: boolean = true;
-  product: {};
+  product: any = {};
   service: OntimizeService;
   public commissionPlatform: number;
   public commissionRedSys: number;
