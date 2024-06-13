@@ -34,7 +34,7 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   public commissionPlatform: number;
   public commissionRedSys: number;
   public priceUser: number;
-  
+
   productName: string = '';
   isDataLoaded: boolean = false;
   priceSaleUser: any = false;
@@ -86,7 +86,6 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
 
   loadClicks(event: any) {
     event.forEach(item => {
-      console.log(item)
       this.totalClicks += item.VISITS
       if (item.VISITS > this.maxClick) {
         this.maxClick = item.VISITS;
@@ -98,7 +97,6 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
 
     this.formatDate(this.maxDate);
     this.percentage = (this.maxClick / this.totalClicks) * 100;
-    console.log(this.isGraph)
   }
 
   private formatDate(date: number) {
