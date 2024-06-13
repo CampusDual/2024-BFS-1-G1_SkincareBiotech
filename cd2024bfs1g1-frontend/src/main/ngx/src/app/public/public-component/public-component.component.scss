@@ -5,15 +5,19 @@
 .nav-right-side {
   display: flex;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 10px;  
 }
+
 .logo {
-  width: 150px;
+  width: 172px;
   height: 100px;
+  margin-left: 20px;
 }
+
 .browser {
   margin-top: 36px;
 }
+
 .title {
   margin-left: 1rem;
   display: flex;
@@ -22,11 +26,6 @@
   font-size: x-large;
   cursor: pointer;
   max-width: 100px;
-}
-
-.navbar {
-  display: flex;
-  align-items: baseline;
 }
 
 .navbar-item {
@@ -39,7 +38,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  font-size: 22px;
+  font-size: 15px;
   font-weight:normal;
   text-decoration: none;
 }
@@ -70,6 +69,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 100%;
 }
 
 .nav {
