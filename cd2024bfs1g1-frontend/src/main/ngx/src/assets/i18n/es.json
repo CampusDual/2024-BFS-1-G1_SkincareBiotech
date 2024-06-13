@@ -125,7 +125,7 @@
   "OL_PRICE": "Precio del producto",
   "OL_UNITS": "Unidades del producto",
   "PRICE": "Precio",
-  "PURCHASE_BUTTON": "Pagar",
+  "PURCHASE_BUTTON": "PAGAR",
   "ORDERS_HISTORY": "Historial de pedidos",
   "MSG_BUY_BUTTON": "Debes iniciar sesión para comprar el producto.",
   "BEST_DISCOUNTS": "Mejores descuentos",
@@ -187,7 +187,7 @@
   "USR_GENRE": "Género",
   "ADD_SELLER": "AÑADIR NUEVO VENDEDOR",
   "SELLERS": "Vendedores",
-  "DELETE_CART_WARNING": "Esta seguro que quiere eliminar del carrito?",
+  "DELETE_CART_WARNING": "¿Está seguro que quiere eliminar del carrito?",
   "ERROR_COMPLETE_FORM": "Rellena el formulario para finalizar pedido",
   "title_register": "Crea tu cuenta:",
   "MY_INFORMATION": "Mi Información",
@@ -267,5 +267,8 @@
   "ERROR_NAME": "No se permite usar caracteres numericos",
   "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
   "ERROR_PHONE": "Teléfono no válido",
-  "SHIP_INFO": "Información de envío"
+  "SHIP_INFO": "Información de envío",
+  "BASKET":"Mi cesta",
+  "ORDER_DATA":"Datos del pedido",
+  "CANCEL":"Cancelar"
 }

@@ -86,8 +86,13 @@ export class CartItemComponent  implements OnInit{
       title: this.translate.get('DELETE_CART_WARNING'),
       icon: 'info',
       showCancelButton:true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#438CA1',
+      cancelButtonColor: "rgba(146, 5, 5, 0.900)",
+      cancelButtonText:this.translate.get('CANCEL'),
+      customClass: {
+        confirmButton: 'custom-button',
+      },
+      
     }).then((result)=>{
       if (result.isConfirmed) {
         this.cartService.deleteItem(this.product.PRO_ID);

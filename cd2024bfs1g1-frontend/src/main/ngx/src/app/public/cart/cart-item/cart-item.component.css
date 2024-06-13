@@ -1,13 +1,12 @@
 .cart-item{
     display: flex;
-    background-color: white;
+    background-color: var(--back-ground);
     margin: auto;
     border-bottom: solid 1px;
 }
 
 .img-container{
-    min-width: 200px;
-    min-height: 350px;
+    margin:20px 0;
     display: flex;
     justify-content: center;
     align-items: center;    
@@ -18,9 +17,8 @@
     max-width: 150px;
     max-height: 150px;
     min-height: 150px;
+    border-radius: 5%;
 }
-
-
 .item-details-container{    
     display: flex;
     align-items: center;
@@ -28,40 +26,61 @@
     justify-content: space-between;
 
 }
-
 .title-price{
     font-family: Poppins, "Helvetica Neue", sans-serif;    
-    width: 100%;    
+    width: 20vw;    
     margin:5px; 
     padding: 5px;
 }
 .title{
     margin:0;
-    font-size: 16px;
-}
-.unit-price{
-    color:#828282;
-    margin:0
+    font-size: 24px;
 }
 .price-before{
-    color: red; 
-    font-style: italic;
-    font-weight: normal;
-    margin-right: 20px;   
+    color:#828282;
+    text-decoration: line-through;
+    grid-area: a;
+    margin-bottom: 0;
+}
+.unit-price{
+    color:black; 
+    font-weight: bolder;
+    font-size: 16px;  
+    grid-area: b;
+    margin-top: 0;
+}
+.unit-price2{
+    color:black; 
+    font-weight: bolder;
+    font-size: 16px; 
+    margin-top: 16px;
 }
 .percent{
-    color:rgb(41, 218, 41)
+    font-style: italic;
+    color:rgb(41, 218, 41);
+    grid-area: c;
+    margin-top: 0;
 }
 .sale{
-    display:flex;
-    flex-direction: row
-}
+    display:grid;
+    grid-template-areas: "a a "
+                         "b c";
+    width: 35%;
+    margin-top:5px
+
+}   
 
 .units-container{
     display: flex;
     justify-content: center;
-    margin: 10px;
-    padding: 20px;
+}
+.left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 15vw;
+    margin-left: 5%;
 }
 
 .item-amount{
@@ -84,30 +103,18 @@
 }
 
 .price-container{    
-    margin: 10px;
     display: flex;
     flex-direction: column;    
     min-width: fit-content;
     text-align: right; 
     font-weight: 600;    
     font-size: 22px;
-    color: #438CA1;
-}
-
-.priceSale p span{
-    color: darkgreen;       
-}
-
-.priceSale p del {
-    color: red;
-    text-decoration: line-through;
-    font-size: 0.7em;    
+    margin-left: 15%;
+    color: var(--brand-color);
 }
 
 .delete-container{
     align-self: start;
-    margin-top: 3%;
-    margin-right: 3%;
 }
 
 .delete-button{
@@ -117,3 +124,22 @@
     background-color: transparent;
 }
 
+.custom-button {
+    background-color: red !important;
+    border-radius: 10px !important;
+    height: 70px !important;
+    width: 190px !important;
+    font-size: 1.5rem !important;
+}
+
+@media (max-width: 1300px) {
+
+
+    .title{
+        margin:0;
+        font-size:18px;
+    }
+
+
+
+}

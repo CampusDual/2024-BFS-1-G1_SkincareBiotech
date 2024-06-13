@@ -1,7 +1,7 @@
 <div class="order-container">
     <ng-container *ngIf="cart.length; else showMessage">
         <div class="all">
-            <h1 class="title">{{'CART' | oTranslate}}</h1>
+            <h1 class="title">{{'BASKET' | oTranslate}}</h1>
             <div class="cart-item-container">
                 <div *ngFor="let item of cart">
                     <app-cart-item [item]="item" (updateCart)="updateTotalAmount()"></app-cart-item>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="order-form">
-                <h1 class="form-title">Traducir</h1>
+                <h1 class="form-title">{{'ORDER_DATA' | oTranslate}}</h1>
                 <o-form #formOrder attr="newOrder" service="orders" entity="order" keys="ORD_ID"
                     show-header-navigation="no" show-header="false" class="form-block">
                     <div class="info-form">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-button">
                             <o-button class="back-button" (click)="submitOrder()" type="RAISED"
-                                label="Pagar">{{'PURCHASE_BUTTON' | oTranslate}}</o-button>
+                                [label]="'PURCHASE_BUTTON' | oTranslate">{{'PURCHASE_BUTTON' | oTranslate}}</o-button>
                         </div>
                     </div>
                 </o-form>
