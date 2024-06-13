@@ -1,5 +1,3 @@
-
-
 /* You can add global styles to this file, and also import other style files */
 .o-form-layout-manager {
   .o-form {
@@ -15,8 +13,8 @@
 }
 
 
-.o-column > div.o-container .o-container-scroll.o-container-gap,
-.o-row > div.o-container .o-container-scroll.o-container-gap {
+.o-column>div.o-container .o-container-scroll.o-container-gap,
+.o-row>div.o-container .o-container-scroll.o-container-gap {
   padding: 15px;
 }
 
@@ -41,16 +39,17 @@
   }
 }
 
-html,body {
+html,
+body {
   background-color: #f3f8fb;
 }
 
 //Quitar el botón del Drawer
-.drawer_hidden .o-app-sidenav.o-app-sidenav .o-app-header .sidenav-toggle{
+.drawer_hidden .o-app-sidenav.o-app-sidenav .o-app-header .sidenav-toggle {
   display: none;
 }
 
-.o-app-header.o-app-header.o-app-header-medium.ng-star-inserted{
+.o-app-header.o-app-header.o-app-header-medium.ng-star-inserted {
   height: 85px;
   box-shadow: none;
   background-color: transparent;
@@ -60,12 +59,17 @@ html,body {
   font-size: 17px;
 }
 
-.browser-search > button {
+.browser-search {
   border: none;
-    background-color: #f44336;
-    width: 40px;
-    height: 37px;
-    padding: 0;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+  padding-right: 25px;
+  padding-top: 6px;
+  background-color: #438cA1;
+  width: 43px;
+  height: 37px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.separator {
+  height: 10px;
 }

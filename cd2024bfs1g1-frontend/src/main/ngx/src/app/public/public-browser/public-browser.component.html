@@ -1,4 +1,4 @@
 <div class="browserContainer">
     <o-text-input [(ngModel)]="searchQuery" label ="{{'GLOBAL_BROWSER' | oTranslate}}" (keyup.enter)="onKeyUp()"></o-text-input>
-    <o-button class="browser-search" icon="search" (click)="search()"></o-button>
+    <button class="browser-search" type="button"  (click)="search()"><mat-icon>search</mat-icon></button>
 </div>
