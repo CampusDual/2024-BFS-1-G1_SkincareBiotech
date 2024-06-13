@@ -9,6 +9,7 @@ import { SellsByCategoryComponent } from './sells-by-category/sells-by-category.
 import { UsersSkinTypesComponent } from './users-skin-types/users-skin-types.component';
 import { CustomerAnalysisComponent } from './customer-analysis/customer-analysis.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ObjetiveCustomersComponent } from './objetive-customers/objetive-customers.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     BilledAgeComponent,
     SellsByCategoryComponent,
     UsersSkinTypesComponent,
-    CustomerAnalysisComponent
+    CustomerAnalysisComponent,
+    ObjetiveCustomersComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     OntimizeWebModule,
     OChartModule,
     NgxChartsModule
+  ],
+  exports: [
+    ObjetiveCustomersComponent
   ]
 })
 export class DataAnalysisModule { }
