@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: "skintypes",
     component: UsersSkinTypesComponent
-  }
+  },
   {
     path: 'age-range-configuration',
     loadChildren: () => import('./age-range-configuration/age-range-configuration.module').then(m => m.AgeRangeConfigurationModule)
