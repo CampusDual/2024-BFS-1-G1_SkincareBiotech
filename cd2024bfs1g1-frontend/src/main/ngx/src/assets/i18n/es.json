@@ -199,7 +199,7 @@
   "UPR_ADDRESS": "Dirección",
   "SKIN_TYPES": "Tipos de piel",
   "SKIN_NAME": "Nombre",
-  "MY_PROFILE": "Editar perfil",
+  "MY_PROFILE": "Mi perfil",
   "NAME": "Nombre",
   "CONTACT": "Contacto",
   "ABOUT_ME": "Sobre mí",
@@ -293,5 +293,6 @@
   "ERROR_NAME": "No se permite usar caracteres numericos",
   "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
   "ERROR_PHONE": "Teléfono no válido",
-  "SHIP_INFO": "Información de envío"
+  "SHIP_INFO": "Información de envío",
+  "EDIT_PROFILE": "Editar perfil"
 }
