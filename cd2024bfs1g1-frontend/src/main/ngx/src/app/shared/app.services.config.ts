@@ -41,17 +41,26 @@ export const SERVICE_CONFIG: Object = {
   'allergen-products': {
     'path': '/allergen-products'
   },
+  'customers-predominance': {
+    'path': '/customers-predominance',
+  },
   permissions: {
     'path': '/permissions'
   },
   'sellers': {
     'path': '/new-seller'
   },
-  'sales': {
-    'path': '/sales'
+  'sales':{
+  'path' : '/sales'
+  },
+  'commissions': {
+    'path': '/commissions'
   },
   'allergens': {
     'path': '/allergens'
   }
-
+,
+  'skintypes': {
+    'path': '/skintypes',
+  },
 };

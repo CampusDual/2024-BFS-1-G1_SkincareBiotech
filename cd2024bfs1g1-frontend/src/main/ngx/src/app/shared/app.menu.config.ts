@@ -12,9 +12,14 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'skin-types', name: 'SKIN_TYPES', icon: 'accessibility', route: '/main/skin-types' },
   { id: 'allergens', name: 'ALLERGENS', route: '/main/admin/allergens', icon: 'priority_high'},
   { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
+  { id: 'commissions', name:'COMMISSIONS', route: '/main/admin/commissions/', icon: 'payments'},
   { id: 'sells-by-category', name: 'DATA_BY_CATEGORY', icon: 'category', route: '/main/data-analysis/bycategory'},
-  { id: 'billed-age', name: 'BILLED_AGE', icon: 'bar_chart', route: '/main//data-analysis/billed-age' },
+  { id: 'users-skin-types', name: 'DATA_BY_SKIN', icon: 'pie_chart_icon', route: '/main/data-analysis/skintypes'},
+  { id: 'billed-age', name: 'BILLED_AGE', icon: 'bar_chart', route: '/main/data-analysis/billed-age' },
+  { id: 'customer-analysis', name: 'CUSTOMER_ANALYSIS', icon: 'assignment_ind', route: '/main/data-analysis/customer-analysis' },
+  { id: 'age-range-configuration', name: 'CHART_SETTINGS', icon: 'settings_icon', route: '/main/data-analysis/age-range-configuration' }, 
   { id: 'login', name: 'LOGIN', route: '/login', icon: 'power_settings_new'},
   { id: 'profile', name: 'PROFILE', route: '/profile', icon: 'person'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
 ];
+
