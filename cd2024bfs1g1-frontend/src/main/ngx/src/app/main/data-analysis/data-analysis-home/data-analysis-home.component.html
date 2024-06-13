@@ -2,6 +2,35 @@
        <h1>{{"FACTURATION_TITLE" | oTranslate}}</h1>
        <ng-container *ngIf="isGraph; else noChart">
               <div class="chart-container">
+                     <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
+                     <ng-template #enBlock>
+                            <div class="insights-container">
+                                   <div class="insight">
+                                          The day with <span class="bold"> the highest revenue generated is {{ maxDay }} of {{ maxMonth }} </span>
+                                          with a total of <span class="bold">{{ maxAmount | number: '1.2-2' }}€</span> , representing <span class="bold">{{ percentage
+                                          | number: '1.2-2' }}% of the total</span> over the last 30 days.
+       
+                                   </div>
+                                   <div class="insight">
+                                          You have billed a <span class="bold">total of {{ totalBilled | number: '1.2-2' }}€</span> at SkinCare
+                                          Biotech.
+                                   </div>
+                            </div>
+                     </ng-template>
+                     <ng-template #esBlock>
+                            <div class="insights-container">
+                                   <div class="insight">
+                                          El día con <span class="bold">mayor facturación</span> fue el <span class="bold">{{ maxDay }} de {{ maxMonth }}</span> con un
+                                          <span class="bold">total de {{ maxAmount | number: '1.2-2' }}€, </span>representando un
+                                          <span class="bold">{{ percentage | number: '1.2-2' }}% del total</span> de los últimos 30 días.
+                                   </div>
+                            
+                                   <div class="insight"> Has facturado un <span class="bold">total de {{ totalBilled | number: '1.2-2' }}€</span> en SkinCare
+                                          Biotech.
+                                   </div>
+                     </div>
+                     </ng-template>
+
                      <div class="chart">
                             <o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE"
                                    x-data-type="time" y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)">
@@ -11,27 +40,6 @@
                                    columns="ORD_DATE;AMOUNT_PRICE" visible-columns="ORD_DATE;AMOUNT_PRICE"
                                    (onDataLoaded)="loadDataAnalysis($event)">
                             </o-table>
-
-                            <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
-                            <ng-template #enBlock>
-                                   <div>The day with the highest revenue generated is {{ maxDay }} of {{ maxMonth }}
-                                          with a total of {{ maxAmount | number: '1.2-2' }}€, representing {{ percentage
-                                          | number: '1.2-2' }}% of the total over the last 30 days.</div>
-                                   <div>You have billed a total of {{ totalBilled | number: '1.2-2' }}€ at SkinCare
-                                          Biotech.</div>
-                            </ng-template>
-                            <ng-template #esBlock>
-                                   <div>El día que más se ha facturado es el {{ maxDay }} de {{ maxMonth }} con un total
-                                          de {{
-                                          maxAmount | number: '1.2-2' }}€, representando un
-                                          {{ percentage | number: '1.2-2' }}% del total de los últimos 30 días
-                                   </div>
-                                   <div> Has facturado un total de {{ totalBilled | number: '1.2-2' }}€ en SkinCare
-                                          Biotech
-                                   </div>
-                            </ng-template>
-
-
                      </div>
               </div>
        </ng-container>

@@ -4,23 +4,36 @@
         <h1>{{"BILLING_BY_AGE_TITTLE" | oTranslate}}</h1>
         <ng-container *ngIf="isGraph; else noChart">
             <div class="chart-container">
-                <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE"
-                    y-axis="TOTAL" x-label="Age" y-label="Amount (€)" [color]="colorScheme" >
-                </o-chart>
-                <o-table service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE" oHidden="yes"
-                    columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE"
-                    visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="30" delete-button='no'
-                    (onDataLoaded)="loadBilledAge($event)"></o-table>
-                    <div  *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>       
-                    <ng-template #enBlock>The customers aged between {{ minAge }} and {{ maxAge }} years old
-                        are the highest revenue generators, accounting for {{percentage | number: '1.2-2' }}% of the total revenue
-                    </ng-template>
-                    <ng-template #esBlock>Los clientes con el rango de edad comprendido entre {{ minAge }} y {{ maxAge }} años
-                        es el que más factura con un {{percentage | number: '1.2-2' }}% sobre el total de facturado
-                    </ng-template>
-                  </div>
+                <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
+                <ng-template #enBlock>
+                    <div class="insights">
+                        The customers aged between&nbsp;<span class="bold"> {{ minAge }} and {{ maxAge }}
+                        years old</span>&nbsp;are the highest revenue generators, accounting for&nbsp;<span class="bold">{{percentage
+                            | number: '1.2-2' }}%</span>&nbsp;of the total revenue.
+                    </div>
+                </ng-template>
+                <ng-template #esBlock>
+                    <div class="insights">
+                        Los clientes con el rango de edad comprendido entre&nbsp;<span class="bold"> {{ minAge }} y {{ maxAge }} años</span>&nbsp;
+                        es el que más factura con un&nbsp;<span class="bold">{{percentage | number: '1.2-2' }}%</span>&nbsp;sobre el total de facturado.
+                    </div>
+                </ng-template>
+            </div>
+            <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE" y-axis="TOTAL"
+                x-label="Age" y-label="Amount (€)" [color]="colorScheme">
+            </o-chart>
+            <o-table service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE" oHidden="yes"
+                columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE"
+                visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="30" delete-button='no'
+                (onDataLoaded)="loadBilledAge($event)">
+            </o-table>
+
         </ng-container>
-        <ng-template #noChart>{{'NO_DATA_FOR_SELECTED_AGE_RANGE' | oTranslate }}</ng-template>
+        <ng-template #noChart>
+            <div class="no-chart">
+                {{'NO_DATA_FOR_SELECTED_AGE_RANGE' | oTranslate }}
+            </div>
+        </ng-template>
     </mat-tab>
 
     <mat-tab>
@@ -28,6 +41,22 @@
         <h1>{{"BILLING_BY_AGE_AND_GENDER_TITTLE" | oTranslate}}</h1>
         <ng-container *ngIf="isGraph; else noChart">
             <div class="chart-container">
+                <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
+                <ng-template #enBlock>
+                    <div class="insights">
+                        The customers with gender&nbsp;<span class="bold">{{maxBilledGenre}}</span>&nbsp;and age
+                        range between&nbsp;<span class="bold">{{ minAge2 }} and {{ maxAge2 }}</span>&nbsp;years old 
+                        generate the highest revenue, accounting for &nbsp;<span class="bold">{{percentage2 | number: '1.2-2' }}%</span>&nbsp;of the total revenue.
+                    </div>
+                </ng-template>
+                <ng-template #esBlock>
+                    <div class="insights">
+                        Los clientes con género&nbsp; <span class="bold">{{maxBilledGenre}}</span> &nbsp;y rango de
+                        edad comprendido entre&nbsp; <span class="bold">{{ minAge2 }} y {{ maxAge2 }}</span> 
+                        &nbsp;años es el que más factura con un&nbsp; <span class="bold">{{percentage2 | number: '1.2-2' }}%</span> &nbsp;sobre el total facturado
+                    </div>
+                </ng-template>
+
                 <o-chart type="multiBar" service="billed-ages" entity="billedAgeGenderChart" x-axis="GBA_MIN_AGE"
                     y-axis="MAN;WOMAN;OTHER;PNA" x-label="Age" y-label="Amount (€)" [chart-parameters]="chartParameters"
                     [color]="colorScheme">
@@ -37,17 +66,13 @@
                     visible-columns="AGE_RANGE;MAN;WOMAN;OTHER;PNA;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="15"
                     delete-button='no' (onDataLoaded)="loadAgeGender($event)"></o-table>
             </div>
-            <div  *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>       
-            <ng-template #enBlock>The customers with gender {{maxBilledGenre}} and age range between {{ minAge2 }} and {{ maxAge2 }} 
-                years old generate the highest revenue, accounting for {{percentage2 | number: '1.2-2' }}% of the total revenue.
-            </ng-template>
-            <ng-template #esBlock>Los clientes con género {{maxBilledGenre}} y rango de edad comprendido entre {{ minAge2 }} y {{
-                maxAge2 }} años es el que más factura con un {{percentage2 | number: '1.2-2' }}% sobre el total de
-                facturado
-            </ng-template>
 
         </ng-container>
-        <ng-template #noChart>{{'NO_DATA_FOR_SELECTED_AGE_RANGE' | oTranslate }}</ng-template>
+        <ng-template #noChart>
+            <div class="no-chart">
+                {{'NO_DATA_FOR_SELECTED_AGE_RANGE' | oTranslate }}
+            </div>
+        </ng-template>
     </mat-tab>
     <mat-tab>
         <ng-template class="label" mat-tab-label>{{ "SETTINGS" | oTranslate }}</ng-template>

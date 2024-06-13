@@ -18,7 +18,6 @@ mat-tab-group{
     justify-content: center;
     align-items: start;
     gap: 20px;
-    max-width: 100%;
     padding-top: 30px;
 }
 
@@ -41,38 +40,33 @@ mat-tab-group{
 .chart-container{
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
-.tittle-y{
-    display: flex;
-    justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    font-weight: bold;
-    padding-left: 2vw;
-    
-}
-.tittle-x{
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+.chart, .insights-container{
+    width: 70%;
+    padding-top: 20px;
+    margin: auto;
 }
 
-.chart-tittle-y-container{
-    display: flex;
-    padding-left: 2vw;
-    padding-right: 4vw;
-    
+.insight{
+    padding-bottom:10px;
 }
+
+.chart{
+    padding-top: 50px;
+}
+
 
 .title{
     text-align: center;
     font-weight: bold;
     font-size: 24px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.bold{
+    font-weight: bold;
 }
 
 .pro-name-detail {
@@ -85,4 +79,4 @@ mat-tab-group{
         display: flex;
         flex-direction: column;
         height: 100%;
-    }
+}

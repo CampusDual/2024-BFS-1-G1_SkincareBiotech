@@ -10,4 +10,19 @@ h1{
 .chart-container{
     display: flex;
     flex-direction: column;  
+    padding-left: 2vw;
+}
+
+.insights{
+    display: flex;
+    padding-bottom: 40px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.no-chart{
+    padding-left: 2vw;
+    padding-bottom: 40px;
 }

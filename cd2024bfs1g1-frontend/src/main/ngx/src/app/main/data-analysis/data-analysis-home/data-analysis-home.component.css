@@ -4,42 +4,23 @@
 }
 
 .chart-container{
-    display: flex;
-    flex-direction: column;
-    
+    padding-left: 2vw;   
 }
 
-.chart-tittle-y-container{
-    display: flex;
-    padding-left: 2vw;
-    padding-right: 4vw;
-    
-}
 
 h1{
     padding-left: 2vw;
 }
 
-.chart{
-    width: 100%;
+.insights-container{
+    padding-bottom: 40px;
 }
 
+.insight{
+    padding-bottom:10px;
+}
 
-.grid_item_y {
-    display: flex;
-    justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    margin-top: 0;
+.bold{
     font-weight: bold;
-    padding-left: 2vw;
 }
 
-.grid_item_x{
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-}

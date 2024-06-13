@@ -12,3 +12,12 @@ o-daterange-input{
 .insights{
     margin-top: 20px;
 }
+
+.bold{
+    font-weight: bold;
+}
+
+.chart-container{  
+    padding-left: 2vw;
+    background-color: white;
+}

@@ -38,33 +38,53 @@
                     </div>
                 </div>
                 <div>
-                    <span class="title">
-                        <h3>{{'GRAFIC_DETAILS' | oTranslate}}</h3>
-                    </span>
+                    <div class="title">
+                        {{'GRAFIC_DETAILS' | oTranslate}}
+                    </div>
 
                     <o-table service="productsView" entity="viewByProduct" parent-keys="PRO_ID" oHidden="yes"
-                            columns="VISIT_DATE;VISITS" columns="VISIT_DATE;VISITS" visible-columns="VISIT_DATE;VISITS"
-                            (onDataLoaded)="loadClicks($event)">
+                        columns="VISIT_DATE;VISITS" columns="VISIT_DATE;VISITS" visible-columns="VISIT_DATE;VISITS"
+                        (onDataLoaded)="loadClicks($event)">
                     </o-table>
-
-                    <div *ngIf="isGraph" class="chart">
-                        <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
-                            entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="VISITS"
-                            x-axis="VISIT_DATE">
-                        </o-chart>                
-                   
+                    <div *ngIf="isGraph">
                         <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
-                        <ng-template #enBlock>The day with the most visits has been {{ maxDay }} of {{ maxMonth }}
-                            with a total of {{ maxClick }} clicks, accounting for {{ percentage | number: '1.2-2'
-                            }}% of clicks received in the last 30 days.
+                        <ng-template #enBlock>
+                            <div class="insights-container">
+                                <div class="insight">
+                                    The day with the<span class="bold"> most visits is {{ maxDay }} of {{ maxMonth }}</span>
+                                    with a <span class="bold">total of {{ maxClick }} clicks</span>, accounting for
+                                    <span class="bold">{{ percentage | number: '1.2-2' }}%</span> of clicks received in the 
+                                    <span class="bold">last 30 days</span>.
+                                </div>
+                            </div>
                         </ng-template>
-                        <ng-template #esBlock>El día con más visitas ha sido el {{ maxDay}} de {{ maxMonth }} con un
-                            total de {{ maxClick }} clicks, siendo un {{ percentage | number: '1.2-2' }}% de clicks
-                            recibidos los últimos 30 días
+                        <ng-template #esBlock>
+                            <div class="insights-container">
+                                <div class="insight">
+                                    Este producto ha sido visitado un total de <span class="bold">{{totalClicks}} veces</span> los últimos 30 días
+                                </div>
+                                <div class="insight">
+                                    El día con <span class="bold">más visitas es el {{ maxDay}} de {{ maxMonth }}</span>
+                                    con un <span class="bold">total de {{ maxClick }} clicks</span>, siendo un <span
+                                    class="bold">{{ percentage | number: '1.2-2' }}%</span> de clicks
+                                    recibidos los últimos 30 días
+                                </div>
+                            </div>
                         </ng-template>
-                        </div>
                     </div>
-                    <div *ngIf="!isGraph" #noChart>{{ 'NO_CLICKS' | oTranslate }}</div>
+                </div>
+            </div>
+            <div *ngIf="!isGraph" #noChart>
+                <div class="insights-container insight">
+                    {{ 'NO_CLICKS' | oTranslate }}
+                </div>
+            </div>
+
+            <div *ngIf="isGraph" class="chart">
+                <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
+                    entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="VISITS"
+                    x-axis="VISIT_DATE">
+                </o-chart>
             </div>
         </mat-tab>
         <mat-tab label="{{ 'SALES_INFORMATION' | oTranslate }}">
