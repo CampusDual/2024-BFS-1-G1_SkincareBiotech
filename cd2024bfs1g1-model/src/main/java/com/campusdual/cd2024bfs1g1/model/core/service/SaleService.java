@@ -34,22 +34,30 @@ public class SaleService implements ISaleService {
     
     @Override
     public EntityResult saleInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        Date fechaInicio = (Date) attrMap.get(SaleDao.ATTR_SAL_INITIAL_DATE);
-        long minDate = fechaInicio.getTime();
-        Date fechaFin = (Date) attrMap.get((SaleDao.ATTR_SAL_END_DATE));
-        long maxDate = fechaFin.getTime();
+        Date initialDate = (Date) attrMap.get(SaleDao.ATTR_SAL_INITIAL_DATE);
+        long minDate = initialDate.getTime();
+        Date endDate = (Date) attrMap.get((SaleDao.ATTR_SAL_END_DATE));
+        long maxDate = endDate.getTime();
         int productId = (int) attrMap.get(SaleDao.ATTR_PRO_ID);
         Date currentDate = new Date();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(currentDate);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        Date currentDayStart = calendar.getTime();
+        Calendar calInitialDate = Calendar.getInstance();
+        calInitialDate.setTime(currentDate);
+        calInitialDate.set(Calendar.HOUR_OF_DAY, 0);
+        calInitialDate.set(Calendar.MINUTE, 0);
+        calInitialDate.set(Calendar.SECOND, 0);
+        calInitialDate.set(Calendar.MILLISECOND, 0);
+        Date currentDayStart = calInitialDate.getTime();
 
-        if (fechaInicio.equals(currentDayStart) || fechaInicio.after(currentDayStart)) {
+        Calendar calEndDate = Calendar.getInstance();
+        calEndDate.setTime(endDate);
+        calEndDate.set(Calendar.HOUR_OF_DAY, 23);
+        calEndDate.set(Calendar.MINUTE, 59);
+        calEndDate.set(Calendar.SECOND, 59);
+        calEndDate.set(Calendar.MILLISECOND, 999);
+        endDate = calEndDate.getTime();
+
+        if (initialDate.equals(currentDayStart) || initialDate.after(currentDayStart)) {
             if (minDate > maxDate) {
                 EntityResult result = new EntityResultMapImpl();
                 result.setCode(EntityResult.OPERATION_WRONG);
@@ -67,6 +75,8 @@ public class SaleService implements ISaleService {
                     result.setMessage("DATE_NOT_VALID");
                     return result;
                 }
+
+                attrMap.put(SaleDao.ATTR_SAL_END_DATE, endDate);
 
                 return this.daoHelper.insert(this.saleDao, attrMap);
             }
