@@ -228,6 +228,7 @@
   "COM_NAME": "Nombre comisión",
   "COM_VALUE": "Valor de la comisión (%)",
   "COM_ID": "Id de comisión",
+  "CAT_NAME_ERROR": "El nombre debe empezar por mayúscula y solo contener letras sin espacios",
   "COMMISSIONS": "Comisiones",
   "FINAL_PRICE": "Precio final",
   "GRAFIC_DETAILS": "Gráfica visitas por día",
@@ -239,6 +240,7 @@
   "MALE": "Masculino",
   "UNISEX": "Unisex",
   "SLOGAN": "Descubre productos excepcionales para tu cuidado personal",
+  "BRAND": "Marca",
   "GENDER": "Género",
   "MAN": "Hombre",
   "WOMAN": "Mujer",
@@ -259,6 +261,9 @@
   "START_DATE_BEFORE_CURRENT_DATE": "Fecha inicial anterior a la fecha actual",
   "PUBLICATION_PRICE": "Precio de publicaión: ",
   "REAL_PRICE": "Precio final",
+  "BASKET":"Mi cesta",
+  "ORDER_DATA":"Datos del pedido",
+  "CANCEL":"Cancelar",
   "GLOBAL_BROWSER": "Buscador",
   "FIND_PRODUCT": "Encuentra tu producto",
   "ALLERGENS": "Alérgenos",
@@ -279,8 +284,5 @@
   "ERROR_NAME": "No se permite usar caracteres numericos",
   "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
   "ERROR_PHONE": "Teléfono no válido",
-  "SHIP_INFO": "Información de envío",
-  "BASKET":"Mi cesta",
-  "ORDER_DATA":"Datos del pedido",
-  "CANCEL":"Cancelar"
+  "SHIP_INFO": "Información de envío"
 }
