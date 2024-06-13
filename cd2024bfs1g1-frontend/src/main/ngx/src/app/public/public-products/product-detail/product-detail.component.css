@@ -55,9 +55,14 @@
     margin-bottom: 15px;
 }
 
+.cart-button{
+    margin-bottom: -15px;
+}
+
 .price-container p {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 15px;
 }
 
 .salePrice {
