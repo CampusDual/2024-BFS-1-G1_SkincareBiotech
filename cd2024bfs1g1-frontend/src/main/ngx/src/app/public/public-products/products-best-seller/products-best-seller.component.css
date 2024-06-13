@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-around;
     margin: 0px 30px 20px 30px;
-    padding: 20px 20px 30px 20px;   
+    padding: 0px 20px 0px 20px;   
     border-radius: 15px;
     min-width: min-content; /* Ajusta automáticamente al contenido mínimo */
     box-sizing: border-box; /* Asegura que padding y border se incluyan en el cálculo del ancho */
@@ -13,8 +13,8 @@
 h2{
     text-align: center;
     color: #438cA1;
-    margin-bottom: 15px;
-    margin-top: 10px;
+    margin-top: 25px;
+    margin-bottom: 0px;
     font-size: 25px;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.3em;
@@ -23,8 +23,8 @@ h2{
 h3{
     text-align: center;
     font-size: 18px; 
-    font-family: 'Cormorant', serif;
-    
+    margin-top: 5px;
+    font-family: 'Cormorant', arial;
 }
 
 .app-product-card {
