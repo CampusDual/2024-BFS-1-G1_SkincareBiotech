@@ -41,7 +41,8 @@ UPDATE public.usr_role
          { "attr": "sellers", "visible": false, "enabled": false },
          { "attr": "allergens", "visible": false, "enabled": false },
          { "attr": "commissions", "visible": false, "enabled": false },
-         { "attr": "sells-by-category", "visible": false, "enabled": false } ] }'
+         { "attr": "sells-by-category", "visible": false, "enabled": false },
+         { "attr": "users-skin-types", "visible": false, "enabled": false }]}'
     WHERE rol_name= 'seller';
 
     UPDATE public.usr_role
@@ -61,5 +62,6 @@ UPDATE public.usr_role
             { "attr": "sellers", "visible": false, "enabled": false },
             { "attr": "allergens", "visible": false, "enabled": false },
             { "attr": "commissions", "visible": false, "enabled": false },
-            { "attr": "billed-age", "visible": false, "enabled": false }]}'
+            { "attr": "billed-age", "visible": false, "enabled": false },
+            { "attr": "users-skin-types", "visible": false, "enabled": false }]}'
         WHERE rol_name= 'user';
