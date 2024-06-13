@@ -1,7 +1,7 @@
 <o-form #form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
     show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="checkName($event)">
     <mat-tab-group fxFlex>
-        <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}" (click)="refreshPrice()">
+        <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
             <o-integer-input attr="PRO_ID" hidden></o-integer-input>
             <o-real-input attr="PRO_SALE" hidden></o-real-input>
             <o-real-input attr="PRICE" hidden></o-real-input>
