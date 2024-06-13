@@ -31,6 +31,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   filterExp: {};
   PRO_ID = "PRO_ID";
   totalAmount: number = 0;
+  totalAmount: number = 0;
   products = [];
 
   @ViewChild("formOrder") formOrder: OFormComponent;
@@ -87,7 +88,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     this.configureService('products');
     const cartProductsId = this.cart.map(item => item.id);
     this.filterExp = { "@basic_expression": this.filter(cartProductsId) };
-    this.service.query(this.filterExp, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "product").subscribe((data) => {
+    this.service.query(this.filterExp, ["PRO_ID", "PRICE", "PRO_SALE", "REAL_PRICE"], "product").subscribe((data) => {
       this.products = data.data;
       this.updateTotalAmount();
     });
@@ -143,7 +144,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       const cartItem = this.cart.find(item => item.id === product.PRO_ID);
       if (cartItem) {
         const units = cartItem.units;
-        const price = product.PRO_SALE || product.PRO_PRICE;
+        const price = product.REAL_PRICE;
         totalAmount += price * units;
       }
     });
