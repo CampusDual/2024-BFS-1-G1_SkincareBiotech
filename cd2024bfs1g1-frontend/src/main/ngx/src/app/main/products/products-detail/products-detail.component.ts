@@ -1,7 +1,9 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+import { Component, Injector, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { OCurrencyInputComponent, OFormComponent, OSlideToggleComponent } from 'ontimize-web-ngx';
 import { LanguageService } from 'src/app/shared/services/language.service';
+import { Subscription } from 'rxjs';
+import { OTranslateService } from 'ontimize-web-ngx';
 
 
 @Component({
@@ -9,7 +11,7 @@ import { LanguageService } from 'src/app/shared/services/language.service';
   templateUrl: './products-detail.component.html',
   styleUrls: ['./products-detail.component.css']
 })
-export class ProductsDetailComponent  {
+export class ProductsDetailComponent implements OnInit, OnDestroy {
 
   @ViewChild("proSaleToggle")
   proSaleToggle: OSlideToggleComponent;
@@ -34,12 +36,27 @@ export class ProductsDetailComponent  {
   maxMonth: string;
   percentage: number;
 
+  private translateSubscription: Subscription;
+
   constructor(
     protected injector: Injector,
     private router: Router,
-    protected languageService: LanguageService
+    protected languageService: LanguageService,
+    protected translateService: OTranslateService
   ) {
     this.languageService.getLanguage();
+  }
+
+  ngOnInit(): void {
+    this.translateSubscription = this.translateService.onLanguageChanged.subscribe(() => {
+      this.formatDate(this.maxDate);
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.translateSubscription) {
+      this.translateSubscription.unsubscribe();
+    }
   }
 
   loadClicks(event: any){
@@ -62,10 +79,17 @@ export class ProductsDetailComponent  {
     console.log(this.isGraph)
   }
 
-  private formatDate(date: number){
+  private formatDate(date: number) {
+    if (!date) {
+      this.maxMonth = '';
+      return;
+    }
+
     const newDate = new Date(date);
     this.maxDay = newDate.getDate();
-    const monthFormatter = new Intl.DateTimeFormat('es-ES', { month: 'long' });
+    const idiomCode = this.translateService.getCurrentLang();
+    const monthFormatter = new Intl.DateTimeFormat(idiomCode, { month: 'long' });
+
     this.maxMonth = monthFormatter.format(newDate);
   }
   

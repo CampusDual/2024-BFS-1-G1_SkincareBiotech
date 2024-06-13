@@ -1,4 +1,6 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { OTranslateService } from 'ontimize-web-ngx';
+import { Subscription } from 'rxjs';
 import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
@@ -6,9 +8,7 @@ import { LanguageService } from 'src/app/shared/services/language.service';
   templateUrl: './data-analysis-home.component.html',
   styleUrls: ['./data-analysis-home.component.css']
 })
-
-export class DataAnalysisHomeComponent {
-
+export class DataAnalysisHomeComponent implements OnInit, OnDestroy {
 
   maxDate: number;
   maxDay: number;
@@ -18,17 +18,29 @@ export class DataAnalysisHomeComponent {
   maxAmount: number = 0;
   percentage: number;
 
+  private translateSubscription: Subscription;
+
   constructor(
     protected injector: Injector,
     protected languageService: LanguageService,
-  ) {
-    this.languageService.getLanguage();
+    protected translateService: OTranslateService
+  ) {}
+
+  ngOnInit(): void {
+    this.translateSubscription = this.translateService.onLanguageChanged.subscribe(() => {
+      this.formatDate(this.maxDate);
+    });
   }
-  
+
   ngOnDestroy(): void {
-    this.languageService.ngOnDestroy();
+    if (this.translateSubscription) {
+      this.translateSubscription.unsubscribe();
+    }
   }
+
   loadDataAnalysis(event: any) {
+    this.totalBilled = 0;
+    this.maxAmount = 0;
 
     event.forEach(item => {
       this.totalBilled += item.AMOUNT_PRICE;
@@ -36,7 +48,7 @@ export class DataAnalysisHomeComponent {
         this.maxAmount = item.AMOUNT_PRICE;
         this.maxDate = item.ORD_DATE;
       }
-    })
+    });
 
     if (this.totalBilled <= 0) {
       this.isGraph = false;
@@ -46,14 +58,16 @@ export class DataAnalysisHomeComponent {
   }
 
   private formatDate(date: number) {
+    if (!date) {
+      this.maxMonth = '';
+      return;
+    }
+
     const newDate = new Date(date);
     this.maxDay = newDate.getDate();
-
-    const idiomCode = this.languageService.getIdiomCode();
-    let monthFormatter = new Intl.DateTimeFormat(idiomCode, { month: 'long' });
+    const idiomCode = this.translateService.getCurrentLang();
+    const monthFormatter = new Intl.DateTimeFormat(idiomCode, { month: 'long' });
 
     this.maxMonth = monthFormatter.format(newDate);
-
   }
-
 }
