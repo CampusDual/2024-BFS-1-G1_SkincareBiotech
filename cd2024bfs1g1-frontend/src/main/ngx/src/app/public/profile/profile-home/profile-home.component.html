@@ -38,7 +38,7 @@
             </div>
 
             <label>{{ 'ABOUT_ME' | oTranslate }}</label>
-            <div class="info">
+            <div class="about-me">
                 <o-date-input attr="UPR_BIRTHDATE" required="yes" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
                 <div *ngIf="form.formGroup.get('UPR_BIRTHDATE').invalid && (form.formGroup.get('UPR_BIRTHDATE').dirty || form.formGroup.get('UPR_BIRTHDATE').touched)" class="error-message">
                   {{ 'ERROR_BIRTHDATE' | oTranslate }}

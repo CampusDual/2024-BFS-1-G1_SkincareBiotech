@@ -30,6 +30,14 @@
     padding-bottom: 50px
 }
 
+.about-me {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 5px;
+    margin: 10px;
+    padding-bottom: 50px;
+}
+
 .error-message {
     color: red;
     font-size: 12px;
