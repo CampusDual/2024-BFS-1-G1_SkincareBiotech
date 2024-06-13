@@ -208,7 +208,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
 
     }
     console.log(data.USR_PHONE.length)
-    if(data.USR_ZIP.length!=5 || data.USR_PHONE.length!=13 || !/^\+34 [6789]\d{8}$/.test(data.USR_PHONE) || data.UPR_ADDRESS.length<1){
+    if(data.USR_ZIP.length!=5 || data.USR_PHONE.length!=9 || !/^[6789]\d{8}$/.test(data.USR_PHONE) || data.UPR_ADDRESS.length<1|| data.USR_ZIP===""){
       Swal.fire({
         title: this.translate.get('DATA_FORM_INVALID'),
         icon: 'error',

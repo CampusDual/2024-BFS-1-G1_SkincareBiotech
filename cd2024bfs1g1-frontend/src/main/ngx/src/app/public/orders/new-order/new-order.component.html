@@ -19,12 +19,12 @@
                         <o-text-input #nameInput class="order-input" attr="USR_NAME" required="yes"
                             placeholder="USR_NAME" read-only="yes"></o-text-input>
 
-                            <o-phone-input #phoneInput class="order-input" attr="USR_PHONE" 
+                            <o-text-input #phoneInput class="order-input" attr="USR_PHONE" 
                             thousand-separator=" " required="yes" placeholder="USR_PHONE" [validators]="validatorPhone"> 
                                 <o-validator error-name="pattern" [error-text]="'ERROR_PATTERN_PHONE' | oTranslate"></o-validator>
                                 <o-validator error-name="minlength" ></o-validator>
                                 <o-validator error-name="maxlength"></o-validator>      
-                            </o-phone-input>
+                            </o-text-input>
 
                             <o-integer-input #zipInput class="order-input" attr="UPR_ZIPCODE" min="0" max="99999" thousand-separator="" 
                             required="yes"placeholder="UPR_ZIPCODE" [validators]="validatorZip">
