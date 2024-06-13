@@ -44,9 +44,13 @@
                     <div class="chart-container">
                         <div class="chart">
                             <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
-                                entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="COUNT"
+                                entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="VISITS"
                                 x-axis="VISIT_DATE"></o-chart>
+                            <o-table service="productsView" entity="viewByProduct" parent-keys="PRO_ID" oHidden="yes"
+                                columns="VISIT_DATE;VISITS" columns="VISIT_DATE;VISITS" visible-columns="VISIT_DATE;VISITS"
+                                (onDataLoaded)="loadClicks($event)"></o-table>
                         </div>
+                        <div> El día con más visitas ha sido el {{ maxDay}} de {{ maxMonth }} con un total de {{ maxClick }} clicks, siendo un {{ percentage | number: '1.2-2' }}% de clicks recibidos los últimos 30 días</div>
                     </div>
                 </div>
             </div>

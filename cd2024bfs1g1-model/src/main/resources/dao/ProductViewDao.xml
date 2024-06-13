@@ -29,7 +29,7 @@
                                     DATE(prov_date),
                                     prov_uid
                              )
-                             select pro_id, visit_date, count(pro_id) from t
+                             select pro_id, visit_date, count(pro_id) as VISITS from t
                              where visit_date > now()   - interval '1 month'
                              group by pro_id, visit_date
                              order by visit_date

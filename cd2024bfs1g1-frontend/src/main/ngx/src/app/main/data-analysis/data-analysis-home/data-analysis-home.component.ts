@@ -20,6 +20,8 @@ export class DataAnalysisHomeComponent {
   }
 
   loadDataAnalysis(event: any){
+
+    console.log(event)
     event.forEach(item => {
       this.totalBilled += item.AMOUNT_PRICE;
       if(item.AMOUNT_PRICE > this.maxAmount){
