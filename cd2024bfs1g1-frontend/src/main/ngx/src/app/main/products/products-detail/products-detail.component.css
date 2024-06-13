@@ -37,6 +37,34 @@ mat-tab-group{
     flex: 1;
 }
 
+.salePrice-with-offer{
+    height: 100%;
+    margin: auto;
+}
+.price-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+}
+
+.price-row o-currency-input {
+    margin-right: 10px;
+    width: 30%;
+}
+
+.no-ofer-label{
+    font-size: 10px;
+}
+
+.price-label {
+    font-weight: bold;
+    padding: 5px;
+}
+.price-message {
+    padding: 5px;
+    text-align: center;
+}
+
 .chart-container{
     display: flex;
     flex-direction: column;

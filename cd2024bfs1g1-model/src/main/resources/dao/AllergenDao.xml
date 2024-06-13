@@ -12,4 +12,18 @@
         <Column>ALLER_ID</Column>
     </UpdateKeys>
     <GeneratedKey>aller_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                SELECT
+                    #COLUMNS#
+                FROM
+                    ${mainschema}.ALLERGENS
+                #WHERE#
+                ORDER BY aller_name ASC
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
