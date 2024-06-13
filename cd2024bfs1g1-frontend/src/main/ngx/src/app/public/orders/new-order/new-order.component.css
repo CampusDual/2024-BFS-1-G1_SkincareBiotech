@@ -151,7 +151,7 @@
 #pay-button {
   border-radius: 10px;
   height: 50px;
-  background-color: lightcyan;
+  /* background-color: lightcyan; */
   font-size: large;
   text-transform: uppercase;
   font-weight: bolder;

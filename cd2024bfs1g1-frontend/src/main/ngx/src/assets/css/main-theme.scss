@@ -1,21 +1,23 @@
 @use '@angular/material'as mat;
 @use 'node_modules/ontimize-web-ngx/theming/ontimize-style.scss'as ontimize-style;
 
-$mat-custom-primary: (50 : #e3ecf4, 
-100 : #ff0000, 
-200 : #ff0000, 
-300 : #ff0000, 
-400 : #ff0000, 
-500 : #ff0000, 
-600 : #ff0000, 
-700 : #ff0000, 
-800 : #ff0000, 
-900 : #ff0000, 
-A100 : #ff0000, 
-A200 : #ff0000, 
-A400 : #ff0000, 
-A700 : #ff0000, 
-contrast: (50 : #000000, 
+$mat-custom-primary: (
+50: #e3f2f6,
+100: #b3dde6, // Color fondo botones en hover
+200: #81c6d5, // Scroll
+300: #4fafc4, // Color toggle (barrita)
+400: #299cb7,
+500: #438cA1, // IMPORTANTE: Letras en botones e iconos + subrayado de pestañas e inputs + toolbar (back office) + checkbox marcado
+600: #3c7e91, // Color toggle (posición derecha)
+700: #35727C,
+800: #2e646c, // Color fondo botones (sin hover) y letra e icono de botones (con hover) 
+900: #23514c, // Color toggle:hover (posición derecha)
+A100: #e0f7fa,
+A200: #b2ebf2,
+A400: #80deea,
+A700: #4dd0e1, 
+contrast: 
+(50 : #000000, 
 100 : #000000, 
 200 : #000000, 
 300 : #000000, 
@@ -28,14 +30,43 @@ contrast: (50 : #000000,
 A100 : #000000, 
 A200 : #000000, 
 A400 : #ffffff, 
-A700 : #ffffff));
+A700 : #ffffff),
+);
 
-$mat-custom-primary-dark: (50 : #f1f6fa, 100 : #dce8f2, 200 : #c5d9e9, 300 : #adc9e0, 400 : #9cbed9, 500 : #8ab2d2, 600 : #82abcd, 700 : #77a2c7, 800 : #6d99c1, 900 : #5a8ab6, A100 : #ffffff, A200 : #ebf5ff, A400 : #b8dcff, A700 : #9ed0ff, contrast: (50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #000000, 500 : #000000, 600 : #000000, 700 : #000000, 800 : #000000, 900 : #000000, A100 : #000000, A200 : #000000, A400 : #000000, A700 : #000000, ));
+$mat-custom-accent: (
+50: #fbe4ed,
+100: #f5bcd2,
+200: #ee92b5,
+300: #e66898,
+400: #e14a84,
+500: #A14372,
+600: #9c3c66,
+700: #96355a,
+800: #912d4e,
+900: #861d3b,
+A100: #ffd8e8,
+A200: #ffc2db,
+A400: #ffadce,
+A700: #ff94c2,
+contrast: 
+(50: #000000,
+100: #000000,
+200: #000000,
+300: #000000,
+400: #ffffff,
+500: #ffffff,
+600: #ffffff,
+700: #ffffff,
+800: #ffffff,
+900: #ffffff,
+A100: #000000,
+A200: #000000,
+A400: #ffffff,
+A700: #ffffff)
+);
 
+$accent: mat.define-palette($mat-custom-accent);
 $primary: mat.define-palette($mat-custom-primary);
-$accent:$primary;
-$primary-dark: mat.define-palette($mat-custom-primary-dark);
-$accent-dark: $primary-dark;
 
 $theme: ontimize-style.o-mat-light-theme($primary, $accent);
-$dark-theme: ontimize-style.o-mat-dark-theme($primary-dark, $accent-dark);
+$background: #f3f8fb;

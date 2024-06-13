@@ -42,7 +42,7 @@
 }
 
 .flecha {
-    color: #a7bfc7;
+    /* color: #a7bfc7; */
     transform: scale(3);
     position: absolute;
     top: 40px;

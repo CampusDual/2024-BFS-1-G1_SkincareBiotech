@@ -7,9 +7,10 @@
 @use 'sass:map';
 @use 'ontimize-web-ngx/theming/typography/o-table-typography.scss'as ontimize-table-typography;
 @use 'main-theme.scss' as mainTheme;
+
  
 
-$custom-typography: mat.define-typography-config($font-family: '"Arial", cursive',
+$custom-typography: mat.define-typography-config($font-family: '"Poppins", cursive',
   $headline-1: mat.define-typography-level(84px, 92px, 300),
   $headline-2: mat.define-typography-level(42px, 42px, 400),
   $headline-3: mat.define-typography-level(34px, 36px, 400),
@@ -28,11 +29,13 @@ $merged-typography: map.merge($custom-typography, ontimize-table-typography.$tab
 $theme: map.set(mainTheme.$theme, "typography", $merged-typography);
 
 @include ontimize-style.ontimize-theme-styles(mainTheme.$theme);
-
 @include ontimize-style.ontimize-theme-styles($theme);
-
 @include login.login-theme($theme);
 
 .o-dark {
   @include ontimize-style.ontimize-theme-all-component-color(theme.$dark-theme);
+}
+
+html, body {
+  background-color: mainTheme.$background;
 }
