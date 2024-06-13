@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Injector, Output, EventEmitter, ViewChild, El
 import { DomSanitizer } from '@angular/platform-browser';
 import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
 import { CartService } from 'src/app/shared/services/cart.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -35,7 +35,7 @@ export class CartItemComponent  implements OnInit{
   ngOnInit() {
     const conf = this.service.getDefaultServiceConfiguration('products');
     this.service.configureService(conf);
-    this.service.query({ "PRO_ID": this.item.id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRO_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
+    this.service.query({ "PRO_ID": this.item.id }, ["PRO_ID", "PRO_NAME", "PRO_DESCRIPTION", "PRICE", "REAL_PRICE", "PRO_IMAGE", "PRO_SALE"], "productEnabled")
       .subscribe((data) => {
         if (data.data.length > 0) {
           this.product = data.data[0];
@@ -51,13 +51,13 @@ export class CartItemComponent  implements OnInit{
   }
 
   get price() {
-    return this.product.PRO_PRICE?.toFixed(2);
+    return this.product.PRICE?.toFixed(2);
   }
   get sale() {
     return this.product.PRO_SALE?.toFixed(2);
   }
   public itemAmount(product: any): any {
-    return product.PRO_PRICE * this.item.units;
+    return product.PRICE * this.item.units;
   }
   public addItem() {
     this.cartService.addProductToCart(this.product);
@@ -99,6 +99,6 @@ export class CartItemComponent  implements OnInit{
         this.updateCart.emit();
       }
     });
-    
+
   }
 }
