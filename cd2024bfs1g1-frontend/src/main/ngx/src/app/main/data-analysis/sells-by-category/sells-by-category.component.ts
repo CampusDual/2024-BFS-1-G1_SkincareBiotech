@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { Expression, FilterExpressionUtils, OntimizeService } from 'ontimize-web-ngx';
 import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
 

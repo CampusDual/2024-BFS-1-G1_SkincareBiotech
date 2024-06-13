@@ -261,5 +261,9 @@
   "SKIN_ID": "Skin type",
   "ADD_RECOMENDATIONS": "Add recomendations",
   "NO_RECOMENDATIONS": "There aren't any recomendations",
-  "ERROR_DUP_SKIN": "This product already has this skin type"
+  "ERROR_DUP_SKIN": "This product already has this skin type",
+  "NO_DATA_FOR_SELECTED_RANGE": "No data for selected date range",
+  "NO_DATA_FOR_SELECTED_AGE_RANGE": "No data for selected age range",
+  "NO_CLICKS": "No clicks in the last 30 days",
+  "NO_SELLS": "No sales have been made yet"
 }

@@ -8,6 +8,7 @@ import { Component} from '@angular/core';
 
 export class DataAnalysisHomeComponent {
 
+  
   maxDate: number;
   maxDay: number;
   maxMonth: string;
@@ -29,7 +30,10 @@ export class DataAnalysisHomeComponent {
         this.maxDate = item.ORD_DATE;
       }
     })
- 
+    
+    if(this.totalBilled <= 0) {
+      this.isGraph=false;
+    }
     this.formatDate(this.maxDate);
     this.percentage = ((this.maxAmount / this.totalBilled) * 100);
   }

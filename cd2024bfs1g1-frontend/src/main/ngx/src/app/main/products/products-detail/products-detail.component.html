@@ -41,6 +41,7 @@
                     <span class="title">
                         <h3>{{'GRAFIC_DETAILS' | oTranslate}}</h3>
                     </span>
+                    <ng-container *ngIf="isGraph; else noChart">
                     <div class="chart-container">
                         <div class="chart">
                             <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
@@ -50,8 +51,12 @@
                                 columns="VISIT_DATE;VISITS" columns="VISIT_DATE;VISITS" visible-columns="VISIT_DATE;VISITS"
                                 (onDataLoaded)="loadClicks($event)"></o-table>
                         </div>
-                        <div> El día con más visitas ha sido el {{ maxDay}} de {{ maxMonth }} con un total de {{ maxClick }} clicks, siendo un {{ percentage | number: '1.2-2' }}% de clicks recibidos los últimos 30 días</div>
+                        <div> El día con más visitas ha sido el {{ maxDay}} de {{ maxMonth }} con un total de {{ maxClick }} 
+                            clicks, siendo un {{ percentage | number: '1.2-2' }}% de clicks recibidos los últimos 30 días
+                        </div>               
                     </div>
+                </ng-container>
+                <ng-template #noChart>{{ 'NO_CLICKS' | oTranslate }}</ng-template>
                 </div>
             </div>
         </mat-tab>

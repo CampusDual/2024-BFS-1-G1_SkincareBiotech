@@ -10,11 +10,8 @@ import { OntimizeService } from 'ontimize-web-ngx';
 })
 export class BilledAgeComponent {
 
-  @ViewChild('ageAndGender')
-  protected ageAndGender: OChartComponent
   chartParameters: PieChartConfiguration;
   service: OntimizeService;
-
 
   isGraph: boolean = true;
 

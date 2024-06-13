@@ -24,6 +24,7 @@ export class ProductsDetailComponent  {
   productName: string = '';
   productId: number;
 
+  isGraph: boolean = true;
   maxClick: number = 0;
   totalClicks: number =0;
   percentaje: number;
@@ -39,7 +40,7 @@ export class ProductsDetailComponent  {
   }
 
   loadClicks(event: any){
-    console.log(event);
+    
     event.forEach(item =>{
       this.totalClicks += item.VISITS
       if(item.VISITS > this.maxClick){
@@ -47,7 +48,10 @@ export class ProductsDetailComponent  {
         this.maxDate = item.VISIT_DATE;
       }
     })
-    
+
+    if(this.maxClick<=0){
+      this.isGraph = false;
+    }
     this.formatDate(this.maxDate);
     this.percentage = (this.maxClick / this.totalClicks) * 100;
   }

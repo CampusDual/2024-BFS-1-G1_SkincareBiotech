@@ -14,9 +14,9 @@
               oHidden="yes" columns="CAT_NAME;TOTAL_SOLD" visible-columns="CAT_NAME;TOTAL_SOLD" query-rows="15"
               delete-button='no' (onDataLoaded)="loadChart($event)"></o-table>
 
-              <div *ngIf="isData; then thenBlock else elseBlock"></div>
-              <ng-template #thenBlock>La categoría {{ catBestSeller }} es la más vendida con un {{percentage | number: '1.2-2' }}% sobre el
-                     total de ventas para el rango de fecha seleccionado</ng-template>
-              <ng-template #elseBlock>No hay datos para el rango de fecha seleccionado</ng-template>
- 
+       <div *ngIf="isData; then thenBlock else elseBlock"></div>
+       <ng-template #thenBlock>La categoría {{ catBestSeller }} es la más vendida con un {{percentage | number: '1.2-2'}}% 
+              sobre el total de ventas para el rango de fecha seleccionado</ng-template>
+       <ng-template #elseBlock>{{'NO_DATA_FOR_SELECTED_RANGE' | oTranslate}}</ng-template>
+
 </o-form>
