@@ -218,7 +218,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     }
     console.log(data.USR_PHONE.length)
     if(data.USR_ZIP.length!=5 || data.USR_PHONE.length!=9 || !/^[6789]\d{8}$/.test(data.USR_PHONE) 
-      || data.UPR_ADDRESS.length<1 || data.USR_ZIP==="" || data.UPR_RECIPIENT.length<1 ||!/^[a-zA-Z_ ]*$/.test(data.UPR_RECIPIENT) ){
+      || data.UPR_ADDRESS.length<1  || data.UPR_RECIPIENT.length<1 || !/^[a-zA-Z_ ]*$/.test(data.UPR_RECIPIENT) ){
       this.dialogService.alert('Error', this.translate.get(
         'DATA_FORM_INVALID'
         ));
