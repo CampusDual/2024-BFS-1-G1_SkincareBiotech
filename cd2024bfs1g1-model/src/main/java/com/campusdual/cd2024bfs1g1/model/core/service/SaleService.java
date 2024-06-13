@@ -65,11 +65,11 @@ public class SaleService implements ISaleService {
                 return result;
             } else {
                 Map<String, Object> queryKeys = new HashMap<>();
-                List<String> queryAttributes = Arrays.asList(SaleDao.ATTR_SAL_ID, SaleDao.ATTR_SAL_INITIAL_DATE, SaleDao.ATTR_SAL_END_DATE,SaleDao.ATTR_PRO_ID);
+                List<String> queryAttributes = Arrays.asList(SaleDao.ATTR_SAL_ID, SaleDao.ATTR_SAL_INITIAL_DATE, SaleDao.ATTR_SAL_END_DATE, SaleDao.ATTR_PRO_ID);
 
                 EntityResult existingRanges = this.daoHelper.query(this.saleDao, queryKeys, queryAttributes);
 
-                if (!Utils.isDateRangeValid(minDate, maxDate, existingRanges,productId )) {
+                if (!Utils.isDateRangeValid(minDate, maxDate, existingRanges, productId )) {
                     EntityResult result = new EntityResultMapImpl();
                     result.setCode(EntityResult.OPERATION_WRONG);
                     result.setMessage("DATE_NOT_VALID");
