@@ -7,48 +7,63 @@
             <div class="title">{{product.PRO_NAME}}</div>
             <div class="for">
                 <div class="flex">
-                    <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
                     <p class="pill">{{product.BRA_NAME}}</p>
                 </div>
                 <div class="flex">
-                    <!-- <p class="category">{{"CATEGORY" | oTranslate}}: </p> -->
                     <p class="pill">{{product.CAT_NAME}}</p>
                 </div>
                 <div class="flex">
-                    <!-- <p class="category">{{"PGE_ID" | oTranslate}}: </p> -->
                     <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
                 </div>
             </div>
+
+            <div class= "skintype" *ngIf="skintypes && skintypes.length > 0">
+                <div class="subtitle"><b>{{'RECOMMENDED_SKIN' | oTranslate}}</b></div>
+                <div class="flex-container">
+                    <div class="pill" *ngFor="let item of skintypes">
+                        {{item.SKIN_NAME | oTranslate}}
+                    </div>
+                </div>
+            </div>
+
             <div class="buy-container">
-                <div class="price" *ngIf="(sale != null); else priceBlock">
+                <div class="allergic-warning-panel" *ngIf="matchingAllergens && matchingAllergens.length > 0">
+                    <mat-icon class="warning-icon-allergy">warning</mat-icon>
+                    <span class="allergy-text-area">
+                        <span>{{"ALLERGIC_WARNING" | oTranslate}}</span>
+                    </span>
+                </div>
+                <div class="price" *ngIf="(product.PRICE != product.REAL_PRICE); else priceBlock">
                     <div class="price-container">
                         <span class="originalPrice">{{ price }} €</span>
                         <div class="prices">
-                            <span class="salePrice"><span> {{ sale }} €</span></span>
-                            <span class="discount-span">-{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) *
-                                100 |number: '1.0-0' }}%</span>
+                            <span class="salePrice"><span> {{ product.REAL_PRICE }} €</span></span>
+                            <span class="discount-span">-{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%</span>
                         </div>
                     </div>
                 </div>
                 <ng-template #priceBlock>
-                    <p class="regularPrice">{{price}}€</p>
+                    <span class="regularPrice">{{price}}€</span>
                 </ng-template>
-
                 <div class="buttons">
                     <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON"
                         (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
                 </div>
             </div>
         </div>
+
+
     </div>
+
     <div class="desc">
         <p>{{product.PRO_DESCRIPTION}}</p>
     </div>
-    <div class="allergens" *ngIf="allergens && allergens.length > 0">
+    <div class="allergens" *ngIf="allergens.length>0">
         <div class="subtitle"><b>{{'ALLERGENS' | oTranslate}}</b></div>
         <div class="flex-container">
-            <div *ngFor="let item of allergens; let i = index">
-                <span class="allergen-type">{{item.ALLER_NAME}}{{i < allergens.length -1 ? ',' : '.' }}</span>
+            <div *ngFor="let item of allergens; let i = index"
+                [ngClass]="{'allergen-highlight': matchingAllergens.includes(item.ALLER_NAME)}">
+                <span class="allergen-type">{{item.ALLER_NAME}}</span>
             </div>
         </div>
     </div>

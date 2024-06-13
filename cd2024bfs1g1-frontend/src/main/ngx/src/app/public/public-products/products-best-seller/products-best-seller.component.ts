@@ -25,8 +25,8 @@ export class ProductsBestSellerComponent implements OnInit {
       "PRO_ID",
       "PRO_NAME",
       "PRO_DESCRIPTION",
-      "PRO_PRICE",
-      "PRO_SALE",
+      "PRICE",
+      "REAL_PRICE",
       "DISCOUNT",
       "PRO_IMAGE",
       "AMMOUNT_OF_SALES"

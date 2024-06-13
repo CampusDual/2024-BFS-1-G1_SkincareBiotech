@@ -8,7 +8,7 @@
 .desc {
     width: 60%;
     margin: auto;
-    padding-top: 3%;
+    padding-top: 1%;
 }
 
 .img-container {
@@ -35,7 +35,7 @@
     padding-left: 5%;
 }
 
-.price-container p {
+.price-container span {
     display: flex;
     justify-content: flex-end;
 }
@@ -88,10 +88,6 @@
 .description {
     text-align: justify;
     margin-right: 3%;
-}
-
-.price {
-    margin-top: 5%;
 }
 
 #add-cart-button {
@@ -183,5 +179,66 @@
 }
 
 .pad {
-    padding-bottom: 20px;
+    padding-bottom: 40px;
+}
+
+.allergic-warning-panel {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #fd5151;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.allergy-text-area {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.warning-icon-allergy {
+    flex-shrink: 0;
+    size: 2em;
+    color: #fd5151;
+}
+
+.allergy-list {
+    font-size: 12px;
+    text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 15px;
+    row-gap: 20px;
+    
+}
+
+.subtitle {
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    white-space: normal;
+}
+
+.allergen-highlight .allergen-type {
+    background-color: #fd5151;
+    color: white;
+}
+
+.skintype {
+    padding-bottom: 3%;
 }

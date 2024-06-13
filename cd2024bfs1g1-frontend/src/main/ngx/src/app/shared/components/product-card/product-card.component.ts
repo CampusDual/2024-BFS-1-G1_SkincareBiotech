@@ -10,7 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ProductCardComponent implements OnInit {
   service: OntimizeService;
   prodList: any = [];
-  @Input() product 
+  @Input() product;
 
   constructor(
     protected injector: Injector,
