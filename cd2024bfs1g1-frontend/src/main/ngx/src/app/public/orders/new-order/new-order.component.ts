@@ -48,6 +48,8 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
 
   validatorZip: ValidatorFn[] = [];
   validatorPhone: ValidatorFn[] = [];
+  validatorsNameArray: ValidatorFn[] = [];
+
 
   constructor(
     @Inject(AuthService) private authService: AuthService,
@@ -70,6 +72,8 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     this.validatorPhone.push(Validators.minLength(9));
     this.validatorPhone.push(Validators.maxLength(9));
     this.validatorPhone.push(Validators.pattern('^[6-9][0-9]*$'));
+    this.validatorsNameArray.push(Validators.pattern('^[a-zA-Z_ ]*$'));
+
   }
 
   private configureService(serviceName: string): void {
@@ -214,7 +218,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     }
     console.log(data.USR_PHONE.length)
     if(data.USR_ZIP.length!=5 || data.USR_PHONE.length!=9 || !/^[6789]\d{8}$/.test(data.USR_PHONE) 
-      || data.UPR_ADDRESS.length<1 || data.USR_ZIP==="" || data.UPR_RECIPIENT.length<1 ){
+      || data.UPR_ADDRESS.length<1 || data.USR_ZIP==="" || data.UPR_RECIPIENT.length<1 ||!/^[a-zA-Z_ ]*$/.test(data.UPR_RECIPIENT) ){
       this.dialogService.alert('Error', this.translate.get(
         'DATA_FORM_INVALID'
         ));
