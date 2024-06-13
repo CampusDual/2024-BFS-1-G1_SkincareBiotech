@@ -41,25 +41,30 @@
                     <span class="title">
                         <h3>{{'GRAFIC_DETAILS' | oTranslate}}</h3>
                     </span>
-                    <div class="chart">
+
+                    <o-table service="productsView" entity="viewByProduct" parent-keys="PRO_ID" oHidden="yes"
+                            columns="VISIT_DATE;VISITS" columns="VISIT_DATE;VISITS" visible-columns="VISIT_DATE;VISITS"
+                            (onDataLoaded)="loadClicks($event)">
+                    </o-table>
+
+                    <div *ngIf="isGraph" class="chart">
                         <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
                             entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="VISITS"
-                            x-axis="VISIT_DATE"></o-chart>
-                        <o-table service="productsView" entity="viewByProduct" parent-keys="PRO_ID" oHidden="yes"
-                            columns="VISIT_DATE;VISITS" columns="VISIT_DATE;VISITS" visible-columns="VISIT_DATE;VISITS"
-                            (onDataLoaded)="loadClicks($event)"></o-table>
+                            x-axis="VISIT_DATE">
+                        </o-chart>                
+                   
+                        <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
+                        <ng-template #enBlock>The day with the most visits has been {{ maxDay }} of {{ maxMonth }}
+                            with a total of {{ maxClick }} clicks, accounting for {{ percentage | number: '1.2-2'
+                            }}% of clicks received in the last 30 days.
+                        </ng-template>
+                        <ng-template #esBlock>El día con más visitas ha sido el {{ maxDay}} de {{ maxMonth }} con un
+                            total de {{ maxClick }} clicks, siendo un {{ percentage | number: '1.2-2' }}% de clicks
+                            recibidos los últimos 30 días
+                        </ng-template>
+                        </div>
                     </div>
-                    <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
-                    <ng-template #enBlock>The day with the most visits has been {{ maxDay }} of {{ maxMonth }}
-                        with a total of {{ maxClick }} clicks, accounting for {{ percentage | number: '1.2-2'
-                        }}% of clicks received in the last 30 days.
-                    </ng-template>
-                    <ng-template #esBlock>El día con más visitas ha sido el {{ maxDay}} de {{ maxMonth }} con un
-                        total de {{ maxClick }} clicks, siendo un {{ percentage | number: '1.2-2' }}% de clicks
-                        recibidos los últimos 30 días
-                    </ng-template>
-                </div>
-                <ng-template #noChart>{{ 'NO_CLICKS' | oTranslate }}</ng-template>
+                    <div *ngIf="!isGraph" #noChart>{{ 'NO_CLICKS' | oTranslate }}</div>
             </div>
         </mat-tab>
         <mat-tab label="{{ 'SALES_INFORMATION' | oTranslate }}">

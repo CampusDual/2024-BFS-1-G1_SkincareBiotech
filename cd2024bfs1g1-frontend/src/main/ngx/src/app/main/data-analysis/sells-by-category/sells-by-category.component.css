@@ -1,4 +1,3 @@
-
 o-form{
     display: flex;
     flex-direction: column;
@@ -8,4 +7,8 @@ o-form{
 
 o-daterange-input{
     align-self: self-start;
+}
+
+.insights{
+    margin-top: 20px;
 }

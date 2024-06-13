@@ -19,17 +19,17 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   @ViewChild("proSaleCurrency")
   proSaleCurrency: OCurrencyInputComponent;
 
-  @ViewChild('form') 
+  @ViewChild('form')
   form: OFormComponent;
 
   isVisible: boolean = false;
-  Visible:boolean = true;
+  Visible: boolean = true;
   productName: string = '';
   productId: number;
 
   isGraph: boolean = true;
   maxClick: number = 0;
-  totalClicks: number =0;
+  totalClicks: number = 0;
   percentaje: number;
   maxDate: number;
   maxDay: number;
@@ -59,21 +59,18 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  loadClicks(event: any){
-    console.log(this.isGraph)
-    event.forEach(item =>{
+  loadClicks(event: any) {
+    event.forEach(item => {
       console.log(item)
       this.totalClicks += item.VISITS
-      if(item.VISITS > this.maxClick){
+      if (item.VISITS > this.maxClick) {
         this.maxClick = item.VISITS;
         this.maxDate = item.VISIT_DATE;
       }
     })
-    console.log(this.totalClicks)
-    console.log(this.maxClick)
-    if(this.maxClick<=0){
-      this.isGraph = false;
-    }
+
+    this.isGraph = this.maxClick > 0;
+
     this.formatDate(this.maxDate);
     this.percentage = (this.maxClick / this.totalClicks) * 100;
     console.log(this.isGraph)
@@ -92,18 +89,18 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
 
     this.maxMonth = monthFormatter.format(newDate);
   }
-  
+
   toggleVisibility(): void {
     this.isVisible = !this.isVisible;
     this.Visible = !this.Visible;
   }
- 
 
-  onSelectedTabChange(){
+
+  onSelectedTabChange() {
     this.router.navigate(['/main/products/:PRO_ID/allergen']);
   }
 
-  checkName($event: any){
+  checkName($event: any) {
     this.productName = $event.PRO_NAME;
   }
 }
