@@ -14,22 +14,21 @@
       <button class="item-btn" *ngIf="showBtns" id="add_btn" (click)="addItem()">+</button>
     </div>
     <div class="price-container">
-      <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock2">
-        <div class="priceSale">          
+      <div class="price" *ngIf="(product.PRO_SALE!= null); else priceBlock2">
+        <div class="priceSale">
           <p>
-            <span>{{ product.PRO_SALE | number: '1.2-2'}} €/u </span>
+            <span>{{ product.REAL_PRICE | number: '1.2-2'}} €/u </span>
           </p>
           <p class="percent">
-            -{{((product.PRO_PRICE - product.PRO_SALE)/product.PRO_PRICE) * 100 | number: '1.0-0' }}%
+            -{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%
           </p>
           <p>
-            <del>{{ product.PRO_PRICE | number: '1.2-2'}} €/u</del>                        
+            <del>{{ product.PRICE | number: '1.2-2'}} €/u</del>                        
           </p>
-         
         </div>
       </div>
       <ng-template #priceBlock2>
-        {{product.PRO_PRICE| number: '1.2-2'}} €/u
+        {{product.PRICE| number: '1.2-2'}} €/u
       </ng-template>
 
       <hr style="width: 80px;" size="1px" color="black" />
@@ -38,18 +37,16 @@
         <div class="priceSale">
           <p>{{'TOTAL'| oTranslate}}</p>          
           <p>
-            <span>{{ product.PRO_SALE*item.units | number: '1.2-2'}} € </span>            
-          </p>
-          <p>
-            <del>{{ product.PRO_PRICE*item.units | number: '1.2-2'}} €</del>
+            <span>{{ product.REAL_PRICE*item.units | number: '1.2-2'}} € </span>            
           </p>
         </div>
       </div>
       <ng-template #priceBlock>
         <p>{{'TOTAL'| oTranslate}}</p>
-        <p>{{product.PRO_PRICE*item.units | number: '1.2-2'}} €</p>        
+        <p>{{product.PRICE*item.units | number: '1.2-2'}} €</p>        
       </ng-template>
     </div>
+
     <div class="delete-container">
       <button class="delete-button" *ngIf="showBtns" (click)="deleteItem()"><mat-icon>close</mat-icon> </button>
     </div>

@@ -23,6 +23,12 @@ export const SERVICE_CONFIG: Object = {
   'productsView': {
     'path': '/productsView'
   },
+  'skinTypes':{
+    'path': '/skinTypes'
+  },
+  'productsSkin':{
+    'path': '/productsSkin'
+  },
   'billed-ages': {
     'path': '/billed-ages',
   },
@@ -41,11 +47,17 @@ export const SERVICE_CONFIG: Object = {
   'sellers': {
     'path': '/new-seller'
   },
-  'sales': {
-    'path': '/sales'
+  'sales':{
+  'path' : '/sales'
+  },
+  'commissions': {
+    'path': '/commissions'
   },
   'allergens': {
     'path': '/allergens'
   }
-
+,
+  'skintypes': {
+    'path': '/skintypes',
+  },
 };

@@ -1,13 +1,38 @@
 .main-container {
-    background-color: #fff;
-    padding: 0px 15px 15px 15px;
-}
-.details-row {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
 }
 
-.details-row o-currency-input,
-.details-row o-date-input {
-    flex: 1;
+.title-container {
+    margin-bottom: 20px;
+    align-items: end;
+}
+
+.details-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price-row,
+.date-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.price-row p {
+    margin-left: 10px;
+}
+
+.input-field {
+    margin-right: 10px;
+}
+
+.price-label {
+    font-weight: bold;
+    padding: 5px;
 }

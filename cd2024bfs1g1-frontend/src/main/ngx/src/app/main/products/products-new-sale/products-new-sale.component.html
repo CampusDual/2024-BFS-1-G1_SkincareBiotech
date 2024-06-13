@@ -1,10 +1,20 @@
-<o-form attr="newSalesForm" service="sales" entity="sale" keys="SAL_ID" after-insert-mode="new" >
-    <div class="main-container">
-        <span class="title-container"><h3>{{'ADD_SALE' | oTranslate}}</h3></span>
-        <div class="details-row">
-          <o-currency-input attr="SAL_PRICE" label="PRO_PRICE" max-decimal-digits="2" decimal-separator="," required="yes"></o-currency-input>
-          <o-date-input attr="SAL_INITIAL_DATE" label="SAL_INITIAL_DATE" required="yes"></o-date-input>
-          <o-date-input attr="SAL_END_DATE" label="SAL_END_DATE" required="yes"></o-date-input>
-        </div>
+<o-form attr="newSalesForm" service="sales" entity="sale" keys="SAL_ID" after-insert-mode="close">
+  <div class="main-container">
+    <span class="title-container">
+      <h3>{{'ADD_SALE' | oTranslate}}</h3>
+    </span>
+    <div class="details-row">
+      <div class="price-row">
+        <o-currency-input class="input-field" attr="SAL_PRICE" label="SAL_PRICE" max-decimal-digits="2"
+          decimal-separator="," required="yes" (onChange)="changePrice($event)"></o-currency-input>
+        <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
+            number:"1.2-2" }}</label></p>
+      </div>
+      <div class="date-row">
+        <o-date-input class="input-field" attr="SAL_INITIAL_DATE" label="SAL_INITIAL_DATE"
+          required="yes"></o-date-input>
+        <o-date-input class="input-field" attr="SAL_END_DATE" label="SAL_END_DATE" required="yes"></o-date-input>
+      </div>
     </div>
+  </div>
 </o-form>
