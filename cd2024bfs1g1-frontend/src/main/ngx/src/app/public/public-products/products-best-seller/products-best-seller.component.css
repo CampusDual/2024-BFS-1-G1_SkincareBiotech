@@ -13,8 +13,7 @@
 h2{
     text-align: center;
     color: #438cA1;
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 15px;
     margin-top: 10px;
     font-size: 25px;
     font-family: 'Poppins', sans-serif;
@@ -25,8 +24,9 @@ h3{
     text-align: center;
     font-size: 18px; 
     font-family: 'Cormorant', serif;
-
+    
 }
+
 .app-product-card {
     flex: 1 1 calc(25% - 40px); /* Ajustar ancho de los productos */
     margin: 20px;
