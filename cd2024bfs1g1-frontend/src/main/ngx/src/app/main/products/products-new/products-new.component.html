@@ -11,9 +11,12 @@
                     <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
                 </div>
                 <div class="details-row">
-                    <o-text-input attr="PRO_NAME" step="0" grouping="no" required="yes"></o-text-input>
-                    <o-currency-input attr="PRO_PRICE" required="yes" max-decimal-digits="2"
-                        decimal-separator=","></o-currency-input>
+                    <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
+                </div>
+                <div class="price-row">
+                    <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes" (onChange)="changePrice($event)"></o-currency-input>
+                    <p>{{ 'PUBLICATION_PRICE' | oTranslate }}: <label class="price-label">{{ priceUser |
+                        number:"1.2-2" }} €</label></p>                
                 </div>
                 <div class="details-row">
                     <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
