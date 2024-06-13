@@ -88,7 +88,7 @@ export class NewOrderDetailsComponent implements OnInit, AfterViewInit {
   }
 
   get price() {
-    return this.order.PRO_PRICE?.toFixed(2);
+    return this.order.PRICE?.toFixed(2);
   }
 
   goBack(): void {

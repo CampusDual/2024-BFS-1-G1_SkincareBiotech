@@ -15,11 +15,9 @@
                     <p class="pill">{{product.BRA_NAME}}</p>
                 </div>
                 <div class="flex">
-                    <!-- <p class="category">{{"CATEGORY" | oTranslate}}: </p> -->
                     <p class="pill">{{product.CAT_NAME}}</p>
                 </div>
                 <div class="flex">
-                    <!-- <p class="category">{{"PGE_ID" | oTranslate}}: </p> -->
                     <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
                 </div>
             </div>
@@ -37,15 +35,15 @@
                 <div class="prices">
                     <div class="buy-container">
 
-                        <div class="price" *ngIf="(sale != null); else priceBlock">
+                        <div class="price" *ngIf="(product.PRICE != product.REAL_PRICE); else priceBlock">
 
                             <div class="price-container">
                                 <span class="originalPrice">{{ price }} €</span>
                                 <div class="prices">
-                                    <span class="salePrice"><span> {{ sale }} €</span></span>
-                                    <span class="discount-span">-{{((product.PRO_PRICE -
-                                        product.PRO_SALE)/product.PRO_PRICE) *
-                                        100 |number: '1.0-0' }}%</span>
+                                    <span class="salePrice">
+                                        <span> {{ product.REAL_PRICE }} €</span>
+                                    </span>
+                                    <span class="discount-span">-{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%</span>
                                 </div>
                             </div>
 
