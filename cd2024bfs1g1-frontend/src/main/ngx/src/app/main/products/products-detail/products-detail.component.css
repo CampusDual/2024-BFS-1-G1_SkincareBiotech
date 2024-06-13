@@ -38,6 +38,10 @@ mat-tab-group{
     flex: 1;
 }
 
+.salePrice-with-offer{
+    height: 100%;
+    margin: auto;
+}
 .price-row {
     display: flex;
     align-items: center;

@@ -233,7 +233,7 @@
   "UNPAID": "Unpaid balance",
   "DETAIL_COMMISSION": "Commission Details",
   "COM_NAME": "Commission name",
-  "COM_VALUE": "Commission value",
+  "COM_VALUE": "Commission value (%)",
   "COM_ID": "Commission id",
   "COMMISSIONS": "Commission",
   "FINAL_PRICE": "Final price",

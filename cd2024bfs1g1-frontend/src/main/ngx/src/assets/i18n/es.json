@@ -226,7 +226,7 @@
   "UNPAID": "Pendiente de pago",
   "DETAIL_COMMISSION": "Detalles Comisión",
   "COM_NAME": "Nombre comisión",
-  "COM_VALUE": "Valor de la comisión",
+  "COM_VALUE": "Valor de la comisión (%)",
   "COM_ID": "Id de comisión",
   "COMMISSIONS": "Comisiones",
   "FINAL_PRICE": "Precio final",

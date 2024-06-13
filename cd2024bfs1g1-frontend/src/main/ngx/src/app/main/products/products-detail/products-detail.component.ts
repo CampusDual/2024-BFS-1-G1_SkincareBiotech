@@ -87,7 +87,6 @@ export class ProductsDetailComponent implements OnInit {
   }
 
   finalPriceSale(rowData: Array<any>): number {
-
     return (rowData['SAL_PRICE'] / (1 - (this.commissionPlatform / 100))) / (1 - (this.commissionRedSys / 100));
   }
   getPriceCalculator() {
