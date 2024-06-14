@@ -17,7 +17,7 @@
                     <div fxLayout="column" fxLayoutGap="12px" class="order-inputs">
                         <o-integer-input #usrId attr="USR_ID" hidden sql-type="INTEGER" enabled="no"></o-integer-input>
                         <o-text-input #nameInput class="order-input" attr="UPR_RECIPIENT" required="yes"
-                            placeholder="UPR_RECIPIENT" [validators]="validatorsNameArray">
+                            placeholder="UPR_RECIPIENT">
                             <o-validator error-name="pattern"
                                 error-text="{{ 'ERROR_NAME' | oTranslate }}"></o-validator>
                         </o-text-input>

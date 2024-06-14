@@ -11,18 +11,15 @@
             <label>{{ 'NAME' | oTranslate }}</label>
             <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
             <div class="name">
-                <o-text-input attr="USR_NAME" label="USR_NAME" required="yes" [validators]="validatorsNameArray">
-                    <o-validator error-name="pattern"
-                        error-text="{{ 'ERROR_NAME' | oTranslate }}"></o-validator>
-                </o-text-input>
+                <o-text-input attr="USR_NAME" label="USR_NAME" required="yes"></o-text-input>
                 <o-text-input attr="USR_SURNAME" title="USR_SURNAME"  required="yes"  formControlName="usr_surname"></o-text-input>
             </div>
 
             <label>{{ 'CONTACT' | oTranslate }}</label>
             <div class="contact">
                 <o-text-input attr="USR_PHONE" label="USR_PHONE" [validators]="validatorsPhoneArray">
-                    <o-validator error-phone="pattern"
-                        error-text="{{ 'ERROR_PHONE' | oTranslate }}"></o-validator>
+                    <o-validator error-name="pattern"
+                        error-text="{{ 'ERROR_PATTERN_PHONE' | oTranslate }}"></o-validator>
                 </o-text-input>
                 <o-email-input attr="USR_EMAIL" required="yes"  title="USR_EMAIL"></o-email-input>
             </div>
@@ -30,11 +27,10 @@
             <label>{{ 'SHIP_INFO' | oTranslate }}</label>
             <div class="info">
                 <o-text-input attr="UPR_RECIPIENT" title="UPR_RECIPIENT"></o-text-input>
-                <o-text-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE" [validators]="validatorsZipArray" thousand-separator="">
-                    <o-validator error-name="pattern" error-text="Only alphanumeric characters and underscores are allowed"></o-validator>
+                <o-integer-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE" [validators]="validatorsZipArray" thousand-separator="">
                     <o-validator error-name="minlength" error-text="Minimum length is 5 characters"></o-validator>
                     <o-validator error-name="maxlength" error-text="Maximum length is 5 characters"></o-validator>
-                </o-text-input>
+                </o-integer-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
             </div>
 

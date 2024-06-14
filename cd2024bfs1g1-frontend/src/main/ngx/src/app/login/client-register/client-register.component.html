@@ -58,9 +58,6 @@
                         <mat-error *ngIf="usernameCtrl.hasError('maxlength')">
                             {{ 'MAX_LENGTH_50' | oTranslate }}
                         </mat-error>
-                        <mat-error *ngIf="usernameCtrl.hasError('pattern')">
-                            {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
-                        </mat-error>
                     </mat-form-field>
                     <mat-form-field class="register-field">
                         <mat-label>{{ 'usr_surname' | oTranslate }}</mat-label>
@@ -73,9 +70,6 @@
                         </mat-error>
                         <mat-error *ngIf="userSurnameCtrl.hasError('maxlength')">
                             {{ 'MAX_LENGTH_50' | oTranslate }}
-                        </mat-error>
-                        <mat-error *ngIf="userSurnameCtrl.hasError('pattern')">
-                            {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
                         </mat-error>
                     </mat-form-field>
                 </div>

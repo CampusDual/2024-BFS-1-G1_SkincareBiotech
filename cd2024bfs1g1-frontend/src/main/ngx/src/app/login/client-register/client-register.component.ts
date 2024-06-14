@@ -34,12 +34,10 @@ export class ClientRegisterComponent implements OnInit {
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(50),
-    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
   ]);
   public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required, Validators.minLength(3),
     Validators.maxLength(50),
-    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
   ]);
   public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required,
