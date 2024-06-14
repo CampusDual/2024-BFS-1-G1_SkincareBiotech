@@ -296,5 +296,8 @@
   "ERROR_NAME": "It is not allowed to use numerical characters",
   "ERROR_BIRTHDATE": "You need to be over 18 years old!",
   "ERROR_PHONE": "Phone not valid",
-  "SHIP_INFO": "Shipment information"
+  "SHIP_INFO": "Shipment information",
+  "SELLER_USERNAME_ERROR": "A username cannot contain whitespaces",
+  "SELLER_EMAIL_ERROR": "The inserted email address does not have a valid format",
+  "SELLER_PHONENUM_ERROR": "Phone numbers can only be a combination of 9 digits"
 }

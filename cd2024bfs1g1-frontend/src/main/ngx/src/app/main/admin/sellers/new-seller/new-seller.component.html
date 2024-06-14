@@ -7,7 +7,11 @@
         <div class="content">
             <div class="info">
                 <div class="login">
-                    <o-text-input attr="USR_LOGIN" step="0" grouping="no" required="yes"></o-text-input>
+                    <o-text-input attr="USR_LOGIN" step="0" grouping="no" required="yes">
+                        <o-validator [validator-function]="sellerUsernameValidator">
+                            <o-error name="requiredUsername" text="{{'SELLER_USERNAME_ERROR' | oTranslate}}"></o-error>
+                        </o-validator>
+                    </o-text-input>
                 </div>
                 <div class="name">
                     <o-text-input attr="USR_NAME" step="0" grouping="no" required="yes"></o-text-input>
@@ -16,13 +20,21 @@
                     <o-text-input attr="USR_SURNAME" step="0" grouping="no" required="yes"></o-text-input>
                 </div>
                 <div class="email">
-                    <o-text-input attr="USR_EMAIL" step="0" grouping="no" required="yes"></o-text-input>
+                    <o-text-input attr="USR_EMAIL" step="0" grouping="no" required="yes">
+                        <o-validator [validator-function]="sellerEmailValidator">
+                            <o-error name="requiredEmail" text="{{'SELLER_EMAIL_ERROR' | oTranslate}}"></o-error>
+                        </o-validator>
+                    </o-text-input>
                 </div>
                 <div class="password">
                     <o-text-input attr="USR_PASSWORD" step="0" grouping="no" required="yes"></o-text-input>
                 </div>
                 <div class="phone">
-                    <o-text-input attr="USR_PHONE" step="0" grouping="no" required="no"></o-text-input>
+                    <o-text-input attr="USR_PHONE" step="0" grouping="no" required="no">
+                        <o-validator [validator-function]="sellerPhoneValidator">
+                            <o-error name="requiredPhonenum" text="{{'SELLER_PHONENUM_ERROR' | oTranslate}}"></o-error>
+                        </o-validator>
+                    </o-text-input>
                 </div>
             </div>
         </div>
