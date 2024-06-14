@@ -12,13 +12,13 @@
 
                 <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
                 <div class="flex">
-                    <p class="pill">{{product.BRA_NAME}}</p>
+                    {{product.BRA_NAME}}
                 </div>
                 <div class="flex">
-                    <p class="pill">{{product.CAT_NAME}}</p>
+                    {{product.CAT_NAME}}
                 </div>
                 <div class="flex">
-                    <p class="pill">{{product.PGE_NAME | oTranslate}}</p>
+                    {{product.PGE_NAME | oTranslate}}
                 </div>
             </div>
 
@@ -30,9 +30,6 @@
                     </div>
                 </div>
             </div>
-
-
-
             <div class="buy-container">
                 <div class="allergic-warning-panel" *ngIf="matchingAllergens && matchingAllergens.length > 0">
                     <mat-icon class="warning-icon-allergy">warning</mat-icon>

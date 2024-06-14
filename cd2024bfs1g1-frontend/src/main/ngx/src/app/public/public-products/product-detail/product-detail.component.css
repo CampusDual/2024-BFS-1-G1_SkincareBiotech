@@ -28,17 +28,13 @@
 }
 
 .prod-container {
-    margin-left: 50px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 70%;
     padding-left: 5%;
 }
 
-.price-container span {
-    display: flex;
-    justify-content: flex-end;
-}
 
 
 .salePrice {
@@ -92,17 +88,20 @@
 }
 
 #add-cart-button {
-    border-radius: 10px;
-    height: 60px;
-    background-color: #a7bfc7;
+    border-radius: 1%;
     font-size: large;
     text-transform: uppercase;
-    font-weight: bolder;
     margin-inline-end: auto;
+    background-color: var(--brand-color);
+    color:white;
+    width:400px;
+    min-height: 50px;
 }
 
 .buttons {
     margin-top: 15px;
+    position:relative;
+    bottom: 0px;
 }
 
 #back-button {
@@ -123,18 +122,13 @@
     width: 100%;
 }
 
-.pill {
+
+.flex {
     display: flex;
     border: 1px solid #e1e1e1;
     border-radius: 7px;
     padding: 10px 20px;
     background-color: white;
-
-}
-
-.flex {
-    display: flex;
-    grid-gap: 10px;
 }
 
 .category {
