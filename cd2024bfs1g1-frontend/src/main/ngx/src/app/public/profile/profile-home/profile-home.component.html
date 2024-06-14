@@ -4,45 +4,50 @@
     </mat-tab>
     <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
         <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="U"
-           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID"
-            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID" 
+           columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE;UPR_RECIPIENT"
+            visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE;UPR_RECIPIENT"
             show-header-navigation="yes">
             
             <label>{{ 'NAME' | oTranslate }}</label>
             <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
             <div class="name">
-                <o-text-input attr="USR_NAME" label="USR_NAME" required="yes" [validators]="validatorsNameArray">
-                    <o-validator error-name="pattern"
-                        error-text="{{ 'ERROR_NAME' | oTranslate }}"></o-validator>
-                </o-text-input>
+                <o-text-input attr="USR_NAME" label="USR_NAME" required="yes"></o-text-input>
                 <o-text-input attr="USR_SURNAME" title="USR_SURNAME"  required="yes"  formControlName="usr_surname"></o-text-input>
             </div>
 
             <label>{{ 'CONTACT' | oTranslate }}</label>
             <div class="contact">
-                <o-text-input attr="USR_PHONE" label="USR_PHONE" required="yes" [validators]="validatorsPhoneArray">
-                    <o-validator error-phone="pattern"
-                        error-text="{{ 'ERROR_PHONE' | oTranslate }}"></o-validator>
+                <o-text-input attr="USR_PHONE" label="USR_PHONE" [validators]="validatorsPhoneArray">
+                    <o-validator error-name="pattern"
+                        error-text="{{ 'ERROR_PATTERN_PHONE' | oTranslate }}"></o-validator>
                 </o-text-input>
                 <o-email-input attr="USR_EMAIL" required="yes"  title="USR_EMAIL"></o-email-input>
             </div>
 
             <label>{{ 'SHIP_INFO' | oTranslate }}</label>
             <div class="info">
+                <o-text-input attr="UPR_RECIPIENT" title="UPR_RECIPIENT"></o-text-input>
+                <o-text-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE" [validators]="validatorsZipArray" thousand-separator="">
+                    <o-validator error-name="minlength" error-text="{{ 'ERROR_MIN_ZIP' | oTranslate }}"></o-validator>
+                    <o-validator error-name="maxlength" error-text="{{ 'ERROR_MAX_ZIP' | oTranslate }}"></o-validator>
+                    <o-validator error-name="pattern" error-text="{{ 'ERROR_PATTERN_ZIP' | oTranslate }}"></o-validator>
+                </o-text-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
             </div>
 
             <label>{{ 'ABOUT_ME' | oTranslate }}</label>
-            <div class="info">
+            <div class="about-me">
                 <o-date-input attr="UPR_BIRTHDATE" required="yes" title="UPR_BIRTHDATE" format="DD/MM/YYYY"></o-date-input>
                 <div *ngIf="form.formGroup.get('UPR_BIRTHDATE').invalid && (form.formGroup.get('UPR_BIRTHDATE').dirty || form.formGroup.get('UPR_BIRTHDATE').touched)" class="error-message">
                   {{ 'ERROR_BIRTHDATE' | oTranslate }}
                 </div>
                 <o-combo attr="UGE_ID" searchable="no" service="user-genders" entity="userGender" keys="UGE_ID"
-                columns="UGE_NAME" visible-columns="UGE_NAME" value-column="UGE_ID" translate="yes" required="yes" null-selection="no"></o-combo>
+                columns="UGE_NAME" visible-columns="UGE_NAME" value-column="UGE_ID" translate="yes" required="yes" null-selection="no">
+                </o-combo>
                 <o-combo attr="SKIN_ID" service="skinTypes" entity="skinType" keys="SKIN_ID"
-                    columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" null-selection="no"></o-combo>
-            </div> 
+                    columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" required="yes" null-selection="no">
+                </o-combo>
+            </div>
         </o-form>
     </mat-tab>
     <mat-tab label="{{ 'MY_ALLERGENS' | oTranslate }}">
