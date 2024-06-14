@@ -74,6 +74,9 @@
                         <ng-template #enBlock>
                             <div class="insights-container">
                                 <div class="insight">
+                                    This product has been viewed a total of <span class="bold">{{totalClicks}} times</span> in the last 30 days.
+                                </div>                                
+                                <div class="insight">
                                     The day with the<span class="bold"> most visits is {{ maxDay }} of {{ maxMonth }}</span>
                                     with a <span class="bold">total of {{ maxClick }} clicks</span>, accounting for
                                     <span class="bold">{{ percentage | number: '1.2-2' }}%</span> of clicks received in the 
