@@ -1,4 +1,4 @@
-import {  AfterViewInit, Component, Injector, OnInit, ViewChild } from '@angular/core';
+import {  AfterViewInit, Component, Injector, OnInit, ViewChild, ViewRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FilterExpressionUtils, Expression, OntimizeService, ORealInputComponent, OIntegerInputComponent, OGridComponent, OTextInputComponent } from 'ontimize-web-ngx';
 import { DataService } from '../../../shared/services/data.service';
@@ -12,7 +12,8 @@ import { DataService } from '../../../shared/services/data.service';
 export class ProductsViewComponent implements OnInit {
 
   @ViewChild('nameFilter') nameFilter: OTextInputComponent
-
+  @ViewChild('maxPriceInput') maxPriceInput : ORealInputComponent
+  @ViewChild('minPriceInput') minPriceInput : ORealInputComponent
   service: OntimizeService;
 
   maxPrice: Expression;
@@ -67,13 +68,13 @@ export class ProductsViewComponent implements OnInit {
         if (fil.attr == 'PRO_MAX_PRICE') {
           let value: number = Number(fil.value);
           if(value === 0){
-            filters.push(FilterExpressionUtils.buildExpressionLessEqual("PRO_REAL_PRICE", null));
+            filters.push(FilterExpressionUtils.buildExpressionLessEqual("REAL_PRICE", null));
           }
-          filters.push(FilterExpressionUtils.buildExpressionLessEqual("PRO_REAL_PRICE", value));
+          filters.push(FilterExpressionUtils.buildExpressionLessEqual("REAL_PRICE", value));
         }
         if (fil.attr == 'PRO_MIN_PRICE') {
           let value: number = Number(fil.value);
-          filters.push(FilterExpressionUtils.buildExpressionMoreEqual("PRO_REAL_PRICE", value));
+          filters.push(FilterExpressionUtils.buildExpressionMoreEqual("REAL_PRICE", value));
         }
         if(fil.attr == 'PRO_NAME'){
           filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, fil.value))
@@ -89,6 +90,15 @@ export class ProductsViewComponent implements OnInit {
     }
   }
 
-
+  clearInputMax(event){
+    if(event.target.value === '0.00' || event.target.valuel === '' || event.target.value === undefined){
+      this.maxPriceInput.clearValue();
+    }
+  }
+  clearInputMin(event){
+    if(event.target.value === '0.00' || event.target.value === '' || event.target.value === undefined){
+      this.minPriceInput.clearValue();
+    }
+  }
 
 }

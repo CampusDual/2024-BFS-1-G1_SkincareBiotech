@@ -8,8 +8,8 @@
             columns="PGE_ID;PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" translate="yes"></o-combo>
         <o-combo attr="SKIN_ID" read-only="no" service="skinTypes" entity="skinType" keys="SKIN_ID"
             columns="SKIN_ID;SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" translate="yes"></o-combo>
-        <o-real-input attr="PRO_MIN_PRICE" read-only="false"></o-real-input>
-        <o-real-input attr="PRO_MAX_PRICE" read-only="false"></o-real-input>
+        <o-real-input #minPriceInput attr="PRO_MIN_PRICE" read-only="false" (onBlur)="clearInputMin($event)"></o-real-input>
+        <o-real-input #maxPriceInput attr="PRO_MAX_PRICE" read-only="false" (onBlur)="clearInputMax($event)"></o-real-input>
         <o-text-input #nameFilter attr="PRO_NAME" [data]="nameFilterValue" read-only="false" oHidden></o-text-input>
     </div>
     <o-filter-builder #filterBuilder attr="categFilter"
@@ -19,7 +19,7 @@
 </o-form>
 <div class="grid-container">
     <o-grid #productsGrid attr="productsGrid" keys="PRO_ID" service="products" entity="productEnabled" pageable="true"
-    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_IMAGE;CAT_ID;PRICE;PRO_REAL_PRICE;DISCOUNT"
+    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_IMAGE;CAT_ID;PRICE;REAL_PRICE;DISCOUNT"
     query-rows="10" page-size-options="5;10;15;20" orderable="true" quick-filter-columns="PRO_NAME" quick-filter="false"
         insert-button="false" pagination-controls="true"
         fixed-header="yes" grid-item-height="400px" detail-mode="none">
