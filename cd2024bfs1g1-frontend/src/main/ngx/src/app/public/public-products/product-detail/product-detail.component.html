@@ -1,11 +1,16 @@
 <div class="pad">
     <div *ngIf="product" class="container">
+
         <div class="img-container">
             <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
         </div>
+
         <div class="prod-container">
             <div class="title">{{product.PRO_NAME}}</div>
+
             <div class="for">
+
+                <!-- <p class="category">{{"BRAND" | oTranslate}}: </p> -->
                 <div class="flex">
                     <p class="pill">{{product.BRA_NAME}}</p>
                 </div>
@@ -17,7 +22,7 @@
                 </div>
             </div>
 
-            <div *ngIf="skintypes && skintypes.length > 0">
+            <div class="skintype" *ngIf="skintypes && skintypes.length > 0">
                 <div class="subtitle"><b>{{'RECOMMENDED_SKIN' | oTranslate}}</b></div>
                 <div class="flex-container">
                     <div class="pill" *ngFor="let item of skintypes">
@@ -25,37 +30,53 @@
                     </div>
                 </div>
             </div>
+
+
+
             <div class="buy-container">
+                <div class="allergic-warning-panel" *ngIf="matchingAllergens && matchingAllergens.length > 0">
+                    <mat-icon class="warning-icon-allergy">warning</mat-icon>
+                    <span class="allergy-text-area">
+                        <span>{{"ALLERGIC_WARNING" | oTranslate}}</span>
+                    </span>
+                </div>
+
                 <div class="price" *ngIf="(product.PRICE != product.REAL_PRICE); else priceBlock">
+
                     <div class="price-container">
                         <span class="originalPrice">{{ price }} €</span>
                         <div class="prices">
-                            <span class="salePrice"><span> {{ product.REAL_PRICE }} €</span></span>
-                            <span class="discount-span">-{{((product.PRICE - product.REAL_PRICE)/product.PRICE) * 100 | number: '1.0-0' }}%</span>
+                            <span class="salePrice">
+                                <span> {{ product.REAL_PRICE }} €</span>
+                            </span>
+                            <span class="discount-span">-{{((product.PRICE - product.REAL_PRICE)/product.PRICE) *
+                                100 | number: '1.0-0' }}%</span>
                         </div>
                     </div>
+
                 </div>
+
                 <ng-template #priceBlock>
-                    <p class="regularPrice">{{price}}€</p>
+                    <span class="regularPrice">{{price}}€</span>
                 </ng-template>
-                <div class="buttons">
-                    <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON"
-                        (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
-                </div>
+            </div>
+            <div class="buttons">
+                <button mat-raised-button id="add-cart-button" attr="ADD_CART_BUTTON" class="cart-button"
+                    (click)="addProduct(product)">{{'ADD_CART_BUTTON' | oTranslate}}</button>
             </div>
         </div>
-
-
     </div>
-</div>
-<div class="desc">
-    <p>{{product.PRO_DESCRIPTION}}</p>
-</div>
-<div class="allergens" *ngIf="allergens.length>0">
-    <div class="subtitle"><b>{{'ALLERGENS' | oTranslate}}</b></div>
-    <div class="flex-container">
-        <div *ngFor="let item of allergens; let i = index">
-            <span class="allergen-type">{{item.ALLER_NAME}}</span>
+
+    <div class="desc">
+        <p>{{product.PRO_DESCRIPTION}}</p>
+    </div>
+    <div class="allergens" *ngIf="allergens.length>0">
+        <div class="subtitle"><b>{{'ALLERGENS' | oTranslate}}</b></div>
+        <div class="flex-container">
+            <div *ngFor="let item of allergens; let i = index"
+                [ngClass]="{'allergen-highlight': matchingAllergens.includes(item.ALLER_NAME)}">
+                <span class="allergen-type">{{item.ALLER_NAME}}</span>
+            </div>
         </div>
     </div>
 </div>

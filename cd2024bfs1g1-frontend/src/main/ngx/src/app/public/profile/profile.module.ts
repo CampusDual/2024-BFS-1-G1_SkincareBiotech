@@ -5,12 +5,14 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileHomeComponent } from './profile-home/profile-home.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { OrdersModule } from '../orders/orders.module';
+import { ProfileAllergenUserComponent } from './profile-allergen-user/profile-allergen-user.component';
 
 
 
 @NgModule({
   declarations: [
     ProfileHomeComponent,
+    ProfileAllergenUserComponent,
 
   ],
   imports: [
