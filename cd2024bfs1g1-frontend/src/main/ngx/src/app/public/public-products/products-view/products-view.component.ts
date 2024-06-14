@@ -66,6 +66,9 @@ export class ProductsViewComponent implements OnInit {
         }
         if (fil.attr == 'PRO_MAX_PRICE') {
           let value: number = Number(fil.value);
+          if(value === 0){
+            filters.push(FilterExpressionUtils.buildExpressionLessEqual("PRO_REAL_PRICE", null));
+          }
           filters.push(FilterExpressionUtils.buildExpressionLessEqual("PRO_REAL_PRICE", value));
         }
         if (fil.attr == 'PRO_MIN_PRICE') {
