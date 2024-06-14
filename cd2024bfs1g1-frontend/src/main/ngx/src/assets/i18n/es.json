@@ -187,6 +187,7 @@
   "USR_PHONE": "Teléfono",
   "USR_PASSWORD": "Contraseña",
   "USR_GENRE": "Género",
+  "USR_INFORMATION" : "Información del pedido",
   "ADD_SELLER": "AÑADIR NUEVO VENDEDOR",
   "SELLERS": "Vendedores",
   "DELETE_CART_WARNING": "Esta seguro que quiere eliminar del carrito?",

@@ -5,7 +5,6 @@
 
 .second-container {
     background-color: #fff;
-    margin-top: 20px;
 }
 
 .flex-container {
@@ -14,8 +13,14 @@
     margin: 12px auto;
 }
 
+.header-area,.header-list{
+    display: flex;
+    justify-content: center;
+}
+
 .flex-container o-text-input,
 .flex-container o-date-input,
-.flex-container o-currency-input {
+.flex-container o-currency-input,
+.flex-container o-checkbox{
     flex: 1;
 }

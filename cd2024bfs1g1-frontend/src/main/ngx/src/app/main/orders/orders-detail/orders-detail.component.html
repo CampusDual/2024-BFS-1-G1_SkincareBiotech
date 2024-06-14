@@ -1,9 +1,16 @@
-<o-form attr="orderDetail" service="orders" entity="orderBySeller" keys="ORD_ID" header-actions="R;U"
+<o-form attr="orderDetail" service="orders" entity="orderBySeller" keys="ORD_ID"
     show-header-navigation="no">
     <div class="main-container">
+        <div class="header-area">
+            <span class="title">
+                <h3> {{'USR_INFORMATION' | oTranslate}} </h3>
+            </span>
+        </div>
         <div class="ordInfo-container flex-container">
             <o-text-input attr="ORD_ID" sql-type="INTEGER" read-only="yes"></o-text-input>
             <o-date-input attr="ORD_DATE" read-only="yes"></o-date-input>
+            <o-currency-input attr="TOTAL_PRICE" read-only="yes"></o-currency-input>
+            <o-checkbox attr="ORD_PAID" [data]="true" read-only="yes">{{'PAYMENT_CHECK' | oTranslate}}</o-checkbox>
         </div>
         <div class="userInfo-container flex-container">
             <o-text-input attr="ORD_NAME" read-only="yes"></o-text-input>
@@ -11,14 +18,10 @@
             <o-text-input attr="ORD_ADDRESS" read-only="yes"></o-text-input>
             <o-text-input attr="ORD_PHONE" read-only="yes"></o-text-input>
         </div>
-        <div class="ordPayInfo-container flex-container">
-            <o-currency-input attr="TOTAL_PRICE" read-only="yes"></o-currency-input>
-            <o-text-input attr="ORD_PAID" read-only="yes"></o-text-input>
-        </div>
     </div>
     <div class="second-container">
         <o-table attr="orderLinesTable" service="orderlines" entity="orderLinesProduct" keys="OL_ID"
-            parent-keys="ORD_ID" insert-button="false" delete-button="false"
+            parent-keys="ORD_ID" insert-button="false" delete-button="false" refresh-button="false" 
             columns="OL_ID;PRO_NAME;OL_UNITS;OL_PRICE;TOTAL_PRICE;OL_SENT"
             visible-columns="PRO_NAME;OL_UNITS;OL_PRICE;TOTAL_PRICE;OL_SENT" query-rows="10">
             <o-table-column attr="OL_ID" title="OL_ID" content-align="center"></o-table-column>
@@ -30,7 +33,10 @@
             <o-table-column attr="TOTAL_PRICE" title="TOTAL_PRICE" content-align="center" type="currency"
                 currency-symbol="€" currency-symbol-position="right" thousand-separator="."
                 decimal-separator=","></o-table-column>
-            <o-table-column attr="OL_SENT" title="OL_SENT" content-align="center"></o-table-column>
+            <o-table-column attr="OL_SENT" title="OL_SENT" content-align="center">
+                <o-table-cell-renderer-boolean render-true-value="check_circle" render-false-value="highlight_off" render-type="icon" boolean-type="bool">
+                </o-table-cell-renderer-boolean>
+            </o-table-column>
         </o-table>
     </div>
 </o-form>
