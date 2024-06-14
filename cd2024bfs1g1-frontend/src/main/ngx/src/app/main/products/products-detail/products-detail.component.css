@@ -96,6 +96,12 @@ font-size: 1em;
     width: 90%;
 }
 
+.chart-tittle-y-container {
+    display: flex;
+    padding-left: 2vw;
+    padding-right: 4vw;
+
+}
 
 .title {
     text-align: center;
