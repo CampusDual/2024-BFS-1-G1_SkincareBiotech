@@ -27,10 +27,11 @@
             <label>{{ 'SHIP_INFO' | oTranslate }}</label>
             <div class="info">
                 <o-text-input attr="UPR_RECIPIENT" title="UPR_RECIPIENT"></o-text-input>
-                <o-integer-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE" [validators]="validatorsZipArray" thousand-separator="">
-                    <o-validator error-name="minlength" error-text="Minimum length is 5 characters"></o-validator>
-                    <o-validator error-name="maxlength" error-text="Maximum length is 5 characters"></o-validator>
-                </o-integer-input>
+                <o-text-input attr="UPR_ZIPCODE" title="UPR_ZIPCODE" [validators]="validatorsZipArray" thousand-separator="">
+                    <o-validator error-name="minlength" error-text="{{ 'ERROR_MIN_ZIP' | oTranslate }}"></o-validator>
+                    <o-validator error-name="maxlength" error-text="{{ 'ERROR_MAX_ZIP' | oTranslate }}"></o-validator>
+                    <o-validator error-name="pattern" error-text="{{ 'ERROR_PATTERN_ZIP' | oTranslate }}"></o-validator>
+                </o-text-input>
                 <o-text-input attr="UPR_ADDRESS" title="UPR_ADDRESS"></o-text-input>
             </div>
 
@@ -44,7 +45,7 @@
                 columns="UGE_NAME" visible-columns="UGE_NAME" value-column="UGE_ID" translate="yes" required="yes" null-selection="no">
                 </o-combo>
                 <o-combo attr="SKIN_ID" service="skinTypes" entity="skinType" keys="SKIN_ID"
-                    columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" null-selection="no">
+                    columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" required="yes" null-selection="no">
                 </o-combo>
             </div>
         </o-form>

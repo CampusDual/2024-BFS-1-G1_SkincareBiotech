@@ -30,11 +30,11 @@
                             <o-validator error-name="maxlength"></o-validator>
                         </o-text-input>
 
-                        <o-integer-input #zipInput class="order-input" attr="UPR_ZIPCODE" 
+                        <o-text-input #zipInput class="order-input" attr="UPR_ZIPCODE" 
                             thousand-separator="" required="yes" placeholder="UPR_ZIPCODE" [validators]="validatorZip">
                             <o-validator error-name="minlength" error-text="{{ 'ERROR_MIN_ZIP' | oTranslate }}"></o-validator>
                             <o-validator error-name="maxlength" error-text="{{ 'ERROR_MAX_ZIP' | oTranslate }}"></o-validator>
-                        </o-integer-input>
+                        </o-text-input>
 
                         <o-text-input #addressInput class="order-input" attr="UPR_ADDRESS" required="yes"
                             placeholder="UPR_ADDRESS"></o-text-input>

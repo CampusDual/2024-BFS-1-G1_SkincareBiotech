@@ -23,15 +23,10 @@ export class ProfileHomeComponent implements AfterViewInit {
     protected router: Router,
   ) {
     this.validatorsZipArray.push(Validators.minLength(5));
-    // check whether the entered username meets the maximum length
     this.validatorsZipArray.push(Validators.maxLength(5));  
-    // Añade validador de patrón para el nombre
+    this.validatorsZipArray.push(Validators.pattern('^[0-9]*$'));
     this.validatorsNameArray.push(Validators.pattern('^[a-zA-Z_ ]*$'));
-
-    // Añade validador de edad mínima de 18 años
     this.validatorsBirthdateArray.push(this.ageValidator());
-
-    // Añade validador de telefono
     this.validatorsPhoneArray.push(Validators.pattern('^[6-9][0-9]{8}$'));
   }
 
