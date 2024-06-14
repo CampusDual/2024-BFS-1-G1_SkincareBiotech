@@ -163,9 +163,16 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
         ORD_PHONE: this.phoneInput.getValue(),
         ORD_ZIPCODE: this.zipInput.getValue(),
         ORD_ADDRESS: this.addressInput.getValue(),
-        ORD_ITEMS: this.cartService.getCart()
+        ORD_ITEMS: this.cartService.getCart(),
+        UPR_ADDRESS: this.addressInput.getValue(),
+        USR_PHONE: this.phoneInput.getValue(),
+        USR_ZIP: this.zipInput.getValue(),
+        USR_ID: this.usrId.getValue(),
+        UPR_RECIPIENT: this.nameInput.getValue(),
       }
-      if (data.ORD_NAME != null && data.ORD_PHONE != null && data.ORD_ZIPCODE != null && data.ORD_ADDRESS != null) {
+      if (data.ORD_NAME != null && data.ORD_PHONE != null && data.ORD_ZIPCODE != null && data.ORD_ADDRESS != null 
+        && data.USR_ZIP.length==5 && data.USR_PHONE.length==9 && /^[6789]\d{8}$/.test(data.USR_PHONE) 
+        && data.UPR_ADDRESS.length>1  && data.UPR_RECIPIENT.length>1 && /^\d{5}$/.test(data.USR_ZIP)) {
         this.cartService.emptyCart();
         this.service.insert(data, "order").subscribe(res => {
           this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
@@ -173,12 +180,13 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
           this.price = (this.totalAmount * 100).toFixed(0);
           this.submitRedsysOrder();
         })
+        if (this.defAddress.checked==true){
+          this.updateProfile(data)
+        }
       } else {
-        Swal.fire({
-          title: this.translate.get('ERROR_COMPLETE_FORM'),
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
+        this.dialogService.alert('Error', this.translate.get(
+          'DATA_FORM_INVALID'
+          ));
 
       }
 
@@ -207,26 +215,6 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     this.router.navigate(["/"]);
   }
   submitRedsysOrder(): void {
-    let data = {
-      UPR_ADDRESS: this.addressInput.getValue(),
-      USR_PHONE: this.phoneInput.getValue(),
-      USR_ZIP: this.zipInput.getValue(),
-      USR_ID: this.usrId.getValue(),
-      UPR_RECIPIENT: this.nameInput.getValue(),
-
-
-    }
-    console.log(data.USR_PHONE.length)
-    if(data.USR_ZIP.length!=5 || data.USR_PHONE.length!=9 || !/^[6789]\d{8}$/.test(data.USR_PHONE) 
-      || data.UPR_ADDRESS.length<1  || data.UPR_RECIPIENT.length<1 || !/^\d{5}$/.test(data.USR_ZIP)) {
-      this.dialogService.alert('Error', this.translate.get(
-        'DATA_FORM_INVALID'
-        ));
-    }else{
-
-      if (this.defAddress.checked==true){
-        this.updateProfile(data)
-      }
 
       this.url = document.querySelector("base").href;
       this.currentLang();
@@ -283,4 +271,4 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       }
     }
   }
-}
+
