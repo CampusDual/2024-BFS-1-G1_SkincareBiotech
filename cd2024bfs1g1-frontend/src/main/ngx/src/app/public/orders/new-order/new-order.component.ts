@@ -31,7 +31,6 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   filterExp: {};
   PRO_ID = "PRO_ID";
   totalAmount: number = 0;
-  totalAmount: number = 0;
   products = [];
 
   @ViewChild("formOrder") formOrder: OFormComponent;
