@@ -39,7 +39,8 @@
                 <![CDATA[
                     WITH ENABLED_CHECKER AS (
                         SELECT P.*,B.BRA_NAME, UP.REAL_PRICE, UP.PRICE,
-                        COALESCE (((P.PRO_PRICE - P.PRO_SALE) / P.PRO_PRICE) * 100, 0) AS DISCOUNT
+                        COALESCE (((P.PRO_PRICE - P.PRO_SALE) / P.PRO_PRICE) * 100, 0) AS DISCOUNT,
+                        COALESCE(UP.SALE_PRICE, UP.PRICE) AS PRO_REAL_PRICE
                         FROM ${mainschema}.PRODUCTS_WITH_OFFER AS P
                         INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
                         INNER JOIN ${mainschema}.USER_PRICE UP ON P.PRO_ID = UP.PRO_ID
