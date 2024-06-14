@@ -293,5 +293,7 @@
   "ERROR_NAME": "No se permite usar caracteres numericos",
   "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
   "ERROR_PHONE": "Teléfono no válido",
-  "SHIP_INFO": "Información de envío"
+  "SHIP_INFO": "Información de envío",
+  "PRICE_EQUAL_LESS_0": "El precio debe ser mayor que cero"
+
 }

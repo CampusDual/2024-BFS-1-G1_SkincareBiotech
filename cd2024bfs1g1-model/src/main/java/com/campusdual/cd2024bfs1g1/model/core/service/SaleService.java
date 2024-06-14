@@ -40,7 +40,14 @@ public class SaleService implements ISaleService {
         long maxDate = endDate.getTime();
         int productId = (int) attrMap.get(SaleDao.ATTR_PRO_ID);
         Date currentDate = new Date();
+        float salePrice = (float) attrMap.get(SaleDao.ATTR_SAL_PRICE);
 
+        if(salePrice<=0){
+            EntityResult result = new EntityResultMapImpl();
+            result.setCode(EntityResult.OPERATION_WRONG);
+            result.setMessage("PRICE_EQUAL_LESS_0");
+            return result;
+        }
         Calendar calInitialDate = Calendar.getInstance();
         calInitialDate.setTime(currentDate);
         calInitialDate.set(Calendar.HOUR_OF_DAY, 0);
