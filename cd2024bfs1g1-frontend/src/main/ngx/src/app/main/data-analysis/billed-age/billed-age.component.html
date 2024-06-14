@@ -18,10 +18,11 @@
                         es el que más factura con un&nbsp;<span class="bold">{{percentage | number: '1.2-2' }}%</span>&nbsp;sobre el total de facturado.
                     </div>
                 </ng-template>
-            </div>
+            
             <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE" y-axis="TOTAL"
                 x-label="Age" y-label="Amount (€)" [color]="colorScheme">
             </o-chart>
+        </div>
             <o-table service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE" oHidden="yes"
                 columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE"
                 visible-columns="AGE_RANGE;TOTAL;GBA_MIN_AGE;GBA_MAX_AGE" query-rows="30" delete-button='no'

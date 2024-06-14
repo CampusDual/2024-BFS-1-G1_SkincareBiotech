@@ -57,13 +57,13 @@ export class DataAnalysisHomeComponent implements OnInit, OnDestroy {
     this.percentage = ((this.maxAmount / this.totalBilled) * 100);
   }
 
-  private formatDate(date: number) {
-    if (!date) {
+  private formatDate(maxDate: number) {
+    if (!maxDate) {
       this.maxMonth = '';
       return;
     }
 
-    const newDate = new Date(date);
+    const newDate = new Date(maxDate);
     this.maxDay = newDate.getDate();
     const idiomCode = this.translateService.getCurrentLang();
     const monthFormatter = new Intl.DateTimeFormat(idiomCode, { month: 'long' });

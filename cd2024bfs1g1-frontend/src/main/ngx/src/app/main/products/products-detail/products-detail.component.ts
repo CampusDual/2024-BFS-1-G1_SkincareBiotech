@@ -99,9 +99,13 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
     this.percentage = (this.maxClick / this.totalClicks) * 100;
   }
 
-  private formatDate(date: number) {
+  private formatDate(maxDate: number) {
+    if (!maxDate) {
+      this.maxMonth = '';
+      return;
+    }
 
-    const newDate = new Date(date);
+    const newDate = new Date(maxDate);
     this.maxDay = newDate.getDate();
     const idiomCode = this.translateService.getCurrentLang();
     const monthFormatter = new Intl.DateTimeFormat(idiomCode, { month: 'long' });
