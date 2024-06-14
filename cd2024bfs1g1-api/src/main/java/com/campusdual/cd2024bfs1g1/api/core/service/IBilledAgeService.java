@@ -17,4 +17,6 @@ public interface IBilledAgeService {
     EntityResult billedAgeGenderChartQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
 
     EntityResult billedAgeChartQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException, JsonProcessingException;
+
+    EntityResult customerAgeGenderAndSkinQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 }
