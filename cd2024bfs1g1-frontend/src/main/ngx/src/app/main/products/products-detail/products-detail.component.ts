@@ -32,6 +32,7 @@ export class ProductsDetailComponent implements OnInit {
   productName: string = '';
   isDataLoaded: boolean = false;
   priceSaleUser: any = false;
+  productId: number;
 
   constructor(
     protected injector: Injector,
@@ -64,6 +65,7 @@ export class ProductsDetailComponent implements OnInit {
           this.isDataLoaded = true;
         }
       })
+    this.productId = +this.route.snapshot.paramMap.get('PRO_ID');
   }
 
   onUpdate(success: boolean) {

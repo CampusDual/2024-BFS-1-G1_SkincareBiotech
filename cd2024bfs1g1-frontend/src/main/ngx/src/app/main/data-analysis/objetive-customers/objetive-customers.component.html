@@ -1,1 +1,6 @@
-<div style="background-color: blue; height: 250px; width:250px; margin-top: 20px; border-radius: 50%;"></div>
+<div class="objective-customers-container">
+    <h3>{{ 'OBJECTIVE_CUSTOMERS' | oTranslate }}</h3>
+    <o-chart type="pie" [data]="data" attr="objectiveCustomersPieChart" [chart-parameters]="pieParameters"
+        [color]="colors" layout-fill>
+    </o-chart>
+</div>
