@@ -301,6 +301,8 @@
   "SHIP_INFO": "Información de envío",
   "ERROR_PATTERN_PHONE": "El número debe comenzar con 6, 7, 8 o 9 y solo se permiten números",
   "ERROR_PATTERN_ZIP": "Solo se permiten números",
-  "UPR_RECIPIENT": "Destinatario"
+  "UPR_RECIPIENT": "Destinatario",
+  "ERROR_MIN_ZIP": "Longitud mínima: 5",
+  "ERROR_MAX_ZIP": "Longitud máxima: 5"
   
 }
