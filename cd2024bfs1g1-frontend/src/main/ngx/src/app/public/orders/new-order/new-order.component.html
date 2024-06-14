@@ -34,6 +34,7 @@
                             thousand-separator="" required="yes" placeholder="UPR_ZIPCODE" [validators]="validatorZip">
                             <o-validator error-name="minlength" error-text="{{ 'ERROR_MIN_ZIP' | oTranslate }}"></o-validator>
                             <o-validator error-name="maxlength" error-text="{{ 'ERROR_MAX_ZIP' | oTranslate }}"></o-validator>
+                            <o-validator error-name="pattern" error-text="{{ 'ERROR_PATTERN_ZIP' | oTranslate }}"></o-validator>
                         </o-text-input>
 
                         <o-text-input #addressInput class="order-input" attr="UPR_ADDRESS" required="yes"
