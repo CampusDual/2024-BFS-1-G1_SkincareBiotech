@@ -40,6 +40,7 @@
     justify-content: flex-end;
 }
 
+
 .salePrice {
     color: black;
     font-size: 1.6em;
@@ -53,7 +54,7 @@
 }
 
 .regularPrice {
-    font-size: 1.2em;
+    font-size: 1.6em;
     font-weight: bold;
     margin-top: 10%;
 }
@@ -97,11 +98,11 @@
     font-size: large;
     text-transform: uppercase;
     font-weight: bolder;
+    margin-inline-end: auto;
 }
 
 .buttons {
-    display: flex;
-    margin-top: 5%;
+    margin-top: 15px;
 }
 
 #back-button {
@@ -117,24 +118,25 @@
 
 .for {
     display: flex;
-    flex-direction: row;
+    grid-template-columns: auto auto auto;
+    gap: 15px;
     width: 100%;
-    gap: 20px;
-
 }
 
 .pill {
+    display: flex;
     border: 1px solid #e1e1e1;
     border-radius: 7px;
     padding: 10px 20px;
     background-color: #f8f9fa;
-
+    min-width: 50px;
+    align-items: center;
+    justify-content: center;
 }
 
 .flex {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    grid-gap: 10px;
 }
 
 .category {
@@ -242,3 +244,11 @@
 .skintype {
     padding-bottom: 3%;
 }
+
+.prices {
+    margin-bottom: 15px;
+}
+
+
+
+
