@@ -51,12 +51,11 @@
 
     .login-bg-container {
       background-image: url('^assets/images/skinCare3_portadaRecortada.png');
-      width: calc(100% - 640px);
+      width: calc(100% - 840px);
       background-repeat: no-repeat;
       background-size: 100% 100%;
       background-position: center center;
       position: relative;
-      z-index: 1;
     }
 
     .login-bg-container::before {
@@ -73,8 +72,8 @@
     }
 
     .wrapp-login {
-      width: 640px;
-      max-height: calc(100% - 100px);
+      width: 840px;
+      max-height: calc(100% - 150px);
 
       .login-inner-container {
         width: 100%;
@@ -136,7 +135,7 @@
 
     div {
       height: 40px;
-      margin-right: 138px;
+      margin-right: 250px;
 
       span {
         font-size: 11px;
