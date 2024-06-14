@@ -4,17 +4,17 @@
     <div class="img-container" routerLink="{{product.PRO_ID}}">
       <img class="img-product" [src]="getImageSrc(product.PRO_IMAGE)" alt="imagen">
     </div>
-    <ng-container *ngIf="product.SALE_PRICE != null ;else showSale">
+    <ng-container *ngIf="product.PRO_SALE != null ;else showSale">
       <div class="title-price" routerLink="{{product.PRO_ID}}">
 
         <p class="title">{{product.PRO_NAME}}</p>
-        <div class="sale" *ngIf="product.SALE_PRICE != null">
+        <div class="sale" *ngIf="product.PRO_SALE != null">
           <p class="price-before">{{ product.PRICE | number: '1.2-2' }} €</p>
           <p class="unit-price">
-            {{ product.SALE_PRICE | number: '1.2-2'}} €
+            {{ product.PRO_SALE | number: '1.2-2'}} €
           </p>
           <p class="percent">
-            -{{ ((product.PRICE - product.SALE_PRICE) / product.PRICE) * 100 | number: '1.0-0' }}%
+            -{{ ((product.PRICE - product.PRO_SALE) / product.PRICE) * 100 | number: '1.0-0' }}%
           </p>
         </div>
       </div>
@@ -39,12 +39,9 @@
   
   
       <div class="price-container">
-        <div class="price" *ngIf="(product.SALE_PRICE != null); else priceBlock2">
+        <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock2">
           <p>
-            <span>{{ product.SALE_PRICE*item.units | number: '1.2-2'}} € </span>            
-          </p>
-          <p>
-            <del>{{ product.PRICE*item.units | number: '1.2-2'}} €</del>
+            <span>{{ product.PRO_SALE*item.units | number: '1.2-2'}} € </span>            
           </p>
         </div>
         <ng-template #priceBlock2>

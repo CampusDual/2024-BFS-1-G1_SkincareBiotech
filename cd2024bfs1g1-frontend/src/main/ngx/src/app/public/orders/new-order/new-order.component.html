@@ -1,7 +1,7 @@
 <div class="order-container">
     <ng-container *ngIf="cart.length; else showMessage">
+        <h1 class="title">{{'BASKET' | oTranslate}}</h1>
         <div class="all">
-            <h1 class="title">{{'BASKET' | oTranslate}}</h1>
             <div class="cart-item-container">
                 <div *ngFor="let item of cart">
                     <app-cart-item [item]="item" (updateCart)="updateTotalAmount()"></app-cart-item>
@@ -9,7 +9,7 @@
                 <div class="total-amount">
                     <div class="total-left">
                         <p class="total-title">Total</p>
-                        <p class="units">{{units}} {{'PRODUCTS' | oTranslate}}</p>
+                        <p class="units">{{units}} {{'NUM_UNITS' | oTranslate |lowercase}}</p>
                     </div>
                     <div class="total-right">
                         <p class="total"> {{totalAmount | number: '1.2-2' }}€</p>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="order-form">
-                <h1 class="form-title">{{'ORDER_DATA' | oTranslate}}</h1>
+                <div class="form-title">{{'ORDER_DATA' | oTranslate}}</div>
                 <o-form #formOrder attr="newOrder" service="orders" entity="order" keys="ORD_ID"
                     show-header-navigation="no" show-header="false" class="form-block">
                     <div class="info-form">

@@ -1,23 +1,22 @@
 .all {
   width: 100%;
-  display: grid;
-  grid-template-areas: "a a a"
-                        "b b c";
+  display: flex;
+  justify-content: space-evenly;
   gap: 50px;
 
 }
 .order-container {
   display: flex;
+  flex-direction: column;
   width: 98vw;
   margin:auto;
   justify-content: center;
-  gap: 5vh;
 }
 .cart-item-container {
-  grid-area: b;
   margin:50px 50px;
   display: flex;
-  min-width: 60%;
+  min-width: 40%;
+  max-width: 80%;
   flex-direction: column;
   gap: 30px;
 }
@@ -25,8 +24,7 @@
 .title {
   color: var(--brand-color);
   font-weight: 600;
-  font-size: 22px;
-  grid-area: a;
+  font-size: 28px;
   margin-top: 50px;
   margin-left: 50px;
 }
@@ -57,13 +55,12 @@
 }
 
 .order-form {
-  grid-area: c;
   margin-top: 50px;
-  padding: 2%;
-  padding: 5%;
+  margin-right: 75px;
+  padding: 20px;
   background-color: #d6edfa7c;
   border-radius: 1%;
-  max-height: 30vh;
+  max-height: 300px;
 }
 
 .form-title {
@@ -77,7 +74,7 @@
 .info-form{
   display: grid;
   grid-template-columns: auto auto;
-  gap:5%;
+  gap:15px;
 }
 .order-name{
   grid-column:1/-1;
@@ -85,7 +82,7 @@
 .form-button{
   grid-column:1/-1;
   width: 100%;
-  margin-top:7.5%;
+  margin-top: 10px;
   background-color: var(--brand-color);
 }
 
@@ -95,15 +92,12 @@
   width: 100%;
   min-height: 50px;
 }
-
-
 .order-description{
   grid-column:1/-1;
 }
 .info-form{
   height: 100%;
 }
-
 .no-cart {
   margin-top: 10vh;
   display: flex;
@@ -145,13 +139,11 @@
   overflow: visible;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
   .all {
     width: 100vw;
-    display: grid;
-    grid-template-areas: "a a a"
-                          "b b b"
-                          "c c c" ;
+    display: flex;
+    flex-direction: column;
     gap: 50px;
   
   }
@@ -162,5 +154,14 @@
   }
   .order-container {
     width: 100vw;
+  }
+  .cart-item-container {
+    grid-area: b;
+    margin:50px 50px;
+    display: flex;
+    min-width: 40%;
+    max-width: 100%;
+    flex-direction: column;
+    gap: 30px;
   }
 }
