@@ -14,42 +14,53 @@ mat-tab-group {
 }
 
 .product-container {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    gap: 20px;
-    max-width: 100%;
-    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+}
+
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
 }
 
 .details-row {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    padding-bottom: 20px;
-
+    display: contents;
 }
 
-.details-row o-combo,
-.details-row o-text-input,
-.details-row o-currency-input,
-.details-row o-textarea-input {
-    flex: 1;
+.name-price o-text-input,
+.name-price .salePrice-with-offer,
+.name-price o-slide-toggle {
+    grid-column: span 2;
 }
 
-.details-row o-combo {
-    width: 50%;
+.name-price o-slide-toggle {
+    grid-column: span 1;
+}
+
+.price-no-offer o-currency-input,
+.price-no-offer .price-with-offer,
+.price-no-offer div {
+    grid-column: span 1;
+}
+
+.category-brand-gender o-combo {
+    grid-column: span 1;
+}
+
+.description o-textarea-input {
+    grid-column: span 3;
 }
 
 .salePrice-with-offer {
-    height: 100%;
-    margin: auto;
+    font-size: 1em;
 }
 
 .price-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+font-size: 1em;
 }
 
 .price-row o-currency-input {
@@ -64,11 +75,13 @@ mat-tab-group {
 .price-label {
     font-weight: bold;
     padding: 5px;
+    font-size:1em;
 }
 
 .price-message {
     padding: 5px;
     text-align: center;
+    font-size: 1em;
 }
 
 .chart-container {
@@ -128,7 +141,7 @@ mat-tab-group {
 
 
 .objective-customers-container {
-    width: 30%;
+    width: 85%;
 }
 
 .objective-customers {
