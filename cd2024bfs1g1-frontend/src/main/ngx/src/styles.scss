@@ -39,8 +39,7 @@
   }
 }
 
-html,
-body {
+html,body {
   background-color: #f3f8fb;
 }
 
@@ -49,10 +48,12 @@ body {
   display: none;
 }
 
-.o-app-header.o-app-header.o-app-header-medium.ng-star-inserted {
-  height: 85px;
+.drawer_hidden .o-app-header.o-app-header.o-app-header-medium.ng-star-inserted {
+  height: auto;
+  max-height: 100px;
+  padding: 10px;
   box-shadow: none;
-  background-color: transparent;
+  background-color: #f3f8fb;
 }
 
 .o-language-selector .menu-button.o-language-selector-text {
@@ -65,14 +66,11 @@ body {
   padding-top: 6px;
   background-color: #438cA1;
   width: 43px;
-  height: 37px;
+  height: 35px;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
 
-.separator {
-  height: 20px;
-}
 .allergen-radio mat-radio-group {
   display: grid !important;
   grid-template-columns: auto auto;
