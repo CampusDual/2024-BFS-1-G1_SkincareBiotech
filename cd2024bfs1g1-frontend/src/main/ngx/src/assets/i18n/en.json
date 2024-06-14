@@ -294,5 +294,9 @@
   "ERROR_NAME": "It is not allowed to use numerical characters",
   "ERROR_BIRTHDATE": "You need to be over 18 years old!",
   "ERROR_PHONE": "Phone not valid",
-  "SHIP_INFO": "Shipment information"
+  "SHIP_INFO": "Shipment information",
+  "OBJECTIVE_CUSTOMERS": "Objective customers %",
+  "OBJECTIVE": "Objective",
+  "NOT_RECOMMENDED": "Not recommended",
+  "ALLERGY": "Allergy"
 }
