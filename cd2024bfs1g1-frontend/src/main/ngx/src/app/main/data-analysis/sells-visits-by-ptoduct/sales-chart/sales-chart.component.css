@@ -1,11 +1,9 @@
-.header-charts {
-    display: flex;
-    justify-content: space-between;
-    max-width: 100%;
-}
-
-.header-charts .filter-container {
+.filter-container {
     display: flex;
     flex-wrap: wrap;
+    flex-grow: 1;
     gap: 10px;
+}
+.filter-container .filter{
+    flex: 1;
 }
