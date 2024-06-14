@@ -8,7 +8,7 @@
 .desc {
     width: 60%;
     margin: auto;
-    padding-top: 3%;
+    padding-top: 1%;
 }
 
 .img-container {
@@ -35,10 +35,11 @@
     padding-left: 5%;
 }
 
-.price-container p {
+.price-container span {
     display: flex;
     justify-content: flex-end;
 }
+
 
 .salePrice {
     color: black;
@@ -53,7 +54,7 @@
 }
 
 .regularPrice {
-    font-size: 1.2em;
+    font-size: 1.6em;
     font-weight: bold;
     margin-top: 10%;
 }
@@ -90,10 +91,6 @@
     margin-right: 3%;
 }
 
-.price {
-    margin-top: 5%;
-}
-
 #add-cart-button {
     border-radius: 10px;
     height: 60px;
@@ -101,11 +98,11 @@
     font-size: large;
     text-transform: uppercase;
     font-weight: bolder;
+    margin-inline-end: auto;
 }
 
 .buttons {
-    display: flex;
-    margin-top: 5%;
+    margin-top: 15px;
 }
 
 #back-button {
@@ -121,24 +118,25 @@
 
 .for {
     display: flex;
-    flex-direction: row;
+    grid-template-columns: auto auto auto;
+    gap: 15px;
     width: 100%;
-    gap: 20px;
-
 }
 
 .pill {
+    display: flex;
     border: 1px solid #e1e1e1;
     border-radius: 7px;
     padding: 10px 20px;
     background-color: #f8f9fa;
-
+    min-width: 50px;
+    align-items: center;
+    justify-content: center;
 }
 
 .flex {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    grid-gap: 10px;
 }
 
 .category {
@@ -188,22 +186,74 @@
 }
 
 .pad {
-    padding-bottom: 20px;
+    padding-bottom: 40px;
+}
+
+.allergic-warning-panel {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #fd5151;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.allergy-text-area {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.warning-icon-allergy {
+    flex-shrink: 0;
+    size: 2em;
+    color: #fd5151;
+}
+
+.allergy-list {
+    font-size: 12px;
+    text-align: left;
+    font-family: Poppins, "Helvetica Neue", sans-serif;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .flex-container {
     display: flex;
-    flex-wrap: wrap; 
-    gap: 10px; 
+    flex-wrap: wrap;
+    gap: 10px;
     font-size: 15px;
-    row-gap: 15px;
+    row-gap: 20px;
+    
 }
+
 .subtitle {
     font-size: 15px;
     font-weight: bolder;
     text-align: left;
     font-family: Poppins, "Helvetica Neue", sans-serif;
     margin-top: 20px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     white-space: normal;
 }
+
+.allergen-highlight .allergen-type {
+    background-color: #fd5151;
+    color: white;
+}
+
+.skintype {
+    padding-bottom: 3%;
+}
+
+.prices {
+    margin-bottom: 15px;
+}
+
+
+
+

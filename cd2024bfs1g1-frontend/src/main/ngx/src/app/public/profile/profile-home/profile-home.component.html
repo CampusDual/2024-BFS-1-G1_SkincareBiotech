@@ -1,15 +1,15 @@
 <mat-tab-group fxFlex>
     <mat-tab label="{{ 'ORDERS_HISTORY' | oTranslate }}">
         <app-orders-history></app-orders-history>
-    </mat-tab>      
-    <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">  
+    </mat-tab>
+    <mat-tab label="{{ 'MY_PROFILE' | oTranslate }}">
         <o-form #form attr="usrprofileTable" service="profiles" entity="userProfile" keys="USR_ID" header-actions="U"
            columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE;UPR_RECIPIENT"
             visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE;UPR_RECIPIENT"
             show-header-navigation="yes">
             
             <label>{{ 'NAME' | oTranslate }}</label>
-            <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>        
+            <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
             <div class="name">
                 <o-text-input attr="USR_NAME" label="USR_NAME" required="yes" [validators]="validatorsNameArray">
                     <o-validator error-name="pattern"
@@ -52,5 +52,16 @@
                 </o-combo>
             </div>
         </o-form>
+    </mat-tab>
+    <mat-tab label="{{ 'MY_ALLERGENS' | oTranslate }}">
+        <div class="allergen-container">
+            <o-form-layout-manager mode="dialog" title="{{ 'ALLERGENS' | oTranslate }}">
+                <o-table #table attr="AllergenUserTable" service="allergen-users" entity="allergenUser" keys="AU_ID"
+                    columns="AU_ID;ALLER_ID;USR_ID;ALLER_NAME" visible-columns="ALLER_NAME" delete-button="yes"
+                    insert-form-route="allergen-users/new" detail-mode="none" query-rows="25" virtual-scroll="no" sort-columns="ALLER_NAME"
+                    refresh-button="false" quick-filter="false">
+                </o-table>
+            </o-form-layout-manager>
+        </div>
     </mat-tab>
 </mat-tab-group>

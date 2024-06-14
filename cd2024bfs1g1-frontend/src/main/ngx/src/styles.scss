@@ -40,5 +40,15 @@
 }
 
 html,body {
-  background-color: #fff;
+  background-color: #f3f8fb;
 }
+
+.allergen-radio mat-radio-group {
+  display: grid !important;
+  grid-template-columns: auto auto;
+}
+
+.allergen-container button.mat-mdc-button-base.mat-mdc-icon-button {
+  visibility: hidden;
+}
+

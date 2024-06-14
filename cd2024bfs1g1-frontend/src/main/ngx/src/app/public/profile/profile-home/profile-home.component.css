@@ -30,6 +30,10 @@
     padding-bottom: 50px
 }
 
+.allergen-container{
+    height: 100%;
+}
+
 .about-me {
     display: grid;
     grid-template-columns: 33% 33% 33%;
