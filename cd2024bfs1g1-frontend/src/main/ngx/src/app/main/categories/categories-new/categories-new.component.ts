@@ -21,12 +21,11 @@ onInsert(success: boolean) {
   
   catNameValidator(control: FormControl): ValidationErrors {
     let result = {};
-    const regex = /^[A-Z][a-z]*$/
+    const regex = /^[A-Z][a-zA-Z0-9 ]*$/;
     if (control.value && !regex.test(control.value)) {
       result['requiredLowercaseA'] = true;
     }
     return result;
-  }
-
+  }  
 
 }
