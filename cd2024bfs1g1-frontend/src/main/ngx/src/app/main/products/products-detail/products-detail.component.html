@@ -23,22 +23,31 @@
                             <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
                         </div>
                         <div class="details-row price-no-offer">
-                            
-                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes" (onChange)="changePrice($event)"></o-currency-input>
-                            <div class="price-with-offer" *ngIf="priceSaleUser">
-                                {{ 'PUBLICATION_PRICE' | oTranslate }}
-                                <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
-                                <label class="no-ofer-label"> {{'WITHOUT_OFFER' | oTranslate |uppercase}}</label>
-                            </div>
+                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"
+                                (onChange)="changePrice($event)"></o-currency-input>
+
                             <div class="salePrice-with-offer" *ngIf="priceSaleUser">
-                                {{ 'PUBLICATION_PRICE' | oTranslate }}
-                                <label class="price-label">
+                                <o-currency-input attr="SALE_PRICE" label="SALE_PRICE" read-only="yes" enabled="false">
                                     {{product.SALE_PRICE }} €
-                                </label>
+                                </o-currency-input>
                             </div>
+
+                            <div class="price-with-offer" *ngIf="priceSaleUser">
+                                <o-currency-input attr="WITHOUT_OFFER" label="WITHOUT_OFFER" read-only="yes"
+                                    [data]="priceUser" enabled="false">
+                                    {{priceUser | number:'1.2-2'}} €
+                                </o-currency-input>
+                            </div>
+                            
                             <div #noOfer *ngIf="!priceSaleUser">
-                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
-                                </p>
+                                <o-currency-input label="PUBLICATION_PRICE" read-only="yes" [data]="priceUser" enabled="false">
+                                    {{priceUser | number:'1.2-2'}} €
+                                </o-currency-input>
+                            </div>
+
+                            <div #noOfer *ngIf="!priceSaleUser">
+                                <o-currency-input read-only="yes" style="display: none;">
+                                </o-currency-input>
                             </div>
                         </div>
                         <div class="details-row category-brand-gender">
@@ -55,7 +64,7 @@
                             <o-textarea-input attr="PRO_DESCRIPTION" required="yes" rows="11"></o-textarea-input>
                         </div>
                     </div>
-                    
+
                     <div class="objective-customers-container">
                         <h3 class="objective-customers">{{ 'OBJECTIVE_CUSTOMERS' | oTranslate }}</h3>
                         <o-chart class="grafica" type="pie" [data]="data" [chart-parameters]="pieParameters"

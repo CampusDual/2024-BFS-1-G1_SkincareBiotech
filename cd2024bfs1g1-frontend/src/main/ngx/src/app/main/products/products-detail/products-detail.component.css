@@ -18,6 +18,7 @@ mat-tab-group {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 10px;
+    width: 100%;
 }
 
 .details-container {
@@ -25,6 +26,7 @@ mat-tab-group {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 10px;
+    width: 80%;
 }
 
 .details-row {
@@ -65,7 +67,7 @@ font-size: 1em;
 
 .price-row o-currency-input {
     margin-right: 10px;
-    width: 50%;
+
 }
 
 .no-ofer-label {
@@ -94,31 +96,6 @@ font-size: 1em;
     width: 90%;
 }
 
-.tittle-y {
-    display: flex;
-    justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    font-weight: bold;
-    padding-left: 2vw;
-
-}
-
-.tittle-x {
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-}
-
-.chart-tittle-y-container {
-    display: flex;
-    padding-left: 2vw;
-    padding-right: 4vw;
-
-}
 
 .title {
     text-align: center;
@@ -137,8 +114,6 @@ font-size: 1em;
     flex-direction: column;
     height: 100%;
 }
-
-
 
 .objective-customers-container {
     width: 85%;
