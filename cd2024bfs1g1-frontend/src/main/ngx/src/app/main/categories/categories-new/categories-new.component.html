@@ -4,9 +4,7 @@
         <div fxFlex="70">
           <div>
             <o-text-input fxFlex="40" attr="CAT_NAME" label="CAT_NAME" required="yes" class="input-padding" step="0" grouping="no">
-              <o-validator [validator-function]="catNameValidator">
-                  <o-error name="requiredLowercaseA" text="{{'CAT_NAME_ERROR' | oTranslate}}"></o-error>
-                </o-validator>
+                <o-error name="requiredLowercaseA" text="{{'CAT_NAME_ERROR' | oTranslate}}"></o-error>
           </o-text-input>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
