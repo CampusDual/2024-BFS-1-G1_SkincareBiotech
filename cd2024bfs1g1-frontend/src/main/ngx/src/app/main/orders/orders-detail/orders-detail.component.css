@@ -1,11 +1,11 @@
-mat-tab-group{
-    background-color: #fff;
-    padding-top: 1vh;
-}
-
 .main-container {
     background-color: #fff;
     padding: 20px;
+}
+
+.second-container {
+    background-color: #fff;
+    margin-top: 20px;
 }
 
 .flex-container {
