@@ -1,5 +1,7 @@
 <h2>{{'ADDED_RECENTLY' | oTranslate}}</h2>
-<div class="container">  
+<h3>{{'ADDED_RECENTLY2' | oTranslate}}</h3>
+
+<div class="container">
   <div *ngFor="let prod of prodList">
     <app-product-card [product]="prod"></app-product-card>
   </div>
