@@ -146,7 +146,7 @@
   "ORD_DATE": "Date order",
   "CART": "Cart",
   "DATA_ANALYSIS": "Data analysis",
-  "FACTURATION_TITLE": "Billing per day (€)",
+  "FACTURATION_TITLE": "Daily billing (€)",
   "LABEL_X_AXIS": "Day",
   "LABEL_Y_AXIS": "Total(€)",
   "CREATE_ACCOUNT": "Create account",
