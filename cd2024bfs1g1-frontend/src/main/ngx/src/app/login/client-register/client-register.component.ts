@@ -34,25 +34,18 @@ export class ClientRegisterComponent implements OnInit {
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(50),
-    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
   ]);
   public userSurnameCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required, Validators.minLength(3),
     Validators.maxLength(50),
-    Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ -]*$')
   ]);
   public userEmailCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required,
     Validators.email
   ]);
-  public userPhoneCtrl: UntypedFormControl = new UntypedFormControl('', Validators.pattern('^[6-9][0-9]{8}$'));
   public userDateCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required,
     this.ageValidator()
-  ]);
-  public userAddressCtrl: UntypedFormControl = new UntypedFormControl('', [
-    Validators.required, Validators.minLength(3),
-    Validators.maxLength(200),
   ]);
   public userGenderCtrl: UntypedFormControl = new UntypedFormControl('', [
     Validators.required,
@@ -87,9 +80,7 @@ export class ClientRegisterComponent implements OnInit {
     this.registerForm.addControl('usr_name', this.usernameCtrl);
     this.registerForm.addControl('usr_surname', this.userSurnameCtrl);
     this.registerForm.addControl('upr_birthdate', this.userDateCtrl);
-    this.registerForm.addControl('upr_address', this.userAddressCtrl);
     this.registerForm.addControl('usr_email', this.userEmailCtrl);
-    this.registerForm.addControl('usr_phone', this.userPhoneCtrl);
     this.registerForm.addControl('uge_id', this.userGenderCtrl);
     this.registerForm.addControl('skin_id', this.userSkinTypeCtrl);
 
@@ -144,7 +135,6 @@ export class ClientRegisterComponent implements OnInit {
       "USR_NAME": this.registerForm.value.usr_name,
       "USR_SURNAME": this.registerForm.value.usr_surname,
       "USR_EMAIL": this.registerForm.value.usr_email,
-      "USR_PHONE": this.registerForm.value.usr_phone,
       "UPR_BIRTHDATE": this.registerForm.value.upr_birthdate._i,
       "UPR_ADDRESS": this.registerForm.value.upr_address,
       "UGE_ID": this.registerForm.value.uge_id,

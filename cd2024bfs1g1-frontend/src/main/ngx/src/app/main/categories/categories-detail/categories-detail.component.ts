@@ -18,15 +18,6 @@ export class CategoriesDetailComponent {
     if (success) {
       this.router.navigate(['/main/categories']);
     } 
-  }
-
-  catNameValidator(control: FormControl): ValidationErrors {
-    let result = {};
-    const regex = /^[A-Z][a-z]*$/
-    if (control.value && !regex.test(control.value)) {
-      result['requiredLowercaseA'] = true;
-    }
-    return result;
-  }
+  } 
 
 }
