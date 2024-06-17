@@ -302,8 +302,6 @@
   "SHIP_INFO": "Información de envío",
   "EDIT_PROFILE": "Editar perfil",
   "PRICE_EQUAL_LESS_0": "El precio debe ser mayor que cero",
-  "UPR_ZIPCODE": "Código Postal",
-  "SET_DEFAULT": "Guardar información para la próxima vez",
   "ERROR_PATTERN_PHONE": "El número debe comenzar con 6, 7, 8 o 9 y solo se permiten números",
   "ERROR_PATTERN_ZIP": "Solo se permiten números",
   "UPR_RECIPIENT": "Destinatario",
