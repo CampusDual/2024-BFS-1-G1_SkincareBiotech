@@ -23,7 +23,7 @@ export class ProductsNewComponent implements OnInit{
     protected injector: Injector
   ) {
     this.service = this.injector.get(OntimizeService),
-    this.router.navigate(['/main/products/new'], { queryParams: { isdetail: 'true' } });
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
 
   }
 

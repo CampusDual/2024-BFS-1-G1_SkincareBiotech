@@ -12,7 +12,7 @@ export class CategoriesNewComponent{
   constructor(
     private router: Router
   ) {     
-    this.router.navigate(['/main/categories/new'], { queryParams: { isdetail: 'true' } });
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
 }
 
 onInsert(success: boolean) {

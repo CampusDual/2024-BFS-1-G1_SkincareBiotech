@@ -10,6 +10,6 @@ export class SkinTypesNewComponent {
   constructor(
     private router: Router
   ) {     
-    this.router.navigate(['/main/skin-types/new'], { queryParams: { isdetail: 'true' } });
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
 }
 }

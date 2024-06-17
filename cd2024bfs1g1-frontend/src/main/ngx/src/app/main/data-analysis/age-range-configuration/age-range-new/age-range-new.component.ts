@@ -10,6 +10,6 @@ export class AgeRangeNewComponent {
   constructor(
     private router: Router
   ) {     
-    this.router.navigate(['/main/data-analysis/age-range-configuration/new'], { queryParams: { isdetail: 'true' } });
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
 }
 }

@@ -10,7 +10,7 @@ export class BrandNewComponent {
  constructor(
     private router: Router
   ) {
-    this.router.navigate(['/main/brands/new'], { queryParams: { isdetail: 'true' } });
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
 
    }
 
