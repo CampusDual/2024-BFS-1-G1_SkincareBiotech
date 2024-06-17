@@ -196,7 +196,6 @@
   "DELETE_CART_WARNING": "Are you sure you want to remove it from cart ?",
   "ERROR_COMPLETE_FORM": "Complete form to purchase",  
   "title_register": "Create your account:",
-  "CAT_NAME_ERROR": "The name must start with a capital letter and contain only letters without spaces",
   "PRO_PRICE_USER": "Final price for the user",
   "MY_INFORMATION": "My information",
   "MY_ORDERS": "My orders",
@@ -313,5 +312,5 @@
   "VISIT_DATE": "Visit date",
   "SALE_CHART": "Sales by product",
   "PRODUCTS_STATS": "Product statistics",
-  "NO_RESULTS": "There is not data matching the filters applied"
+  "NO_RESULTS": "There is not data matching the filters applied."
 }
