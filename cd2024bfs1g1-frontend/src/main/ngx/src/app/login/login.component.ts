@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   public sessionExpired = false;
   public sessionNotStarted = false;
   private redirect = '/main';
+  private redirect_admin = '/main/data-analysis/customer-analysis';
+  private redirect_seller = 'main/data-analysis';
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -76,8 +78,10 @@ export class LoginComponent implements OnInit {
             this.mainService.getUserRolName().subscribe((rol) => {
               if (rol.ROLE_NAME === userRoleName) {
                 self.router.navigate(['']);
-              } else if (rol.ROLE_NAME === sellerRoleName || rol.ROLE_NAME === adminRoleName) {
-                self.router.navigate([this.redirect]);
+              } else if (rol.ROLE_NAME === sellerRoleName) {
+                self.router.navigate([this.redirect_seller]);
+              } else if (rol.ROLE_NAME === adminRoleName) {
+                self.router.navigate([this.redirect_admin]);
               } else {
                 self.router.navigate(['']);
               }
