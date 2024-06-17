@@ -17,7 +17,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     BilledAgeComponent,
     SellsByCategoryComponent,
     UsersSkinTypesComponent,
-    CustomerAnalysisComponent
+    CustomerAnalysisComponent,
   ],
   imports: [
     CommonModule,

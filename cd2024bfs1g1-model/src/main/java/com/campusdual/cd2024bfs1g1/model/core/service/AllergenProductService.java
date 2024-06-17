@@ -2,12 +2,10 @@ package com.campusdual.cd2024bfs1g1.model.core.service;
 
 import com.campusdual.cd2024bfs1g1.api.core.service.IAllergenProductService;
 import com.campusdual.cd2024bfs1g1.model.core.dao.AllergenProductDao;
-import com.campusdual.cd2024bfs1g1.model.core.utils.Utils;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
-import jdk.jshell.execution.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DuplicateKeyException;
@@ -46,5 +44,10 @@ public class AllergenProductService implements IAllergenProductService {
     @Override
     public EntityResult allergenProductDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.allergenProductDao, keyMap);
+    }
+
+    @Override
+    public EntityResult getProductRecommendationsQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.allergenProductDao, keysValues, attributes, "userRecommendationsForProduct");
     }
 }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
+import { LanguageService } from 'src/app/shared/services/language.service';
+
 
 @Component({
   selector: 'app-users-skin-types',
@@ -11,8 +13,17 @@ export class UsersSkinTypesComponent implements OnInit {
     pieParameters: PieChartConfiguration;
     colors = {};
 
-  constructor() { 
+    totalUsers: number;
+    maxSkin: string;
+    usersMaxSkin: number;
+    percentage: number;
+
+  constructor(
+    protected injector: Injector,
+    protected languageService: LanguageService,
+  ) { 
     this._pieConfiguration();
+    this.languageService.getLanguage();
   }
   _pieConfiguration() {
     this.pieParameters = new PieChartConfiguration();
@@ -25,5 +36,20 @@ export class UsersSkinTypesComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  loadDataAnalysis(event:any){
+    this.totalUsers=0;
+    this.usersMaxSkin=0;
+
+    event.forEach(item => {
+      this.totalUsers += item.TOTAL;
+      if(item.TOTAL > this.usersMaxSkin){
+        this.maxSkin = item.SKIN_NAME;
+        this.usersMaxSkin = item.TOTAL;
+      }
+      this.percentage = ((this.usersMaxSkin / this.totalUsers ) * 100);
+    });
+  }
+
 
 }
