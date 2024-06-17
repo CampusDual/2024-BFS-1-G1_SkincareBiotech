@@ -296,5 +296,11 @@
   "ERROR_NAME": "No se permite usar caracteres numericos",
   "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
   "ERROR_PHONE": "Teléfono no válido",
-  "SHIP_INFO": "Información de envío"
+  "SHIP_INFO": "Información de envío",
+  "COLUMNS_NUMBER": "Número de columnas",
+  "SALE_DATE": "Fecha de venta",
+  "VISIT_CHART": "Visitas por producto",
+  "VISIT_DATE": "Fecha de visita",
+  "SALE_CHART": "Ventas por producto",
+  "PRODUCTS_STATS": "Estadísticas de producto"
 }

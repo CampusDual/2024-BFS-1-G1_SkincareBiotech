@@ -1,0 +1,9 @@
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 5px;
+}
+.filter-container .filter{
+    flex: 1;
+}
