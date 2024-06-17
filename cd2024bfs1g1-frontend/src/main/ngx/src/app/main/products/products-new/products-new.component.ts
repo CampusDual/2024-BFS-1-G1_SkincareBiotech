@@ -22,7 +22,9 @@ export class ProductsNewComponent implements OnInit{
     private router: Router,
     protected injector: Injector
   ) {
-    this.service = this.injector.get(OntimizeService)
+    this.service = this.injector.get(OntimizeService),
+    this.router.navigate(['/main/products/new'], { queryParams: { isdetail: 'true' } });
+
   }
 
   ngOnInit(){

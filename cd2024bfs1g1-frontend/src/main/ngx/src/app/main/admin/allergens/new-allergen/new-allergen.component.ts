@@ -12,7 +12,8 @@ export class NewAllergenComponent {
   constructor(
     private router: Router
   ) 
-  { }
+  {this.router.navigate(['/main/admin/allergens/new'], { queryParams: { isdetail: 'true' } });
+}
 
   onInsert(success: boolean) {
     if (success) {
