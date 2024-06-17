@@ -275,7 +275,7 @@
   "MY_ALLERGENS": "Mis alérgenos",
   "ALLERGIC_WARNING": "Este producto contiene elementos a los que usted es alérgico.",
   "SALE_PRICE": "Precio de publicación",
-  "WITHOUT_OFFER": "Precio de publicación sin oferta",
+  "WITHOUT_OFFER": "Sin oferta",
   "ADD_SKIN_TYPE": "Añade tipos de piel",
   "SKIN_ID": "Tipo de piel",
   "ADD_RECOMENDATIONS": "Añadir recomendaciones",
@@ -298,7 +298,7 @@
   "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
   "ERROR_PHONE": "Teléfono no válido",
   "SHIP_INFO": "Información de envío",
-  "OBJECTIVE_CUSTOMERS": "Clientes objetivo %",
+  "OBJECTIVE_CUSTOMERS": "Porcentaje de clientes objetivo",
   "OBJECTIVE": "Objetivo",
   "NOT_RECOMMENDED": "No recomendado",
   "ALLERGY": "Alergia"

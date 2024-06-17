@@ -47,6 +47,10 @@ mat-tab-group {
 .price-no-offer .price-with-offer,
 .price-no-offer div {
     grid-column: span 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
 }
 
 .category-brand-gender o-combo {
@@ -57,27 +61,15 @@ mat-tab-group {
     grid-column: span 3;
 }
 
-.salePrice-with-offer {
-    font-size: 1em;
-}
-
-.price-row {
-font-size: 1em;
-}
-
 .price-row o-currency-input {
     margin-right: 10px;
 
 }
 
-.no-ofer-label {
-    font-size: 10px;
-}
-
 .price-label {
     font-weight: bold;
     padding: 5px;
-    font-size:1em;
+    font-size: 1em;
 }
 
 .price-message {
@@ -111,7 +103,6 @@ font-size: 1em;
 
 .pro-name-detail {
     text-align: center;
-    margin: 20px 0;
     font-weight: bold;
 }
 
@@ -129,4 +120,12 @@ font-size: 1em;
     margin-top: 0;
     margin-bottom: -30px;
 }
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 

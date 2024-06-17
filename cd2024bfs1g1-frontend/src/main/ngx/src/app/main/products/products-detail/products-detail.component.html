@@ -19,30 +19,31 @@
                     </div>
                     <div class="details-container">
                         <div class="details-row name-price">
-                            <o-text-input class="name" attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
-                            <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+                            <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
+                            <div class="slide">
+                                <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+                            </div>
                         </div>
                         <div class="details-row price-no-offer">
                             <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"
                                 (onChange)="changePrice($event)"></o-currency-input>
 
-                            <div class="salePrice-with-offer" *ngIf="priceSaleUser">
-                                <o-currency-input attr="SALE_PRICE" label="SALE_PRICE" read-only="yes" enabled="false">
-                                    {{product.SALE_PRICE }} €
-                                </o-currency-input>
+                            <div class="price-with-offer" *ngIf="priceSaleUser">
+                                {{ 'WITHOUT_OFFER' | oTranslate }}
+                                <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
                             </div>
 
-                            <div class="price-with-offer" *ngIf="priceSaleUser">
-                                <o-currency-input attr="WITHOUT_OFFER" label="WITHOUT_OFFER" read-only="yes"
-                                    [data]="priceUser" enabled="false">
-                                    {{priceUser | number:'1.2-2'}} €
-                                </o-currency-input>
+                            <div class="salePrice-with-offer" *ngIf="priceSaleUser">
+                                {{ 'PUBLICATION_PRICE' | oTranslate }}
+                                <label class="price-label">
+                                    {{product.SALE_PRICE }} €
+                                </label>
                             </div>
-                            
+
                             <div #noOfer *ngIf="!priceSaleUser">
-                                <o-currency-input label="PUBLICATION_PRICE" read-only="yes" [data]="priceUser" enabled="false">
-                                    {{priceUser | number:'1.2-2'}} €
-                                </o-currency-input>
+                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
+                                        number:"1.2-2" }} €</label>
+                                </p>
                             </div>
 
                             <div #noOfer *ngIf="!priceSaleUser">
