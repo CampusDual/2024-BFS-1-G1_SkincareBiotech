@@ -143,7 +143,7 @@
   "PRO_MAX_PRICE": "Max price (€)",
   "PRO_MIN_PRICE": "Min price (€)",
   "PRO_REAL_PRICE": "Price",
-  "ORD_DATE": "Date",
+  "ORD_DATE": "Date order",
   "CART": "Cart",
   "DATA_ANALYSIS": "Data analysis",
   "FACTURATION_TITLE": "Billing per day (€)",
@@ -172,8 +172,8 @@
   "USR_BIRTHDAY": "Birthdate",
   "BILLED_AGE": "Billing by age",
   "BILLING_BY_AGE": "Billed",
-  "BILLING_BY_AGE_TITTLE": "BILLING BY AGE",
-  "BILLING_BY_AGE_AND_GENDER_TITTLE": "BILLING BY AGE AND GENDER",
+  "BILLING_BY_AGE_TITTLE": "Billing by age",
+  "BILLING_BY_AGE_AND_GENDER_TITTLE": "Billing by age and gender",
   "GRAPHICS": "Graphics",
   "GBA_MIN_AGE": "Minimum age",
   "GBA_MAX_AGE": "Maximum age",
@@ -190,6 +190,7 @@
   "USR_PHONE": "Phone",
   "USR_PASSWORD": "Password",
   "USR_GENRE": "Gender",
+  "USR_INFORMATION" : "Order information",
   "ADD_SELLER": "ADD NEW SELLER",
   "SELLERS": "Sellers",
   "DELETE_CART_WARNING": "Are you sure you want to remove it from cart ?",
@@ -305,5 +306,9 @@
   "ERROR_PATTERN_ZIP": "Only numbers are allowed",
   "UPR_RECIPIENT": "Recipient",
   "ERROR_MIN_ZIP": "Minimum length: 5",
-  "ERROR_MAX_ZIP": "Maximum length: 5"
+  "ERROR_MAX_ZIP": "Maximum length: 5",
+  "SELLER_USERNAME_ERROR": "This field cannot contain spaces",
+  "SELLER_EMAIL_ERROR": "The inserted email address does not have a valid format",
+  "SELLER_PHONENUM_ERROR": "Phone numbers can only be a combination of 9 digits",
+  "SELLER_SPACE_ERROR": "This field can't start with space"
 }
