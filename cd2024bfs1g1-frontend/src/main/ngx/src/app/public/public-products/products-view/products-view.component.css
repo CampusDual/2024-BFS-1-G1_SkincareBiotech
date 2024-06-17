@@ -1,25 +1,24 @@
-.filter{
+.filters{
     display:grid;
     grid-template-columns: repeat(6,1fr);
     gap:10px;
-    
 }
 
 @media only screen and (max-width: 1400px) {
-    .filter {
+    .filters {
         grid-template-columns: repeat(3, 1fr);
     }
     
 }
 
 @media only screen and (max-width: 730px) {
-    .filter {
+    .filters {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .filter {
+    .filters {
         grid-template-columns: repeat(1, 1fr);
     }
 }
@@ -31,6 +30,7 @@
 .grid-container{
    margin: auto;
 }
+
 
 
 

@@ -14,15 +14,11 @@
 }
 
 #boton_registro, #boton_crear {
-  background-color: #a7bfc7;
-}
-
-#pie {
-  color: #312f2f
+  // background-color: #a7bfc7;
 }
 
 .flecha {
-  color: #a7bfc7;
+  // color: #a7bfc7;
   transform: scale(1.5);
   margin: 5%;
   cursor: pointer;
@@ -55,12 +51,11 @@
 
     .login-bg-container {
       background-image: url('^assets/images/skinCare3_portadaRecortada.png');
-      width: calc(100% - 640px);
+      width: calc(100% - 840px);
       background-repeat: no-repeat;
       background-size: 100% 100%;
       background-position: center center;
       position: relative;
-      z-index: 1;
     }
 
     .login-bg-container::before {
@@ -77,8 +72,8 @@
     }
 
     .wrapp-login {
-      width: 640px;
-      max-height: calc(100% - 100px);
+      width: 840px;
+      max-height: calc(100% - 115px);
 
       .login-inner-container {
         width: 100%;
@@ -136,14 +131,16 @@
     width: 100%;
     height: 40px;
     z-index: 2;
+    background-color:#f3f8fb;
 
     div {
       height: 40px;
-      margin-right: 138px;
+      margin-right: 250px;
 
       span {
         font-size: 11px;
         padding-right: 4px;
+        color: #312f2f;
       }
     }
 
