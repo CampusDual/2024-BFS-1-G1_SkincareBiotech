@@ -265,8 +265,10 @@
   "SAL_INITIAL_DATE": "Fecha inicial",
   "SAL_END_DATE": "Fecha final",
   "ADD_SALE": "Añadir nuevo descuento",
-  "PUBLICATION_PRICE": "Precio de publicaión: ",
+  "PUBLICATION_PRICE": "Precio de publicación: ",
   "REAL_PRICE": "Precio final",
+  "UPR_ZIPCODE": "Código Postal",
+  "SET_DEFAULT": "Guardar información para la próxima vez",
   "BASKET":"Mi cesta",
   "ORDER_DATA":"Datos del pedido",
   "CANCEL":"Cancelar",
@@ -301,5 +303,12 @@
   "ERROR_NAME": "No se permite usar caracteres numericos",
   "ERROR_BIRTHDATE": "¡Necesitas tener mas de 18 años!",
   "ERROR_PHONE": "Teléfono no válido",
-  "SHIP_INFO": "Información de envío"
+  "SHIP_INFO": "Información de envío",
+  "PRICE_EQUAL_LESS_0": "El precio debe ser mayor que cero",
+  "ERROR_PATTERN_PHONE": "El número debe comenzar con 6, 7, 8 o 9 y solo se permiten números",
+  "ERROR_PATTERN_ZIP": "Solo se permiten números",
+  "UPR_RECIPIENT": "Destinatario",
+  "ERROR_MIN_ZIP": "Longitud mínima: 5",
+  "ERROR_MAX_ZIP": "Longitud máxima: 5"
+  
 }
