@@ -6,7 +6,6 @@
     </div>
     <ng-container *ngIf="product.PRO_SALE != null ;else showSale">
       <div class="title-price" routerLink="{{product.PRO_ID}}">
-
         <p class="title">{{product.PRO_NAME}}</p>
         <div class="sale" *ngIf="product.PRO_SALE != null">
           <p class="price-before">{{ product.PRICE | number: '1.2-2' }} €</p>
