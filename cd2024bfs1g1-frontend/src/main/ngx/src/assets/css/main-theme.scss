@@ -1,0 +1,72 @@
+@use '@angular/material'as mat;
+@use 'node_modules/ontimize-web-ngx/theming/ontimize-style.scss'as ontimize-style;
+
+$mat-custom-primary: (
+50: #e3f2f6,
+100: #b3dde6, // Color fondo botones en hover
+200: #81c6d5, // Scroll
+300: #4fafc4, // Color toggle (barrita)
+400: #299cb7,
+500: #438cA1, // IMPORTANTE: Letras en botones e iconos + subrayado de pestañas e inputs + toolbar (back office) + checkbox marcado
+600: #3c7e91, // Color toggle (posición derecha)
+700: #35727C,
+800: #2e646c, // Color fondo botones (sin hover) y letra e icono de botones (con hover) 
+900: #23514c, // Color toggle:hover (posición derecha)
+A100: #e0f7fa,
+A200: #b2ebf2,
+A400: #80deea,
+A700: #4dd0e1, 
+contrast: 
+(50 : #000000, 
+100 : #000000, 
+200 : #000000, 
+300 : #000000, 
+400 : #ffffff, 
+500 : #ffffff, 
+600 : #ffffff, 
+700 : #ffffff, 
+800 : #ffffff, 
+900 : #ffffff, 
+A100 : #000000, 
+A200 : #000000, 
+A400 : #ffffff, 
+A700 : #ffffff),
+);
+
+$mat-custom-accent: (
+50: #629fb1,
+100: #82b2c0,
+200: #a1c6d0,
+300: #c0d9e0,
+400: #e0ecef,
+500: #387586,
+600: #9c3c66,
+700: #96355a,
+800: #912d4e,
+900: #861d3b,
+A100: #2d5d6b,
+A200: #224650,
+A400: #162f36,
+A700: #0b171b ,
+contrast: 
+(50: #000000,
+100: #000000,
+200: #000000,
+300: #000000,
+400: #ffffff,
+500: #ffffff,
+600: #ffffff,
+700: #ffffff,
+800: #ffffff,
+900: #ffffff,
+A100: #000000,
+A200: #000000,
+A400: #ffffff,
+A700: #ffffff)
+);
+
+$accent: mat.define-palette($mat-custom-accent);
+$primary: mat.define-palette($mat-custom-primary);
+
+$theme: ontimize-style.o-mat-light-theme($primary, $primary);
+$background: #f3f8fb;

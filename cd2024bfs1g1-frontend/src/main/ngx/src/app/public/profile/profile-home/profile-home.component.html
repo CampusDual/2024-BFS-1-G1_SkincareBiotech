@@ -7,7 +7,7 @@
            columns="USR_ID;USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE;UPR_RECIPIENT"
             visible-columns="USR_NAME;USR_SURNAME;USR_EMAIL;USR_PHONE;UPR_BIRTHDATE;UPR_ADDRESS;UGE_ID;UPR_ZIPCODE;UPR_RECIPIENT"
             show-header-navigation="yes">
-            
+            <div class="profile-container">
             <label>{{ 'NAME' | oTranslate }}</label>
             <o-integer-input attr="USR_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
             <div class="name">
@@ -48,7 +48,8 @@
                     columns="SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" required="yes" null-selection="no">
                 </o-combo>
             </div>
-        </o-form>
+        </div>
+    </o-form>
     </mat-tab>
     <mat-tab label="{{ 'MY_ALLERGENS' | oTranslate }}">
         <div class="allergen-container">
