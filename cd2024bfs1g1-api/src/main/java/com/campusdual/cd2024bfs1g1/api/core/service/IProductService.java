@@ -27,4 +27,5 @@ public interface IProductService {
 
     public BigDecimal getProductPriceById(Integer proId);
 
+    EntityResult salesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 }
