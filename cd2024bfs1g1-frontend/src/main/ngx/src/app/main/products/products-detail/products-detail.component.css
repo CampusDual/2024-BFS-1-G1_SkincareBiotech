@@ -52,7 +52,8 @@ mat-tab-group {
     justify-content: center;
     align-items: center;
     font-size: 1em;
-    margin-top: -20px;
+    margin-top: -2vh;
+    margin-bottom: 1vh;
 }
 
 .category-brand-gender o-combo {
