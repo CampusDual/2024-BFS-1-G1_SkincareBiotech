@@ -128,7 +128,8 @@ mat-tab-group {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 3vh;
+
 }
 
 .texto {
