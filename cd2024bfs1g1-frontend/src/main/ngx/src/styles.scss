@@ -96,10 +96,11 @@ html,body {
 
 .application-layout-content-wrapper.header-layout{
   background-color: mainTheme.$background;
+  margin: 0px;
 }
 
 .mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c40-1.mdc-text-field--filled{
-  background-color: red;
+  background-color: none;
   border-radius: 5px 0px 0px 0px / 5px 0px 0px 0px;  
   max-height: 37px;
   min-height: 37px;
