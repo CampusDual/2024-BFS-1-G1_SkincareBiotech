@@ -1,14 +1,11 @@
 .productCard {  
     background-color: #ffffff;
     width: 15vw;
-    /* height: 92%; */
     min-width: 200px;
-    /* min-height: 350px;     */
     display: flex;
     flex-direction: column;
     align-items: center;  
     padding: 10px;
-    /* border: 1px solid #e1e1e1; */
     border-radius: 15px;
     margin: 10px;       
     cursor: pointer; 
@@ -29,9 +26,7 @@
 
 .title {
     font-size: 18px;
-    font-weight: bolder;
     text-align: left;
-    font-family: Poppins, "Helvetica Neue", sans-serif;    
     width: 100%;    
     height: 2em;
     line-height: 1em; 
@@ -67,12 +62,6 @@
 .priceSale {
     display: flex;      
 }
-
-/* .discount-span {
-    color: rgb(41, 218, 41);
-    font-style: italic;
-    font-size: 1.3em;
-} */
 
 .sale-span {
     color: black;

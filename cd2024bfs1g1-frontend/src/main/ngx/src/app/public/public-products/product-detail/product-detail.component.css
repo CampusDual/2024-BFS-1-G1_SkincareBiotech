@@ -105,16 +105,6 @@
     margin-top: 15px;
 }
 
-#back-button {
-    border-radius: 10px;
-    width: 150px;
-    height: 60px;
-    background-color: lightcyan;
-    font-size: large;
-    text-transform: uppercase;
-    font-weight: bolder;
-    margin-left: 20px;
-}
 
 .for {
     display: flex;
@@ -156,12 +146,6 @@
     width: 60%;
     margin: auto;
     margin-top: 30px;
-    /*
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    */
-    background-color: white;
 }
 
 .subtitle {
