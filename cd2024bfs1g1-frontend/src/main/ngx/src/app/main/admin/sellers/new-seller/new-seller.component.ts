@@ -28,6 +28,8 @@ export class NewSellerComponent {
   ) {
     this.service = this.injector.get(OntimizeService)
     this.translate = this.injector.get(OTranslateService);
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
+
   }
 
   register() {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  {path:'cart/:PRO_ID',redirectTo:'/:PRO_ID'}
 ];
 
 @NgModule({

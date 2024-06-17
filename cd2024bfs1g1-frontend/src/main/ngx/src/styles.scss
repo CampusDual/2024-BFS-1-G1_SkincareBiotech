@@ -1,6 +1,13 @@
 @use 'assets/css/main-theme.scss' as mainTheme;
 
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --brand-color: #438CA1;
+  --font :Poppins, "Helvetica Neue", sans-serif;
+  --back-ground : #f3f8fb;
+
+}
+
 .o-form-layout-manager {
   .o-form {
     form {
@@ -8,7 +15,11 @@
     }
   }
 }
-
+.o-form.form-block .scrolling{
+  display: block !important;
+  overflow: visible;
+  height: 100%;
+}
 /* Form toolbar background color */
 .o-form-toolbar .o-form-toolbar-header.mat-toolbar {
   background-color: transparent;
@@ -108,4 +119,8 @@ html,body {
   border-radius: 5px 0px 0px 0px / 5px 0px 0px 0px;  
   max-height: 37px;
   min-height: 37px;
+}
+
+.order-form .progress-bar-container{
+display: none;
 }
