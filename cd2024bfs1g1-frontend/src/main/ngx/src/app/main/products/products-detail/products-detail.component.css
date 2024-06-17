@@ -37,6 +37,7 @@ mat-tab-group {
 .name-price .salePrice-with-offer,
 .name-price o-slide-toggle {
     grid-column: span 2;
+   
 }
 
 .name-price o-slide-toggle {
@@ -51,6 +52,7 @@ mat-tab-group {
     justify-content: center;
     align-items: center;
     font-size: 1em;
+    margin-top: -20px;
 }
 
 .category-brand-gender o-combo {
@@ -128,4 +130,7 @@ mat-tab-group {
     margin-bottom: 20px;
 }
 
+.texto {
+    font-size: 0.8em;
+}
 

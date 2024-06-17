@@ -29,21 +29,21 @@
                                 (onChange)="changePrice($event)"></o-currency-input>
 
                             <div class="price-with-offer" *ngIf="priceSaleUser">
-                                {{ 'WITHOUT_OFFER' | oTranslate }}
+                                <span class="texto">{{ 'WITHOUT_OFFER' | oTranslate }}</span>
                                 <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
                             </div>
 
                             <div class="salePrice-with-offer" *ngIf="priceSaleUser">
-                                {{ 'PUBLICATION_PRICE' | oTranslate }}
+                                <span class="texto">{{ 'PUBLICATION_PRICE' | oTranslate }}</span>
                                 <label class="price-label">
                                     {{product.SALE_PRICE }} €
                                 </label>
                             </div>
 
                             <div #noOfer *ngIf="!priceSaleUser">
-                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
+                                <span class="texto">{{ 'PUBLICATION_PRICE' | oTranslate }} </span><label class="price-label">{{ priceUser |
                                         number:"1.2-2" }} €</label>
-                                </p>
+                                
                             </div>
 
                             <div #noOfer *ngIf="!priceSaleUser">
