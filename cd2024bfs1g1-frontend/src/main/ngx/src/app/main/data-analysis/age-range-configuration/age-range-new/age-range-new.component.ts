@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AgeRangeNewComponent {
   constructor(
     private router: Router
-  ) {     
+  ) {
     this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
-}
+  }
 }

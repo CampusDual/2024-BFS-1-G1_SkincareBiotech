@@ -11,9 +11,9 @@ export class NewAllergenComponent {
 
   constructor(
     private router: Router
-  ) 
-  {this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
-}
+  ) {
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
+  }
 
   onInsert(success: boolean) {
     if (success) {
