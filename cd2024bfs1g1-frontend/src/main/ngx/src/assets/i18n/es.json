@@ -322,5 +322,6 @@
   "VISIT_DATE": "Fecha de visita",
   "SALE_CHART": "Ventas por producto",
   "PRODUCTS_STATS": "Estadísticas de producto",
-  "NO_RESULTS": "No existen datos de acuerdo a los filtros aplicados."
+  "NO_RESULTS": "No existen datos de acuerdo a los filtros aplicados.",
+  "TOTAL_CART": "TOTAL DEL PEDIDO"
 }
