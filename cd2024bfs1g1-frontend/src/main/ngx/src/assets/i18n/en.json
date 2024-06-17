@@ -302,5 +302,6 @@
   "VISIT_CHART": "Visits by product",
   "VISIT_DATE": "Visit date",
   "SALE_CHART": "Sales by product",
-  "PRODUCTS_STATS": "Product statistics"
+  "PRODUCTS_STATS": "Product statistics",
+  "NO_RESULTS": "There is not data matching the filters applied"
 }

@@ -13,7 +13,7 @@ export class SalesChartComponent {
   dataChart: any[];
   barParameters: DiscreteBarChartConfiguration;
   colors = {};
-  numberOfProducts: number;
+  existProducts: boolean = true;
   selectedDates: any = {};
   @ViewChild('salesTable') salesTable: OTableComponent;
   @ViewChild('inputNumProducts') inputNumProducts: OIntegerInputComponent;
@@ -23,6 +23,10 @@ export class SalesChartComponent {
   ) {
     this.selectedDates = this.setDefaultDates();
     this._barConfiguration();
+  }
+  ngAfterViewInit(): void {
+    this.inputNumProducts.setValue(10);
+
   }
   _barConfiguration() {
     this.barParameters = new DiscreteBarChartConfiguration();
@@ -81,13 +85,8 @@ export class SalesChartComponent {
     }
   }
   setDefaultChart() {
-    this.reloadProducts(this.numberOfProducts);
-    if (this.data.length > 10) {
-      this.numberOfProducts = 10;
-    } else {
-      this.numberOfProducts = this.data.length;
-    }
-    this.inputNumProducts.max = this.data.length;
+    this.reloadProducts(this.inputNumProducts.getValue());
+    this.existProducts = this.dataChart.length > 0;
   }
   setDefaultDates() {
     const defaultDates = this.getCurrentAndWeekAgoDates();

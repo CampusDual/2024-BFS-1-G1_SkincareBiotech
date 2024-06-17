@@ -21,10 +21,14 @@
         </o-filter-builder>
     </div>
     <h1> {{"VISIT_CHART" | oTranslate}}</h1>
-
-    <o-chart #viewsChart type="discreteBar" [data]="dataChart" attr="viewsBarChart" x-axis="PRO_NAME" y-axis="N_VIEWS"
-        [chart-parameters]="barParameters" [color]="colors" layout-fill>
-    </o-chart>
+    <div *ngIf="existProducts">
+        <o-chart #viewsChart type="discreteBar" [data]="dataChart" attr="viewsBarChart" x-axis="PRO_NAME"
+            y-axis="N_VIEWS" [chart-parameters]="barParameters" [color]="colors" layout-fill>
+        </o-chart>
+    </div>
+    <div class="noResults" *ngIf="!existProducts">
+        {{'NO_RESULTS'|oTranslate}}
+    </div>
     <o-table #viewsTable attr="productsView" service="productsView" entity="productViewCount" keys="PRO_ID"
         columns="PRO_ID;PRO_NAME;N_VIEWS;VISIT_DATE" visible-columns="PRO_ID;PRO_NAME;N_VIEWS;VISIT_DATE"
         delete-button='no' (onDataLoaded)="loadChart($event)" sort-columns="VISIT_DATE:esc" oHidden>
