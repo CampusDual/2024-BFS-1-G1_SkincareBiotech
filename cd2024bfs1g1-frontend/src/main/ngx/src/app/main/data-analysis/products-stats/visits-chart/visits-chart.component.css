@@ -1,0 +1,37 @@
+.filter-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.noResults {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+
+@media (1630px > width > 1400px) {
+    .filter-container {
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+@media (1400px > width > 950px) {
+    .filter-container {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (950px > width > 740px) {
+    .filter-container {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (740px > width) {
+    .filter-container {
+        grid-template-columns: auto;
+    }
+}

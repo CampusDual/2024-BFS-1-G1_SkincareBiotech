@@ -3,7 +3,6 @@
     flex-direction: column;
     padding: 50px;
     align-items: center;
-    width: 70vw;
     background-color: white;
 }
 
@@ -23,20 +22,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 200px;
 }
 
 .info {
     display: flex;
     flex-direction: column;
-    max-width: 70%;
-    align-items: center;
+    width: 400px;
     gap: 10px;
-}
-
-.login, .name, .surname, .email, .password, .phone {
-    display: grid;
-    grid-template-columns: 200%;
-    gap: 10px;
-    margin: 10px;
 }

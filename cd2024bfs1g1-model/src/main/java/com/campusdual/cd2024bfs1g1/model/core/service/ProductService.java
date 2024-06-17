@@ -91,4 +91,8 @@ public class ProductService implements IProductService {
     public AdvancedEntityResult productPaginationQuery(Map<String, Object> keysValues, List<String> attributes, int recordNumber, int startIndex, List<?> orderBy) {
         return this.daoHelper.paginationQuery(this.productDao, keysValues, attributes, recordNumber, startIndex, orderBy, ProductDao.QUERY_PRO_FEATURED);
     }
+    @Override
+    public EntityResult salesQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.productDao, keysValues, attributes, ProductDao.QUERY_SALES_COUNT);
+    }
 }

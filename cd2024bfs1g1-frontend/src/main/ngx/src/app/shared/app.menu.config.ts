@@ -7,6 +7,7 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'orders', name: 'ORDERS', icon: 'local_shipping', route: '/main/orders' },
   { id: 'sellers', name: 'SELLERS', route: '/main/admin/sellers/', icon: 'person' },
   { id: 'commissions', name: 'COMMISSIONS', route: '/main/admin/commissions/', icon: 'payments' },
+  { id: 'products-stats', name: 'PRODUCTS_STATS', icon: 'bar_chart', route: '/main/data-analysis/products-stats' }, 
   {
     id: 'masters', name: 'MASTERS', icon: 'list', opened: false,
     items: [

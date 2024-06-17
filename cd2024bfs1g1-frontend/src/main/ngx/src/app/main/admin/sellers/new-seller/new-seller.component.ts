@@ -1,5 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, FormControl, ValidationErrors, Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
 
@@ -98,6 +98,36 @@ export class NewSellerComponent {
     }
   }
 
+  /*
+    ---RegEx Validators
+  */
+
+  sellerUsernameValidator(control: FormControl): ValidationErrors {
+    let result = {};
+    const regex = /^\S+$/
+    if (control.value && !regex.test(control.value)) {
+      result['requiredUsername'] = true;
+    }
+    return result;
+  }
+
+  sellerSpaceValidator(control: FormControl): ValidationErrors | null {
+    let result: ValidationErrors | null = null;
+    const regex = /^\s/;
+    if (control.value && regex.test(control.value)) {
+      result = { 'spaceValidator': true };
+    }
+    return result;
+  }
+
+  sellerPhoneValidator(control: FormControl): ValidationErrors {
+    let result = {};
+    const regex = /^\d{9}$/
+    if (control.value && !regex.test(control.value)) {
+      result['requiredPhonenum'] = true;
+    }
+    return result;
+  }
 
 }
 
