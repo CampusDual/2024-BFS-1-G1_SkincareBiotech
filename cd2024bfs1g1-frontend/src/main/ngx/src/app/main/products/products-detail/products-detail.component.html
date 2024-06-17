@@ -18,30 +18,39 @@
                             sql-type="OTHER"></o-image>
                     </div>
                     <div class="details-container">
-                        <div class="details-row">
+                        <div class="details-row name-price">
                             <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
+                            <div class="slide">
+                                <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+                            </div>
+                        </div>
+                        <div class="details-row price-no-offer">
+                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"
+                                (onChange)="changePrice($event)"></o-currency-input>
+
+                            <div class="price-with-offer" *ngIf="priceSaleUser; else otherContent">
+                                <span class="texto">{{ 'WITHOUT_OFFER' | oTranslate }}</span>
+                                <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
+                            </div>
+                            
+                            <ng-template #otherContent>
+                                <span></span>
+                            </ng-template>
+
                             <div class="salePrice-with-offer" *ngIf="priceSaleUser">
-                                {{ 'PUBLICATION_PRICE' | oTranslate }} 
+                                <span class="texto">{{ 'PUBLICATION_PRICE' | oTranslate }}</span>
                                 <label class="price-label">
                                     {{product.SALE_PRICE }} €
                                 </label>
                             </div>
-                        </div>
-                        <div class="price-row">
-                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"
-                                (onChange)="changePrice($event)"></o-currency-input>
-                            <div class="price-with-offer" *ngIf="priceSaleUser">
-                                    {{ 'PUBLICATION_PRICE' | oTranslate }} 
-                                    <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
-                                    <label class="no-ofer-label"> {{'WITHOUT_OFFER' | oTranslate |uppercase}}</label>
-                            </div>
+
                             <div #noOfer *ngIf="!priceSaleUser">
-                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
+                                <span class="texto">{{ 'PUBLICATION_PRICE' | oTranslate }} </span><label class="price-label">{{ priceUser |
                                         number:"1.2-2" }} €</label>
-                                </p>
                             </div>
+
                         </div>
-                        <div class="details-row">
+                        <div class="details-row category-brand-gender">
                             <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
                                 columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
                             <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
@@ -51,13 +60,16 @@
                                 columns="PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" required="yes"
                                 null-selection="no" translate="yes"></o-combo>
                         </div>
-                        <div class="details-row">
+                        <div class="details-row description">
                             <o-textarea-input attr="PRO_DESCRIPTION" required="yes" rows="11"></o-textarea-input>
                         </div>
                     </div>
-                    <div class="switch">
-                        <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
-                        <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+
+                    <div class="objective-customers-container">
+                        <h3 class="objective-customers">{{ 'OBJECTIVE_CUSTOMERS' | oTranslate }}</h3>
+                        <o-chart class="grafica" type="pie" [data]="data" [chart-parameters]="pieParameters"
+                            [color]="colorScheme" attr="objectiveCustomersChart">
+                        </o-chart>
                     </div>
                 </div>
                 <div>
