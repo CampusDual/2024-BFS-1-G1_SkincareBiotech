@@ -1,5 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { UntypedFormGroup, FormControl, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, FormControl, ValidationErrors, Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
 
@@ -111,11 +111,11 @@ export class NewSellerComponent {
     return result;
   }
 
-  sellerEmailValidator(control: FormControl): ValidationErrors {
-    let result = {};
-    const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
-    if (control.value && !regex.test(control.value)) {
-      result['requiredEmail'] = true;
+  sellerSpaceValidator(control: FormControl): ValidationErrors | null {
+    let result: ValidationErrors | null = null;
+    const regex = /^\s/;
+    if (control.value && regex.test(control.value)) {
+      result = { 'spaceValidator': true };
     }
     return result;
   }
