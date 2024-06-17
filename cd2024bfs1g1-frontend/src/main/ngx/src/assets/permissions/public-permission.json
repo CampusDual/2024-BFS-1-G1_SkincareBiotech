@@ -44,7 +44,7 @@
           "enabled": false
         },
         {
-          "attr": "data-analysis",
+          "attr": "daily-billing",
           "visible": false,
           "enabled": false
         },
@@ -95,6 +95,16 @@
         },
         {
           "attr": "products-stats",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "masters",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "data-analysis",
           "visible": false,
           "enabled": false
         }
