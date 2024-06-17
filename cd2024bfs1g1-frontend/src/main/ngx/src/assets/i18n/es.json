@@ -233,7 +233,6 @@
   "COM_NAME": "Nombre comisión",
   "COM_VALUE": "Valor de la comisión (%)",
   "COM_ID": "Id de comisión",
-  "CAT_NAME_ERROR": "El nombre debe empezar por mayúscula y solo contener letras sin espacios",
   "COMMISSIONS": "Comisiones",
   "FINAL_PRICE": "Precio final",
   "GRAFIC_DETAILS": "Gráfica visitas por día",
@@ -245,7 +244,6 @@
   "MALE": "Masculino",
   "UNISEX": "Unisex",
   "SLOGAN": "Descubre productos excepcionales para tu cuidado personal",
-  "BRAND": "Marca",
   "GENDER": "Género",
   "MAN": "Hombre",
   "WOMAN": "Mujer",
@@ -310,5 +308,4 @@
   "UPR_RECIPIENT": "Destinatario",
   "ERROR_MIN_ZIP": "Longitud mínima: 5",
   "ERROR_MAX_ZIP": "Longitud máxima: 5"
-  
 }

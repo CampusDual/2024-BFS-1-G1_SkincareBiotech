@@ -1,19 +1,19 @@
-.all {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  gap: 50px;
-
-}
 .order-container {
   display: flex;
   flex-direction: column;
-  width: 98vw;
-  margin:auto;
+  align-items: center;
   justify-content: center;
+  margin-top: 50px;
 }
+
+.all {
+ width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 40px;
+}
+
 .cart-item-container {
-  margin:50px 50px;
   display: flex;
   min-width: 40%;
   max-width: 80%;
@@ -25,8 +25,6 @@
   color: var(--brand-color);
   font-weight: 600;
   font-size: 28px;
-  margin-top: 50px;
-  margin-left: 50px;
 }
 
 .total-amount {
@@ -55,12 +53,12 @@
 }
 
 .order-form {
-  margin-top: 50px;
-  margin-right: 75px;
+  margin-top: 110px;
   padding: 20px;
   background-color: #d6edfa7c;
   border-radius: 1%;
-  max-height: 300px;
+  max-height: 335px;
+  max-width: 450px;
 }
 
 .form-title {
@@ -73,10 +71,14 @@
 }
 .info-form{
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(2, 1fr);
   gap:15px;
 }
 .order-name{
+  grid-column:1/-1;
+}
+
+.check-button{
   grid-column:1/-1;
 }
 .form-button{
@@ -95,9 +97,7 @@
 .order-description{
   grid-column:1/-1;
 }
-.info-form{
-  height: 100%;
-}
+
 .no-cart {
   margin-top: 10vh;
   display: flex;
@@ -139,7 +139,7 @@
   overflow: visible;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1248px) {
   .all {
     width: 100vw;
     display: flex;
@@ -150,7 +150,7 @@
   .order-form {
     margin:auto;
     max-height: 90%;
-    width: 90%;
+    width: 545px;
   }
   .order-container {
     width: 100vw;

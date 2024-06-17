@@ -11,10 +11,10 @@
         <div class="sale" *ngIf="product.PRO_SALE != null">
           <p class="price-before">{{ product.PRICE | number: '1.2-2' }} €</p>
           <p class="unit-price">
-            {{ product.PRO_SALE | number: '1.2-2'}} €
+            {{ product.REAL_PRICE | number: '1.2-2'}}€
           </p>
           <p class="percent">
-            -{{ ((product.PRICE - product.PRO_SALE) / product.PRICE) * 100 | number: '1.0-0' }}%
+            -{{ ((product.PRICE - product.REAL_PRICE) / product.PRICE) * 100 | number: '1.0-0' }}%
           </p>
         </div>
       </div>
@@ -25,7 +25,7 @@
       <div class="title-price" routerLink="{{product.PRO_ID}}">
 
         <p class="title">{{product.PRO_NAME}}</p>
-        <p class="unit-price2">{{ product.PRICE | number: '1.2-2'}} €</p>
+        <p class="unit-price2">{{ product.PRICE | number: '1.2-2'}}€</p>
       </div>
 
     </ng-template>
@@ -41,16 +41,16 @@
       <div class="price-container">
         <div class="price" *ngIf="(product.PRO_SALE != null); else priceBlock2">
           <p>
-            <span>{{ product.PRO_SALE*item.units | number: '1.2-2'}} € </span>            
+            <span>{{ product.REAL_PRICE*item.units | number: '1.2-2'}} € </span>            
           </p>
         </div>
         <ng-template #priceBlock2>
-          {{product.PRICE*item.units| number: '1.2-2'}} €
+          {{product.PRICE*item.units| number: '1.2-2'}}€
         </ng-template>
       </div>
       <ng-template #priceBlock>
         <p>{{'TOTAL'| oTranslate}}</p>
-        <p>{{product.PRICE*item.units | number: '1.2-2'}} €</p>        
+        <p>{{product.PRICE*item.units | number: '1.2-2'}}€</p>        
       </ng-template>
     </div>
 
