@@ -45,16 +45,15 @@
                 <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
                 <ng-template #enBlock>
                     <div class="insights">
-                        The customers with gender&nbsp;<span class="bold">{{maxBilledGenre}}</span>&nbsp;and age
-                        range between&nbsp;<span class="bold">{{ minAge2 }} and {{ maxAge2 }}</span>&nbsp;years old 
-                        generate the highest revenue, accounting for &nbsp;<span class="bold">{{percentage2 | number: '1.2-2' }}%</span>&nbsp;of the total revenue.
+                        <span class="bold">{{('THE_' + maxBilledGenre + 'S') | oTranslate}}</span>&nbsp;whose age is
+                        between&nbsp;<span class="bold">{{ minAge2 }} and {{ maxAge2 }}</span>&nbsp;years old, 
+                        are the ones who bill the most with a &nbsp;<span class="bold">{{percentage2 | number: '1.2-2' }}%</span>&nbsp;of the total revenue.
                     </div>
                 </ng-template>
                 <ng-template #esBlock>
                     <div class="insights">
-                        Los clientes con género&nbsp; <span class="bold">{{maxBilledGenre}}</span> &nbsp;y rango de
-                        edad comprendido entre&nbsp; <span class="bold">{{ minAge2 }} y {{ maxAge2 }}</span> 
-                        &nbsp;años es el que más factura con un&nbsp; <span class="bold">{{percentage2 | number: '1.2-2' }}%</span> &nbsp;sobre el total facturado
+                        <span class="bold">{{('THE_' + maxBilledGenre + 'S') | oTranslate}}</span> &nbsp;cuya edad esta comprendida entre&nbsp; <span class="bold">{{ minAge2 }} y {{ maxAge2 }}</span> 
+                        &nbsp;años, son quienes más facturan con un&nbsp; <span class="bold">{{percentage2 | number: '1.2-2' }}%</span> &nbsp;sobre el total facturado.
                     </div>
                 </ng-template>
 

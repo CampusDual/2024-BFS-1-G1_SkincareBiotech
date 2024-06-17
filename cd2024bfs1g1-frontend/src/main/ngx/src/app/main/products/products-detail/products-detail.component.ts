@@ -54,8 +54,9 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   public colorScheme = {
     domain: ['#24b14a ', '#DCD516', '#e81d23']
   };
-  private translateSubscription: Subscription;
 
+  chartParameters: DiscreteBarChartConfiguration;
+  
   constructor(
     protected injector: Injector,
     private router: Router,

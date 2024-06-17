@@ -11,6 +11,7 @@
 
 h1{
     padding-left: 2vw;
+    width: 80%;
 }
 
 .insights-container{
@@ -19,9 +20,33 @@ h1{
 
 .insight{
     padding-bottom:10px;
+    text-align: center;
 }
 
 .bold{
     font-weight: bold;
+}
+
+.title-container{
+    display: flex;
+    align-items: center;
+    padding-left: 2vw;  
+    padding-right: 2vw; 
+    margin-bottom: 30px;
+}
+
+.total{
+    padding: 10px;
+    border: solid 1px black;
+    font-weight: bold;
+    border-radius: 15px 15px;
+    width: 15%;
+    text-align: center;
+    /*
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    */
 }
 

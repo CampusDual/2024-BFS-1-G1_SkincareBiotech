@@ -1,33 +1,31 @@
 <div class="bg-container">
-       <h1>{{"FACTURATION_TITLE" | oTranslate}}</h1>
+       <div class="title-container">
+              <h1>{{"FACTURATION_TITLE" | oTranslate}}
+
+              </h1>
+              <div class="total">
+                     Total: {{ totalBilled | number: '1.2-2' }}€
+              </div>
+       </div>
        <ng-container *ngIf="isGraph; else noChart">
               <div class="chart-container">
                      <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
                      <ng-template #enBlock>
                             <div class="insights-container">
                                    <div class="insight">
-                                          You have billed a <span class="bold">total of 
-                                          {{ totalBilled | number: '1.2-2' }}€</span> at SkinCare Biotech.
-                                   </div>
-                                   <div class="insight">
-                                          The day with <span class="bold"> the highest revenue generated is {{ maxDay }}
-                                          of {{ maxMonth }} </span> with a total of <span class="bold">{{ maxAmount | number: '1.2-2' }}€</span> ,
-                                          representing <span class="bold">{{ percentage | number: '1.2-2' }}% of the total</span> over the last 30 days.
+                                          The day with  the highest revenue generated is <span class="bold"> {{ maxDay }}
+                                                 of {{ maxMonth }} </span> with a total of <span class="bold">{{
+                                                 maxAmount | number: '1.2-2' }}€.</span>
                                    </div>
                             </div>
                      </ng-template>
                      <ng-template #esBlock>
                             <div class="insights-container">
-                                   <div class="insight"> 
-                                          Has facturado un <span class="bold">total de 
-                                          {{ totalBilled | number: '1.2-2' }}€</span> en SkinCare Biotech.
-                                   </div>
                                    <div class="insight">
-                                          El día con <span class="bold">mayor facturación</span> fue el 
+                                          El día con mayor facturación fue el
                                           <span class="bold">{{ maxDay }} de {{ maxMonth }}</span> con un
-                                          <span class="bold">total de {{ maxAmount | number: '1.2-2' }}€,
-                                          </span>representando un <span class="bold">{{ percentage | number: '1.2-2' }}% del total
-                                          </span> de los últimos 30 días.
+                                          <span class="bold">total de {{ maxAmount | number: '1.2-2' }}€.
+                                          </span>
                                    </div>
                             </div>
                      </ng-template>
