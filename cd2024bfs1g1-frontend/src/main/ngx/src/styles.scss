@@ -39,9 +39,6 @@
   }
 }
 
-html,body {
-  
-}
 
 .allergen-radio mat-radio-group {
   display: grid !important;
@@ -56,3 +53,6 @@ html,body {
   background-color: white;
 }
 
+.o-form .o-form-toolbar .o-form-toolbar-header{
+  box-shadow: none;
+}

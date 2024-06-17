@@ -38,3 +38,8 @@
     color: red;
     font-size: 12px;
   }
+
+.profile-container {
+    background-color: white;
+    padding: 10px;
+}
