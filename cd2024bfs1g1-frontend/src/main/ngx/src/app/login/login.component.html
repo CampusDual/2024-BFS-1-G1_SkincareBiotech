@@ -5,12 +5,12 @@
     </div>
 
     <div class="wrapp-login">
-      <mat-icon class="flecha" routerLink="">arrow_back</mat-icon>      
+      <mat-icon color="primary" class="flecha" routerLink="">arrow_back</mat-icon>      
 
       <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
 
         <div class="logo-container">
-          <img class="logo-login" src="./assets/images/logo_bw.svg" alt="SkinCare BioTech">
+          <img class="logo-login" src="./assets/images/skincare-logo.svg" alt="SkinCare BioTech">
         </div>
  
         <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -43,23 +43,25 @@
             <!-- <span class="text link_text">{{ 'FORGOT_PWD' | oTranslate }}</span> -->
           </div>
 
-          <button mat-raised-button id="boton_registro" type="submit">{{ 'LOGIN' | oTranslate }}</button>
+          <button color="primary" mat-raised-button id="boton_registro" type="submit">{{ 'LOGIN' | oTranslate }}</button>
           <!-- <button mat-raised-button id="botones" routerLink="">{{ 'MAIN_SCREEN' | oTranslate }}</button> -->
 
           <div class="linea"></div>
           <label class="etiqueta">{{ 'ARE_NEW_CLIENT' | oTranslate }}</label>
-          <button mat-raised-button id="boton_crear" routerLink="register">{{ 'CREATE_ACCOUNT' | oTranslate }}</button>
+          <button color="primary" mat-raised-button id="boton_crear" routerLink="register">{{ 'CREATE_ACCOUNT' | oTranslate }}</button>
         </form>
       </div>
+
+
 
     </div>
   </div>
 
-  <div id="footer" style="background-color:#a7bfc7" class="footer-container">
+  <div class="footer-container">
     <div fxLayout="row" fxLayoutAlign="end center">
-      <span id="pie">{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
-      <span id="pie"> &copy; 2024 </span>
-      <span id="pie">{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
+      <span class="pie">{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
+      <span class="pie"> &copy; 2024 </span>
+      <span class="pie">{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
     </div>
   </div>
 

@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Lazy
 @Repository(value = "ProductDao")
-@ConfigurationFile(
-        configurationFile = "dao/ProductDao.xml",
-        configurationFilePlaceholder = "dao/placeholders.properties")
+@ConfigurationFile(configurationFile = "dao/ProductDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 
 public class ProductDao extends OntimizeJdbcDaoSupport {
 
@@ -23,5 +21,8 @@ public class ProductDao extends OntimizeJdbcDaoSupport {
     public static final String PRO_SALE = "PRO_SALE";
     public static final String PRO_SELLER_ID = "PRO_SELLER_ID";
     public static final String CAT_ID = "CAT_ID";
+    public static final String REAL_PRICE = "REAL_PRICE";
+    public static final String QUERY_PRO_FEATURED = "PRO_FEATURED";
+    public static final String QUERY_SALES_COUNT = "QUERY_SALES_COUNT";
 
 }

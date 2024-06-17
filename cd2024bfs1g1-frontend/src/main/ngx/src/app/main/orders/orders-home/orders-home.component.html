@@ -1,4 +1,4 @@
-<o-table attr="ordersTable" service="orders" entity="orderBySeller" keys="ORD_ID" insert-button="false" delete-button="false"
+<o-table title="ORDERS" show-title="true" attr="ordersTable" service="orders" entity="orderBySeller" keys="ORD_ID" insert-button="false" delete-button="false"
     columns="ORD_ID;ORD_DATE;TOTAL_PRICE;NUM_UNITS;NUM_PRODUCTS;ORD_PAID;ALL_SENT"
     visible-columns="ORD_ID;ORD_DATE;TOTAL_PRICE;NUM_UNITS;NUM_PRODUCTS;ORD_PAID;ALL_SENT">
     <o-table-column attr="ORD_ID" title="ORD_ID" content-align="center"></o-table-column>
@@ -7,6 +7,12 @@
         thousand-separator="." decimal-separator="," content-align="center"></o-table-column>
     <o-table-column attr="NUM_UNITS" title="NUM_UNITS" content-align="center"></o-table-column>
     <o-table-column attr="NUM_PRODUCTS" title="NUM_PRODUCTS" content-align="center"></o-table-column>
-    <o-table-column attr="ORD_PAID" title="ORD_PAID" content-align="center"></o-table-column>
-    <o-table-column attr="ALL_SENT" title="ALL_SENT" content-align="center"></o-table-column>
+    <o-table-column attr="ORD_PAID" title="ORD_PAID" content-align="center">
+        <o-table-cell-renderer-boolean render-true-value="check_circle" render-false-value="highlight_off" render-type="icon" boolean-type="bool">
+        </o-table-cell-renderer-boolean>
+      </o-table-column>
+    <o-table-column attr="ALL_SENT" title="ALL_SENT" content-align="center">
+        <o-table-cell-renderer-boolean render-true-value="check_circle" render-false-value="highlight_off" render-type="icon" boolean-type="bool">
+        </o-table-cell-renderer-boolean>
+      </o-table-column>
 </o-table>

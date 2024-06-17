@@ -1,28 +1,30 @@
 <o-form editable-detail="no" show-header="no">
-    <div class="filter">
-        <o-combo attr="CAT_ID" searchable="yes" read-only="no" service="categories" entity="category" keys="CAT_ID"
+    <div class="filters">
+        <o-combo class="filter" color="primary" attr="CAT_ID" searchable="yes" read-only="no" service="categories" entity="category" keys="CAT_ID"
             columns="CAT_ID;CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
-        <o-combo attr="BRA_ID" searchable="yes" read-only="no" service="brands" entity="brand" keys="BRA_ID"
+        <o-combo class="filter" attr="BRA_ID" searchable="yes" read-only="no" service="brands" entity="brand" keys="BRA_ID"
             columns="BRA_ID;BRA_NAME" visible-columns="BRA_NAME" value-column="BRA_ID"></o-combo>
-        <o-combo attr="PGE_ID" read-only="no" service="product-genders" entity="productGender" keys="PGE_ID" 
+        <o-combo class="filter" attr="PGE_ID" read-only="no" service="product-genders" entity="productGender" keys="PGE_ID"
             columns="PGE_ID;PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" translate="yes"></o-combo>
-        <o-real-input attr="PRO_MIN_PRICE" read-only="false"></o-real-input>
-        <o-real-input attr="PRO_MAX_PRICE" read-only="false"></o-real-input>
+        <o-combo class="filter" attr="SKIN_ID" read-only="no" service="skinTypes" entity="skinType" keys="SKIN_ID"
+            columns="SKIN_ID;SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" translate="yes"></o-combo>
+        <o-real-input #minPriceInput class="filter" attr="PRO_MIN_PRICE" min="0" read-only="false" (onBlur)="clearInputMin($event)"></o-real-input>
+        <o-real-input #maxPriceInput class="filter" attr="PRO_MAX_PRICE" min="0" read-only="false" (onBlur)="clearInputMax($event)"></o-real-input>
+        <o-text-input #nameFilter class="filter" attr="PRO_NAME" [data]="nameFilterValue" read-only="false" oHidden></o-text-input>
     </div>
-
-        <o-filter-builder #filterBuilder attr="categFilter"
-            filters="CAT_ID:CAT_ID;BRA_ID:BRA_ID;PGE_ID:PGE_ID;PRO_MAX_PRICE:PRO_MAX_PRICE;PRO_MIN_PRICE:PRO_MIN_PRICE"
-            [target]="productsGrid" query-on-change="yes" query-on-change-delay="500" [expression-builder]="filter">
-        </o-filter-builder>
-    </o-form>
-    <div class="grid-container">
+    <o-filter-builder #filterBuilder attr="categFilter"
+        filters="CAT_ID:CAT_ID;BRA_ID:BRA_ID;PGE_ID:PGE_ID;SKIN_ID;PRO_MAX_PRICE:PRO_MAX_PRICE;PRO_MIN_PRICE:PRO_MIN_PRICE;PRO_NAME:PRO_NAME"
+        [target]="productsGrid" query-on-change="yes" query-on-change-delay="500" [expression-builder]="filter">
+    </o-filter-builder>
+</o-form>
+<div class="grid-container">
     <o-grid #productsGrid attr="productsGrid" keys="PRO_ID" service="products" entity="productEnabled" pageable="true"
-        columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_PRICE;PRO_IMAGE;CAT_ID;PRO_SALE;PRO_REAL_PRICE;DISCOUNT"
-        query-rows="10" page-size-options="5;10;15;20" orderable="true"
-        sortable-columns="PRO_REAL_PRICE:esc;PRO_REAL_PRICE:asc" insert-button="false" pagination-controls="true"
-        fixed-header="yes" grid-item-height="400px" detail-mode="none" quick-filter-columns="PRO_NAME">
-        <o-grid-item *ngFor="let data of productsGrid.dataArray">            
-                <app-product-card [product]="data"></app-product-card>               
+    columns="PRO_ID;PRO_NAME;PRO_DESCRIPTION;PRO_IMAGE;CAT_ID;PRICE;REAL_PRICE;DISCOUNT"
+    query-rows="10" page-size-options="5;10;15;20" orderable="true" quick-filter-columns="PRO_NAME" quick-filter="false"
+        insert-button="false" pagination-controls="true"
+        fixed-header="yes" grid-item-height="400px" detail-mode="none">
+        <o-grid-item *ngFor="let data of productsGrid.dataArray">
+            <app-product-card [product]="data"></app-product-card>
         </o-grid-item>
     </o-grid>
 </div>

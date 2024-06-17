@@ -1,14 +1,11 @@
 .productCard {  
     background-color: #ffffff;
     width: 15vw;
-    height: 92%;
     min-width: 200px;
-    min-height: 350px;    
     display: flex;
     flex-direction: column;
     align-items: center;  
     padding: 10px;
-    /* border: 1px solid #e1e1e1; */
     border-radius: 15px;
     margin: 10px;       
     cursor: pointer; 
@@ -29,9 +26,7 @@
 
 .title {
     font-size: 18px;
-    font-weight: bolder;
     text-align: left;
-    font-family: Poppins, "Helvetica Neue", sans-serif;    
     width: 100%;    
     height: 2em;
     line-height: 1em; 
@@ -58,33 +53,25 @@
 .originalPrice {
     display: flex;
     justify-content: flex-end;
-    margin-top: 5px;
-    color: red;
+    margin-top: 3px;
+    color: darkgray;
     text-decoration: line-through;
+    margin-right: 10px;
 }
 
 .priceSale {
-    display: flex;
-    justify-content: flex-end;
-        
-}
-
-.discount-span {
-    margin: 0 25px 0 0;
-    color: darkgreen;
-    font-style: italic;
-    font-size: 1.2em;
+    display: flex;      
 }
 
 .sale-span {
-    color: darkgreen;
+    color: black;
     font-size: 1.2em;
-    margin: 0px 0px 0px 0px;
+    margin-right: 15px;
     font-weight: bold;    
 }
 
 .price {
-    text-align: right; 
+    text-align: left;
     font-weight: bold; 
     font-size: 1.2em;
 }

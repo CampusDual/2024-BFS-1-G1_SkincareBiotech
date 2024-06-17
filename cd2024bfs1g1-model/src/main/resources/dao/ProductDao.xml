@@ -13,47 +13,91 @@
     </UpdateKeys>
     <GeneratedKey>pro_id</GeneratedKey>
     <Queries>
-        <Query id="PRO_ENABLED">
+        <Query id="default">
             <AmbiguousColumns>
-                <AmbiguousColumn name="CAT_ID" prefix="ENABLED_CHECKER"/>
-                <AmbiguousColumn name="BRA_ID" prefix="ENABLED_CHECKER"/>
-                <AmbiguousColumn name="PGE_ID" prefix="ENABLED_CHECKER"/>
+                <AmbiguousColumn name="PRO_ID" prefix="PWO"/>
             </AmbiguousColumns>
             <Sentence>
-            <![CDATA[
-                WITH ENABLED_CHECKER AS (
-                    SELECT *, COALESCE(PRO_SALE, PRO_PRICE) AS PRO_REAL_PRICE,
-                    COALESCE (((PRO_PRICE - PRO_SALE) / PRO_PRICE) * 100, 0) AS DISCOUNT
-                    FROM ${mainschema}.PRODUCTS AS P
-                    WHERE PRO_ENABLED = TRUE
-                )
-                SELECT #COLUMNS#
-                FROM ENABLED_CHECKER
-                    INNER JOIN ${mainschema}.BRANDS AS B ON ENABLED_CHECKER.BRA_ID = B.BRA_ID
-                    INNER JOIN ${mainschema}.PRO_GENDER AS G ON ENABLED_CHECKER.PGE_ID = G.PGE_ID
-                    INNER JOIN ${mainschema}.CATEGORIES AS C ON ENABLED_CHECKER.CAT_ID = C.CAT_ID
+                <![CDATA[
+                    SELECT #COLUMNS#
+                    FROM ${mainschema}.PRODUCTS_WITH_OFFER PWO
+                    INNER JOIN ${mainschema}.USER_PRICE AS UP ON PWO.PRO_ID = UP.PRO_ID
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="PRO_ENABLED">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="CAT_ID" prefix="EC"/>
+                <AmbiguousColumn name="BRA_ID" prefix="EC"/>
+                <AmbiguousColumn name="PGE_ID" prefix="EC"/>
+                <AmbiguousColumn name="PRO_ID" prefix="EC"/>
+                <AmbiguousColumn name="PRO_ID" prefix="EC"/>
+                <AmbiguousColumn name="SKIN_ID" prefix="st"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    WITH ENABLED_CHECKER AS (
+                        SELECT P.*,B.BRA_NAME, UP.REAL_PRICE, UP.PRICE,
+                        COALESCE (((P.PRO_PRICE - P.PRO_SALE) / P.PRO_PRICE) * 100, 0) AS DISCOUNT
+                        FROM ${mainschema}.PRODUCTS_WITH_OFFER AS P
+                        INNER JOIN ${mainschema}.BRANDS AS B ON P.BRA_ID = B.BRA_ID
+                        INNER JOIN ${mainschema}.USER_PRICE UP ON P.PRO_ID = UP.PRO_ID
+                        WHERE PRO_ENABLED = TRUE
+                    )
+                    SELECT DISTINCT #COLUMNS#
+                    FROM ENABLED_CHECKER EC
+                    INNER JOIN ${mainschema}.PRO_GENDER AS G ON EC.PGE_ID = G.PGE_ID
+                    INNER JOIN ${mainschema}.CATEGORIES AS C ON EC.CAT_ID = C.CAT_ID
+                    LEFT JOIN ${mainschema}.product_skin ps ON ps.pro_id = EC.pro_id
+                    LEFT JOIN ${mainschema}.skin_types st ON st.skin_id = ps.skin_id
                 #WHERE#
-            ]]>
-        </Sentence>
+                ]]>
+            </Sentence>
         </Query>
 
-        <Query id="pro_featured">
+        <Query id="PRO_FEATURED">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="PRO_ID" prefix="co"/>
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                     WITH complete_overview AS (
-                        SELECT *, COALESCE (((pro_price - pro_sale) / pro_price) * 100, 0) AS DISCOUNT, (
+                        SELECT p.*, COALESCE(((up.PRICE - up.SALE_PRICE) / up.PRICE) * 100, 0) AS DISCOUNT, (
                             SELECT COUNT(*)
-                            FROM ${mainschema}.ORD_LINES AS ol
-           			        WHERE ol.pro_id = p.pro_id
-                        ) AS AMMOUNT_OF_SALES
-                        FROM ${mainschema}.PRODUCTS AS p
-                        WHERE pro_enabled = TRUE
+                            FROM ORD_LINES AS ol
+                            WHERE ol.pro_id = p.pro_id
+                        ) AS AMMOUNT_OF_SALES, up.PRICE, up.SALE_PRICE, up.REAL_PRICE
+                        FROM PRODUCTS_WITH_OFFER AS p
+                    	INNER JOIN user_price up ON p.pro_id = up.pro_id
+                        WHERE pro_enabled = true
                     )
-                SELECT #COLUMNS#
-                FROM complete_overview
-                #WHERE#
-                #ORDER#
+                    SELECT #COLUMNS#
+                    FROM complete_overview co
+                    #WHERE#
+                    #ORDER#
             ]]>
+            </Sentence>
+        </Query>
+        <Query id="QUERY_SALES_COUNT">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="PRO_ID" prefix="S"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    WITH SALES AS (
+	                    SELECT SUM(OL.OL_UNITS) AS TOTAL_SALES,DATE(O.ORD_DATE) AS SALES_DATE,P.*
+                        FROM ${mainschema}.PRODUCTS AS P
+                        INNER JOIN ${mainschema}.ORD_LINES AS OL ON OL.PRO_ID = P.PRO_ID
+                        INNER JOIN ${mainschema}.ORDERS AS O ON O.ORD_ID = OL.ORD_ID
+                        GROUP BY P.PRO_ID,DATE(O.ORD_DATE)
+                    )
+                    SELECT #COLUMNS#
+                    FROM SALES S
+                    LEFT JOIN ${mainschema}.PRODUCT_SKIN PS ON PS.PRO_ID = S.PRO_ID
+                    #WHERE#
+                    #ORDER#
+                ]]>
             </Sentence>
         </Query>
 

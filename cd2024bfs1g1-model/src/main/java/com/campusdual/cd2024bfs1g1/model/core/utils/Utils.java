@@ -1,6 +1,8 @@
 package com.campusdual.cd2024bfs1g1.model.core.utils;
 
+import com.campusdual.cd2024bfs1g1.model.core.dao.AllergenProductDao;
 import com.campusdual.cd2024bfs1g1.model.core.dao.BilledAgeDao;
+import com.campusdual.cd2024bfs1g1.model.core.dao.SaleDao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -12,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Date;
 import java.util.Map;
 
 public class Utils {
@@ -47,24 +50,41 @@ public class Utils {
         return formattedDate;
     }
 
-    public static boolean isAgeRangeValid(int minAge, int maxAge, EntityResult existingRanges){
+    public static boolean isAgeRangeValid(int minAge, int maxAge, EntityResult existingRanges) {
         int recordCount = existingRanges.calculateRecordNumber();
 
-        for (int i=0; i < recordCount; i++) {
+        for (int i = 0; i < recordCount; i++) {
 
             int minRecord = (int) existingRanges.getRecordValues(i).get(BilledAgeDao.ATTR_MIN_AGE);
-            int maxRecord  = (int) existingRanges.getRecordValues(i).get(BilledAgeDao.ATTR_MAX_AGE);
+            int maxRecord = (int) existingRanges.getRecordValues(i).get(BilledAgeDao.ATTR_MAX_AGE);
 
-            if ( minAge >= minRecord && minAge <= maxRecord ||
-                 minAge <= minRecord && maxAge >= maxRecord ||
-                 maxAge >= minRecord && maxAge <= maxRecord  )
-            {
+            if (minAge >= minRecord && minAge <= maxRecord ||
+                    minAge <= minRecord && maxAge >= maxRecord ||
+                    maxAge >= minRecord && maxAge <= maxRecord) {
                 return false;
             }
         }
         return true;
     }
 
+    public static boolean isDateRangeValid(long newStartDate, long newEndDate, EntityResult existingRanges, int productId) {
+        long recordCount = existingRanges.calculateRecordNumber();
+
+        for (int i = 0; i < recordCount; i++) {
+            if ((int) existingRanges.getRecordValues(i).get(SaleDao.ATTR_PRO_ID) == productId) {
+                Date existingStartDate = (Date) existingRanges.getRecordValues(i).get(SaleDao.ATTR_SAL_INITIAL_DATE);
+                Date existingEndDate = (Date) existingRanges.getRecordValues(i).get((SaleDao.ATTR_SAL_END_DATE));
+
+                long minRecord = existingStartDate.getTime();
+                long maxRecord = existingEndDate.getTime();
+
+                if (newStartDate <= maxRecord && newEndDate >= minRecord) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 }
 

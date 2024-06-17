@@ -1,142 +1,125 @@
 <div class="register">
-    <mat-icon class="flecha" routerLink="/login">arrow_back</mat-icon>
+    <mat-icon class="flecha" color="primary" routerLink="/login">arrow_back</mat-icon>
     <div class="full-page">
         <div class="formContainer">
             <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="title-register">
-                    <mat-label>{{ 'title_register' | oTranslate }}</mat-label>
+                    <mat-label>{{ 'Create your account' | oTranslate }}</mat-label>
                 </div>
-                <mat-form-field class="register-field">
-                    <mat-label>{{ 'usr_login' | oTranslate }}</mat-label>
-                    <input matInput class="mat-input" #user id="usr_login" [formControl]="userCtrl">
-                    <mat-error *ngIf="userCtrl.hasError('required')">
-                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="userCtrl.hasError('minlength')">
-                        {{ 'MIN_LENGTH_4' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="userCtrl.hasError('pattern')">
-                        {{ 'ERROR_USER_PATTERN' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field class="register-field">
-                    <mat-label>{{ 'usr_password' | oTranslate }}</mat-label>
-                    <input matInput class="mat-input" #password id="usr_password" type="password"
-                        [formControl]="pwdCtrl">
-                    <mat-error *ngIf="pwdCtrl.hasError('required')">
-                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="pwdCtrl.hasError('minlength')">
-                        {{ 'MIN_LENGTH_8' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="pwdCtrl.hasError('pattern')">
-                        {{ 'ERROR_PASSWORD_PATTERN' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field class="register-field">
-                    <mat-label>{{ 'confirm_usr_password' | oTranslate }}</mat-label>
-                    <input matInput class="mat-input" #password id="usr_password2" type="password"
-                        [formControl]="pwdCtrl2">
-                    <mat-error *ngIf="pwdCtrl2.hasError('required')">
-                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field>
-                    <mat-label>{{ 'usr_email' | oTranslate }}</mat-label>
-                    <input matInput class="mat-input" #user_email id="usr_email" [formControl]="userEmailCtrl">
-                    <mat-error *ngIf="userEmailCtrl.hasError('required')">
-                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="userEmailCtrl.hasError('email')">
-                        {{ 'ERROR_EMAIL_PATTERN' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field>
-                    <mat-label>{{ 'usr_name' | oTranslate }}</mat-label>
-                    <input matInput class="mat-input" #user_name id="usr_name" [formControl]="usernameCtrl">
-                    <mat-error *ngIf="usernameCtrl.hasError('required')">
-                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="usernameCtrl.hasError('minlength')">
-                        {{ 'MIN_LENGTH_3' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="userSurnameCtrl.hasError('maxlength')">
-                        {{ 'MAX_LENGTH_50' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="usernameCtrl.hasError('pattern')">
-                        {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field>
-                    <mat-label>{{ 'usr_surname' | oTranslate }}</mat-label>
-                    <input matInput class="mat-input" #user_surname id="usr_surname" [formControl]="userSurnameCtrl">
-                    <mat-error *ngIf="userSurnameCtrl.hasError('required')">
-                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="userSurnameCtrl.hasError('minlength')">
-                        {{ 'MIN_LENGTH_3' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="userSurnameCtrl.hasError('maxlength')">
-                        {{ 'MAX_LENGTH_50' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="userSurnameCtrl.hasError('pattern')">
-                        {{ 'ERROR_USERNAME_PATTERN' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field>
-                    <input matInput [matDatepicker]="picker" [formControl]="userDateCtrl" #upr_birthdate>
-                    <mat-label>{{ 'USR_BIRTHDAY' | oTranslate }}</mat-label>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="userDateCtrl.hasError('required')">
-                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                    </mat-error>
-                    <mat-error *ngIf="userDateCtrl.hasError('ageValidator')">
-                        {{ 'ERROR_MUST_BE_ADULT' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>{{ 'GENDER' | oTranslate }}</mat-label>
-                    <mat-select [formControl]="userGenderCtrl" #uge_id>
-                        <mat-option *ngFor="let item of genderData" [value]="item.UGE_ID">{{ item.UGE_NAME | oTranslate
-                            }}</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="userDateCtrl.hasError('required')">
-                        {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
-                    </mat-error>
-                </mat-form-field>
-
-                <div>
-                    <mat-form-field>
-                        <mat-label>{{ 'usr_phone' | oTranslate }}</mat-label>
-                        <input matInput class="mat-input" #phone placeholder="{{ 'usr_phone' | oTranslate }}"
-                            id="usr_phone" [formControl]="userPhoneCtrl">
-                        <mat-error *ngIf="userPhoneCtrl.hasError('pattern')">
-                            {{ 'ERROR_PHONE_PATTERN' | oTranslate }}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field>
-                        <mat-label>{{ 'UPR_ADDRESS' | oTranslate }}</mat-label>
-                        <input matInput class="mat-input" #user_name placeholder="{{ 'UPR_ADDRESS' | oTranslate }}"
-                            id="UPR_ADDRESS" [formControl]="userAddressCtrl">
-                        <mat-error *ngIf="userAddressCtrl.hasError('required')">
+                <div class="form-row-centered">
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'usr_login' | oTranslate }}</mat-label>
+                        <input matInput class="mat-input" #user id="usr_login" [formControl]="userCtrl">
+                        <mat-error *ngIf="userCtrl.hasError('required')">
                             {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
                         </mat-error>
-                        <mat-error *ngIf="userAddressCtrl.hasError('minlength')">
-                            {{ 'MIN_LENGTH_3' | oTranslate }}
+                        <mat-error *ngIf="userCtrl.hasError('minlength')">
+                            {{ 'MIN_LENGTH_4' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="userCtrl.hasError('pattern')">
+                            {{ 'ERROR_USER_PATTERN' | oTranslate }}
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <button mat-raised-button style="background-color: #a7bfc7;" type="submit">{{ 'REGISTER' | oTranslate
-                    }}</button>
+                <div class="form-row">
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'usr_password' | oTranslate }}</mat-label>
+                        <input matInput class="mat-input" #password id="usr_password" type="password"
+                            [formControl]="pwdCtrl">
+                        <mat-error *ngIf="pwdCtrl.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="pwdCtrl.hasError('minlength')">
+                            {{ 'MIN_LENGTH_8' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="pwdCtrl.hasError('pattern')">
+                            {{ 'ERROR_PASSWORD_PATTERN' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'confirm_usr_password' | oTranslate }}</mat-label>
+                        <input matInput class="mat-input" #password2 id="usr_password2" type="password"
+                            [formControl]="pwdCtrl2">
+                        <mat-error *ngIf="pwdCtrl2.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row">
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'usr_name' | oTranslate }}</mat-label>
+                        <input matInput class="mat-input" #userName id="usr_name" [formControl]="usernameCtrl">
+                        <mat-error *ngIf="usernameCtrl.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="usernameCtrl.hasError('minlength')">
+                            {{ 'MIN_LENGTH_3' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="usernameCtrl.hasError('maxlength')">
+                            {{ 'MAX_LENGTH_50' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'usr_surname' | oTranslate }}</mat-label>
+                        <input matInput class="mat-input" #userSurname id="usr_surname" [formControl]="userSurnameCtrl">
+                        <mat-error *ngIf="userSurnameCtrl.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="userSurnameCtrl.hasError('minlength')">
+                            {{ 'MIN_LENGTH_3' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="userSurnameCtrl.hasError('maxlength')">
+                            {{ 'MAX_LENGTH_50' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row">
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'USR_BIRTHDAY' | oTranslate }}</mat-label>
+                        <input matInput [matDatepicker]="picker" [formControl]="userDateCtrl" #birthdate>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="userDateCtrl.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="userDateCtrl.hasError('ageValidator')">
+                            {{ 'ERROR_MUST_BE_ADULT' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'usr_email' | oTranslate }}</mat-label>
+                        <input matInput class="mat-input" #userEmail id="usr_email" [formControl]="userEmailCtrl">
+                        <mat-error *ngIf="userEmailCtrl.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                        <mat-error *ngIf="userEmailCtrl.hasError('email')">
+                            {{ 'ERROR_EMAIL_PATTERN' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row">
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'GENDER' | oTranslate }}</mat-label>
+                        <mat-select [formControl]="userGenderCtrl" #gender>
+                            <mat-option *ngFor="let item of genderData" [value]="item.UGE_ID">{{ item.UGE_NAME |
+                                oTranslate }}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="userGenderCtrl.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="register-field">
+                        <mat-label>{{ 'SKIN_TYPE' | oTranslate }}</mat-label>
+                        <mat-select [formControl]="userSkinTypeCtrl" #skin>
+                            <mat-option *ngFor="let item of skinData" [value]="item.SKIN_ID">{{ item.SKIN_NAME
+                                }}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="userSkinTypeCtrl.hasError('required')">
+                            {{ 'ERROR_REQUIRED_FIELD' | oTranslate }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button id="botones" type="submit">{{ 'REGISTER' | oTranslate }}</button>
                 <div class="linea"></div>
                 <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate }}</label>
                 <button mat-raised-button style="background-color: #a7bfc7;" routerLink="/login">{{ 'LOGIN' | oTranslate

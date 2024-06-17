@@ -44,7 +44,7 @@
           "enabled": false
         },
         {
-          "attr": "data-analysis",
+          "attr": "daily-billing",
           "visible": false,
           "enabled": false
         },
@@ -54,12 +54,57 @@
           "enabled": false
         },
         {
+        "attr": "skin-types",
+        "visible": false,
+        "enabled": false
+        },
+        {
           "attr": "billed-age",
           "visible": false,
           "enabled": false
         },
         {
           "attr": "sellers",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "commissions",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "allergens",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "users-skin-types",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "customer-analysis",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "age-range-configuration",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "products-stats",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "masters",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "data-analysis",
           "visible": false,
           "enabled": false
         }

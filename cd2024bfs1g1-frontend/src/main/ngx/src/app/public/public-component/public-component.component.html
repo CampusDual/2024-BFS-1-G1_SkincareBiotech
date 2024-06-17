@@ -1,19 +1,43 @@
-<header class="header">
-  <div class="imgContainer">
-    <a routerLink="">
-      <img class="logo" src="./assets/images/logo_bw.svg" routerLink="" alt="SkinCare BioTech">
-    </a>
-  </div>
- 
-  <o-bar-menu *ngIf="isLoaded">
-    <o-bar-menu-separator> </o-bar-menu-separator>
-    <o-bar-menu-item [title]="('CART_ITEMS' | oTranslate) + ' (' +cartCount+')'" icon="shopping_cart" route="/order/cart"></o-bar-menu-item>
-    <o-bar-menu-item *ngIf="isLogedIn" (click)="logout()" title="LOGOUT" icon="power_settings_new"></o-bar-menu-item>
-    <o-bar-menu-group title="LANGUAGE" icon="language" >
-      <o-locale-bar-menu-item locale="en" title="{{'LANG_en' | oTranslate}}"></o-locale-bar-menu-item>
-      <o-locale-bar-menu-item locale="es" title="{{'LANG_es' | oTranslate}}"></o-locale-bar-menu-item>
-    </o-bar-menu-group>
-    <o-bar-menu-separator> </o-bar-menu-separator>
-  </o-bar-menu>
-</header>
-<router-outlet></router-outlet>
+<o-app-layout #appLayout show-language-selector="yes" mode="mobile" class="drawer_hidden" show-user-info="false">
+  <o-app-layout-header class="nav">
+    <div class="nav-login">
+      <div class="nav-left-side">
+        <a class="title" routerLink="/"><img class="logo" src="./assets/images/skincare-logo.svg" width="100%" /></a>
+      </div>
+      <div class="browser"><app-public-browser></app-public-browser></div>
+      <div class="nav-right-side">
+        <div class="navbar-item">
+          <a routerLink="/order/cart" title="{{('CART_ITEMS' | oTranslate) + ' (' +cartCount+')'}}">
+            <div class="cart-container">
+              <i class="material-icons">shopping_cart</i>
+              <span class="cart-count">{{ cartCount }}</span>
+            </div>
+          </a>
+        </div>
+        <div class="navbar-item">
+          <a *ngIf="!isLogedIn" routerLink="/login" title="{{('MY_PROFILE' | oTranslate)}}">
+            <i class="material-icons">person</i>
+            {{ 'MY_PROFILE' | oTranslate}}
+          </a>
+          <a *ngIf="isLogedIn" routerLink="/profile" title="{{('MY_PROFILE' | oTranslate)}}">
+            <i class="material-icons">person</i>
+            {{ 'MY_PROFILE' | oTranslate}}
+          </a>
+        </div>
+        <div class="navbar-item">
+          <a *ngIf="!isLogedIn" routerLink="/login" title="{{('LOGIN' | oTranslate)}}">
+            <i class="material-icons">power_settings_new</i>
+            {{('LOGIN' | oTranslate)}}
+          </a>
+          <a *ngIf="isLogedIn" (click)="logout()" title="LOGOUT">
+            <i class="material-icons">power_settings_new</i>
+            {{ isLogedIn ? ('LOGOUT' | oTranslate) : '' }}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </o-app-layout-header>
+  <div class="separator"></div>
+  <router-outlet ></router-outlet>
+</o-app-layout>

@@ -1,6 +1,6 @@
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OCurrencyInputComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
+import { OCurrencyInputComponent, OFormComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
 import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
 
 @Component({
@@ -8,24 +8,30 @@ import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx
   templateUrl: './products-detail.component.html',
   styleUrls: ['./products-detail.component.css']
 })
-export class ProductsDetailComponent  {
 
-  @ViewChild("proSaleToggle")
-  proSaleToggle: OSlideToggleComponent;
-
-  @ViewChild("proSaleCurrency")
-  proSaleCurrency: OCurrencyInputComponent;
+export class ProductsDetailComponent implements OnInit {
 
   @ViewChild('discreteBar', { static: false })
   protected discreteBar: OChartComponent;
 
+  @ViewChild('realPriceCurrency')
+  realPriceCurrency: OCurrencyInputComponent;
+  @ViewChild('form') form: OFormComponent;
+
   public chartParameters: DiscreteBarChartConfiguration;
-  service: any;
   data: any;
   intermedio: any;
-  id:any;
+  id: any;
   isVisible: boolean = false;
-  Visible:boolean = true;
+  Visible: boolean = true;
+  product: any = {};
+  service: OntimizeService;
+  public commissionPlatform: number;
+  public commissionRedSys: number;
+  public priceUser: number;
+  productName: string = '';
+  isDataLoaded: boolean = false;
+  priceSaleUser: any = false;
 
   constructor(
     protected injector: Injector,
@@ -42,29 +48,51 @@ export class ProductsDetailComponent  {
     this.chartParameters.margin.left = 50;
     this.service = this.injector.get(OntimizeService);
   }
-  
+
   toggleVisibility(): void {
     this.isVisible = !this.isVisible;
     this.Visible = !this.Visible;
   }
- 
+  ngOnInit() {
+    const conf = this.service.getDefaultServiceConfiguration('commissions');
+    this.service.configureService(conf);
+    this.service.query({}, ["COM_NAME", "COM_VALUE"], "commission")
+      .subscribe((data) => {
+        if (data.data.length > 0) {
+          this.commissionRedSys = data.data.find((element) => (element.COM_NAME === "Redsys_commissions")).COM_VALUE;
+          this.commissionPlatform = data.data.find((element) => (element.COM_NAME === "Platform_commissions")).COM_VALUE;
+          this.isDataLoaded = true;
+        }
+      })
+  }
 
   onUpdate(success: boolean) {
     if (success) {
       this.router.navigate(['/main/products']);
     }
   }
-  onDataLoaded(event) {
-    this.proSaleToggle.setValue((event.PRO_SALE !== undefined));
-    this.proSaleCurrency.setEnabled((event.PRO_SALE !== undefined));
-  }
-  onInsert(event) {
-    this.router.navigate(['/main/products']);
-  }
-  onChange(event) {
-    if (!this.proSaleToggle.getValue()) {
-      this.proSaleCurrency.setValue(null);
+
+  changePrice(event) {
+    if (!event) {
+      this.priceUser = 0;
+    } else {
+      this.priceUser = (event / (1 - (this.commissionPlatform / 100))) / (1 - (this.commissionRedSys / 100));
     }
-    this.proSaleCurrency.setEnabled(this.proSaleToggle.getValue());
+  }
+
+  checkName($event: any) {
+    this.product = $event;
+    this.priceSaleUser = $event.PRO_SALE;
+    this.productName = $event.PRO_NAME;
+  }
+
+  finalPriceSale(rowData: Array<any>): number {
+    return (rowData['SAL_PRICE'] / (1 - (this.commissionPlatform / 100))) / (1 - (this.commissionRedSys / 100));
+  }
+  getPriceCalculator() {
+    let self = this;
+    return (row) => {
+      return self.finalPriceSale(row)
+    }
   }
 }

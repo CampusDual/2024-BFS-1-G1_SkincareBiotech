@@ -1,16 +1,47 @@
 // Define your custom theme or choose predefined theme
-@use 'ontimize-web-ngx/theming/themes/ontimize.scss' as theme;
+@use 'ontimize-web-ngx/theming/themes/ontimize.scss'as theme;
 @use 'ontimize-web-ngx/theming/ontimize-style.scss';
 @use '../../app/login/login.theme.scss' as login;
 
-// Include ontimize styles
-@include ontimize-style.ontimize-theme-styles(theme.$theme);
+@use '@angular/material'as mat;
+@use 'sass:map';
+@use 'ontimize-web-ngx/theming/typography/o-table-typography.scss'as ontimize-table-typography;
+@use 'main-theme.scss' as mainTheme;
 
-// Propagate theme to screen styles definition.
-@include login.login-theme(theme.$theme);
+ 
 
+$custom-typography: mat.define-typography-config($font-family: '"Poppins", cursive',
+  $headline-1: mat.define-typography-level(84px, 92px, 300),
+  $headline-2: mat.define-typography-level(42px, 42px, 400),
+  $headline-3: mat.define-typography-level(34px, 36px, 400),
+  $headline-4: mat.define-typography-level(26px, 30px, 400),
+  $headline-5: mat.define-typography-level(24px, 24px, 400),
+  $headline-6: mat.define-typography-level(18px, 24px, 500),
+  $subtitle-1: mat.define-typography-level(14px, 21px, 600),
+  $subtitle-2: mat.define-typography-level(12px, 18px, 500),
+  $body-1: mat.define-typography-level(13px, 1.125em, 400),
+  $body-2: mat.define-typography-level(12px, 15px, 400),
+  $caption: mat.define-typography-level(11px, 15px, 400),
+  $button: mat.define-typography-level(13px, 14px, 500)
+);
 
-//Include dark styles option
+$merged-typography: map.merge($custom-typography, ontimize-table-typography.$table-typography);
+$theme: map.set(mainTheme.$theme, "typography", $merged-typography);
+
+@include ontimize-style.ontimize-theme-styles(mainTheme.$theme);
+@include ontimize-style.ontimize-theme-styles($theme);
+@include login.login-theme($theme);
+
 .o-dark {
   @include ontimize-style.ontimize-theme-all-component-color(theme.$dark-theme);
+}
+
+.application-layout-content-wrapper{
+  padding: none;
+  margin: 16px;
+  background-color: white;
+}
+
+html, body {
+  background-color: mainTheme.$background;
 }

@@ -24,8 +24,29 @@
 
 .info{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33% 33% 33%;
     gap:5px;
     margin:10px;
     padding-bottom: 50px
+}
+
+.allergen-container{
+    height: 100%;
+}
+
+.about-me {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 5px;
+    margin: 10px;
+    padding-bottom: 50px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+  }
+
+.profile-container {
+    padding: 10px;
 }

@@ -2,18 +2,41 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: rgba(42, 73, 85, 0.233);
     margin: 0px 30px 20px 30px;
-    padding: 20px 20px 30px 20px;   
+    padding: 0px 20px 0px 20px;   
     border-radius: 15px;
     min-width: min-content; /* Ajusta automáticamente al contenido mínimo */
     box-sizing: border-box; /* Asegura que padding y border se incluyan en el cálculo del ancho */
     flex-wrap: wrap;
 }
 
-h2 {
+h2{
     text-align: center;
-    margin-bottom: 15px; 
-    padding: 10px;    
-    margin-top: 10px;
+    color: #438cA1;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.3em;
+}
+
+h3{
+    text-align: center;
+    font-size: 18px; 
+    margin-top: 5px;
+    font-family: 'Cormorant', arial;
+}
+
+.app-product-card {
+    flex: 1 1 calc(25% - 40px); /* Ajustar ancho de los productos */
+    margin: 20px;
+    box-sizing: border-box;
+}
+.app-product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }

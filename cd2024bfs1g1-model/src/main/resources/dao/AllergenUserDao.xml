@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="allergens_users"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>AU_ID</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>AU_ID</Column>
+    </UpdateKeys>
+    <GeneratedKey>au_id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="ALLER_ID" prefix="a"/>
+                <AmbiguousColumn name="USR_ID" prefix="u"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                  SELECT
+                     #COLUMNS#
+                  FROM
+                     ${mainschema}.ALLERGENS A
+                  INNER JOIN ${mainschema}.ALLERGENS_USERS AU ON
+                     A.ALLER_ID = AU.ALLER_ID
+                  INNER JOIN ${mainschema}.USR_USER U ON
+                     AU.USR_ID = U.USR_ID
+                  #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

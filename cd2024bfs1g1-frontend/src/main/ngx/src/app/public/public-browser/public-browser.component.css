@@ -1,0 +1,9 @@
+.browserContainer{
+    display: grid;
+    place-content: center;
+    grid-template-columns: auto auto;
+    justify-content: center;    
+    max-height: 37px;
+    min-height: 37px;
+}
+

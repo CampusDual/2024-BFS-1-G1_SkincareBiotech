@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, ViewChild, ElementRef, OnInit, Injector, Input, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils, AuthService } from 'ontimize-web-ngx';
+import { OFormComponent, OIntegerInputComponent, OTranslateService, OntimizeService, OTextInputComponent, Expression, FilterExpression, FilterExpressionUtils, AuthService, OCheckboxComponent, DialogService, OTranslatePipe } from 'ontimize-web-ngx';
 import * as CryptoJS from 'crypto-js';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CartService } from 'src/app/shared/services/cart.service';
 import Swal from 'sweetalert2';
+import { ValidatorFn, Validators } from '@angular/forms';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-new-order',
@@ -28,7 +30,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   service: OntimizeService;
   filterExp: {};
   PRO_ID = "PRO_ID";
-  totalAmount:number = 0;
+  totalAmount: number = 0;
   products = [];
 
   @ViewChild("formOrder") formOrder: OFormComponent;
@@ -39,6 +41,16 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   @ViewChild("phoneInput") phoneInput: OIntegerInputComponent;
   @ViewChild("zipInput") zipInput: OIntegerInputComponent;
   @ViewChild("addressInput") addressInput: OTextInputComponent;
+  @ViewChild("usrId") usrId: OIntegerInputComponent;
+  @ViewChild("defAddress") defAddress: MatCheckbox;
+
+
+
+  validatorZip: ValidatorFn[] = [];
+  validatorPhone: ValidatorFn[] = [];
+  validatorsNameArray: ValidatorFn[] = [];
+
+
   constructor(
     @Inject(AuthService) private authService: AuthService,
     private route: ActivatedRoute,
@@ -48,21 +60,35 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     protected sanitizer: DomSanitizer,
     private translateService: OTranslateService,
     protected translate: OTranslateService,
+    protected dialogService: DialogService
 
   ) {
     this.service = this.injector.get(OntimizeService);
     this.cart = this.cartService.getCart();
     this.translate = this.injector.get(OTranslateService);
+    this.validatorZip.push(Validators.minLength(5));
+    this.validatorZip.push(Validators.maxLength(5));
+    this.validatorZip.push(Validators.pattern('^[0-9]*$'));
+    this.validatorPhone.push(Validators.minLength(9));
+    this.validatorPhone.push(Validators.maxLength(9));
+    this.validatorPhone.push(Validators.pattern('^[6-9][0-9]*$'));
+    this.validatorsNameArray.push(Validators.pattern('^[a-zA-Z_ ]*$'));
+
+  }
+
+  private configureService(serviceName: string): void {
+
+    const conf = this.service.getDefaultServiceConfiguration(serviceName);
+    this.service.configureService(conf);
 
   }
 
   ngOnInit() {
-    const conf_prods = this.service.getDefaultServiceConfiguration('products');
-    this.service.configureService(conf_prods);
+    this.configureService('products');
     const cartProductsId = this.cart.map(item => item.id);
     this.filterExp = { "@basic_expression": this.filter(cartProductsId) };
-    this.service.query(this.filterExp, ["PRO_ID", "PRO_PRICE", "PRO_SALE"], "product").subscribe((data) => {
-      this.products = data.data;    
+    this.service.query(this.filterExp, ["PRO_ID", "PRICE", "PRO_SALE", "REAL_PRICE"], "product").subscribe((data) => {
+      this.products = data.data;
       this.updateTotalAmount();
     });
   }
@@ -77,60 +103,99 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     }
   }
   ngAfterViewInit(): void {
+    this.formOrder.queryData({ "USR_ID": 0 });
 
   }
-  updateTotalAmount( ) {
+
+  onFormDataLoaded(event) {
+    //console.log(event)
+    let data = {
+      UPR_ADDRESS: this.addressInput.getValue(),
+      USR_PHONE: this.phoneInput.getValue(),
+      USR_ZIP: this.zipInput.getValue(),
+      USR_ID: this.usrId.getValue(),
+      UPR_RECIPIENT: this.nameInput.getValue(),
+
+    }
+    console.log(data);
+    if (data.UPR_ADDRESS === "" || data.USR_ZIP === "") {
+      this.defAddress.checked = true;
+    } else {
+      this.defAddress.checked = false;
+    }
+
+
+
+  }
+
+  updateProfile(data: any) {
+    this.configureService('profiles');
+    this.service.update({ "USR_ID": data.USR_ID }, { "UPR_ADDRESS": data.UPR_ADDRESS, "UPR_ZIPCODE": data.USR_ZIP, "USR_PHONE": data.USR_PHONE, "UPR_RECIPIENT": data.UPR_RECIPIENT }, "userProfile")
+      .subscribe((data) => {
+        console.log('Profile updated');
+      });
+  }
+
+  updateTotalAmount() {
     let totalAmount = 0;
     this.updateCard();
     this.products.forEach(product => {
       const cartItem = this.cart.find(item => item.id === product.PRO_ID);
       if (cartItem) {
         const units = cartItem.units;
-        const price = product.PRO_SALE || product.PRO_PRICE;
-        totalAmount += price * units; 
+        const price = product.REAL_PRICE;
+        totalAmount += price * units;
       }
     });
-     this.totalAmount = totalAmount;
+    this.totalAmount = totalAmount;
   }
-  updateCard(){
+  updateCard() {
     this.cart = this.cartService.getCart();
   }
   submitOrder(): void {
 
-    if(this.authService.isLoggedIn()){
-
-      const conf = this.service.getDefaultServiceConfiguration('orders');
-      this.service.configureService(conf);
-      let data = {
-        ORD_NAME: this.nameInput.getValue(),
-        ORD_PHONE: this.phoneInput.getValue(),
-        ORD_ZIPCODE: this.zipInput.getValue(),
-        ORD_ADDRESS: this.addressInput.getValue(),
-        ORD_ITEMS: this.cartService.getCart()
-      }
-      if(data.ORD_NAME != null && data.ORD_PHONE !=null && data.ORD_ZIPCODE !=null && data.ORD_ADDRESS !=null){
-        this.cartService.emptyCart();
-        this.service.insert(data, "order").subscribe(res => {
-            this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
-            this.orderView = (res.data["ORD_ID"]).toString();
-            this.price = (this.totalAmount * 100).toFixed(0);
-            this.submitRedsysOrder();
-          })
-      }else{
-        Swal.fire({
-          title: this.translate.get('ERROR_COMPLETE_FORM'),
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
-        
-      }
-
-    }else{
+    if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/login'],
-                          {queryParams: {'session-not-started':'true'}}
-      )  // En el futuro si se cambia esta clase mantener la redireccion de este caso de uso
+        { queryParams: { 'session-not-started': 'true' } }
+      );  // En el futuro si se cambia esta clase mantener la redireccion de este caso de uso
+      return;
     }
-    
+
+    const conf = this.service.getDefaultServiceConfiguration('orders');
+    this.service.configureService(conf);
+    let data = {
+      ORD_NAME: this.nameInput.getValue(),
+      ORD_PHONE: this.phoneInput.getValue(),
+      ORD_ZIPCODE: this.zipInput.getValue(),
+      ORD_ADDRESS: this.addressInput.getValue(),
+      ORD_ITEMS: this.cartService.getCart(),
+      UPR_ADDRESS: this.addressInput.getValue(),
+      USR_PHONE: this.phoneInput.getValue(),
+      USR_ZIP: this.zipInput.getValue(),
+      USR_ID: this.usrId.getValue(),
+      UPR_RECIPIENT: this.nameInput.getValue(),
+    }
+    if (!(data.ORD_NAME != null && data.ORD_PHONE != null && data.ORD_ZIPCODE != null && data.ORD_ADDRESS != null
+      && data.USR_ZIP.length == 5 && data.USR_PHONE.length == 9 && /^[6789]\d{8}$/.test(data.USR_PHONE)
+      && data.UPR_ADDRESS.length > 1 && data.UPR_RECIPIENT.length > 1 && /^\d{5}$/.test(data.USR_ZIP))) {
+      this.dialogService.alert('Error', this.translate.get(
+        'DATA_FORM_INVALID'
+      ));
+      return;
+    }
+    this.cartService.emptyCart();
+    this.service.insert(data, "order").subscribe(res => {
+      this.order = (res.data["ORD_ID"]).toString().padStart(12, "0");
+      this.orderView = (res.data["ORD_ID"]).toString();
+      this.price = (this.totalAmount * 100).toFixed(0);
+      this.submitRedsysOrder();
+    })
+    if (this.defAddress.checked == true) {
+      this.updateProfile(data)
+    }
+
+
+
   }
   currentLang(): void {
 
@@ -206,3 +271,4 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
     }
   }
 }
+
