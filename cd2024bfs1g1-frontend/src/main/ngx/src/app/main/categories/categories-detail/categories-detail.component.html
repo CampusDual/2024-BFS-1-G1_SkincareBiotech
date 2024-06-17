@@ -5,9 +5,6 @@
         <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" title="CAT_NAME">
             <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
                 <o-text-input fxFlex="40" attr="CAT_NAME" label="CAT_NAME" required="yes">
-                    <o-validator [validator-function]="catNameValidator">
-                        <o-error name="requiredLowercaseA" text="{{'CAT_NAME_ERROR' | oTranslate}}"></o-error>
-                      </o-validator>
                 </o-text-input>
             </div>            
         </o-column>
