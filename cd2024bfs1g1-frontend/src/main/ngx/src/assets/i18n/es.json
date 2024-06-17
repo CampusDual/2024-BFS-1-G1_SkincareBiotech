@@ -307,7 +307,7 @@
   "ERROR_MIN_ZIP": "Longitud mínima: 5",
   "ERROR_MAX_ZIP": "Longitud máxima: 5",
   "SHIP_INFO": "Información de envío",
-  "SELLER_USERNAME_ERROR": "Un nombre de usuario no puede contener espacios",
+  "SELLER_USERNAME_ERROR": "Este campo no puede contener espacios",
   "SELLER_EMAIL_ERROR": "El correo electrónico insertado no posee un formato válido",
   "SELLER_PHONENUM_ERROR": "Los números de teléfono deben ser una combinación de 9 digitos",
   "SELLER_SPACE_ERROR": "Este campo no puede empezar por espacio"

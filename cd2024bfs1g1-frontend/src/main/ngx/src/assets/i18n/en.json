@@ -308,8 +308,8 @@
   "ERROR_MIN_ZIP": "Minimum length: 5",
   "ERROR_MAX_ZIP": "Maximum length: 5",
   "SHIP_INFO": "Shipment information",
-  "SELLER_USERNAME_ERROR": "A username cannot contain whitespaces",
+  "SELLER_USERNAME_ERROR": "This field cannot contain spaces",
   "SELLER_EMAIL_ERROR": "The inserted email address does not have a valid format",
   "SELLER_PHONENUM_ERROR": "Phone numbers can only be a combination of 9 digits",
-  "SELLER_SPACE_ERROR": "That field can't start with space"
+  "SELLER_SPACE_ERROR": "This field can't start with space"
 }

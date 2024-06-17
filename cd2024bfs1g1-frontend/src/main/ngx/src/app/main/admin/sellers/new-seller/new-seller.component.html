@@ -23,8 +23,8 @@
                 </o-text-input>
                 <o-email-input attr="USR_EMAIL" step="0" grouping="no" required="yes"></o-email-input>
                 <o-text-input attr="USR_PASSWORD" step="0" grouping="no" required="yes">
-                    <o-validator [validator-function]="sellerSpaceValidator">
-                        <o-error name="spaceValidator" text="{{'SELLER_SPACE_ERROR' | oTranslate}}"></o-error>
+                    <o-validator [validator-function]="sellerUsernameValidator">
+                        <o-error name="requiredUsername" text="{{'SELLER_USERNAME_ERROR' | oTranslate}}"></o-error>
                     </o-validator>
                 </o-text-input>
                 <o-text-input attr="USR_PHONE" step="0" grouping="no" required="no">
