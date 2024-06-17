@@ -281,7 +281,7 @@
   "MY_ALLERGENS": "My allergens",
   "ALLERGIC_WARNING": "This item contains products to which you are allergic.",
   "SALE_PRICE": "Publication price",
-  "WITHOUT_OFFER": "without offer",
+  "WITHOUT_OFFER": "Price without offer:",
   "ADD_SKIN_TYPE": "Add skin types",
   "SKIN_ID": "Skin type",
   "ADD_RECOMENDATIONS": "Add recomendations",
@@ -297,6 +297,7 @@
   "SELECT_Y_AXIS": "Select Y axis",
   "DATA_BY_SKIN": "Users by skin type",
   "SKIN_TYPE": "Skin type",
+  "TARGET_CUSTOMERS": "Target customers",
   "CHART_SETTINGS": "Chart settings",
   "UGE_ID": "Gender",
   "ERROR_NAME": "It is not allowed to use numerical characters",
@@ -326,5 +327,9 @@
   "VISIT_DATE": "Visit date",
   "SALE_CHART": "Sales by product",
   "PRODUCTS_STATS": "Product statistics",
-  "NO_RESULTS": "There is not data matching the filters applied."
+  "NO_RESULTS": "There is not data matching the filters applied.",
+  "OBJECTIVE_CUSTOMERS": "Percentage of objective customers",
+  "OBJECTIVE": "Objective",
+  "NOT_RECOMMENDED": "Not recommended",
+  "ALLERGY": "Allergy"
 }

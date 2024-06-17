@@ -1,9 +1,9 @@
-mat-tab-group{
+mat-tab-group {
     background-color: #fff;
     padding-top: 1vh;
 }
 
-.header-area{
+.header-area {
     display: flex;
     justify-content: center;
     padding-top: 30px;
@@ -14,58 +14,74 @@ mat-tab-group{
 }
 
 .product-container {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    gap: 20px;
-    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+    width: 100%;
+}
+
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+    width: 80%;
 }
 
 .details-row {
-    display: flex;
-    gap: 20px; 
-    align-items: start; 
-    width: 100%;
-    padding-bottom: 20px;
+    display: contents;
+}
+
+.name-price o-text-input,
+.name-price .salePrice-with-offer,
+.name-price o-slide-toggle {
+    grid-column: span 2;
    
 }
 
-.details-row o-combo,
-.details-row o-text-input,
-.details-row o-currency-input,
-.details-row o-textarea-input {
-    flex: 1;
+.name-price o-slide-toggle {
+    grid-column: span 1;
 }
 
-.salePrice-with-offer{
-    height: 100%;
-    margin: auto;
-}
-.price-row {
+.price-no-offer o-currency-input,
+.price-no-offer .price-with-offer,
+.price-no-offer div {
+    grid-column: span 1;
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 10px; 
+    font-size: 1em;
+    margin-top: -2vh;
+    margin-bottom: 1vh;
+}
+
+.category-brand-gender o-combo {
+    grid-column: span 1;
+}
+
+.description o-textarea-input {
+    grid-column: span 3;
 }
 
 .price-row o-currency-input {
     margin-right: 10px;
-    width: 30%;
-}
 
-.no-ofer-label{
-    font-size: 10px;
 }
 
 .price-label {
     font-weight: bold;
     padding: 5px;
+    font-size: 1em;
 }
+
 .price-message {
     padding: 5px;
     text-align: center;
+    font-size: 1em;
 }
 
-.chart-container{
+.chart-container {
     display: flex;
     flex-direction: column;
 }
@@ -80,12 +96,18 @@ mat-tab-group{
     padding-bottom:10px;
 }
 
-.chart{
-    padding-top: 50px;
+.chart {
+    width: 90%;
 }
 
+.chart-tittle-y-container {
+    display: flex;
+    padding-left: 2vw;
+    padding-right: 4vw;
 
-.title{
+}
+
+.title {
     text-align: center;
     font-weight: bold;
     font-size: 24px;
@@ -99,12 +121,33 @@ mat-tab-group{
 
 .pro-name-detail {
     text-align: center;
-    margin: 20px 0;
     font-weight: bold;
-    }
-    
-.tab-content {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
 }
+
+.tab-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.objective-customers-container {
+    width: 85%;
+}
+
+.objective-customers {
+    margin-top: 0;
+    margin-bottom: -30px;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3vh;
+
+}
+
+.texto {
+    font-size: 0.8em;
+}
+

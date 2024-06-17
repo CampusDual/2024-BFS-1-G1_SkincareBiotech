@@ -32,5 +32,87 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="userRecommendationsForProduct">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="ALLER_ID" prefix="a"/>
+                <AmbiguousColumn name="PRO_ID" prefix="p"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    WITH user_allergens AS (
+                        SELECT
+                            p.usr_id,
+                            ap.pro_id,
+                            'ALLERGY' AS recommendation
+                        FROM
+                             ${mainschema}.usr_profile p
+                        JOIN ${mainschema}.allergens_users au ON p.usr_id = au.usr_id
+                        JOIN ${mainschema}.allergens_products ap ON au.aller_id = ap.aller_id
+                    ),
+                    user_skin_recommendation AS (
+                        SELECT
+                             p.usr_id,
+                             ps.pro_id,
+                             'OBJECTIVE' AS recommendation
+                        FROM
+                              ${mainschema}.usr_profile p
+                        JOIN ${mainschema}.product_skin ps ON p.skin_id = ps.skin_id
+                    ),
+                    products AS (
+                        SELECT
+                            p.pro_id,
+                            p.pro_name,
+                            p.pro_description
+                        FROM
+                            ${mainschema}.products p
+                    ),
+                    product_associations AS (
+                        SELECT
+                            p.pro_id,
+                            COUNT(ap.ap_id) AS allergen_count,
+                            COUNT(ps.ps_id) AS skin_count,
+                            COUNT(DISTINCT au.usr_id) AS allergen_user_count
+                        FROM
+                            ${mainschema}.products p
+                        LEFT JOIN ${mainschema}.allergens_products ap ON p.pro_id = ap.pro_id
+                        LEFT JOIN ${mainschema}.product_skin ps ON p.pro_id = ps.pro_id
+                        LEFT JOIN ${mainschema}.allergens_users au ON ap.aller_id = au.aller_id
+                        GROUP BY
+                            p.pro_id
+                    ),
+                    all_user_recommendations AS (
+                        SELECT
+                            p.usr_id,
+                            pro.pro_id,
+                            CASE
+                                WHEN a.recommendation IS NOT NULL THEN 'ALLERGY'
+                                WHEN s.recommendation IS NOT NULL THEN 'OBJECTIVE'
+                                WHEN pa.allergen_count > 0 AND pa.allergen_user_count = 0 THEN 'OBJECTIVE'
+                                WHEN pa.allergen_count = 0 AND pa.skin_count = 0 THEN 'OBJECTIVE'
+                                ELSE 'NOT_RECOMMENDED'
+                            END AS final_recommendation
+                        FROM
+                            ${mainschema}.usr_profile p
+                        CROSS JOIN ${mainschema}.products pro
+                        LEFT JOIN user_allergens a ON p.usr_id = a.usr_id AND pro.pro_id = a.pro_id
+                        LEFT JOIN user_skin_recommendation s ON p.usr_id = s.usr_id AND pro.pro_id = s.pro_id
+                        LEFT JOIN product_associations pa ON pro.pro_id = pa.pro_id
+                    )
+                    SELECT
+                        p.pro_id,
+                        SUM(CASE WHEN ur.final_recommendation = 'OBJECTIVE' THEN 1 ELSE 0 END) AS objetivo_count,
+                        SUM(CASE WHEN ur.final_recommendation = 'NOT_RECOMMENDED' THEN 1 ELSE 0 END) AS no_recomendado_count,
+                        SUM(CASE WHEN ur.final_recommendation = 'ALLERGY' THEN 1 ELSE 0 END) AS alergia_count
+                    FROM
+                        ${mainschema}.products p
+                    LEFT JOIN all_user_recommendations ur ON p.pro_id = ur.pro_id
+                    #WHERE#
+                    GROUP BY
+                        p.pro_id
+                    ORDER BY
+                        p.pro_id;
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
