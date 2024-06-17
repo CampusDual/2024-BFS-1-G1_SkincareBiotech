@@ -1,8 +1,8 @@
 <o-form show-header="false">
 
     <div class="filter-container">
-        <o-integer-input class="filter" #inputNumProducts attr="COLUMNS_NUMBER" label="COLUMNS_NUMBER"
-            [data]="numberOfProducts" min="1" (onValueChange)="updateNoP($event)"></o-integer-input>
+        <o-integer-input class="filter" #inputNumProducts attr="COLUMNS_NUMBER" label="COLUMNS_NUMBER" min="1"
+            (onValueChange)="updateNoP($event)"></o-integer-input>
         <o-daterange-input class="filter" #inputDate attr="SALE_DATE" read-only="no" [data]="selectedDates"
             format="D/M/Y"></o-daterange-input>
         <o-combo class="filter" attr="CAT_ID" searchable="yes" read-only="no" service="categories" entity="category"
