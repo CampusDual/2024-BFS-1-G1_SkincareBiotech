@@ -124,3 +124,19 @@ html,body {
 .order-form .progress-bar-container{
 display: none;
 }
+
+.order-form .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+
+  background-color: white;
+}
+.order-form .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+
+  background-color: white;
+}
+
+.order-form .mat-mdc-raised-button:not(:disabled) {
+  background-color: var(--brand-color) !important;
+  color: white !important;
+  height: 50px !important;
+  font-size: 18px !important;
+}
