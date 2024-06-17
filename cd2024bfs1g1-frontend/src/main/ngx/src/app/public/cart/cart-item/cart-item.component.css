@@ -35,9 +35,11 @@
     font-family: Poppins, "Helvetica Neue", sans-serif;    
     width: 20vw;    
     padding-left: 20px;
+    height: 150px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    
 }
 .title{
     margin:0;
