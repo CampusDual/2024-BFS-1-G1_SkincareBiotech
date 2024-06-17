@@ -1,3 +1,5 @@
+@use 'assets/css/main-theme.scss' as mainTheme;
+
 /* You can add global styles to this file, and also import other style files */
 .o-form-layout-manager {
   .o-form {
@@ -40,7 +42,7 @@
 }
 
 html,body {
-  background-color: #f3f8fb;
+  
 }
 
 //Quitar el botón del Drawer
@@ -54,6 +56,7 @@ html,body {
   padding: 10px;
   box-shadow: none;
   background-color: #f3f8fb;
+  border: none;  
 }
 
 .o-language-selector .menu-button.o-language-selector-text {
@@ -61,14 +64,17 @@ html,body {
 }
 
 .browser-search {
-  border: none;
-  padding-right: 25px;
-  padding-top: 6px;
+  display: grid;
+  place-content: center;
+  border: none;  
   background-color: #438cA1;
   width: 43px;
-  height: 35px;
+  padding-right: 10px;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
+  color: #fff;  
+  max-height: 37px;
+  min-height: 37px;
 }
 
 .allergen-radio mat-radio-group {
@@ -86,4 +92,15 @@ html,body {
 
 .o-form .o-form-toolbar .o-form-toolbar-header{
   box-shadow: none;
+}
+
+.application-layout-content-wrapper.header-layout{
+  background-color: mainTheme.$background;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c40-1.mdc-text-field--filled{
+  background-color: red;
+  border-radius: 5px 0px 0px 0px / 5px 0px 0px 0px;  
+  max-height: 37px;
+  min-height: 37px;
 }
