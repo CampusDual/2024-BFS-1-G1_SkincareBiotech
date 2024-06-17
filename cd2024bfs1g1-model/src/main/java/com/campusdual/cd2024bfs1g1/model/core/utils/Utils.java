@@ -67,23 +67,20 @@ public class Utils {
         return true;
     }
 
-    public static boolean isDateRangeValid(long minAge, long maxAge, EntityResult existingRanges, int productId) {
+    public static boolean isDateRangeValid(long newStartDate, long newEndDate, EntityResult existingRanges, int productId) {
         long recordCount = existingRanges.calculateRecordNumber();
 
         for (int i = 0; i < recordCount; i++) {
             if ((int) existingRanges.getRecordValues(i).get(SaleDao.ATTR_PRO_ID) == productId) {
-                Date fechaInicio = (Date) existingRanges.getRecordValues(i).get(SaleDao.ATTR_SAL_INITIAL_DATE);
-                Date fechaFin = (Date) existingRanges.getRecordValues(i).get((SaleDao.ATTR_SAL_END_DATE));
+                Date existingStartDate = (Date) existingRanges.getRecordValues(i).get(SaleDao.ATTR_SAL_INITIAL_DATE);
+                Date existingEndDate = (Date) existingRanges.getRecordValues(i).get((SaleDao.ATTR_SAL_END_DATE));
 
-                long minRecord = fechaInicio.getTime();
-                long maxRecord = fechaFin.getTime();
+                long minRecord = existingStartDate.getTime();
+                long maxRecord = existingEndDate.getTime();
 
-                if (minAge >= minRecord && minAge <= maxRecord ||
-                        minAge <= minRecord && maxAge >= maxRecord ||
-                        maxAge >= minRecord && maxAge <= maxRecord) {
+                if (newStartDate <= maxRecord && newEndDate >= minRecord) {
                     return false;
                 }
-                return true;
             }
         }
         return true;
