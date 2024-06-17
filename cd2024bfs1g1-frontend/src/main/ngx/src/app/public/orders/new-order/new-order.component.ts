@@ -31,6 +31,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   filterExp: {};
   PRO_ID = "PRO_ID";
   totalAmount: number = 0;
+  units:number = 0;
   products = [];
 
   @ViewChild("formOrder") formOrder: OFormComponent;
@@ -138,6 +139,7 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
 
   updateTotalAmount() {
     let totalAmount = 0;
+    let units2 = 0;
     this.updateCard();
     this.products.forEach(product => {
       const cartItem = this.cart.find(item => item.id === product.PRO_ID);
@@ -145,9 +147,11 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
         const units = cartItem.units;
         const price = product.REAL_PRICE;
         totalAmount += price * units;
+        units2 += units;
       }
     });
     this.totalAmount = totalAmount;
+     this.units = units2;
   }
   updateCard() {
     this.cart = this.cartService.getCart();

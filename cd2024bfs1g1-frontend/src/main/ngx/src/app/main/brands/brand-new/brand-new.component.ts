@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,12 @@ import { Router } from '@angular/router';
 export class BrandNewComponent {
  constructor(
     private router: Router
-  ) { }
+  ) {
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
+
+   }
+
+
 
 onInsert(success: boolean) {
     if (success) {
