@@ -6,19 +6,17 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
 @Lazy
-@Repository(value="ProductViewDao")
-@ConfigurationFile(
-        configurationFile = "dao/ProductViewDao.xml",
-        configurationFilePlaceholder = "dao/placeholders.properties")
+@Repository(value = "ProductViewDao")
+@ConfigurationFile(configurationFile = "dao/ProductViewDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 
 public class ProductViewDao extends OntimizeJdbcDaoSupport {
 
     public static final String PROV_ID = "PROV_ID";
     public static final String PROV_UID = "PROV_UID";
-    public static final String PRO_ID ="PRO_ID";
-    public static final String PROV_DATE ="PROV_DATE";
+    public static final String PRO_ID = "PRO_ID";
+    public static final String PROV_DATE = "PROV_DATE";
     public static final String QUERY_PROV_VIEW_PRODUCT = "PROV_VIEW_PRODUCT";
-
+    public static final String QUERY_PROV_COUNT = "QUERY_PROV_COUNT";
 
 
 }

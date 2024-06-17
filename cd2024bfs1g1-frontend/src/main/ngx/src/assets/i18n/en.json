@@ -310,5 +310,12 @@
   "SELLER_USERNAME_ERROR": "This field cannot contain spaces",
   "SELLER_EMAIL_ERROR": "The inserted email address does not have a valid format",
   "SELLER_PHONENUM_ERROR": "Phone numbers can only be a combination of 9 digits",
-  "SELLER_SPACE_ERROR": "This field can't start with space"
+  "SELLER_SPACE_ERROR": "This field can't start with space",
+  "COLUMNS_NUMBER": "Number of columns",
+  "SALE_DATE": "Sale date",
+  "VISIT_CHART": "Visits by product",
+  "VISIT_DATE": "Visit date",
+  "SALE_CHART": "Sales by product",
+  "PRODUCTS_STATS": "Product statistics",
+  "NO_RESULTS": "There is not data matching the filters applied."
 }

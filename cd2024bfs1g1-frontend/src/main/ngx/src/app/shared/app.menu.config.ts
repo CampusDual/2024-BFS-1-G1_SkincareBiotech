@@ -3,6 +3,7 @@ import { MenuRootItem } from 'ontimize-web-ngx';
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
   { id: 'data-analysis', name: 'DATA_ANALYSIS', icon: 'bar_chart', route: '/main/data-analysis' },
+  { id: 'products-stats', name: 'PRODUCTS_STATS', icon: 'bar_chart', route: '/main/data-analysis/products-stats' }, 
   { id: 'customer-analysis', name: 'CUSTOMER_ANALYSIS', icon: 'assignment_ind', route: '/main/data-analysis/customer-analysis' },
   { id: 'sells-by-category', name: 'DATA_BY_CATEGORY', icon: 'category', route: '/main/data-analysis/bycategory'},
   { id: 'users-skin-types', name: 'DATA_BY_SKIN', icon: 'pie_chart_icon', route: '/main/data-analysis/skintypes'},

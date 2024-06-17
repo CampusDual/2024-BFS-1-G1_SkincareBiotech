@@ -117,8 +117,8 @@
   "PRO_SALE_ACTIVATE": "Activar oferta",
   "ADDED_RECENTLY": "AÑADIDO RECIENTEMENTE",
   "ADDED_RECENTLY2": "Descubre los productos más recientes y eficaces para el cuidado de tu piel",
-  "PAYMENT_METHODS": "Métodos de pago",
   "MAIN_SCREEN": "Página principal",
+  "PAYMENT_METHODS": "Métodos de pago",
   "CASH_ON_DELIVERY": "Contrareembolso",
   "PAY_WITH_CARD": "Tarjeta",
   "ADD_CART_BUTTON": "Añadir al carrito",
@@ -312,5 +312,12 @@
   "SELLER_USERNAME_ERROR": "Este campo no puede contener espacios",
   "SELLER_EMAIL_ERROR": "El correo electrónico insertado no posee un formato válido",
   "SELLER_PHONENUM_ERROR": "Los números de teléfono deben ser una combinación de 9 digitos",
-  "SELLER_SPACE_ERROR": "Este campo no puede empezar por espacio"
+  "SELLER_SPACE_ERROR": "Este campo no puede empezar por espacio",
+  "COLUMNS_NUMBER": "Número de columnas",
+  "SALE_DATE": "Fecha de venta",
+  "VISIT_CHART": "Visitas por producto",
+  "VISIT_DATE": "Fecha de visita",
+  "SALE_CHART": "Ventas por producto",
+  "PRODUCTS_STATS": "Estadísticas de producto",
+  "NO_RESULTS": "No existen datos de acuerdo a los filtros aplicados."
 }

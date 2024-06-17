@@ -15,4 +15,5 @@ public interface IProductViewService {
     public EntityResult viewByProductQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 
 
+    EntityResult productViewCountQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException;
 }
