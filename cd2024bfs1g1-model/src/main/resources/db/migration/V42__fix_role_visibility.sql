@@ -17,7 +17,8 @@ UPDATE public.usr_role
     { "attr": "age-range-configuration", "visible": false, "enabled": false},
     { "attr": "commissions", "visible": false, "enabled": false},
     { "attr": "masters", "visible": false, "enabled": false },
-    { "attr": "daily-billing", "visible": false, "enabled": false }]}'
+    { "attr": "daily-billing", "visible": false, "enabled": false },
+    { "attr": "products-stats", "visible": false, "enabled": false}]}'
     WHERE rol_name='user';
 UPDATE public.usr_role
     SET rol_json_client_permission='{ "menu": [
@@ -39,7 +40,8 @@ UPDATE public.usr_role
     { "attr": "brands", "visible": false, "enabled": false },
     { "attr": "categories", "visible": false, "enabled": false },
     { "attr": "masters", "visible": false, "enabled": false },
-    { "attr": "data-analysis", "visible": false, "enabled": false }]}'
+    { "attr": "data-analysis", "visible": false, "enabled": false },
+    { "attr": "products-stats", "visible": false, "enabled": false}]}'
     WHERE rol_name='seller';
 UPDATE public.usr_role
 	set rol_json_client_permission = '{ "menu": [
