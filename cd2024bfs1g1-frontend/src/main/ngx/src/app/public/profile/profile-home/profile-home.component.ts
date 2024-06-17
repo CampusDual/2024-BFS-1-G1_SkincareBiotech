@@ -16,18 +16,17 @@ export class ProfileHomeComponent implements AfterViewInit {
   validatorsNameArray: ValidatorFn[] = [];
   validatorsBirthdateArray: ValidatorFn[] = [];
   validatorsPhoneArray: ValidatorFn[] = [];
+  validatorsZipArray: ValidatorFn[] = [];
 
   constructor(
     protected sanitizer: DomSanitizer,
     protected router: Router,
   ) {
-    // Añade validador de patrón para el nombre
-    this.validatorsNameArray.push(Validators.pattern('^[a-zA-Z_]*$'));
-
-    // Añade validador de edad mínima de 18 años
+    this.validatorsZipArray.push(Validators.minLength(5));
+    this.validatorsZipArray.push(Validators.maxLength(5));  
+    this.validatorsZipArray.push(Validators.pattern('^[0-9]*$'));
+    this.validatorsNameArray.push(Validators.pattern('^[a-zA-Z_ ]*$'));
     this.validatorsBirthdateArray.push(this.ageValidator());
-
-    // Añade validador de telefono
     this.validatorsPhoneArray.push(Validators.pattern('^[6-9][0-9]{8}$'));
   }
 
