@@ -4,6 +4,8 @@ import { OCurrencyInputComponent, OFormComponent, OSlideToggleComponent, Ontimiz
 import { DiscreteBarChartConfiguration, OChartComponent, PieChartConfiguration } from 'ontimize-web-ngx-charts';
 import { Subscription } from 'rxjs';
 import { OTranslateService } from 'ontimize-web-ngx';
+import { LanguageService } from 'src/app/shared/services/language.service';
+
 
 @Component({
   selector: 'app-products-detail',
@@ -20,6 +22,7 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
 
   @ViewChild('realPriceCurrency')
   realPriceCurrency: OCurrencyInputComponent;
+  
   @ViewChild('form')
   form: OFormComponent;
 
@@ -30,6 +33,7 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   product: any = {};
   service: OntimizeService;
   service2: OntimizeService;
+
   public commissionPlatform: number;
   public commissionRedSys: number;
   public priceUser: number;
@@ -61,8 +65,10 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
     protected injector: Injector,
     private router: Router,
     private route: ActivatedRoute,
-    private translate: OTranslateService
+    protected languageService: LanguageService,
+    protected translateService: OTranslateService
   ) {
+
     this.chartParameters = new DiscreteBarChartConfiguration();
     this.chartParameters.showYAxis = true;
     this.chartParameters.showXAxis = true;
@@ -87,9 +93,13 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.productId = +this.route.snapshot.paramMap.get('PRO_ID');
-    this.updateChartLabels();
-    this.fetchCustomerData();
+
+    this.translateSubscription = this.translateService.onLanguageChanged.subscribe(() => {
+      this.formatDate(this.maxDate);
+      this.updateChartLabels();
+      this.fetchCustomerData();
+    });
+
 
     const conf = this.service.getDefaultServiceConfiguration('commissions');
     this.service.configureService(conf);
@@ -102,16 +112,42 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
         }
       });
 
-    this.translateSubscription = this.translate.onLanguageChanged.subscribe(() => {
-      this.updateChartLabels();
-      this.fetchCustomerData();
-    });
+    
   }
 
   ngOnDestroy(): void {
     if (this.translateSubscription) {
       this.translateSubscription.unsubscribe();
     }
+  }
+
+  loadClicks(event: any) {
+    event.forEach(item => {
+      this.totalClicks += item.VISITS
+      if (item.VISITS > this.maxClick) {
+        this.maxClick = item.VISITS;
+        this.maxDate = item.VISIT_DATE;
+      }
+    })
+
+    this.isGraph = this.maxClick > 0;
+
+    this.formatDate(this.maxDate);
+    this.percentage = (this.maxClick / this.totalClicks) * 100;
+  }
+
+  private formatDate(maxDate: number) {
+    if (!maxDate) {
+      this.maxMonth = '';
+      return;
+    }
+
+    const newDate = new Date(maxDate);
+    this.maxDay = newDate.getDate();
+    const idiomCode = this.translateService.getCurrentLang();
+    const monthFormatter = new Intl.DateTimeFormat(idiomCode, { month: 'long' });
+
+    this.maxMonth = monthFormatter.format(newDate);
   }
 
   fetchCustomerData(): void {
@@ -146,7 +182,7 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
 
     this.data = this.data.map(item => ({
       ...item,
-      name: this.translate.get(item.name)
+      name: this.translateService.get(item.name)
     }));
   }
 
