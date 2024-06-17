@@ -36,6 +36,12 @@ $theme: map.set(mainTheme.$theme, "typography", $merged-typography);
   @include ontimize-style.ontimize-theme-all-component-color(theme.$dark-theme);
 }
 
+.application-layout-content-wrapper{
+  padding: none;
+  margin: 16px;
+  background-color: white;
+}
+
 html, body {
   background-color: mainTheme.$background;
 }
