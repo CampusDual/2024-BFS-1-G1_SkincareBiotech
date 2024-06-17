@@ -1,3 +1,5 @@
+@use 'assets/css/main-theme.scss' as mainTheme;
+
 /* You can add global styles to this file, and also import other style files */
 .o-form-layout-manager {
   .o-form {
@@ -13,8 +15,8 @@
 }
 
 
-.o-column > div.o-container .o-container-scroll.o-container-gap,
-.o-row > div.o-container .o-container-scroll.o-container-gap {
+.o-column>div.o-container .o-container-scroll.o-container-gap,
+.o-row>div.o-container .o-container-scroll.o-container-gap {
   padding: 15px;
 }
 
@@ -40,7 +42,39 @@
 }
 
 html,body {
+  
+}
+
+//Quitar el botón del Drawer
+.drawer_hidden .o-app-sidenav.o-app-sidenav .o-app-header .sidenav-toggle {
+  display: none;
+}
+
+.drawer_hidden .o-app-header.o-app-header.o-app-header-medium.ng-star-inserted {
+  height: auto;
+  max-height: 100px;
+  padding: 10px;
+  box-shadow: none;
   background-color: #f3f8fb;
+  border: none;  
+}
+
+.o-language-selector .menu-button.o-language-selector-text {
+  font-size: 17px;
+}
+
+.browser-search {
+  display: grid;
+  place-content: center;
+  border: none;  
+  background-color: #438cA1;
+  width: 43px;
+  padding-right: 10px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  color: #fff;  
+  max-height: 37px;
+  min-height: 37px;
 }
 
 .allergen-radio mat-radio-group {
@@ -56,6 +90,22 @@ html,body {
   background-color: white;
 }
 
+.profile-input .mat-mdc-text-field-wrapper {
+  background-color: white;
+}
+
 .o-form .o-form-toolbar .o-form-toolbar-header{
   box-shadow: none;
+}
+
+.application-layout-content-wrapper.header-layout{
+  background-color: mainTheme.$background;
+  margin: 0px;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c40-1.mdc-text-field--filled{
+  background-color: none;
+  border-radius: 5px 0px 0px 0px / 5px 0px 0px 0px;  
+  max-height: 37px;
+  min-height: 37px;
 }

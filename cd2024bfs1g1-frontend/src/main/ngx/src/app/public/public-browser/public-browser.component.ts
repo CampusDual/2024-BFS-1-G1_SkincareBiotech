@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../shared/services/data.service';
+import { OTextInputComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-public-browser',
@@ -10,6 +11,7 @@ import { DataService } from '../../shared/services/data.service';
 export class PublicBrowserComponent {
   
   searchQuery: string = '';
+  @ViewChild('browserInput') browserInput : OTextInputComponent;
 
   constructor( 
     private router: Router,
@@ -17,6 +19,7 @@ export class PublicBrowserComponent {
   ) { }
 
   search() {
+    this.searchQuery = this.browserInput.getValue();
     this.dataService.setSearchValue(this.searchQuery);
     this.router.navigate(['/view']);  
   }

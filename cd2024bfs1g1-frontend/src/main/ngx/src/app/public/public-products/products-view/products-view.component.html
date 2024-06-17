@@ -8,8 +8,8 @@
             columns="PGE_ID;PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" translate="yes"></o-combo>
         <o-combo class="filter" attr="SKIN_ID" read-only="no" service="skinTypes" entity="skinType" keys="SKIN_ID"
             columns="SKIN_ID;SKIN_NAME" visible-columns="SKIN_NAME" value-column="SKIN_ID" translate="yes"></o-combo>
-        <o-real-input #minPriceInput class="filter" attr="PRO_MIN_PRICE" read-only="false" (onBlur)="clearInputMin($event)"></o-real-input>
-        <o-real-input #maxPriceInput class="filter" attr="PRO_MAX_PRICE" read-only="false" (onBlur)="clearInputMax($event)"></o-real-input>
+        <o-real-input #minPriceInput class="filter" attr="PRO_MIN_PRICE" min="0" read-only="false" (onBlur)="clearInputMin($event)"></o-real-input>
+        <o-real-input #maxPriceInput class="filter" attr="PRO_MAX_PRICE" min="0" read-only="false" (onBlur)="clearInputMax($event)"></o-real-input>
         <o-text-input #nameFilter class="filter" attr="PRO_NAME" [data]="nameFilterValue" read-only="false" oHidden></o-text-input>
     </div>
     <o-filter-builder #filterBuilder attr="categFilter"

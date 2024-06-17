@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'age-range-configuration',
     loadChildren: () => import('./age-range-configuration/age-range-configuration.module').then(m => m.AgeRangeConfigurationModule)
+  },
+  {
+    path: 'products-stats',
+    loadChildren: () => import('./products-stats/products-stats.module').then(m => m.ProductsStatsModule)
   }
 ];
 
