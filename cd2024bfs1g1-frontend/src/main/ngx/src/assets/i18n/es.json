@@ -305,6 +305,7 @@
   "ERROR_PATTERN_ZIP": "Solo se permiten números",
   "UPR_RECIPIENT": "Destinatario",
   "ERROR_MIN_ZIP": "Longitud mínima: 5",
-  "ERROR_MAX_ZIP": "Longitud máxima: 5"
-  
+  "ERROR_MAX_ZIP": "Longitud máxima: 5",
+  "DAILY_BILLING": "Facturación diaria",
+  "MASTERS": "Maestros"
 }
