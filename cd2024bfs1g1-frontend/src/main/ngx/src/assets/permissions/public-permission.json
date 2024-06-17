@@ -44,7 +44,7 @@
           "enabled": false
         },
         {
-          "attr": "data-analysis",
+          "attr": "daily-billing",
           "visible": false,
           "enabled": false
         },
@@ -57,7 +57,7 @@
         "attr": "skin-types",
         "visible": false,
         "enabled": false
-      },
+        },
         {
           "attr": "billed-age",
           "visible": false,
@@ -90,6 +90,21 @@
         },
         {
           "attr": "age-range-configuration",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "products-stats",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "masters",
+          "visible": false,
+          "enabled": false
+        },
+        {
+          "attr": "data-analysis",
           "visible": false,
           "enabled": false
         }

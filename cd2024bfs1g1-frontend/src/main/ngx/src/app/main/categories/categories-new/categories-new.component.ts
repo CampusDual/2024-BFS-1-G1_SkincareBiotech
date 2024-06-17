@@ -7,26 +7,18 @@ import { Router } from '@angular/router';
   templateUrl: './categories-new.component.html',
   styleUrls: ['./categories-new.component.scss']
 })
-export class CategoriesNewComponent{
+export class CategoriesNewComponent {
 
   constructor(
     private router: Router
-  ) { }
+  ) {
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
+  }
 
-onInsert(success: boolean) {
+  onInsert(success: boolean) {
     if (success) {
       this.router.navigate(['/main/categories']);
     }
   }
-  
-  catNameValidator(control: FormControl): ValidationErrors {
-    let result = {};
-    const regex = /^[A-Z][a-z]*$/
-    if (control.value && !regex.test(control.value)) {
-      result['requiredLowercaseA'] = true;
-    }
-    return result;
-  }
-
 
 }

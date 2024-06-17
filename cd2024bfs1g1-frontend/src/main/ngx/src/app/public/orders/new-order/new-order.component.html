@@ -1,60 +1,71 @@
 <div class="order-container">
     <ng-container *ngIf="cart.length; else showMessage">
+        <div class="all">
+            <div class="cart-item-container">
+                <h1 class="title">{{'BASKET' | oTranslate}}</h1>
 
-        <div class="cart-item-container">
-            <div *ngFor="let item of cart">
-                <app-cart-item [item]="item" (updateCart)="updateTotalAmount()"></app-cart-item>
+                <div *ngFor="let item of cart">
+                    <app-cart-item [item]="item" (updateCart)="updateTotalAmount()"></app-cart-item>
+                </div>
+                <div class="total-amount">
+                    <div class="total-left">
+                        <p class="total-title">Total</p>
+                        <p class="units">{{units}} {{'NUM_UNITS' | oTranslate |lowercase}}</p>
+                    </div>
+                    <div class="total-right">
+                        <p class="total"> {{totalAmount | number: '1.2-2' }}€</p>
+                    </div>
+                </div>
             </div>
-            <div class="total-amount">Total: {{totalAmount | number: '1.2-2' }}€</div>
-        </div>
-
-        <o-form class="order-form" #formOrder attr="newOrder" service="profiles" entity="userProfile" keys="USR_ID"
-            columns="USR_ID;USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE;UPR_RECIPIENT"
-            visible-columns="USR_NAME;UPR_RECIPIENT;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE" header-actions="U"
-            show-header-navigation="no" show-header="false" (onDataLoaded)="onFormDataLoaded($event)">
-            <div fxLayout="row">
-                <o-column class="order-column" fxFlex title="ORDER_INFORMATION">
-                    <div fxLayout="column" fxLayoutGap="12px" class="order-inputs">
-                        <o-integer-input #usrId attr="USR_ID" hidden sql-type="INTEGER" enabled="no"></o-integer-input>
-                        <o-text-input #nameInput class="order-input" attr="UPR_RECIPIENT" required="yes"
-                            placeholder="UPR_RECIPIENT">
-                            <o-validator error-name="pattern"
+            <div class="order-form">
+                <div class="form-title">{{'ORDER_INFORMATION' | oTranslate}}</div>
+                <o-form #formOrder attr="newOrder" service="profiles" entity="userProfile" keys="USR_ID"
+                    columns="USR_ID;USR_NAME;USR_SURNAME;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE;UPR_RECIPIENT"
+                    visible-columns="USR_NAME;UPR_RECIPIENT;USR_PHONE;UPR_ADDRESS;UPR_ZIPCODE" header-actions="U"
+                    (onDataLoaded)="onFormDataLoaded($event)" show-header-navigation="no" show-header="false" class="form-block">
+                    <div class="info-form">
+                        <div class="order-name">
+                            <o-integer-input #usrId attr="USR_ID" hidden sql-type="INTEGER" enabled="no"></o-integer-input>
+                            <o-text-input #nameInput class="order-input" attr="UPR_RECIPIENT" required="yes" placeholder="UPR_RECIPIENT">
+                                <o-validator error-name="pattern"
                                 error-text="{{ 'ERROR_NAME' | oTranslate }}"></o-validator>
-                        </o-text-input>
-
-                        <o-text-input #phoneInput class="order-input" attr="USR_PHONE" thousand-separator=" "
+                            </o-text-input>
+                        </div>
+                        <div class="order-phone">
+                            <o-text-input #phoneInput class="order-input" attr="USR_PHONE" thousand-separator=" "
                             required="yes" placeholder="USR_PHONE" [validators]="validatorPhone">
                             <o-validator error-name="pattern"
                                 [error-text]="'ERROR_PATTERN_PHONE' | oTranslate"></o-validator>
                             <o-validator error-name="minlength"></o-validator>
                             <o-validator error-name="maxlength"></o-validator>
                         </o-text-input>
-
-                        <o-text-input #zipInput class="order-input" attr="UPR_ZIPCODE" 
+                        </div>
+                        <div class="order-zip">
+                            <o-text-input #zipInput class="order-input" attr="UPR_ZIPCODE"
                             thousand-separator="" required="yes" placeholder="UPR_ZIPCODE" [validators]="validatorZip">
                             <o-validator error-name="minlength" error-text="{{ 'ERROR_MIN_ZIP' | oTranslate }}"></o-validator>
                             <o-validator error-name="maxlength" error-text="{{ 'ERROR_MAX_ZIP' | oTranslate }}"></o-validator>
                             <o-validator error-name="pattern" error-text="{{ 'ERROR_PATTERN_ZIP' | oTranslate }}"></o-validator>
                         </o-text-input>
-
-                        <o-text-input #addressInput class="order-input" attr="UPR_ADDRESS" required="yes"
+                        </div>
+                        <div class="order-description">
+                            <o-text-input #addressInput class="order-input" attr="UPR_ADDRESS" required="yes"
                             placeholder="UPR_ADDRESS"></o-text-input>
-
-                        <mat-checkbox #defAddress boolean-type="boolean">{{"SET_DEFAULT" | oTranslate}}</mat-checkbox>
-
-                        <!--<o-button (onClick)="submitOrder()" type="RAISED" label="CASH_ON_DELIVERY" class="order-button"></o-button>-->
-                        <button mat-raised-button id="back-button" (click)="submitOrder()" type="RAISED"
-                            label="Comprar:Redsys">{{'PURCHASE_BUTTON' | oTranslate}}</button>
-
+                        </div>
+                        <mat-checkbox #defAddress class="check-button" boolean-type="boolean">{{"SET_DEFAULT" | oTranslate}}</mat-checkbox>
+                        <div class="form-button">
+                            <o-button class="back-button" (click)="submitOrder()" type="RAISED"
+                                [label]="'PURCHASE_BUTTON' | oTranslate">{{'PURCHASE_BUTTON' | oTranslate}}</o-button>
+                        </div>
                     </div>
-                </o-column>
+                </o-form>
             </div>
-        </o-form>
+        </div>
     </ng-container>
     <ng-template #showMessage>
         <div class="no-cart">
             <div class="mensaje">
-                {{'EMPTY_CART' | oTranslate}}
+               {{'EMPTY_CART' | oTranslate}}
             </div>
             <button mat-raised-button id="back-button" attr="BACK_BUTTON" (click)="goBack()">{{'FIND_PRODUCT' |
                 oTranslate}}</button>

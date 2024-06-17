@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-age-range-new',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./age-range-new.component.css']
 })
 export class AgeRangeNewComponent {
-
+  constructor(
+    private router: Router
+  ) {
+    this.router.navigate([router.routerState.snapshot.url], { queryParams: { isdetail: 'true' } });
+  }
 }
