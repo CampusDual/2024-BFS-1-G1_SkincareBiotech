@@ -34,7 +34,6 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   productName: string = '';
   isDataLoaded: boolean = false;
   priceSaleUser: any = false;
-  productId: number;
 
   public pieParameters: PieChartConfiguration;
   public colorScheme = {
@@ -72,7 +71,7 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.productId = +this.route.snapshot.paramMap.get('PRO_ID');
+    // this.productId = +this.route.snapshot.paramMap.get('PRO_ID');
     this.updateChartLabels();
     this.fetchCustomerData();
 
@@ -100,11 +99,12 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   }
 
   fetchCustomerData(): void {
+    let productId = parseInt(this.route.snapshot.paramMap.get('PRO_ID'));
     const conf = this.service2.getDefaultServiceConfiguration('allergen-products');
     this.service2.configureService(conf);
     this.service2.query(
-      { 'pro_id': this.productId },
-      ["pro_id", "objetivo_count", "no_recomendado_count", "alergia_count"],
+      { 'PRO_ID': productId },
+      ["PRO_ID", "objetivo_count", "no_recomendado_count", "alergia_count"],
       "getProductRecommendations"
     ).subscribe((data) => {
       if (data.data.length > 0) {
@@ -148,10 +148,11 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  checkName($event: any): void {
+  checkName($event: any): void { 
     this.product = $event;
     this.priceSaleUser = $event.PRO_SALE;
     this.productName = $event.PRO_NAME;
+    this.fetchCustomerData();
   }
 
   finalPriceSale(rowData: Array<any>): number {
