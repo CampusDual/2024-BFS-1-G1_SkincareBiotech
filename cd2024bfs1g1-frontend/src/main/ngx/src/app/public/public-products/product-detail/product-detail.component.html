@@ -25,7 +25,7 @@
             <div class="skintype" *ngIf="skintypes && skintypes.length > 0">
                 <div class="subtitle"><b>{{'RECOMMENDED_SKIN' | oTranslate}}</b></div>
                 <div class="flex-container">
-                    <div class="pill" *ngFor="let item of skintypes">
+                    <div class="flex" *ngFor="let item of skintypes">
                         {{item.SKIN_NAME | oTranslate}}
                     </div>
                 </div>

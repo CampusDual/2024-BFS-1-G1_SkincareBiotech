@@ -271,6 +271,8 @@
   "GLOBAL_BROWSER": "Browser",
   "FIND_PRODUCT": "Find your product",
   "BASKET": "My cart",
+  "ORDER_DATA": "Order data",
+  "CANCEL": "Cancel",
   "ALLERGENS": "Allergens",
   "ALLER_NAME": "Allergen name",
   "ADD_ALLERGEN": "Add new allergen",

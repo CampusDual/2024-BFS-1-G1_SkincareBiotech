@@ -7,9 +7,10 @@
 }
 
 .all {
- width: 100vw;
+  width: 96vw;
   display: flex;
   justify-content: space-evenly;
+  margin: auto;
   gap: 40px;
 }
 
@@ -65,37 +66,41 @@
   font-size: 20px;
   font-weight: 600;
   font-size: 22px;
-  margin-bottom:5.5%;
+  margin-bottom: 5.5%;
   font-family: var(--font);
 
 }
-.info-form{
+
+.info-form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap:15px;
-}
-.order-name{
-  grid-column:1/-1;
+  gap: 15px;
 }
 
-.check-button{
-  grid-column:1/-1;
+.order-name {
+  grid-column: 1/-1;
 }
-.form-button{
-  grid-column:1/-1;
+
+.check-button {
+  grid-column: 1/-1;
+}
+
+.form-button {
+  grid-column: 1/-1;
   width: 100%;
   margin-top: 10px;
   background-color: var(--brand-color);
 }
 
-.back-button{
+.back-button {
   background-color: var(--brand-color);
-  color:white;
+  color: white;
   width: 100%;
   min-height: 50px;
 }
-.order-description{
-  grid-column:1/-1;
+
+.order-description {
+  grid-column: 1/-1;
 }
 
 .no-cart {
@@ -116,8 +121,9 @@
 
   background-color: white;
 }
-::ng-deep .mat-mdc-raised-button:not(:disabled){
-  background-color:var(--brand-color) !important ;
+
+::ng-deep .mat-mdc-raised-button:not(:disabled) {
+  background-color: var(--brand-color) !important;
   color: white !important;
   height: 50px !important;
   font-size: 18px !important;
@@ -135,7 +141,7 @@
   position: none
 }
 
-::ng-deep .o-form .scrolling{
+::ng-deep .o-form .scrolling {
   overflow: visible;
 }
 
@@ -145,20 +151,23 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
-  
+
   }
+
   .order-form {
-    margin:auto;
+    margin: auto;
     max-height: 90%;
     width: 545px;
     margin-bottom: 100px;
   }
+
   .order-container {
     width: 100vw;
   }
+
   .cart-item-container {
     grid-area: b;
-    margin:50px 50px;
+    margin: 50px 50px;
     display: flex;
     min-width: 40%;
     max-width: 100%;
