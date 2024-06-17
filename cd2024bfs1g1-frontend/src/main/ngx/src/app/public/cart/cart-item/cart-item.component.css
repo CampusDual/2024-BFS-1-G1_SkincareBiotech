@@ -19,6 +19,7 @@
 .img-product{
     position: relative;
     max-width: 150px;
+    min-width: 150px;
     max-height: 150px;
     min-height: 150px;
     border-radius: 5%;
@@ -34,9 +35,11 @@
     font-family: Poppins, "Helvetica Neue", sans-serif;    
     width: 20vw;    
     padding-left: 20px;
+    height: 150px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    
 }
 .title{
     margin:0;
@@ -58,7 +61,6 @@
 .unit-price2{
     color:black; 
     font-weight: bolder;
-    margin-top: 50px;
 }
 .percent{
     font-style: italic;

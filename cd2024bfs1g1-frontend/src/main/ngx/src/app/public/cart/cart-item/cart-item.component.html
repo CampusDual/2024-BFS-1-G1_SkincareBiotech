@@ -6,15 +6,15 @@
     </div>
     <ng-container *ngIf="product.PRO_SALE != null ;else showSale">
       <div class="title-price" routerLink="{{product.PRO_ID}}">
-        <p class="title">{{product.PRO_NAME}}</p>
+        <div class="title">{{product.PRO_NAME}}</div>
         <div class="sale" *ngIf="product.PRO_SALE != null">
-          <p class="price-before">{{ product.PRICE | number: '1.2-2' }} €</p>
-          <p class="unit-price">
+          <div class="price-before">{{ product.PRICE | number: '1.2-2' }} €</div>
+          <div class="unit-price">
             {{ product.REAL_PRICE | number: '1.2-2'}}€
-          </p>
-          <p class="percent">
+          </div>
+          <div class="percent">
             -{{ ((product.PRICE - product.REAL_PRICE) / product.PRICE) * 100 | number: '1.0-0' }}%
-          </p>
+          </div>
         </div>
       </div>
     </ng-container>
@@ -23,8 +23,8 @@
 
       <div class="title-price" routerLink="{{product.PRO_ID}}">
 
-        <p class="title">{{product.PRO_NAME}}</p>
-        <p class="unit-price2">{{ product.PRICE | number: '1.2-2'}}€</p>
+        <div class="title">{{product.PRO_NAME}}</div>
+        <div class="unit-price2">{{ product.PRICE | number: '1.2-2'}}€</div>
       </div>
 
     </ng-template>
