@@ -42,12 +42,14 @@
                        inner join products as p on p.pro_id = ol.pro_id
                        inner join orders as o on o.ord_id = ol.ord_id
                        inner join categories c on p.cat_id = c.cat_id
+                       where o.ord_paid = true
                        group by p.cat_id, o.ord_date::date, cat_name
                    )
                    SELECT
                    #COLUMNS#
                    FROM category_graph_query
                    #WHERE#
+
                 ]]>
             </Sentence>
         </Query>

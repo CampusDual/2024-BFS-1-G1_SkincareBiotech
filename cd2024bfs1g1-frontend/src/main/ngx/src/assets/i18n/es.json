@@ -311,6 +311,10 @@
   "UPR_RECIPIENT": "Destinatario",
   "ERROR_MIN_ZIP": "Longitud mínima: 5",
   "ERROR_MAX_ZIP": "Longitud máxima: 5",
+  "NO_DATA_FOR_SELECTED_RANGE": "No hay datos para el rango de fecha seleccionado",
+  "NO_DATA_FOR_SELECTED_AGE_RANGE": "No hay datos para el rango de edad seleccionado",
+  "NO_CLICKS": "No clicks in the last 30 days",
+  "NO_SELLS": "Todavía no se ha realizado ninguna venta",
   "DAILY_BILLING": "Facturación diaria",
   "MASTERS": "Maestros",
   "SELLER_USERNAME_ERROR": "Este campo no puede contener espacios",
@@ -328,5 +332,9 @@
   "OBJECTIVE_CUSTOMERS": "Porcentaje de clientes objetivo",
   "OBJECTIVE": "Objetivo",
   "NOT_RECOMMENDED": "No recomendado",
-  "ALLERGY": "Alergia"
+  "ALLERGY": "Alergia",
+  "THE_WOMANS": "Las mujeres",
+  "THE_MANS": "Los hombres",
+  "THE_OTHERS": "Las usuarios con otros generos",
+  "THE_PNAS": "Los usuarios de genero desconocido"
 }

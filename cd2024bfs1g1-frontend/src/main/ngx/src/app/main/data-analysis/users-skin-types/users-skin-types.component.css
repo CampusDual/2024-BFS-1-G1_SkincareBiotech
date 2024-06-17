@@ -4,3 +4,12 @@
     background-color: white;
     padding: 20px;
 }
+
+.insights{
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.bold{
+    font-weight: bold;
+}

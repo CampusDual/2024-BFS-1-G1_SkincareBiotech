@@ -84,7 +84,16 @@ mat-tab-group {
 .chart-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+}
+
+.chart, .insights-container{
+    width: 70%;
+    padding-top: 20px;
+    margin: auto;
+}
+
+.insight{
+    padding-bottom:10px;
 }
 
 .chart {
@@ -102,6 +111,12 @@ mat-tab-group {
     text-align: center;
     font-weight: bold;
     font-size: 24px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.bold{
+    font-weight: bold;
 }
 
 .pro-name-detail {

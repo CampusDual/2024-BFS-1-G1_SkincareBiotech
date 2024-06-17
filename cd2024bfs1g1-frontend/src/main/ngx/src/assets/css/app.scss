@@ -37,11 +37,11 @@ $theme: map.set(mainTheme.$theme, "typography", $merged-typography);
 }
 
 .application-layout-content-wrapper{
-  padding: none;
+  padding: 0px;
   margin: 16px;
   background-color: white;
 }
 
 html, body {
-  background-color: mainTheme.$background;
+  // background-color: mainTheme.$background;
 }

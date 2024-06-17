@@ -12,35 +12,51 @@ import { OTranslateService } from 'ontimize-web-ngx';
 })
 export class ProductsDetailComponent implements OnInit, OnDestroy {
 
-  @ViewChild('discreteBar', { static: false })
-  protected discreteBar: OChartComponent;
+  @ViewChild("proSaleToggle")
+  proSaleToggle: OSlideToggleComponent;
+
+  @ViewChild("proSaleCurrency")
+  proSaleCurrency: OCurrencyInputComponent;
 
   @ViewChild('realPriceCurrency')
   realPriceCurrency: OCurrencyInputComponent;
-  @ViewChild('form') form: OFormComponent;
+  @ViewChild('form')
+  form: OFormComponent;
 
-  public chartParameters: DiscreteBarChartConfiguration;
+ 
   data: any;
-  intermedio: any;
-  id: any;
   isVisible: boolean = false;
-  Visible: boolean = true;
+  Visible:  boolean = true;
   product: any = {};
   service: OntimizeService;
   service2: OntimizeService;
   public commissionPlatform: number;
   public commissionRedSys: number;
   public priceUser: number;
+
   productName: string = '';
   isDataLoaded: boolean = false;
   priceSaleUser: any = false;
+  productId: number;
+
+  isGraph: boolean = true;
+  maxClick: number = 0;
+  totalClicks: number = 0;
+  percentaje: number;
+  maxDate: number;
+  maxDay: number;
+  maxMonth: string;
+  percentage: number;
+
+  private translateSubscription: Subscription;
 
   public pieParameters: PieChartConfiguration;
   public colorScheme = {
     domain: ['#24b14a ', '#DCD516', '#e81d23']
   };
-  private translateSubscription: Subscription;
 
+  chartParameters: DiscreteBarChartConfiguration;
+  
   constructor(
     protected injector: Injector,
     private router: Router,
