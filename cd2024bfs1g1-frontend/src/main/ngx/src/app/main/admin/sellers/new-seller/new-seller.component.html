@@ -1,9 +1,6 @@
-<o-form attr="newSellerForm" service="users" entity="sellerRole" keys="USR_ID" after-insert-mode="new"
+<o-form label-header="ADD_SELLER" attr="newSellerForm" service="users" entity="sellerRole" keys="USR_ID" after-insert-mode="new"
     (afterInsert)="onInsert($event)">
     <div class="add-container">
-        <div class="header-area">
-            <div class="add-details-title">{{'ADD_SELLER' | oTranslate}}</div>
-        </div>
         <div class="content">
             <div class="info">
                 <o-text-input attr="USR_LOGIN" step="0" grouping="no" required="yes">

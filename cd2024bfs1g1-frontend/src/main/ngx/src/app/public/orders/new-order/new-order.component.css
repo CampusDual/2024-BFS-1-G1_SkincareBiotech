@@ -92,7 +92,7 @@
   background-color: var(--brand-color);
 }
 
-.back-button {
+#back-button {
   background-color: var(--brand-color);
   color: white;
   width: 100%;

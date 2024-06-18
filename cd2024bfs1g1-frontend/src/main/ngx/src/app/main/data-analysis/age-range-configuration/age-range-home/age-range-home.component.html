@@ -1,5 +1,5 @@
 <ng-template class="label" mat-tab-label>{{ "SETTINGS" | oTranslate }}</ng-template>
-<o-table attr="billedAgeTable" service="billed-ages" entity="billedAge" keys="GBA_ID"
+<o-table title="CHART_SETTINGS" show-title="true" attr="billedAgeTable" service="billed-ages" entity="billedAge" keys="GBA_ID"
     columns="GBA_ID;GBA_MIN_AGE;GBA_MAX_AGE" visible-columns="GBA_MIN_AGE;GBA_MAX_AGE" query-rows="20"
     delete-button='true' header-actions="R;D" quick-filter="false" edition-mode="none" detail-mode="none"
     auto-adjust="false">
