@@ -4,42 +4,49 @@
 }
 
 .chart-container{
-    display: flex;
-    flex-direction: column;
-    
+    padding-left: 2vw;  
+    padding-right: 2vw; 
 }
 
-.chart-tittle-y-container{
-    display: flex;
-    padding-left: 2vw;
-    padding-right: 4vw;
-    
-}
 
 h1{
     padding-left: 2vw;
+    width: 80%;
 }
 
-.chart{
-    width: 100%;
+.insights-container{
+    padding-bottom: 40px;
 }
 
+.insight{
+    padding-bottom:10px;
+    text-align: center;
+}
 
-.grid_item_y {
-    display: flex;
-    justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    margin-top: 0;
+.bold{
     font-weight: bold;
-    padding-left: 2vw;
 }
 
-.grid_item_x{
+.title-container{
     display: flex;
-    justify-content: center;
-    font-weight: bold;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    align-items: center;
+    padding-left: 2vw;  
+    padding-right: 2vw; 
+    margin-bottom: 30px;
 }
+
+.total{
+    padding: 10px;
+    border: solid 1px black;
+    font-weight: bold;
+    border-radius: 15px 15px;
+    width: 15%;
+    text-align: center;
+    /*
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    */
+}
+

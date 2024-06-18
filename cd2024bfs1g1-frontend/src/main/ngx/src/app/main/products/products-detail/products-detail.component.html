@@ -1,5 +1,5 @@
 <o-form #form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
-    show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="checkName($event)">
+    show-header-navigation="yes" (onDataLoaded)="checkName($event)">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
             <o-integer-input attr="PRO_ID" hidden></o-integer-input>
@@ -18,30 +18,39 @@
                             sql-type="OTHER"></o-image>
                     </div>
                     <div class="details-container">
-                        <div class="details-row">
+                        <div class="details-row name-price">
                             <o-text-input attr="PRO_NAME" label="PRO_NAME" required="yes"></o-text-input>
+                            <div class="slide">
+                                <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+                            </div>
+                        </div>
+                        <div class="details-row price-no-offer">
+                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"
+                                (onChange)="changePrice($event)"></o-currency-input>
+
+                            <div class="price-with-offer" *ngIf="priceSaleUser; else otherContent">
+                                <span class="texto">{{ 'WITHOUT_OFFER' | oTranslate }}</span>
+                                <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
+                            </div>
+                            
+                            <ng-template #otherContent>
+                                <span></span>
+                            </ng-template>
+
                             <div class="salePrice-with-offer" *ngIf="priceSaleUser">
-                                {{ 'PUBLICATION_PRICE' | oTranslate }} 
+                                <span class="texto">{{ 'PUBLICATION_PRICE' | oTranslate }}</span>
                                 <label class="price-label">
                                     {{product.SALE_PRICE }} €
                                 </label>
                             </div>
-                        </div>
-                        <div class="price-row">
-                            <o-currency-input attr="PRO_PRICE" label="PRO_PRICE" required="yes"
-                                (onChange)="changePrice($event)"></o-currency-input>
-                            <div class="price-with-offer" *ngIf="priceSaleUser">
-                                    {{ 'PUBLICATION_PRICE' | oTranslate }} 
-                                    <label class="price-label">{{ priceUser | number:"1.2-2" }} €</label>
-                                    <label class="no-ofer-label"> {{'WITHOUT_OFFER' | oTranslate |uppercase}}</label>
-                            </div>
+
                             <div #noOfer *ngIf="!priceSaleUser">
-                                <p>{{ 'PUBLICATION_PRICE' | oTranslate }} <label class="price-label">{{ priceUser |
+                                <span class="texto">{{ 'PUBLICATION_PRICE' | oTranslate }} </span><label class="price-label">{{ priceUser |
                                         number:"1.2-2" }} €</label>
-                                </p>
                             </div>
+
                         </div>
-                        <div class="details-row">
+                        <div class="details-row category-brand-gender">
                             <o-combo attr="CAT_ID" searchable="yes" service="categories" entity="category" keys="CAT_ID"
                                 columns="CAT_NAME" visible-columns="CAT_NAME" value-column="CAT_ID"></o-combo>
                             <o-combo attr="BRA_ID" searchable="yes" service="brands" entity="brand" keys="BRA_ID"
@@ -51,38 +60,69 @@
                                 columns="PGE_NAME" visible-columns="PGE_NAME" value-column="PGE_ID" required="yes"
                                 null-selection="no" translate="yes"></o-combo>
                         </div>
-                        <div class="details-row">
+                        <div class="details-row description">
                             <o-textarea-input attr="PRO_DESCRIPTION" required="yes" rows="11"></o-textarea-input>
                         </div>
                     </div>
-                    <div class="switch">
-                        <o-integer-input attr="PRO_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
-                        <o-slide-toggle attr="PRO_ENABLED" label="PRO_ENABLED" read-only="no"></o-slide-toggle>
+
+                    <div class="objective-customers-container">
+                        <h3 class="objective-customers">{{ 'OBJECTIVE_CUSTOMERS' | oTranslate }}</h3>
+                        <o-chart class="grafica" type="pie" [data]="data" [chart-parameters]="pieParameters"
+                            [color]="colorScheme" attr="objectiveCustomersChart">
+                        </o-chart>
                     </div>
                 </div>
                 <div>
-                    <span class="title">
-                        <h3>{{'GRAFIC_DETAILS' | oTranslate}}</h3>
-                    </span>
-                    <div class="chart-container">
-                        <div class="chart-tittle-y-container">
-                            <div class="tittle-y">
-                                {{"GRAFIC_VIEW" | oTranslate}}
+                    <div class="title">
+                        {{'GRAFIC_DETAILS' | oTranslate}}
+                    </div>
+
+                    <o-table service="productsView" entity="viewByProduct" parent-keys="PRO_ID" oHidden="yes"
+                        columns="VISIT_DATE;VISITS" columns="VISIT_DATE;VISITS" visible-columns="VISIT_DATE;VISITS"
+                        (onDataLoaded)="loadClicks($event)">
+                    </o-table>
+                    <div *ngIf="isGraph">
+                        <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
+                        <ng-template #enBlock>
+                            <div class="insights-container">
+                                <div class="insight">
+                                    This product has been viewed a total of <span class="bold">{{totalClicks}} times</span> in the last 30 days.
+                                </div>                                
+                                <div class="insight">
+                                    The day with the<span class="bold"> most visits is {{ maxDay }} of {{ maxMonth }}</span>
+                                    with a <span class="bold">total of {{ maxClick }} clicks</span>, accounting for
+                                    <span class="bold">{{ percentage | number: '1.2-2' }}%</span> of clicks received in the 
+                                    <span class="bold">last 30 days</span>.
+                                </div>
                             </div>
-                            <div class="chart">
-                                <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
-                                    entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time"
-                                    y-axis="COUNT" x-axis="VISIT_DATE"></o-chart>
-                                <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
-                                    entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time"
-                                    y-axis="COUNT" x-axis="VISIT_DATE"></o-chart>
+                        </ng-template>
+                        <ng-template #esBlock>
+                            <div class="insights-container">
+                                <div class="insight">
+                                    Este producto ha sido visitado un total de <span class="bold">{{totalClicks}} veces</span> los últimos 30 días
+                                </div>
+                                <div class="insight">
+                                    El día con <span class="bold">más visitas es el {{ maxDay}} de {{ maxMonth }}</span>
+                                    con un <span class="bold">total de {{ maxClick }} clicks</span>, siendo un <span
+                                    class="bold">{{ percentage | number: '1.2-2' }}%</span> de clicks
+                                    recibidos los últimos 30 días
+                                </div>
                             </div>
-                        </div>
-                        <div class="tittle-x">
-                            {{"GRAFIC_DATE" | oTranslate}}
-                        </div>
+                        </ng-template>
                     </div>
                 </div>
+            </div>
+            <div *ngIf="!isGraph" #noChart>
+                <div class="insights-container insight">
+                    {{ 'NO_CLICKS' | oTranslate }}
+                </div>
+            </div>
+
+            <div *ngIf="isGraph" class="chart">
+                <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
+                    entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="VISITS"
+                    x-axis="VISIT_DATE">
+                </o-chart>
             </div>
         </mat-tab>
         <mat-tab label="{{ 'SALES_INFORMATION' | oTranslate }}">

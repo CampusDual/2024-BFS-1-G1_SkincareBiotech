@@ -1,25 +1,73 @@
-import { Component, Injector, ViewChild } from '@angular/core';
-import { OntimizeService } from 'ontimize-web-ngx';
-import { OChartComponent, ChartService, DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
-
-
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { OTranslateService } from 'ontimize-web-ngx';
+import { Subscription } from 'rxjs';
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-data-analysis-home',
   templateUrl: './data-analysis-home.component.html',
   styleUrls: ['./data-analysis-home.component.css']
 })
+export class DataAnalysisHomeComponent implements OnInit, OnDestroy {
 
-export class DataAnalysisHomeComponent {
-  public chartParameters: DiscreteBarChartConfiguration;
+  maxDate: number;
+  maxDay: number;
+  maxMonth: string;
+  totalBilled: number = 0;
+  isGraph: boolean = true;
+  maxAmount: number = 0;
+  percentage: number;
 
-  constructor() {
-    this.chartParameters = new DiscreteBarChartConfiguration();
-    this.chartParameters.showYAxis= true;
-    this.chartParameters.showXAxis= true;
-    this.chartParameters.showLegend= true;
-    this.chartParameters.showValues= false;
-    this.chartParameters.margin.left= 50;
+  private translateSubscription: Subscription;
+
+  constructor(
+    protected injector: Injector,
+    protected languageService: LanguageService,
+    protected translateService: OTranslateService
+  ) {}
+
+  ngOnInit(): void {
+    this.translateSubscription = this.translateService.onLanguageChanged.subscribe(() => {
+      this.formatDate(this.maxDate);
+    });
   }
 
+  ngOnDestroy(): void {
+    if (this.translateSubscription) {
+      this.translateSubscription.unsubscribe();
+    }
+  }
+
+  loadDataAnalysis(event: any) {
+    this.totalBilled = 0;
+    this.maxAmount = 0;
+
+    event.forEach(item => {
+      this.totalBilled += item.AMOUNT_PRICE;
+      if (item.AMOUNT_PRICE > this.maxAmount) {
+        this.maxAmount = item.AMOUNT_PRICE;
+        this.maxDate = item.ORD_DATE;
+      }
+    });
+
+    if (this.totalBilled <= 0) {
+      this.isGraph = false;
+    }
+    this.formatDate(this.maxDate);
+    this.percentage = ((this.maxAmount / this.totalBilled) * 100);
+  }
+
+  private formatDate(maxDate: number) {
+    if (!maxDate) {
+      this.maxMonth = '';
+      return;
+    }
+
+    const newDate = new Date(maxDate);
+    this.maxDay = newDate.getDate();
+    const idiomCode = this.translateService.getCurrentLang();
+    const monthFormatter = new Intl.DateTimeFormat(idiomCode, { month: 'long' });
+
+    this.maxMonth = monthFormatter.format(newDate);
+  }
 }
