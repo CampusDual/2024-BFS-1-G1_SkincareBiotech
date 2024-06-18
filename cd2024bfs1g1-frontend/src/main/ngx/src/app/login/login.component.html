@@ -5,14 +5,14 @@
     </div>
 
     <div class="wrapp-login">
-      <mat-icon color="primary" class="flecha" routerLink="">arrow_back</mat-icon>      
+      <mat-icon color="primary" class="flecha" routerLink="">arrow_back</mat-icon>
 
       <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
 
         <div class="logo-container">
           <img class="logo-login" src="./assets/images/skincare-logo.svg" alt="SkinCare BioTech">
         </div>
- 
+
         <form [formGroup]="loginForm" (ngSubmit)="login()">
 
           <div class="login-title-container" fxLayout="column">
@@ -38,17 +38,14 @@
             </mat-form-field>
           </div>
 
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" class="m-top-24">
-            <mat-checkbox class="text">{{ 'REMEMBER_ME' | oTranslate }}</mat-checkbox>
-            <!-- <span class="text link_text">{{ 'FORGOT_PWD' | oTranslate }}</span> -->
-          </div>
-
-          <button color="primary" mat-raised-button id="boton_registro" type="submit">{{ 'LOGIN' | oTranslate }}</button>
+          <button color="primary" mat-raised-button id="boton_registro" type="submit">{{ 'LOGIN' | oTranslate
+            }}</button>
           <!-- <button mat-raised-button id="botones" routerLink="">{{ 'MAIN_SCREEN' | oTranslate }}</button> -->
 
           <div class="linea"></div>
           <label class="etiqueta">{{ 'ARE_NEW_CLIENT' | oTranslate }}</label>
-          <button color="primary" mat-raised-button id="boton_crear" routerLink="register">{{ 'CREATE_ACCOUNT' | oTranslate }}</button>
+          <button color="primary" mat-raised-button id="boton_crear" routerLink="register">{{ 'CREATE_ACCOUNT' |
+            oTranslate }}</button>
         </form>
       </div>
 
