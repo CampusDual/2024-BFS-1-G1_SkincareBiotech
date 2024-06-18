@@ -1,5 +1,5 @@
 .register {
-    background-image: url('^assets/images/skinCare4_portadaRecortada.png');
+    background-image: url('^assets/images/skinCare3_portadaRecortada.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
 }
- 
+
 .full-page {
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
     width: 100%;
     position: relative;
 }
- 
+
 .formContainer {
     padding: 20px;
     display: flex;
@@ -29,7 +29,7 @@
     max-width: 600px;
     margin-top: 30px;
 }
- 
+
 .form {
     display: flex;
     flex-direction: column;
@@ -37,25 +37,27 @@
     align-items: center;
     width: 100%;
 }
- 
-.form-row, .form-row-centered {
+
+.form-row,
+.form-row-centered {
     display: flex;
     gap: 16px;
     width: 100%;
     justify-content: center;
 }
- 
+
 .register-field {
     flex: 1;
     min-width: 0;
     width: 100%;
     max-width: 300px;
 }
- 
+
 #botones {
-    /* background-color: #a7bfc7; */
+    background-color: #438ca1;
+    color: white;
 }
- 
+
 .flecha {
     /* color: #a7bfc7; */
     transform: scale(3);
@@ -66,24 +68,24 @@
     transition: transform 0.3s ease;
     z-index: 3;
 }
- 
+
 .flecha:hover {
     /* color: #c4dde6; */
     transform: scale(3.5);
 }
- 
+
 .linea {
     border: 1px solid black;
     margin: 15px;
     margin-top: 20px;
     width: 13%;
 }
- 
+
 .etiqueta {
     margin-bottom: 10px;
     color: black;
 }
- 
+
 .title-register {
     font-size: 35px;
     font-weight: bold;
@@ -91,4 +93,9 @@
     margin-top: 20px;
     text-align: center;
     width: 100%;
+}
+
+#login-btn {
+    background-color: #438ca1;
+    color: white;
 }
