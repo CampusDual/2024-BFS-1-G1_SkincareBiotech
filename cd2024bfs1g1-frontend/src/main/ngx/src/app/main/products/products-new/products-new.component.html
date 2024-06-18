@@ -1,7 +1,6 @@
-<o-form #form attr="productsForm" service="products" entity="product" PRO_ID="PRO_ID" 
+<o-form label-header="ADD_PRODUCT" label-header-align="center" #form attr="productsForm" service="products" entity="product" PRO_ID="PRO_ID" 
     (onInsert)="onInsert($event)">
     <div class="main-container">
-        <span class="title-container"><h3>{{'ADD_PRODUCT' | oTranslate}}</h3></span>
         <div class="body-container">
             <div class="image-container">
                 <o-image id="image" attr="PRO_IMAGE" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>

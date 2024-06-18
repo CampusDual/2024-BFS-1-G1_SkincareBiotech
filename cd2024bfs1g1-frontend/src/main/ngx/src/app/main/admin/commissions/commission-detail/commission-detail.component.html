@@ -1,8 +1,8 @@
-<o-form attr="commissionsDetail" service="commissions" entity="commission" keys="COM_ID" header-actions="R;U"
+<o-form label-header="MODIFIED_COMMISSION" attr="commissionsDetail" service="commissions" entity="commission" keys="COM_ID" header-actions="R;U"
     show-header-navigation="yes">
     <o-integer-input attr="COM_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
     <div fxLayout="row">
-        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" title="{{'DETAIL_COMMISSION' | oTranslate}}">
+        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto">
             <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
                 <o-text-input fxFlex="40" attr="COM_NAME" label="COM_NAME" required="yes" read-only="yes"></o-text-input>
                 <o-real-input fxFlex="40" attr="COM_VALUE" label="COM_VALUE" required="yes"></o-real-input>

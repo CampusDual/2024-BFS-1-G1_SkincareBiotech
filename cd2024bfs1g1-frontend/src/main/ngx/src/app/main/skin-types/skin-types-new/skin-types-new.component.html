@@ -1,13 +1,12 @@
-<o-form attr="skintypesForm" service="skinTypes" entity="skinType" keys="SKIN_ID" delete-button="yes" after-insert-mode="close">
-    <o-column title="ADD_RECOMENDATIONS">
-      <div fxLayout="row" fxLayoutGap="8px">
-        <div fxFlex="70">
-          <div>
-            <o-text-input fxFlex="30" attr="SKIN_NAME" class="input-padding" step="0" grouping="no"
-              required="yes"></o-text-input>
-          </div>
-          <br>
-        </div>
+<o-form label-header="ADD_SKIN_TYPE" attr="skintypesForm" service="skinTypes" entity="skinType" keys="SKIN_ID"
+  delete-button="yes" after-insert-mode="close">
+  <div fxLayout="row" fxLayoutGap="8px">
+    <div fxFlex="70">
+      <div>
+        <o-text-input fxFlex="30" attr="SKIN_NAME" class="input-padding" step="0" grouping="no"
+          required="yes"></o-text-input>
       </div>
-    </o-column>
-  </o-form>
+      <br>
+    </div>
+  </div>
+</o-form>

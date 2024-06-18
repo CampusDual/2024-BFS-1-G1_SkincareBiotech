@@ -1,13 +1,12 @@
-<o-form attr="categoriesForm" service="categories" entity="category" keys="CAT_ID" (onInsert)="onInsert($event)">
-    <o-column title="ADD_CATEGORY">
-      <div fxLayout="row" fxLayoutGap="8px">
-        <div fxFlex="70">
-          <div>
-            <o-text-input fxFlex="40" attr="CAT_NAME" label="CAT_NAME" required="yes" class="input-padding" step="0" grouping="no">
-            </o-text-input>
-          </div>
-        </div>
+<o-form label-header="ADD_CATEGORY" attr="categoriesForm" service="categories" entity="category" keys="CAT_ID"
+  (onInsert)="onInsert($event)">
+  <div fxLayout="row" fxLayoutGap="8px">
+    <div fxFlex="70">
+      <div>
+        <o-text-input fxFlex="40" attr="CAT_NAME" label="CAT_NAME" required="yes" class="input-padding" step="0"
+          grouping="no">
+        </o-text-input>
       </div>
-    </o-column>
-  </o-form>
-  
+    </div>
+  </div>
+</o-form>

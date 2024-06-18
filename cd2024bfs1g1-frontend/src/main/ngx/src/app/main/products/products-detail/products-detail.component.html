@@ -1,5 +1,5 @@
 <o-form #form attr="productsDetail" service="products" entity="product" keys="PRO_ID" header-actions="R;U"
-    show-header-navigation="yes" (onDataLoaded)="checkName($event)">
+    show-header-navigation="yes" (onUpdate)="onUpdate($event)" (onDataLoaded)="checkName($event)" label-header="DETAIL_PRODUCT">
     <mat-tab-group fxFlex>
         <mat-tab label="{{ 'DETAIL_PRODUCT' | oTranslate }}">
             <o-integer-input attr="PRO_ID" hidden></o-integer-input>
@@ -7,11 +7,6 @@
             <o-real-input attr="PRICE" hidden></o-real-input>
             <o-real-input attr="SALE_PRICE" hidden></o-real-input>
             <div class="main-container">
-                <div class="header-area">
-                    <span class="title">
-                        <h3> {{'DETAIL_PRODUCT' | oTranslate}} </h3>
-                    </span>
-                </div>
                 <div class="product-container">
                     <div class="image-container">
                         <o-image id="pro-image" height="300px" attr="PRO_IMAGE" empty-image="assets/images/no-image.png"
