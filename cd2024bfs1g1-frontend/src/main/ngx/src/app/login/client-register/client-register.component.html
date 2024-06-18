@@ -119,11 +119,12 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <button mat-raised-button id="botones" type="submit">{{ 'REGISTER' | oTranslate }}</button>
+                <button mat-raised-button id="botones" type="submit">{{ 'REGISTER' | oTranslate | uppercase }}</button>
                 <div class="linea"></div>
-                <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate }}</label>
-                <button mat-raised-button style="background-color: #a7bfc7;" routerLink="/login">{{ 'LOGIN' | oTranslate
-                    }}</button>
+                <label class="etiqueta">{{ 'ALREADY_CLIENT' | oTranslate}}</label>
+                <button mat-raised-button id="login-btn" routerLink="/login">
+                    {{ 'LOGIN' | oTranslate | uppercase}}
+                </button>
             </form>
         </div>
     </div>
