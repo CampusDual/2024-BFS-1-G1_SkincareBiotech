@@ -64,13 +64,6 @@ public class SaleService implements ISaleService {
         calEndDate.set(Calendar.MILLISECOND, 999);
         endDate = calEndDate.getTime();
 
-        if (!(initialDate.equals(currentDayStart) || initialDate.after(currentDayStart))) {
-            EntityResult result = new EntityResultMapImpl();
-            result.setCode(EntityResult.OPERATION_WRONG);
-            result.setMessage("START_DATE_BEFORE_CURRENT_DATE");
-            return result;
-        }
-
         if (minDate > maxDate) {
             EntityResult result = new EntityResultMapImpl();
             result.setCode(EntityResult.OPERATION_WRONG);
