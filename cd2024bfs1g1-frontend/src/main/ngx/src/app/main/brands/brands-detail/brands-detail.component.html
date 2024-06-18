@@ -1,8 +1,8 @@
-<o-form attr="brandsDetail" service="brands" entity="brand" keys="BRA_ID" header-actions="R;U"
+<o-form label-header="BRA_DETAILS" attr="brandsDetail" service="brands" entity="brand" keys="BRA_ID" header-actions="R;U"
     show-header-navigation="yes" (onUpdate)="onUpdate($event)">
     <o-integer-input attr="BRA_ID" sql-type="INTEGER" enabled="no" hidden></o-integer-input>
     <div fxLayout="row">
-        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto" title="BRA_NAME">
+        <o-column fxFlex fxLayoutGap="auto" fxFlex="auto">
             <div fxLayout="row" fxLayoutGap="auto" fxLayoutAlign="start center">
                 <o-text-input fxFlex="40" attr="BRA_NAME" label="BRA_NAME" required="yes"></o-text-input>
             </div>

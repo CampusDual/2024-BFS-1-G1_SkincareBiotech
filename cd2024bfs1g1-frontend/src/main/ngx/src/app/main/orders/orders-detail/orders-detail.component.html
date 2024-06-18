@@ -1,11 +1,6 @@
 <o-form attr="orderDetail" service="orders" entity="orderBySeller" keys="ORD_ID"
-    show-header-navigation="no">
+    show-header-navigation="no" label-header="USR_INFORMATION">
     <div class="main-container">
-        <div class="header-area">
-            <span class="title">
-                <h3> {{'USR_INFORMATION' | oTranslate}} </h3>
-            </span>
-        </div>
         <div class="ordInfo-container flex-container">
             <o-text-input attr="ORD_ID" sql-type="INTEGER" read-only="yes"></o-text-input>
             <o-date-input attr="ORD_DATE" read-only="yes"></o-date-input>

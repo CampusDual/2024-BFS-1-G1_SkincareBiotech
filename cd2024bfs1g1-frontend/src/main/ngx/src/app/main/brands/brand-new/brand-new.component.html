@@ -1,14 +1,12 @@
-<o-form attr="brandForm" service="brands" entity="brand" keys="BRA_ID" show-header-navigation="yes" 
-after-insert-mode="close">
-  <o-column title="ADD_BRAND">
-    <div fxLayout="row" fxLayoutGap="8px">
-      <div fxFlex="70">
-        <div>
-          <o-text-input fxFlex="30" attr="BRA_NAME" class="input-padding" step="0" grouping="no"
-            required="yes"></o-text-input>
-        </div>
-        <br>
+<o-form label-header="ADD_BRAND" attr="brandForm" service="brands" entity="brand" keys="BRA_ID"
+  after-insert-mode="close">
+  <div fxLayout="row" fxLayoutGap="8px">
+    <div fxFlex="70">
+      <div>
+        <o-text-input fxFlex="30" attr="BRA_NAME" class="input-padding" step="0" grouping="no"
+          required="yes"></o-text-input>
       </div>
+      <br>
     </div>
-  </o-column>
+  </div>
 </o-form>
