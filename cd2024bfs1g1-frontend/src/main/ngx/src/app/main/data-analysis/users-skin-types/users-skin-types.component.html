@@ -3,13 +3,13 @@
   <div *ngIf="languageService.isEn$ | async; then enBlock else esBlock"></div>
   <ng-template #enBlock>
     <div class="insights">
-      Most of your users have <span class="bold">{{maxSkin}} skin</span>, which accounts
+      Most of your users have <span class="bold">{{maxSkin | lowercase}} skin</span>, which accounts
       for <span class="bold">{{percentage | number: '1.2-2'}}% of the total</span> website users.
     </div>
   </ng-template>
   <ng-template #esBlock>
     <div class="insights">
-      La mayoría de tus usuarios tienen una <span class="bold"> piel {{maxSkin}}</span>
+      La mayoría de tus usuarios tienen una <span class="bold"> piel {{maxSkin | lowercase}}</span>
       siendo un <span class="bold">{{ percentage | number: '1.2-2'}}% sobre el total</span> de usuarios de la web.
     </div>
   </ng-template>
