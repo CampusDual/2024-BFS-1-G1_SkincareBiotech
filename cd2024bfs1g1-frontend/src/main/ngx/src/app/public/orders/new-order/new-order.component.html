@@ -54,8 +54,11 @@
                         </div>
                         <mat-checkbox #defAddress class="check-button" boolean-type="boolean">{{"SET_DEFAULT" | oTranslate}}</mat-checkbox>
                         <div class="form-button">
+
+                            <!-- show users a login option if not logged in and the cart button if logged in-->
                             <o-button class="pay-button" (click)="submitOrder()" type="RAISED"
-                                [label]="'PURCHASE_BUTTON' | oTranslate">{{'PURCHASE_BUTTON' | oTranslate}}</o-button>
+                                [label]="varButtonField | oTranslate">{{varButtonField | oTranslate}}</o-button>
+
                         </div>
                     </div>
                 </o-form>
