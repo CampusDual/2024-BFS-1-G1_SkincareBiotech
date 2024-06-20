@@ -317,7 +317,7 @@
   "ERROR_MAX_ZIP": "Longitud máxima: 5",
   "NO_DATA_FOR_SELECTED_RANGE": "No hay datos para el rango de fecha seleccionado",
   "NO_DATA_FOR_SELECTED_AGE_RANGE": "No hay datos para el rango de edad seleccionado",
-  "NO_CLICKS": "No clicks in the last 30 days",
+  "NO_CLICKS": "No hay clicks en los últimos 30 días",
   "NO_SELLS": "Todavía no se ha realizado ninguna venta",
   "DAILY_BILLING": "Facturación diaria",
   "MASTERS": "Maestros",
