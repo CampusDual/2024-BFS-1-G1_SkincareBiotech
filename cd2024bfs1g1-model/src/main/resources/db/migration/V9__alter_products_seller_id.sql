@@ -5,3 +5,6 @@ INSERT INTO public.usr_user (usr_id,usr_login,usr_name,usr_surname,usr_email,usr
 VALUES (4,'nivea','Nivea name','Nivea surname','nviea@mail.com','$2a$12$IhTiQUV74FLLQskgkKQejO7ehrghAT.ZHXoUNB8QREoNvx/yaEZ.W','This is the nivea user');
 INSERT INTO public.usr_user_role (usr_id,rol_id)
 VALUES (4,3);
+
+-- Reset the sequence
+SELECT setval('public.usr_user_usr_id_seq', (SELECT MAX(usr_id) FROM public.usr_user));
