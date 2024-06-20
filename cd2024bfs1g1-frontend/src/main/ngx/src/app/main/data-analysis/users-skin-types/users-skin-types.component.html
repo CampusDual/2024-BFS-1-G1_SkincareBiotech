@@ -4,13 +4,13 @@
   <ng-template #enBlock>
     <div class="insights">
       Most of your users have <span class="bold">{{maxSkin}} skin</span>, which accounts
-      for <span class="bold">{{percentage}}% of the total</span> website users.
+      for <span class="bold">{{percentage | number: '1.2-2'}}% of the total</span> website users.
     </div>
   </ng-template>
   <ng-template #esBlock>
     <div class="insights">
       La mayoría de tus usuarios tienen una <span class="bold"> piel {{maxSkin}}</span>
-      siendo un <span class="bold">{{ percentage }}% sobre el total</span> de usuarios de la web.
+      siendo un <span class="bold">{{ percentage | number: '1.2-2'}}% sobre el total</span> de usuarios de la web.
     </div>
   </ng-template>
   <o-chart type="pie" service="profiles" entity="userProfileSkin" attr="userskinPieChart" x-axis="SKIN_NAME"
