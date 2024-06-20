@@ -35,7 +35,8 @@
 }
 
 .profile-container{
-    margin: 25px auto 25px auto;
+    width:70%;
+    margin: auto;
 }
 
 .about-me {
