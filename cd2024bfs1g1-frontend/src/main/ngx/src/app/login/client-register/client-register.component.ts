@@ -115,7 +115,7 @@ export class ClientRegisterComponent implements OnInit {
           text: text,
           icon: 'error',
           confirmButtonText: button,
-          confirmButtonColor: '#f8b88c',
+          confirmButtonColor: '#438cA1',
         });
       }
     }
@@ -158,7 +158,7 @@ export class ClientRegisterComponent implements OnInit {
             text: text,
             icon: 'success',
             confirmButtonText: button,
-            confirmButtonColor: '#f8b88c',
+            confirmButtonColor: '#438cA1',
           });
         }
       }, this.handleError)
@@ -173,7 +173,7 @@ export class ClientRegisterComponent implements OnInit {
           text: "Duplicated user",
           icon: 'error',
           confirmButtonText: "Cancel",
-          confirmButtonColor: '#f8b88c',
+          confirmButtonColor: '#438cA1',
         });
         break;
       default: break;

@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Injector, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Injector, Output, EventEmitter, ViewChild, ElementRef, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
+import { DialogService, OTranslateService, OntimizeService } from 'ontimize-web-ngx';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.css']
 })
-export class CartItemComponent  implements OnInit{
+export class CartItemComponent implements OnInit {
 
   @Input() item: any;
   @Input() showBtns: boolean = true;
@@ -22,6 +22,7 @@ export class CartItemComponent  implements OnInit{
 
 
   constructor(
+    @Inject(DialogService) private dialogService: DialogService,
     protected injector: Injector,
     protected sanitizer: DomSanitizer,
     private cartService: CartService,
@@ -82,23 +83,11 @@ export class CartItemComponent  implements OnInit{
   }
 
   public deleteItem() {
-    Swal.fire({
-      title: this.translate.get('DELETE_CART_WARNING'),
-      icon: 'info',
-      showCancelButton:true,
-      confirmButtonColor: '#438CA1',
-      cancelButtonColor: "rgba(146, 5, 5, 0.900)",
-      cancelButtonText:this.translate.get('CANCEL'),
-      customClass: {
-        confirmButton: 'custom-button',
-      },
-      
-    }).then((result)=>{
-      if (result.isConfirmed) {
+    this.dialogService.confirm(this.translate.get('TITLE_CART_WARNING'), this.translate.get('DELETE_CART_WARNING')).then((result) => {
+      if (result) {
         this.cartService.deleteItem(this.product.PRO_ID);
         this.updateCart.emit();
       }
     });
-
   }
 }
