@@ -59,7 +59,7 @@ export class SalesChartComponent {
     let filters: Array<Expression> = [];
     values.forEach(fil => {
       if (fil.value) {
-        if (fil.attr == 'SALES_DATE') {
+        if (fil.attr === 'SALES_DATE') {
           filters.push(FilterExpressionUtils.buildExpressionMoreEqual(fil.attr, fil.value.startDate.toDate()));
           filters.push(FilterExpressionUtils.buildExpressionLessEqual(fil.attr, fil.value.endDate.toDate()));
 
