@@ -92,6 +92,14 @@ mat-tab-group {
     margin: auto;
 }
 
+.insights-container-insight{
+    width: 70%;
+    padding-top: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
 .insight{
     padding-bottom:10px;
 }
