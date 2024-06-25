@@ -342,5 +342,9 @@
   "THE_OTHERS": "The persons with other genders",
   "THE_PNAS": "The persons with unknown gender",
   "LOGIN_TO_BUY": "You need to log in to finish purchasing",
-  "TITLE_CART_WARNING": "Warning"
+  "TITLE_CART_WARNING": "Warning",
+  "AMOUNT": "Amount (€)",
+  "AGE": "Age",
+  "VIEWS": "Views",
+  "DATE": "Date"
 }

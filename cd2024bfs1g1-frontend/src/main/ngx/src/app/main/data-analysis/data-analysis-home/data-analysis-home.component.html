@@ -32,7 +32,7 @@
 
                      <div class="chart">
                             <o-chart type="discreteBar" service="orders" entity="totalPriceOrders" x-axis="ORD_DATE"
-                                   x-data-type="time" y-axis="AMOUNT_PRICE" x-label="Time" y-label="Amount (€)">
+                                   x-data-type="time" y-axis="AMOUNT_PRICE" x-label="{{'DATE' | oTranslate}}" y-label="{{'AMOUNT' | oTranslate}}">
                             </o-chart>
 
                             <o-table service="orders" entity="totalPriceOrders" oHidden="yes" keys="ORD_DATE"
