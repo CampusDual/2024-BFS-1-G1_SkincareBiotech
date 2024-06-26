@@ -23,7 +23,7 @@
                 <p class="unsent" *ngIf="!ol.OL_SENT">{{'UNSENT' | oTranslate}}</p>
               </div>
               <div class="ol_total_price">
-                <p>{{ol.OL_PRICE | number: '1.2-2' }}€ X {{ol.OL_UNITS}} <span class="units">{{'UNITS' | oTranslate}}</span> =
+                <p>{{ol.OL_PRICE | number: '1.2-2' }}€ X {{ol.OL_UNITS}} <span class="units">{{'UNITS_ABBR' | oTranslate}}</span> =
                   {{(ol.OL_PRICE * ol.OL_UNITS) | number: '1.2-2' }}€</p>
               </div>
             </div>

@@ -20,7 +20,7 @@
                 </ng-template>
             
             <o-chart type="discreteBar" service="billed-ages" entity="billedAgeChart" x-axis="AGE_RANGE" y-axis="TOTAL"
-                x-label="Age" y-label="Amount (€)" [color]="colorScheme">
+            x-label="{{'AGE' | oTranslate}}" y-label="{{'AMOUNT' | oTranslate}}" [color]="colorScheme">
             </o-chart>
         </div>
             <o-table service="billed-ages" entity="billedAgeChart" keys="AGE_RANGE" oHidden="yes"
@@ -58,7 +58,7 @@
                 </ng-template>
 
                 <o-chart type="multiBar" service="billed-ages" entity="billedAgeGenderChart" x-axis="GBA_MIN_AGE"
-                    y-axis="MAN;WOMAN;OTHER;PNA" x-label="Age" y-label="Amount (€)" [chart-parameters]="chartParameters"
+                    y-axis="MAN;WOMAN;OTHER;PNA" x-label="{{'AGE' | oTranslate}}" y-label="{{'AMOUNT' | oTranslate}}" [chart-parameters]="chartParameters"
                     [color]="colorScheme">
                 </o-chart>
                 <o-table service="billed-ages" entity="billedAgeGenderChart" keys="AGE_RANGE" oHidden="yes"

@@ -122,14 +122,15 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   }
 
   loadClicks(event: any) {
+    let clicks=0;
     event.forEach(item => {
-      this.totalClicks += item.VISITS
+      clicks += item.VISITS;
       if (item.VISITS > this.maxClick) {
         this.maxClick = item.VISITS;
         this.maxDate = item.VISIT_DATE;
       }
     })
-
+    this.totalClicks = clicks;
     this.isGraph = this.maxClick > 0;
 
     this.formatDate(this.maxDate);

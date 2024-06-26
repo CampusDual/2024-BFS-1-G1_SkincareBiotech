@@ -33,6 +33,8 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
   totalAmount: number = 0;
   units:number = 0;
   products = [];
+  varButtonField : string;
+  isLoggedIn : boolean;
 
   @ViewChild("formOrder") formOrder: OFormComponent;
   @ViewChild("Ds_MerchantParameters") ds_merchantParameters: ElementRef;
@@ -92,6 +94,10 @@ export class NewOrderComponent implements AfterViewInit, OnInit {
       this.products = data.data;
       this.updateTotalAmount();
     });
+
+    // Get user log info:
+    this.isLoggedIn = this.authService.isLoggedIn()
+    this.varButtonField = this.isLoggedIn ? 'PURCHASE_BUTTON' : 'LOGIN_TO_BUY';
   }
 
   filter(cartProductsId) {

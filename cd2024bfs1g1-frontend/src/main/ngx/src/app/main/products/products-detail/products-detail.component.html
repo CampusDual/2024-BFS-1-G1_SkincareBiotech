@@ -108,14 +108,14 @@
                 </div>
             </div>
             <div *ngIf="!isGraph" #noChart>
-                <div class="insights-container insight">
+                <div class="insights-container-insight">
                     {{ 'NO_CLICKS' | oTranslate }}
                 </div>
             </div>
 
             <div *ngIf="isGraph" class="chart">
                 <o-chart class="grafica" parent-keys="PRO_ID" type="discreteBar" service="productsView"
-                    entity="viewByProduct" x-label="Date" y-label="views" x-data-type="time" y-axis="VISITS"
+                    entity="viewByProduct" x-label="{{'DATE' | oTranslate}}" y-label="{{'VIEWS' | oTranslate}}" x-data-type="time" y-axis="VISITS"
                     x-axis="VISIT_DATE">
                 </o-chart>
             </div>

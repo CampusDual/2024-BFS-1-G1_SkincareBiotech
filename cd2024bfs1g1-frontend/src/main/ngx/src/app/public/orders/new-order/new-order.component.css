@@ -60,6 +60,7 @@
   border-radius: 1%;
   max-height: 335px;
   max-width: 450px;
+  height: fit-content;
 }
 
 .form-title {
@@ -88,7 +89,6 @@
 .form-button {
   grid-column: 1/-1;
   width: 100%;
-  margin-top: 10px;
   background-color: var(--brand-color);
 }
 
