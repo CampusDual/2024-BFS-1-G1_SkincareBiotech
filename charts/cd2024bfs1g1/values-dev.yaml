@@ -50,8 +50,8 @@ resources:
     cpu: 800m
     memory: 512Mi
   requests:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 30m
+    memory: 300Mi
 
 database:
 ## Provided as basic setup. Configure as needed. Provided instance is dev environment instance
@@ -167,3 +167,6 @@ postgresql:
   existingSecret: cd2024bfs1g1-dev-db-secret   
   persistence:
     size: 1.5Gi
+  resources:
+    requests:
+      cpu: 30m
